@@ -1,11 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
 
 <head>
     <meta charset="utf-8">
     <title>Mosby - event managment</title>
-    <link rel="shortcut icon" href="media/images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="../media/images/favicon.ico" />
+    <link rel="icon" type="image/png" href="../media/images/favicon.png"/>
     <meta name="description" content="Mosby - make it simple. New event managment system" />
 
     <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">

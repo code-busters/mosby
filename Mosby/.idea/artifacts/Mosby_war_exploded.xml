@@ -8,6 +8,7 @@
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="mysql-connector-java-5.1.27-bin" />
+          <element id="library" level="project" name="commons-codec-1.9" />
         </element>
       </element>
       <element id="library" level="module" name="mysql-connector-java-5.1.28-bin.jar" module-name="Mosby" />
