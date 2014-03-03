@@ -1,14 +1,12 @@
 package main.java.com.mosby.controller.web.servlets;
 
 import main.java.com.mosby.controller.services.MainService;
-import main.java.com.mosby.model.BaseUserInfo;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
 
 @WebServlet("/index")
@@ -23,9 +21,9 @@ public class MainServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		BaseUserInfo baseUserInfo = new BaseUserInfo("firstName", "lastName",
-				"email", "password");
-		mainService.insertUser(baseUserInfo);
+//		BaseUserInfo baseUserInfo = new BaseUserInfo("firstName", "lastName",
+//				"email", "password");
+//		mainService.insertUser(baseUserInfo);
 		// mainService.selectUsers();
 		request.getRequestDispatcher("/pages/index.jsp").forward(request,
 				response);

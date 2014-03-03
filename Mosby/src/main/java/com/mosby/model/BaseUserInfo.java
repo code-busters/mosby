@@ -27,6 +27,30 @@ public class BaseUserInfo {
 	@Column(name = "admin")
 	private boolean admin;
 
+    public BaseUserInfo() {
+    }
+
+    public BaseUserInfo(int id, String firstName, String lastName,
+                        String email, String password, boolean admin) {
+        super();
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.admin = admin;
+    }
+
+    public BaseUserInfo(String firstName, String lastName, String email,
+                        String password, boolean admin) {
+        super();
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.admin = admin;
+    }
+
 	public int getId() {
 		return id;
 	}
@@ -73,31 +97,6 @@ public class BaseUserInfo {
 
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
-	}
-
-	public BaseUserInfo(int id, String firstName, String lastName,
-			String email, String password, boolean admin) {
-		super();
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.password = password;
-		this.admin = admin;
-	}
-
-	public BaseUserInfo(String firstName, String lastName, String email,
-			String password, boolean admin) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.password = password;
-		this.admin = admin;
-	}
-
-	public BaseUserInfo() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

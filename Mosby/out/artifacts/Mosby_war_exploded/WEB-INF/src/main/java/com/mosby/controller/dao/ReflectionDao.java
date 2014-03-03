@@ -5,6 +5,7 @@ import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -13,12 +14,14 @@ import java.util.List;
 
 import main.java.com.mosby.controller.persistence.*;
 import main.java.com.mosby.controller.transformers.*;
+
 import com.mysql.jdbc.PreparedStatement;
 
 public class ReflectionDao<T> {
 
 	private Class<T> type;
 	private String query;
+	private String insertQuery;
 	private ReflectionTransformer<T> reflectionTransformer = new ReflectionTransformer<>();
 	private HashMap<Integer, T> hashMap = new HashMap<>();
 
@@ -48,10 +51,12 @@ public class ReflectionDao<T> {
 		StringBuilder stringBuilder = new StringBuilder();
 
 		stringBuilder.append("SELECT ");
-		stringBuilder.append(getColumns());
+		stringBuilder.append(getColumns(false));
 		stringBuilder.append("FROM ");
-		
-		stringBuilder.append(reflectionTransformer.fromFieldToColumnInDB(type.getSimpleName())).append("s");
+
+		stringBuilder.append(
+				reflectionTransformer.fromFieldToColumnInDB(type
+						.getSimpleName())).append("s");
 		System.out.println(type.getSimpleName());
 
 		return stringBuilder.toString();
@@ -65,20 +70,51 @@ public class ReflectionDao<T> {
 			setHashMap(new HashMap<Integer, T>());
 
 			while (rs.next()) {
-				try {
-					getHashMap().put(
-							rs.getInt("id"),
-							getReflectionTransformer().fromRStoObject(
-									type.newInstance(), rs, type));
-				} catch (InstantiationException | IllegalAccessException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				getHashMap().put(
+						rs.getInt("id"),
+						getReflectionTransformer().fromRStoObject(
+								type.newInstance(), rs, type));
 			}
 			rs.close();
 			stmt.close();
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
+		} catch (ClassNotFoundException | SQLException | InstantiationException
+				| IllegalAccessException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public String createInsertQuery() {
+		StringBuilder stringBuilder = new StringBuilder();
+
+		stringBuilder.append("INSERT INTO ");
+		stringBuilder.append(
+				reflectionTransformer.fromFieldToColumnInDB(type
+						.getSimpleName())).append("s");
+		stringBuilder.append(" VALUES ");
+		stringBuilder.append("(");
+		stringBuilder.append(getColumns(true));
+		stringBuilder.append(")");
+
+		System.out.println(stringBuilder.toString());
+
+		return stringBuilder.toString();
+	}
+
+	public void insertObjects(T object) {
+		// Connection connection;
+		PreparedStatement preparedStatement;
+		try (Connection connection = ConnectionManager.getInstance().getConn()) {
+
+			preparedStatement = (PreparedStatement) connection
+					.prepareStatement(createInsertQuery());
+
+			preparedStatement = (PreparedStatement) reflectionTransformer
+					.fromObjectToStatement(preparedStatement, type, object);
+
+			preparedStatement.addBatch();
+			preparedStatement.executeBatch();
+		} catch (SQLException | IllegalArgumentException
+				| ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
@@ -130,11 +166,15 @@ public class ReflectionDao<T> {
 		this.hashMap = hashMap;
 	}
 
-	private String getColumns() {
+	private String getColumns(boolean hasValues) {
 		StringBuilder stringBuilder = new StringBuilder();
 
 		for (Field field : type.getDeclaredFields()) {
-			stringBuilder.append(field.getName()).append(", ");
+			if (hasValues) {
+				stringBuilder.append("?, ");
+			} else {
+				stringBuilder.append(field.getName()).append(", ");
+			}
 		}
 		stringBuilder.deleteCharAt(stringBuilder.length() - 2);
 		return reflectionTransformer.fromFieldToColumnInDB(stringBuilder
