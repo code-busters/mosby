@@ -19,7 +19,7 @@ public class ConnectionManager {
 		Properties connectionPr = new Properties();
 		try {
 			InputStream is = new FileInputStream(
-					"E:/файли/Олексій/workspaceEE/Mosby/WebContent/WEB-INF/classes/connection.properties");
+					"E:/Soft/Programming Environments/[JAVA]/Workspace Eclipse/Mosby/WebContent/WEB-INF/classes/connection.properties");
 			connectionPr.load(is);
 		} catch (Exception e) {
 			e.printStackTrace();
