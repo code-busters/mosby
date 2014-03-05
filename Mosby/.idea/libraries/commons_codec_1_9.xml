@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="commons-codec-1.9">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/libs/commons-codec-1.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WebContent/WEB-INF/lib/commons-codec-1.9.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

@@ -65,7 +65,7 @@ public class ReflectionDao<T> {
 	public void selectAll() {
 		try {
 			PreparedStatement stmt = (PreparedStatement) ConnectionManager
-					.getInstance().getConn().prepareStatement(this.query);
+					.getInstance().getConnection().prepareStatement(this.query);
 			ResultSet rs = stmt.executeQuery();
 			setHashMap(new HashMap<Integer, T>());
 
@@ -103,7 +103,7 @@ public class ReflectionDao<T> {
 	public void insertObjects(T object) {
 		// Connection connection;
 		PreparedStatement preparedStatement;
-		try (Connection connection = ConnectionManager.getInstance().getConn()) {
+		try (Connection connection = ConnectionManager.getInstance().getConnection()) {
 
 			preparedStatement = (PreparedStatement) connection
 					.prepareStatement(createInsertQuery());

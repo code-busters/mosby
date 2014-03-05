@@ -114,7 +114,7 @@
     </div>
 
     <div class="row" style="background: #000">
-        <div id="event-background" class="flow-img" style="background: url(../media/images/bg_mask.png), url(../media/images/events/background/metalica1.jpg)"></div>
+        <div id="event-background" class="flow-img" style="background-image: url(../media/images/bg_mask.png), url(../media/images/events/background/metalica1.jpg)"></div>
     </div>
 
     <div class="row">

@@ -1,40 +1,31 @@
 package main.java.com.mosby.controller.persistence;
 
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.Properties;
+import org.apache.log4j.Logger;
 
-import com.mysql.jdbc.Connection;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 public class ConnectionManager {
+    private static Logger log = Logger.getLogger(ConnectionManager.class);
 
 	private static ConnectionManager instance = null;
 
 	private Connection conn = null;
 
 	private ConnectionManager() {
-		
-		Properties connectionPr = new Properties();
-		try {
-			InputStream is = new FileInputStream(
-					"E:/Soft/Programming Environments/[JAVA]/Workspace Eclipse/Mosby/WebContent/WEB-INF/classes/connection.properties");
-			connectionPr.load(is);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		try {
-			Class.forName(connectionPr.getProperty("connection.driver"));
-			conn = ((Connection) DriverManager.getConnection(
-					connectionPr.getProperty("connection.url"),
-					connectionPr.getProperty("connection.user"),
-					connectionPr.getProperty("connection.pass")));
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-	}
+        try {
+            Context initContext = new InitialContext();
+            Context envContext = (Context) initContext.lookup("java:/comp/env");
+            DataSource datasource = (DataSource) envContext.lookup("jdbc/onlinedb");
+            conn = datasource.getConnection();
+        } catch (NamingException | SQLException e) {
+            log.error(e);
+        }
+    }
 
 	public static ConnectionManager getInstance()
 			throws ClassNotFoundException, SQLException {
@@ -44,7 +35,7 @@ public class ConnectionManager {
 		return instance;
 	}
 
-	public Connection getConn() {
+	public Connection getConnection() {
 		return conn;
 	}
 }
