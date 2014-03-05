@@ -1,6 +1,6 @@
 mosby
 =====
-Event managment system
+Event management system
 
 Team:
 * [ozasadnyy](https://github.com/ozasadnyy)
