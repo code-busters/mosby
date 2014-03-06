@@ -1,7 +1,6 @@
 package main.java.com.mosby.controller.web.servlets;
 
 import main.java.com.mosby.controller.services.MainService;
-import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +11,6 @@ import java.io.IOException;
 
 @WebServlet("/index")
 public class MainServlet extends HttpServlet {
-    private static Logger log = Logger.getLogger(MainServlet.class);
 	private static final long serialVersionUID = 1L;
 	private MainService mainService = new MainService();
 
@@ -27,7 +25,6 @@ public class MainServlet extends HttpServlet {
 //				"email", "password");
 //		mainService.insertUser(baseUserInfo);
 		// mainService.selectUsers();
-        log.error("Some error");
 		request.getRequestDispatcher("/pages/index.jsp").forward(request,
 				response);
 	}
