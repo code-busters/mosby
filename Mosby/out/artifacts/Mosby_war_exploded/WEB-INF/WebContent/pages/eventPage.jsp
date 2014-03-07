@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>Mosby - event managment</title>
@@ -14,6 +15,7 @@
 
     <!-- Loading Flat UI -->
     <link href="css/flat-ui.css" rel="stylesheet">
+    <link href="css/pro-features.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
 
 
@@ -44,7 +46,7 @@
             var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 
             var marker = new google.maps.Marker({
-                position: myCenter
+                position: myCenter,
             });
 
             marker.setMap(map);
@@ -70,7 +72,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
                     <span class="sr-only">Toggle navigation</span>
                 </button>
-                <a class="navbar-brand" href="#"></a>
+                <a class="navbar-brand" href="index.jsp"></a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse-01">
                 <ul class="nav navbar-nav navbar-left">
@@ -106,7 +108,7 @@
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="#">Sing up</a>
+                        <a href="singUp.jsp">Sing up</a>
                     </li>
                 </ul>
             </div>
@@ -114,7 +116,7 @@
     </div>
 
     <div class="row" style="background: #000">
-        <div id="event-background" class="flow-img" style="background-image: url(media/images/bg_mask.png), url(media/images/events/background/metalica1.jpg)"></div>
+        <div id="event-background" class="flow-img" style="background-image: url(../media/images/bg_mask.png), url(media/images/events/background/metalica1.jpg)"></div>
     </div>
 
     <div class="row">
@@ -137,9 +139,9 @@
             <img src="media/images/users/GDG-Lviv.png">
             <h3>GDG Lviv</h3>
             <p>
-                Google Developer Group (GDG) Lviv meets for about two times a month in office of Lviv's IT companies. The typical meeting formats are techtalk, bar camp or training, also from time to time we organize hackathons. <br><br>
-
-                Who we are? Open and volunteer geek communities who create exciting projects and share experience about Google technology with passion.
+                Google Developer Group (GDG) Lviv meets for about two times a month in office of Lviv's IT companies. The typical meeting formats are techtalk, bar camp or training, also from time to time we organize hackathons.
+                <br>
+                <br>Who we are? Open and volunteer geek communities who create exciting projects and share experience about Google technology with passion.
             </p>
             <span class="fui-mail"></span>
             <span class="fui-facebook"></span>

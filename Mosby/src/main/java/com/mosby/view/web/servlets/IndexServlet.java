@@ -1,4 +1,4 @@
-package main.java.com.mosby.controller.web.servlets;
+package main.java.com.mosby.view.web.servlets;
 
 import main.java.com.mosby.controller.services.MainService;
 
@@ -10,11 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/index")
-public class MainServlet extends HttpServlet {
+public class IndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private MainService mainService = new MainService();
 
-	public MainServlet() {
+	public IndexServlet() {
 		super();
 
 	}

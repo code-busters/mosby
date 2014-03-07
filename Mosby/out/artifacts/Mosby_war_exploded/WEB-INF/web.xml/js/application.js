@@ -23,7 +23,6 @@ String.prototype.repeat = function(num) {
       }
     });
   };
-	
 
   $(function() {
   

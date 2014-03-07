@@ -17,9 +17,21 @@ public class ReflectionTransformer<T> {
 
 		for (Field field : type.getDeclaredFields()) {
 
-			Object value;
+			Object value = null;
 			try {
-				value = rs.getObject(fromFieldToColumnInDB(field.getName()));
+				if (field.getType().equals(boolean.class)) {
+					int state = (int) rs.getObject(fromFieldToColumnInDB(field
+							.getName()));
+					if (state == 0) {
+						value = new Boolean(false);
+					} else if (state == 1) {
+						value = new Boolean(true);
+					}
+				} else {
+					value = rs
+							.getObject(fromFieldToColumnInDB(field.getName()));
+				}
+				
 				PropertyDescriptor propertyDescriptor;
 				propertyDescriptor = new PropertyDescriptor(field.getName(),
 						type);
