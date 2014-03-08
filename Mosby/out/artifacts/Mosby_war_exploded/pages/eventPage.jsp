@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Mosby - event managment</title>
+    <title>Mosby - event management</title>
     <link rel="shortcut icon" href="media/images/favicon.ico">
     <link rel="icon" type="image/png" href="media/images/favicon.png" />
-    <meta name="description" content="Mosby - make it simple. New event managment system" />
+    <meta name="description" content="Mosby - make it simple. New event management system" />
 
     <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
 
@@ -72,7 +72,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
                     <span class="sr-only">Toggle navigation</span>
                 </button>
-                <a class="navbar-brand" href="index.jsp"></a>
+                <a class="navbar-brand" href="#"></a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse-01">
                 <ul class="nav navbar-nav navbar-left">
@@ -108,7 +108,7 @@
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="singUp.jsp">Sing up</a>
+                        <a href="singUp.html">Sing up</a>
                     </li>
                 </ul>
             </div>
@@ -116,11 +116,11 @@
     </div>
 
     <div class="row" style="background: #000">
-        <div id="event-background" class="flow-img" style="background-image: url(../media/images/bg_mask.png), url(media/images/events/background/metalica1.jpg)"></div>
+        <div id="background-block" class="flow-img" style="background-image: url(../media/images/bg_mask.png), url(media/images/events/background/metalica1.jpg)"></div>
     </div>
 
     <div class="row">
-        <div class="event-details col-md-7 col-md-offset-1">
+        <div class="on-background-block event col-md-7 col-md-offset-1">
             <ul class="event-detail">
                 <li>
                     <span class="fui-calendar-solid"></span>22/03/2014</li>
@@ -215,10 +215,10 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $("#event-background").css("height", 4 * $(window).height() / 5);
+        $("#background-block").css("height", 4 * $(window).height() / 5);
     });
     $(window).resize(function() {
-        $("#event-background").css("height", 4 * $(window).height() / 5);
+        $("#background-block").css("height", 4 * $(window).height() / 5);
     });
 </script>
 

@@ -15,8 +15,8 @@ public class MainService {
 				.getClass();
 		System.out.println(typeBaseUserInfo);
 
-		usersDao.selectAll();
-		System.out.println(usersDao.getHashMap());
+		System.out.println(usersDao.selectObjects("admin", true));
+		System.out.println(usersDao.selectObjects("firstName", "Oleksii"));
 	}
 
 	public void insertUser(BaseUserInfo baseUserInfo) {

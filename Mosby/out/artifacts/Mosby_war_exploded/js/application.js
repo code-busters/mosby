@@ -34,6 +34,8 @@ String.prototype.repeat = function(num) {
     // Custom Selects
     $("select[name='huge']").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
     $("select[name='herolist']").selectpicker({style: 'btn-primary', menuStyle: 'dropdown-inverse'});
+    $("select[name='event_category']").selectpicker({style: 'btn-default', menuStyle: 'dropdown-inverse'});
+    $("select[name='event_type']").selectpicker({style: 'btn-default', menuStyle: 'dropdown-inverse'});
     $("select[name='info']").selectpicker({style: 'btn-info'});
 
     // Tooltips
@@ -88,6 +90,30 @@ String.prototype.repeat = function(num) {
     $(document).on('click', 'a[href="#fakelink"]', function (e) {
       e.preventDefault();
     });
+	  
+	  // jQuery UI Datepicker
+    $('#datepicker-start').datepicker({
+      showOtherMonths: true,
+      selectOtherMonths: true,
+      dateFormat: "d MM, yy",
+      yearRange: '-1:+1'
+    }).prev('.btn').on('click', function (e) {
+      e && e.preventDefault();
+      $('#datepicker-start').focus();
+    });
+    $.extend($.datepicker, {_checkOffset:function(inst,offset,isFixed){return offset}});
+	  
+	  $('#datepicker-end').datepicker({
+      showOtherMonths: true,
+      selectOtherMonths: true,
+      dateFormat: "d MM, yy",
+      yearRange: '-1:+1'
+    }).prev('.btn').on('click', function (e) {
+      e && e.preventDefault();
+      $('#datepicker-end').focus();
+    });
+    $.extend($.datepicker, {_checkOffset:function(inst,offset,isFixed){return offset}});
+
 
     // Switch
     $("[data-toggle='switch']").wrap('<div class="switch" />').parent().bootstrapSwitch();

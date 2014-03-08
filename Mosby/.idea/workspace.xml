@@ -64,34 +64,96 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LoginServlets.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/view/web/servlets/LoginServlets.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="0" selection-start="292" selection-end="313" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SingUpServlet.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/view/web/servlets/SingUpServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="97" selection-start="416" selection-end="416" vertical-scroll-proportion="0.33392859" vertical-offset="0" max-vertical-offset="560">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="IndexServlet.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/view/web/servlets/IndexServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="0" selection-start="353" selection-end="374" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="731">
+            <state line="10" column="0" selection-start="353" selection-end="374" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebContent/pages/index.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="228" column="44" selection-start="9102" selection-end="9102" vertical-scroll-proportion="-94.57692" vertical-offset="1417" max-vertical-offset="4165">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="styles.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebContent/css/styles.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="78" column="39" selection-start="1522" selection-end="1522" vertical-scroll-proportion="0.0" vertical-offset="1139" max-vertical-offset="6256">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pro-features.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebContent/css/pro-features.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="841" column="42" selection-start="17560" selection-end="17560" vertical-scroll-proportion="0.0" vertical-offset="13882" max-vertical-offset="21862">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="eventPage.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebContent/pages/eventPage.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="65" selection-start="65" selection-end="65" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="3944">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebContent/pages/login.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="83" selection-start="584" selection-end="584" vertical-scroll-proportion="41.846153" vertical-offset="1326" max-vertical-offset="3434">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="signUp.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebContent/pages/signUp.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="103" column="137" selection-start="4534" selection-end="4543" vertical-scroll-proportion="-6.5384617" vertical-offset="1581" max-vertical-offset="3706">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="createEvent.jsp" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/WebContent/pages/createEvent.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="175" column="89" selection-start="7400" selection-end="7400" vertical-scroll-proportion="0.110749185" vertical-offset="2907" max-vertical-offset="5695">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CreateEventServlet.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/view/web/servlets/CreateEventServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="25" selection-start="491" selection-end="502" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799">
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FileUploadUtils.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/utils/FileUploadUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="58" column="57" selection-start="2205" selection-end="2205" vertical-scroll-proportion="0.0" vertical-offset="375" max-vertical-offset="1275">
+              <folding>
+                <element signature="imports" expanded="false" />
+                <marker date="1394321562956" expanded="true" signature="2056:2320" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -109,7 +171,6 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/utils/MD5Utils.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/model/BaseUserInfo.java" />
-        <option value="$PROJECT_DIR$/WebContent/css/styles.css" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/controller/web/servlets/EventPageServlet.java" />
         <option value="$PROJECT_DIR$/WebContent/META-INF/context.xml" />
         <option value="$PROJECT_DIR$/WebContent/WEB-INF/web.xml" />
@@ -123,20 +184,27 @@
         <option value="$PROJECT_DIR$/src/test/java/main/java/com/mosby/utils/EncryptionTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/utils/EncryptionUtils.java" />
         <option value="$PROJECT_DIR$/src/test/java/main/java/com/mosby/utils/EncryptionUtilsTest.java" />
-        <option value="$PROJECT_DIR$/WebContent/pages/index.jsp" />
-        <option value="$PROJECT_DIR$/WebContent/pages/eventPage.jsp" />
-        <option value="$PROJECT_DIR$/WebContent/pages/login.jsp" />
         <option value="$PROJECT_DIR$/WebContent/pages/singUp.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/view/web/servlets/LoginServlets.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/view/web/servlets/SingUpServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mosby/view/web/servlets/IndexServlet.java" />
+        <option value="$PROJECT_DIR$/WebContent/pages/eventPage.jsp" />
+        <option value="$PROJECT_DIR$/WebContent/pages/login.jsp" />
+        <option value="$PROJECT_DIR$/WebContent/pages/signUp.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mosby/utils/FileUploadUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mosby/view/web/servlets/CreateEventServlet.java" />
+        <option value="$PROJECT_DIR$/WebContent/pages/index.jsp" />
+        <option value="$PROJECT_DIR$/WebContent/css/styles.css" />
+        <option value="$PROJECT_DIR$/WebContent/css/pro-features.css" />
+        <option value="$PROJECT_DIR$/WebContent/pages/createEvent.jsp" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
+    <option name="x" value="-1928" />
     <option name="y" value="-8" />
-    <option name="width" value="1296" />
-    <option name="height" value="1000" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -173,6 +241,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -215,13 +284,88 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="WebContent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mosby" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mosby" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebContent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mosby" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mosby" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mosby" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mosby" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mosby" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mosby" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mosby" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mosby" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -237,7 +381,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Java/workspaces/TravelAgency" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -249,14 +393,15 @@
     <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="main.java.com.mosby.utils" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="main.java.com.mosby.utils" />
+      <recent name="main.java.com.mosby.view.web.servlets" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\development\GitHub\mosby\Mosby\WebContent\WEB-INF\lib" />
@@ -269,7 +414,7 @@
       <recent name="F:\development\GitHub\mosby\Mosby\WebContent\WEB-INF" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Login">
+  <component name="RunManager" selected="Tomcat Server.Index">
     <configuration default="false" name="StringUtilsTest.testConcat" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -779,8 +924,8 @@
         </option>
       </method>
     </configuration>
-    <configuration default="false" name="Sing Up" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0.50" ALTERNATIVE_JRE_ENABLED="false" ALTERNATIVE_JRE_PATH="">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/singup" />
+    <configuration default="false" name="Sign Up" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0.50" ALTERNATIVE_JRE_ENABLED="false" ALTERNATIVE_JRE_PATH="">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/signUp" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="Mosby:war exploded">
@@ -856,13 +1001,91 @@
         </option>
       </method>
     </configuration>
-    <list size="6">
+    <configuration default="false" name="Create Event" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0.50" ALTERNATIVE_JRE_ENABLED="false" ALTERNATIVE_JRE_PATH="">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/createEvent" />
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="Mosby:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_Mosby_6" />
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="Tomcat Catalina" enabled="true" />
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <RunnerSettings RunnerId="Cover" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="41215" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method>
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="Mosby:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <list size="7">
       <item index="0" class="java.lang.String" itemvalue="JUnit.StringUtilsTest.testConcat" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.EncryptionUtilsTest" />
       <item index="2" class="java.lang.String" itemvalue="Tomcat Server.Event Page" />
       <item index="3" class="java.lang.String" itemvalue="Tomcat Server.Index" />
       <item index="4" class="java.lang.String" itemvalue="Tomcat Server.Login" />
-      <item index="5" class="java.lang.String" itemvalue="Tomcat Server.Sing Up" />
+      <item index="5" class="java.lang.String" itemvalue="Tomcat Server.Sign Up" />
+      <item index="6" class="java.lang.String" itemvalue="Tomcat Server.Create Event" />
     </list>
     <recent_temporary>
       <list size="2">
@@ -891,14 +1114,15 @@
       <workItem from="1394128692705" duration="142000" />
       <workItem from="1394193174756" duration="117000" />
       <workItem from="1394227277030" duration="1642000" />
+      <workItem from="1394320858523" duration="1944000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8974000" />
+    <option name="totallyTimeSpent" value="10918000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
+    <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -909,7 +1133,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39956802" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28077754" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -922,7 +1146,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23828755" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.157082" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3264368" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -953,18 +1177,21 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/controller/persistence/ConnectionManager.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/view/web/servlets/IndexServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="4" selection-start="386" selection-end="386" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="799">
+        <state line="11" column="0" selection-start="353" selection-end="353" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="731">
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/controller/persistence/ConnectionManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="4" selection-start="386" selection-end="386" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="799" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/META-INF/context.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="36" selection-start="440" selection-end="440" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="272">
-          <folding />
-        </state>
+        <state line="10" column="36" selection-start="440" selection-end="440" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="272" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/WEB-INF/web.xml">
@@ -976,16 +1203,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/controller/persistence/ConnectionManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="4" selection-start="386" selection-end="386" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="799">
-          <folding />
-        </state>
+        <state line="14" column="4" selection-start="386" selection-end="386" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="799" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/META-INF/context.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="36" selection-start="440" selection-end="440" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="272">
-          <folding />
-        </state>
+        <state line="10" column="36" selection-start="440" selection-end="440" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="272" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/WEB-INF/web.xml">
@@ -1014,9 +1237,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/controller/persistence/ConnectionManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="4" selection-start="313" selection-end="383" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="952">
-          <folding />
-        </state>
+        <state line="12" column="4" selection-start="313" selection-end="383" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="952" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/css/styles.css">
@@ -1026,9 +1247,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/model/BaseUserInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="0" selection-start="1884" selection-end="1884" vertical-scroll-proportion="0.0" vertical-offset="1632" max-vertical-offset="1955">
-          <folding />
-        </state>
+        <state line="96" column="0" selection-start="1884" selection-end="1884" vertical-scroll-proportion="0.0" vertical-offset="1632" max-vertical-offset="1955" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/view/web/servlets/IndexServlet.java">
@@ -1055,9 +1274,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/model/BaseUserInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="57" selection-start="1884" selection-end="1884" vertical-scroll-proportion="0.0" vertical-offset="1632" max-vertical-offset="1955">
-          <folding />
-        </state>
+        <state line="96" column="57" selection-start="1884" selection-end="1884" vertical-scroll-proportion="0.0" vertical-offset="1632" max-vertical-offset="1955" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/view/web/servlets/IndexServlet.java">
@@ -1084,9 +1301,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/model/BaseUserInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="57" selection-start="834" selection-end="834" vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="1394">
-          <folding />
-        </state>
+        <state line="42" column="57" selection-start="834" selection-end="834" vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="1394" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/view/web/servlets/IndexServlet.java">
@@ -1154,14 +1369,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/model/BaseUserInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="0" selection-start="1884" selection-end="1884" vertical-scroll-proportion="0.0" vertical-offset="1632" max-vertical-offset="1955">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/css/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="0" selection-start="1539" selection-end="1539" vertical-scroll-proportion="0.0" vertical-offset="1241" max-vertical-offset="4369" />
+        <state line="96" column="0" selection-start="1884" selection-end="1884" vertical-scroll-proportion="0.0" vertical-offset="1632" max-vertical-offset="1955" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/controller/dao/ReflectionDao.java">
@@ -1188,70 +1396,86 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/controller/persistence/ConnectionManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="4" selection-start="386" selection-end="386" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="799">
-          <folding />
-        </state>
+        <state line="14" column="4" selection-start="386" selection-end="386" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="799" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/META-INF/context.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="10" selection-start="440" selection-end="440" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272">
+        <state line="10" column="10" selection-start="440" selection-end="440" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/view/web/servlets/IndexServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="353" selection-end="374" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/pages/eventPage.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="61" selection-start="2574" selection-end="2574" vertical-scroll-proportion="0.7831094" vertical-offset="816" max-vertical-offset="3961">
+        <state line="0" column="65" selection-start="65" selection-end="65" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3944">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/utils/FileUploadUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="57" selection-start="2205" selection-end="2205" vertical-scroll-proportion="0.0" vertical-offset="375" max-vertical-offset="1275">
+          <folding>
+            <element signature="imports" expanded="false" />
+            <marker date="1394321562956" expanded="true" signature="2056:2320" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/pages/login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="83" selection-start="584" selection-end="584" vertical-scroll-proportion="41.846153" vertical-offset="1326" max-vertical-offset="3434">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/pages/signUp.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="103" column="137" selection-start="4534" selection-end="4543" vertical-scroll-proportion="-6.5384617" vertical-offset="1581" max-vertical-offset="3706">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/css/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="78" column="39" selection-start="1522" selection-end="1522" vertical-scroll-proportion="0.0" vertical-offset="1139" max-vertical-offset="6256">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/css/pro-features.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="841" column="42" selection-start="17560" selection-end="17560" vertical-scroll-proportion="0.0" vertical-offset="13882" max-vertical-offset="21862">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/pages/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="65" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="4182">
+        <state line="228" column="44" selection-start="9102" selection-end="9102" vertical-scroll-proportion="-94.57692" vertical-offset="1417" max-vertical-offset="4165">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/pages/login.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/view/web/servlets/CreateEventServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="65" selection-start="65" selection-end="65" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="3451">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/pages/singUp.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="65" selection-start="65" selection-end="65" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3723">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/view/web/servlets/IndexServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="353" selection-end="374" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="731">
+        <state line="15" column="25" selection-start="491" selection-end="502" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/view/web/servlets/LoginServlets.java">
+    <entry file="file://$PROJECT_DIR$/WebContent/pages/createEvent.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="292" selection-end="313" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/view/web/servlets/SingUpServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="97" selection-start="416" selection-end="416" vertical-scroll-proportion="0.33392859" vertical-offset="0" max-vertical-offset="560">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="175" column="89" selection-start="7400" selection-end="7400" vertical-scroll-proportion="0.110749185" vertical-offset="2907" max-vertical-offset="5695">
+          <folding />
         </state>
       </provider>
     </entry>

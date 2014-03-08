@@ -24,7 +24,7 @@ public class IndexServlet extends HttpServlet {
 //		BaseUserInfo baseUserInfo = new BaseUserInfo("firstName", "lastName",
 //				"email", "password");
 //		mainService.insertUser(baseUserInfo);
-		// mainService.selectUsers();
+		mainService.selectUsers();
 		request.getRequestDispatcher("/pages/index.jsp").forward(request,
 				response);
 	}
