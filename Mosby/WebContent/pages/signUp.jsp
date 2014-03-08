@@ -92,7 +92,7 @@
 				<div class="hidden-lg hidden-md">
 					<h4>Sing up for free</h4>
 				</div>
-				<form action="SomeServlet" method="post" id="sing-up-form">
+				<form action="signUp" method="post" id="sing-up-form">
 					<div class="form-group">
 						<input class="form-control" placeholder="First Name" name="first_name" required id="first-name" />
 						<label class="login-field-icon fui-user" for="first-name"></label>

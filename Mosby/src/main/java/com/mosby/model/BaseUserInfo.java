@@ -23,6 +23,9 @@ public class BaseUserInfo {
 
 	@Column(name = "password")
 	private String password;
+	
+	@Column(name = "credits")
+	private int credits;
 
 	@Column(name = "admin")
 	private boolean admin;
@@ -31,7 +34,7 @@ public class BaseUserInfo {
     }
 
     public BaseUserInfo(int id, String firstName, String lastName,
-                        String email, String password, boolean admin) {
+                        String email, String password, int credits, boolean admin) {
         super();
         this.id = id;
         this.firstName = firstName;
@@ -42,7 +45,7 @@ public class BaseUserInfo {
     }
 
     public BaseUserInfo(String firstName, String lastName, String email,
-                        String password, boolean admin) {
+                        String password, int credits, boolean admin) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
@@ -81,6 +84,14 @@ public class BaseUserInfo {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public int getCredits() {
+		return credits;
+	}
+	
+	public void setCredits(int credits) {
+		this.credits = credits;
 	}
 
 	public String getPassword() {
