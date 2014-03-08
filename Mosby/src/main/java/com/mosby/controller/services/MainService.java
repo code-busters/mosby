@@ -15,12 +15,8 @@ public class MainService {
 				.getClass();
 		System.out.println(typeBaseUserInfo);
 
-		//usersDao.selectObjects("id",2);
-		System.out.println(usersDao.selectObjects("id",2));
-		//usersDao.selectObjects("firstName", "Oleh");
-		System.out.println(usersDao.selectObjects("firstName", "Oleh"));
-		//usersDao.selectObjects("admin", 1);
-		System.out.println(usersDao.selectObjects("admin", 1));
+		System.out.println(usersDao.selectObjects("admin", true));
+		System.out.println(usersDao.selectObjects("firstName", "Oleksii"));
 	}
 
 	public void insertUser(BaseUserInfo baseUserInfo) {
