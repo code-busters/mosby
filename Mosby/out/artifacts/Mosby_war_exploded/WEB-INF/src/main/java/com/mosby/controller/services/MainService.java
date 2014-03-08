@@ -15,7 +15,11 @@ public class MainService {
 				.getClass();
 		System.out.println(typeBaseUserInfo);
 
-		usersDao.selectAll();
+		usersDao.selectAll("id",2);
+		System.out.println(usersDao.getHashMap());
+		usersDao.selectAll("firstName", "Oleh");
+		System.out.println(usersDao.getHashMap());
+		usersDao.selectAll("admin", 1);
 		System.out.println(usersDao.getHashMap());
 	}
 

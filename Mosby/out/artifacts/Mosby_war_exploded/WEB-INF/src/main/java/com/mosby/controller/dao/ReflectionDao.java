@@ -15,7 +15,7 @@ import java.util.List;
 import main.java.com.mosby.controller.persistence.*;
 import main.java.com.mosby.controller.transformers.*;
 
-import com.mysql.jdbc.PreparedStatement;
+import java.sql.PreparedStatement;
 
 public class ReflectionDao<T> {
 
@@ -62,10 +62,10 @@ public class ReflectionDao<T> {
 		return stringBuilder.toString();
 	}
 
-	public void selectAll() {
+	public void selectAll(String fieldName, Object whereObj) {
 		try {
 			PreparedStatement stmt = (PreparedStatement) ConnectionManager
-					.getInstance().getConnection().prepareStatement(this.query);
+					.getInstance().getConnection().prepareStatement(createSelectQuery(fieldName, whereObj));
 			ResultSet rs = stmt.executeQuery();
 			setHashMap(new HashMap<Integer, T>());
 
@@ -103,8 +103,8 @@ public class ReflectionDao<T> {
 	public void insertObjects(T object) {
 		// Connection connection;
 		PreparedStatement preparedStatement;
-		try (Connection connection = ConnectionManager.getInstance().getConnection()) {
-
+		try {
+			Connection connection = ConnectionManager.getInstance().getConnection();
 			preparedStatement = (PreparedStatement) connection
 					.prepareStatement(createInsertQuery());
 
@@ -118,6 +118,26 @@ public class ReflectionDao<T> {
 			e.printStackTrace();
 		}
 	}
+	
+	// -------------------SELECT QUERY WITH WHERE---------------------
+	 public String createSelectQuery(String fieldName, Object whereObj) {
+	  StringBuilder stringBuilder = new StringBuilder();
+
+	  stringBuilder.append("SELECT ");
+	  stringBuilder.append(getColumns(false));
+	  stringBuilder.append("FROM ");
+
+	  stringBuilder.append(
+	    reflectionTransformer.fromFieldToColumnInDB(type
+	      .getSimpleName())).append("s");
+	  stringBuilder.append(" WHERE ").append(reflectionTransformer.fromFieldToColumnInDB(fieldName)).append("='")
+	    .append(whereObj.toString()).append("'");
+	  System.out.println(type.getSimpleName());
+	  System.out.println(stringBuilder.toString());
+	  return stringBuilder.toString();
+	 }
+
+	 // -----------------------------------------------------------------
 
 	public List<T> createObjects(ResultSet resultSet) throws SQLException,
 			InstantiationException, IllegalAccessException,

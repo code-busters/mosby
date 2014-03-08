@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Login - Mosby - event management</title>
+	<title>Mosby - event management</title>
 	<!--	<link rel="shortcut icon" href="media/images/favicon.ico">-->
 	<link rel="icon" type="image/png" href="media/images/favicon.png" />
 	<meta name="description" content="Mosby - make it simple. New event management system" />
@@ -20,6 +20,7 @@
 	<link href="css/font-awesome.css" rel="stylesheet">
 	<link href="css/bootstrap-social.css" rel="stylesheet">
 	<link href="css/styles.css" rel="stylesheet">
+
 
 	<!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
 	<!--[if lt IE 9]>
@@ -84,14 +85,22 @@
 		</div>
 
 		<div class="row">
-			<div class="login-header col-md-10 col-md-offset-1">
-				<h4>Login</h4>
+			<div class="sing-up-header col-md-10 col-md-offset-1">
+				<h4>Sing up for free</h4>
 			</div>
-			<div class="login col-md-6 col-md-offset-1">
+			<div class="sing-up col-md-6 col-md-offset-1">
 				<div class="hidden-lg hidden-md">
-					<h4>Login</h4>
+					<h4>Sing up for free</h4>
 				</div>
-				<form action="login" method="post" id="login-form">
+				<form action="signUp" method="post" id="sing-up-form">
+					<div class="form-group">
+						<input class="form-control" placeholder="First Name" name="first_name" required id="first-name" />
+						<label class="login-field-icon fui-user" for="first-name"></label>
+					</div>
+					<div class="form-group">
+						<input class="form-control" placeholder="Last Name" name="last_name" required id="last-name" />
+						<label class="login-field-icon fui-user" for="last-name"></label>
+					</div>
 					<div class="form-group">
 						<input class="form-control" type="email" placeholder="Email" name="email" pattern="[^ @]*@[^ @]*\.[^ @]{2,}" required id="email" />
 						<label class="login-field-icon fui-mail" for="email"></label>
@@ -101,23 +110,30 @@
 						<label class="login-field-icon fui-lock" for="password"></label>
 					</div>
 					<div class="form-group">
+						<input class="form-control" type="password" placeholder="Confirm Password" name="confirm-password" required id="confirm-password" />
+						<label class="login-field-icon fui-lock" for="password"></label>
+					</div>
+					<div class="form-group">
 						<button class="btn btn-primary btn-lg btn-block" name="submit" type="submit" value="Submit">
 							Submit
 						</button>
 						<a class="login-link" href="#">
-							Sing Up for free
+							Already registere? Login here
 						</a>
 					</div>
 				</form>
-				<div class="text-center">
-					<a class="btn btn-social-icon btn-facebook">
-						<i class="fa fa-facebook"></i>
+			</div>
+			<div class="other-sing-up col-md-4">
+				<h4>Sing up with:</h4>
+				<div class="col-md-10">
+					<a class="btn btn-block btn-social btn-facebook">
+						<i class="fa fa-facebook"></i>Sign in with Facebook
 					</a>
-					<a class="btn btn-social-icon btn-google-plus">
-						<i class="fa fa-google-plus"></i>
+					<a class="btn btn-block btn-social btn-google-plus">
+						<i class="fa fa-google-plus"></i>Sign in with Google
 					</a>
-					<a class="btn btn-social-icon btn-twitter">
-						<i class="fa fa-twitter"></i>
+					<a class="btn btn-block btn-social btn-twitter">
+						<i class="fa fa-twitter"></i>Sign in with Twitter
 					</a>
 				</div>
 			</div>
