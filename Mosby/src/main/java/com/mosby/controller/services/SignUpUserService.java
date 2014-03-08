@@ -15,6 +15,9 @@ public class SignUpUserService {
 		ReflectionDao<BaseUserInfo> usersDao = new ReflectionDao<>((Class<BaseUserInfo>) baseUserInfo.getClass());
 		usersDao.insertObjects(baseUserInfo);
 		
+		usersDao.selectAll("email", email);
+		baseUserInfo = usersDao.getHashMap().get(2);
+		
 		return baseUserInfo;
 	}
 }

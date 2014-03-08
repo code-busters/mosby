@@ -12,7 +12,7 @@ import main.java.com.mosby.model.BaseUserInfo;
 
 import java.io.IOException;
 
-@WebServlet("/signUp")
+@WebServlet("/signup")
 public class SignUpServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -24,10 +24,12 @@ public class SignUpServlet extends HttpServlet {
     	String lastName = request.getParameter("last_name");
     	String email = request.getParameter("email");
     	String password = request.getParameter("password");
+    	
     	BaseUserInfo baseUserInfo = new SignUpUserService().signUpUser(firstName, lastName, email, password);
+    	
     	HttpSession session = request.getSession(false);
 		session.setAttribute("baseUserInfo", baseUserInfo);
-		System.out.println(baseUserInfo);
-		request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
+		
+		response.sendRedirect("/pages/index.jsp");
     }
 }
