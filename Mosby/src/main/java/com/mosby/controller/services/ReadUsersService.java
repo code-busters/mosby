@@ -4,20 +4,23 @@ import main.java.com.mosby.controller.dao.ReflectionDao;
 import main.java.com.mosby.model.BaseUserInfo;
 import main.java.com.mosby.utils.EncryptionUtils;
 
-public class SignUpUserService {
+public class ReadUsersService {
+
 	
-	public BaseUserInfo signUpUser(String firstName, String lastName, String email, String password) {
-		
-		String encryptedPassword = EncryptionUtils.createHash(password);
-		
-		BaseUserInfo baseUserInfo = new BaseUserInfo(firstName, lastName, email, encryptedPassword, 0, false);
+	public BaseUserInfo readUser(String email, String password){
+		BaseUserInfo baseUserInfo = new BaseUserInfo();
 		
 		ReflectionDao<BaseUserInfo> usersDao = new ReflectionDao<>((Class<BaseUserInfo>) baseUserInfo.getClass());
-		usersDao.insertObjects(baseUserInfo);
-		
 		usersDao.selectAll("email", email);
+		
 		baseUserInfo = usersDao.getHashMap().get(2);
 		
+		String correctHash = baseUserInfo.getPassword();
+		
+		if (!EncryptionUtils.validatePassword(password, correctHash)){
+			baseUserInfo = null;
+			System.out.println("login fail");
+		}
 		return baseUserInfo;
-	}
+	} 
 }

@@ -91,7 +91,7 @@
 				<div class="hidden-lg hidden-md">
 					<h4>Login</h4>
 				</div>
-				<form action="SomeServlet" method="post" id="login-form">
+				<form action="login" method="post" id="login-form">
 					<div class="form-group">
 						<input class="form-control" type="email" placeholder="Email" name="email" pattern="[^ @]*@[^ @]*\.[^ @]{2,}" required id="email" />
 						<label class="login-field-icon fui-mail" for="email"></label>
