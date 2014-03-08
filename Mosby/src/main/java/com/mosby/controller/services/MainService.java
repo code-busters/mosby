@@ -15,12 +15,12 @@ public class MainService {
 				.getClass();
 		System.out.println(typeBaseUserInfo);
 
-		usersDao.selectAll("id",2);
-		System.out.println(usersDao.getHashMap());
-		usersDao.selectAll("firstName", "Oleh");
-		System.out.println(usersDao.getHashMap());
-		usersDao.selectAll("admin", 1);
-		System.out.println(usersDao.getHashMap());
+		//usersDao.selectObjects("id",2);
+		System.out.println(usersDao.selectObjects("id",2));
+		//usersDao.selectObjects("firstName", "Oleh");
+		System.out.println(usersDao.selectObjects("firstName", "Oleh"));
+		//usersDao.selectObjects("admin", 1);
+		System.out.println(usersDao.selectObjects("admin", 1));
 	}
 
 	public void insertUser(BaseUserInfo baseUserInfo) {

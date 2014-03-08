@@ -1,33 +1,26 @@
 package main.java.com.mosby.controller.dao;
 
-import java.beans.IntrospectionException;
-import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-import main.java.com.mosby.controller.persistence.*;
-import main.java.com.mosby.controller.transformers.*;
-
-import java.sql.PreparedStatement;
+import main.java.com.mosby.controller.persistence.ConnectionManager;
+import main.java.com.mosby.controller.transformers.ReflectionTransformer;
+import main.java.com.mosby.utils.StringUtils;
 
 public class ReflectionDao<T> {
 
 	private Class<T> type;
 	private String query;
-	private String insertQuery;
-	private ReflectionTransformer<T> reflectionTransformer = new ReflectionTransformer<>();
-	private HashMap<Integer, T> hashMap = new HashMap<>();
+	private ReflectionTransformer<T> reflectionTransformer;
 
 	public ReflectionDao(Class<T> type) {
 		this.type = type;
-		System.out.println(this.type);
+		this.reflectionTransformer = new ReflectionTransformer<>();
 		this.query = createQuery();
 	}
 
@@ -62,49 +55,72 @@ public class ReflectionDao<T> {
 		return stringBuilder.toString();
 	}
 
-	public void selectAll(String fieldName, Object whereObj) {
+	// -------------------SELECT QUERY WITH WHERE STATEMENT------------
+	public String createSelectQuery(String fieldName, Object whereObj) {
+		String query = null;
+
+		String tableName = reflectionTransformer.fromFieldToColumnInDB(type
+				.getSimpleName()) + "s";
+		String tableColumns = getColumns(false);
+		String whereColumn = reflectionTransformer
+				.fromFieldToColumnInDB(fieldName);
+		String whereValue = whereObj.toString();
+
+		query = StringUtils.concat("SELECT ", tableColumns, " FROM ",
+				tableName, " WHERE ", whereColumn, "='", whereValue, "'");
+
+		System.out.println(query);
+
+		return query;
+	}
+
+	// -----------------------------------------------------------------
+
+	public List<T> selectObjects(String fieldName, Object whereObj) {
+		List<T> objects = new ArrayList<>();
 		try {
 			PreparedStatement stmt = (PreparedStatement) ConnectionManager
-					.getInstance().getConnection().prepareStatement(createSelectQuery(fieldName, whereObj));
+					.getInstance().getConnection()
+					.prepareStatement(createSelectQuery(fieldName, whereObj));
 			ResultSet rs = stmt.executeQuery();
-			setHashMap(new HashMap<Integer, T>());
 
 			while (rs.next()) {
-				getHashMap().put(
-						rs.getInt("id"),
-						getReflectionTransformer().fromRStoObject(
-								type.newInstance(), rs, type));
+				objects.add(reflectionTransformer.fromRStoObject(
+						type.newInstance(), rs, type));
 			}
 			rs.close();
 			stmt.close();
+
 		} catch (ClassNotFoundException | SQLException | InstantiationException
 				| IllegalAccessException e) {
 			e.printStackTrace();
 		}
+		return objects;
 	}
 
+	// -------------------INSERT QUERY WITH VALUES---------------------
 	public String createInsertQuery() {
-		StringBuilder stringBuilder = new StringBuilder();
+		String query = null;
 
-		stringBuilder.append("INSERT INTO ");
-		stringBuilder.append(
-				reflectionTransformer.fromFieldToColumnInDB(type
-						.getSimpleName())).append("s");
-		stringBuilder.append(" VALUES ");
-		stringBuilder.append("(");
-		stringBuilder.append(getColumns(true));
-		stringBuilder.append(")");
+		String tableName = reflectionTransformer.fromFieldToColumnInDB(type
+				.getSimpleName()) + "s";
+		String tableColumns = getColumns(true);
 
-		System.out.println(stringBuilder.toString());
+		query = StringUtils.concat("INSERT INTO ", tableName, " VALUES (",
+				tableColumns, ")");
 
-		return stringBuilder.toString();
+		System.out.println(query);
+
+		return query;
 	}
+
+	// ----------------------------------------------------------------
 
 	public void insertObjects(T object) {
-		// Connection connection;
 		PreparedStatement preparedStatement;
 		try {
-			Connection connection = ConnectionManager.getInstance().getConnection();
+			Connection connection = ConnectionManager.getInstance()
+					.getConnection();
 			preparedStatement = (PreparedStatement) connection
 					.prepareStatement(createInsertQuery());
 
@@ -117,73 +133,6 @@ public class ReflectionDao<T> {
 				| ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	// -------------------SELECT QUERY WITH WHERE---------------------
-	 public String createSelectQuery(String fieldName, Object whereObj) {
-	  StringBuilder stringBuilder = new StringBuilder();
-
-	  stringBuilder.append("SELECT ");
-	  stringBuilder.append(getColumns(false));
-	  stringBuilder.append("FROM ");
-
-	  stringBuilder.append(
-	    reflectionTransformer.fromFieldToColumnInDB(type
-	      .getSimpleName())).append("s");
-	  stringBuilder.append(" WHERE ").append(reflectionTransformer.fromFieldToColumnInDB(fieldName)).append("='")
-	    .append(whereObj.toString()).append("'");
-	  System.out.println(type.getSimpleName());
-	  System.out.println(stringBuilder.toString());
-	  return stringBuilder.toString();
-	 }
-
-	 // -----------------------------------------------------------------
-
-	public List<T> createObjects(ResultSet resultSet) throws SQLException,
-			InstantiationException, IllegalAccessException,
-			IntrospectionException, IllegalArgumentException,
-			InvocationTargetException {
-
-		List<T> objects = new ArrayList<>();
-
-		while (resultSet.next()) {
-
-			T currentObject = type.newInstance();
-
-			for (Field field : type.getDeclaredFields()) {
-
-				Object value = resultSet.getObject(field.getName());
-
-				System.out.println(value);
-
-				PropertyDescriptor propertyDescriptor = new PropertyDescriptor(
-						field.getName(), type);
-				Method method = propertyDescriptor.getWriteMethod();
-
-				method.invoke(currentObject, value);
-			}
-
-			objects.add(currentObject);
-		}
-
-		return objects;
-	}
-
-	public ReflectionTransformer<T> getReflectionTransformer() {
-		return reflectionTransformer;
-	}
-
-	public void setReflectionTransformer(
-			ReflectionTransformer<T> reflectionTransformer) {
-		this.reflectionTransformer = reflectionTransformer;
-	}
-
-	public HashMap<Integer, T> getHashMap() {
-		return hashMap;
-	}
-
-	public void setHashMap(HashMap<Integer, T> hashMap) {
-		this.hashMap = hashMap;
 	}
 
 	private String getColumns(boolean hasValues) {

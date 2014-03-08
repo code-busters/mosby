@@ -8,13 +8,21 @@ public class SignUpUserService {
 	
 	public BaseUserInfo signUpUser(String firstName, String lastName, String email, String password) {
 		
+		BaseUserInfo baseUserInfo = new BaseUserInfo();;
+		ReflectionDao<BaseUserInfo> usersDao = new ReflectionDao<>((Class<BaseUserInfo>) baseUserInfo.getClass());	
+
+		if(!usersDao.selectObjects("email", email).isEmpty()){
+			System.out.println("signUp fail! change email!");
+			return null;
+		} else {
 		String encryptedPassword = EncryptionUtils.createHash(password);
-		
-		BaseUserInfo baseUserInfo = new BaseUserInfo(firstName, lastName, email, encryptedPassword, 0, false);
-		
-		ReflectionDao<BaseUserInfo> usersDao = new ReflectionDao<>((Class<BaseUserInfo>) baseUserInfo.getClass());
+        
+		baseUserInfo = new BaseUserInfo(firstName, lastName, email, encryptedPassword, 0, false);
 		usersDao.insertObjects(baseUserInfo);
 		
+		baseUserInfo = usersDao.selectObjects("email", email).get(0);
+		
 		return baseUserInfo;
+		}
 	}
 }

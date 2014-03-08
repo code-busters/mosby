@@ -24,5 +24,13 @@
     <filter-name>SignUpFilter</filter-name>
     <url-pattern>/signUp</url-pattern>
   </filter-mapping>
+  <filter>
+    <filter-name>LoginFilter</filter-name>
+    <filter-class>main.java.com.mosby.view.web.filters.LoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>/login</url-pattern>
+  </filter-mapping>
   
 </web-app>

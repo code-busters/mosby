@@ -24,10 +24,18 @@ public class SignUpServlet extends HttpServlet {
     	String lastName = request.getParameter("last_name");
     	String email = request.getParameter("email");
     	String password = request.getParameter("password");
+    	
     	BaseUserInfo baseUserInfo = new SignUpUserService().signUpUser(firstName, lastName, email, password);
+    	
+    	if (baseUserInfo == null) {
+			request.getRequestDispatcher("/pages/signUp.jsp").forward(request,
+					response);
+		} else {
     	HttpSession session = request.getSession(false);
 		session.setAttribute("baseUserInfo", baseUserInfo);
-		System.out.println(baseUserInfo);
-		request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
+		
+		request.getRequestDispatcher("/pages/index.jsp").forward(request,
+				response);
+		}
     }
 }
