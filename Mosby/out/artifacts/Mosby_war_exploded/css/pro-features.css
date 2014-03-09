@@ -840,7 +840,7 @@ input.search-query {
   background-color: #ffffff;
   color: #bdc3c7;
   line-height: 18px;
-  padding: 9px 6px 10px 12px;
+  padding: 10px 6px 11px 12px;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
@@ -1277,4 +1277,125 @@ input.search-query {
   clear: both;
   width: 100%;
   font-size: 0;
+}
+.table {
+  font-size: 15.988px;
+}
+.table th,
+.table td {
+  padding: 8px 25px;
+  border-top: 2px solid #eef0f0;
+}
+.table th {
+  color: #526476;
+  padding-bottom: 14px;
+}
+.table i[class*="fui-"] {
+  vertical-align: baseline;
+  font-size: 20px;
+}
+.table .checkbox,
+.table .radio {
+  margin-bottom: 0;
+  margin-left: -9px;
+}
+.table .checkbox.no-label,
+.table .radio.no-label {
+  padding-left: 0;
+}
+.table .selected-row > td {
+  background-color: #f2fbfa;
+}
+.table img {
+  vertical-align: top;
+}
+.table-bordered {
+  border: 2px solid #eef0f0;
+  border-left: 0;
+  font-size: 14px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+.table-bordered th,
+.table-bordered td {
+  border-left: 2px solid #eef0f0;
+}
+.table-bordered th {
+  padding-bottom: 8px;
+}
+.table-striped tbody > tr:nth-child(even) > td,
+.table-striped tbody > tr.selected-row > td,
+.table-striped tbody > tr:nth-child(even) > th,
+.table-striped tbody > tr.selected-row > th {
+  background-color: #f9fafb;
+}
+.table-striped tbody > tr:nth-child(odd) > td,
+.table-striped tbody > tr:nth-child(odd) > th {
+  background-color: transparent;
+}
+.table-hover tbody tr:hover > td,
+.table-hover tbody tr:hover > th {
+  background-color: #f9fafb;
+}
+.table tbody tr.success > td {
+  background-color: #ecfaf2;
+  border-color: #d5f5e3;
+}
+.table tbody tr.error > td,
+.table tbody tr.danger > td {
+  background-color: #fdefed;
+  border-color: #fadbd8;
+}
+.table tbody tr.warning > td {
+  background-color: #fefae9;
+  border-color: #faecb0;
+}
+.table tbody tr.info > td {
+  background-color: #edf6fc;
+  border-color: #d6eaf8;
+}
+.table-hover tbody tr.success:hover > td {
+  background-color: #e4f8ed;
+}
+.table-hover tbody tr.error:hover > td,
+.table-hover tbody tr.danger:hover > td {
+  background-color: #fcebe9;
+}
+.table-hover tbody tr.warning:hover > td {
+  background-color: #fdf7e0;
+}
+.table-hover tbody tr.info:hover > td {
+  background-color: #e8f4fb;
+}
+.rwd-table {
+  font-size: 15.988px;
+  display: none;
+  width: 100%;
+}
+.rwd-table tr.even td {
+  background-color: #f9fafa;
+}
+.rwd-table tr td {
+  border-bottom: 2px solid #f5f6f7;
+}
+.rwd-table td {
+  padding: 5px 0;
+  width: 62%;
+}
+.rwd-table td:first-child {
+  padding-right: 5%;
+  width: 33%;
+}
+.rwd-table .checkbox,
+.rwd-table .radio {
+  display: none;
+}
+@media (max-width: 767px) {
+  .table {
+    display: none;
+  }
+  .rwd-table {
+    display: block;
+  }
 }

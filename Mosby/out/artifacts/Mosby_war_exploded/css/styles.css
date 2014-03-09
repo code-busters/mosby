@@ -31,8 +31,9 @@ body {
 	box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5);
 }
 .on-background-block h4 {
-	color: #212121;
 	margin-top: -1em;
+	color: #212121;
+	font-size: 2.2em;
 }
 .on-background-block .login-field-icon {
 	color: #bfc9ca;
@@ -81,6 +82,13 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 }
 .form-group .checkbox {
 	font-size: 0.8em;
+}
+.modal-header h4 {
+	margin-top: 0.3em;
+	font-size: 1.3em;
+}
+.modal-body span {
+	font-size: 1.1em;
 }
 
 /*VIDEO BACKGROUND*/
@@ -297,10 +305,43 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	margin-left: 2em;
 	display: inline-block;
 }
+.as-label,
 #create-event-form label {
-	display:block;
+	display: block;
 	font-size: 1.1em;
 }
+#create-event-form label.additional {
+	font-size: 0.8em;
+}
+#create-event-form h5 {
+	margin-top: 3em;
+}
+#create-event-form h5:first-child {
+	margin-top: 0;
+}
+#create-event-form button[type=submit] {
+	margin-top: 4em;
+}
+.add-ticket a {
+	font-size: 0.8em;
+}
+#create-event-form td {
+	padding: 1em;
+}
+#create-event-form td span {
+	margin-top: 0.4em;
+	margin-right: 0.7em;
+	font-size: 1.4em;
+}
+#create-event-form span.additional {
+	margin-left: 0.5em;
+	color: #aaa;
+	font-size: 0.8em;
+}
+#create-event-form label.radio {
+	font-size: 0.7em;
+}
+
 /*SIGN UP*/
 .other-sign-up {
 	margin-top: 3em;

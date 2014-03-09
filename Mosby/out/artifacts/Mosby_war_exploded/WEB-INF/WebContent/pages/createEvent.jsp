@@ -1,13 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
     <title>Create event - Mosby - event management</title>
     <link rel="shortcut icon" href="media/images/favicon.ico">
-    <link rel="icon" type="image/png" href="media/images/favicon.png" />
-    <meta name="description" content="Mosby - make it simple. New event management system" />
+    <link rel="icon" type="image/png" href="media/images/favicon.png"/>
+    <meta name="description" content="Mosby - make it simple. New event management system"/>
 
     <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
 
@@ -30,18 +29,18 @@
                 mapTypeControlOptions: {
                     mapTypeIds: [google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.SATELLITE],
                     style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
-                },
+                }
             };
 
             map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 
             // Try HTML5 geolocation
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
+                navigator.geolocation.getCurrentPosition(function (position) {
                     var pos = new google.maps.LatLng(position.coords.latitude,
                             position.coords.longitude);
                     map.setCenter(pos);
-                }, function() {
+                }, function () {
                     handleNoGeolocation(true);
                 });
             } else {
@@ -59,7 +58,7 @@
                 map: map
             });
 
-            google.maps.event.addListener(autocomplete, 'place_changed', function() {
+            google.maps.event.addListener(autocomplete, 'place_changed', function () {
                 infowindow.close();
                 marker.setVisible(false);
                 var place = autocomplete.getPlace();
@@ -108,7 +107,7 @@
 
         function geolocate() {
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
+                navigator.geolocation.getCurrentPosition(function (position) {
                     var geolocation = new google.maps.LatLng(
                             position.coords.latitude, position.coords.longitude);
                     autocomplete.setBounds(new google.maps.LatLngBounds(geolocation,
@@ -180,131 +179,236 @@
 </div>
 
 <div class="row" style="background: #000">
-    <div id="background-block" class="flow-img" style="background-image: url(../media/images/bg_mask.png), url(media/images/events/default/concert-smoke.jpg)"></div>
+    <div id="background-block" class="flow-img"
+         style="background-image: url(media/images/bg_mask.png), url(media/images/events/default/concert-smoke.jpg)"></div>
 </div>
 
 <div class="row">
-    <div class="on-background-block-header col-md-10 col-md-offset-1">
-        <h4>Create event for free</h4>
-    </div>
-    <div class="on-background-block col-md-10 col-md-offset-1">
-        <div class="hidden-lg hidden-md">
-            <h4>Create event for free</h4>
-        </div>
-        <form action="createEvent" method="post" id="create-event-form">
-            <h5>Event Detail</h5>
-            <div class="form-group">
-                <label for="event-name">Event Name</label>
-                <input type="text" class="form-control" placeholder="Choose Event Name" name="event_name" id="event-name" required />
-            </div>
-            <div class="form-group">
-                <label for="event-background">Event Logo</label>
-                <div class="input-group">
+<div class="on-background-block-header col-md-10 col-md-offset-1">
+    <h4>Create event for free</h4>
+</div>
+<div class="on-background-block col-md-10 col-md-offset-1">
+<div class="hidden-lg hidden-md">
+    <h4>Create event for free</h4>
+</div>
+<form action="createEvent" method="post" id="create-event-form">
+<h5>Event Detail</h5>
+
+<div class="form-group">
+    <label for="event-name">Event Name</label>
+    <input type="text" class="form-control" placeholder="Choose Event Name" name="event_name" id="event-name" required/>
+</div>
+<div class="form-group">
+    <label for="event-background">Event Logo</label>
+
+    <div class="input-group">
 							<span class="input-group-btn">
 								<span class="btn btn-primary btn-file">
 									Open
-									<input type="file" name="event_logo" id="event-logo" accept="image/*" />
+									<input type="file" name="event_logo" id="event-logo" accept="image/*"/>
 								</span>
 							</span>
-                    <input type="text" class="form-control" readonly="" disabled="disabled">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="datepicker-start">Start Date &amp; Time</label>
-                <div class="input-prepend input-datepicker">
-                    <button type="button" class="btn">
-                        <span class="fui-calendar"></span>
-                    </button>
-                    <input type="text" placeholder="Start date" name="start_date" id="datepicker-start" readonly="" required>
-                </div>
-                <input type="time" class="form-control time" value="00:00" name="start_time" required>
-            </div>
-            <div class="form-group">
-                <label for="datepicker-end">End Date &amp; Time</label>
-                <div class="input-prepend input-datepicker">
-                    <button type="button" class="btn">
-                        <span class="fui-calendar"></span>
-                    </button>
-                    <input type="text" placeholder="End date" name="end_date" id="datepicker-end" readonly="" required>
-                </div>
-                <input type="time" class="form-control time" value="00:00" name="end_time" required>
-            </div>
+        <input type="text" class="form-control" readonly="" disabled="disabled">
+    </div>
+</div>
+<div class="form-group">
+    <label for="datepicker-start">Start Date &amp; Time</label>
+
+    <div class="input-prepend input-datepicker">
+        <button type="button" class="btn">
+            <span class="fui-calendar"></span>
+        </button>
+        <input type="text" placeholder="Start date" name="start_date" id="datepicker-start" readonly="" required>
+    </div>
+    <input type="time" class="form-control time" value="00:00" name="start_time" required>
+</div>
+<div class="form-group">
+    <label for="datepicker-end">End Date &amp; Time</label>
+
+    <div class="input-prepend input-datepicker">
+        <button type="button" class="btn">
+            <span class="fui-calendar"></span>
+        </button>
+        <input type="text" placeholder="End date" name="end_date" id="datepicker-end" readonly="" required>
+    </div>
+    <input type="time" class="form-control time" value="00:00" name="end_time" required>
+</div>
 
 
-            <div class="form-group">
-                <label for="event-category">Category</label>
-                <select name="event_category" class="select-block" id="event-category" form="create-event-form">
-                    <option value="select_category">
-                        Select categoty...
-                    </option>
-                    <option value="business">
-                        Business
-                    </option>
-                    <option value="music">
-                        Music
-                    </option>
-                    <option value="food_and_drink">
-                        Food &amp; Drink
-                    </option>
-                    <option value="film_and_media">
-                        Film &amp; Media
-                    </option>
-                    <option value="other">
-                        Other
-                    </option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="event-type">Type</label>
-                <select name="event_type" class="select-block" id="event-type" form="create-event-form">
-                    <option value="select_type">
-                        Select type...
-                    </option>
-                    <option value="conference">
-                        Conference
-                    </option>
-                    <option value="party">
-                        Party
-                    </option>
-                    <option value="concert">
-                        Concert
-                    </option>
-                    <option value="other">
-                        Other
-                    </option>
-                </select>
-            </div>
+<div class="form-group">
+    <label for="event-category">Category</label>
+    <select name="event_category" class="select-block" id="event-category" form="create-event-form">
+        <option value="select_category">
+            Select categoty...
+        </option>
+        <option value="business">
+            Business
+        </option>
+        <option value="music">
+            Music
+        </option>
+        <option value="food_and_drink">
+            Food &amp; Drink
+        </option>
+        <option value="film_and_media">
+            Film &amp; Media
+        </option>
+        <option value="other">
+            Other
+        </option>
+    </select>
+</div>
+<div class="form-group">
+    <label for="event-type">Type</label>
+    <select name="event_type" class="select-block" id="event-type" form="create-event-form">
+        <option value="select_type">
+            Select type...
+        </option>
+        <option value="conference">
+            Conference
+        </option>
+        <option value="party">
+            Party
+        </option>
+        <option value="concert">
+            Concert
+        </option>
+        <option value="other">
+            Other
+        </option>
+    </select>
+</div>
 
-            <div class="form-group">
-                <label for="event-background">Event Background</label>
-                <div class="input-group">
+<div class="form-group">
+    <label for="event-background">Event Background</label>
+
+    <div class="input-group">
 							<span class="input-group-btn">
 								<span class="btn btn-primary btn-file">
 									Open
-									<input type="file" name="event_background" id="event-background" accept="image/*" />
+									<input type="file" name="event_background" id="event-background" accept="image/*"/>
 								</span>
 							</span>
-                    <input type="text" class="form-control" readonly="" disabled="disabled">
-                </div>
-                <span class="additional-input-info">Select image with big resolution for better result</span>
-            </div>
-            <div class="form-group">
-                <label for="event-details">Event Description</label>
-                <textarea rows="4" placeholder="Tell users about your event" class="form-control" id="event-details" form="create-event-form"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="event-location">Address</label>
-                <input type="text" class="form-control" placeholder="Enter Address for your event" name="event_location" id="event-location" onFocus="geolocate()" />
-            </div>
-            <div class="form-group" id="googleMap" style="height:380px;"></div>
-
-            <div class="form-group">
-                <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit" value="Submit">
-                    Create
-                </button>
-            </div>
-        </form>
+        <input type="text" class="form-control" readonly="" disabled="disabled">
     </div>
+    <span class="additional-input-info">Select image with big resolution for better result</span>
+</div>
+<div class="form-group">
+    <label for="event-details">Event Description</label>
+    <textarea rows="4" placeholder="Tell users about your event" class="form-control" id="event-details"
+              form="create-event-form"></textarea>
+</div>
+<div class="form-group">
+    <label for="event-location">Address</label>
+    <input type="text" class="form-control" placeholder="Enter Address for your event" name="event_location"
+           id="event-location" onFocus="geolocate()"/>
+</div>
+<div class="form-group" id="googleMap" style="height:380px;"></div>
+
+<h5>Create Tickets</h5>
+
+<div class="form-group">
+    <table id="tickets" class="table table-striped table-hover table-bordered">
+        <thead>
+        <tr>
+            <th class="col-md-6">Ticket name</th>
+            <th class="col-md-2">Quantity available</th>
+            <th class="col-md-2">Price</th>
+            <th class="col-md-2">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!--
+        <tr id="0">
+            <td class="col-md-6">
+                <input type="text" class="form-control" placeholder="Choose Event Name" name="event_ticket_name_0" id="event-ticket-name-0" />
+            </td>
+            <td class="col-md-2">
+                <input type="number" class="form-control" placeholder="100" name="event_ticket_quantity_0" id="event-ticket-quantity-0" min="1" />
+            </td>
+            <td class="col-md-2">
+                <input type="number" class="form-control" placeholder="0" name="event_ticket_price_0" id="event-ticket-price-0" min="0" />
+            </td>
+            <td class="col-md-2 text-center">
+                <a href="#" data-toggle="modal" data-target="#my-modal-0">
+                    <span class="fui-gear"></span>
+                </a>
+                <a class="delete-row" href="#">
+                    <span class="fui-trash"></span>
+                </a>
+            </td>
+            <div class="modal fade" id="my-modal-0" tabindex="-1" role="dialog" aria-labelledby="my-modal-label-0" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+													<h4 class="modal-title" id="my-modal-label-0">Ticket Settings</h4>
+												</div>
+												<div class="modal-body">
+													<div class="form-group">
+														<label for="ticket-description-0">Ticket Description</label>
+														<textarea rows="3" placeholder="Additional info about ticket" class="form-control" id="ticket-description-0" form="create-event-form"></textarea>
+													</div>
+													<div class="form-group">
+														<span>Tickets Allowed Per Order</span>
+														<label class="additional" for="ticket-min-per-order-0">Min</label>
+														<input type="number" class="form-control" placeholder="1" value="1" name="ticket_min_per_order_0" id="ticket-min-per-order-0" min="1" />
+														<label class="additional" for="ticket-max-per-order-1">Max</label>
+														<input type="number" class="form-control" placeholder="1" name="ticket_max_per_order_0" id="ticket-max-per-order-0" min="1" />
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</tr>
+-->
+        </tbody>
+    </table>
+</div>
+<div class="col-md-2 add-ticket">
+    <a id="free-ticket" href="#fakelink" class="btn btn-block btn-lg btn-primary">
+        <span class="fui-plus"></span>Free ticket</a>
+</div>
+<div class="col-md-2 add-ticket">
+    <a id="paid-ticket" href="#fakelink" class="btn btn-block btn-lg btn-primary">
+        <span class="fui-plus"></span>Paid ticket</a>
+</div>
+<div class="col-md-2 add-ticket">
+    <a id="donation-ticket" href="#fakelink" class="btn btn-block btn-lg btn-default">
+        <span class="fui-plus"></span>Donation</a>
+</div>
+
+<h5>Additional Settings</h5>
+
+<div class="form-group">
+    <span class="as-label">Listing privacy</span>
+    <label class="radio">
+							<span class="icons">
+								<span class="first-icon fui-radio-unchecked"></span>
+								<span class="second-icon fui-radio-checked"></span>
+							</span>
+        <input type="radio" name="privacy_event" id="public-event" value="public" data-toggle="radio">
+        Public event
+        <span class="additional">list this event on Eventbrite and search engines</span>
+    </label>
+    <label class="radio checked">
+							<span class="icons">
+								<span class="first-icon fui-radio-unchecked"></span>
+								<span class="second-icon fui-radio-checked"></span>
+							</span>
+        <input type="radio" name="privacy_event" id="private-event" value="private" data-toggle="radio">
+        Private event
+        <span class="additional">do not list this event publicly</span>
+    </label>
+</div>
+
+<div class="col-md-4 col-md-offset-4">
+    <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit" value="Submit">
+        Create event
+    </button>
+</div>
+</form>
+</div>
 </div>
 
 <div class="row">
@@ -369,18 +473,82 @@
 <script src="js/application.js"></script>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        $("#background-block").css("height", 4 * $(window).height() / 5);
-    });
-    $(window).resize(function() {
-        $("#background-block").css("height", 4 * $(window).height() / 5);
-    });
-    $(document).on("keypress", 'form', function(e) {
+//    $(document).ready(function () {
+//
+//    });
+
+    $(document).on("keypress", 'form', function (e) {
         var code = e.keyCode || e.which;
         if (code == 13) {
             e.preventDefault();
             return false;
         }
+    });
+    $(document).ready(function () {
+        $("#background-block").css("height", 2*$(window).height()/5);
+
+        $('#free-ticket').click(function () {
+            var stringId = $('#tickets > tbody:last tr:last').attr('id');
+            var id = 0;
+            if (stringId != 'undefined' && !isNaN(stringId)) {
+                id = parseInt(stringId) + 1;
+            }
+            $('#tickets > tbody:last').append('<tr id="' + id + '"><td class="col-md-6"><input type="text" class="form-control" placeholder="Choose Event Name" name="event_ticket_name_' + id + '" id="event-ticket-name-' + id + '" /></td>' +
+                    '<td class="col-md-2"><input type="number" class="form-control" placeholder="100" name="event_ticket_quantity_' + id + '" id="event-ticket-quantity-' + id + '" min="1" /></td>' +
+                    '<td class="col-md-2"><input type="text" class="form-control" value="Free" name="event_ticket_price_' + id + '" id="event-ticket-price-' + id + '" readonly="" disabled="disabled" /></td>' +
+                    '<td class="col-md-2 text-center"><a href="#" data-toggle="modal" data-target="#my-modal-' + id + '"><span class="fui-gear"></span></a><a class="delete-row" href="#"><span class="fui-trash"></span></a></td></tr>');
+            $('#tickets').parent().append('<div class="modal fade" id="my-modal-' + id + '" tabindex="-1" role="dialog" aria-labelledby="my-modal-label-' + id + '" aria-hidden="true"><div class="modal-dialog"><div class="modal-content">' +
+                    '<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="my-modal-label-' + id + '">Ticket Settings</h4></div>' +
+                    '<div class="modal-body"><div class="form-group"><label for="ticket-description-' + id + '">Ticket Description</label><textarea rows="3" placeholder="Additional info about ticket" class="form-control" id="ticket-description-' + id + '" form="create-event-form"></textarea></div>' +
+                    '<div class="form-group"><span>Tickets Allowed Per Order</span><label class="additional" for="ticket-min-per-order-' + id + '">Min</label><input type="number" class="form-control" placeholder="1" value="1" name="ticket_min_per_order_' + id + '" id="ticket-min-per-order-' + id + '" min="1" /><label class="additional" for="ticket-max-per-order-' + id + '">Max</label><input type="number" class="form-control" placeholder="1" name="ticket_max_per_order_' + id + '" id="ticket-max-per-order-' + id + '" min="1" /></div>' +
+                    '</div></div></div></div>');
+        });
+
+        $('#paid-ticket').click(function () {
+            var stringId = $('#tickets > tbody:last tr:last').attr('id');
+            var id = 0;
+            if (stringId != 'undefined' && !isNaN(stringId)) {
+                id = parseInt(stringId) + 1;
+            }
+            $('#tickets > tbody:last').append('<tr id="' + id + '"><td class="col-md-6"><input type="text" class="form-control" placeholder="Choose Event Name" name="event_ticket_name_' + id + '" id="event-ticket-name-' + id + '" /></td>' +
+                    '<td class="col-md-2"><input type="number" class="form-control" placeholder="100" name="event_ticket_quantity_' + id + '" id="event-ticket-quantity-' + id + '" min="1" /></td>' +
+                    '<td class="col-md-2"><input type="number" class="form-control" placeholder="0" name="event_ticket_price_' + id + '" id="event-ticket-price-' + id + '" min="0" /></td>' +
+                    '<td class="col-md-2 text-center"><a href="#" data-toggle="modal" data-target="#my-modal-' + id + '"><span class="fui-gear"></span></a><a class="delete-row" href="#"><span class="fui-trash"></span></a></td></tr>');
+            $('#tickets').parent().append('<div class="modal fade" id="my-modal-' + id + '" tabindex="-1" role="dialog" aria-labelledby="my-modal-label-' + id + '" aria-hidden="true"><div class="modal-dialog"><div class="modal-content">' +
+                    '<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="my-modal-label-' + id + '">Ticket Settings</h4></div>' +
+                    '<div class="modal-body"><div class="form-group"><label for="ticket-description-' + id + '">Ticket Description</label><textarea rows="3" placeholder="Additional info about ticket" class="form-control" id="ticket-description-' + id + '" form="create-event-form"></textarea></div>' +
+                    '<div class="form-group"><span>Tickets Allowed Per Order</span><label class="additional" for="ticket-min-per-order-' + id + '">Min</label><input type="number" class="form-control" placeholder="1" value="1" name="ticket_min_per_order_' + id + '" id="ticket-min-per-order-' + id + '" min="1" /><label class="additional" for="ticket-max-per-order-' + id + '">Max</label><input type="number" class="form-control" placeholder="1" name="ticket_max_per_order_' + id + '" id="ticket-max-per-order-' + id + '" min="1" /></div>' +
+                    '</div></div></div></div>');
+        });
+
+        $('#donation-ticket').click(function () {
+            var stringId = $('#tickets > tbody:last tr:last').attr('id');
+            var id = 0;
+            if (stringId != 'undefined' && !isNaN(stringId)) {
+                id = parseInt(stringId) + 1;
+            }
+            $('#tickets > tbody:last').append('<tr id="' + id + '"><td class="col-md-6"><input type="text" class="form-control" placeholder="Choose Event Name" name="event_ticket_name_' + id + '" id="event-ticket-name-' + id + '" /></td>' +
+                    '<td class="col-md-2"><input type="number" class="form-control" placeholder="100" name="event_ticket_quantity_' + id + '" id="event-ticket-quantity-' + id + '" min="1" /></td>' +
+                    '<td class="col-md-2"><input type="text" class="form-control" value="Donation" name="event_ticket_price_' + id + '" id="event-ticket-price-' + id + '" readonly="" disabled="disabled" /></td>' +
+                    '<td class="col-md-2 text-center"><a href="#" data-toggle="modal" data-target="#my-modal-' + id + '"><span class="fui-gear"></span></a><a class="delete-row" href="#"><span class="fui-trash"></span></a></td></tr>');
+            $('#tickets').parent().append('<div class="modal fade" id="my-modal-' + id + '" tabindex="-1" role="dialog" aria-labelledby="my-modal-label-' + id + '" aria-hidden="true"><div class="modal-dialog"><div class="modal-content">' +
+                    '<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="my-modal-label-' + id + '">Ticket Settings</h4></div>' +
+                    '<div class="modal-body"><div class="form-group"><label for="ticket-description-' + id + '">Ticket Description</label><textarea rows="3" placeholder="Additional info about ticket" class="form-control" id="ticket-description-' + id + '" form="create-event-form"></textarea></div>' +
+                    '<div class="form-group"><span>Tickets Allowed Per Order</span><label class="additional" for="ticket-min-per-order-' + id + '">Min</label><input type="number" class="form-control" placeholder="1" value="1" name="ticket_min_per_order_' + id + '" id="ticket-min-per-order-' + id + '" min="1" /><label class="additional" for="ticket-max-per-order-' + id + '">Max</label><input type="number" class="form-control" placeholder="1" name="ticket_max_per_order_' + id + '" id="ticket-max-per-order-' + id + '" min="1" /></div>' +
+                    '</div></div></div></div>');
+        });
+    });
+
+    $(window).resize(function () {
+        $("#background-block").css("height", 2*$(window).height()/5);
+    });
+
+    $(document).on('click', "#tickets .delete-row", function () {
+        var tr = $(this).closest('tr');
+        tr.fadeOut(400, function () {
+            tr.remove();
+        });
+        return false;
     });
 </script>
 
