@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -18,61 +19,93 @@
     <link href="css/pro-features.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
 
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=places"></script>
     <script>
-        // This example displays an address form, using the autocomplete feature
-        // of the Google Places API to help users fill in the information.
-
-        var placeSearch, autocomplete;
-        var componentForm = {
-            street_number: 'short_name',
-            route: 'long_name',
-            locality: 'long_name',
-            administrative_area_level_1: 'short_name',
-            country: 'long_name',
-            postal_code: 'short_name'
-        };
+        var map, autocomplete, geocoder;
 
         function initialize() {
-            // Create the autocomplete object, restricting the search
-            // to geographical location types.
-            autocomplete = new google.maps.places.Autocomplete(
-                    /** @type {HTMLInputElement} */
-                    (document.getElementById('event-location')), {
-                        types: ['geocode']
-                    });
-            // When the user selects an address from the dropdown,
-            // populate the address fields in the form.
+            var mapProp = {
+                zoom: 15,
+                mapTypeControl: true,
+                mapTypeControlOptions: {
+                    mapTypeIds: [google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.SATELLITE],
+                    style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+                },
+            };
+
+            map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+            // Try HTML5 geolocation
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var pos = new google.maps.LatLng(position.coords.latitude,
+                            position.coords.longitude);
+                    map.setCenter(pos);
+                }, function() {
+                    handleNoGeolocation(true);
+                });
+            } else {
+                // Browser doesn't support Geolocation
+                handleNoGeolocation(false);
+            }
+
+            var input = /** @type {HTMLInputElement} */ (
+                    document.getElementById('event-location'));
+            autocomplete = new google.maps.places.Autocomplete(input);
+            autocomplete.bindTo('bounds', map);
+
+            var infowindow = new google.maps.InfoWindow();
+            var marker = new google.maps.Marker({
+                map: map
+            });
+
             google.maps.event.addListener(autocomplete, 'place_changed', function() {
-                fillInAddress();
+                infowindow.close();
+                marker.setVisible(false);
+                var place = autocomplete.getPlace();
+                if (!place.geometry) {
+                    return;
+                }
+
+                // If the place has a geometry, then present it on a map.
+                if (place.geometry.viewport) {
+                    map.fitBounds(place.geometry.viewport);
+                } else {
+                    map.setCenter(place.geometry.location);
+                    map.setZoom(17); // Why 17? Because it looks good.
+                }
+                marker.setPosition(place.geometry.location);
+                marker.setVisible(true);
+
+                var address = '';
+                if (place.address_components) {
+                    address = [
+                        (place.address_components[0] && place.address_components[0].short_name || ''), (place.address_components[1] && place.address_components[1].short_name || ''), (place.address_components[2] && place.address_components[2].short_name || '')
+                    ].join(' ');
+                }
+
+                infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+                infowindow.open(map, marker);
             });
         }
 
-        // [START region_fillform]
-        function fillInAddress() {
-            // Get the place details from the autocomplete object.
-            var place = autocomplete.getPlace();
-
-            for (var component in componentForm) {
-                document.getElementById(component).value = '';
-                document.getElementById(component).disabled = false;
+        function handleNoGeolocation(errorFlag) {
+            if (errorFlag) {
+                var content = 'Error: The Geolocation service failed.';
+            } else {
+                var content = 'Error: Your browser doesn\'t support geolocation.';
             }
 
-            // Get each component of the address from the place details
-            // and fill the corresponding field on the form.
-            for (var i = 0; i < place.address_components.length; i++) {
-                var addressType = place.address_components[i].types[0];
-                if (componentForm[addressType]) {
-                    var val = place.address_components[i][componentForm[addressType]];
-                    document.getElementById(addressType).value = val;
-                }
-            }
+            var options = {
+                map: map,
+                position: new google.maps.LatLng(60, 105),
+                content: content
+            };
+
+            var infowindow = new google.maps.InfoWindow(options);
+            map.setCenter(options.position);
         }
-        // [END region_fillform]
 
-        // [START region_geolocation]
-        // Bias the autocomplete object to the user's geographical location,
-        // as supplied by the browser's 'navigator.geolocation' object.
         function geolocate() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position) {
@@ -83,7 +116,8 @@
                 });
             }
         }
-        // [END region_geolocation]
+
+        google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 
 
@@ -158,9 +192,22 @@
             <h4>Create event for free</h4>
         </div>
         <form action="createEvent" method="post" id="create-event-form">
+            <h5>Event Detail</h5>
             <div class="form-group">
                 <label for="event-name">Event Name</label>
                 <input type="text" class="form-control" placeholder="Choose Event Name" name="event_name" id="event-name" required />
+            </div>
+            <div class="form-group">
+                <label for="event-background">Event Logo</label>
+                <div class="input-group">
+							<span class="input-group-btn">
+								<span class="btn btn-primary btn-file">
+									Open
+									<input type="file" name="event_logo" id="event-logo" accept="image/*" />
+								</span>
+							</span>
+                    <input type="text" class="form-control" readonly="" disabled="disabled">
+                </div>
             </div>
             <div class="form-group">
                 <label for="datepicker-start">Start Date &amp; Time</label>
@@ -168,9 +215,9 @@
                     <button type="button" class="btn">
                         <span class="fui-calendar"></span>
                     </button>
-                    <input type="text" placeholder="Start date" name="start_date" id="datepicker-start" readonly="" required >
+                    <input type="text" placeholder="Start date" name="start_date" id="datepicker-start" readonly="" required>
                 </div>
-                <input type="text" class="form-control time" placeholder="00:00" name="start_time" required >
+                <input type="time" class="form-control time" value="00:00" name="start_time" required>
             </div>
             <div class="form-group">
                 <label for="datepicker-end">End Date &amp; Time</label>
@@ -178,10 +225,12 @@
                     <button type="button" class="btn">
                         <span class="fui-calendar"></span>
                     </button>
-                    <input type="text" placeholder="End date" name="end_date" id="datepicker-end" readonly="" required >
+                    <input type="text" placeholder="End date" name="end_date" id="datepicker-end" readonly="" required>
                 </div>
-                <input type="text" class="form-control time" placeholder="00:00" name="end_time" required >
+                <input type="time" class="form-control time" value="00:00" name="end_time" required>
             </div>
+
+
             <div class="form-group">
                 <label for="event-category">Category</label>
                 <select name="event_category" class="select-block" id="event-category" form="create-event-form">
@@ -225,6 +274,7 @@
                     </option>
                 </select>
             </div>
+
             <div class="form-group">
                 <label for="event-background">Event Background</label>
                 <div class="input-group">
@@ -234,20 +284,23 @@
 									<input type="file" name="event_background" id="event-background" accept="image/*" />
 								</span>
 							</span>
-                    <input type="text" class="form-control" readonly="">
+                    <input type="text" class="form-control" readonly="" disabled="disabled">
                 </div>
+                <span class="additional-input-info">Select image with big resolution for better result</span>
             </div>
             <div class="form-group">
-                <label for="event-details">Event Details</label>
+                <label for="event-details">Event Description</label>
                 <textarea rows="4" placeholder="Tell users about your event" class="form-control" id="event-details" form="create-event-form"></textarea>
             </div>
             <div class="form-group">
                 <label for="event-location">Address</label>
-                <input type="text" class="form-control" placeholder="Enter Address for your event" name="event_location" id="event-location" />
+                <input type="text" class="form-control" placeholder="Enter Address for your event" name="event_location" id="event-location" onFocus="geolocate()" />
             </div>
+            <div class="form-group" id="googleMap" style="height:380px;"></div>
+
             <div class="form-group">
                 <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit" value="Submit">
-                    Submit
+                    Create
                 </button>
             </div>
         </form>
@@ -321,6 +374,13 @@
     });
     $(window).resize(function() {
         $("#background-block").css("height", 4 * $(window).height() / 5);
+    });
+    $(document).on("keypress", 'form', function(e) {
+        var code = e.keyCode || e.which;
+        if (code == 13) {
+            e.preventDefault();
+            return false;
+        }
     });
 </script>
 

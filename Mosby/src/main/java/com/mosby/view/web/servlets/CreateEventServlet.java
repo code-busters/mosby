@@ -18,6 +18,7 @@ import java.io.IOException;
 public class CreateEventServlet extends HttpServlet {
     private static Logger log = Logger.getLogger(CreateEventServlet.class);
     private static final String EVENT_BACKGROUND_PATH = "media\\images\\events\\background";
+    private static final String EVENT_LOGO_PATH = "media\\images\\events\\logo";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("/pages/createEvent.jsp").forward(request, response);
@@ -26,13 +27,24 @@ public class CreateEventServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 //        Image uploading
-        String imageName = "default.png";
-        Part filePart = request.getPart("event_background");
+        String eventLogo = "default.png";
+        Part filePart = request.getPart("event_logo");
+        try {
+            String contentType = filePart.getContentType();
+            if (contentType.startsWith("image")) {
+                File image = FileUploadUtils.uploadFile(this, EVENT_LOGO_PATH, filePart);
+                eventLogo = FileUploadUtils.getFilename(image);
+            }
+        } catch (Exception e) {
+            log.error(e);
+        }
+        String eventBackground = "default.jpg";
+        filePart = request.getPart("event_background");
         try {
             String contentType = filePart.getContentType();
             if (contentType.startsWith("image")) {
                 File image = FileUploadUtils.uploadFile(this, EVENT_BACKGROUND_PATH, filePart);
-                imageName = FileUploadUtils.getFilename(image);
+                eventBackground = FileUploadUtils.getFilename(image);
             }
         } catch (Exception e) {
             log.error(e);

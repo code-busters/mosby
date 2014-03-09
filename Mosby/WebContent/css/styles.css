@@ -70,10 +70,22 @@ input[readonly] {
 .input-group .form-control[readonly] {
     color: #34495e;
 }
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.additional-input-info {
+	margin-left: 1em;
+	color: #a5a5a5;
+	font-size: 0.7em;
+}
+.form-group .checkbox {
+	font-size: 0.8em;
+}
 
 /*VIDEO BACKGROUND*/
 #main-idea {
-	/*padding-top: 5em;*/
+	padding-top: 5em;
 	color: #FFF;
 }
 #main-idea h1 {
@@ -206,7 +218,7 @@ input[readonly] {
 
 /*EVENTS*/
 #events  {
-    background: #fff;
+	background: #fff;
 }
 #events h3 {
 	margin: 2em 0 0.5em;
@@ -259,10 +271,9 @@ input[readonly] {
 /*CREATE EVENT*/
 .input-datepicker {
 	margin-left: 1em;
-	outline: none;
 }
-.btn span {
-	outline: none;
+.input-prepend.input-datepicker .btn {
+    outline: none;
 }
 .input-datepicker input[type="text"], 
 .input-datepicker .uneditable-input {
@@ -282,11 +293,14 @@ input[readonly] {
 	-webkit-backface-visibility: hidden;
 }
 .time {
-	width: 5em;
+	width: 8em;
 	margin-left: 2em;
 	display: inline-block;
 }
-
+#create-event-form label {
+	display:block;
+	font-size: 1.1em;
+}
 /*SIGN UP*/
 .other-sign-up {
 	margin-top: 3em;
