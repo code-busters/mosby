@@ -1,5 +1,10 @@
 package main.java.com.mosby.controller.dao;
 
+import java.beans.IntrospectionException;
+import java.beans.PropertyDescriptor;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -44,7 +49,7 @@ public class ReflectionDao<T> {
 		List<T> objects = new ArrayList<>();
 		try {
 			query = queryStatements.createSelectQuery(fieldName, whereObj);
-			
+
 			Connection connection = ConnectionManager.getInstance()
 					.getConnection();
 			PreparedStatement preparedStatement = (PreparedStatement) connection
@@ -68,12 +73,12 @@ public class ReflectionDao<T> {
 	public void insertObjects(T object) {
 		try {
 			query = queryStatements.createInsertQuery();
-			
+
 			Connection connection = ConnectionManager.getInstance()
 					.getConnection();
 			PreparedStatement preparedStatement = (PreparedStatement) connection
 					.prepareStatement(query);
-			
+
 			preparedStatement = (PreparedStatement) reflectionTransformer
 					.fromObjectToStatement(preparedStatement, type, object);
 
@@ -82,6 +87,37 @@ public class ReflectionDao<T> {
 
 			preparedStatement.close();
 		} catch (SQLException | IllegalArgumentException
+				| ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void updateObjects(T object, String whereField, Object whereValue) {
+		try {
+			query = queryStatements.createUpdateQuery(whereField);
+
+			Connection connection = ConnectionManager.getInstance()
+					.getConnection();
+			PreparedStatement preparedStatement = (PreparedStatement) connection
+					.prepareStatement(query);
+
+			int i = 0;
+			for (Field field : type.getDeclaredFields()) {
+				if (!field.getName().equals(whereField)) {
+					PropertyDescriptor propertyDescriptor = new PropertyDescriptor(
+							field.getName(), type);
+					Method method = propertyDescriptor.getReadMethod();
+					Object value = method.invoke(object);
+
+					preparedStatement.setObject(++i, value);
+				}
+			}
+			preparedStatement.setObject(++i, whereValue);
+
+			preparedStatement.addBatch();
+			preparedStatement.executeBatch();
+		} catch (SQLException | IntrospectionException | IllegalAccessException
+				| IllegalArgumentException | InvocationTargetException
 				| ClassNotFoundException e) {
 			e.printStackTrace();
 		}

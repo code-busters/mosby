@@ -9,8 +9,7 @@ public class ReadUsersService {
 	public BaseUserInfo readUser(String email, String password) {
 		BaseUserInfo baseUserInfo = new BaseUserInfo();
 
-		ReflectionDao<BaseUserInfo> usersDao = new ReflectionDao<>(
-				(Class<BaseUserInfo>) baseUserInfo.getClass());
+		ReflectionDao<BaseUserInfo> usersDao = new ReflectionDao<>((Class<BaseUserInfo>) baseUserInfo.getClass());
 		
 		if (!usersDao.selectObjects("email", email).isEmpty()) {
 			baseUserInfo = usersDao.selectObjects("email", email).get(0);

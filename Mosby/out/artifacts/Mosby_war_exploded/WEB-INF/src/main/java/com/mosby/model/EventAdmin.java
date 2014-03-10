@@ -20,6 +20,9 @@ public class EventAdmin {
 	@Column(name="user_ref")
 	private int userRef;
 	
+	public EventAdmin() {
+	}
+
 	@Column(name="permission_ref")
 	private int rermissionRef;
 
@@ -35,6 +38,38 @@ public class EventAdmin {
 		super();
 		this.eventRef = eventRef;
 		this.userRef = userRef;
+		this.rermissionRef = rermissionRef;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getEventRef() {
+		return eventRef;
+	}
+
+	public void setEventRef(int eventRef) {
+		this.eventRef = eventRef;
+	}
+
+	public int getUserRef() {
+		return userRef;
+	}
+
+	public void setUserRef(int userRef) {
+		this.userRef = userRef;
+	}
+
+	public int getRermissionRef() {
+		return rermissionRef;
+	}
+
+	public void setRermissionRef(int rermissionRef) {
 		this.rermissionRef = rermissionRef;
 	}
 	

@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -26,8 +27,8 @@
     <![endif]-->
 
     <!--	AIzaSyD548jnqtWftyB35lh_iMInJQhedC1XRc8   -->
-    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD548jnqtWftyB35lh_iMInJQhedC1XRc8&sensor=false">
-    </script>
+    <!--	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD548jnqtWftyB35lh_iMInJQhedC1XRc8&sensor=false"></script>-->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 
     <script>
         var myCenter = new google.maps.LatLng(49.839683, 24.029717);
@@ -38,9 +39,9 @@
                 zoom: 15,
                 mapTypeControl: true,
                 mapTypeControlOptions: {
+                    mapTypeIds: [google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.SATELLITE],
                     style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
-                },
-                mapTypeId: google.maps.MapTypeId.ROADMAP
+                }
             };
 
             var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
@@ -67,56 +68,11 @@
 <body>
 <div class="container-fluid">
     <div class="row">
-        <nav class="navbar navbar-default navbar-fixed-top nav-transparent" role="navigation">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
-                    <span class="sr-only">Toggle navigation</span>
-                </button>
-                <a class="navbar-brand" href="#"></a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar-collapse-01">
-                <ul class="nav navbar-nav navbar-left">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            Categories
-                            <b class="caret"></b>
-                        </a>
-                        <span class="dropdown-arrow"></span>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="#">Business</a>
-                            </li>
-                            <li>
-                                <a href="#">Music</a>
-                            </li>
-                            <li>
-                                <a href="#">Food &amp; Drink</a>
-                            </li>
-                            <li>
-                                <a href="#">Film &amp; Media</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#">All</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="#">Login</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="singUp.html">Sing up</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        <jsp:include page="parts/navbar.jsp"/>
     </div>
 
     <div class="row" style="background: #000">
-        <div id="background-block" class="flow-img" style="background-image: url(../media/images/bg_mask.png), url(media/images/events/background/metalica1.jpg)"></div>
+        <div id="background-block" class="flow-img" style="background-image: url(media/images/bg_mask.png), url(media/images/events/background/metalica1.jpg)"></div>
     </div>
 
     <div class="row">
@@ -130,10 +86,48 @@
                     <span class="fui-location"></span>Lviv, Ukraine</li>
             </ul>
             <h2>Metallica mega tour</h2>
+            <div>
+                <img class="event-logo center-block" src="media/images/events/logo/metclub_logo.png">
+            </div>
             <p>
                 The Big Four Tribute Band are an act dedicated to replicating the four biggest thrash metal bands in the world - Metallica, Megadeth, Slayer and Anthrax. Never before has any one band attempted such a feat. The Big Four Tribute have a reputation for delivering each song with deadly accuracy note For note, scream for scream, beat for beat. Close your eyes and you will feel like you are listening to each band live at their peak in the 1980's! Each and every gig has been a crowd pleasing success due to the diverse vocals of lead singer and Bass guitarist – Carlo Caci, his twin brother and lead guitarist John Caci, Rhythm guitarist Phil Wright and Drummer Sam Ogden. The band formed in 2011 consisting from members of the UK metal band Betrayal. With over 8 years of gigging experience and official theme tune creators for Sky Sports Cage fighting event - ‘Full Contact Contender’, Betrayal’s members are truly experienced in entertaining the crowd. The Big four tribute bands gigs have been hugely successful in drawing out the audiences just from the big fours name and Betrayal reputation in the Midlands alone.
             </p>
-            <div id="googleMap" class="col-md-12" style="height:380px;"></div>
+            <div id="googleMap" class="" style="height:380px;"></div>
+            <div id="tickets">
+                <div class="row create-tickets-header hidden-xs">
+                    <div class="col-md-8 col-sm-8">Ticket type</div>
+                    <div class="col-md-2 col-sm-2">Price</div>
+                    <div class="col-md-2 col-sm-2">Quantity</div>
+                </div>
+                <div id="tickets-body">
+                    <div id="0" class="row">
+                        <div class="col-md-8 col-sm-8">
+                            <h6 class="visible-xs">Ticket type</h6>
+                            <p>Early bird</p>
+								<span class="ticket-info">
+									Include free beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer
+								</span>
+                        </div>
+                        <div class="col-md-2 col-sm-2">
+                            <h6 class="visible-xs">Price</h6>
+                            <p>$220</p>
+                        </div>
+                        <div class="col-md-2 col-sm-2">
+                            <h6 class="visible-xs">Quantity</h6>
+                            <select name="herolist" value="1" class="select-block">
+                                <option value="0">0</option>
+                                <option value="1" selected="selected">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--END TICKETS-->
+            <div class="col-md-3 col-sm-3 col-md-offset-9 col-sm-offset-9">
+                <a href="#fakelink" class="btn btn-block btn-lg btn-primary">Order Now</a>
+            </div>
         </div>
         <div class="organizer-details col-md-3">
             <img src="media/images/users/GDG-Lviv.png">

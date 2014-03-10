@@ -21,12 +21,17 @@ public class QueryStatements<T> {
 		String tableName = reflectionTransformer.fromFieldToColumnInDB(type
 				.getSimpleName()) + "s";
 		String tableColumns = getColumns(false);
-		String whereColumn = reflectionTransformer
-				.fromFieldToColumnInDB(fieldName);
-		String whereValue = whereObj.toString();
 
-		query = StringUtils.concat("SELECT ", tableColumns, "FROM ", tableName,
-				" WHERE ", whereColumn, "='", whereValue, "'");
+		if (fieldName.equals("")) {
+			query = StringUtils.concat("SELECT ", tableColumns, "FROM ",
+					tableName);
+		} else {
+			String whereColumn = reflectionTransformer
+					.fromFieldToColumnInDB(fieldName);
+			String whereValue = whereObj.toString();
+			query = StringUtils.concat("SELECT ", tableColumns, "FROM ",
+					tableName, " WHERE ", whereColumn, "='", whereValue, "'");
+		}
 
 		System.out.println(query);
 
@@ -48,21 +53,33 @@ public class QueryStatements<T> {
 		return query;
 	}
 
-	public String createUpdateQuery() {
-		// final String UPDATE_BOOK_AMOUNT =
-		// "UPDATE Books SET amount=? WHERE id=?";
+	public String createUpdateQuery(String whereField) {
 		String query = null;
 
 		String tableName = reflectionTransformer.fromFieldToColumnInDB(type
 				.getSimpleName()) + "s";
-		String tableColumns = getColumns(true);
+		String tableColumns = getUpdateColumns(whereField);
 
-		query = StringUtils.concat("UPDATE ", tableName, " SET ", tableColumns,
-				")");
+		query = "UPDATE " + tableName + " SET " + tableColumns + "WHERE "
+				+ whereField + "=?";
 
 		System.out.println(query);
 
 		return query;
+	}
+
+	private String getUpdateColumns(String whereField) {
+		StringBuilder stringBuilder = new StringBuilder();
+
+		for (Field field : type.getDeclaredFields()) {
+			String fieldName = reflectionTransformer.fromFieldToColumnInDB(
+					field.getName()).toString();
+			if (!whereField.equals(fieldName)) {
+				stringBuilder.append(fieldName).append("=?, ");
+			}
+		}
+		stringBuilder.deleteCharAt(stringBuilder.length() - 2);
+		return stringBuilder.toString();
 	}
 
 	private String getColumns(boolean hasValues) {

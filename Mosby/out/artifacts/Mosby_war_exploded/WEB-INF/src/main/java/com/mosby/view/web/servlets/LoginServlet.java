@@ -15,29 +15,23 @@ import java.io.IOException;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/pages/login.jsp").forward(request,
-				response);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("/pages/login.jsp").forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 
-		BaseUserInfo baseUserInfo = new ReadUsersService().readUser(email,
-				password);
+		BaseUserInfo baseUserInfo = new ReadUsersService().readUser(email, password);
 
 		if (baseUserInfo == null) {
-			request.getRequestDispatcher("/pages/login.jsp").forward(request,
-					response);
+			request.getRequestDispatcher("/pages/login.jsp").forward(request, response);
 		} else {
 			HttpSession session = request.getSession(false);
 			session.setAttribute("baseUserInfo", baseUserInfo);
 
-			request.getRequestDispatcher("/pages/index.jsp").forward(request,
-					response);
+			request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
 		}
 
 	}

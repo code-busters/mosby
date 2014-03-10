@@ -11,39 +11,37 @@ import java.sql.SQLException;
 
 public class ReflectionTransformer<T> {
 
-	private StringBuilder line;
-
-	public T fromRStoObject(T obj, ResultSet rs, Class<T> type) {
+	public T fromRStoObject(T object, ResultSet resultSet, Class<T> type) {
 
 		for (Field field : type.getDeclaredFields()) {
 
 			Object value = null;
 			try {
 				if (field.getType().equals(boolean.class)) {
-					int state = (int) rs.getObject(fromFieldToColumnInDB(field
-							.getName()));
+					int state = (int) resultSet
+							.getObject(fromFieldToColumnInDB(field.getName()));
 					if (state == 0) {
 						value = new Boolean(false);
 					} else if (state == 1) {
 						value = new Boolean(true);
 					}
 				} else {
-					value = rs
-							.getObject(fromFieldToColumnInDB(field.getName()));
+					value = resultSet.getObject(fromFieldToColumnInDB(field
+							.getName()));
 				}
-				
+
 				PropertyDescriptor propertyDescriptor;
 				propertyDescriptor = new PropertyDescriptor(field.getName(),
 						type);
 				Method method = propertyDescriptor.getWriteMethod();
-				method.invoke(obj, value);
+				method.invoke(object, value);
 			} catch (IntrospectionException | IllegalAccessException
 					| IllegalArgumentException | InvocationTargetException
 					| SQLException e) {
 				e.printStackTrace();
 			}
 		}
-		return obj;
+		return object;
 	}
 
 	public PreparedStatement fromObjectToStatement(
@@ -69,18 +67,18 @@ public class ReflectionTransformer<T> {
 	}
 
 	public String fromFieldToColumnInDB(String line) {
-
-		this.line = new StringBuilder();
+		String dbColumn = "";
+		StringBuilder currentLine = new StringBuilder();
 
 		for (int i = 0; i < line.length(); ++i) {
 			if (Character.isUpperCase(line.charAt(i)) && i != 0) {
-				this.line.append("_");
+				currentLine.append("_");
 			}
-
-			this.line.append(line.charAt(i));
+			currentLine.append(line.charAt(i));
 		}
+		dbColumn = currentLine.toString().toLowerCase();
 
-		return this.line.toString().toLowerCase();
+		return dbColumn;
 	}
 
 }

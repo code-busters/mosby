@@ -31,52 +31,7 @@
 <body>
 <div class="container-fluid">
     <div class="row">
-        <nav class="navbar navbar-default navbar-fixed-top nav-transparent-shrink" role="navigation">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
-                    <span class="sr-only">Toggle navigation</span>
-                </button>
-                <a class="navbar-brand" href="#"></a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar-collapse-01">
-                <ul class="nav navbar-nav navbar-left">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            Categories
-                            <b class="caret"></b>
-                        </a>
-                        <span class="dropdown-arrow"></span>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="#">Business</a>
-                            </li>
-                            <li>
-                                <a href="#">Music</a>
-                            </li>
-                            <li>
-                                <a href="#">Food &amp; Drink</a>
-                            </li>
-                            <li>
-                                <a href="#">Film &amp; Media</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#">All</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="#">Login</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="signUp.html">Sign up</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        <jsp:include page="parts/navbar.jsp"/>
     </div>
 
     <div class="row" style="background: #000">
