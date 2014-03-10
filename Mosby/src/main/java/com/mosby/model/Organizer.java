@@ -34,6 +34,9 @@ public class Organizer {
 	@Column(name = "logo_image")
 	private String logoImage;
 
+	public Organizer() {
+	}
+
 	public Organizer(int baseUserInfoRef, String name, String email,
 			String phone, String about, String location, String logoImage) {
 		super();

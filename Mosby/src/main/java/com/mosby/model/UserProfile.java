@@ -35,6 +35,10 @@ public class UserProfile {
 	@Column(name="about")
 	private String about;
 
+	
+	public UserProfile() {
+	}
+
 	public UserProfile(int id, int baseUserInfoRef, String image,
 			String country, String city, Date birthDate, String site,
 			String about) {

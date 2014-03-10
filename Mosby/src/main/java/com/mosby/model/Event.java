@@ -41,6 +41,9 @@ public class Event {
 	@Column(name="image")
 	private String image;
 
+	public Event() {
+	}
+
 	public Event(int organizersRef, String name, String description,
 			int catregoriesRef, int typeRef, Date start, Date end,
 			String location, String image) {

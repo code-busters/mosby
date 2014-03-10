@@ -20,6 +20,9 @@ public class EventAdmin {
 	@Column(name="user_ref")
 	private int userRef;
 	
+	public EventAdmin() {
+	}
+
 	@Column(name="permission_ref")
 	private int rermissionRef;
 

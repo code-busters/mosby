@@ -18,6 +18,11 @@ public class Registration {
 	@Column(name="event_ref")
 	private int eventRef;
 
+	
+	
+	public Registration() {
+	}
+
 	public Registration(int id, int userRef, int eventRef) {
 		super();
 		this.id = id;

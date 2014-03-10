@@ -27,6 +27,9 @@ public class PromoCode {
 	@Column(name="max_number")	
 	private int maxNumber;
 
+	public PromoCode() {
+	}
+
 	public PromoCode(int eventRef, String code, int discount,
 			String description, int maxNumber) {
 		super();

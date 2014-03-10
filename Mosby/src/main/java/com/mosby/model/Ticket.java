@@ -28,6 +28,10 @@ public class Ticket {
 	
 	@Column(name="checked")	
 	private boolean checked;
+	
+
+	public Ticket() {
+	}
 
 	public Ticket(int registrationsRef, int ticketsInfoRef,
 			Date timeOfPurchase, int promoCodesRef, boolean checked) {

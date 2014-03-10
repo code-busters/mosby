@@ -24,6 +24,10 @@ public class Permission {
 	@Column(name="delete_users")	
 	private boolean deleteUsers;
 
+	public Permission() {
+		super();
+	}
+
 	public Permission(int id, boolean adminPanel, boolean editEvent,
 			boolean invite, boolean deleteUsers) {
 		super();
@@ -33,6 +37,7 @@ public class Permission {
 		this.invite = invite;
 		this.deleteUsers = deleteUsers;
 	}
+
 
 	public Permission(boolean adminPanel, boolean editEvent, boolean invite,
 			boolean deleteUsers) {

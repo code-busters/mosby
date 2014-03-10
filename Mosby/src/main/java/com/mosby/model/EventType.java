@@ -9,11 +9,14 @@ import javax.persistence.Table;
 @Table(name="event_types")
 public class EventType {
 	@Id
-	@Column(name="id")
+	@Column(name = "id")
 	private int id;
 	
-	@Column(name="type")	
+	@Column(name = "type")	
 	private String type;
+	
+	public EventType() {
+	}
 
 	public EventType(String type) {
 		super();

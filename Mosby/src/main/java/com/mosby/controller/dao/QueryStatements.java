@@ -18,15 +18,16 @@ public class QueryStatements<T> {
 	public String createSelectQuery(String fieldName, Object whereObj) {
 		String query = null;
 
-		String tableName = reflectionTransformer.fromFieldToColumnInDB(type
-				.getSimpleName()) + "s";
+		String tableName = reflectionTransformer.fromFieldToColumnInDB(type.getSimpleName()) + "s";
 		String tableColumns = getColumns(false);
-		String whereColumn = reflectionTransformer
-				.fromFieldToColumnInDB(fieldName);
-		String whereValue = whereObj.toString();
 
-		query = StringUtils.concat("SELECT ", tableColumns, "FROM ", tableName,
-				" WHERE ", whereColumn, "='", whereValue, "'");
+		if (fieldName.equals("")) {
+			query = StringUtils.concat("SELECT ", tableColumns, "FROM ", tableName);
+		} else {
+			String whereColumn = reflectionTransformer.fromFieldToColumnInDB(fieldName);
+			String whereValue = whereObj.toString();
+			query = StringUtils.concat("SELECT ", tableColumns, "FROM ", tableName, " WHERE ", whereColumn, "='", whereValue, "'");
+		}
 
 		System.out.println(query);
 

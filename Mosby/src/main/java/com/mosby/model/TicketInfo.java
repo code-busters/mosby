@@ -28,6 +28,10 @@ public class TicketInfo {
 	
 	@Column(name="price")
 	private int price;
+	
+	
+	public TicketInfo() {
+	}
 
 	public TicketInfo(int eventRef, String type, String description,
 			int maxNumber, int price) {
