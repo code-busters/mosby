@@ -1,7 +1,5 @@
 package main.java.com.mosby.model;
 
-import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -19,30 +17,42 @@ public class Registration {
 	
 	@Column(name="event_ref")
 	private int eventRef;
-	
-	@Column(name="checked")
-	private boolean checked;
-	
-	@Column(name="time_of_purchase")
-	private Date timeOfPurchase;
 
-	public Registration(int id, int userRef, int eventRef, boolean checked,
-			Date timeOfPurchase) {
+	public Registration(int id, int userRef, int eventRef) {
 		super();
 		this.id = id;
 		this.userRef = userRef;
 		this.eventRef = eventRef;
-		this.checked = checked;
-		this.timeOfPurchase = timeOfPurchase;
 	}
 
-	public Registration(int userRef, int eventRef, boolean checked,
-			Date timeOfPurchase) {
+	public Registration(int userRef, int eventRef) {
 		super();
 		this.userRef = userRef;
 		this.eventRef = eventRef;
-		this.checked = checked;
-		this.timeOfPurchase = timeOfPurchase;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getUserRef() {
+		return userRef;
+	}
+
+	public void setUserRef(int userRef) {
+		this.userRef = userRef;
+	}
+
+	public int getEventRef() {
+		return eventRef;
+	}
+
+	public void setEventRef(int eventRef) {
+		this.eventRef = eventRef;
 	}
 		
 

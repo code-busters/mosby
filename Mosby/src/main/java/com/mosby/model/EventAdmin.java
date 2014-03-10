@@ -37,6 +37,38 @@ public class EventAdmin {
 		this.userRef = userRef;
 		this.rermissionRef = rermissionRef;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getEventRef() {
+		return eventRef;
+	}
+
+	public void setEventRef(int eventRef) {
+		this.eventRef = eventRef;
+	}
+
+	public int getUserRef() {
+		return userRef;
+	}
+
+	public void setUserRef(int userRef) {
+		this.userRef = userRef;
+	}
+
+	public int getRermissionRef() {
+		return rermissionRef;
+	}
+
+	public void setRermissionRef(int rermissionRef) {
+		this.rermissionRef = rermissionRef;
+	}
 	
 
 }

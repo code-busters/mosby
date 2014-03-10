@@ -42,6 +42,46 @@ public class Permission {
 		this.invite = invite;
 		this.deleteUsers = deleteUsers;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public boolean isAdminPanel() {
+		return adminPanel;
+	}
+
+	public void setAdminPanel(boolean adminPanel) {
+		this.adminPanel = adminPanel;
+	}
+
+	public boolean isEditEvent() {
+		return editEvent;
+	}
+
+	public void setEditEvent(boolean editEvent) {
+		this.editEvent = editEvent;
+	}
+
+	public boolean isInvite() {
+		return invite;
+	}
+
+	public void setInvite(boolean invite) {
+		this.invite = invite;
+	}
+
+	public boolean isDeleteUsers() {
+		return deleteUsers;
+	}
+
+	public void setDeleteUsers(boolean deleteUsers) {
+		this.deleteUsers = deleteUsers;
+	}
 	
 
 }

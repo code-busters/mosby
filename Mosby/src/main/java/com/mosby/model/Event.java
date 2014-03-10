@@ -13,6 +13,9 @@ public class Event {
 	@Id
 	@Column(name="id")
 	private int id;
+
+	@Column(name="organizers_ref")
+	private int organizersRef;
 	
 	@Column(name="name")	
 	private String name;
@@ -20,8 +23,8 @@ public class Event {
 	@Column(name="description")
 	private String description;
 	
-	@Column(name="topic_ref")
-	private int topicRef;
+	@Column(name="catregories_ref")
+	private int catregoriesRef;
 	
 	@Column(name="type_ref")
 	private int typeRef;
@@ -32,11 +35,42 @@ public class Event {
 	@Column(name="end_datetime")
 	private Date end;
 	
-	@Column(name="price")
-	private Date price;
-
+	@Column(name="location")
+	private String location;
+	
 	@Column(name="image")
-	private Date image;
+	private String image;
+
+	public Event(int organizersRef, String name, String description,
+			int catregoriesRef, int typeRef, Date start, Date end,
+			String location, String image) {
+		super();
+		this.organizersRef = organizersRef;
+		this.name = name;
+		this.description = description;
+		this.catregoriesRef = catregoriesRef;
+		this.typeRef = typeRef;
+		this.start = start;
+		this.end = end;
+		this.location = location;
+		this.image = image;
+	}
+
+	public Event(int id, int organizersRef, String name, String description,
+			int catregoriesRef, int typeRef, Date start, Date end,
+			String location, String image) {
+		super();
+		this.id = id;
+		this.organizersRef = organizersRef;
+		this.name = name;
+		this.description = description;
+		this.catregoriesRef = catregoriesRef;
+		this.typeRef = typeRef;
+		this.start = start;
+		this.end = end;
+		this.location = location;
+		this.image = image;
+	}
 
 	public int getId() {
 		return id;
@@ -44,6 +78,14 @@ public class Event {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public int getOrganizersRef() {
+		return organizersRef;
+	}
+
+	public void setOrganizersRef(int organizersRef) {
+		this.organizersRef = organizersRef;
 	}
 
 	public String getName() {
@@ -62,12 +104,12 @@ public class Event {
 		this.description = description;
 	}
 
-	public int getTopicRef() {
-		return topicRef;
+	public int getCatregoriesRef() {
+		return catregoriesRef;
 	}
 
-	public void setTopicRef(int topicRef) {
-		this.topicRef = topicRef;
+	public void setCatregoriesRef(int catregoriesRef) {
+		this.catregoriesRef = catregoriesRef;
 	}
 
 	public int getTypeRef() {
@@ -94,48 +136,21 @@ public class Event {
 		this.end = end;
 	}
 
-	public Date getPrice() {
-		return price;
+	public String getLocation() {
+		return location;
 	}
 
-	public void setPrice(Date price) {
-		this.price = price;
+	public void setLocation(String location) {
+		this.location = location;
 	}
 
-	public Date getImage() {
+	public String getImage() {
 		return image;
 	}
 
-	public void setImage(Date image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 
-	public Event(int id, String name, String description, int topicRef,
-			int typeRef, Date start, Date end, Date price, Date image) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.description = description;
-		this.topicRef = topicRef;
-		this.typeRef = typeRef;
-		this.start = start;
-		this.end = end;
-		this.price = price;
-		this.image = image;
-	}
-
-	public Event(String name, String description, int topicRef, int typeRef,
-			Date start, Date end, Date price, Date image) {
-		super();
-		this.name = name;
-		this.description = description;
-		this.topicRef = topicRef;
-		this.typeRef = typeRef;
-		this.start = start;
-		this.end = end;
-		this.price = price;
-		this.image = image;
-	}
-	
 
 }

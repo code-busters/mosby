@@ -6,8 +6,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="event_topics")
-public class EventTopic {	
+@Table(name="event_catregories")
+public class EventCatregorie {	
 	@Id
 	@Column(name="id")
 	private int id;
@@ -15,14 +15,30 @@ public class EventTopic {
 	@Column(name="type")	
 	private String type;
 
-	public EventTopic(String type) {
+	public EventCatregorie(String type) {
 		super();
 		this.type = type;
 	}
 
-	public EventTopic(int id, String type) {
+	public EventCatregorie(int id, String type) {
 		super();
 		this.id = id;
+		this.type = type;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
 		this.type = type;
 	}
 	

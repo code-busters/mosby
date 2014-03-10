@@ -66,11 +66,11 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="#">Login</a>
+                        <a href="login">Login</a>
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="#">Sign up</a>
+                        <a href="signUp">Sign up</a>
                     </li>
                 </ul>
             </div>
