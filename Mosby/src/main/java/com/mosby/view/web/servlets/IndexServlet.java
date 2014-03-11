@@ -35,14 +35,6 @@ public class IndexServlet extends HttpServlet {
             session.removeAttribute("baseUserInfo");
             response.sendRedirect("/index");
         } else {
-            ReadEventService readEventService = new ReadEventService();
-            List<EventCategorie> listEventCategories = readEventService.readCategories();
-            List<EventType> listEventTypes = readEventService.readTypes();
-
-            HttpSession session = request.getSession(true);
-            session.setAttribute("eventCategories", listEventCategories);
-            session.setAttribute("eventTypes", listEventTypes);
-
             request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
         }
 	}
