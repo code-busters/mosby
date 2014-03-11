@@ -15,8 +15,8 @@ public class EncryptionUtils {
     private static final String PBKDF2_ALGORITHM = "PBKDF2WithHmacSHA1";
 
     private static final int SALT_BYTE_SIZE = 24;
-    private static final int HASG_BYTE_SIZE = 24;
-    private static final int PBKDF2_ITERATIONS = 1000;
+    private static final int HASH_BYTE_SIZE = 24;
+    private static final int PBKDF2_ITERATIONS = 1200;
 
     private static final int ITERATION_INDEX = 0;
     private static final int SALT_INDEX = 1;
@@ -33,9 +33,9 @@ public class EncryptionUtils {
 
         byte[] hash = new byte[0];
         try {
-            hash = pbkdf2(password, salt, PBKDF2_ITERATIONS, HASG_BYTE_SIZE);
+            hash = pbkdf2(password, salt, PBKDF2_ITERATIONS, HASH_BYTE_SIZE);
         } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-            e.printStackTrace();
+            log.error(e);
         }
         return main.java.com.mosby.utils.StringUtils.concat(PBKDF2_ITERATIONS, ":", toHex(salt), ":", toHex(hash));
     }
@@ -63,7 +63,6 @@ public class EncryptionUtils {
     }
 
     public static boolean validatePassword(char[] password, String correctHash) {
-        // Decode the hash into its parameters
         String[] params = correctHash.split(":");
         int iterations = Integer.parseInt(params[ITERATION_INDEX]);
         byte[] salt = fromHex(params[SALT_INDEX]);
@@ -72,7 +71,7 @@ public class EncryptionUtils {
         try {
             testHash = pbkdf2(password, salt, iterations, hash.length);
         } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-            e.printStackTrace();
+            log.error(e);
         }
         return slowEquals(hash, testHash);
     }
@@ -87,8 +86,9 @@ public class EncryptionUtils {
 
     private static boolean slowEquals(byte[] a, byte[] b) {
         int diff = a.length ^ b.length;
-        for (int i = 0; i < a.length && i < b.length; i++)
+        for (int i = 0; i < a.length && i < b.length; i++) {
             diff |= a[i] ^ b[i];
+        }
         return diff == 0;
     }
 }
