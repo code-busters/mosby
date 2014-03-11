@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
 <html>
 
 <head>
@@ -31,11 +30,12 @@
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 
     <script>
-        var myCenter = new google.maps.LatLng(49.839683, 24.029717);
+        var map, geocoder;
+        var address = 'Kopalna Street, Lviv, Lviv Oblast, Ukraine';
 
         function initialize() {
+            geocoder = new google.maps.Geocoder();
             var mapProp = {
-                center: myCenter,
                 zoom: 15,
                 mapTypeControl: true,
                 mapTypeControlOptions: {
@@ -44,23 +44,22 @@
                 }
             };
 
-            var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 
-            var marker = new google.maps.Marker({
-                position: myCenter,
-            });
-
-            marker.setMap(map);
-
-            var infowindow = new google.maps.InfoWindow({
-                content: "Here goes full adress"
-            });
-
-            google.maps.event.addListener(marker, 'click', function() {
-                infowindow.open(map, marker);
+            map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+            geocoder.geocode({
+                'address': address
+            }, function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    map.setCenter(results[0].geometry.location);
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: results[0].geometry.location
+                    });
+                } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                }
             });
         }
-
         google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 </head>
@@ -114,9 +113,9 @@
                         </div>
                         <div class="col-md-2 col-sm-2">
                             <h6 class="visible-xs">Quantity</h6>
-                            <select name="herolist" value="1" class="select-block">
-                                <option value="0">0</option>
-                                <option value="1" selected="selected">1</option>
+                            <select name="ticket_quantity_0" value="0" class="select-block ticket-quantity">
+                                <option value="0" selected="selected">0</option>
+                                <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
                             </select>
@@ -126,7 +125,7 @@
             </div>
             <!--END TICKETS-->
             <div class="col-md-3 col-sm-3 col-md-offset-9 col-sm-offset-9">
-                <a href="#fakelink" class="btn btn-block btn-lg btn-primary">Order Now</a>
+                <a id="order-now" href="#fakelink?tourId=0&ticket_0=0" class="btn btn-block btn-lg btn-primary">Order Now</a>
             </div>
         </div>
         <div class="organizer-details col-md-3">
@@ -145,46 +144,7 @@
     </div>
 
     <div class="row">
-        <div class="bottom-menu">
-            <div class="col-md-2 col-sm-2 col-xs-12 col-md-offset-1 col-sm-offset-1 brand">
-                <a class="navbar-brand" href="#"></a>
-            </div>
-
-            <div class="col-md-7 col-sm-6">
-                <ul class="bottom-links">
-                    <li>
-                        <a href="#fakelink">About Us</a>
-                    </li>
-                    <li>
-                        <a href="#fakelink">Store</a>
-                    </li>
-                    <li>
-                        <a href="#fakelink">Privacy</a>
-                    </li>
-                    <li>
-                        <a href="#fakelink">Follow Us</a>
-                    </li>
-                    <li>
-                        <a href="#fakelink">Support</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="col-md-2 col-sm-3">
-                <ul class="bottom-icons">
-                    <li>
-                        <a href="#fakelink" class="fui-googleplus"></a>
-                    </li>
-                    <li>
-                        <a href="#fakelink" class="fui-facebook"></a>
-                    </li>
-                    <li>
-                        <a href="#fakelink" class="fui-twitter"></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!-- /bottom-menu-inverse -->
+        <jsp:include page="parts/footer.jsp"/>
     </div>
 </div>
 
@@ -209,10 +169,30 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $("#background-block").css("height", 4 * $(window).height() / 5);
+        $("#background-block").css("height", 2 * $(window).height() / 5);
     });
     $(window).resize(function() {
-        $("#background-block").css("height", 4 * $(window).height() / 5);
+        $("#background-block").css("height", 2 * $(window).height() / 5);
+    });
+    $('.ticket-quantity').on('change', function(e) {
+        var row = $(this).closest('.row');
+        var ticketId = row.attr('id');
+        var optionSelected = $("option:selected", this);
+        var quantity = this.value;
+
+        $('#order-now').each(function() {
+            var indexOfString = this.href.indexOf('ticket_' + ticketId + '=');
+            if (indexOfString >= 0) {
+                var temp = this.href;
+                var indexOfNextParam = temp.indexOf('&', indexOfString);
+                indexOfNextParam = (indexOfNextParam > 0) ? indexOfNextParam : temp.length;
+                var prevTicketOrder = temp.slice(indexOfString, indexOfNextParam);
+                temp = temp.replace(prevTicketOrder, 'ticket_' + ticketId + '=' + quantity);
+                this.href = temp;
+            } else {
+                this.href += '&ticket_' + ticketId + '=' + quantity;
+            }
+        })
     });
 </script>
 
