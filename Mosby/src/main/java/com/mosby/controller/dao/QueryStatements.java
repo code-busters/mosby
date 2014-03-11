@@ -56,12 +56,30 @@ public class QueryStatements<T> {
 	public String createUpdateQuery(String whereField) {
 		String query = null;
 
+		String whereColumn = reflectionTransformer
+				.fromFieldToColumnInDB(whereField);
 		String tableName = reflectionTransformer.fromFieldToColumnInDB(type
 				.getSimpleName()) + "s";
 		String tableColumns = getUpdateColumns(whereField);
 
-		query = "UPDATE " + tableName + " SET " + tableColumns + "WHERE "
-				+ whereField + "=?";
+		query = StringUtils.concat("UPDATE ", tableName, " SET ", tableColumns,
+				"WHERE ", whereColumn, "=?");
+
+		System.out.println(query);
+
+		return query;
+	}
+
+	public String createDeleteQuery(String whereField) {
+		String query = null;
+
+		String whereColumn = reflectionTransformer
+				.fromFieldToColumnInDB(whereField);
+		String tableName = reflectionTransformer.fromFieldToColumnInDB(type
+				.getSimpleName()) + "s";
+
+		query = StringUtils.concat("DELETE FROM ", tableName, " WHERE ",
+				whereColumn, "=?");
 
 		System.out.println(query);
 
@@ -69,6 +87,7 @@ public class QueryStatements<T> {
 	}
 
 	private String getUpdateColumns(String whereField) {
+		String tableColumns = null;
 		StringBuilder stringBuilder = new StringBuilder();
 
 		for (Field field : type.getDeclaredFields()) {
@@ -79,7 +98,9 @@ public class QueryStatements<T> {
 			}
 		}
 		stringBuilder.deleteCharAt(stringBuilder.length() - 2);
-		return stringBuilder.toString();
+		tableColumns = stringBuilder.toString();
+		
+		return tableColumns;
 	}
 
 	private String getColumns(boolean hasValues) {
