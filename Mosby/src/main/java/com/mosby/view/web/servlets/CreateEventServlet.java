@@ -1,6 +1,8 @@
 package main.java.com.mosby.view.web.servlets;
 
+import main.java.com.mosby.controller.services.CreateEventService;
 import main.java.com.mosby.utils.FileUploadUtils;
+
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -49,6 +52,13 @@ public class CreateEventServlet extends HttpServlet {
         } catch (Exception e) {
             log.error(e);
         }
+
+        CreateEventService createEventService = new CreateEventService();
+    	try {
+			createEventService.create(request, this, eventLogo, eventBackground);
+		} catch (Exception e) {
+			log.error(e);
+		}
 
     }
 }

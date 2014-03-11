@@ -145,7 +145,7 @@
 <div class="hidden-lg hidden-md">
     <h4>Create event for free</h4>
 </div>
-<form action="createEvent" method="post" id="create-event-form">
+<form enctype="multipart/form-data" action="createEvent" method="post" id="create-event-form">
 <h5>Event Detail</h5>
 <div class="form-group">
     <label for="event-name">Event Name</label>
@@ -244,7 +244,7 @@
 </div>
 <div class="form-group">
     <label for="event-details">Event Description</label>
-    <textarea rows="4" placeholder="Tell users about your event" class="form-control" id="event-details" form="create-event-form"></textarea>
+    <textarea rows="4" placeholder="Tell users about your event" class="form-control" name="event_description" id="event-details" form="create-event-form"></textarea>
 </div>
 <div class="form-group">
     <label for="event-location">Address</label>

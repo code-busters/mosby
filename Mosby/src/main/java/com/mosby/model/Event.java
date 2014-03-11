@@ -1,6 +1,6 @@
 package main.java.com.mosby.model;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,23 +30,26 @@ public class Event {
 	private int typeRef;
 	
 	@Column(name="start_datetime")
-	private Date start;
+	private Timestamp start;
 
 	@Column(name="end_datetime")
-	private Date end;
+	private Timestamp end;
 	
 	@Column(name="location")
 	private String location;
 	
-	@Column(name="image")
-	private String image;
+	@Column(name="logo")
+	private String logo;
+	
+	@Column(name="background")
+	private String background;
 
 	public Event() {
 	}
 
 	public Event(int organizersRef, String name, String description,
-			int catregoriesRef, int typeRef, Date start, Date end,
-			String location, String image) {
+			int catregoriesRef, int typeRef, Timestamp start, Timestamp end,
+			String location, String logo, String background) {
 		super();
 		this.organizersRef = organizersRef;
 		this.name = name;
@@ -56,12 +59,12 @@ public class Event {
 		this.start = start;
 		this.end = end;
 		this.location = location;
-		this.image = image;
+		this.logo = logo;
 	}
 
 	public Event(int id, int organizersRef, String name, String description,
-			int catregoriesRef, int typeRef, Date start, Date end,
-			String location, String image) {
+			int catregoriesRef, int typeRef, Timestamp start, Timestamp end,
+			String location, String logo, String background) {
 		super();
 		this.id = id;
 		this.organizersRef = organizersRef;
@@ -72,7 +75,7 @@ public class Event {
 		this.start = start;
 		this.end = end;
 		this.location = location;
-		this.image = image;
+		this.logo = logo;
 	}
 
 	public int getId() {
@@ -123,19 +126,19 @@ public class Event {
 		this.typeRef = typeRef;
 	}
 
-	public Date getStart() {
+	public Timestamp getStart() {
 		return start;
 	}
 
-	public void setStart(Date start) {
+	public void setStart(Timestamp start) {
 		this.start = start;
 	}
 
-	public Date getEnd() {
+	public Timestamp getEnd() {
 		return end;
 	}
 
-	public void setEnd(Date end) {
+	public void setEnd(Timestamp end) {
 		this.end = end;
 	}
 
@@ -147,13 +150,19 @@ public class Event {
 		this.location = location;
 	}
 
-	public String getImage() {
-		return image;
+	public String getLogo() {
+		return logo;
 	}
 
-	public void setImage(String image) {
-		this.image = image;
+	public void setLogo(String logo) {
+		this.logo = logo;
 	}
 
+	public String getBackground() {
+		return background;
+	}
 
+	public void setBackground(String background) {
+		this.background = background;
+	}
 }
