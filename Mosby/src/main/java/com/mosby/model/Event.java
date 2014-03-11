@@ -23,17 +23,17 @@ public class Event {
 	@Column(name="description")
 	private String description;
 	
-	@Column(name="catregories_ref")
-	private int catregoriesRef;
+	@Column(name="categories_ref")
+	private int categoriesRef;
 	
 	@Column(name="type_ref")
 	private int typeRef;
 	
 	@Column(name="start_datetime")
-	private Timestamp start;
+	private Timestamp startDatetime;
 
 	@Column(name="end_datetime")
-	private Timestamp end;
+	private Timestamp endDatetime;
 	
 	@Column(name="location")
 	private String location;
@@ -54,10 +54,10 @@ public class Event {
 		this.organizersRef = organizersRef;
 		this.name = name;
 		this.description = description;
-		this.catregoriesRef = catregoriesRef;
+		this.categoriesRef = catregoriesRef;
 		this.typeRef = typeRef;
-		this.start = start;
-		this.end = end;
+		this.startDatetime = start;
+		this.endDatetime = end;
 		this.location = location;
 		this.logo = logo;
 	}
@@ -70,10 +70,10 @@ public class Event {
 		this.organizersRef = organizersRef;
 		this.name = name;
 		this.description = description;
-		this.catregoriesRef = catregoriesRef;
+		this.categoriesRef = catregoriesRef;
 		this.typeRef = typeRef;
-		this.start = start;
-		this.end = end;
+		this.startDatetime = start;
+		this.endDatetime = end;
 		this.location = location;
 		this.logo = logo;
 	}
@@ -110,12 +110,12 @@ public class Event {
 		this.description = description;
 	}
 
-	public int getCatregoriesRef() {
-		return catregoriesRef;
+	public int getCategoriesRef() {
+		return categoriesRef;
 	}
 
-	public void setCatregoriesRef(int catregoriesRef) {
-		this.catregoriesRef = catregoriesRef;
+	public void setCategoriesRef(int catregoriesRef) {
+		this.categoriesRef = catregoriesRef;
 	}
 
 	public int getTypeRef() {
@@ -127,19 +127,19 @@ public class Event {
 	}
 
 	public Timestamp getStart() {
-		return start;
+		return startDatetime;
 	}
 
 	public void setStart(Timestamp start) {
-		this.start = start;
+		this.startDatetime = start;
 	}
 
 	public Timestamp getEnd() {
-		return end;
+		return endDatetime;
 	}
 
 	public void setEnd(Timestamp end) {
-		this.end = end;
+		this.endDatetime = end;
 	}
 
 	public String getLocation() {
