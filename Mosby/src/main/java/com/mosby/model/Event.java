@@ -66,6 +66,7 @@ public class Event {
 		this.endDatetime = end;
 		this.location = location;
 		this.logo = logo;
+		this.background = background;
 	}
 
 	public Event(int id, int organizersRef, String name, String description,
@@ -82,6 +83,7 @@ public class Event {
 		this.endDatetime = end;
 		this.location = location;
 		this.logo = logo;
+		this.background = background;
 	}
 
 	public int getId() {

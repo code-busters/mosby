@@ -39,7 +39,7 @@ public class IndexServlet extends HttpServlet {
             log.info("Logged out: " + user.getBaseUserInfo().getFirstName() + " " + user.getBaseUserInfo().getLastName());
             session.removeAttribute("user");
 //            request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
-            response.sendRedirect("/index");
+            response.sendRedirect("index");
         } else {
             request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
         }

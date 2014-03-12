@@ -21,7 +21,7 @@ public class EventPageServlet extends HttpServlet {
             request.setAttribute("event", event);
             request.getRequestDispatcher("/pages/eventPage.jsp").forward(request, response);
         } else {
-            response.sendRedirect("/index");
+            response.sendRedirect("index");
         }
     }
 
