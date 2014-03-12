@@ -7,6 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import main.java.com.mosby.model.annotations.validate.EndFuture;
+import main.java.com.mosby.model.annotations.validate.Size;
+import main.java.com.mosby.model.annotations.validate.StartFuture;
+
 @Entity
 @Table(name="events")
 public class Event {
@@ -29,9 +33,11 @@ public class Event {
 	@Column(name="type_ref")
 	private int typeRef;
 	
+	@StartFuture
 	@Column(name="start_datetime")
 	private Timestamp startDatetime;
 
+	@EndFuture
 	@Column(name="end_datetime")
 	private Timestamp endDatetime;
 	
@@ -126,20 +132,20 @@ public class Event {
 		this.typeRef = typeRef;
 	}
 
-	public Timestamp getStart() {
+	public Timestamp getStartDatetime() {
 		return startDatetime;
 	}
 
-	public void setStart(Timestamp start) {
-		this.startDatetime = start;
+	public void setStartDatetime(Timestamp startDatetime) {
+		this.startDatetime = startDatetime;
 	}
 
-	public Timestamp getEnd() {
+	public Timestamp getEndDatetime() {
 		return endDatetime;
 	}
 
-	public void setEnd(Timestamp end) {
-		this.endDatetime = end;
+	public void setEndDatetime(Timestamp endDatetime) {
+		this.endDatetime = endDatetime;
 	}
 
 	public String getLocation() {

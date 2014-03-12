@@ -30,4 +30,12 @@ public class ReadEventService {
 		list = eventDao.selectObjects("", null);
 		return list;
 	}
+	
+	public Event readById(int id){
+		Event event = null;
+		ReflectionDao<Event> eventDao = new ReflectionDao<>((Class<Event>) Event.class);
+		event = eventDao.selectObjects("id", id).get(0); 
+		return event;
+	}
+	
 }

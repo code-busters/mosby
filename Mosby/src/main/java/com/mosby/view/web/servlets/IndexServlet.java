@@ -28,8 +28,9 @@ public class IndexServlet extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getParameter("logout") != null) {
-            HttpSession session = request.getSession();
+		HttpSession session = request.getSession(false);
+		if (request.getParameter("logout") != null) {
+            session = request.getSession();
             BaseUserInfo user = (BaseUserInfo) session.getAttribute("baseUserInfo");
             log.info("Logged out: " + user.getFirstName() + " " + user.getLastName());
             session.removeAttribute("baseUserInfo");

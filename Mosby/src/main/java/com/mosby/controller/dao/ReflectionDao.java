@@ -87,10 +87,10 @@ public class ReflectionDao<T> {
 			
 			preparedStatement.addBatch();
 			preparedStatement.executeBatch();
-			
+
 			ResultSet keys = preparedStatement.getGeneratedKeys();
 			keys.next();
-			generatedId = keys.getInt("id");
+			generatedId = keys.getInt(1);
 			
 			keys.close();
 			preparedStatement.close();

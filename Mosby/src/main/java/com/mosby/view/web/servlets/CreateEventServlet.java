@@ -1,6 +1,8 @@
 package main.java.com.mosby.view.web.servlets;
 
 import main.java.com.mosby.controller.services.CreateEventService;
+import main.java.com.mosby.controller.services.ReadEventService;
+import main.java.com.mosby.model.Event;
 import main.java.com.mosby.utils.FileUploadUtils;
 
 import org.apache.log4j.Logger;
@@ -53,11 +55,13 @@ public class CreateEventServlet extends HttpServlet {
         }
         
         
-        int eventId;
         CreateEventService createEventService = new CreateEventService();
+        ReadEventService readEventService = new ReadEventService();
     	try {
+    		int eventId;
     		eventId = createEventService.create(request, this, eventLogo, eventBackground);
-    		request.setAttribute("eventId", eventId);
+    		Event event = readEventService.readById(eventId);  
+    		request.setAttribute("event", event);
 		} catch (Exception e) {
 			log.error(e);
 		}
