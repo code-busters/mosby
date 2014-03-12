@@ -28,7 +28,6 @@ public class CreateEventServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 //        Image uploading
         String eventLogo = "default.png";
         Part filePart = request.getPart("event_logo");
@@ -52,13 +51,18 @@ public class CreateEventServlet extends HttpServlet {
         } catch (Exception e) {
             log.error(e);
         }
-
+        
+        
+        int eventId;
         CreateEventService createEventService = new CreateEventService();
     	try {
-			createEventService.create(request, this, eventLogo, eventBackground);
+    		eventId = createEventService.create(request, this, eventLogo, eventBackground);
+    		request.setAttribute("eventId", eventId);
 		} catch (Exception e) {
 			log.error(e);
 		}
+    	
+    	request.getRequestDispatcher("/pages/eventPages.jsp").forward(request, response);
 
     }
 }

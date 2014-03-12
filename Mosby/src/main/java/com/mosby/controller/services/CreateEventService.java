@@ -18,7 +18,7 @@ import main.java.com.mosby.model.Event;
 public class CreateEventService {
     private static Logger log = Logger.getLogger(CreateEventService.class);
 	
-	public void create(HttpServletRequest request, HttpServlet servlet, String logo, String background) throws IllegalStateException, IOException, ServletException{
+	public int create(HttpServletRequest request, HttpServlet servlet, String logo, String background) throws IllegalStateException, IOException, ServletException{
 
 		SimpleDateFormat parseDate = new SimpleDateFormat("dd/MM/yyyy hh:mm");		
 		
@@ -43,8 +43,10 @@ public class CreateEventService {
 		System.out.println(event);
 		
 		ReflectionDao<Event> eventDao = new ReflectionDao<>((Class<Event>) Event.class);
-		eventDao.insertObjects(event);
-      
+		
+		int id = eventDao.insertObjects(event);
+		
+		return id;
 	}
 	
 	public void update(){
