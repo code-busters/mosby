@@ -189,10 +189,10 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $("#background-block").css("height", 2 * $(window).height() / 5);
+        $("#background-block").css("height", 4*$(window).height()/5);
     });
     $(window).resize(function () {
-        $("#background-block").css("height", 2 * $(window).height() / 5);
+        $("#background-block").css("height", 4*$(window).height()/5);
     });
     $('.ticket-quantity').on('change', function (e) {
         var row = $(this).closest('.row');
