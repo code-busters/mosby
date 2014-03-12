@@ -1,12 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 
 <head>
     <meta charset="utf-8">
     <title>Create event - Mosby - event management</title>
     <link rel="shortcut icon" href="media/images/favicon.ico">
-    <link rel="icon" type="image/png" href="media/images/favicon.png" />
-    <meta name="description" content="Mosby - make it simple. New event management system" />
+    <link rel="icon" type="image/png" href="media/images/favicon.png"/>
+    <meta name="description" content="Mosby - make it simple. New event management system"/>
 
     <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
 
@@ -36,11 +37,11 @@
 
             // Try HTML5 geolocation
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
+                navigator.geolocation.getCurrentPosition(function (position) {
                     var pos = new google.maps.LatLng(position.coords.latitude,
                             position.coords.longitude);
                     map.setCenter(pos);
-                }, function() {
+                }, function () {
                     handleNoGeolocation(true);
                 });
             } else {
@@ -58,7 +59,7 @@
                 map: map
             });
 
-            google.maps.event.addListener(autocomplete, 'place_changed', function() {
+            google.maps.event.addListener(autocomplete, 'place_changed', function () {
                 infowindow.close();
                 marker.setVisible(false);
                 var place = autocomplete.getPlace();
@@ -107,7 +108,7 @@
 
         function geolocate() {
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
+                navigator.geolocation.getCurrentPosition(function (position) {
                     var geolocation = new google.maps.LatLng(
                             position.coords.latitude, position.coords.longitude);
                     autocomplete.setBounds(new google.maps.LatLngBounds(geolocation,
@@ -134,7 +135,8 @@
 </div>
 
 <div class="row" style="background: #000">
-    <div id="background-block" class="flow-img" style="background-image: url(media/images/bg_mask.png), url(media/images/default/concert-smoke.jpg)"></div>
+    <div id="background-block" class="flow-img"
+         style="background-image: url(media/images/bg_mask.png), url(media/images/default/concert-smoke.jpg)"></div>
 </div>
 
 <div class="row">
@@ -147,17 +149,20 @@
 </div>
 <form enctype="multipart/form-data" action="createEvent" method="post" id="create-event-form">
 <h5>Event Detail</h5>
+
 <div class="form-group">
     <label for="event-name">Event Name</label>
-    <input type="text" class="form-control" placeholder="Choose Event Name" name="event_name" id="event-name" required />
+    <input type="text" class="form-control" placeholder="Choose Event Name" name="event_name" id="event-name"
+           required/>
 </div>
 <div class="form-group">
     <label for="event-background">Event Logo</label>
+
     <div class="input-group">
 							<span class="input-group-btn">
 								<span class="btn btn-primary btn-file">
 									Open
-									<input type="file" name="event_logo" id="event-logo" accept="image/*" />
+									<input type="file" name="event_logo" id="event-logo" accept="image/*"/>
 								</span>
 							</span>
         <input type="text" class="form-control" readonly="" disabled="disabled">
@@ -165,6 +170,7 @@
 </div>
 <div class="form-group">
     <label for="datepicker-start">Start Date &amp; Time</label>
+
     <div class="input-prepend input-datepicker">
         <button type="button" class="btn">
             <span class="fui-calendar"></span>
@@ -175,6 +181,7 @@
 </div>
 <div class="form-group">
     <label for="datepicker-end">End Date &amp; Time</label>
+
     <div class="input-prepend input-datepicker">
         <button type="button" class="btn">
             <span class="fui-calendar"></span>
@@ -191,21 +198,11 @@
         <option value="select_category">
             Select categoty...
         </option>
-        <option value="business">
-            Business
-        </option>
-        <option value="music">
-            Music
-        </option>
-        <option value="food_and_drink">
-            Food &amp; Drink
-        </option>
-        <option value="film_and_media">
-            Film &amp; Media
-        </option>
-        <option value="other">
-            Other
-        </option>
+        <c:forEach items="${eventCategories}" var="category">
+            <option value="${category.id}">
+                    ${category.type}
+            </option>
+        </c:forEach>
     </select>
 </div>
 <div class="form-group">
@@ -214,28 +211,22 @@
         <option value="select_type">
             Select type...
         </option>
-        <option value="conference">
-            Conference
-        </option>
-        <option value="party">
-            Party
-        </option>
-        <option value="concert">
-            Concert
-        </option>
-        <option value="other">
-            Other
-        </option>
+        <c:forEach items="${eventTypes}" var="type">
+            <option value="conference">
+                    ${type.type}
+            </option>
+        </c:forEach>
     </select>
 </div>
 
 <div class="form-group">
     <label for="event-background">Event Background</label>
+
     <div class="input-group">
 							<span class="input-group-btn">
 								<span class="btn btn-primary btn-file">
 									Open
-									<input type="file" name="event_background" id="event-background" accept="image/*" />
+									<input type="file" name="event_background" id="event-background" accept="image/*"/>
 								</span>
 							</span>
         <input type="text" class="form-control" readonly="" disabled="disabled">
@@ -244,15 +235,18 @@
 </div>
 <div class="form-group">
     <label for="event-details">Event Description</label>
-    <textarea rows="4" placeholder="Tell users about your event" class="form-control" name="event_description" id="event-details" form="create-event-form"></textarea>
+    <textarea rows="4" placeholder="Tell users about your event" class="form-control" name="event_description"
+              id="event-details" form="create-event-form"></textarea>
 </div>
 <div class="form-group">
     <label for="event-location">Address</label>
-    <input type="text" class="form-control" placeholder="Enter Address for your event" name="event_location" id="event-location" onFocus="geolocate()" />
+    <input type="text" class="form-control" placeholder="Enter Address for your event" name="event_location"
+           id="event-location" onFocus="geolocate()"/>
 </div>
 <div class="form-group" id="googleMap" style="height:380px;"></div>
 
 <h5>Create Tickets</h5>
+
 <div class="form-group">
     <div id="tickets">
         <div class="row create-tickets-header hidden-xs">
@@ -328,6 +322,7 @@
 </div>
 
 <h5>Additional Settings</h5>
+
 <div class="form-group">
     <span class="as-label">Listing privacy</span>
     <label class="radio checked">
@@ -382,35 +377,35 @@
 <script src="js/application.js"></script>
 
 <script type="text/javascript">
-    $(document).on("keypress", 'form', function(e) {
+    $(document).on("keypress", 'form', function (e) {
         var code = e.keyCode || e.which;
         if (code == 13) {
             e.preventDefault();
             return false;
         }
     });
-    $(document).ready(function() {
+    $(document).ready(function () {
         $("#background-block").css("height", 2 * $(window).height() / 5);
 
-        $('#free-ticket').click(function() {
+        $('#free-ticket').click(function () {
             var id = getLastId()
             var priceInput = '<input type="text" class="form-control" value="Free" name="event_ticket_price_' + id + '" id="event-ticket-price-' + id + '" readonly="" disabled="disabled" />';
             addTicket(priceInput);
         });
 
-        $('#paid-ticket').click(function() {
+        $('#paid-ticket').click(function () {
             var id = getLastId()
             var priceInput = '<input type="number" class="form-control" placeholder="0" name="event_ticket_price_' + id + '" id="event-ticket-price-' + id + '" min="0" />';
             addTicket(priceInput);
         });
 
-        $('#donation-ticket').click(function() {
+        $('#donation-ticket').click(function () {
             var id = getLastId()
             var priceInput = '<input type="text" class="form-control" value="Donation" name="event_ticket_price_' + id + '" id="event-ticket-price-' + id + '" readonly="" disabled="disabled" />';
             addTicket(priceInput);
         });
 
-        var addTicket = function(priceInput) {
+        var addTicket = function (priceInput) {
             var id = getLastId();
             $('#tickets > #tickets-body:last').append(
                     '<div id="' + id + '" class="row">' +
@@ -463,7 +458,7 @@
             return this;
         };
 
-        var getLastId = function() {
+        var getLastId = function () {
             var stringId = $('#tickets > #tickets-body:last .row:last').attr('id');
             var id = 0;
             if (stringId != 'undefined' && !isNaN(stringId)) {
@@ -474,13 +469,13 @@
 
     });
 
-    $(window).resize(function() {
+    $(window).resize(function () {
         $("#background-block").css("height", 2 * $(window).height() / 5);
     });
 
-    $(document).on('click', "#tickets .delete-row", function() {
+    $(document).on('click', "#tickets .delete-row", function () {
         var tr = $(this).closest('.row');
-        tr.fadeOut(400, function() {
+        tr.fadeOut(400, function () {
             tr.remove();
         });
         return false;

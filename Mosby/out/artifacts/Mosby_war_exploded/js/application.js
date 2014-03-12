@@ -117,7 +117,7 @@ String.prototype.repeat = function(num) {
         $('#datepicker-start').datepicker({
             showOtherMonths: true,
             selectOtherMonths: true,
-            dateFormat: "d MM, yy",
+            dateFormat: "dd/mm/yy",
             yearRange: '-1:+1'
         }).prev('.btn').on('click', function (e) {
             e && e.preventDefault();
@@ -128,7 +128,7 @@ String.prototype.repeat = function(num) {
         $('#datepicker-end').datepicker({
             showOtherMonths: true,
             selectOtherMonths: true,
-            dateFormat: "d MM, yy",
+            dateFormat: "dd/mm/yy",
             yearRange: '-1:+1'
         }).prev('.btn').on('click', function (e) {
             e && e.preventDefault();
