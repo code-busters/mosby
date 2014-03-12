@@ -1,39 +1,28 @@
 package main.java.com.mosby.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import main.java.com.mosby.model.annotations.dao.*;
+import main.java.com.mosby.model.annotations.validate.*;
 
-@Entity
 @Table(name="registrations")
 public class Registration {
-	@Id
+	
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="user_ref")	
-	private int userRef;
+	@Key(name="user_ref")	
+	private User user = null;
 	
-	@Column(name="event_ref")
-	private int eventRef;
+	@Key(name="event_ref")
+	private Event event = null;
 
-	
-	
 	public Registration() {
 	}
 
-	public Registration(int id, int userRef, int eventRef) {
+	public Registration(int id, User user, Event event) {
 		super();
 		this.id = id;
-		this.userRef = userRef;
-		this.eventRef = eventRef;
-	}
-
-	public Registration(int userRef, int eventRef) {
-		super();
-		this.userRef = userRef;
-		this.eventRef = eventRef;
+		this.user = user;
+		this.event = event;
 	}
 
 	public int getId() {
@@ -44,21 +33,20 @@ public class Registration {
 		this.id = id;
 	}
 
-	public int getUserRef() {
-		return userRef;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUserRef(int userRef) {
-		this.userRef = userRef;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	public int getEventRef() {
-		return eventRef;
+	public Event getEvent() {
+		return event;
 	}
 
-	public void setEventRef(int eventRef) {
-		this.eventRef = eventRef;
+	public void setEvent(Event event) {
+		this.event = event;
 	}
-		
 
 }

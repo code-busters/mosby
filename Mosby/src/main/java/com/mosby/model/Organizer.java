@@ -1,20 +1,16 @@
 package main.java.com.mosby.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import main.java.com.mosby.model.annotations.dao.*;
+import main.java.com.mosby.model.annotations.validate.*;
 
-@Entity
 @Table(name = "organizers")
 public class Organizer {
 
-	@Id
 	@Column(name = "id")
 	private int id;
 	
-	@Column(name = "base_user_info_ref")
-	private int baseUserInfoRef;
+	@Key(name = "user_ref")
+	private User user = null;
 	
 	@Column(name = "name")
 	private String name;
@@ -37,23 +33,11 @@ public class Organizer {
 	public Organizer() {
 	}
 
-	public Organizer(int baseUserInfoRef, String name, String email,
-			String phone, String about, String location, String logoImage) {
-		super();
-		this.baseUserInfoRef = baseUserInfoRef;
-		this.name = name;
-		this.email = email;
-		this.phone = phone;
-		this.about = about;
-		this.location = location;
-		this.logoImage = logoImage;
-	}
-
-	public Organizer(int id, int baseUserInfoRef, String name, String email,
+	public Organizer(int id, User user, String name, String email,
 			String phone, String about, String location, String logoImage) {
 		super();
 		this.id = id;
-		this.baseUserInfoRef = baseUserInfoRef;
+		this.user = user;
 		this.name = name;
 		this.email = email;
 		this.phone = phone;
@@ -70,12 +54,12 @@ public class Organizer {
 		this.id = id;
 	}
 
-	public int getBaseUserInfoRef() {
-		return baseUserInfoRef;
+	public User getUser() {
+		return user;
 	}
 
-	public void setBaseUserInfoRef(int baseUserInfoRef) {
-		this.baseUserInfoRef = baseUserInfoRef;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public String getName() {
@@ -125,7 +109,5 @@ public class Organizer {
 	public void setLogoImage(String logoImage) {
 		this.logoImage = logoImage;
 	}
-	 
-	
-	
+
 }

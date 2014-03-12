@@ -1,21 +1,16 @@
 package main.java.com.mosby.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import main.java.com.mosby.model.annotations.dao.*;
+import main.java.com.mosby.model.annotations.validate.*;
 
-
-@Entity
 @Table(name="tickets_info")
 public class TicketInfo {
 	
-	@Id
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="event_ref")
-	private int eventRef;
+	@Key(name = "event_ref")
+	private Event event = null;
 	
 	@Column(name="type")
 	private String type;
@@ -33,21 +28,11 @@ public class TicketInfo {
 	public TicketInfo() {
 	}
 
-	public TicketInfo(int eventRef, String type, String description,
-			int maxNumber, int price) {
-		super();
-		this.eventRef = eventRef;
-		this.type = type;
-		this.description = description;
-		this.maxNumber = maxNumber;
-		this.price = price;
-	}
-
-	public TicketInfo(int id, int eventRef, String type, String description,
+	public TicketInfo(int id, Event event, String type, String description,
 			int maxNumber, int price) {
 		super();
 		this.id = id;
-		this.eventRef = eventRef;
+		this.event = event;
 		this.type = type;
 		this.description = description;
 		this.maxNumber = maxNumber;
@@ -60,14 +45,6 @@ public class TicketInfo {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public int getEventRef() {
-		return eventRef;
-	}
-
-	public void setEventRef(int eventRef) {
-		this.eventRef = eventRef;
 	}
 
 	public String getType() {

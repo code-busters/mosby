@@ -1,25 +1,19 @@
 package main.java.com.mosby.model;
 
-import java.sql.Timestamp;
+import java.sql.Time;
+import java.sql.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import main.java.com.mosby.model.annotations.dao.*;
+import main.java.com.mosby.model.annotations.validate.*;
 
-import main.java.com.mosby.model.annotations.validate.EndFuture;
-import main.java.com.mosby.model.annotations.validate.Size;
-import main.java.com.mosby.model.annotations.validate.StartFuture;
-
-@Entity
 @Table(name="events")
 public class Event {
-	@Id
+	
 	@Column(name="id")
 	private int id;
 
-	@Column(name="organizers_ref")
-	private int organizersRef;
+	@Key(name="organizer_ref")
+	private Organizer organizer = null;
 	
 	@Column(name="name")	
 	private String name;
@@ -27,19 +21,23 @@ public class Event {
 	@Column(name="description")
 	private String description;
 	
-	@Column(name="categories_ref")
-	private int categoriesRef;
+	@Key(name="category_ref")
+	private EventCategory eventCategory = null;
 	
-	@Column(name="type_ref")
-	private int typeRef;
+	@Key(name="type_ref")
+	private EventType eventType = null;
 	
-	@StartFuture
-	@Column(name="start_datetime")
-	private Timestamp startDatetime;
-
-	@EndFuture
-	@Column(name="end_datetime")
-	private Timestamp endDatetime;
+	@Column(name="start_date")
+	private Date startDate;
+	
+	@Column(name="start_time")
+	private Time startTime;
+	
+	@Column(name="end_date")
+	private Date endDate;
+	
+	@Column(name="end_time")
+	private Time endTime;
 	
 	@Column(name="location")
 	private String location;
@@ -53,34 +51,21 @@ public class Event {
 	public Event() {
 	}
 
-	public Event(int organizersRef, String name, String description,
-			int catregoriesRef, int typeRef, Timestamp start, Timestamp end,
-			String location, String logo, String background) {
-		super();
-		this.organizersRef = organizersRef;
-		this.name = name;
-		this.description = description;
-		this.categoriesRef = catregoriesRef;
-		this.typeRef = typeRef;
-		this.startDatetime = start;
-		this.endDatetime = end;
-		this.location = location;
-		this.logo = logo;
-		this.background = background;
-	}
-
-	public Event(int id, int organizersRef, String name, String description,
-			int catregoriesRef, int typeRef, Timestamp start, Timestamp end,
-			String location, String logo, String background) {
+	public Event(int id, Organizer organizer, String name, String description,
+			EventCategory eventCategory, EventType eventType, Date startDate,
+			Time startTime, Date endDate, Time endTime, String location,
+			String logo, String background) {
 		super();
 		this.id = id;
-		this.organizersRef = organizersRef;
+		this.organizer = organizer;
 		this.name = name;
 		this.description = description;
-		this.categoriesRef = catregoriesRef;
-		this.typeRef = typeRef;
-		this.startDatetime = start;
-		this.endDatetime = end;
+		this.eventCategory = eventCategory;
+		this.eventType = eventType;
+		this.startDate = startDate;
+		this.startTime = startTime;
+		this.endDate = endDate;
+		this.endTime = endTime;
 		this.location = location;
 		this.logo = logo;
 		this.background = background;
@@ -94,12 +79,12 @@ public class Event {
 		this.id = id;
 	}
 
-	public int getOrganizersRef() {
-		return organizersRef;
+	public Organizer getOrganizer() {
+		return organizer;
 	}
 
-	public void setOrganizersRef(int organizersRef) {
-		this.organizersRef = organizersRef;
+	public void setOrganizer(Organizer organizer) {
+		this.organizer = organizer;
 	}
 
 	public String getName() {
@@ -118,36 +103,52 @@ public class Event {
 		this.description = description;
 	}
 
-	public int getCategoriesRef() {
-		return categoriesRef;
+	public EventCategory getEventCategory() {
+		return eventCategory;
 	}
 
-	public void setCategoriesRef(int catregoriesRef) {
-		this.categoriesRef = catregoriesRef;
+	public void setEventCategory(EventCategory eventCategory) {
+		this.eventCategory = eventCategory;
 	}
 
-	public int getTypeRef() {
-		return typeRef;
+	public EventType getEventType() {
+		return eventType;
 	}
 
-	public void setTypeRef(int typeRef) {
-		this.typeRef = typeRef;
+	public void setEventType(EventType eventType) {
+		this.eventType = eventType;
 	}
 
-	public Timestamp getStartDatetime() {
-		return startDatetime;
+	public Date getStartDate() {
+		return startDate;
 	}
 
-	public void setStartDatetime(Timestamp startDatetime) {
-		this.startDatetime = startDatetime;
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
 	}
 
-	public Timestamp getEndDatetime() {
-		return endDatetime;
+	public Time getStartTime() {
+		return startTime;
 	}
 
-	public void setEndDatetime(Timestamp endDatetime) {
-		this.endDatetime = endDatetime;
+	public void setStartTime(Time startTime) {
+		this.startTime = startTime;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
+	public Time getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(Time endTime) {
+		this.endTime = endTime;
 	}
 
 	public String getLocation() {
@@ -173,4 +174,5 @@ public class Event {
 	public void setBackground(String background) {
 		this.background = background;
 	}
+
 }

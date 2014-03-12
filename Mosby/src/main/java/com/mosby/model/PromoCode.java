@@ -1,19 +1,16 @@
 package main.java.com.mosby.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import main.java.com.mosby.model.annotations.dao.*;
+import main.java.com.mosby.model.annotations.validate.*;
 
-@Entity
 @Table(name="promo_codes")
 public class PromoCode {
-	@Id
+	
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="event_ref")	
-	private int eventRef;
+	@Key(name="event_ref")	
+	private Event event = null;
 	
 	@Column(name="code")	
 	private String code;
@@ -30,21 +27,11 @@ public class PromoCode {
 	public PromoCode() {
 	}
 
-	public PromoCode(int eventRef, String code, int discount,
-			String description, int maxNumber) {
-		super();
-		this.eventRef = eventRef;
-		this.code = code;
-		this.discount = discount;
-		this.description = description;
-		this.maxNumber = maxNumber;
-	}
-
-	public PromoCode(int id, int eventRef, String code, int discount,
+	public PromoCode(int id, Event event, String code, int discount,
 			String description, int maxNumber) {
 		super();
 		this.id = id;
-		this.eventRef = eventRef;
+		this.event = event;
 		this.code = code;
 		this.discount = discount;
 		this.description = description;
@@ -59,12 +46,12 @@ public class PromoCode {
 		this.id = id;
 	}
 
-	public int getEventRef() {
-		return eventRef;
+	public Event getEvent() {
+		return event;
 	}
 
-	public void setEventRef(int eventRef) {
-		this.eventRef = eventRef;
+	public void setEvent(Event event) {
+		this.event = event;
 	}
 
 	public String getCode() {
@@ -98,6 +85,5 @@ public class PromoCode {
 	public void setMaxNumber(int maxNumber) {
 		this.maxNumber = maxNumber;
 	}
-
 	
 }

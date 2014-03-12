@@ -1,44 +1,32 @@
 package main.java.com.mosby.model;
 
+import main.java.com.mosby.model.annotations.dao.*;
+import main.java.com.mosby.model.annotations.validate.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-
-@Entity
 @Table(name="event_admins")
 public class EventAdmin {
-	@Id
+	
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="event_ref")	
-	private int eventRef;
+	@Key(name="event_ref")	
+	private Event event = null;
 	
-	@Column(name="user_ref")
-	private int userRef;
+	@Key(name="user_ref")
+	private User user = null;
+	
+	@Key(name="permission_ref")
+	private Permission permission = null;
 	
 	public EventAdmin() {
 	}
 
-	@Column(name="permission_ref")
-	private int rermissionRef;
-
-	public EventAdmin(int id, int eventRef, int userRef, int rermissionRef) {
+	public EventAdmin(int id, Event event, User user, Permission permission) {
 		super();
 		this.id = id;
-		this.eventRef = eventRef;
-		this.userRef = userRef;
-		this.rermissionRef = rermissionRef;
-	}
-
-	public EventAdmin(int eventRef, int userRef, int rermissionRef) {
-		super();
-		this.eventRef = eventRef;
-		this.userRef = userRef;
-		this.rermissionRef = rermissionRef;
+		this.event = event;
+		this.user = user;
+		this.permission = permission;
 	}
 
 	public int getId() {
@@ -49,29 +37,28 @@ public class EventAdmin {
 		this.id = id;
 	}
 
-	public int getEventRef() {
-		return eventRef;
+	public Event getEvent() {
+		return event;
 	}
 
-	public void setEventRef(int eventRef) {
-		this.eventRef = eventRef;
+	public void setEvent(Event event) {
+		this.event = event;
 	}
 
-	public int getUserRef() {
-		return userRef;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUserRef(int userRef) {
-		this.userRef = userRef;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	public int getRermissionRef() {
-		return rermissionRef;
+	public Permission getPermission() {
+		return permission;
 	}
 
-	public void setRermissionRef(int rermissionRef) {
-		this.rermissionRef = rermissionRef;
+	public void setPermission(Permission permission) {
+		this.permission = permission;
 	}
-	
 
 }

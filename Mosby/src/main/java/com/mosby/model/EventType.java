@@ -1,14 +1,11 @@
 package main.java.com.mosby.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import main.java.com.mosby.model.annotations.dao.*;
 
-@Entity
+
 @Table(name="event_types")
 public class EventType {
-	@Id
+	
 	@Column(name = "id")
 	private int id;
 	
@@ -16,11 +13,6 @@ public class EventType {
 	private String type;
 	
 	public EventType() {
-	}
-
-	public EventType(String type) {
-		super();
-		this.type = type;
 	}
 
 	public EventType(int id, String type) {

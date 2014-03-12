@@ -1,14 +1,11 @@
 package main.java.com.mosby.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import main.java.com.mosby.model.annotations.dao.*;
+import main.java.com.mosby.model.annotations.validate.*;
 
-@Entity
 @Table(name="permissions")
 public class Permission {
-	@Id
+	
 	@Column(name="id")
 	private int id;
 	
@@ -32,16 +29,6 @@ public class Permission {
 			boolean invite, boolean deleteUsers) {
 		super();
 		this.id = id;
-		this.adminPanel = adminPanel;
-		this.editEvent = editEvent;
-		this.invite = invite;
-		this.deleteUsers = deleteUsers;
-	}
-
-
-	public Permission(boolean adminPanel, boolean editEvent, boolean invite,
-			boolean deleteUsers) {
-		super();
 		this.adminPanel = adminPanel;
 		this.editEvent = editEvent;
 		this.invite = invite;

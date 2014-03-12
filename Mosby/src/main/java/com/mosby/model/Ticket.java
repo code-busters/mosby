@@ -2,105 +2,91 @@ package main.java.com.mosby.model;
 
 import java.sql.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import main.java.com.mosby.model.annotations.dao.*;
+import main.java.com.mosby.model.annotations.validate.*;
 
-@Entity
 @Table(name="tickets")
 public class Ticket {
-	@Id
+	
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="registrations_ref")	
-	private int registrationsRef;
+	@Key(name="registration_ref")	
+	private Registration registration = null;
 	
-	@Column(name="tickets_info_ref")	
-	private int ticketsInfoRef;
+	@Key(name="ticket_info_ref")	
+	private TicketInfo ticketInfo = null;
 	
 	@Column(name="time_of_purchase")	
 	private Date timeOfPurchase;
 	
-	@Column(name="promo_codes_ref")	
-	private int promoCodesRef;
+	@Key(name="promo_code_ref")	
+	private PromoCode promoCode = null;
 	
 	@Column(name="checked")	
 	private boolean checked;
-	
 
 	public Ticket() {
 	}
 
-	public Ticket(int registrationsRef, int ticketsInfoRef,
-			Date timeOfPurchase, int promoCodesRef, boolean checked) {
-		super();
-		this.registrationsRef = registrationsRef;
-		this.ticketsInfoRef = ticketsInfoRef;
-		this.timeOfPurchase = timeOfPurchase;
-		this.promoCodesRef = promoCodesRef;
-		this.checked = checked;
-	}
-
-	public Ticket(int id, int registrationsRef, int ticketsInfoRef,
-			Date timeOfPurchase, int promoCodesRef, boolean checked) {
-		super();
-		this.id = id;
-		this.registrationsRef = registrationsRef;
-		this.ticketsInfoRef = ticketsInfoRef;
-		this.timeOfPurchase = timeOfPurchase;
-		this.promoCodesRef = promoCodesRef;
-		this.checked = checked;
-	}
 
 	public int getId() {
 		return id;
 	}
 
+
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public int getRegistrationsRef() {
-		return registrationsRef;
+
+	public Registration getRegistration() {
+		return registration;
 	}
 
-	public void setRegistrationsRef(int registrationsRef) {
-		this.registrationsRef = registrationsRef;
+
+	public void setRegistration(Registration registration) {
+		this.registration = registration;
 	}
 
-	public int getTicketsInfoRef() {
-		return ticketsInfoRef;
+
+	public TicketInfo getTicketInfo() {
+		return ticketInfo;
 	}
 
-	public void setTicketsInfoRef(int ticketsInfoRef) {
-		this.ticketsInfoRef = ticketsInfoRef;
+
+	public void setTicketInfo(TicketInfo ticketInfo) {
+		this.ticketInfo = ticketInfo;
 	}
+
 
 	public Date getTimeOfPurchase() {
 		return timeOfPurchase;
 	}
 
+
 	public void setTimeOfPurchase(Date timeOfPurchase) {
 		this.timeOfPurchase = timeOfPurchase;
 	}
 
-	public int getPromoCodesRef() {
-		return promoCodesRef;
+
+	public PromoCode getPromoCode() {
+		return promoCode;
 	}
 
-	public void setPromoCodesRef(int promoCodesRef) {
-		this.promoCodesRef = promoCodesRef;
+
+	public void setPromoCode(PromoCode promoCode) {
+		this.promoCode = promoCode;
 	}
+
 
 	public boolean isChecked() {
 		return checked;
 	}
 
+
 	public void setChecked(boolean checked) {
 		this.checked = checked;
 	}
-
 	
 }

@@ -2,61 +2,40 @@ package main.java.com.mosby.model;
 
 import java.sql.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import main.java.com.mosby.model.annotations.dao.*;
+import main.java.com.mosby.model.annotations.validate.*;
 
-@Entity
-@Table(name = "user_profiles")
+@Table(name = "users_profile")
 public class UserProfile {
-	@Id
-	@Column(name="id")
+
+	@Column(name = "id")
 	private int id;
-	
-	@Column(name="base_users_info_ref")	
-	private int baseUsersInfoRef;
-	
-	@Column(name="image")
+
+	@Column(name = "image")
 	private String image;
-	
-	@Column(name="country")
+
+	@Column(name = "country")
 	private String country;
-	
-	@Column(name="city")	
+
+	@Column(name = "city")
 	private String city;
-	
-	@Column(name="birth_date")
+
+	@Column(name = "birth_date")
 	private Date birthDate;
-	
-	@Column(name="site")
+
+	@Column(name = "site")
 	private String site;
-	
-	@Column(name="about")
+
+	@Column(name = "about")
 	private String about;
 
-	
 	public UserProfile() {
 	}
 
-	public UserProfile(int id, int baseUsersInfoRef, String image,
-			String country, String city, Date birthDate, String site,
-			String about) {
+	public UserProfile(int id, String image, String country, String city,
+			Date birthDate, String site, String about) {
 		super();
 		this.id = id;
-		this.baseUsersInfoRef = baseUsersInfoRef;
-		this.image = image;
-		this.country = country;
-		this.city = city;
-		this.birthDate = birthDate;
-		this.site = site;
-		this.about = about;
-	}
-
-	public UserProfile(int baseUsersInfoRef, String image, String country,
-			String city, Date birthDate, String site, String about) {
-		super();
-		this.baseUsersInfoRef = baseUsersInfoRef;
 		this.image = image;
 		this.country = country;
 		this.city = city;
@@ -71,14 +50,6 @@ public class UserProfile {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public int getBaseUsersInfoRef() {
-		return baseUsersInfoRef;
-	}
-
-	public void setBaseUsersInfoRef(int baseUsersInfoRef) {
-		this.baseUsersInfoRef = baseUsersInfoRef;
 	}
 
 	public String getImage() {
@@ -128,6 +99,5 @@ public class UserProfile {
 	public void setAbout(String about) {
 		this.about = about;
 	}
-	
-	
+
 }
