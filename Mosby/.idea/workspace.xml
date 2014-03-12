@@ -81,10 +81,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="createEvent.jsp" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="createEvent.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebContent/pages/createEvent.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="226" column="201" selection-start="8501" selection-end="8501" vertical-scroll-proportion="0.27552673" vertical-offset="3672" max-vertical-offset="8364">
+            <state line="460" column="74" selection-start="21181" selection-end="21181" vertical-scroll-proportion="-8.038462" vertical-offset="7611" max-vertical-offset="10217">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="eventPage.jsp" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/WebContent/pages/eventPage.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="107" column="106" selection-start="4050" selection-end="4050" vertical-scroll-proportion="0.4489465" vertical-offset="1542" max-vertical-offset="3689">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="styles.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebContent/css/styles.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="103" column="12" selection-start="1876" selection-end="1876" vertical-scroll-proportion="0.0" vertical-offset="1162" max-vertical-offset="10149">
               <folding />
             </state>
           </provider>
@@ -93,7 +111,7 @@
       <file leaf-file-name="navbar.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebContent/pages/parts/navbar.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="0" selection-start="66" selection-end="130" vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="952">
+            <state line="1" column="0" selection-start="66" selection-end="130" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="952">
               <folding />
             </state>
           </provider>
@@ -131,7 +149,6 @@
         <option value="$PROJECT_DIR$/src/test/java/main/java/com/mosby/utils/EncryptionUtilsTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/main/java/com/mosby/utils/StringUtilsTest.java" />
         <option value="$PROJECT_DIR$/WebContent/css/pro-features.css" />
-        <option value="$PROJECT_DIR$/WebContent/css/styles.css" />
         <option value="$PROJECT_DIR$/WebContent/pages/parts/navbar.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/model/EventCategorie.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/view/web/filters/EventAtributesFilter.java" />
@@ -141,10 +158,11 @@
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/view/web/servlets/EventPageServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/view/web/servlets/SignUpServlet.java" />
         <option value="$PROJECT_DIR$/WebContent/pages/index.jsp" />
-        <option value="$PROJECT_DIR$/WebContent/pages/eventPage.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/view/web/servlets/CreateEventServlet.java" />
         <option value="$PROJECT_DIR$/WebContent/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/WebContent/css/styles.css" />
         <option value="$PROJECT_DIR$/WebContent/pages/createEvent.jsp" />
+        <option value="$PROJECT_DIR$/WebContent/pages/eventPage.jsp" />
       </list>
     </option>
   </component>
@@ -422,7 +440,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/WebContent/WEB-INF/lib/javax.persistence.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -1165,11 +1183,12 @@
       <workItem from="1394612961222" duration="6316000" />
       <workItem from="1394619477200" duration="5447000" />
       <workItem from="1394651247130" duration="2883000" />
+      <workItem from="1394660075671" duration="628000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30777000" />
+    <option name="totallyTimeSpent" value="31405000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1196,7 +1215,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1517572" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14589989" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30669546" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1366,25 +1385,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/css/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="249" column="1" selection-start="5103" selection-end="5103" vertical-scroll-proportion="0.6234756" vertical-offset="3824" max-vertical-offset="8330">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/model/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="46" selection-start="171" selection-end="171" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
-          <folding />
-        </state>
+        <state line="6" column="46" selection-start="171" selection-end="171" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/model/UserProfile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="24" selection-start="407" selection-end="412" vertical-scroll-proportion="0.3887195" vertical-offset="0" max-vertical-offset="1734">
-          <folding />
-        </state>
+        <state line="20" column="24" selection-start="407" selection-end="412" vertical-scroll-proportion="0.3887195" vertical-offset="0" max-vertical-offset="1734" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/controller/services/ReadEventService.java">
@@ -1396,9 +1404,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/model/EventCategorie.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="29" selection-start="233" selection-end="233" vertical-scroll-proportion="0.1554878" vertical-offset="0" max-vertical-offset="731">
-          <folding />
-        </state>
+        <state line="9" column="29" selection-start="233" selection-end="233" vertical-scroll-proportion="0.1554878" vertical-offset="0" max-vertical-offset="731" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/view/web/filters/SignUpFilter.java">
@@ -1410,9 +1416,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/model/Event.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="29" selection-start="1061" selection-end="1071" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="2159">
-          <folding />
-        </state>
+        <state line="50" column="29" selection-start="1061" selection-end="1071" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="2159" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/controller/services/ReadUsersService.java">
@@ -1464,13 +1468,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/pages/eventPage.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="197" column="102" selection-start="7922" selection-end="7922" vertical-scroll-proportion="0.20097245" vertical-offset="3225" max-vertical-offset="3842">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/pages/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="75" column="62" selection-start="2687" selection-end="2696" vertical-scroll-proportion="0.3793651" vertical-offset="1036" max-vertical-offset="2380">
@@ -1480,12 +1477,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/js/application.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="133" column="152" selection-start="4836" selection-end="4836" vertical-scroll-proportion="0.4817073" vertical-offset="1945" max-vertical-offset="2601">
-          <folding>
-            <marker date="1394570539039" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1394570539039" expanded="false" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
+        <state line="133" column="152" selection-start="4836" selection-end="4836" vertical-scroll-proportion="0.4817073" vertical-offset="1945" max-vertical-offset="2601" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/controller/services/CreateEventService.java">
@@ -1518,11 +1510,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/model/BaseUserInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="65" selection-start="424" selection-end="424" vertical-scroll-proportion="0.49237806" vertical-offset="0" max-vertical-offset="1870">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
+        <state line="19" column="65" selection-start="424" selection-end="424" vertical-scroll-proportion="0.49237806" vertical-offset="0" max-vertical-offset="1870" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/view/web/filters/EventAtributesFilter.java">
@@ -1541,14 +1529,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/pages/parts/navbar.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="66" selection-end="130" vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="952">
+        <state line="1" column="0" selection-start="66" selection-end="130" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="952">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/css/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="103" column="12" selection-start="1876" selection-end="1876" vertical-scroll-proportion="0.0" vertical-offset="1162" max-vertical-offset="10149">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/pages/createEvent.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="226" column="201" selection-start="8501" selection-end="8501" vertical-scroll-proportion="0.27552673" vertical-offset="3672" max-vertical-offset="8364">
+        <state line="460" column="74" selection-start="21181" selection-end="21181" vertical-scroll-proportion="-8.038462" vertical-offset="7611" max-vertical-offset="10217">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/pages/eventPage.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="107" column="106" selection-start="4050" selection-end="4050" vertical-scroll-proportion="0.4489465" vertical-offset="1542" max-vertical-offset="3689">
           <folding />
         </state>
       </provider>

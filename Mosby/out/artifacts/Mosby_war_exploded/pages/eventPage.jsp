@@ -104,44 +104,56 @@
             </p>
 
             <div id="googleMap" class="" style="height:380px;"></div>
-            <div id="tickets">
-                <div class="row create-tickets-header hidden-xs">
-                    <div class="col-md-8 col-sm-8">Ticket type</div>
-                    <div class="col-md-2 col-sm-2">Price</div>
-                    <div class="col-md-2 col-sm-2">Quantity</div>
-                </div>
-                <div id="tickets-body">
-                    <div id="0" class="row">
-                        <div class="col-md-8 col-sm-8">
-                            <h6 class="visible-xs">Ticket type</h6>
-
-                            <p>Early bird</p>
-								<span class="ticket-info">
-									Include free beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer
-								</span>
+            <form action="registerServlet" method="post" id="register-for-event-form">
+                <div id="tickets">
+                    <div class="row create-tickets-header hidden-xs">
+                        <div class="col-md-8 col-sm-8">Ticket type</div>
+                        <div class="col-md-2 col-sm-2">Price</div>
+                        <div class="col-md-2 col-sm-2">Quantity</div>
+                    </div>
+                    <div id="tickets-body">
+                        <div id="0" class="row">
+                            <div class="col-md-8 col-sm-8">
+                                <h6 class="visible-xs">Ticket type</h6>
+                                <p>Early bird</p>
+									<span class="ticket-info">
+										Include free beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer
+									</span>
+                            </div>
+                            <div class="col-md-2 col-sm-2">
+                                <h6 class="visible-xs">Price</h6>
+                                <p>$220</p>
+                            </div>
+                            <div class="col-md-2 col-sm-2">
+                                <h6 class="visible-xs">Quantity</h6>
+                                <select name="ticket_quantity_0" value="0" class="select-block ticket-quantity" form="register-for-event-form">
+                                    <option value="0" selected="selected">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="col-md-2 col-sm-2">
-                            <h6 class="visible-xs">Price</h6>
-
-                            <p>$220</p>
-                        </div>
-                        <div class="col-md-2 col-sm-2">
-                            <h6 class="visible-xs">Quantity</h6>
-                            <select name="ticket_quantity_0" value="0" class="select-block ticket-quantity">
-                                <option value="0" selected="selected">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
+                    </div>
+                    <div class="row ">
+                        <div class="pull-right">
+                            <div class="col-md-5 text-right">
+                                <label for="promo-code">Promo code:</label>
+                            </div>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control" placeholder="Enter code" name="promo_code" id="promo-code" />
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!--END TICKETS-->
-            <div class="col-md-3 col-sm-3 col-md-offset-9 col-sm-offset-9">
-                <a id="order-now" href="#fakelink?eventId=${event.id}&ticket_0=0"
-                   class="btn btn-block btn-lg btn-primary">Order Now</a>
-            </div>
+                <!--END TICKETS-->
+                <div class="col-md-3 col-sm-3 col-md-offset-9 col-sm-offset-9">
+                    <!--						<a id="order-now" href="#fakelink?tourId=0&ticket_0=0" class="btn btn-block btn-lg btn-primary">Order Now</a>-->
+                    <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit" value="Order Now">
+                        Order Now
+                    </button>
+                </div>
+            </form>
         </div>
         <div class="organizer-details col-md-3">
             <img src="media/images/users/GDG-Lviv.png">
@@ -193,26 +205,6 @@
     });
     $(window).resize(function () {
         $("#background-block").css("height", 4*$(window).height()/5);
-    });
-    $('.ticket-quantity').on('change', function (e) {
-        var row = $(this).closest('.row');
-        var ticketId = row.attr('id');
-        var optionSelected = $("option:selected", this);
-        var quantity = this.value;
-
-        $('#order-now').each(function () {
-            var indexOfString = this.href.indexOf('ticket_' + ticketId + '=');
-            if (indexOfString >= 0) {
-                var temp = this.href;
-                var indexOfNextParam = temp.indexOf('&', indexOfString);
-                indexOfNextParam = (indexOfNextParam > 0) ? indexOfNextParam : temp.length;
-                var prevTicketOrder = temp.slice(indexOfString, indexOfNextParam);
-                temp = temp.replace(prevTicketOrder, 'ticket_' + ticketId + '=' + quantity);
-                this.href = temp;
-            } else {
-                this.href += '&ticket_' + ticketId + '=' + quantity;
-            }
-        })
     });
 </script>
 

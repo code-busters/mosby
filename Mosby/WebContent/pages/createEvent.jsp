@@ -321,6 +321,66 @@
         <span class="fui-plus"></span>Donation</a>
 </div>
 
+<h5>Promo codes</h5>
+<div class="form-group">
+    <div id="promo-codes">
+        <div class="row promo-codes-header hidden-xs">
+            <div class="col-md-6 col-sm-6">Promo code</div>
+            <div class="col-md-2 col-sm-2">Quantity available</div>
+            <div class="col-md-2 col-sm-2">Discount</div>
+            <div class="col-md-2 col-sm-2 text-center">Actions</div>
+        </div>
+        <div id="promo-codes-body">
+            <!--
+                                            <div id="0" class="row">
+                                                <div class="col-md-6 col-sm-6">
+                                                    <label class="visible-xs" for="promo-code-code-0">Promo code</label>
+                                                    <input type="text" class="form-control" placeholder="Examples: #Event_code32, R2D2" name="promo_code_code_0" id="promo-code-code-0" />
+                                                </div>
+                                                <div class="col-md-2 col-sm-2">
+                                                    <label class="visible-xs" for="promo-code-quantity-0">Quantity available</label>
+                                                    <input type="number" class="form-control" placeholder="5" name="promo_code_quantity_0" id="promo-code-quantity-0" min="1" />
+                                                </div>
+                                                <div class="col-md-2 col-sm-2">
+                                                    <label class="visible-xs" for="promo-code-discount-0">Discount</label>
+                                                    <input type="number" class="form-control" placeholder="10%" name="promo_code_discount_0" id="promo-code-discount-0" min="0" />
+                                                </div>
+                                                <div class="col-md-2 col-sm-2 actions text-center">
+                                                    <label class="visible-xs text-left">Actions</label>
+                                                    <a href="#" data-toggle="modal" data-target="#my-promo-modal-0">
+                                                        <span class="fui-gear"></span>
+                                                    </a>
+                                                    <a class="delete-nearby-row" href="#">
+                                                        <span class="fui-trash"></span>
+                                                    </a>
+                                                </div>
+                                                <div class="modal fade" id="my-promo-modal-0" tabindex="-1" role="dialog" aria-labelledby="my-promo-modal-label-0" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+													<h4 class="modal-title" id="my-promo-modal-label-0">Promo Code Settings</h4>
+												</div>
+												<div class="modal-body">
+													<div class="form-group">
+														<label for="promo-code-description-0">Promo Code Description</label>
+														<textarea rows="3" placeholder="Additional info about promo code" class="form-control" name="promo_code_description_0" id="promo-code-description-0" form="create-event-form"></textarea>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+-->
+        </div>
+    </div>
+    <!--END PROMO CODES-->
+</div>
+<div class="col-md-3 col-sm-4 add-promo-code">
+    <a id="add-promo-code" href="#fakelink" class="btn btn-block btn-lg btn-primary">
+        <span class="fui-plus"></span>Promo code</a>
+</div>
+
 <h5>Additional Settings</h5>
 
 <div class="form-group">
@@ -405,7 +465,7 @@
             addTicket(priceInput);
         });
 
-        var addTicket = function (priceInput) {
+        var addTicket = function(priceInput) {
             var id = getLastId();
             $('#tickets > #tickets-body:last').append(
                     '<div id="' + id + '" class="row">' +
@@ -422,11 +482,11 @@
                             priceInput +
                             '</div>' +
                             '<div class="col-md-2 col-sm-2 actions text-center">' +
-                            '<label class="visible-xs text-left">Ticket name</label>' +
+                            '<label class="visible-xs text-left">Actions</label>' +
                             '<a href="#" data-toggle="modal" data-target="#my-modal-' + id + '">' +
                             '<span class="fui-gear"></span>' +
                             '</a>' +
-                            '<a class="delete-row" href="#">' +
+                            '<a class="delete-nearby-row" href="#">' +
                             '<span class="fui-trash"></span>' +
                             '</a>' +
                             '</div>' +
@@ -440,7 +500,7 @@
                             '<div class="modal-body">' +
                             '<div class="form-group">' +
                             '<label for="ticket-description-' + id + '">Ticket Description</label>' +
-                            '<textarea rows="3" placeholder="Additional info about ticket" class="form-control" id="ticket-description-' + id + '" form="create-event-form"></textarea>' +
+                            '<textarea rows="3" placeholder="Additional info about ticket" class="form-control" name="promo_code_description_' + id + '" id="ticket-description-' + id + '" form="create-event-form"></textarea>' +
                             '</div>' +
                             '<div class="form-group">' +
                             '<span>Tickets Allowed Per Order</span>' +
@@ -458,6 +518,55 @@
             return this;
         };
 
+        $('#add-promo-code').click(function() {
+            var stringId = $('#promo-codes > #promo-codes-body:last .row:last').attr('id');
+            var id = 0;
+            if (stringId != 'undefined' && !isNaN(stringId)) {
+                id = parseInt(stringId) + 1;
+            }
+            $('#promo-codes > #promo-codes-body:last').append(
+                    '<div id="' + id + '" class="row">' +
+                            '<div class="col-md-6 col-sm-6">' +
+                            '<label class="visible-xs" for="promo-code-code-' + id + '">Promo code</label>' +
+                            '<input type="text" class="form-control" placeholder="Examples: #Event_code32, R2D2" name="promo_code_code_' + id + '" id="promo-code-code-' + id + '" />' +
+                            '</div>' +
+                            '<div class="col-md-2 col-sm-2">' +
+                            '<label class="visible-xs" for="promo-code-quantity-' + id + '">Quantity available</label>' +
+                            '<input type="number" class="form-control" placeholder="5" name="promo_code_quantity_' + id + '" id="promo-code-quantity-' + id + '" min="1" />' +
+                            '</div>' +
+                            '<div class="col-md-2 col-sm-2">' +
+                            '<label class="visible-xs" for="promo-code-discount-' + id + '">Discount</label>' +
+                            '<input type="number" class="form-control" placeholder="10%" name="promo_code_discount_' + id + '" id="promo-code-discount-' + id + '" min="0" />' +
+                            '</div>' +
+                            '<div class="col-md-2 col-sm-2 actions text-center">' +
+                            '<label class="visible-xs text-left">Actions</label>' +
+                            '<a href="#" data-toggle="modal" data-target="#my-promo-modal-' + id + '">' +
+                            '<span class="fui-gear"></span>' +
+                            '</a>' +
+                            '<a class="delete-nearby-row" href="#">' +
+                            '<span class="fui-trash"></span>' +
+                            '</a>' +
+                            '</div>' +
+                            '<div class="modal fade" id="my-promo-modal-' + id + '" tabindex="-1" role="dialog" aria-labelledby="my-promo-modal-label-' + id + '" aria-hidden="true">' +
+                            '<div class="modal-dialog">' +
+                            '<div class="modal-content">' +
+                            '<div class="modal-header">' +
+                            '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>' +
+                            '<h4 class="modal-title" id="my-promo-modal-label-' + id + '">Promo Code Settings</h4>' +
+                            '</div>' +
+                            '<div class="modal-body">' +
+                            '<div class="form-group">' +
+                            '<label for="promo-code-description-' + id + '">Promo Code Description</label>' +
+                            '<textarea rows="3" placeholder="Additional info about promo code" class="form-control" name="promo_code_description_' + id + '" id="promo-code-description-' + id + '" form="create-event-form"></textarea>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>'
+            );
+        });
+
         var getLastId = function () {
             var stringId = $('#tickets > #tickets-body:last .row:last').attr('id');
             var id = 0;
@@ -473,10 +582,10 @@
         $("#background-block").css("height", 2 * $(window).height() / 5);
     });
 
-    $(document).on('click', "#tickets .delete-row", function () {
-        var tr = $(this).closest('.row');
-        tr.fadeOut(400, function () {
-            tr.remove();
+    $(document).on('click', ".delete-nearby-row", function() {
+        var row = $(this).closest('.row');
+        row.fadeOut(400, function() {
+            row.remove();
         });
         return false;
     });
