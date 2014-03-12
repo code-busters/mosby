@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="event_categories")
-public class EventCategorie {	
+public class EventCategorie {
 	@Id
 	@Column(name="id")
 	private int id;

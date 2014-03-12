@@ -1,11 +1,15 @@
 package main.java.com.mosby.model;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import main.java.com.mosby.model.annotations.validate.EndFuture;
+import main.java.com.mosby.model.annotations.validate.Size;
+import main.java.com.mosby.model.annotations.validate.StartFuture;
 
 @Entity
 @Table(name="events")
@@ -23,56 +27,61 @@ public class Event {
 	@Column(name="description")
 	private String description;
 	
-	@Column(name="catregories_ref")
-	private int catregoriesRef;
+	@Column(name="categories_ref")
+	private int categoriesRef;
 	
 	@Column(name="type_ref")
 	private int typeRef;
 	
+	@StartFuture
 	@Column(name="start_datetime")
-	private Date start;
+	private Timestamp startDatetime;
 
+	@EndFuture
 	@Column(name="end_datetime")
-	private Date end;
+	private Timestamp endDatetime;
 	
 	@Column(name="location")
 	private String location;
 	
-	@Column(name="image")
-	private String image;
+	@Column(name="logo")
+	private String logo;
+	
+	@Column(name="background")
+	private String background;
 
 	public Event() {
 	}
 
 	public Event(int organizersRef, String name, String description,
-			int catregoriesRef, int typeRef, Date start, Date end,
-			String location, String image) {
+			int catregoriesRef, int typeRef, Timestamp start, Timestamp end,
+			String location, String logo, String background) {
 		super();
 		this.organizersRef = organizersRef;
 		this.name = name;
 		this.description = description;
-		this.catregoriesRef = catregoriesRef;
+		this.categoriesRef = catregoriesRef;
 		this.typeRef = typeRef;
-		this.start = start;
-		this.end = end;
+		this.startDatetime = start;
+		this.endDatetime = end;
 		this.location = location;
-		this.image = image;
+		this.logo = logo;
 	}
 
 	public Event(int id, int organizersRef, String name, String description,
-			int catregoriesRef, int typeRef, Date start, Date end,
-			String location, String image) {
+			int catregoriesRef, int typeRef, Timestamp start, Timestamp end,
+			String location, String logo, String background) {
 		super();
 		this.id = id;
 		this.organizersRef = organizersRef;
 		this.name = name;
 		this.description = description;
-		this.catregoriesRef = catregoriesRef;
+		this.categoriesRef = catregoriesRef;
 		this.typeRef = typeRef;
-		this.start = start;
-		this.end = end;
+		this.startDatetime = start;
+		this.endDatetime = end;
 		this.location = location;
-		this.image = image;
+		this.logo = logo;
 	}
 
 	public int getId() {
@@ -107,12 +116,12 @@ public class Event {
 		this.description = description;
 	}
 
-	public int getCatregoriesRef() {
-		return catregoriesRef;
+	public int getCategoriesRef() {
+		return categoriesRef;
 	}
 
-	public void setCatregoriesRef(int catregoriesRef) {
-		this.catregoriesRef = catregoriesRef;
+	public void setCategoriesRef(int catregoriesRef) {
+		this.categoriesRef = catregoriesRef;
 	}
 
 	public int getTypeRef() {
@@ -123,20 +132,20 @@ public class Event {
 		this.typeRef = typeRef;
 	}
 
-	public Date getStart() {
-		return start;
+	public Timestamp getStartDatetime() {
+		return startDatetime;
 	}
 
-	public void setStart(Date start) {
-		this.start = start;
+	public void setStartDatetime(Timestamp startDatetime) {
+		this.startDatetime = startDatetime;
 	}
 
-	public Date getEnd() {
-		return end;
+	public Timestamp getEndDatetime() {
+		return endDatetime;
 	}
 
-	public void setEnd(Date end) {
-		this.end = end;
+	public void setEndDatetime(Timestamp endDatetime) {
+		this.endDatetime = endDatetime;
 	}
 
 	public String getLocation() {
@@ -147,13 +156,19 @@ public class Event {
 		this.location = location;
 	}
 
-	public String getImage() {
-		return image;
+	public String getLogo() {
+		return logo;
 	}
 
-	public void setImage(String image) {
-		this.image = image;
+	public void setLogo(String logo) {
+		this.logo = logo;
 	}
 
+	public String getBackground() {
+		return background;
+	}
 
+	public void setBackground(String background) {
+		this.background = background;
+	}
 }

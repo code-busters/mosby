@@ -244,12 +244,17 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	display: block;
 	margin-bottom: 3em;
 }
+.event h2 {
+    margin: 0 0 0.2em;
+    font-size: 1.3em;
+}
 .event-image {
 	height: 150px;
 }
 .event-detail li {
 	display: inline;
 	margin-right: 10px;
+    font-size: 0.9em;
 }
 .event-detail span[class^="fui-"] {
 	margin-right: 3px;

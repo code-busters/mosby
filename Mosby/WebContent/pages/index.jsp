@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 
 <head>
@@ -6,7 +7,7 @@
     <title>Mosby - event managment</title>
     <link rel="shortcut icon" href="media/images/favicon.ico">
     <link rel="icon" type="image/png" href="media/images/favicon.png"/>
-    <meta name="description" content="Mosby - make it simple. New event managment system" />
+    <meta name="description" content="Mosby - make it simple. New event managment system"/>
 
     <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
 
@@ -16,7 +17,6 @@
     <link href="css/flat-ui.css" rel="stylesheet">
     <link href="css/pro-features.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
-
 
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
@@ -50,54 +50,33 @@
         <div class="col-md-10 col-md-offset-1">
             <h3>Most popular</h3>
         </div>
-        <div class="col-md-10 col-sm-6 col-md-offset-1 event">
-            <div class="col-md-3">
-                <div class="event-image flow-img" style="background-image:url(media/images/events/thumbnail/metalica1-thumbnail.jpg)"></div>
+        <c:forEach items="${eventList}" var="event">
+            <div class="col-md-10 col-sm-6 col-md-offset-1 event">
+                <div class="col-md-3">
+                    <div class="event-image flow-img"
+                         style="background-image:url(media/images/events/background/${event.background})"></div>
+                </div>
+                <h2>${event.name}</h2>
+                <ul class="event-detail">
+                    <li>
+                        <span class="fui-calendar-solid"></span>
+                        ${event.startDatetime} - ${event.endDatetime}
+                    </li>
+                    <%--<li>--%>
+                        <%--<span class="fui-time"></span>21:00-00:00--%>
+                    <%--</li>--%>
+                    <li>
+                        <span class="fui-location"></span>${event.location}
+                    </li>
+                </ul>
+                <p>
+                   ${event.description}
+                </p>
+                <div class="text-right">
+                    <a href="<c:url value="/eventPage?eventId=${event.id}"/>">Read more >></a>
+                </div>
             </div>
-            <ul class="event-detail">
-                <li>
-                    <span class="fui-calendar-solid"></span>22/03/2014</li>
-                <li>
-                    <span class="fui-time"></span>21:00-00:00</li>
-                <li>
-                    <span class="fui-location"></span>Lviv, Ukraine</li>
-            </ul>
-            <p>
-                THE ZOMBIE RUN: EXTREME is a mud-filled, daytime 5K obstacle course through a zombie-infested wasteland. Register as a human and maneuver through 3.1 miles of mud, blood, and brains, with 8 treacherous obstacles, and a hoard of 700 ravenous zombies on your heels.
-            </p>
-        </div>
-        <div class="col-md-10 col-sm-6 col-md-offset-1 event">
-            <div class="col-md-3">
-                <div class="event-image flow-img" style="background-image:url(media/images/events/thumbnail/metalica1-thumbnail.jpg)"></div>
-            </div>
-            <ul class="event-detail">
-                <li>
-                    <span class="fui-calendar-solid"></span>22/03/2014</li>
-                <li>
-                    <span class="fui-time"></span>21:00-00:00</li>
-                <li>
-                    <span class="fui-location"></span>Lviv, Ukraine</li>
-            </ul>
-            <p>
-                THE ZOMBIE RUN: EXTREME is a mud-filled, daytime 5K obstacle course through a zombie-infested wasteland. Register as a human and maneuver through 3.1 miles of mud, blood, and brains, with 8 treacherous obstacles, and a hoard of 700 ravenous zombies on your heels.
-            </p>
-        </div>
-        <div class="col-md-10 col-sm-6 col-md-offset-1 event">
-            <div class="col-md-3">
-                <div class="event-image flow-img" style="background-image:url(media/images/events/thumbnail/metalica1-thumbnail.jpg)"></div>
-            </div>
-            <ul class="event-detail">
-                <li>
-                    <span class="fui-calendar-solid"></span>22/03/2014</li>
-                <li>
-                    <span class="fui-time"></span>21:00-00:00</li>
-                <li>
-                    <span class="fui-location"></span>Lviv, Ukraine</li>
-            </ul>
-            <p>
-                THE ZOMBIE RUN: EXTREME is a mud-filled, daytime 5K obstacle course through a zombie-infested wasteland. Register as a human and maneuver through 3.1 miles of mud, blood, and brains, with 8 treacherous obstacles, and a hoard of 700 ravenous zombies on your heels.
-            </p>
-        </div>
+        </c:forEach>
     </div>
 
     <div class="row">
@@ -127,7 +106,7 @@
 
 <script src="js/jquery.backgroundvideo.min.js"></script>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         var videobackground = new $.backgroundVideo($('body'), {
             "align": "centerXY",
             "width": 1280,
@@ -140,13 +119,13 @@
 </script>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        $("#events").css("margin-top", $("#main-idea").height() + $("h1").height()+1);
-        $("#main-idea").css("margin-top", 2*$(window).height()/5 - $("h1").height());
+    $(document).ready(function () {
+        $("#events").css("margin-top", $("#main-idea").height() + $("h1").height() + 1);
+        $("#main-idea").css("margin-top", $(window).height()/10 - $("h1").height());
     });
-    $(window).resize(function() {
-        $("#events").css("margin-top", $("#main-idea").height() + $("h1").height()+1);
-        $("#main-idea").css("margin-top", 2*$(window).height()/5 - $("h1").height());
+    $(window).resize(function () {
+        $("#events").css("margin-top", $("#main-idea").height() + $("h1").height() + 1);
+        $("#main-idea").css("margin-top", $(window).height()/10 - $("h1").height());
     });
 </script>
 

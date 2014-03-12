@@ -2,12 +2,8 @@ package main.java.com.mosby.view.web.servlets;
 
 import main.java.com.mosby.controller.services.MainService;
 import main.java.com.mosby.controller.services.ReadEventService;
-import main.java.com.mosby.model.BaseUserInfo;
 import main.java.com.mosby.model.Event;
-import main.java.com.mosby.model.EventCategorie;
-import main.java.com.mosby.model.EventType;
 import main.java.com.mosby.model.User;
-
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -16,9 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/index")
@@ -34,8 +28,7 @@ public class IndexServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
-		List<Event> list = new ArrayList<>();
-		list = new ReadEventService().readEventList();
+		List<Event> list = new ReadEventService().readEventList();
 		request.setAttribute("eventList", list);
 		
 		System.out.println(request.getAttribute("eventList"));
@@ -45,7 +38,8 @@ public class IndexServlet extends HttpServlet {
             User user = (User) session.getAttribute("user");
             log.info("Logged out: " + user.getBaseUserInfo().getFirstName() + " " + user.getBaseUserInfo().getLastName());
             session.removeAttribute("user");
-            request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
+//            request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
+            response.sendRedirect("/index");
         } else {
             request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
         }

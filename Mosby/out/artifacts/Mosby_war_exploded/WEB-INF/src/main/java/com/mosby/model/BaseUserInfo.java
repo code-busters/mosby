@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import main.java.com.mosby.model.annotations.validate.*;
 
 @Entity
 @Table(name = "base_user_infos")
@@ -12,20 +13,31 @@ public class BaseUserInfo {
 	@Column(name = "id")
 	private int id;
 
+	@NotNull
+	@Size(min=1, max=30)
 	@Column(name = "first_name")
 	private String firstName;
 
+	@NotNull
+	@Size(min=1, max=50)
 	@Column(name = "last_name")
 	private String lastName;
 
+	@NotNull
+	@Size(min=1, max=30)
+	@Email(pattern = "[a-zA-Z]{1}[a-zA-Z\\d\\u002E\\u005F]+@([a-zA-Z]+\\u002E){1,2}((net)|(com)|(org))")
 	@Column(name = "email")
 	private String email;
 
+	@NotNull
+	@Size(min=8, max=250)
+	@Password(pattern = "((?=.*\\d)((?=.*[a-z])|(?=.*[à-ÿ]))((?=.*[A-Z])|(?=.*[À-ß])).{3,250})")
 	@Column(name = "password")
 	private String password;
 	
+	@Size(min=0, max=10000)
 	@Column(name = "credits")
-	private int credits;
+	private double credits;
 
 	@Column(name = "admin")
 	private boolean admin;
@@ -34,7 +46,7 @@ public class BaseUserInfo {
     }
 
     public BaseUserInfo(int id, String firstName, String lastName,
-                        String email, String password, int credits, boolean admin) {
+                        String email, String password, double credits, boolean admin) {
         super();
         this.id = id;
         this.firstName = firstName;
@@ -45,7 +57,7 @@ public class BaseUserInfo {
     }
 
     public BaseUserInfo(String firstName, String lastName, String email,
-                        String password, int credits, boolean admin) {
+                        String password, double credits, boolean admin) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
@@ -86,11 +98,11 @@ public class BaseUserInfo {
 		this.email = email;
 	}
 
-	public int getCredits() {
+	public double getCredits() {
 		return credits;
 	}
 	
-	public void setCredits(int credits) {
+	public void setCredits(double credits) {
 		this.credits = credits;
 	}
 

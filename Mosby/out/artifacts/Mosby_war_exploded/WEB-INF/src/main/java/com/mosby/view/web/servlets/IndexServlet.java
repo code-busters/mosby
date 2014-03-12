@@ -2,9 +2,8 @@ package main.java.com.mosby.view.web.servlets;
 
 import main.java.com.mosby.controller.services.MainService;
 import main.java.com.mosby.controller.services.ReadEventService;
-import main.java.com.mosby.model.BaseUserInfo;
-import main.java.com.mosby.model.EventCategorie;
-import main.java.com.mosby.model.EventType;
+import main.java.com.mosby.model.Event;
+import main.java.com.mosby.model.User;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -28,21 +27,20 @@ public class IndexServlet extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getParameter("logout") != null) {
-            HttpSession session = request.getSession();
-            BaseUserInfo user = (BaseUserInfo) session.getAttribute("baseUserInfo");
-            log.info("Logged out: " + user.getFirstName() + " " + user.getLastName());
-            session.removeAttribute("baseUserInfo");
+		HttpSession session = request.getSession(false);
+		List<Event> list = new ReadEventService().readEventList();
+		request.setAttribute("eventList", list);
+		
+		System.out.println(request.getAttribute("eventList"));
+		
+		if (request.getParameter("logout") != null) {
+            session = request.getSession();
+            User user = (User) session.getAttribute("user");
+            log.info("Logged out: " + user.getBaseUserInfo().getFirstName() + " " + user.getBaseUserInfo().getLastName());
+            session.removeAttribute("user");
+//            request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
             response.sendRedirect("/index");
         } else {
-            ReadEventService readEventService = new ReadEventService();
-            List<EventCategorie> listEventCategories = readEventService.readCategories();
-            List<EventType> listEventTypes = readEventService.readTypes();
-
-            HttpSession session = request.getSession(true);
-            session.setAttribute("eventCategories", listEventCategories);
-            session.setAttribute("eventTypes", listEventTypes);
-
             request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
         }
 	}

@@ -1,12 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 
 <head>
     <meta charset="utf-8">
     <title>Mosby - event management</title>
     <link rel="shortcut icon" href="media/images/favicon.ico">
-    <link rel="icon" type="image/png" href="media/images/favicon.png" />
-    <meta name="description" content="Mosby - make it simple. New event management system" />
+    <link rel="icon" type="image/png" href="media/images/favicon.png"/>
+    <meta name="description" content="Mosby - make it simple. New event management system"/>
 
     <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
 
@@ -31,7 +32,7 @@
 
     <script>
         var map, geocoder;
-        var address = 'Kopalna Street, Lviv, Lviv Oblast, Ukraine';
+        var address = '${event.location}';
 
         function initialize() {
             geocoder = new google.maps.Geocoder();
@@ -48,7 +49,7 @@
             map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
             geocoder.geocode({
                 'address': address
-            }, function(results, status) {
+            }, function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
                     map.setCenter(results[0].geometry.location);
                     var marker = new google.maps.Marker({
@@ -71,26 +72,37 @@
     </div>
 
     <div class="row" style="background: #000">
-        <div id="background-block" class="flow-img" style="background-image: url(media/images/bg_mask.png), url(media/images/events/background/metalica1.jpg)"></div>
+        <div id="background-block" class="flow-img"
+             style="background-image: url(media/images/bg_mask.png), url(media/images/events/background/${event.background})"></div>
     </div>
 
     <div class="row">
         <div class="on-background-block event col-md-7 col-md-offset-1">
             <ul class="event-detail">
                 <li>
-                    <span class="fui-calendar-solid"></span>22/03/2014</li>
+                    <span class="fui-calendar-solid"></span>
+                    ${event.startDatetime} - ${event.endDatetime}
+                </li>
+                <%--<li>--%>
+                    <%--<span class="fui-time"></span>21:00-00:00--%>
+                <%--</li>--%>
                 <li>
-                    <span class="fui-time"></span>21:00-00:00</li>
-                <li>
-                    <span class="fui-location"></span>Lviv, Ukraine</li>
+                    <span class="fui-location"></span>
+                    ${event.location}
+                </li>
             </ul>
-            <h2>Metallica mega tour</h2>
-            <div>
-                <img class="event-logo center-block" src="media/images/events/logo/metclub_logo.png">
-            </div>
+            <h2>${event.name}</h2>
+
+            <c:if test="${!(empty event.logo)}">
+                <div>
+                    <img class="event-logo center-block" src="media/images/events/logo/${event.logo}">
+                </div>
+            </c:if>
+
             <p>
-                The Big Four Tribute Band are an act dedicated to replicating the four biggest thrash metal bands in the world - Metallica, Megadeth, Slayer and Anthrax. Never before has any one band attempted such a feat. The Big Four Tribute have a reputation for delivering each song with deadly accuracy note For note, scream for scream, beat for beat. Close your eyes and you will feel like you are listening to each band live at their peak in the 1980's! Each and every gig has been a crowd pleasing success due to the diverse vocals of lead singer and Bass guitarist – Carlo Caci, his twin brother and lead guitarist John Caci, Rhythm guitarist Phil Wright and Drummer Sam Ogden. The band formed in 2011 consisting from members of the UK metal band Betrayal. With over 8 years of gigging experience and official theme tune creators for Sky Sports Cage fighting event - ‘Full Contact Contender’, Betrayal’s members are truly experienced in entertaining the crowd. The Big four tribute bands gigs have been hugely successful in drawing out the audiences just from the big fours name and Betrayal reputation in the Midlands alone.
+                ${event.description}
             </p>
+
             <div id="googleMap" class="" style="height:380px;"></div>
             <div id="tickets">
                 <div class="row create-tickets-header hidden-xs">
@@ -102,6 +114,7 @@
                     <div id="0" class="row">
                         <div class="col-md-8 col-sm-8">
                             <h6 class="visible-xs">Ticket type</h6>
+
                             <p>Early bird</p>
 								<span class="ticket-info">
 									Include free beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer
@@ -109,6 +122,7 @@
                         </div>
                         <div class="col-md-2 col-sm-2">
                             <h6 class="visible-xs">Price</h6>
+
                             <p>$220</p>
                         </div>
                         <div class="col-md-2 col-sm-2">
@@ -125,16 +139,22 @@
             </div>
             <!--END TICKETS-->
             <div class="col-md-3 col-sm-3 col-md-offset-9 col-sm-offset-9">
-                <a id="order-now" href="#fakelink?tourId=0&ticket_0=0" class="btn btn-block btn-lg btn-primary">Order Now</a>
+                <a id="order-now" href="#fakelink?eventId=${event.id}&ticket_0=0"
+                   class="btn btn-block btn-lg btn-primary">Order Now</a>
             </div>
         </div>
         <div class="organizer-details col-md-3">
             <img src="media/images/users/GDG-Lviv.png">
+
             <h3>GDG Lviv</h3>
+
             <p>
-                Google Developer Group (GDG) Lviv meets for about two times a month in office of Lviv's IT companies. The typical meeting formats are techtalk, bar camp or training, also from time to time we organize hackathons.
+                Google Developer Group (GDG) Lviv meets for about two times a month in office of Lviv's IT companies.
+                The typical meeting formats are techtalk, bar camp or training, also from time to time we organize
+                hackathons.
                 <br>
-                <br>Who we are? Open and volunteer geek communities who create exciting projects and share experience about Google technology with passion.
+                <br>Who we are? Open and volunteer geek communities who create exciting projects and share experience
+                about Google technology with passion.
             </p>
             <span class="fui-mail"></span>
             <span class="fui-facebook"></span>
@@ -168,19 +188,19 @@
 <script src="js/application.js"></script>
 
 <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
         $("#background-block").css("height", 2 * $(window).height() / 5);
     });
-    $(window).resize(function() {
+    $(window).resize(function () {
         $("#background-block").css("height", 2 * $(window).height() / 5);
     });
-    $('.ticket-quantity').on('change', function(e) {
+    $('.ticket-quantity').on('change', function (e) {
         var row = $(this).closest('.row');
         var ticketId = row.attr('id');
         var optionSelected = $("option:selected", this);
         var quantity = this.value;
 
-        $('#order-now').each(function() {
+        $('#order-now').each(function () {
             var indexOfString = this.href.indexOf('ticket_' + ticketId + '=');
             if (indexOfString >= 0) {
                 var temp = this.href;

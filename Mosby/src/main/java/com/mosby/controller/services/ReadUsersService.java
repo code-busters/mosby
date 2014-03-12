@@ -28,11 +28,15 @@ public class ReadUsersService {
 
 		}
 	}
-	
-	public UserProfile readUserProfile(int baseUsersInfoRef){
-		UserProfile userProfile = null;
-		ReflectionDao<UserProfile> userProfileDao = new ReflectionDao<>((Class<UserProfile>) UserProfile.class);
-		userProfile = userProfileDao.selectObjects("baseUsersInfoRef", baseUsersInfoRef).get(0);
-		return userProfile;
-	}	
+
+    public UserProfile readUserProfile(int baseUsersInfoRef){
+        UserProfile userProfile = null;
+        ReflectionDao<UserProfile> userProfileDao = new ReflectionDao<>((Class<UserProfile>) UserProfile.class);
+        if(!userProfileDao.selectObjects("baseUsersInfoRef", baseUsersInfoRef).isEmpty()){
+            userProfile = userProfileDao.selectObjects("baseUsersInfoRef", baseUsersInfoRef).get(0);
+            return userProfile;
+        } else {
+            return null;
+        }
+    }
 }

@@ -15,7 +15,7 @@ public class UserProfile {
 	private int id;
 	
 	@Column(name="base_users_info_ref")	
-	private int baseUserInfoRef;
+	private int baseUsersInfoRef;
 	
 	@Column(name="image")
 	private String image;
@@ -39,12 +39,12 @@ public class UserProfile {
 	public UserProfile() {
 	}
 
-	public UserProfile(int id, int baseUserInfoRef, String image,
+	public UserProfile(int id, int baseUsersInfoRef, String image,
 			String country, String city, Date birthDate, String site,
 			String about) {
 		super();
 		this.id = id;
-		this.baseUserInfoRef = baseUserInfoRef;
+		this.baseUsersInfoRef = baseUsersInfoRef;
 		this.image = image;
 		this.country = country;
 		this.city = city;
@@ -53,10 +53,10 @@ public class UserProfile {
 		this.about = about;
 	}
 
-	public UserProfile(int baseUserInfoRef, String image, String country,
+	public UserProfile(int baseUsersInfoRef, String image, String country,
 			String city, Date birthDate, String site, String about) {
 		super();
-		this.baseUserInfoRef = baseUserInfoRef;
+		this.baseUsersInfoRef = baseUsersInfoRef;
 		this.image = image;
 		this.country = country;
 		this.city = city;
@@ -73,12 +73,12 @@ public class UserProfile {
 		this.id = id;
 	}
 
-	public int getBaseUserInfoRef() {
-		return baseUserInfoRef;
+	public int getBaseUsersInfoRef() {
+		return baseUsersInfoRef;
 	}
 
-	public void setBaseUserInfoRef(int baseUserInfoRef) {
-		this.baseUserInfoRef = baseUserInfoRef;
+	public void setBaseUsersInfoRef(int baseUsersInfoRef) {
+		this.baseUsersInfoRef = baseUsersInfoRef;
 	}
 
 	public String getImage() {

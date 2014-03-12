@@ -30,6 +30,7 @@ public class LoginFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
         HttpSession session = request.getSession();
+        System.out.println("asddsa");
 
         if (session == null || session.getAttribute("baseUserInfo") == null) {
         	System.out.println("filterLogin");

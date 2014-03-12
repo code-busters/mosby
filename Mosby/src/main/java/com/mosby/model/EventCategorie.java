@@ -8,8 +8,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name="event_categories")
 public class EventCategorie {
-	private static final long serialVersionUID = 1L;
-	
 	@Id
 	@Column(name="id")
 	private int id;

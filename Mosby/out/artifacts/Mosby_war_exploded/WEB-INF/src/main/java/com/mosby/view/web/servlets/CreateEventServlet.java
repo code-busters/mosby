@@ -1,6 +1,10 @@
 package main.java.com.mosby.view.web.servlets;
 
+import main.java.com.mosby.controller.services.CreateEventService;
+import main.java.com.mosby.controller.services.ReadEventService;
+import main.java.com.mosby.model.Event;
 import main.java.com.mosby.utils.FileUploadUtils;
+
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -10,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -25,7 +30,6 @@ public class CreateEventServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 //        Image uploading
         String eventLogo = "default.png";
         Part filePart = request.getPart("event_logo");
@@ -49,6 +53,20 @@ public class CreateEventServlet extends HttpServlet {
         } catch (Exception e) {
             log.error(e);
         }
+        
+        
+        CreateEventService createEventService = new CreateEventService();
+        ReadEventService readEventService = new ReadEventService();
+    	try {
+    		int eventId;
+    		eventId = createEventService.create(request, this, eventLogo, eventBackground);
+    		Event event = readEventService.readById(eventId);  
+    		request.setAttribute("event", event);
+		} catch (Exception e) {
+			log.error(e);
+		}
+    	
+    	request.getRequestDispatcher("/pages/eventPage.jsp").forward(request, response);
 
     }
 }

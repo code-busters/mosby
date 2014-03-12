@@ -134,7 +134,7 @@
 </div>
 
 <div class="row" style="background: #000">
-    <div id="background-block" class="flow-img" style="background-image: url(media/images/bg_mask.png), url(media/images/events/default/concert-smoke.jpg)"></div>
+    <div id="background-block" class="flow-img" style="background-image: url(media/images/bg_mask.png), url(media/images/default/concert-smoke.jpg)"></div>
 </div>
 
 <div class="row">

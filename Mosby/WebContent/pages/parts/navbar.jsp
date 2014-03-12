@@ -16,18 +16,11 @@
                 </a>
                 <span class="dropdown-arrow"></span>
                 <ul class="dropdown-menu">
+                    <c:forEach items="${eventCategories}" var="category">
                     <li>
-                        <a href="#">Business</a>
+                        <a href="#">${category.type}</a>
                     </li>
-                    <li>
-                        <a href="#">Music</a>
-                    </li>
-                    <li>
-                        <a href="#">Food &amp; Drink</a>
-                    </li>
-                    <li>
-                        <a href="#">Film &amp; Media</a>
-                    </li>
+                    </c:forEach>
                     <li class="divider"></li>
                     <li>
                         <a href="#">All</a>
@@ -36,13 +29,13 @@
             </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <% if (request.getSession().getAttribute("baseUserInfo") != null) { %>
+            <% if (request.getSession().getAttribute("user") != null) { %>
             <li>
-                <div class="flow-img nav-user-img" style="background-image: url(media/images/users/default.jpg)"></div>
+                <div class="flow-img nav-user-img" style="background-image: url(media/images/users/${user.userProfile.image})"></div>
             </li>
             <li class="divider"></li>
             <li>
-                <a href="<c:url value="/index?logout=${baseUserInfo.id}"/>">Log Out</a>
+                <a href="<c:url value="/index?logout=${user.baseUserInfo.id}"/>">Log Out</a>
             </li>
             <% } else {%>
             <li>

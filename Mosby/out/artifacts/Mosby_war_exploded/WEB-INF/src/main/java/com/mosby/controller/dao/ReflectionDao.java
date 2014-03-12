@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mysql.jdbc.Statement;
+
 import main.java.com.mosby.controller.persistence.ConnectionManager;
 import main.java.com.mosby.controller.transformers.ReflectionTransformer;
 
@@ -70,26 +72,33 @@ public class ReflectionDao<T> {
 		return objects;
 	}
 
-	public void insertObjects(T object) {
+	public int insertObjects(T object) {
+		int generatedId = -1;
 		try {
 			query = queryStatements.createInsertQuery();
 
 			Connection connection = ConnectionManager.getInstance()
 					.getConnection();
 			PreparedStatement preparedStatement = (PreparedStatement) connection
-					.prepareStatement(query);
+					.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
 			preparedStatement = (PreparedStatement) reflectionTransformer
 					.fromObjectToStatement(preparedStatement, type, object);
-
+			
 			preparedStatement.addBatch();
 			preparedStatement.executeBatch();
 
+			ResultSet keys = preparedStatement.getGeneratedKeys();
+			keys.next();
+			generatedId = keys.getInt(1);
+			
+			keys.close();
 			preparedStatement.close();
 		} catch (SQLException | IllegalArgumentException
 				| ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+		return generatedId;
 	}
 
 	public void updateObjects(T object, String whereField, Object whereValue) {

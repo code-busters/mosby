@@ -2,6 +2,7 @@ package main.java.com.mosby.controller.services;
 
 import main.java.com.mosby.controller.dao.ReflectionDao;
 import main.java.com.mosby.model.BaseUserInfo;
+import main.java.com.mosby.model.UserProfile;
 import main.java.com.mosby.utils.EncryptionUtils;
 
 public class ReadUsersService {
@@ -27,4 +28,15 @@ public class ReadUsersService {
 
 		}
 	}
+
+    public UserProfile readUserProfile(int baseUsersInfoRef){
+        UserProfile userProfile = null;
+        ReflectionDao<UserProfile> userProfileDao = new ReflectionDao<>((Class<UserProfile>) UserProfile.class);
+        if(!userProfileDao.selectObjects("baseUsersInfoRef", baseUsersInfoRef).isEmpty()){
+            userProfile = userProfileDao.selectObjects("baseUsersInfoRef", baseUsersInfoRef).get(0);
+            return userProfile;
+        } else {
+            return null;
+        }
+    }
 }
