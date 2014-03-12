@@ -24,6 +24,7 @@ public class EventAtributesFilter implements Filter {
 
 
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
+		System.out.println("Start EventAtributesFilter");
 		HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
 		HttpSession session = request.getSession(true);
@@ -34,7 +35,8 @@ public class EventAtributesFilter implements Filter {
             List<EventType> listEventTypes = readEventService.readTypes();
 
             session.setAttribute("eventCategories", listEventCategories);
-            session.setAttribute("eventTypes", listEventTypes);			
+            session.setAttribute("eventTypes", listEventTypes);
+            System.out.println("Added event atributes to session");
         }
 		chain.doFilter(request, response);
 	}

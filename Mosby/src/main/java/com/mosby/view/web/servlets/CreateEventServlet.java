@@ -66,7 +66,7 @@ public class CreateEventServlet extends HttpServlet {
 			log.error(e);
 		}
     	
-    	request.getRequestDispatcher("/pages/eventPages.jsp").forward(request, response);
+    	request.getRequestDispatcher("/pages/eventPage.jsp").forward(request, response);
 
     }
 }
