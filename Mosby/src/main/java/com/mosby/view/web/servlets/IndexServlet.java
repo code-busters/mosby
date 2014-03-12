@@ -6,6 +6,7 @@ import main.java.com.mosby.model.BaseUserInfo;
 import main.java.com.mosby.model.Event;
 import main.java.com.mosby.model.EventCategorie;
 import main.java.com.mosby.model.EventType;
+import main.java.com.mosby.model.User;
 
 import org.apache.log4j.Logger;
 
@@ -41,9 +42,9 @@ public class IndexServlet extends HttpServlet {
 		
 		if (request.getParameter("logout") != null) {
             session = request.getSession();
-            BaseUserInfo user = (BaseUserInfo) session.getAttribute("baseUserInfo");
-            log.info("Logged out: " + user.getFirstName() + " " + user.getLastName());
-            session.removeAttribute("baseUserInfo");
+            User user = (User) session.getAttribute("user");
+            log.info("Logged out: " + user.getBaseUserInfo().getFirstName() + " " + user.getBaseUserInfo().getLastName());
+            session.removeAttribute("user");
             request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
         } else {
             request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
