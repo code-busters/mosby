@@ -28,6 +28,14 @@ String.prototype.repeat = function(num) {
         });
     });
 
+    $(document).on('click', "#user-open", function() {
+        if ($("#user-settings").hasClass('hide')) {
+            $("#user-settings").removeClass('hide');
+        } else {
+            $("#user-settings").addClass('hide');
+        }
+    });
+
     // Add segments to a slider
     $.fn.addSliderSegments = function (amount, orientation) {
         return this.each(function () {

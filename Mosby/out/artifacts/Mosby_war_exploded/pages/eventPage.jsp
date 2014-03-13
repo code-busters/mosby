@@ -81,11 +81,12 @@
             <ul class="event-detail">
                 <li>
                     <span class="fui-calendar-solid"></span>
-                    ${event.startDatetime} - ${event.endDatetime}
+                    ${event.startDate} - ${event.endDate}
                 </li>
-                <%--<li>--%>
-                    <%--<span class="fui-time"></span>21:00-00:00--%>
-                <%--</li>--%>
+                <li>
+                    <span class="fui-time"></span>
+                    ${event.startTime} - ${event.endTime}
+                </li>
                 <li>
                     <span class="fui-location"></span>
                     ${event.location}
@@ -148,7 +149,6 @@
                 </div>
                 <!--END TICKETS-->
                 <div class="col-md-3 col-sm-3 col-md-offset-9 col-sm-offset-9">
-                    <!--						<a id="order-now" href="#fakelink?tourId=0&ticket_0=0" class="btn btn-block btn-lg btn-primary">Order Now</a>-->
                     <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit" value="Order Now">
                         Order Now
                     </button>

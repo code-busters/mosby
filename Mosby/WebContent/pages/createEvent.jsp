@@ -195,7 +195,7 @@
 <div class="form-group">
     <label for="event-category">Category</label>
     <select name="event_category" class="select-block" id="event-category" form="create-event-form">
-        <option value="select_category">
+        <option value="-1">
             Select categoty...
         </option>
         <c:forEach items="${eventCategories}" var="category">
@@ -208,7 +208,7 @@
 <div class="form-group">
     <label for="event-type">Type</label>
     <select name="event_type" class="select-block" id="event-type" form="create-event-form">
-        <option value="select_type">
+        <option value="-1">
             Select type...
         </option>
         <c:forEach items="${eventTypes}" var="type">
@@ -234,9 +234,9 @@
     <span class="additional-input-info">Select image with big resolution for better result</span>
 </div>
 <div class="form-group">
-    <label for="event-details">Event Description</label>
+    <label for="event-description">Event Description</label>
     <textarea rows="4" placeholder="Tell users about your event" class="form-control" name="event_description"
-              id="event-details" form="create-event-form"></textarea>
+              id="event-description" form="create-event-form"></textarea>
 </div>
 <div class="form-group">
     <label for="event-location">Address</label>

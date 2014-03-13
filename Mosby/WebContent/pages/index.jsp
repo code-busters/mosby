@@ -62,9 +62,10 @@
                         <span class="fui-calendar-solid"></span>
                         ${event.startDate} - ${event.endDate}
                     </li>
-                    <%--<li>--%>
-                        <%--<span class="fui-time"></span>21:00-00:00--%>
-                    <%--</li>--%>
+                    <li>
+                        <span class="fui-time"></span>
+                        ${event.startTime} - ${event.endTime}
+                    </li>
                     <li>
                         <span class="fui-location"></span>${event.location}
                     </li>
@@ -105,7 +106,7 @@
 
 
 <script src="js/jquery.backgroundvideo.min.js"></script>
-<script>
+<script type="text/javascript">
     $(document).ready(function () {
         var videobackground = new $.backgroundVideo($('body'), {
             "align": "centerXY",
@@ -116,9 +117,6 @@
             "types": ["mp4", "ogg", "webm"]
         });
     });
-</script>
-
-<script type="text/javascript">
     $(document).ready(function () {
         $("#events").css("margin-top", $("#main-idea").height() + $("h1").height() + 1);
         $("#main-idea").css("margin-top", 2*$(window).height()/5 - $("h1").height());

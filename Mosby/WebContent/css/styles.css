@@ -202,6 +202,58 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     -moz-box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, 0.25);
     box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, 0.25);
 }
+#user-settings {
+    position: absolute;
+    right: 3.5em;
+    top: 9em;
+    padding: 1.5em 0 0;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-color: rgba(0,0,0,.2);
+    box-shadow: 0 2px 10px rgba(0,0,0,.2);
+    -webkit-animation: gb__a .2s;
+    animation: gb__a .2s;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-user-select: text;
+}
+#user-settings::after {
+    position: absolute;
+    top: -9px;
+    right: 20px;
+    display: inline-block;
+    font-size: 1.3em;
+    border-right: 9px solid transparent;
+    border-bottom: 9px solid white;
+    border-left: 9px solid transparent;
+    content: '';
+}
+.user-settings-user-img {
+    height: 96px;
+    width: 96px;
+    border: none;
+    vertical-align: top;
+}
+#user-settings h4 {
+    margin: 0 0 0.7em;;
+    color: #212121;
+    font-size: 1.2em;
+}
+#user-settings h4 span {
+    color: #afafaf;
+    font-size: 0.7em;
+}
+#user-settings a {
+    display: block;
+    font-size: 0.8em;
+}
+#user-settings .bottom-settings {
+    margin-top: 0.7em;
+    background: #f5f5f5;
+    border-top: 1px solid #ccc;
+    border-color: rgba(0,0,0,.2);
+    padding: 0.8em;
+}
 
 /*NAVBAR AFTER SCROLL*/
 .nav-transparent-shrink {
