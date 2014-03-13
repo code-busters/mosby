@@ -23,27 +23,19 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		ReadUsersService readUsersService = new ReadUsersService();
 		
-		//BaseUserInfo baseUserInfo = readUsersService.readUser(email, password);
+		User user = readUsersService.readUser(email, password);
 
-//		if (baseUserInfo == null) {
-//			request.getRequestDispatcher("/pages/login.jsp").forward(request, response);
-//		} else {
-//			int baseUsersInfoRef = baseUserInfo.getId();
-//            UserProfile userProfile = readUsersService.readUserProfile(baseUsersInfoRef);
-//            User user = null;
-//            if(userProfile != null){
-//                user = new User(baseUserInfo, userProfile);
-//            } else {
-//                user = new User(baseUserInfo, new UserProfile());
-//            }
-//			
-//			System.out.println(user);
-//			
-//			HttpSession session = request.getSession(false);
-//			session.setAttribute("user", user);
-//
-//            response.sendRedirect("index");
-//		}
+		if (user == null) {
+			request.getRequestDispatcher("/pages/login.jsp").forward(request, response);
+		} else {
+			
+			System.out.println(user);
+			
+			HttpSession session = request.getSession(false);
+			session.setAttribute("user", user);
+
+            response.sendRedirect("index");
+		}
 
 	}
 }

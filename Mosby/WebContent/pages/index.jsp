@@ -60,7 +60,7 @@
                 <ul class="event-detail">
                     <li>
                         <span class="fui-calendar-solid"></span>
-                        ${event.startDatetime} - ${event.endDatetime}
+                        ${event.startDate} - ${event.endDate}
                     </li>
                     <%--<li>--%>
                         <%--<span class="fui-time"></span>21:00-00:00--%>

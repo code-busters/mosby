@@ -18,7 +18,7 @@
                 <ul class="dropdown-menu">
                     <c:forEach items="${eventCategories}" var="category">
                     <li>
-                        <a href="#">${category.type}</a>
+                        <a href="#">${category.category}</a>
                     </li>
                     </c:forEach>
                     <li class="divider"></li>
@@ -35,7 +35,7 @@
             </li>
             <li class="divider"></li>
             <li>
-                <a href="<c:url value="/index?logout=${user.baseUserInfo.id}"/>">Log Out</a>
+                <a href="<c:url value="/index?logout=${user.id}"/>">Log Out</a>
             </li>
             <% } else {%>
             <li>

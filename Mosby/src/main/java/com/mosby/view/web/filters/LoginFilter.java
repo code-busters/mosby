@@ -28,10 +28,10 @@ public class LoginFilter implements Filter {
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
-        HttpSession session = request.getSession();
+        HttpSession session = request.getSession(false);
         System.out.println("asddsa");
 
-        if (session == null || session.getAttribute("baseUserInfo") == null) {
+        if (session == null || session.getAttribute("user") == null) {
         	System.out.println("filterLogin");
             chain.doFilter(request, response);
         } else {

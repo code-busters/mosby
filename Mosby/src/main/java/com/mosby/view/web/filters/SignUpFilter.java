@@ -28,7 +28,7 @@ public class SignUpFilter implements Filter {
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
-        HttpSession session = request.getSession();
+        HttpSession session = request.getSession(false);
 
         if (session == null || session.getAttribute("baseUserInfo") == null) {
         	System.out.println("filterSignUp");

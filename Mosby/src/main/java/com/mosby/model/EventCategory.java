@@ -28,11 +28,11 @@ public class EventCategory {
 		this.id = id;
 	}
 
-	public String getcategory() {
+	public String getCategory() {
 		return category;
 	}
 
-	public void setcategory(String category) {
+	public void setCategory(String category) {
 		this.category = category;
 	}
 	

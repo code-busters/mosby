@@ -200,7 +200,7 @@
         </option>
         <c:forEach items="${eventCategories}" var="category">
             <option value="${category.id}">
-                    ${category.type}
+                    ${category.category}
             </option>
         </c:forEach>
     </select>
