@@ -1,51 +1,58 @@
 package main.java.com.mosby.model;
 
 import java.sql.Time;
-import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.Date;
 
 import main.java.com.mosby.model.annotations.dao.*;
 import main.java.com.mosby.model.annotations.validate.*;
 
-@Table(name="events")
+@Table(name = "events")
 public class Event {
-	
-	@Column(name="id")
+
+	@Column(name = "id")
 	private int id;
 
-	@Key(name="organizer_ref")
+	@Key(name = "organizer_ref")
 	private Organizer organizer = null;
-	
-	@Column(name="name")	
+
+	@Column(name = "name")
 	private String name;
-	
-	@Column(name="description")
+
+	@Column(name = "description")
 	private String description;
-	
-	@Key(name="category_ref")
+
+	@Key(name = "category_ref")
 	private EventCategory eventCategory = null;
-	
-	@Key(name="type_ref")
+
+	@Key(name = "type_ref")
 	private EventType eventType = null;
-	
-	@Column(name="start_date")
+
+	@Column(name = "start_date")
 	private Date startDate;
-	
-	@Column(name="start_time")
+
+	@Column(name = "start_time")
 	private Time startTime;
-	
-	@Column(name="end_date")
+
+	@StartFuture
+	private Timestamp startDateTime;
+
+	@Column(name = "end_date")
 	private Date endDate;
-	
-	@Column(name="end_time")
+
+	@Column(name = "end_time")
 	private Time endTime;
-	
-	@Column(name="location")
+
+	@EndFuture
+	private Timestamp endDateTime;
+
+	@Column(name = "location")
 	private String location;
-	
-	@Column(name="logo")
+
+	@Column(name = "logo")
 	private String logo;
-	
-	@Column(name="background")
+
+	@Column(name = "background")
 	private String background;
 
 	public Event() {
@@ -66,6 +73,41 @@ public class Event {
 		this.startTime = startTime;
 		this.endDate = endDate;
 		this.endTime = endTime;
+		this.location = location;
+		this.logo = logo;
+		this.background = background;
+	}
+
+	public Event(Organizer organizer, String name, String description,
+			EventCategory eventCategory, EventType eventType, Date startDate,
+			Time startTime, Date endDate, Time endTime, String location,
+			String logo, String background) {
+		super();
+		this.organizer = organizer;
+		this.name = name;
+		this.description = description;
+		this.eventCategory = eventCategory;
+		this.eventType = eventType;
+		this.startDate = startDate;
+		this.startTime = startTime;
+		this.endDate = endDate;
+		this.endTime = endTime;
+		this.location = location;
+		this.logo = logo;
+		this.background = background;
+	}
+
+	public Event(Organizer organizer, String name, String description,
+			EventCategory eventCategory, EventType eventType, Date startDate,
+			Date endDate, String location, String logo, String background) {
+		super();
+		this.organizer = organizer;
+		this.name = name;
+		this.description = description;
+		this.eventCategory = eventCategory;
+		this.eventType = eventType;
+		this.startDate = startDate;
+		this.endDate = endDate;
 		this.location = location;
 		this.logo = logo;
 		this.background = background;
@@ -173,6 +215,22 @@ public class Event {
 
 	public void setBackground(String background) {
 		this.background = background;
+	}
+
+	public Timestamp getStartDateTime() {
+		return startDateTime;
+	}
+
+	public void setStartDateTime(Date date, Time time) {
+		this.startDateTime = startDateTime;
+	}
+
+	public Timestamp getEndDateTime() {
+		return endDateTime;
+	}
+
+	public void setEndDateTime(Date date, Time time) {
+		this.endDateTime = endDateTime;
 	}
 
 }

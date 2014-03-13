@@ -18,48 +18,49 @@ import java.lang.reflect.InvocationTargetException;
 @WebServlet("/signUp")
 public class SignUpServlet extends HttpServlet {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/pages/signUp.jsp").forward(request, response);
-    }
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("/pages/signUp.jsp").forward(request,
+				response);
+	}
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String firstName = request.getParameter("first_name");
-        String lastName = request.getParameter("last_name");
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		String firstName = request.getParameter("first_name");
+		String lastName = request.getParameter("last_name");
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
 
-        //BaseUserInfo baseUserInfo = new BaseUserInfo(firstName, lastName, email, password, 0, false);
-       // ValidatorUtils<BaseUserInfo> validatorUtils = new ValidatorUtils<>((Class<BaseUserInfo>) baseUserInfo.getClass());
+		User user = new User(firstName, lastName, email, password, 0, false);
+		ValidatorUtils<User> validatorUtils = new ValidatorUtils<>(
+				(Class<User>) user.getClass());
 
-//        try {
-//           baseUserInfo = validatorUtils.validate(baseUserInfo);
-//        } catch (NoSuchMethodException | SecurityException
-//                | IllegalAccessException | IllegalArgumentException
-//                | InvocationTargetException e) {
-//            e.printStackTrace();
-//        }
-//        if (baseUserInfo == null) {
-//            request.setAttribute("errors", validatorUtils.getErrors());
-//            System.out.println(validatorUtils.getErrors());
-//            request.getRequestDispatcher("/pages/signUp.jsp").forward(request,
-//                    response);
-//        } else {
-//
-//            baseUserInfo = new SignUpUserService().signUpUser(firstName, lastName, email, password);
-//
-//            if (baseUserInfo == null) {
-//                request.getRequestDispatcher("/pages/signUp.jsp").forward(request,
-//                        response);
-//            } else {
-//                HttpSession session = request.getSession(false);
-//
-//                int baseUsersInfoRef = baseUserInfo.getId();
-//                UserProfile userProfile = new ReadUsersService().readUserProfile(baseUsersInfoRef);
-//                User user = new User(baseUserInfo, userProfile);
-//
-//                session.setAttribute("user", user);
-//
-//                response.sendRedirect("index");
-//            }
-        }
-    }
+		try {
+			user = validatorUtils.validate(user);
+		} catch (NoSuchMethodException | SecurityException
+				| IllegalAccessException | IllegalArgumentException
+				| InvocationTargetException e) {
+			e.printStackTrace();
+		}
+		if (user == null) {
+			request.setAttribute("errors", validatorUtils.getErrors());
+			System.out.println(validatorUtils.getErrors());
+			request.getRequestDispatcher("/pages/signUp.jsp").forward(request,
+					response);
+		} else {
+
+			user = new SignUpUserService().signUpUser(firstName, lastName,
+					email, password);
+
+			if (user == null) {
+				request.getRequestDispatcher("/pages/signUp.jsp").forward(
+						request, response);
+			} else {
+				HttpSession session = request.getSession(false);
+				session.setAttribute("user", user);
+
+				response.sendRedirect("index");
+			}
+		}
+	}
+}

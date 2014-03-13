@@ -115,6 +115,7 @@ public class ValidatorUtils<T> {
 			
 			if (field.isAnnotationPresent(Email.class)) {
 				Email annotation = (Email) field.getAnnotation(Email.class);
+				System.out.println("Email");
 				field.setAccessible(true);
 				java.util.regex.Pattern pattern = java.util.regex.Pattern
 						.compile(annotation.pattern());
@@ -135,7 +136,7 @@ public class ValidatorUtils<T> {
 					errors.add(field.getName() + " don`t valid");
 				}
 			}
-			if (field.isAnnotationPresent(StartFuture.class)) {
+			if (field.isAnnotationPresent(StartFuture.class) && (field.getType() == Date.class)) {
 				field.setAccessible(true);
 				System.out.println("start");
 				timestampStart = (Timestamp) field.get(object);
