@@ -5,26 +5,25 @@ import main.java.com.mosby.model.*;
 
 public class MainService {
 
-	private BaseUserInfo baseUserInfo = new BaseUserInfo();
-	private ReflectionDao<BaseUserInfo> usersDao = new ReflectionDao<>(
-			(Class<BaseUserInfo>) baseUserInfo.getClass());
+	private User user = new User();
+	private ReflectionDao<User> usersDao = new ReflectionDao<>(
+			(Class<User>) user.getClass());
 
 	public void selectUsers() {
-		BaseUserInfo baseUserInfo = new BaseUserInfo();
-		Class<BaseUserInfo> typeBaseUserInfo = (Class<BaseUserInfo>) baseUserInfo
-				.getClass();
-		System.out.println(typeBaseUserInfo);
+		User user = new User();
+		Class<User> typeUser = (Class<User>) user.getClass();
+		System.out.println(typeUser);
 
-		System.out.println(usersDao.selectObjects("admin", true));
-		System.out.println(usersDao.selectObjects("firstName", "Oleksii"));
+		System.out.println(usersDao.selectObjects("", null));
+		//System.out.println(usersDao.selectObjects("firstName", "Oleksii"));
 	}
 
-	public void insertUser(BaseUserInfo baseUserInfo) {
-		Class<BaseUserInfo> typeBaseUserInfo = (Class<BaseUserInfo>) baseUserInfo
-				.getClass();
-		System.out.println(typeBaseUserInfo);
-
-		usersDao.insertObjects(baseUserInfo);
+	public void insertUser(User user) {
+//		Class<BaseUserInfo> typeBaseUserInfo = (Class<BaseUserInfo>) baseUserInfo
+//				.getClass();
+//		System.out.println(typeBaseUserInfo);
+//
+//		usersDao.insertObjects(baseUserInfo);
 	}
 	
 }

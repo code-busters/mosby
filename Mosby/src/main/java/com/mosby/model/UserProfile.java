@@ -100,4 +100,11 @@ public class UserProfile {
 		this.about = about;
 	}
 
+	@Override
+	public String toString() {
+		return "UserProfile [id=" + id + ", image=" + image + ", country="
+				+ country + ", city=" + city + ", birthDate=" + birthDate
+				+ ", site=" + site + ", about=" + about + "]";
+	}
+
 }

@@ -1,4 +1,4 @@
-package main.java.com.mosby.utils;
+package test.java.main.java.com.mosby.utils;
 
 import main.java.com.mosby.utils.EncryptionUtils;
 

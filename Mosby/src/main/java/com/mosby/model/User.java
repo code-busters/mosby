@@ -38,7 +38,7 @@ public class User {
 	@Column(name = "admin")
 	private boolean admin;
 	
-	@Key(name = "user_profile_ref")
+	@Key(name = "user_profile_key")
 	private UserProfile userProfile = null;
 
 	public User() {
@@ -122,7 +122,13 @@ public class User {
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", firstName=" + firstName + ", lastName="
+				+ lastName + ", email=" + email + ", password=" + password
+				+ ", credits=" + credits + ", admin=" + admin
+				+ ", userProfile=" + userProfile + "]";
+	}
 
 }

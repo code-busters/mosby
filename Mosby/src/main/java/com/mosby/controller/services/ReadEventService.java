@@ -5,14 +5,14 @@ import java.util.List;
 
 import main.java.com.mosby.controller.dao.ReflectionDao;
 import main.java.com.mosby.model.Event;
-import main.java.com.mosby.model.EventCategorie;
+import main.java.com.mosby.model.EventCategory;
 import main.java.com.mosby.model.EventType;
 
 public class ReadEventService {
 	
-	public List<EventCategorie> readCategories (){
-		List<EventCategorie> list = new ArrayList<>();
-		ReflectionDao<EventCategorie> eventCatregoriesDao = new ReflectionDao<>((Class<EventCategorie>) EventCategorie.class);
+	public List<EventCategory> readCategories (){
+		List<EventCategory> list = new ArrayList<>();
+		ReflectionDao<EventCategory> eventCatregoriesDao = new ReflectionDao<>((Class<EventCategory>) EventCategory.class);
 		list = eventCatregoriesDao.selectObjects("", null);
 		return list;
 	}

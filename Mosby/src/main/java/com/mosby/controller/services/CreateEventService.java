@@ -39,7 +39,8 @@ public class CreateEventService {
 		}
 		String location = request.getParameter("event_location");
 		
-		Event event = new Event(organizersRef, name, description, catregoriesRef, typeRef, start, end, location, logo, background);
+		//Event event = new Event(organizersRef, name, description, catregoriesRef, typeRef, start, end, location, logo, background);
+		Event event = null;
 		System.out.println(event);
 		
 		ReflectionDao<Event> eventDao = new ReflectionDao<>((Class<Event>) Event.class);

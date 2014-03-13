@@ -36,7 +36,7 @@ public class IndexServlet extends HttpServlet {
 		if (request.getParameter("logout") != null) {
             session = request.getSession();
             User user = (User) session.getAttribute("user");
-            log.info("Logged out: " + user.getBaseUserInfo().getFirstName() + " " + user.getBaseUserInfo().getLastName());
+            //log.info("Logged out: " + user.getBaseUserInfo().getFirstName() + " " + user.getBaseUserInfo().getLastName());
             session.removeAttribute("user");
 //            request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
             response.sendRedirect("index");

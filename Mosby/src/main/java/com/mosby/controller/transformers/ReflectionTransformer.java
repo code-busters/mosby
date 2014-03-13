@@ -9,6 +9,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import main.java.com.mosby.controller.dao.ReflectionDao;
+import main.java.com.mosby.model.annotations.dao.Column;
+import main.java.com.mosby.model.annotations.dao.Key;
+
 public class ReflectionTransformer<T> {
 
 	public T fromRStoObject(T object, ResultSet resultSet, Class<T> type) {
@@ -26,8 +30,19 @@ public class ReflectionTransformer<T> {
 						value = new Boolean(true);
 					}
 				} else {
-					value = resultSet.getObject(fromFieldToColumnInDB(field
-							.getName()));
+					if (field.isAnnotationPresent(Column.class)) {
+						value = resultSet.getObject(field.getAnnotation(
+								Column.class).name());
+					} else if (field.isAnnotationPresent(Key.class)) {
+						field.setAccessible(true);
+						value = resultSet.getObject(field.getAnnotation(
+								Key.class).name());
+						if (value != null) {
+							int currentId = Integer.parseInt(value.toString());
+							value = new ReflectionDao<>(field.getType())
+									.selectObjects("id", currentId).get(0);
+						}
+					}
 				}
 
 				PropertyDescriptor propertyDescriptor;
