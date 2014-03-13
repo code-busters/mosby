@@ -64,7 +64,7 @@ public class CreateEventServlet extends HttpServlet {
     		request.setAttribute("event", event);
             response.sendRedirect("/Mosby/eventPage?eventId=" + event.getId());
 		} catch (Exception e) {
-			log.error(e);
+			e.printStackTrace();
 		}
     	
 //    	request.getRequestDispatcher("/pages/eventPage.jsp").forward(request, response);

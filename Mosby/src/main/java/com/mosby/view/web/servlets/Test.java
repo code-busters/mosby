@@ -23,16 +23,8 @@ public class Test extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		User user = new User(1, null, "firstName", "lastName", "AlexHamer777@gmail.com", "Qwerty123", 0.0 , false);
-		ValidatorUtils<User> validatorUtils = new ValidatorUtils<>((Class<User>)user.getClass());
-		try {
-			System.out.println(validatorUtils.validate(user));
-		} catch (NoSuchMethodException | SecurityException
-				| IllegalAccessException | IllegalArgumentException
-				| InvocationTargetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		MainService mainService = new MainService();
+		mainService.selectUsers();
 	}
 
 	protected void doPost(HttpServletRequest request,

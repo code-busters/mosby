@@ -1,6 +1,5 @@
 package main.java.com.mosby.model;
 
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -32,7 +31,7 @@ public class Event {
 	private Date startDate;
 
 	@Column(name = "start_time")
-	private Time startTime;
+	private Date startTime;
 
 	@StartFuture
 	private Timestamp startDateTime;
@@ -41,7 +40,7 @@ public class Event {
 	private Date endDate;
 
 	@Column(name = "end_time")
-	private Time endTime;
+	private Date endTime;
 
 	@EndFuture
 	private Timestamp endDateTime;
@@ -60,7 +59,7 @@ public class Event {
 
 	public Event(int id, Organizer organizer, String name, String description,
 			EventCategory eventCategory, EventType eventType, Date startDate,
-			Time startTime, Date endDate, Time endTime, String location,
+			Date startTime, Date endDate, Date endTime, String location,
 			String logo, String background) {
 		super();
 		this.id = id;
@@ -80,7 +79,7 @@ public class Event {
 
 	public Event(Organizer organizer, String name, String description,
 			EventCategory eventCategory, EventType eventType, Date startDate,
-			Time startTime, Date endDate, Time endTime, String location,
+			Date startTime, Date endDate, Date endTime, String location,
 			String logo, String background) {
 		super();
 		this.organizer = organizer;
@@ -169,11 +168,11 @@ public class Event {
 		this.startDate = startDate;
 	}
 
-	public Time getStartTime() {
+	public Date getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(Time startTime) {
+	public void setStartTime(Date startTime) {
 		this.startTime = startTime;
 	}
 
@@ -185,11 +184,11 @@ public class Event {
 		this.endDate = endDate;
 	}
 
-	public Time getEndTime() {
+	public Date getEndTime() {
 		return endTime;
 	}
 
-	public void setEndTime(Time endTime) {
+	public void setEndTime(Date endTime) {
 		this.endTime = endTime;
 	}
 
@@ -221,7 +220,7 @@ public class Event {
 		return startDateTime;
 	}
 
-	public void setStartDateTime(Date date, Time time) {
+	public void setStartDateTime(Date date, Date time) {
 		this.startDateTime = startDateTime;
 	}
 
@@ -229,7 +228,7 @@ public class Event {
 		return endDateTime;
 	}
 
-	public void setEndDateTime(Date date, Time time) {
+	public void setEndDateTime(Date date, Date time) {
 		this.endDateTime = endDateTime;
 	}
 

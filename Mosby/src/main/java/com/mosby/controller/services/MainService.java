@@ -10,7 +10,7 @@ public class MainService {
 			(Class<User>) user.getClass());
 
 	public void selectUsers() {
-		User user = new User("Name", "LastName", "mail@mail.com", "Password1", 0, false);
+		User user = new User("²ìÿ", "LastName", "mail@mail.com", "Password1", 0, false);
 		Class<User> typeUser = (Class<User>) user.getClass();
 		System.out.println(typeUser);
 
