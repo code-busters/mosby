@@ -14,7 +14,7 @@ public class Event {
 	private int id;
 
 	@Key(name = "organizer_ref")
-	private Organizer organizer = null;
+	private Organizer organizer;
 
 	@Column(name = "name")
 	private String name;
@@ -23,10 +23,10 @@ public class Event {
 	private String description;
 
 	@Key(name = "category_ref")
-	private EventCategory eventCategory = null;
+	private EventCategory eventCategory;
 
 	@Key(name = "type_ref")
-	private EventType eventType = null;
+	private EventType eventType;
 
 	@Column(name = "start_date")
 	private Date startDate;
@@ -231,6 +231,16 @@ public class Event {
 
 	public void setEndDateTime(Date date, Time time) {
 		this.endDateTime = endDateTime;
+	}
+
+	@Override
+	public String toString() {
+		return "Event [id=" + id + ", organizer=" + organizer + ", name="
+				+ name + ", description=" + description + ", eventCategory="
+				+ eventCategory + ", eventType=" + eventType + ", startDate="
+				+ startDate + ", startTime=" + startTime + ", endDate="
+				+ endDate + ", endTime=" + endTime + ", location=" + location
+				+ ", logo=" + logo + ", background=" + background + "]";
 	}
 
 }

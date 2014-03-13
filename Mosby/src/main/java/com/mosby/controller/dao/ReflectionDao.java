@@ -84,14 +84,14 @@ public class ReflectionDao<T> {
 
 			preparedStatement = (PreparedStatement) reflectionTransformer
 					.fromObjectToStatement(preparedStatement, type, object);
-			
+
 			preparedStatement.addBatch();
 			preparedStatement.executeBatch();
 
 			ResultSet keys = preparedStatement.getGeneratedKeys();
 			keys.next();
 			generatedId = keys.getInt(1);
-			
+
 			keys.close();
 			preparedStatement.close();
 		} catch (SQLException | IllegalArgumentException
@@ -135,19 +135,20 @@ public class ReflectionDao<T> {
 	public void deleteObjects(String whereField, Object whereValue) {
 		try {
 			query = queryStatements.createDeleteQuery(whereField);
-			
+
 			Connection connection = ConnectionManager.getInstance()
 					.getConnection();
 			PreparedStatement preparedStatement = (PreparedStatement) connection
 					.prepareStatement(query);
 
 			preparedStatement.setObject(1, whereValue);
-			
+
 			preparedStatement.addBatch();
 			preparedStatement.executeBatch();
-		} catch (SQLException | IllegalArgumentException | ClassNotFoundException e) {
+		} catch (SQLException | IllegalArgumentException
+				| ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 }

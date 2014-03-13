@@ -21,35 +21,38 @@ public class ReflectionTransformer<T> {
 
 			Object value = null;
 			try {
-				if (field.getType().equals(boolean.class)) {
-					int state = (int) resultSet
-							.getObject(fromFieldToColumnInDB(field.getName()));
-					if (state == 0) {
-						value = new Boolean(false);
-					} else if (state == 1) {
-						value = new Boolean(true);
-					}
-				} else {
-					if (field.isAnnotationPresent(Column.class)) {
+				if (field.isAnnotationPresent(Column.class)) {
+					if (field.getType().equals(boolean.class)) {
+						int state = (int) resultSet
+								.getObject(fromFieldToColumnInDB(field
+										.getName()));
+						if (state == 0) {
+							value = new Boolean(false);
+						} else if (state == 1) {
+							value = new Boolean(true);
+						}
+					} else {
+
 						value = resultSet.getObject(field.getAnnotation(
 								Column.class).name());
-					} else if (field.isAnnotationPresent(Key.class)) {
-						field.setAccessible(true);
-						value = resultSet.getObject(field.getAnnotation(
-								Key.class).name());
-						if (value != null) {
-							int currentId = Integer.parseInt(value.toString());
-							value = new ReflectionDao<>(field.getType())
-									.selectObjects("id", currentId).get(0);
-						}
+					}
+				} else if (field.isAnnotationPresent(Key.class)) {
+					value = resultSet.getObject(field.getAnnotation(Key.class)
+							.name());
+					if (value != null) {
+						int currentId = Integer.parseInt(value.toString());
+						value = new ReflectionDao<>(field.getType())
+								.selectObjects("id", currentId).get(0);
 					}
 				}
-
-				PropertyDescriptor propertyDescriptor;
-				propertyDescriptor = new PropertyDescriptor(field.getName(),
-						type);
-				Method method = propertyDescriptor.getWriteMethod();
-				method.invoke(object, value);
+				if (field.isAnnotationPresent(Key.class)
+						|| field.isAnnotationPresent(Column.class)) {
+					PropertyDescriptor propertyDescriptor;
+					propertyDescriptor = new PropertyDescriptor(
+							field.getName(), type);
+					Method method = propertyDescriptor.getWriteMethod();
+					method.invoke(object, value);
+				}
 			} catch (IntrospectionException | IllegalAccessException
 					| IllegalArgumentException | InvocationTargetException
 					| SQLException e) {

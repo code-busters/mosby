@@ -110,7 +110,10 @@ public class QueryStatements<T> {
 		for (Field field : type.getDeclaredFields()) {
 
 			if (hasValues) {
-				stringBuilder.append("?, ");
+				if (field.isAnnotationPresent(Column.class)
+						|| field.isAnnotationPresent(Key.class)) {
+					stringBuilder.append("?, ");
+				}
 			} else {
 				if (field.isAnnotationPresent(Column.class)) {
 					Column annotation = (Column) field

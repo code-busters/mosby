@@ -1,7 +1,8 @@
 package main.java.com.mosby.model;
 
-import main.java.com.mosby.model.annotations.dao.*;
-import main.java.com.mosby.model.annotations.validate.*;
+import main.java.com.mosby.model.annotations.dao.Column;
+import main.java.com.mosby.model.annotations.dao.Key;
+import main.java.com.mosby.model.annotations.dao.Table;
 
 @Table(name="event_admins")
 public class EventAdmin {
