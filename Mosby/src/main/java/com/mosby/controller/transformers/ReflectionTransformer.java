@@ -62,15 +62,35 @@ public class ReflectionTransformer<T> {
 	public PreparedStatement fromObjectToStatement(
 			PreparedStatement preparedStatement, Class<T> type, T object) {
 		int columnIndex = 0;
-
+		System.out.println(object);
 		for (Field field : type.getDeclaredFields()) {
 			PropertyDescriptor propertyDescriptor;
 			try {
-				propertyDescriptor = new PropertyDescriptor(field.getName(),
-						type);
-				Method method = propertyDescriptor.getReadMethod();
-				Object value = method.invoke(object);
-				preparedStatement.setObject(++columnIndex, value);
+				if (field.isAnnotationPresent(Column.class)) {
+					propertyDescriptor = new PropertyDescriptor(
+							field.getName(), type);
+					Method method = propertyDescriptor.getReadMethod();
+					System.out.println(method.getName().toString());
+					Object value = method.invoke(object);
+					if (value != null) {
+						System.out.println(value);
+					} else {
+						System.out.println("Null");
+					}
+					preparedStatement.setObject(++columnIndex, value);
+				} else if (field.isAnnotationPresent(Key.class)) {
+					propertyDescriptor = new PropertyDescriptor(
+							field.getName(), type);
+					Method method = propertyDescriptor.getReadMethod();
+					System.out.println(method.getName().toString());
+					Object value = method.invoke(object);
+					if (value != null) {
+						System.out.println(value);
+					} else {
+						System.out.println("Null");
+					}
+					preparedStatement.setObject(++columnIndex, value);
+				}
 			} catch (IntrospectionException | IllegalAccessException
 					| IllegalArgumentException | InvocationTargetException
 					| SQLException e) {

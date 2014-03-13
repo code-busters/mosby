@@ -10,11 +10,12 @@ public class MainService {
 			(Class<User>) user.getClass());
 
 	public void selectUsers() {
-		User user = new User();
+		User user = new User("Name", "LastName", "mail@mail.com", "Password1", 0, false);
 		Class<User> typeUser = (Class<User>) user.getClass();
 		System.out.println(typeUser);
 
-		System.out.println(usersDao.selectObjects("", null));
+		usersDao.insertObjects(user);
+		//System.out.println(usersDao.selectObjects("", null));
 		//System.out.println(usersDao.selectObjects("firstName", "Oleksii"));
 	}
 

@@ -42,8 +42,7 @@ public class QueryStatements<T> {
 	public String createInsertQuery() {
 		String query = null;
 
-		String tableName = reflectionTransformer.fromFieldToColumnInDB(type
-				.getSimpleName()) + "s";
+		String tableName = type.getAnnotation(Table.class).name();
 		String tableColumns = getColumns(true);
 
 		query = StringUtils.concat("INSERT INTO ", tableName, " VALUES (",
@@ -109,18 +108,20 @@ public class QueryStatements<T> {
 		StringBuilder stringBuilder = new StringBuilder();
 
 		for (Field field : type.getDeclaredFields()) {
-			if (field.isAnnotationPresent(Column.class)) {
-				if (hasValues) {
-					stringBuilder.append("?, ");
-				} else {
-					Column annotation = (Column) field.getAnnotation(Column.class);
+
+			if (hasValues) {
+				stringBuilder.append("?, ");
+			} else {
+				if (field.isAnnotationPresent(Column.class)) {
+					Column annotation = (Column) field
+							.getAnnotation(Column.class);
+					stringBuilder.append(annotation.name()).append(", ");
+					System.out.println("\t" + annotation.name());
+				} else if (field.isAnnotationPresent(Key.class)) {
+					Key annotation = (Key) field.getAnnotation(Key.class);
 					stringBuilder.append(annotation.name()).append(", ");
 					System.out.println("\t" + annotation.name());
 				}
-			} else if (field.isAnnotationPresent(Key.class)) {
-				Key annotation = (Key) field.getAnnotation(Key.class);
-				stringBuilder.append(annotation.name()).append(", ");
-				System.out.println("\t" + annotation.name());
 			}
 		}
 		stringBuilder.deleteCharAt(stringBuilder.length() - 2);

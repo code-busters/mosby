@@ -39,7 +39,7 @@ public class User {
 	private boolean admin;
 	
 	@Key(name = "user_profile_key")
-	private UserProfile userProfile = null;
+	private UserProfile userProfile;
 
 	public User() {
 
@@ -51,6 +51,17 @@ public class User {
 		super();
 		this.id = id;
 		this.userProfile = userProfile;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+		this.credits = credits;
+		this.admin = admin;
+	}
+
+	public User(String firstName, String lastName, String email,
+			String password, double credits, boolean admin) {
+		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
