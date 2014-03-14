@@ -56,7 +56,7 @@
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/src/main/java/com/mosby/view/web/filters/EventPageFilter.java" line="25" class="main.java.com.mosby.view.web.filters.EventPageFilter" package="main.java.com.mosby.view.web.filters">
+      <breakpoint url="file://$PROJECT_DIR$/src/main/java/com/mosby/view/web/servlets/CreateEventServlet.java" line="29" class="main.java.com.mosby.view.web.servlets.CreateEventServlet" package="main.java.com.mosby.view.web.servlets">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -84,7 +84,16 @@
       <file leaf-file-name="createEvent.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebContent/pages/createEvent.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="199" column="60" selection-start="7648" selection-end="7648" vertical-scroll-proportion="-6.076923" vertical-offset="3225" max-vertical-offset="10217">
+            <state line="584" column="88" selection-start="29565" selection-end="29565" vertical-scroll-proportion="-16.192308" vertical-offset="9507" max-vertical-offset="10523">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CreateEventServlet.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/view/web/servlets/CreateEventServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="0" selection-start="1147" selection-end="1147" vertical-scroll-proportion="0.41463414" vertical-offset="0" max-vertical-offset="656">
               <folding />
             </state>
           </provider>
@@ -93,66 +102,8 @@
       <file leaf-file-name="Event.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/model/Event.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="24" selection-start="831" selection-end="838" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="3230">
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#2815#2816#0" expanded="false" />
-                <element signature="e#2831#2832#0" expanded="false" />
-                <element signature="e#2861#2862#0" expanded="false" />
-                <element signature="e#2880#2881#0" expanded="false" />
-                <element signature="e#2916#2917#0" expanded="false" />
-                <element signature="e#2939#2940#0" expanded="false" />
-                <element signature="e#2989#2990#0" expanded="false" />
-                <element signature="e#3022#3023#0" expanded="false" />
-                <element signature="e#3050#3051#0" expanded="false" />
-                <element signature="e#3068#3069#0" expanded="false" />
-                <element signature="e#3105#3106#0" expanded="false" />
-                <element signature="e#3128#3129#0" expanded="false" />
-                <element signature="e#3163#3164#0" expanded="false" />
-                <element signature="e#3188#3189#0" expanded="false" />
-                <element signature="e#3239#3240#0" expanded="false" />
-                <element signature="e#3276#3277#0" expanded="false" />
-                <element signature="e#3320#3321#0" expanded="false" />
-                <element signature="e#3347#3348#0" expanded="false" />
-                <element signature="e#3409#3410#0" expanded="false" />
-                <element signature="e#3450#3451#0" expanded="false" />
-                <element signature="e#3486#3487#0" expanded="false" />
-                <element signature="e#3509#3510#0" expanded="false" />
-                <element signature="e#3559#3560#0" expanded="false" />
-                <element signature="e#3592#3593#0" expanded="false" />
-                <element signature="e#3623#3624#0" expanded="false" />
-                <element signature="e#3646#3647#0" expanded="false" />
-                <element signature="e#3691#3692#0" expanded="false" />
-                <element signature="e#3724#3725#0" expanded="false" />
-                <element signature="e#3755#3756#0" expanded="false" />
-                <element signature="e#3778#3779#0" expanded="false" />
-                <element signature="e#3823#3824#0" expanded="false" />
-                <element signature="e#3856#3857#0" expanded="false" />
-                <element signature="e#3885#3886#0" expanded="false" />
-                <element signature="e#3906#3907#0" expanded="false" />
-                <element signature="e#3947#3948#0" expanded="false" />
-                <element signature="e#3976#3977#0" expanded="false" />
-                <element signature="e#4005#4006#0" expanded="false" />
-                <element signature="e#4026#4027#0" expanded="false" />
-                <element signature="e#4067#4068#0" expanded="false" />
-                <element signature="e#4096#4097#0" expanded="false" />
-                <element signature="e#4128#4129#0" expanded="false" />
-                <element signature="e#4150#4151#0" expanded="false" />
-                <element signature="e#4195#4196#0" expanded="false" />
-                <element signature="e#4226#4227#0" expanded="false" />
-                <element signature="e#4254#4255#0" expanded="false" />
-                <element signature="e#4272#4273#0" expanded="false" />
-                <element signature="e#4309#4310#0" expanded="false" />
-                <element signature="e#4332#4333#0" expanded="false" />
-                <element signature="e#4366#4367#0" expanded="false" />
-                <element signature="e#4390#4391#0" expanded="false" />
-                <element signature="e#4439#4440#0" expanded="false" />
-                <element signature="e#4474#4475#0" expanded="false" />
-                <element signature="e#4514#4515#0" expanded="false" />
-                <element signature="e#4541#4542#0" expanded="false" />
-                <element signature="e#4675#4676#0" expanded="false" />
-                <element signature="e#4700#4701#0" expanded="false" />
-              </folding>
+            <state line="42" column="24" selection-start="831" selection-end="838" vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="4250">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -169,7 +120,7 @@
       <file leaf-file-name="application.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebContent/js/application.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="11" selection-start="909" selection-end="1150" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="2720">
+            <state line="36" column="11" selection-start="909" selection-end="1150" vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="2737">
               <folding>
                 <marker date="1394751812920" expanded="false" signature="1508:1512" placeholder="..." />
                 <marker date="1394751812920" expanded="false" signature="1765:1778" placeholder="..." />
@@ -178,10 +129,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.jsp" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebContent/pages/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="127" column="9" selection-start="4525" selection-end="4525" vertical-scroll-proportion="0.7983051" vertical-offset="1688" max-vertical-offset="2346">
+            <state line="127" column="9" selection-start="4525" selection-end="4525" vertical-scroll-proportion="-26.5" vertical-offset="1470" max-vertical-offset="2346">
               <folding />
             </state>
           </provider>
@@ -190,7 +141,7 @@
       <file leaf-file-name="navbar.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebContent/pages/parts/navbar.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="43" selection-start="2363" selection-end="2363" vertical-scroll-proportion="-9.615385" vertical-offset="549" max-vertical-offset="1139">
+            <state line="47" column="43" selection-start="2391" selection-end="2391" vertical-scroll-proportion="0.0" vertical-offset="549" max-vertical-offset="1139">
               <folding />
             </state>
           </provider>
@@ -199,7 +150,7 @@
       <file leaf-file-name="User.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/model/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="19" selection-start="971" selection-end="971" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="2006">
+            <state line="41" column="19" selection-start="971" selection-end="971" vertical-scroll-proportion="0.0" vertical-offset="697" max-vertical-offset="2567">
               <folding />
             </state>
           </provider>
@@ -208,7 +159,7 @@
       <file leaf-file-name="UserProfile.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/model/UserProfile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="26" selection-start="360" selection-end="367" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1445">
+            <state line="17" column="26" selection-start="360" selection-end="367" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="1972">
               <folding />
             </state>
           </provider>
@@ -258,9 +209,9 @@
         <option value="$PROJECT_DIR$/WebContent/pages/eventPage.jsp" />
         <option value="$PROJECT_DIR$/WebContent/css/styles.css" />
         <option value="$PROJECT_DIR$/WebContent/js/application.js" />
-        <option value="$PROJECT_DIR$/WebContent/pages/createEvent.jsp" />
         <option value="$PROJECT_DIR$/WebContent/pages/parts/navbar.jsp" />
         <option value="$PROJECT_DIR$/WebContent/pages/index.jsp" />
+        <option value="$PROJECT_DIR$/WebContent/pages/createEvent.jsp" />
       </list>
     </option>
   </component>
@@ -298,6 +249,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -363,64 +316,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="WebContent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pages" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mosby" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mosby" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebContent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mosby" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mosby" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebContent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mosby" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mosby" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebContent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -512,55 +407,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mosby" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mosby" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mosby" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mosby" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mosby" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mosby" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="services" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -580,8 +427,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -629,7 +474,7 @@
       <recent name="F:\development\GitHub\mosby\Mosby\WebContent\WEB-INF" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Index">
+  <component name="RunManager" selected="Tomcat Server.Create Event">
     <configuration default="false" name="StringUtilsTest.testConcat" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -1341,11 +1186,12 @@
       <workItem from="1394651247130" duration="2883000" />
       <workItem from="1394660075671" duration="628000" />
       <workItem from="1394751100654" duration="2477000" />
+      <workItem from="1394806738564" duration="480000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33882000" />
+    <option name="totallyTimeSpent" value="34362000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1372,7 +1218,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15069222" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14536741" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30669546" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1403,6 +1249,27 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/WebContent/pages/parts/navbar.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="43" selection-start="2363" selection-end="2363" vertical-scroll-proportion="0.0" vertical-offset="549" max-vertical-offset="1139">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/model/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="19" selection-start="971" selection-end="971" vertical-scroll-proportion="0.0" vertical-offset="697" max-vertical-offset="2567">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/model/UserProfile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="26" selection-start="360" selection-end="367" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="1972">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/pages/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="234" column="74" selection-start="9433" selection-end="9433" vertical-scroll-proportion="0.0" vertical-offset="2171" max-vertical-offset="4148" />
@@ -1558,20 +1425,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/view/web/filters/IndexFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="13" selection-start="371" selection-end="371" vertical-scroll-proportion="0.12957317" vertical-offset="0" max-vertical-offset="656">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/view/web/filters/EventPageFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="13" selection-start="375" selection-end="375" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/view/web/servlets/IndexServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="41" column="53" selection-start="1638" selection-end="1670" vertical-scroll-proportion="0.0" vertical-offset="109" max-vertical-offset="765">
@@ -1629,65 +1482,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/model/Event.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="42" column="24" selection-start="831" selection-end="838" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="3230">
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2815#2816#0" expanded="false" />
-            <element signature="e#2831#2832#0" expanded="false" />
-            <element signature="e#2861#2862#0" expanded="false" />
-            <element signature="e#2880#2881#0" expanded="false" />
-            <element signature="e#2916#2917#0" expanded="false" />
-            <element signature="e#2939#2940#0" expanded="false" />
-            <element signature="e#2989#2990#0" expanded="false" />
-            <element signature="e#3022#3023#0" expanded="false" />
-            <element signature="e#3050#3051#0" expanded="false" />
-            <element signature="e#3068#3069#0" expanded="false" />
-            <element signature="e#3105#3106#0" expanded="false" />
-            <element signature="e#3128#3129#0" expanded="false" />
-            <element signature="e#3163#3164#0" expanded="false" />
-            <element signature="e#3188#3189#0" expanded="false" />
-            <element signature="e#3239#3240#0" expanded="false" />
-            <element signature="e#3276#3277#0" expanded="false" />
-            <element signature="e#3320#3321#0" expanded="false" />
-            <element signature="e#3347#3348#0" expanded="false" />
-            <element signature="e#3409#3410#0" expanded="false" />
-            <element signature="e#3450#3451#0" expanded="false" />
-            <element signature="e#3486#3487#0" expanded="false" />
-            <element signature="e#3509#3510#0" expanded="false" />
-            <element signature="e#3559#3560#0" expanded="false" />
-            <element signature="e#3592#3593#0" expanded="false" />
-            <element signature="e#3623#3624#0" expanded="false" />
-            <element signature="e#3646#3647#0" expanded="false" />
-            <element signature="e#3691#3692#0" expanded="false" />
-            <element signature="e#3724#3725#0" expanded="false" />
-            <element signature="e#3755#3756#0" expanded="false" />
-            <element signature="e#3778#3779#0" expanded="false" />
-            <element signature="e#3823#3824#0" expanded="false" />
-            <element signature="e#3856#3857#0" expanded="false" />
-            <element signature="e#3885#3886#0" expanded="false" />
-            <element signature="e#3906#3907#0" expanded="false" />
-            <element signature="e#3947#3948#0" expanded="false" />
-            <element signature="e#3976#3977#0" expanded="false" />
-            <element signature="e#4005#4006#0" expanded="false" />
-            <element signature="e#4026#4027#0" expanded="false" />
-            <element signature="e#4067#4068#0" expanded="false" />
-            <element signature="e#4096#4097#0" expanded="false" />
-            <element signature="e#4128#4129#0" expanded="false" />
-            <element signature="e#4150#4151#0" expanded="false" />
-            <element signature="e#4195#4196#0" expanded="false" />
-            <element signature="e#4226#4227#0" expanded="false" />
-            <element signature="e#4254#4255#0" expanded="false" />
-            <element signature="e#4272#4273#0" expanded="false" />
-            <element signature="e#4309#4310#0" expanded="false" />
-            <element signature="e#4332#4333#0" expanded="false" />
-            <element signature="e#4366#4367#0" expanded="false" />
-            <element signature="e#4390#4391#0" expanded="false" />
-            <element signature="e#4439#4440#0" expanded="false" />
-            <element signature="e#4474#4475#0" expanded="false" />
-            <element signature="e#4514#4515#0" expanded="false" />
-            <element signature="e#4541#4542#0" expanded="false" />
-            <element signature="e#4675#4676#0" expanded="false" />
-            <element signature="e#4700#4701#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1698,25 +1493,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/view/web/servlets/CreateEventServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="82" selection-start="1942" selection-end="1942" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1054">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/utils/MailUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="17" selection-start="106" selection-end="106" vertical-scroll-proportion="-0.37142858" vertical-offset="306" max-vertical-offset="1496">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/pages/createEvent.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="199" column="60" selection-start="7648" selection-end="7648" vertical-scroll-proportion="-6.076923" vertical-offset="3225" max-vertical-offset="10217">
-          <folding />
-        </state>
+        <state line="5" column="17" selection-start="106" selection-end="106" vertical-scroll-proportion="-0.37142858" vertical-offset="306" max-vertical-offset="1496" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/model/UserProfile.java">
@@ -1752,14 +1531,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/pages/parts/navbar.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="43" selection-start="2363" selection-end="2363" vertical-scroll-proportion="-9.615385" vertical-offset="549" max-vertical-offset="1139">
+        <state line="47" column="43" selection-start="2391" selection-end="2391" vertical-scroll-proportion="0.0" vertical-offset="549" max-vertical-offset="1139">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/pages/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="127" column="9" selection-start="4525" selection-end="4525" vertical-scroll-proportion="0.7983051" vertical-offset="1688" max-vertical-offset="2346">
+        <state line="127" column="9" selection-start="4525" selection-end="4525" vertical-scroll-proportion="-26.5" vertical-offset="1470" max-vertical-offset="2346">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/pages/createEvent.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="584" column="88" selection-start="29565" selection-end="29565" vertical-scroll-proportion="-16.192308" vertical-offset="9507" max-vertical-offset="10523">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/view/web/filters/CreateEventFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="13" selection-start="510" selection-end="510" vertical-scroll-proportion="0.12957317" vertical-offset="0" max-vertical-offset="731">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/view/web/servlets/CreateEventServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="0" selection-start="1147" selection-end="1147" vertical-scroll-proportion="0.41463414" vertical-offset="0" max-vertical-offset="656">
           <folding />
         </state>
       </provider>

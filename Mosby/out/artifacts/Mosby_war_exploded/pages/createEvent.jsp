@@ -196,7 +196,7 @@
     <label for="event-category">Category</label>
     <select name="event_category" class="select-block" id="event-category" form="create-event-form">
         <option value="-1">
-            Select categoty...
+            Select category...
         </option>
         <c:forEach items="${eventCategories}" var="category">
             <option value="${category.id}">
@@ -212,7 +212,7 @@
             Select type...
         </option>
         <c:forEach items="${eventTypes}" var="type">
-            <option value="conference">
+            <option value="${type.id}">
                     ${type.type}
             </option>
         </c:forEach>
@@ -256,6 +256,7 @@
             <div class="col-md-2 col-sm-2 text-center">Actions</div>
         </div>
         <div id="tickets-body">
+            <input class="hide" type="text" value="" name="tickets_id" />
             <!--
                                             <div id="0" class="row">
                                                 <div class="col-md-6 col-sm-6">
@@ -331,6 +332,7 @@
             <div class="col-md-2 col-sm-2 text-center">Actions</div>
         </div>
         <div id="promo-codes-body">
+            <input class="hide" type="text" value="" name="promo_codes_id" />
             <!--
                                             <div id="0" class="row">
                                                 <div class="col-md-6 col-sm-6">
@@ -589,6 +591,22 @@
         });
         return false;
     });
+
+    $(document).on('click', '[name="submit"]', function() {
+        setIdsArray('tickets');
+        setIdsArray('promo-codes');
+    });
+
+    var setIdsArray = function(value) {
+        var ids = [];
+        $('#' + value + ' > #' + value + '-body:last').find('.row').each(function() {
+            ids.push(this.id);
+        });
+        var temp = ids.join('_');
+        value = value.replace('-', '_');
+        console.log(value + '  ' + temp);
+        $('[name="' + value + '_id"]').val(temp);
+    };
 </script>
 
 </body>
