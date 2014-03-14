@@ -42,9 +42,10 @@ public class ValidatorUtils<T> {
 	public T validate(T object) throws NoSuchMethodException,
 			SecurityException, IllegalAccessException,
 			IllegalArgumentException, InvocationTargetException {
-		System.out.println("dsad");
+		System.out.println("I am validaotr");
 		Timestamp timestampStart = null;
 		for (Field field : type.getDeclaredFields()) {
+			System.out.println("I get field");
 			
 			if (field.isAnnotationPresent(NotNull.class)) {
 				field.setAccessible(true);
@@ -136,13 +137,15 @@ public class ValidatorUtils<T> {
 					errors.add(field.getName() + " don`t valid");
 				}
 			}
-			if (field.isAnnotationPresent(StartFuture.class) && (field.getType() == Date.class)) {
+			if (field.isAnnotationPresent(StartFuture.class)) {
 				field.setAccessible(true);
 				System.out.println("start");
 				timestampStart = (Timestamp) field.get(object);
 				Date date = new Date();
+				System.out.println(date.getTime());
 				Timestamp timestampNow = new Timestamp(date.getTime());
-				if (timestampStart.before(timestampNow)) {
+				if (timestampStart != null && timestampStart.before(timestampNow)) {
+					System.out.println("infunc");
 					errors.add(field.getName() + " don`t valid");
 				}
 

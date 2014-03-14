@@ -31,7 +31,6 @@ public class User {
 	@Column(name = "password")
 	private String password;
 
-	@Size(min = 0, max = 10000)
 	@Column(name = "credits")
 	private double credits;
 
@@ -68,6 +67,14 @@ public class User {
 		this.password = password;
 		this.credits = credits;
 		this.admin = admin;
+	}
+
+	public User(String firstName, String lastName, String email, String password) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
 	}
 
 	public int getId() {

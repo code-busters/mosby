@@ -57,10 +57,33 @@ public class Event {
 	public Event() {
 	}
 
+	public Event(Organizer organizer, String name, String description,
+			EventCategory eventCategory, EventType eventType, Date startDate,
+			Date startTime, Timestamp startDateTime, Date endDate,
+			Date endTime, Timestamp endDateTime, String location, String logo,
+			String background) {
+		super();
+		this.organizer = organizer;
+		this.name = name;
+		this.description = description;
+		this.eventCategory = eventCategory;
+		this.eventType = eventType;
+		this.startDate = startDate;
+		this.startTime = startTime;
+		this.startDateTime = startDateTime;
+		this.endDate = endDate;
+		this.endTime = endTime;
+		this.endDateTime = endDateTime;
+		this.location = location;
+		this.logo = logo;
+		this.background = background;
+	}
+
 	public Event(int id, Organizer organizer, String name, String description,
 			EventCategory eventCategory, EventType eventType, Date startDate,
-			Date startTime, Date endDate, Date endTime, String location,
-			String logo, String background) {
+			Date startTime, Timestamp startDateTime, Date endDate,
+			Date endTime, Timestamp endDateTime, String location, String logo,
+			String background) {
 		super();
 		this.id = id;
 		this.organizer = organizer;
@@ -70,46 +93,21 @@ public class Event {
 		this.eventType = eventType;
 		this.startDate = startDate;
 		this.startTime = startTime;
+		this.startDateTime = startDateTime;
 		this.endDate = endDate;
 		this.endTime = endTime;
+		this.endDateTime = endDateTime;
 		this.location = location;
 		this.logo = logo;
 		this.background = background;
 	}
 
-	public Event(Organizer organizer, String name, String description,
-			EventCategory eventCategory, EventType eventType, Date startDate,
-			Date startTime, Date endDate, Date endTime, String location,
-			String logo, String background) {
-		super();
-		this.organizer = organizer;
-		this.name = name;
-		this.description = description;
-		this.eventCategory = eventCategory;
-		this.eventType = eventType;
-		this.startDate = startDate;
-		this.startTime = startTime;
-		this.endDate = endDate;
-		this.endTime = endTime;
-		this.location = location;
-		this.logo = logo;
-		this.background = background;
-	}
 
-	public Event(Organizer organizer, String name, String description,
-			EventCategory eventCategory, EventType eventType, Date startDate,
-			Date endDate, String location, String logo, String background) {
+
+	public Event(Timestamp startDateTime, Timestamp endDateTime) {
 		super();
-		this.organizer = organizer;
-		this.name = name;
-		this.description = description;
-		this.eventCategory = eventCategory;
-		this.eventType = eventType;
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.location = location;
-		this.logo = logo;
-		this.background = background;
+		this.startDateTime = startDateTime;
+		this.endDateTime = endDateTime;
 	}
 
 	public int getId() {
@@ -216,30 +214,18 @@ public class Event {
 		this.background = background;
 	}
 
-	public Timestamp getStartDateTime() {
-		return startDateTime;
-	}
-
-	public void setStartDateTime(Date date, Date time) {
-		this.startDateTime = startDateTime;
-	}
-
-	public Timestamp getEndDateTime() {
-		return endDateTime;
-	}
-
-	public void setEndDateTime(Date date, Date time) {
-		this.endDateTime = endDateTime;
-	}
+	
 
 	@Override
 	public String toString() {
 		return "Event [id=" + id + ", organizer=" + organizer + ", name="
 				+ name + ", description=" + description + ", eventCategory="
 				+ eventCategory + ", eventType=" + eventType + ", startDate="
-				+ startDate + ", startTime=" + startTime + ", endDate="
-				+ endDate + ", endTime=" + endTime + ", location=" + location
-				+ ", logo=" + logo + ", background=" + background + "]";
+				+ startDate + ", startTime=" + startTime + ", startDateTime="
+				+ startDateTime + ", endDate=" + endDate + ", endTime="
+				+ endTime + ", endDateTime=" + endDateTime + ", location="
+				+ location + ", logo=" + logo + ", background=" + background
+				+ "]";
 	}
 
 }

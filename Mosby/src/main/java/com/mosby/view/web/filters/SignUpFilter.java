@@ -43,7 +43,7 @@ public class SignUpFilter implements Filter {
 			String password = request.getParameter("password");
 			String confirmPassword = request.getParameter("confirm_password");
 
-			User user = new User(firstName, lastName, email, password, 0, false);
+			User user = new User(firstName, lastName, email, password);
 			ValidatorUtils<User> validatorUtils = new ValidatorUtils<>(
 					(Class<User>) user.getClass());
 			try {

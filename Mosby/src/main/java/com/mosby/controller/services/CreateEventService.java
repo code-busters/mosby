@@ -3,6 +3,7 @@ package main.java.com.mosby.controller.services;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -21,7 +22,7 @@ import main.java.com.mosby.model.EventType;
 import main.java.com.mosby.utils.FileUploadUtils;
 
 public class CreateEventService {
-	private static final String DATE_FORMAT = "yyyy/MM/dd";
+	private static final String DATE_FORMAT = "dd/MM/yyyy";
 	private static final String TIME_FORMAT = "HH:mm";
     private static final String EVENT_BACKGROUND_PATH = "media\\images\\events\\background";
     private static final String EVENT_LOGO_PATH = "media\\images\\events\\logo";
@@ -62,12 +63,13 @@ public class CreateEventService {
 		String name = request.getParameter("event_name");
 		String description = request.getParameter("event_description");
 		
-		
-//		Must work but.....
-//		ReadEventService readEventService = new ReadEventService();
-//		EventCategory eventCategory = readEventService.readCategotyById(Integer.parseInt(request.getParameter("event_category")));
-//		EventType eventType = readEventService.readTypeById(Integer.parseInt(request.getParameter("event_type")));
-//
+		int categoryRef = Integer.parseInt(request.getParameter("event_category"));
+		int typeRef = Integer.parseInt(request.getParameter("event_type"));
+
+		ReadEventService readEventService = new ReadEventService();
+		eventCategory = readEventService.readCategotyById(Integer.parseInt(request.getParameter("event_category")));
+		eventType = readEventService.readTypeById(Integer.parseInt(request.getParameter("event_type")));
+
 		
 //		if(categoryRef != -1){
 //			ReflectionDao<EventCategory> eventCategoryDao = new ReflectionDao<>(
@@ -81,6 +83,20 @@ public class CreateEventService {
 //		}
 		
 		Date startDate = null, endDate = null, startTime = null, endTime = null;
+        SimpleDateFormat parseDate = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+        
+        String startTimestamp = request.getParameter("start_date") + " " + request.getParameter("start_time");
+        String endTimestamp = request.getParameter("end_date") + " " + request.getParameter("end_time");
+
+        Timestamp start = null;
+        Timestamp end = null;
+        try {
+            start = new Timestamp(parseDate.parse(startTimestamp).getTime());
+            end = new Timestamp(parseDate.parse(endTimestamp).getTime());
+        } catch (ParseException e) {
+            log.error(e);
+        }
+
 		try {
 			startDate = new SimpleDateFormat(DATE_FORMAT).parse(request.getParameter("start_date"));
 			endDate = new SimpleDateFormat(DATE_FORMAT).parse(request.getParameter("end_date"));
@@ -92,9 +108,10 @@ public class CreateEventService {
 		}
 		System.out.println(request.getParameter("start_time"));
 
+
 		String location = request.getParameter("event_location");
 
-		Event event = new Event(null, name, description, eventCategory, eventType, startDate, startTime, endDate, endTime, location, eventLogo, eventBackground);
+		Event event = new Event(null, name, description, eventCategory, eventType, startDate, startTime, start, endDate, endTime, end, location, eventLogo, eventBackground);
 		System.out.println(event);
 
 		ReflectionDao<Event> eventDao = new ReflectionDao<>((Class<Event>) Event.class);
