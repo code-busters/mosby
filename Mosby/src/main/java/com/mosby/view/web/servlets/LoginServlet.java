@@ -15,6 +15,15 @@ import java.io.IOException;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+        String sessionId = session.getId();
+        String appId = "601170126631442";
+        String redirectUrl = "http://localhost:8080/Mosby/socialSignUp";
+        String returnValue = "https://www.facebook.com/dialog/oauth?client_id="
+                + appId + "&redirect_uri=" + redirectUrl
+                + "&scope=email,user_birthday&state=" + sessionId;
+       
+    	request.setAttribute("facebookURL", returnValue);
 		request.getRequestDispatcher("/pages/login.jsp").forward(request, response);
 	}
 

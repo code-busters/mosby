@@ -80,7 +80,7 @@
         <div class="other-sign-up col-md-4">
             <h4>Sign up with:</h4>
             <div class="col-md-10">
-                <a class="btn btn-block btn-social btn-facebook">
+                <a class="btn btn-block btn-social btn-facebook" href="${facebookURL}">
                     <i class="fa fa-facebook"></i>Sign in with Facebook
                 </a>
                 <a class="btn btn-block btn-social btn-google-plus">

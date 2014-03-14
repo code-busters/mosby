@@ -31,4 +31,23 @@ public class ReadUsersService {
 
 	}
 
+	public User readSocialUser(String email) {
+		User user = new User();
+
+		ReflectionDao<User> usersDao = new ReflectionDao<>(
+				(Class<User>) user.getClass());
+
+		if (!usersDao.selectObjects("email", email).isEmpty()) {
+			user = usersDao.selectObjects("email", email).get(0);
+
+			return user;
+
+		} else {
+			return null;
+
+		}
+
+	}
+	
+
 }
