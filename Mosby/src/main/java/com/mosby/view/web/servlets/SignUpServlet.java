@@ -41,8 +41,7 @@ public class SignUpServlet extends HttpServlet {
 		String password = request.getParameter("password");
 
 		User user = new User(firstName, lastName, email, password, 0, false);
-		ValidatorUtils<User> validatorUtils = new ValidatorUtils<>(
-				(Class<User>) user.getClass());
+		ValidatorUtils<User> validatorUtils = new ValidatorUtils<>((Class<User>) user.getClass());
 
 		try {
 			user = validatorUtils.validate(user);

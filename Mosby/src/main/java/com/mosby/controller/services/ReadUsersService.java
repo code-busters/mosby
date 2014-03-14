@@ -10,8 +10,7 @@ public class ReadUsersService {
 	public User readUser(String email, String password) {
 		User user = new User();
 
-		ReflectionDao<User> usersDao = new ReflectionDao<>(
-				(Class<User>) user.getClass());
+		ReflectionDao<User> usersDao = new ReflectionDao<>((Class<User>) user.getClass());
 
 		if (!usersDao.selectObjects("email", email).isEmpty()) {
 			user = usersDao.selectObjects("email", email).get(0);
@@ -34,8 +33,7 @@ public class ReadUsersService {
 	public User readSocialUser(String email) {
 		User user = new User();
 
-		ReflectionDao<User> usersDao = new ReflectionDao<>(
-				(Class<User>) user.getClass());
+		ReflectionDao<User> usersDao = new ReflectionDao<>((Class<User>) user.getClass());
 
 		if (!usersDao.selectObjects("email", email).isEmpty()) {
 			user = usersDao.selectObjects("email", email).get(0);
