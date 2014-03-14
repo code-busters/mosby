@@ -45,7 +45,7 @@
                     <a href="<c:url value="/createEvent"/>">Create event</a>
                 </div>
                 <div class="col-md-12 bottom-settings">
-                    <a href="<c:url value="/index?logout=${user.id}"/>" class="btn btn-primary pull-right">Log Out</a>
+                    <a href="<c:url value="/logout"/>" class="btn btn-primary pull-right">Log Out</a>
                 </div>
             </div>
             <% } else {%>

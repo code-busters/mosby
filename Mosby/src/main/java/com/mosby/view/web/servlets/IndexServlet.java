@@ -33,16 +33,8 @@ public class IndexServlet extends HttpServlet {
 		
 		System.out.println(request.getAttribute("eventList"));
 		
-		if (request.getParameter("logout") != null) {
-            session = request.getSession();
-            User user = (User) session.getAttribute("user");
-            //log.info("Logged out: " + user.getBaseUserInfo().getFirstName() + " " + user.getBaseUserInfo().getLastName());
-            session.removeAttribute("user");
-//            request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
-            response.sendRedirect("index");
-        } else {
-            request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
-        }
+        request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
+        
 	}
 
 	protected void doPost(HttpServletRequest request,

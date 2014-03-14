@@ -57,11 +57,18 @@ public class CreateEventService {
 		
 		EventCategory eventCategory = null;
 		EventType eventType = null;
+		
 		int organizerRef = 5;
 		String name = request.getParameter("event_name");
 		String description = request.getParameter("event_description");
-		int categoryRef = Integer.parseInt(request.getParameter("event_category"));
-		int typeRef = Integer.parseInt(request.getParameter("event_type"));
+		
+		
+//		Must work but.....
+//		ReadEventService readEventService = new ReadEventService();
+//		EventCategory eventCategory = readEventService.readCategotyById(Integer.parseInt(request.getParameter("event_category")));
+//		EventType eventType = readEventService.readTypeById(Integer.parseInt(request.getParameter("event_type")));
+//
+		
 //		if(categoryRef != -1){
 //			ReflectionDao<EventCategory> eventCategoryDao = new ReflectionDao<>(
 //					(Class<EventCategory>) EventCategory.class);
