@@ -16,35 +16,31 @@ import java.util.List;
 @WebFilter("/EventAttributesFilter")
 public class EventAttributesFilter implements Filter {
 
-	public void doFilter(ServletRequest req, ServletResponse res,
-			FilterChain chain) throws IOException, ServletException {
-		
+	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
+
 		System.out.println("Start EventAtributesFilter");
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) res;
 		HttpSession session = request.getSession(false);
 		ReadEventService readEventService = null;
-		
-		if(session == null){
+
+		if (session == null) {
 			System.out.println("Create session");
 			session = request.getSession();
 		}
 
-		if (session.getAttribute("eventTypes") == null) {
-			
+		if ((session.getAttribute("eventTypes") == null) || (session.getAttribute("eventCategories") == null)) {
 			readEventService = new ReadEventService();
+			
 			List<EventType> listEventTypes = readEventService.readTypes();
 			System.out.println(listEventTypes);
 			session.setAttribute("eventTypes", listEventTypes);
-
-		} if (session.getAttribute("eventCategories") == null){
 			
-			readEventService = new ReadEventService();
-			List<EventCategory> listEventCategories = readEventService
-					.readCategories();
+			List<EventCategory> listEventCategories = readEventService.readCategories();
 			System.out.println(listEventCategories);
 			session.setAttribute("eventCategories", listEventCategories);
 		}
+		
 		chain.doFilter(request, response);
 	}
 

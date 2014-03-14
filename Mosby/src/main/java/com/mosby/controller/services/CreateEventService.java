@@ -1,5 +1,6 @@
 package main.java.com.mosby.controller.services;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.Time;
 import java.text.ParseException;
@@ -9,6 +10,7 @@ import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.Part;
 
 import org.apache.log4j.Logger;
 
@@ -16,17 +18,43 @@ import main.java.com.mosby.controller.dao.ReflectionDao;
 import main.java.com.mosby.model.Event;
 import main.java.com.mosby.model.EventCategory;
 import main.java.com.mosby.model.EventType;
+import main.java.com.mosby.utils.FileUploadUtils;
 
 public class CreateEventService {
 	private static final String DATE_FORMAT = "yyyy/MM/dd";
 	private static final String TIME_FORMAT = "HH:mm";
+    private static final String EVENT_BACKGROUND_PATH = "media\\images\\events\\background";
+    private static final String EVENT_LOGO_PATH = "media\\images\\events\\logo";
 	
 	private static Logger log = Logger.getLogger(CreateEventService.class);
 
-	public int create(HttpServletRequest request, HttpServlet servlet,
-			String logo, String background) throws IllegalStateException,
-			IOException, ServletException {
+	public int create(HttpServletRequest request, HttpServlet servlet) throws IllegalStateException, IOException, ServletException {
 
+//      Image uploading
+		String eventLogo = "default.png";
+		Part filePart = request.getPart("event_logo");
+		try {
+			String contentType = filePart.getContentType();
+			if (contentType.startsWith("image")) {
+				File image = FileUploadUtils.uploadFile(servlet, EVENT_LOGO_PATH, filePart);
+				eventLogo = FileUploadUtils.getFilename(image);
+			}
+		} catch (Exception e) {
+			log.error(e);
+		}
+		String eventBackground = "default.jpg";
+		filePart = request.getPart("event_background");
+		try {
+			String contentType = filePart.getContentType();
+			if (contentType.startsWith("image")) {
+				File image = FileUploadUtils.uploadFile(servlet, EVENT_BACKGROUND_PATH, filePart);
+				eventBackground = FileUploadUtils.getFilename(image);
+			}
+		} catch (Exception e) {
+			log.error(e);
+		}
+		
+		
 		EventCategory eventCategory = null;
 		EventType eventType = null;
 		int organizerRef = 5;
@@ -59,12 +87,10 @@ public class CreateEventService {
 
 		String location = request.getParameter("event_location");
 
-		 Event event = new Event(null, name, description,
-		 eventCategory, eventType, startDate, startTime, endDate, endTime, location, logo, background);
+		Event event = new Event(null, name, description, eventCategory, eventType, startDate, startTime, endDate, endTime, location, eventLogo, eventBackground);
 		System.out.println(event);
 
-		ReflectionDao<Event> eventDao = new ReflectionDao<>(
-				(Class<Event>) Event.class);
+		ReflectionDao<Event> eventDao = new ReflectionDao<>((Class<Event>) Event.class);
 
 		int id = eventDao.insertObjects(event);
 
