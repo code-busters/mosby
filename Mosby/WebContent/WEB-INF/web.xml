@@ -10,7 +10,14 @@
   </filter>
   <filter-mapping>
     <filter-name>EventAttributesFilter</filter-name>
-    <url-pattern>/*</url-pattern>
+    <url-pattern>/index</url-pattern>
+    <url-pattern>/createEvent</url-pattern>
+    <url-pattern>/eventPage</url-pattern>
+    <url-pattern>/login</url-pattern>
+    <url-pattern>/logout</url-pattern>
+    <url-pattern>/profilePage</url-pattern>
+    <url-pattern>/signUp</url-pattern>
+    <url-pattern>/socialSignUp</url-pattern>
   </filter-mapping>
   <filter>
     <filter-name>SignUpFilter</filter-name>

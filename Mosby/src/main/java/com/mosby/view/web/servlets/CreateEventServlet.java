@@ -26,18 +26,13 @@ public class CreateEventServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        CreateEventService createEventService = new CreateEventService();
-        ReadGenericObjectService readEventService = new ReadGenericObjectService();
-    	try {
-    		int eventId = createEventService.create(request, this);
-    		Event event = readEventService.readById(eventId);  
-    		request.setAttribute("event", event);
-            response.sendRedirect("/Mosby/eventPage?eventId=" + event.getId());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-    	
-//    	request.getRequestDispatcher("/pages/eventPage.jsp").forward(request, response);
-
+        try {
+            int eventId = new CreateEventService().create(request, this);
+            Event event = new ReadGenericObjectService<Event>((Class<Event>) new Event().getClass()).readById(eventId);  
+            request.setAttribute("event", event);
+                  response.sendRedirect("/Mosby/eventPage?eventId=" + event.getId());
+        } catch (Exception e) {
+         e.printStackTrace();
+        }
     }
 }

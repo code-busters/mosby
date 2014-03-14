@@ -167,8 +167,10 @@ public class ValidatorUtils<T> {
 		}
 	}
 
-	public boolean checkConfirmPass(String pass, String confirmPass) {
-		return pass.equals(confirmPass);
+	public void checkConfirmPass(String pass, String confirmPass) {
+		if(!pass.equals(confirmPass)){
+			errors.add("Please input same paswords");
+		}
 	}
 
 }

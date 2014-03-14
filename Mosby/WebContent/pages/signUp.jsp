@@ -64,7 +64,7 @@
                     <label class="login-field-icon fui-lock" for="password"></label>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="password" placeholder="Confirm Password" name="confirm-password" required id="confirm-password" />
+                    <input class="form-control" type="password" placeholder="Confirm Password" name="confirm_password" required id="confirm-password" />
                     <label class="login-field-icon fui-lock" for="password"></label>
                 </div>
                 <div class="form-group">
