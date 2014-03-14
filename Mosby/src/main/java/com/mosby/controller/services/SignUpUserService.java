@@ -3,6 +3,7 @@ package main.java.com.mosby.controller.services;
 import main.java.com.mosby.controller.dao.ReflectionDao;
 import main.java.com.mosby.model.User;
 import main.java.com.mosby.utils.EncryptionUtils;
+import main.java.com.mosby.utils.MailUtils;
 
 public class SignUpUserService {
 
@@ -24,6 +25,7 @@ public class SignUpUserService {
 					false);
 			usersDao.insertObjects(user);
 
+			new MailUtils().sendMessage(email);
 			user = usersDao.selectObjects("email", email).get(0);
 
 			return user;

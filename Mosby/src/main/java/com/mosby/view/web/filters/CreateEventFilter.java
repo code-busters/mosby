@@ -13,11 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+@WebFilter("/CreateEventFilter")
+public class CreateEventFilter implements Filter {
 
-@WebFilter("/LoginFilter")
-public class LoginFilter implements Filter {
-
-    public LoginFilter() {
+    public CreateEventFilter() {
         // TODO Auto-generated constructor stub
     }
 
@@ -25,18 +24,22 @@ public class LoginFilter implements Filter {
 		// TODO Auto-generated method stub
 	}
 
+
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
         HttpSession session = request.getSession(false);
-    	System.out.println("filterLogin");
-        if (session == null || session.getAttribute("user") == null) {
+        System.out.println("createEventFilter");
+
+        if (session != null && session.getAttribute("user") != null) {
 
             chain.doFilter(request, response);
         } else {
 
         }
+
 	}
+
 
 	public void init(FilterConfig fConfig) throws ServletException {
 		// TODO Auto-generated method stub

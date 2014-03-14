@@ -196,7 +196,7 @@
     <label for="event-category">Category</label>
     <select name="event_category" class="select-block" id="event-category" form="create-event-form">
         <option value="-1">
-            Select categoty...
+            Select category...
         </option>
         <c:forEach items="${eventCategories}" var="category">
             <option value="${category.id}">
@@ -212,7 +212,7 @@
             Select type...
         </option>
         <c:forEach items="${eventTypes}" var="type">
-            <option value="conference">
+            <option value="${type.id}">
                     ${type.type}
             </option>
         </c:forEach>

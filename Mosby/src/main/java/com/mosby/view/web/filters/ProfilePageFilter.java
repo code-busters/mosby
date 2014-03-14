@@ -13,11 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+@WebFilter("/ProfilePageFilter")
+public class ProfilePageFilter implements Filter {
 
-@WebFilter("/LoginFilter")
-public class LoginFilter implements Filter {
-
-    public LoginFilter() {
+    public ProfilePageFilter() {
         // TODO Auto-generated constructor stub
     }
 
@@ -29,13 +28,15 @@ public class LoginFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
         HttpSession session = request.getSession(false);
-    	System.out.println("filterLogin");
-        if (session == null || session.getAttribute("user") == null) {
+        System.out.println("profileFilter");
+
+        if (session != null && session.getAttribute("user") != null) {
 
             chain.doFilter(request, response);
         } else {
 
         }
+		chain.doFilter(request, response);
 	}
 
 	public void init(FilterConfig fConfig) throws ServletException {

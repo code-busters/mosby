@@ -41,7 +41,7 @@
                     <h4>${user.firstName} ${user.lastName}
                         <span>${user.email}</span>
                     </h4>
-                    <a href="#">View profile</a>
+                    <a href="<c:url value="/profilePage"/>">View profile</a>
                     <a href="<c:url value="/createEvent"/>">Create event</a>
                 </div>
                 <div class="col-md-12 bottom-settings">

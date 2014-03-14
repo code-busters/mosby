@@ -51,7 +51,7 @@ public class MailUtils {
 	        msg.setFrom();
 	        msg.setSubject("Mosby Autentification");
 	        msg.setSentDate(new java.util.Date());
-	        msg.setText("This your code\n");
+	        msg.setText("You are register on MosbyEvent! Welcome!\n");
 	        msg.setRecipients(Message.RecipientType.TO,
 	                          email);
 	        Transport.send(msg);

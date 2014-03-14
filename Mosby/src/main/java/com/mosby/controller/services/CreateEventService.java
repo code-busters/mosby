@@ -14,6 +14,8 @@ import org.apache.log4j.Logger;
 
 import main.java.com.mosby.controller.dao.ReflectionDao;
 import main.java.com.mosby.model.Event;
+import main.java.com.mosby.model.EventCategory;
+import main.java.com.mosby.model.EventType;
 
 public class CreateEventService {
 	private static final String DATE_FORMAT = "yyyy/MM/dd";
@@ -25,11 +27,24 @@ public class CreateEventService {
 			String logo, String background) throws IllegalStateException,
 			IOException, ServletException {
 
-		int organizersRef = 5;
+		EventCategory eventCategory = null;
+		EventType eventType = null;
+		int organizerRef = 5;
 		String name = request.getParameter("event_name");
 		String description = request.getParameter("event_description");
-		int catregoriesRef = 1;
-		int typeRef = 1;
+		int categoryRef = Integer.parseInt(request.getParameter("event_category"));
+		int typeRef = Integer.parseInt(request.getParameter("event_type"));
+//		if(categoryRef != -1){
+//			ReflectionDao<EventCategory> eventCategoryDao = new ReflectionDao<>(
+//					(Class<EventCategory>) EventCategory.class);
+//			eventCategory = eventCategoryDao.selectObjects("id", categoryRef).get(0);
+//		}
+//		if(typeRef != -1){
+//			ReflectionDao<EventType> eventTypeDao = new ReflectionDao<>(
+//					(Class<EventType>) EventType.class);
+//			eventType = eventTypeDao.selectObjects("id", typeRef).get(0);
+//		}
+		
 		Date startDate = null, endDate = null, startTime = null, endTime = null;
 		try {
 			startDate = new SimpleDateFormat(DATE_FORMAT).parse(request.getParameter("start_date"));
@@ -45,7 +60,7 @@ public class CreateEventService {
 		String location = request.getParameter("event_location");
 
 		 Event event = new Event(null, name, description,
-		 null, null, startDate, startTime, endDate, endTime, location, logo, background);
+		 eventCategory, eventType, startDate, startTime, endDate, endTime, location, logo, background);
 		System.out.println(event);
 
 		ReflectionDao<Event> eventDao = new ReflectionDao<>(

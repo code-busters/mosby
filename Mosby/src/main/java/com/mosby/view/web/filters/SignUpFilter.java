@@ -30,8 +30,8 @@ public class SignUpFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) res;
         HttpSession session = request.getSession(false);
 
-        if (session == null || session.getAttribute("baseUserInfo") == null) {
-        	System.out.println("filterSignUp");
+    	System.out.println("filterSignUp");
+        if (session == null || session.getAttribute("user") == null) {
             chain.doFilter(request, response);
         } else {
 
