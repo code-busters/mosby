@@ -83,7 +83,8 @@ public class ReflectionDao<T> {
 					.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
 			preparedStatement = (PreparedStatement) reflectionTransformer
-					.fromObjectToStatement(preparedStatement, type, object);
+					.fromObjectToStatement(preparedStatement, type, object,
+							false);
 
 			preparedStatement.addBatch();
 			preparedStatement.executeBatch();
@@ -109,24 +110,17 @@ public class ReflectionDao<T> {
 					.getConnection();
 			PreparedStatement preparedStatement = (PreparedStatement) connection
 					.prepareStatement(query);
+			preparedStatement = (PreparedStatement) reflectionTransformer
+					.fromObjectToStatement(preparedStatement, type, object,
+							true);
+			int whereColumnIndex = reflectionTransformer.columnCount(type);
+			System.out.println(whereColumnIndex);
 
-			int i = 0;
-			for (Field field : type.getDeclaredFields()) {
-				if (!field.getName().equals(whereField)) {
-					PropertyDescriptor propertyDescriptor = new PropertyDescriptor(
-							field.getName(), type);
-					Method method = propertyDescriptor.getReadMethod();
-					Object value = method.invoke(object);
-
-					preparedStatement.setObject(++i, value);
-				}
-			}
-			preparedStatement.setObject(++i, whereValue);
+			preparedStatement.setObject(whereColumnIndex, whereValue);
 
 			preparedStatement.addBatch();
 			preparedStatement.executeBatch();
-		} catch (SQLException | IntrospectionException | IllegalAccessException
-				| IllegalArgumentException | InvocationTargetException
+		} catch (SQLException | IllegalArgumentException
 				| ClassNotFoundException e) {
 			e.printStackTrace();
 		}

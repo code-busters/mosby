@@ -58,8 +58,7 @@ public class QueryStatements<T> {
 
 		String whereColumn = reflectionTransformer
 				.fromFieldToColumnInDB(whereField);
-		String tableName = reflectionTransformer.fromFieldToColumnInDB(type
-				.getSimpleName()) + "s";
+		String tableName = type.getAnnotation(Table.class).name();
 		String tableColumns = getUpdateColumns(whereField);
 
 		query = StringUtils.concat("UPDATE ", tableName, " SET ", tableColumns,
@@ -91,9 +90,16 @@ public class QueryStatements<T> {
 		StringBuilder stringBuilder = new StringBuilder();
 
 		for (Field field : type.getDeclaredFields()) {
-			String fieldName = reflectionTransformer.fromFieldToColumnInDB(
-					field.getName()).toString();
-			if (!whereField.equals(fieldName)) {
+			String fieldName = null;
+			if (field.isAnnotationPresent(Column.class)) {
+				Column annotation = (Column) field.getAnnotation(Column.class);
+				fieldName = annotation.name();
+				if (!fieldName.equals("id")) {
+					stringBuilder.append(fieldName).append("=?, ");
+				}
+			} else if (field.isAnnotationPresent(Key.class)) {
+				Key annotation = (Key) field.getAnnotation(Key.class);
+				fieldName = annotation.name();
 				stringBuilder.append(fieldName).append("=?, ");
 			}
 		}
