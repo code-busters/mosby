@@ -1,5 +1,8 @@
 package main.java.com.mosby.model;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 import main.java.com.mosby.model.annotations.dao.*;
 import main.java.com.mosby.model.annotations.validate.*;
 
@@ -9,6 +12,25 @@ public class TicketInfo {
 	@Column(name="id")
 	private int id;
 	
+	@Column(name="name")
+	private String name;
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Event getEvent() {
+		return event;
+	}
+
+	public void setEvent(Event event) {
+		this.event = event;
+	}
+
 	@Key(name = "event_ref")
 	private Event event;
 	
@@ -24,7 +46,75 @@ public class TicketInfo {
 	@Column(name="price")
 	private int price;
 	
+	@Column(name = "start_date")
+	private Date startDate;
+
+	@Column(name = "start_time")
+	private Date startTime;
+
+	@StartFuture
+	@NotNull
+	private Timestamp startDateTime;
+
+	@Column(name = "end_date")
+	private Date endDate;
+
+	@Column(name = "end_time")
+	private Date endTime;
+
+	@EndFuture
+	@NotNull
+	private Timestamp endDateTime;
 	
+	
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Date getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(Date startTime) {
+		this.startTime = startTime;
+	}
+
+	public Timestamp getStartDateTime() {
+		return startDateTime;
+	}
+
+	public void setStartDateTime(Timestamp startDateTime) {
+		this.startDateTime = startDateTime;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
+	public Date getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(Date endTime) {
+		this.endTime = endTime;
+	}
+
+	public Timestamp getEndDateTime() {
+		return endDateTime;
+	}
+
+	public void setEndDateTime(Timestamp endDateTime) {
+		this.endDateTime = endDateTime;
+	}
+
 	public TicketInfo() {
 	}
 

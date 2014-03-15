@@ -11,9 +11,6 @@ public class Ticket {
 	@Column(name="id")
 	private int id;
 	
-	@Key(name="registration_ref")	
-	private Registration registration = null;
-	
 	@Key(name="ticket_info_ref")	
 	private TicketInfo ticketInfo = null;
 	
@@ -25,6 +22,12 @@ public class Ticket {
 	
 	@Column(name="checked")	
 	private boolean checked;
+	
+	@Key(name="user_ref")	
+	private User user = null;
+	
+	@Key(name="event_ref")
+	private Event event = null;
 
 	public Ticket() {
 	}
@@ -37,16 +40,6 @@ public class Ticket {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-
-	public Registration getRegistration() {
-		return registration;
-	}
-
-
-	public void setRegistration(Registration registration) {
-		this.registration = registration;
 	}
 
 
@@ -87,6 +80,26 @@ public class Ticket {
 
 	public void setChecked(boolean checked) {
 		this.checked = checked;
+	}
+
+
+	public User getUser() {
+		return user;
+	}
+
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
+	public Event getEvent() {
+		return event;
+	}
+
+
+	public void setEvent(Event event) {
+		this.event = event;
 	}
 	
 }
