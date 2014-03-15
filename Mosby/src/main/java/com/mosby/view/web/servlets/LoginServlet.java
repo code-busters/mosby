@@ -41,7 +41,8 @@ public class LoginServlet extends HttpServlet {
 			
 			HttpSession session = request.getSession(false);
 			session.setAttribute("user", user);
-
+			session.setAttribute("userType", "common");
+			
             response.sendRedirect("index");
 		}
 
