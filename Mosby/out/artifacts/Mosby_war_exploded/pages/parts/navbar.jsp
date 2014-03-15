@@ -17,9 +17,9 @@
                 <span class="dropdown-arrow"></span>
                 <ul class="dropdown-menu">
                     <c:forEach items="${eventCategories}" var="category">
-                    <li>
-                        <a href="#">${category.category}</a>
-                    </li>
+                        <li>
+                            <a href="#">${category.category}</a>
+                        </li>
                     </c:forEach>
                     <li class="divider"></li>
                     <li>
@@ -28,27 +28,60 @@
                 </ul>
             </li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <% if (request.getSession().getAttribute("user") != null) { %>
+        <% if (request.getSession().getAttribute("user") != null) { %>
+        <ul class="nav navbar-nav navbar-right visible-xs">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    ${user.firstName} ${user.lastName}
+                    <b class="caret"></b>
+                </a>
+                <span class="dropdown-arrow"></span>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="<c:url value="/contactInfo"/>">View profile</a>
+                    </li>
+                    <li>
+                        <a href="<c:url value="/createEvent"/>">Create event</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="<c:url value="/logout"/>">Log Out</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right hidden-xs">
             <li>
-                <div id="user-open" class="flow-img nav-user-img" style="background-image: url(media/images/users/${user.userProfile.image});"></div>
+                <% if (request.getSession().getAttribute("userType") == "common") { %>
+                <div id="user-open" class="flow-img nav-user-img"
+                     style="background-image: url(media/images/users/${user.userProfile.image});"></div>
+                <% } else { %>
+                <div id="user-open" class="flow-img nav-user-img"
+                     style="background-image: url(${user.userProfile.image});"></div>
+                <% }%>
             </li>
             <div id="user-settings" class="hide">
-                <div class="col-md-4">
-                    <div class="flow-img user-settings-user-img" style="background-image: url(media/images/users/${user.userProfile.image});"></div>
-                </div>
-                <div class="col-md-7 col-md-offset-1">
+                <% if (request.getSession().getAttribute("userType") == "common") { %>
+                <div class="flow-img user-settings-user-img"
+                     style="background-image: url(media/images/users/${user.userProfile.image});"></div>
+                <% } else { %>
+                <div class="flow-img user-settings-user-img"
+                     style="background-image: url(${user.userProfile.image});"></div>
+                <% }%>
+                <div class="side-settings">
                     <h4>${user.firstName} ${user.lastName}
                         <span>${user.email}</span>
                     </h4>
                     <a href="<c:url value="/contactInfo"/>">View profile</a>
                     <a href="<c:url value="/createEvent"/>">Create event</a>
                 </div>
-                <div class="col-md-12 bottom-settings">
+                <div class="bottom-settings">
                     <a href="<c:url value="/logout"/>" class="btn btn-primary pull-right">Log Out</a>
                 </div>
             </div>
-            <% } else {%>
+        </ul>
+        <% } else {%>
+        <ul class="nav navbar-nav navbar-right">
             <li>
                 <a href="<c:url value="/login"/>">Login</a>
             </li>
@@ -56,7 +89,7 @@
             <li>
                 <a href="<c:url value="/signUp"/>">Sign up</a>
             </li>
-            <% } %>
         </ul>
+        <% } %>
     </div>
 </nav>

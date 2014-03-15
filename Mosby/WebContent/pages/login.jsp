@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 
 <head>
@@ -40,6 +41,11 @@
     <div class="row">
         <div class="on-background-block-header col-md-10 col-md-offset-1">
             <h4>Login</h4>
+        </div>
+        <div class="errors">
+            <c:forEach items="${errors}" var="error">
+                <p>error</p>
+            </c:forEach>
         </div>
         <div class="on-background-block login col-md-6 col-md-offset-1">
             <div class="hidden-lg hidden-md">

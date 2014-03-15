@@ -78,6 +78,12 @@
 
     <div class="row">
         <div class="on-background-block event col-md-7 col-md-offset-1">
+            <div class="breadcrumb-text">
+                <p>
+                    <a href="#fakelink" class="text-primary">${event.eventCategory.category}</a>
+                    <a href="#fakelink" class="text-info">${event.eventType.type}</a>
+                </p>
+            </div>
             <ul class="event-detail">
                 <li>
                     <span class="fui-calendar-solid"></span>

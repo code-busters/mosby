@@ -147,6 +147,11 @@
 <div class="hidden-lg hidden-md">
     <h4>Create event for free</h4>
 </div>
+<div class="errors">
+    <c:forEach items="${errors}" var="error">
+        <p>error</p>
+    </c:forEach>
+</div>
 <form enctype="multipart/form-data" action="createEvent" method="post" id="create-event-form">
 <h5>Event Detail</h5>
 
@@ -256,7 +261,7 @@
             <div class="col-md-2 col-sm-2 text-center">Actions</div>
         </div>
         <div id="tickets-body">
-            <input class="hide" type="text" value="" name="tickets_id" />
+            <input class="hide" type="text" value="" name="tickets_id"/>
             <!--
                                             <div id="0" class="row">
                                                 <div class="col-md-6 col-sm-6">
@@ -323,6 +328,7 @@
 </div>
 
 <h5>Promo codes</h5>
+
 <div class="form-group">
     <div id="promo-codes">
         <div class="row promo-codes-header hidden-xs">
@@ -332,7 +338,7 @@
             <div class="col-md-2 col-sm-2 text-center">Actions</div>
         </div>
         <div id="promo-codes-body">
-            <input class="hide" type="text" value="" name="promo_codes_id" />
+            <input class="hide" type="text" value="" name="promo_codes_id"/>
             <!--
                                             <div id="0" class="row">
                                                 <div class="col-md-6 col-sm-6">
@@ -467,7 +473,7 @@
             addTicket(priceInput);
         });
 
-        var addTicket = function(priceInput) {
+        var addTicket = function (priceInput) {
             var id = getLastId();
             $('#tickets > #tickets-body:last').append(
                     '<div id="' + id + '" class="row">' +
@@ -520,7 +526,7 @@
             return this;
         };
 
-        $('#add-promo-code').click(function() {
+        $('#add-promo-code').click(function () {
             var stringId = $('#promo-codes > #promo-codes-body:last .row:last').attr('id');
             var id = 0;
             if (stringId != 'undefined' && !isNaN(stringId)) {
@@ -584,22 +590,22 @@
         $("#background-block").css("height", 2 * $(window).height() / 5);
     });
 
-    $(document).on('click', ".delete-nearby-row", function() {
+    $(document).on('click', ".delete-nearby-row", function () {
         var row = $(this).closest('.row');
-        row.fadeOut(400, function() {
+        row.fadeOut(400, function () {
             row.remove();
         });
         return false;
     });
 
-    $(document).on('click', '[name="submit"]', function() {
+    $(document).on('click', '[name="submit"]', function () {
         setIdsArray('tickets');
         setIdsArray('promo-codes');
     });
 
-    var setIdsArray = function(value) {
+    var setIdsArray = function (value) {
         var ids = [];
-        $('#' + value + ' > #' + value + '-body:last').find('.row').each(function() {
+        $('#' + value + ' > #' + value + '-body:last').find('.row').each(function () {
             ids.push(this.id);
         });
         var temp = ids.join('_');

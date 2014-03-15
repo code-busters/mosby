@@ -40,7 +40,7 @@
     <div id="background-block" class="flow-img" style="background-image: url(media/images/bg_mask.png), url(media/images/default/holi-feast.jpg)"></div>
 </div>
 
-<div class="row user-profile">
+<div id="wrapper" class="row user-profile">
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li class="sidebar-brand">
@@ -82,11 +82,15 @@
         <div class="page-content inset">
             <div class="row">
                 <div class="col-md-6">
-                    <form action="accountInfo" method="post" id="account-info-form">
+                    <form action="contactInfo" method="post" id="contact-info-form">
                         <div class="form-group">
-                            <span class="change-img-name">some cool image.jpg</span>
-                            <div class="flow-img user-profile-img" style="background-image: url(media/images/users/${user.userProfile.image});"></div>
-                            <span class="change-img">Change photo</span>
+                            <input type="file" class="hide" name="profile-img" id="open-profile-img" accept="image/*" />
+                            <p class="change-img-name"></p>
+                            <label for="open-profile-img">
+                                <span id="backup-profile-img" class="hide">media/images/users/${user.userProfile.image}</span>
+                                <div class="flow-img user-profile-img" style="background-image: url(media/images/users/${user.userProfile.image});"></div>
+                                <span class="change-img">Change photo</span>
+                            </label>
                         </div>
                         <div class="form-group">
                             <label for="first-name">First Name</label>
@@ -115,7 +119,7 @@
                         </div>
                         <div class="form-group">
                             <label for="gender">Gender</label>
-                            <select class="select-block" name="gender" id="gender" form="account-info-form">
+                            <select class="select-block" name="gender" id="gender" form="contact-info-form">
                                 <option value="-1">
                                     Please select your gender
                                 </option>
@@ -133,7 +137,7 @@
                         </div>
                         <div class="form-group">
                             <label for="about">About</label>
-                            <textarea class="form-control" rows="4" placeholder="Tell about yourself" value="${user.userProfile.about}" name="about" id="about" form="account-info-form"></textarea>
+                            <textarea class="form-control" rows="4" placeholder="Tell about yourself" value="${user.userProfile.about}" name="about" id="about" form="contact-info-form"></textarea>
                         </div>
                         <div class="form-group">
                             <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit" value="Submit">
@@ -149,7 +153,7 @@
 </div>
 
 <div class="row">
-    <jsp:include page="../parts/footer2.jsp"/>
+    <jsp:include page="../parts/footer.jsp"/>
 </div>
 </div>
 

@@ -12,7 +12,6 @@ String.prototype.repeat = function (num) {
 			label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
 		input.trigger('fileselect', [numFiles, label]);
 	});
-
 	$(document).ready(function () {
 		$('.btn-file :file').on('fileselect', function (event, numFiles, label) {
 
@@ -27,30 +26,53 @@ String.prototype.repeat = function (num) {
 
 		});
 	});
-	
-//	$(document).on('click', '.user-profile-img', function () {
-//		var input = $(this),
-//			numFiles = input.get(0).files ? input.get(0).files.length : 1,
-//			label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-//		input.trigger('fileselect', [numFiles, label]);
-//	});
-//
-//	$(document).ready(function () {
-//		$('.user-profile-img').on('fileselect', function (event, numFiles, label) {
-//
-//			var input = $(this).parents('.form-group').find('.change-img-name'),
-//				log = numFiles > 1 ? numFiles + ' files selected' : label;
-//
-//			if (input.length) {
-//				input.val(log);
-//			} else {
-//				if (log) alert(log);
-//			}
-//
-//		});
-//	});
 
+	// Contact info image uploading
+	$(document).on('change', '#open-profile-img:file', function () {
+		var input = $(this),
+			numFiles = input.get(0).files ? input.get(0).files.length : 1,
+			label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+		readURL(this);
+		input.trigger('fileselect', [numFiles, label]);
+	});
+	$(document).ready(function () {
+		$('#open-profile-img:file').on('fileselect', function (event, numFiles, label) {
+			var elem = $(this).parents('.form-group').find('.change-img-name'),
+				log = numFiles > 1 ? numFiles + ' files selected' : label;
+			if (elem.length) {
+				elem.text(log);
+				elem.append("<span id='cancel-upload' class='fui-cross'></span>");
+			} else {
+				if (log) alert(log);
+			}
 
+		});
+	});
+	$(document).on('click', "#cancel-upload", function () {
+		var control = $("#open-profile-img:file");
+		control.replaceWith(control = control.clone(true));
+		var backup = $("#backup-profile-img").text();
+		var image = $('.user-profile-img');
+		image.fadeOut(200, function () {
+			image.css("background-image", "url(" + backup + ")");
+			image.fadeIn(200);
+		});
+		$('.change-img-name').empty();
+	});
+
+	function readURL(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+
+			reader.onload = function (e) {
+				$('.user-profile-img').css("background-image", "url(" + e.target.result + ")");
+			}
+
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+
+	// Open navbar settings
 	$(document).on('click', "#user-open", function () {
 		$("#user-settings").removeClass('hide');
 	});
@@ -64,24 +86,6 @@ String.prototype.repeat = function (num) {
 	$(window).scroll(function () {
 		$("#user-settings").addClass('hide');
 	});
-	
-	// Add segments to a slider
-	$.fn.addSliderSegments = function (amount, orientation) {
-		return this.each(function () {
-			if (orientation == "vertical") {
-				var output = '',
-					i;
-				for (i = 1; i <= amount - 2; i++) {
-					output += '<div class="ui-slider-segment" style="top:' + 100 / (amount - 1) * i + '%;"></div>';
-				};
-				$(this).prepend(output);
-			} else {
-				var segmentGap = 100 / (amount - 1) + "%",
-					segment = '<div class="ui-slider-segment" style="margin-left: ' + segmentGap + ';"></div>';
-				$(this).prepend(segment.repeat(amount - 2));
-			}
-		});
-	};
 
 	$(function () {
 

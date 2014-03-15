@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 
 <head>
@@ -45,6 +46,11 @@
         <div class="on-background-block col-md-6 col-md-offset-1">
             <div class="hidden-lg hidden-md">
                 <h4>Sign up for free</h4>
+            </div>
+            <div class="errors">
+                <c:forEach items="${errors}" var="error">
+                    <p>error</p>
+                </c:forEach>
             </div>
             <form action="signUp" method="post" id="sign-up-form">
                 <div class="form-group">

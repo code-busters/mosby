@@ -1,8 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<div class="bottom-menu">
+<footer class="bottom-menu">
     <div class="col-md-2 col-sm-2 col-xs-12 col-md-offset-1 col-sm-offset-1 brand">
-        <a class="navbar-brand" href="<c:url value="/index"/>"></a>
+        <a class="navbar-brand" href="#"></a>
     </div>
 
     <div class="col-md-7 col-sm-6">
@@ -38,4 +38,4 @@
             </li>
         </ul>
     </div>
-</div>
+</footer>

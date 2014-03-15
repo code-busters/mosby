@@ -90,6 +90,11 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 .modal-body span {
 	font-size: 1.1em;
 }
+.errors p {
+	color: #f00;
+	font-size: 0.8em;
+	line-height: 0.5;
+}
 
 /*VIDEO BACKGROUND*/
 #main-idea {
@@ -180,7 +185,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	position: absolute;
 	right: 3.5em;
 	top: 9em;
-	padding: 1.5em 0 0;
+	padding: 1em 0 0;
 	background: #fff;
 	border: 1px solid #ccc;
 	border-color: rgba(0,0,0,.2);
@@ -203,17 +208,23 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     content: '';
 }
 .user-settings-user-img {
+	position: absolute;
+	margin-left: 1em;
 	height: 96px;
 	width: 96px;
 	border: none;
 	vertical-align: top;
 }
-#user-settings h4 {
+.side-settings {
+	margin-left: 125px;
+
+}
+.side-settings h4 {
 	margin: 0 0 0.7em;;
 	color: #212121;
 	font-size: 1.2em;
 }
-#user-settings h4 span {
+.side-settings h4 span {
 	color: #afafaf;
 	font-size: 0.7em;
 }
@@ -221,12 +232,14 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	display: block;
 	font-size: 0.8em;
 }
-#user-settings .bottom-settings {
+.bottom-settings {
+	width: 100%;
+	float: left;
 	margin-top: 0.7em;
 	background: #f5f5f5;
 	border-top: 1px solid #ccc;
 	border-color: rgba(0,0,0,.2);
-	padding: 0.8em;
+	padding: 0.7em;
 }
 
 /*NAVBAR AFTER SCROLL*/
@@ -260,6 +273,24 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 }
 .nav-transparent-shrink .navbar-default .navbar-toggle:before {
 	color: #212121;
+}
+.nav-transparent-shrink #user-settings {
+/*	width: 320px;*/
+/*	position: absolute;*/
+	right: 1.6em;
+	top: 4.5em;
+/*
+	padding: 1em 0 0;
+	background: #fff;
+	border: 1px solid #ccc;
+	border-color: rgba(0,0,0,.2);
+	box-shadow: 0 2px 10px rgba(0,0,0,.2);
+	-webkit-animation: gb__a .2s;
+	animation: gb__a .2s;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	-webkit-user-select: text;
+*/
 }
 
 /*FOOTER*/
@@ -496,13 +527,13 @@ footer {
 
 /*--CONTACT INFO*/
 .user-profile-img {
-	height: 100px;
-	width: 100px;
+	height: 120px;
+	width: 120px;
 	cursor: pointer;
 }
 .change-img {
-	width: 100px;
-	bottom: 0;
+	width: 120px;
+	bottom: 5px;
 	left: 0;
 	position: absolute;
 	padding: 7px 0;
@@ -516,9 +547,14 @@ footer {
 }
 .change-img-name {
 	position: absolute;
-	top: 35px;
-	left: 120px;
+	top: 45px;
+	left: 150px;
 	font-size: 0.85em;
+}
+#cancel-upload {
+	margin-left: 0.6em;
+	font-size: 0.7em;
+	cursor: pointer;
 }
 /*
 .tt-dropdown-menu {
