@@ -64,7 +64,7 @@
                 </div>
             </form>
             <div class="text-center">
-                <a class="btn btn-social-icon btn-facebook">
+                <a class="btn btn-social-icon btn-facebook" href="${facebookURL}">
                     <i class="fa fa-facebook"></i>
                 </a>
                 <a class="btn btn-social-icon btn-google-plus">
@@ -78,7 +78,7 @@
     </div>
 
     <div class="row">
-        <jsp:include page="parts/footer.jsp"/>
+        <jsp:include page="parts/footer2.jsp"/>
     </div>
 </div>
 

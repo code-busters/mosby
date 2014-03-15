@@ -4,25 +4,29 @@
   <welcome-file-list>
     <welcome-file>index</welcome-file>
   </welcome-file-list>
-
   <filter>
     <filter-name>EventAttributesFilter</filter-name>
     <filter-class>main.java.com.mosby.view.web.filters.EventAttributesFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>EventAttributesFilter</filter-name>
-    <url-pattern>/*</url-pattern>
+    <url-pattern>/index</url-pattern>
+    <url-pattern>/createEvent</url-pattern>
+    <url-pattern>/eventPage</url-pattern>
+    <url-pattern>/login</url-pattern>
+    <url-pattern>/logout</url-pattern>
+    <url-pattern>/profilePage</url-pattern>
+    <url-pattern>/signUp</url-pattern>
+    <url-pattern>/socialSignUp</url-pattern>
   </filter-mapping>
-
   <filter>
-  <filter-name>SignUpFilter</filter-name>
+    <filter-name>SignUpFilter</filter-name>
     <filter-class>main.java.com.mosby.view.web.filters.SignUpFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>SignUpFilter</filter-name>
     <url-pattern>/signUp</url-pattern>
   </filter-mapping>
-  
   <filter>
     <filter-name>LoginFilter</filter-name>
     <filter-class>main.java.com.mosby.view.web.filters.LoginFilter</filter-class>
@@ -31,7 +35,6 @@
     <filter-name>LoginFilter</filter-name>
     <url-pattern>/login</url-pattern>
   </filter-mapping>
-  
   <filter>
     <filter-name>CreateEventFilter</filter-name>
     <filter-class>main.java.com.mosby.view.web.filters.CreateEventFilter</filter-class>
@@ -40,7 +43,6 @@
     <filter-name>CreateEventFilter</filter-name>
     <url-pattern>/createEvent</url-pattern>
   </filter-mapping>
-  
   <filter>
     <filter-name>ProfilePageFilter</filter-name>
     <filter-class>main.java.com.mosby.view.web.filters.ProfilePageFilter</filter-class>
@@ -49,7 +51,19 @@
     <filter-name>ProfilePageFilter</filter-name>
     <url-pattern>/profilePage</url-pattern>
   </filter-mapping>
-    
+  
+  <filter>
+	<filter-name>EncodingFilter</filter-name>
+	<filter-class>main.java.com.mosby.view.web.filters.EncodingFilter</filter-class>
+	<init-param>
+		<param-name>encoding</param-name>
+		<param-value>UTF-8</param-value>
+	</init-param>
+  </filter>
+  <filter-mapping>
+	<filter-name>EncodingFilter</filter-name>
+	<url-pattern>/*</url-pattern>
+  </filter-mapping>
   <security-constraint>
     <display-name>Restrict direct access to certain folders</display-name>
     <web-resource-collection>

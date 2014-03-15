@@ -64,7 +64,7 @@
                     <label class="login-field-icon fui-lock" for="password"></label>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="password" placeholder="Confirm Password" name="confirm-password" required id="confirm-password" />
+                    <input class="form-control" type="password" placeholder="Confirm Password" name="confirm_password" required id="confirm-password" />
                     <label class="login-field-icon fui-lock" for="password"></label>
                 </div>
                 <div class="form-group">
@@ -80,7 +80,7 @@
         <div class="other-sign-up col-md-4">
             <h4>Sign up with:</h4>
             <div class="col-md-10">
-                <a class="btn btn-block btn-social btn-facebook">
+                <a class="btn btn-block btn-social btn-facebook" href="${facebookURL}">
                     <i class="fa fa-facebook"></i>Sign in with Facebook
                 </a>
                 <a class="btn btn-block btn-social btn-google-plus">

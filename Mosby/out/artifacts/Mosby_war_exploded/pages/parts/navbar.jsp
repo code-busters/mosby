@@ -33,7 +33,7 @@
             <li>
                 <div id="user-open" class="flow-img nav-user-img" style="background-image: url(media/images/users/${user.userProfile.image});"></div>
             </li>
-            <div id="user-settings" class="col-md-3 hide">
+            <div id="user-settings" class="hide">
                 <div class="col-md-4">
                     <div class="flow-img user-settings-user-img" style="background-image: url(media/images/users/${user.userProfile.image});"></div>
                 </div>
@@ -41,7 +41,7 @@
                     <h4>${user.firstName} ${user.lastName}
                         <span>${user.email}</span>
                     </h4>
-                    <a href="<c:url value="/profilePage"/>">View profile</a>
+                    <a href="<c:url value="/contactInfo"/>">View profile</a>
                     <a href="<c:url value="/createEvent"/>">Create event</a>
                 </div>
                 <div class="col-md-12 bottom-settings">
