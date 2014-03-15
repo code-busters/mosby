@@ -3,7 +3,6 @@ package main.java.com.mosby.view.web.servlets;
 import main.java.com.mosby.controller.services.ReadUsersService;
 import main.java.com.mosby.controller.services.SignUpUserService;
 import main.java.com.mosby.model.User;
-import main.java.com.mosby.model.UserProfile;
 import main.java.com.mosby.utils.ValidatorUtils;
 
 import javax.servlet.ServletException;

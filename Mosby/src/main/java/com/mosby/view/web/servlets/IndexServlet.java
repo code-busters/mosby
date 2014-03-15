@@ -1,6 +1,5 @@
 package main.java.com.mosby.view.web.servlets;
 
-import main.java.com.mosby.controller.services.MainService;
 import main.java.com.mosby.controller.services.ReadGenericObjectService;
 import main.java.com.mosby.model.Event;
 import main.java.com.mosby.model.User;
@@ -21,7 +20,6 @@ import java.util.List;
 public class IndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private static Logger log = Logger.getLogger(IndexServlet.class);
-	private MainService mainService = new MainService();
 
 	public IndexServlet() {
 		super();

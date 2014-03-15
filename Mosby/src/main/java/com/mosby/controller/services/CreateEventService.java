@@ -6,7 +6,10 @@ import java.sql.Time;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,9 +19,12 @@ import javax.servlet.http.Part;
 import org.apache.log4j.Logger;
 
 import main.java.com.mosby.controller.dao.ReflectionDao;
+import main.java.com.mosby.controller.services.ReadGenericObjectService;
 import main.java.com.mosby.model.Event;
 import main.java.com.mosby.model.EventCategory;
 import main.java.com.mosby.model.EventType;
+import main.java.com.mosby.model.PromoCode;
+import main.java.com.mosby.model.TicketInfo;
 import main.java.com.mosby.utils.FileUploadUtils;
 
 public class CreateEventService {
@@ -55,32 +61,13 @@ public class CreateEventService {
 			log.error(e);
 		}
 		
-		
-		EventCategory eventCategory = null;
-		EventType eventType = null;
-		
+//Event builder		
 		int organizerRef = 5;
 		String name = request.getParameter("event_name");
 		String description = request.getParameter("event_description");
-		
-		int categoryRef = Integer.parseInt(request.getParameter("event_category"));
-		int typeRef = Integer.parseInt(request.getParameter("event_type"));
 
-		ReadEventService readEventService = new ReadEventService();
-		eventCategory = readEventService.readCategotyById(Integer.parseInt(request.getParameter("event_category")));
-		eventType = readEventService.readTypeById(Integer.parseInt(request.getParameter("event_type")));
-
-		
-//		if(categoryRef != -1){
-//			ReflectionDao<EventCategory> eventCategoryDao = new ReflectionDao<>(
-//					(Class<EventCategory>) EventCategory.class);
-//			eventCategory = eventCategoryDao.selectObjects("id", categoryRef).get(0);
-//		}
-//		if(typeRef != -1){
-//			ReflectionDao<EventType> eventTypeDao = new ReflectionDao<>(
-//					(Class<EventType>) EventType.class);
-//			eventType = eventTypeDao.selectObjects("id", typeRef).get(0);
-//		}
+		EventCategory eventCategory = new ReadGenericObjectService<EventCategory>((Class<EventCategory>) new EventCategory().getClass()).readById(Integer.parseInt(request.getParameter("event_category")));  
+		EventType eventType = new ReadGenericObjectService<EventType>((Class<EventType>) new EventType().getClass()).readById(Integer.parseInt(request.getParameter("event_type")));
 		
 		Date startDate = null, endDate = null, startTime = null, endTime = null;
         SimpleDateFormat parseDate = new SimpleDateFormat("dd/MM/yyyy hh:mm");
@@ -117,7 +104,53 @@ public class CreateEventService {
 		ReflectionDao<Event> eventDao = new ReflectionDao<>((Class<Event>) Event.class);
 
 		int id = eventDao.insertObjects(event);
+		event.setId(id);
 
+		
+//Tickets builder
+		ReflectionDao<TicketInfo> ticketInfoDao = new ReflectionDao<>((Class<TicketInfo>) TicketInfo.class);
+		String idTicketsArray = request.getParameter("tickets_id");
+		List<String> idTicketsList = new ArrayList<String>(Arrays.asList(idTicketsArray.split("_")));
+		for (String currInt : idTicketsList){
+			int currentId = Integer.parseInt(currInt);
+			String type;
+			String ticketDescription = request.getParameter("ticket_description_" + currentId);
+			int maxNumber = Integer.parseInt(request.getParameter("event_ticket_quantity_" + currentId));
+			String stringPrice = request.getParameter("event_ticket_price_" + currentId);
+			System.out.println(stringPrice);
+			int price;
+			if (stringPrice == null){
+				type = "Free";
+				price = 0;
+			}
+			else {
+				type = "paid";
+				price = Integer.parseInt(request.getParameter("event_ticket_price_" + currentId));
+			}
+			TicketInfo ticketInfo = new TicketInfo(event, type, ticketDescription, maxNumber, price);
+					
+			int ticketInfoId = ticketInfoDao.insertObjects(ticketInfo);
+			System.out.println(ticketInfo);
+		}		
+		
+		
+// Promo codes builder
+		ReflectionDao<PromoCode> promoCodeDao = new ReflectionDao<>((Class<PromoCode>) PromoCode.class);
+		String promoCodesArray = request.getParameter("promo_codes_id");
+		List<String> idPromoCodesList = new ArrayList<String>(Arrays.asList(promoCodesArray.split("_")));
+		for (String currInt : idPromoCodesList){
+			int currentId = Integer.parseInt(currInt);
+			String code = request.getParameter("promo_code_code_" + currentId);
+			int discount = Integer.parseInt(request.getParameter("promo_code_discount_" + currentId));
+			String promoCodeDescription = request.getParameter("promo_code_description_" + currentId);
+			int maxNumber = Integer.parseInt(request.getParameter("promo_code_quantity_" + currentId));
+			
+			PromoCode promoCode = new PromoCode(event, code, discount, promoCodeDescription, maxNumber);
+					
+			int promoCodeId = promoCodeDao.insertObjects(promoCode);
+			System.out.println(promoCode);
+		}		
+		
 		return id;
 	}
 

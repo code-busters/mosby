@@ -2,7 +2,6 @@ package main.java.com.mosby.controller.services;
 
 import main.java.com.mosby.controller.dao.ReflectionDao;
 import main.java.com.mosby.model.User;
-import main.java.com.mosby.model.UserProfile;
 import main.java.com.mosby.utils.EncryptionUtils;
 
 public class ReadUsersService {
