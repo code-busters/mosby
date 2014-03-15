@@ -6,7 +6,7 @@ import java.util.Date;
 import main.java.com.mosby.model.annotations.dao.*;
 import main.java.com.mosby.model.annotations.validate.*;
 
-@Table(name="tickets_info")
+@Table(name="tickets_infos")
 public class TicketInfo {
 	
 	@Column(name="id")
@@ -62,11 +62,50 @@ public class TicketInfo {
 	@Column(name = "end_time")
 	private Date endTime;
 
+
 	@EndFuture
 	@NotNull
 	private Timestamp endDateTime;
 	
+	public TicketInfo() {
+	}
 	
+	public TicketInfo(int id, String name, Event event, String type,
+			String description, int maxNumber, int price, Date startDate,
+			Date startTime, Timestamp startDateTime, Date endDate,
+			Date endTime, Timestamp endDateTime) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.event = event;
+		this.type = type;
+		this.description = description;
+		this.maxNumber = maxNumber;
+		this.price = price;
+		this.startDate = startDate;
+		this.startTime = startTime;
+		this.startDateTime = startDateTime;
+		this.endDate = endDate;
+		this.endTime = endTime;
+		this.endDateTime = endDateTime;
+	}
+	
+	public TicketInfo(String name, Event event, String type,
+			String description, int maxNumber, int price, Date startDate,
+			Date startTime, Date endDate, Date endTime) {
+		super();
+		this.name = name;
+		this.event = event;
+		this.type = type;
+		this.description = description;
+		this.maxNumber = maxNumber;
+		this.price = price;
+		this.startDate = startDate;
+		this.startTime = startTime;
+		this.endDate = endDate;
+		this.endTime = endTime;
+	}
+
 	public Date getStartDate() {
 		return startDate;
 	}
@@ -115,30 +154,10 @@ public class TicketInfo {
 		this.endDateTime = endDateTime;
 	}
 
-	public TicketInfo() {
-	}
 
-	public TicketInfo(int id, Event event, String type, String description,
-			int maxNumber, int price) {
-		super();
-		this.id = id;
-		this.event = event;
-		this.type = type;
-		this.description = description;
-		this.maxNumber = maxNumber;
-		this.price = price;
-	}
 
-	public TicketInfo(Event event, String type, String description,
-			int maxNumber, int price) {
-		super();
-		this.event = event;
-		this.type = type;
-		this.description = description;
-		this.maxNumber = maxNumber;
-		this.price = price;
-	}
 
+	
 	public int getId() {
 		return id;
 	}

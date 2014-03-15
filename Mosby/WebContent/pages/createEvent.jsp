@@ -295,7 +295,7 @@
 												<div class="modal-body">
 													<div class="form-group">
 														<label for="ticket-description-0">Ticket Description</label>
-														<textarea rows="3" placeholder="Additional info about ticket" class="form-control" id="ticket-description-0" form="create-event-form"></textarea>
+														<textarea rows="3" placeholder="Additional info about ticket" class="form-control" name="ticket_description_0" id="ticket-description-0" form="create-event-form"></textarea>
 													</div>
 													<div class="form-group">
 														<span>Tickets Allowed Per Order</span>

@@ -114,6 +114,7 @@ public class CreateEventService {
 		for (String currInt : idTicketsList){
 			int currentId = Integer.parseInt(currInt);
 			String type;
+			String ticketInfoName = request.getParameter("event_ticket_name_" + currentId);
 			String ticketDescription = request.getParameter("ticket_description_" + currentId);
 			int maxNumber = Integer.parseInt(request.getParameter("event_ticket_quantity_" + currentId));
 			String stringPrice = request.getParameter("event_ticket_price_" + currentId);
@@ -127,7 +128,7 @@ public class CreateEventService {
 				type = "paid";
 				price = Integer.parseInt(request.getParameter("event_ticket_price_" + currentId));
 			}
-			TicketInfo ticketInfo = new TicketInfo(event, type, ticketDescription, maxNumber, price);
+			TicketInfo ticketInfo = new TicketInfo(ticketInfoName, event, type, ticketDescription, maxNumber, price, startDate, startTime, endDate, endTime);
 					
 			int ticketInfoId = ticketInfoDao.insertObjects(ticketInfo);
 			System.out.println(ticketInfo);
