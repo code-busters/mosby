@@ -13,6 +13,9 @@ public class ReadUsersService {
 
 		if (!usersDao.selectObjects("email", email).isEmpty()) {
 			user = usersDao.selectObjects("email", email).get(0);
+			if(!user.isActive()){
+				return null;
+			}
 
 			String correctHash = user.getPassword();
 

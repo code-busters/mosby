@@ -33,10 +33,6 @@ public class IndexServlet extends HttpServlet {
 		
 		System.out.println(request.getAttribute("eventList"));
 		
-//	for test
-		User user = new ReadGenericObjectService<User>((Class<User>) new User().getClass()).readById(2);
-		System.out.println(user);
-		
 		
         request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
         

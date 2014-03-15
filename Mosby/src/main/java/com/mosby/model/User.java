@@ -56,15 +56,21 @@ public class User {
 
 	@Column(name = "about")
 	private String about;
-
+	
+	@Column(name = "authentication_code")
+	private String authenticationCode;
+	
+	@Column(name = "active")
+	private boolean active;
 	public User() {
 
 	}
 
+	
 	public User(int id, String firstName, String lastName, String email,
 			String password, double credits, boolean admin, String image,
 			String country, String city, Date birthDate, String site,
-			String about) {
+			String about, String authenticationCode, boolean active) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -79,7 +85,10 @@ public class User {
 		this.birthDate = birthDate;
 		this.site = site;
 		this.about = about;
+		this.authenticationCode = authenticationCode;
+		this.active = active;
 	}
+
 
 	public User(String firstName, String lastName, String email, String password) {
 		super();
@@ -193,6 +202,26 @@ public class User {
 		this.about = about;
 	}
 
+	public String getAuthenticationCode() {
+		return authenticationCode;
+	}
+
+
+	public void setAuthenticationCode(String authenticationCode) {
+		this.authenticationCode = authenticationCode;
+	}
+	
+
+	public boolean isActive() {
+		return active;
+	}
+
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName="
@@ -200,7 +229,8 @@ public class User {
 				+ ", credits=" + credits + ", admin=" + admin + ", image="
 				+ image + ", country=" + country + ", city=" + city
 				+ ", birthDate=" + birthDate + ", site=" + site + ", about="
-				+ about + "]";
+				+ about + ", authenticationCode=" + authenticationCode
+				+ ", active=" + active + "]";
 	}
 
 }

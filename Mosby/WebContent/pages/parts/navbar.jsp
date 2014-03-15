@@ -54,19 +54,19 @@
             <li>
                 <% if (request.getSession().getAttribute("userType") == "common") { %>
                 <div id="user-open" class="flow-img nav-user-img"
-                     style="background-image: url(media/images/users/${user.userProfile.image});"></div>
+                     style="background-image: url(media/images/users/${user.image});"></div>
                 <% } else { %>
                 <div id="user-open" class="flow-img nav-user-img"
-                     style="background-image: url(${user.userProfile.image});"></div>
+                     style="background-image: url(${user.image});"></div>
                 <% }%>
             </li>
             <div id="user-settings" class="hide">
                 <% if (request.getSession().getAttribute("userType") == "common") { %>
                 <div class="flow-img user-settings-user-img"
-                     style="background-image: url(media/images/users/${user.userProfile.image});"></div>
+                     style="background-image: url(media/images/users/${user.image});"></div>
                 <% } else { %>
                 <div class="flow-img user-settings-user-img"
-                     style="background-image: url(${user.userProfile.image});"></div>
+                     style="background-image: url(${user.image});"></div>
                 <% }%>
                 <div class="side-settings">
                     <h4>${user.firstName} ${user.lastName}
