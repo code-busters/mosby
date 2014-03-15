@@ -21,8 +21,7 @@ import java.util.List;
 @WebServlet("/signUp")
 public class SignUpServlet extends HttpServlet {
 
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String sessionId = session.getId();
 		String appId = "601170126631442";
@@ -32,8 +31,7 @@ public class SignUpServlet extends HttpServlet {
 				+ "&scope=email,user_birthday&state=" + sessionId;
 
 		request.setAttribute("facebookURL", returnValue);
-		request.getRequestDispatcher("/pages/signUp.jsp").forward(request,
-				response);
+		request.getRequestDispatcher("/pages/signUp.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request,

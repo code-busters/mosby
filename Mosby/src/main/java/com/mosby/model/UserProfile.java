@@ -1,6 +1,6 @@
 package main.java.com.mosby.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 import main.java.com.mosby.model.annotations.dao.*;
 import main.java.com.mosby.model.annotations.validate.*;

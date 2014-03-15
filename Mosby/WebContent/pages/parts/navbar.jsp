@@ -31,11 +31,19 @@
         <ul class="nav navbar-nav navbar-right">
             <% if (request.getSession().getAttribute("user") != null) { %>
             <li>
-                <div id="user-open" class="flow-img nav-user-img" style="background-image: url(media/images/users/${user.userProfile.image});"></div>
+            	<% if (request.getSession().getAttribute("userType") == "common") { %>
+                	<div id="user-open" class="flow-img nav-user-img" style="background-image: url(media/images/users/${user.userProfile.image});"></div>
+                <% } else { %>
+                	<div id="user-open" class="flow-img nav-user-img" style="background-image: url(${user.userProfile.image});"></div>          
+                <% }%>
             </li>
             <div id="user-settings" class="hide">
                 <div class="col-md-4">
-                    <div class="flow-img user-settings-user-img" style="background-image: url(media/images/users/${user.userProfile.image});"></div>
+                	<% if (request.getSession().getAttribute("userType") == "common") { %>
+                    	<div class="flow-img user-settings-user-img" style="background-image: url(media/images/users/${user.userProfile.image});"></div>
+                    <% } else { %>
+                		<div class="flow-img user-settings-user-img"  style="background-image: url(${user.userProfile.image});"></div>
+                	<% }%>      
                 </div>
                 <div class="col-md-7 col-md-offset-1">
                     <h4>${user.firstName} ${user.lastName}
