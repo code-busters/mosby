@@ -34,6 +34,7 @@ public class Event {
 	private Date startTime;
 
 	@StartFuture
+	@NotNull
 	private Timestamp startDateTime;
 
 	@Column(name = "end_date")
@@ -43,6 +44,7 @@ public class Event {
 	private Date endTime;
 
 	@EndFuture
+	@NotNull
 	private Timestamp endDateTime;
 
 	@Column(name = "location")

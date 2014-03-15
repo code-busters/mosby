@@ -149,7 +149,7 @@
 </div>
 <div class="errors">
     <c:forEach items="${errors}" var="error">
-        <p>error</p>
+        <p>${error}</p>
     </c:forEach>
 </div>
 <form enctype="multipart/form-data" action="createEvent" method="post" id="create-event-form">

@@ -38,6 +38,16 @@ public class PromoCode {
 		this.maxNumber = maxNumber;
 	}
 
+	public PromoCode(Event event, String code, int discount,
+			String description, int maxNumber) {
+		super();
+		this.event = event;
+		this.code = code;
+		this.discount = discount;
+		this.description = description;
+		this.maxNumber = maxNumber;
+	}
+
 	public int getId() {
 		return id;
 	}

@@ -1,5 +1,7 @@
 package main.java.com.mosby.model;
 
+import java.util.Date;
+
 import main.java.com.mosby.model.annotations.dao.*;
 import main.java.com.mosby.model.annotations.validate.*;
 
@@ -36,37 +38,47 @@ public class User {
 
 	@Column(name = "admin")
 	private boolean admin;
-	
-	@Key(name = "user_profile_key")
-	private UserProfile userProfile;
+
+	@Column(name = "image")
+	private String image;
+
+	@Column(name = "country")
+	private String country;
+
+	@Column(name = "city")
+	private String city;
+
+	@Column(name = "birth_date")
+	private Date birthDate;
+
+	@Column(name = "site")
+	private String site;
+
+	@Column(name = "about")
+	private String about;
 
 	public User() {
 
 	}
 
-	public User(int id, UserProfile userProfile, String firstName,
-			String lastName, String email, String password, double credits,
-			boolean admin) {
+	public User(int id, String firstName, String lastName, String email,
+			String password, double credits, boolean admin, String image,
+			String country, String city, Date birthDate, String site,
+			String about) {
 		super();
 		this.id = id;
-		this.userProfile = userProfile;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
 		this.credits = credits;
 		this.admin = admin;
-	}
-
-	public User(String firstName, String lastName, String email,
-			String password, double credits, boolean admin) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.password = password;
-		this.credits = credits;
-		this.admin = admin;
+		this.image = image;
+		this.country = country;
+		this.city = city;
+		this.birthDate = birthDate;
+		this.site = site;
+		this.about = about;
 	}
 
 	public User(String firstName, String lastName, String email, String password) {
@@ -83,14 +95,6 @@ public class User {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public UserProfile getUserProfile() {
-		return userProfile;
-	}
-
-	public void setUserProfile(UserProfile userProfile) {
-		this.userProfile = userProfile;
 	}
 
 	public String getFirstName() {
@@ -141,12 +145,62 @@ public class User {
 		this.admin = admin;
 	}
 
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public Date getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
+	}
+
+	public String getSite() {
+		return site;
+	}
+
+	public void setSite(String site) {
+		this.site = site;
+	}
+
+	public String getAbout() {
+		return about;
+	}
+
+	public void setAbout(String about) {
+		this.about = about;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName="
 				+ lastName + ", email=" + email + ", password=" + password
-				+ ", credits=" + credits + ", admin=" + admin
-				+ ", userProfile=" + userProfile + "]";
+				+ ", credits=" + credits + ", admin=" + admin + ", image="
+				+ image + ", country=" + country + ", city=" + city
+				+ ", birthDate=" + birthDate + ", site=" + site + ", about="
+				+ about + "]";
 	}
 
 }

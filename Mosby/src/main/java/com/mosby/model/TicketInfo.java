@@ -10,7 +10,7 @@ public class TicketInfo {
 	private int id;
 	
 	@Key(name = "event_ref")
-	private Event event = null;
+	private Event event;
 	
 	@Column(name="type")
 	private String type;
@@ -32,6 +32,16 @@ public class TicketInfo {
 			int maxNumber, int price) {
 		super();
 		this.id = id;
+		this.event = event;
+		this.type = type;
+		this.description = description;
+		this.maxNumber = maxNumber;
+		this.price = price;
+	}
+
+	public TicketInfo(Event event, String type, String description,
+			int maxNumber, int price) {
+		super();
 		this.event = event;
 		this.type = type;
 		this.description = description;

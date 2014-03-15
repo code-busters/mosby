@@ -21,8 +21,7 @@ public class SignUpUserService {
 		} else {
 			String encryptedPassword = EncryptionUtils.createHash(password);
 
-			user = new User(firstName, lastName, email, encryptedPassword, 0,
-					false);
+			user = new User(firstName, lastName, email, encryptedPassword);
 			usersDao.insertObjects(user);
 
 			new MailUtils().sendMessage(email);

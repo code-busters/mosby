@@ -49,7 +49,7 @@
             </div>
             <div class="errors">
                 <c:forEach items="${errors}" var="error">
-                    <p>error</p>
+                    <p>${error}</p>
                 </c:forEach>
             </div>
             <form action="signUp" method="post" id="sign-up-form">
