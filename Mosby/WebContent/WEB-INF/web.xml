@@ -51,18 +51,17 @@
     <filter-name>ProfilePageFilter</filter-name>
     <url-pattern>/profilePage</url-pattern>
   </filter-mapping>
-  
   <filter>
-	<filter-name>EncodingFilter</filter-name>
-	<filter-class>main.java.com.mosby.view.web.filters.EncodingFilter</filter-class>
-	<init-param>
-		<param-name>encoding</param-name>
-		<param-value>UTF-8</param-value>
-	</init-param>
+    <filter-name>EncodingFilter</filter-name>
+    <filter-class>main.java.com.mosby.view.web.filters.EncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
   </filter>
   <filter-mapping>
-	<filter-name>EncodingFilter</filter-name>
-	<url-pattern>/*</url-pattern>
+    <filter-name>EncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
   </filter-mapping>
   <security-constraint>
     <display-name>Restrict direct access to certain folders</display-name>

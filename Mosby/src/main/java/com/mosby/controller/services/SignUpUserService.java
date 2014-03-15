@@ -1,5 +1,7 @@
 package main.java.com.mosby.controller.services;
 
+import java.security.SecureRandom;
+
 import main.java.com.mosby.controller.dao.ReflectionDao;
 import main.java.com.mosby.model.User;
 import main.java.com.mosby.utils.EncryptionUtils;
@@ -21,10 +23,16 @@ public class SignUpUserService {
 		} else {
 			String encryptedPassword = EncryptionUtils.createHash(password);
 
-			user = new User(firstName, lastName, email, encryptedPassword);
+			SecureRandom random = new SecureRandom();
+	        byte[] code = new byte[24];
+	        random.nextBytes(code);
+	        String authentication = new EncryptionUtils().toHex(code);
+	        
+			user = new User(firstName, lastName, email, encryptedPassword, authentication);
 			usersDao.insertObjects(user);
 
-			new MailUtils().sendMessage(email);
+			
+			new MailUtils().sendMessage(email, authentication);
 			user = usersDao.selectObjects("email", email).get(0);
 
 			return user;

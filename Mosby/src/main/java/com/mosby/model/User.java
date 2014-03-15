@@ -40,7 +40,7 @@ public class User {
 	private boolean admin;
 
 	@Column(name = "image")
-	private String image;
+	private String image = "default.png";
 
 	@Column(name = "country")
 	private String country;
@@ -90,6 +90,15 @@ public class User {
 	}
 
 
+	public User(String firstName, String lastName, String email, String password, String authenticationCode) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+		this.authenticationCode = authenticationCode;
+	}
+	
 	public User(String firstName, String lastName, String email, String password) {
 		super();
 		this.firstName = firstName;

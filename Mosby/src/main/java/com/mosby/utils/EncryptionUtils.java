@@ -47,7 +47,7 @@ public class EncryptionUtils {
         return keyFactory.generateSecret(spec).getEncoded();
     }
 
-    private static String toHex(byte[] array) {
+    public static String toHex(byte[] array) {
         BigInteger bigInteger = new BigInteger(1, array);
         String hex = bigInteger.toString(16);
         int paddingLength = (array.length * 2) - hex.length();

@@ -20,7 +20,6 @@ public class SocialSignUpUserService {
 			user.setPassword(encryptedPassword);
 			usersDao.insertObjects(user);
 
-			new MailUtils().sendMessage(user.getEmail());
 			user = usersDao.selectObjects("email", user.getEmail()).get(0);
 
 			return user;

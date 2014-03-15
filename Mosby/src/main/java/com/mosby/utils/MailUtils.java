@@ -38,7 +38,7 @@ public class MailUtils {
 		this.props = props;
 	}
 	
-	public void sendMessage(String email){
+	public void sendMessage(String email, String authentication){
 
 	    Session session = Session.getInstance(getProps(), new Authenticator() {
 	        @Override
@@ -51,7 +51,7 @@ public class MailUtils {
 	        msg.setFrom();
 	        msg.setSubject("Mosby Autentification");
 	        msg.setSentDate(new java.util.Date());
-	        msg.setText("You are register on MosbyEvent! Welcome!\n");
+	        msg.setText("You are register on MosbyEvent! Welcome!\nYou register code http://localhost:8080/Mosby/authentication?authentication_code=" + authentication);
 	        msg.setRecipients(Message.RecipientType.TO,
 	                          email);
 	        Transport.send(msg);
