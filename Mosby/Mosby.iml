@@ -61,6 +61,7 @@
     <orderEntry type="library" name="javax.persistence" level="project" />
     <orderEntry type="library" name="java-mail-1.4" level="project" />
     <orderEntry type="library" name="commons-beanutils-1.8.2" level="project" />
+    <orderEntry type="library" name="junit-4.11" level="project" />
   </component>
 </module>
 

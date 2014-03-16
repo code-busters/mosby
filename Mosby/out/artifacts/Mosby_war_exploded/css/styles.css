@@ -401,7 +401,7 @@ footer {
 }
 
 /*CREATE EVENT*/
-#create-event-form .event-logo {
+.event-logo {
 	margin: 0;
 	max-height: 80px;
 	cursor: pointer;

@@ -14,6 +14,7 @@
           <element id="library" level="project" name="javax.persistence" />
           <element id="library" level="project" name="java-mail-1.4" />
           <element id="library" level="project" name="commons-beanutils-1.8.2" />
+          <element id="library" level="project" name="junit-4.11" />
         </element>
       </element>
       <element id="library" level="module" name="mysql-connector-java-5.1.28-bin.jar" module-name="Mosby" />

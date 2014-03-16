@@ -77,7 +77,8 @@
                                     <tr>
                                         <td>
                                             <label class="checkbox no-label" for="checkbox-table-${ticket.id}">
-                                                <input type="checkbox" value="${ticket.id}" id="checkbox-table-${ticket.id}"
+                                                <input type="checkbox" value="${ticket.id}"
+                                                       id="checkbox-table-${ticket.id}"
                                                        name="checked_tickets" data-toggle="checkbox">
                                             </label>
                                         </td>
@@ -149,7 +150,6 @@
 <script src="http://vjs.zencdn.net/4.3/video.js"></script>
 
 <script src="js/application.js"></script>
-</body>
 
 <script type="text/javascript">
     $("#menu-toggle").click(function (e) {

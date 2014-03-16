@@ -1,6 +1,4 @@
-package test.java.main.java.com.mosby.utils;
-
-import main.java.com.mosby.utils.StringUtils;
+package main.java.com.mosby.utils;
 
 import org.junit.Assert;
 import org.junit.Test;

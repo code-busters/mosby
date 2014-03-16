@@ -6,7 +6,7 @@
             MANAGE EVENT
         </li>
         <li>
-            <a href="#">Edit Event</a>
+            <a href="<c:url value="/editEvent"/>">Edit Event</a>
         </li>
         <li>
             <a href="<c:url value="/registeredTable"/>">Registered Table</a>

@@ -258,54 +258,6 @@
         </div>
         <div id="tickets-body">
             <input class="hide" type="text" value="" name="tickets_id"/>
-            <!--
-                                            <div id="0" class="row">
-                                                <div class="col-md-6 col-sm-6">
-                                                    <label class="visible-xs" for="event-ticket-name-0">Ticket name</label>
-                                                    <input type="text" class="form-control" placeholder="Examples: Early Bird, VIP, Press" name="event_ticket_name_0" id="event-ticket-name-0" />
-                                                </div>
-                                                <div class="col-md-2 col-sm-2">
-                                                    <label class="visible-xs" for="event-ticket-quantity-0">Quantity available</label>
-                                                    <input type="number" class="form-control" placeholder="100" name="event_ticket_quantity_0" id="event-ticket-quantity-0" min="1" />
-                                                </div>
-                                                <div class="col-md-2 col-sm-2">
-                                                    <label class="visible-xs" for="event-ticket-price-0">Price</label>
-                                                    <input type="number" class="form-control" placeholder="0" name="event_ticket_price_0" id="event-ticket-price-0" min="0" />
-                                                </div>
-                                                <div class="col-md-2 col-sm-2 actions text-center">
-                                                    <label class="visible-xs text-left">Ticket name</label>
-                                                    <a href="#" data-toggle="modal" data-target="#my-modal-0">
-                                                        <span class="fui-gear"></span>
-                                                    </a>
-                                                    <a class="delete-row" href="#">
-                                                        <span class="fui-trash"></span>
-                                                    </a>
-                                                </div>
-                                                <div class="modal fade" id="my-modal-0" tabindex="-1" role="dialog" aria-labelledby="my-modal-label-0" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-													<h4 class="modal-title" id="my-modal-label-0">Ticket Settings</h4>
-												</div>
-												<div class="modal-body">
-													<div class="form-group">
-														<label for="ticket-description-0">Ticket Description</label>
-														<textarea rows="3" placeholder="Additional info about ticket" class="form-control" name="ticket_description_0" id="ticket-description-0" form="create-event-form"></textarea>
-													</div>
-													<div class="form-group">
-														<span>Tickets Allowed Per Order</span>
-														<label class="additional" for="ticket-min-per-order-0">Min</label>
-														<input type="number" class="form-control" placeholder="1" value="1" name="ticket_min_per_order_0" id="ticket-min-per-order-0" min="1" />
-														<label class="additional" for="ticket-max-per-order-0">Max</label>
-														<input type="number" class="form-control" placeholder="1" name="ticket_max_per_order_0" id="ticket-max-per-order-0" min="1" />
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
--->
         </div>
     </div>
     <!--END TICKETS-->
@@ -335,47 +287,6 @@
         </div>
         <div id="promo-codes-body">
             <input class="hide" type="text" value="" name="promo_codes_id"/>
-            <!--
-                                            <div id="0" class="row">
-                                                <div class="col-md-6 col-sm-6">
-                                                    <label class="visible-xs" for="promo-code-code-0">Promo code</label>
-                                                    <input type="text" class="form-control" placeholder="Examples: #Event_code32, R2D2" name="promo_code_code_0" id="promo-code-code-0" />
-                                                </div>
-                                                <div class="col-md-2 col-sm-2">
-                                                    <label class="visible-xs" for="promo-code-quantity-0">Quantity available</label>
-                                                    <input type="number" class="form-control" placeholder="5" name="promo_code_quantity_0" id="promo-code-quantity-0" min="1" />
-                                                </div>
-                                                <div class="col-md-2 col-sm-2">
-                                                    <label class="visible-xs" for="promo-code-discount-0">Discount</label>
-                                                    <input type="number" class="form-control" placeholder="10%" name="promo_code_discount_0" id="promo-code-discount-0" min="0" />
-                                                </div>
-                                                <div class="col-md-2 col-sm-2 actions text-center">
-                                                    <label class="visible-xs text-left">Actions</label>
-                                                    <a href="#" data-toggle="modal" data-target="#my-promo-modal-0">
-                                                        <span class="fui-gear"></span>
-                                                    </a>
-                                                    <a class="delete-nearby-row" href="#">
-                                                        <span class="fui-trash"></span>
-                                                    </a>
-                                                </div>
-                                                <div class="modal fade" id="my-promo-modal-0" tabindex="-1" role="dialog" aria-labelledby="my-promo-modal-label-0" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-													<h4 class="modal-title" id="my-promo-modal-label-0">Promo Code Settings</h4>
-												</div>
-												<div class="modal-body">
-													<div class="form-group">
-														<label for="promo-code-description-0">Promo Code Description</label>
-														<textarea rows="3" placeholder="Additional info about promo code" class="form-control" name="promo_code_description_0" id="promo-code-description-0" form="create-event-form"></textarea>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
--->
         </div>
     </div>
     <!--END PROMO CODES-->
