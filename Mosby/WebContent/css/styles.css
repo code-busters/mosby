@@ -11,6 +11,7 @@ body {
 }
 #background-block {
 	opacity: 0.7;
+    height: 12em;
 }
 .on-background-block-header {
 	margin-top: -330px;
@@ -94,6 +95,11 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	color: #f00;
 	font-size: 0.8em;
 	line-height: 0.5;
+}
+.switch-square {
+    border-radius: 6px;
+    -webkit-mask: url('../media/images/switch/mask.png') 0 0 no-repeat;
+    mask: url('../images/media/iswitch/mask.png') 0 0 no-repeat;
 }
 
 /*VIDEO BACKGROUND*/
@@ -533,7 +539,7 @@ footer {
 }
 .change-img {
 	width: 120px;
-	bottom: 5px;
+	bottom: 9px;
 	left: 0;
 	position: absolute;
 	padding: 7px 0;
@@ -596,6 +602,24 @@ footer {
   margin: 0;
 }
 */
+
+/*REGISTERED TABLE*/
+.registered-table .checkbox, 
+.registered-table .radio {
+    margin: 3px 0;   
+}
+
+/*
+.registered-table .switch {
+    width: 60px;   
+    height: 20px;   
+    margin: 3px 0;   
+}
+*/
+.registered-table .table i[class*="fui-"] {
+    font-size: 0.8em;
+}
+
 
 
 /*RESPONSIVE*/

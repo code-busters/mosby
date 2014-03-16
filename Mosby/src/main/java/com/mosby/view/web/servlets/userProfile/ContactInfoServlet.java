@@ -1,4 +1,4 @@
-package main.java.com.mosby.view.web.servlets;
+package main.java.com.mosby.view.web.servlets.userProfile;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

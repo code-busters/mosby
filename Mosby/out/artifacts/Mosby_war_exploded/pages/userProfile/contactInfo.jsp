@@ -87,8 +87,8 @@
                             <input type="file" class="hide" name="profile-img" id="open-profile-img" accept="image/*" />
                             <p class="change-img-name"></p>
                             <label for="open-profile-img">
-                                <span id="backup-profile-img" class="hide">media/images/users/${user.userProfile.image}</span>
-                                <div class="flow-img user-profile-img" style="background-image: url(media/images/users/${user.userProfile.image});"></div>
+                                <span id="backup-profile-img" class="hide">media/images/users/${user.image}</span>
+                                <div class="flow-img user-profile-img" style="background-image: url(media/images/users/${user.image});"></div>
                                 <span class="change-img">Change photo</span>
                             </label>
                         </div>
@@ -102,11 +102,11 @@
                         </div>
                         <div class="form-group">
                             <label for="country">Country</label>
-                            <input class="form-control typeahead" placeholder="Country" value="${user.userProfile.country}" name="country" id="country" />
+                            <input class="form-control typeahead" placeholder="Country" value="${user.country}" name="country" id="country" />
                         </div>
                         <div class="form-group">
                             <label for="city">City</label>
-                            <input class="form-control" placeholder="City" value="${user.userProfile.city}" name="city" id="city" />
+                            <input class="form-control" placeholder="City" value="${user.city}" name="city" id="city" />
                         </div>
                         <div class="form-group">
                             <label for="birthday">Birthday</label>
@@ -114,7 +114,7 @@
                                 <button type="button" class="btn">
                                     <span class="fui-calendar"></span>
                                 </button>
-                                <input type="text" placeholder="Your Birthday" value="${user.userProfile.birthDate}" name="birthday" id="birthday" readonly="">
+                                <input type="text" placeholder="Your Birthday" value="${user.birthDate}" name="birthday" id="birthday" readonly="">
                             </div>
                         </div>
                         <div class="form-group">
@@ -133,11 +133,11 @@
                         </div>
                         <div class="form-group">
                             <label for="website">Website</label>
-                            <input type="url" class="form-control" placeholder="Enter your website or blog" value="${user.userProfile.site}" name="website" id="website" />
+                            <input type="url" class="form-control" placeholder="Enter your website or blog" value="${user.site}" name="website" id="website" />
                         </div>
                         <div class="form-group">
                             <label for="about">About</label>
-                            <textarea class="form-control" rows="4" placeholder="Tell about yourself" value="${user.userProfile.about}" name="about" id="about" form="contact-info-form"></textarea>
+                            <textarea class="form-control" rows="4" placeholder="Tell about yourself" value="${user.about}" name="about" id="about" form="contact-info-form"></textarea>
                         </div>
                         <div class="form-group">
                             <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit" value="Submit">

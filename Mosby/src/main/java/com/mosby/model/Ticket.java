@@ -1,9 +1,10 @@
 package main.java.com.mosby.model;
 
-import java.sql.Date;
+import main.java.com.mosby.model.annotations.dao.Column;
+import main.java.com.mosby.model.annotations.dao.Key;
+import main.java.com.mosby.model.annotations.dao.Table;
 
-import main.java.com.mosby.model.annotations.dao.*;
-import main.java.com.mosby.model.annotations.validate.*;
+import java.sql.Date;
 
 @Table(name="tickets")
 public class Ticket {
@@ -12,22 +13,22 @@ public class Ticket {
 	private int id;
 	
 	@Key(name="ticket_info_ref")	
-	private TicketInfo ticketInfo = null;
+	private TicketInfo ticketInfo;
 	
 	@Column(name="time_of_purchase")	
 	private Date timeOfPurchase;
 	
 	@Key(name="promo_code_ref")	
-	private PromoCode promoCode = null;
+	private PromoCode promoCode;
 	
 	@Column(name="checked")	
 	private boolean checked;
 	
 	@Key(name="user_ref")	
-	private User user = null;
+	private User user;
 	
 	@Key(name="event_ref")
-	private Event event = null;
+	private Event event;
 
 	public Ticket() {
 	}
