@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
 		
 		User user = readUsersService.readUser(email, password);
 
-		if (user == null) {
+		if (user == null || !user.isActive()) {
 			request.getRequestDispatcher("/pages/login.jsp").forward(request, response);
 		} else {
 			

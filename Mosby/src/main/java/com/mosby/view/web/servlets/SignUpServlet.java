@@ -52,8 +52,6 @@ public class SignUpServlet extends HttpServlet {
 			request.getRequestDispatcher("/pages/signUp.jsp").forward(request,
 					response);
 		} else {
-			HttpSession session = request.getSession(false);
-			session.setAttribute("user", user);
 			response.sendRedirect("index");
 		}
 	}

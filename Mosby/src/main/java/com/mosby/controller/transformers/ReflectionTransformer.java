@@ -63,10 +63,11 @@ public class ReflectionTransformer<T> {
 	}
 
 	public PreparedStatement fromObjectToStatement(
-			PreparedStatement preparedStatement, Class<T> type, T object) {
+			PreparedStatement preparedStatement, Class<T> type, T object, boolean isUpdate) {
 		int columnIndex = 0;
 		System.out.println(object);
 		for (Field field : type.getDeclaredFields()) {
+			if (!(isUpdate && field.getName().equals("id"))) {
 			PropertyDescriptor propertyDescriptor;
 			try {
 				if (field.isAnnotationPresent(Column.class)) {
@@ -81,6 +82,7 @@ public class ReflectionTransformer<T> {
 						System.out.println("Null");
 					}
 					preparedStatement.setObject(++columnIndex, value);
+					
 				} else if (field.isAnnotationPresent(Key.class)) {
 					Class<?> fieldClass = field.getType();
 					System.out.println(fieldClass.toString());
@@ -111,13 +113,24 @@ public class ReflectionTransformer<T> {
 				}
 			} catch (IntrospectionException | IllegalAccessException
 					| IllegalArgumentException | InvocationTargetException
-					| SQLException | SecurityException
-					| NoSuchMethodException e) {
+					| SQLException | SecurityException | NoSuchMethodException e) {
 				e.printStackTrace();
 			}
+			System.out.println(columnIndex);
 		}
-
+		}
 		return preparedStatement;
+	}
+
+	public int columnCount(Class<T> type) {
+		int columnCount = 0;
+		for (Field field : type.getDeclaredFields()) {
+			if (field.isAnnotationPresent(Column.class)
+					|| field.isAnnotationPresent(Key.class)) {
+				columnCount++;
+			}
+		}
+		return columnCount;
 	}
 
 	public String fromFieldToColumnInDB(String line) {
