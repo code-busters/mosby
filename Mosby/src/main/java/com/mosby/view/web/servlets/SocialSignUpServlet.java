@@ -20,7 +20,6 @@ public class SocialSignUpServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
-//		request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
 	}
 
 	
@@ -37,7 +36,6 @@ public class SocialSignUpServlet extends HttpServlet {
 		String sessionID = session.getId();
 		if (state.equals(sessionID)){
 			try {	
-				//user = new SocialSignUpUserService().signUpUser(user );
 				session.setAttribute("user", user);
 				session.setAttribute("user_type", "facebook");
 				
@@ -55,7 +53,7 @@ public class SocialSignUpServlet extends HttpServlet {
 				e.printStackTrace();
 				response.sendRedirect("/signUp");
 			}
-			response.sendRedirect("/index");
+			response.sendRedirect("index");
 		} else {
 			System.err.println("CSRF protection validation");
 		}

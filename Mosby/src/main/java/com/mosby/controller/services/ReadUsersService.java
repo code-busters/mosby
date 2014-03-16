@@ -32,16 +32,21 @@ public class ReadUsersService {
 
 	}
 
-	public User readSocialUser(User user) {
-		User usr = new User();
-
-		ReflectionDao<User> usersDao = new ReflectionDao<>((Class<User>) usr.getClass());
+	public User readSocialUser(User user){
+		ReflectionDao<User> usersDao = new ReflectionDao<>((Class<User>) user.getClass());
 		
 		System.out.println(user.toString());
 		
 		if (!usersDao.selectObjects("email", user.getEmail()).isEmpty()) {
-			user.setId(usersDao.selectObjects("email", user.getEmail()).get(0).getId());
-			user.setAuthenticationCode("1");
+			User usr = usersDao.selectObjects("email", user.getEmail()).get(0);
+
+			user.setId(usr.getId());
+			user.setCity(usr.getCity());
+			user.setCountry(usr.getCountry());
+			user.setPassword(usr.getPassword());
+			user.setSite(usr.getSite());
+			user.setAbout(usr.getAbout());
+			user.setActive(true);
 			usersDao.updateObjects(user);
 
 			return user;

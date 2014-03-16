@@ -88,8 +88,7 @@
 								</span>
 							</span>
                             <span id="backup-img" class="hide">media/images/events/background/${event.background}</span>
-                            <input type="text" class="form-control" value="${event.background}" readonly=""
-                                   disabled="disabled">
+                            <input type="text" class="form-control" value="${event.background}" readonly="" disabled="disabled">
                         </div>
                         <span class="additional-input-info">Select image with big resolution for better result</span>
                     </div>
