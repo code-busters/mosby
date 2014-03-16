@@ -53,16 +53,14 @@ public class QueryStatements<T> {
 		return query;
 	}
 
-	public String createUpdateQuery(String whereField) {
+	public String createUpdateQuery() {
 		String query = null;
 
-		String whereColumn = reflectionTransformer
-				.fromFieldToColumnInDB(whereField);
 		String tableName = type.getAnnotation(Table.class).name();
-		String tableColumns = getUpdateColumns(whereField);
+		String tableColumns = getUpdateColumns();
 
 		query = StringUtils.concat("UPDATE ", tableName, " SET ", tableColumns,
-				"WHERE ", whereColumn, "=?");
+				"WHERE id=?");
 
 		System.out.println(query);
 
@@ -85,7 +83,7 @@ public class QueryStatements<T> {
 		return query;
 	}
 
-	private String getUpdateColumns(String whereField) {
+	private String getUpdateColumns() {
 		String tableColumns = null;
 		StringBuilder stringBuilder = new StringBuilder();
 

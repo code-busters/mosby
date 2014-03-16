@@ -1,8 +1,5 @@
 package main.java.com.mosby.controller.dao;
 
-import java.beans.IntrospectionException;
-import java.beans.PropertyDescriptor;
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.Connection;
@@ -12,10 +9,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mysql.jdbc.Statement;
-
 import main.java.com.mosby.controller.persistence.ConnectionManager;
 import main.java.com.mosby.controller.transformers.ReflectionTransformer;
+
+import com.mysql.jdbc.Statement;
 
 public class ReflectionDao<T> {
 
@@ -102,9 +99,9 @@ public class ReflectionDao<T> {
 		return generatedId;
 	}
 
-	public void updateObjects(T object, String whereField, Object whereValue) {
+	public void updateObjects(T object) {
 		try {
-			query = queryStatements.createUpdateQuery(whereField);
+			query = queryStatements.createUpdateQuery();
 
 			Connection connection = ConnectionManager.getInstance()
 					.getConnection();
@@ -114,14 +111,17 @@ public class ReflectionDao<T> {
 					.fromObjectToStatement(preparedStatement, type, object,
 							true);
 			int whereColumnIndex = reflectionTransformer.columnCount(type);
-			System.out.println(whereColumnIndex);
 
-			preparedStatement.setObject(whereColumnIndex, whereValue);
+			Method getIdMethod = type.getDeclaredMethod("getId");
+			preparedStatement.setObject(whereColumnIndex,
+					getIdMethod.invoke(object));
 
 			preparedStatement.addBatch();
 			preparedStatement.executeBatch();
 		} catch (SQLException | IllegalArgumentException
-				| ClassNotFoundException e) {
+				| ClassNotFoundException | NoSuchMethodException
+				| SecurityException | IllegalAccessException
+				| InvocationTargetException e) {
 			e.printStackTrace();
 		}
 	}
