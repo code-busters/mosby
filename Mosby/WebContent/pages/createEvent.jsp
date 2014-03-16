@@ -161,17 +161,28 @@
            required/>
 </div>
 <div class="form-group">
-    <label for="event-background">Event Logo</label>
+    <span class="as-label">Event Logo</span>
+    <input type="file" class="hide" name="event_logo" id="open-event-logo" accept="image/*"/>
+    <label for="open-event-logo">
+        <span id="backup-img" class="hide">media/images/events/logo/default.png</span>
+        <img class="event-logo" src="media/images/events/logo/default.png">
+    </label>
+    <span class="change-img-name"></span>
+    <span class="additional-input-info">Click on image to browse your logo</span>
+</div>
+<div class="form-group">
+    <label for="event-background">Event Background</label>
 
     <div class="input-group">
 							<span class="input-group-btn">
 								<span class="btn btn-primary btn-file">
 									Open
-									<input type="file" name="event_logo" id="event-logo" accept="image/*"/>
+									<input type="file" name="event_background" id="event-background" accept="image/*"/>
 								</span>
 							</span>
         <input type="text" class="form-control" readonly="" disabled="disabled">
     </div>
+    <span class="additional-input-info">Select image with big resolution for better result</span>
 </div>
 <div class="form-group">
     <label for="datepicker-start">Start Date &amp; Time</label>
@@ -222,21 +233,6 @@
             </option>
         </c:forEach>
     </select>
-</div>
-
-<div class="form-group">
-    <label for="event-background">Event Background</label>
-
-    <div class="input-group">
-							<span class="input-group-btn">
-								<span class="btn btn-primary btn-file">
-									Open
-									<input type="file" name="event_background" id="event-background" accept="image/*"/>
-								</span>
-							</span>
-        <input type="text" class="form-control" readonly="" disabled="disabled">
-    </div>
-    <span class="additional-input-info">Select image with big resolution for better result</span>
 </div>
 <div class="form-group">
     <label for="event-description">Event Description</label>
