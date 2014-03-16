@@ -18,6 +18,10 @@
     <url-pattern>/profilePage</url-pattern>
     <url-pattern>/signUp</url-pattern>
     <url-pattern>/socialSignUp</url-pattern>
+    <url-pattern>/registeredTable</url-pattern>
+    <url-pattern>/changePassword</url-pattern>
+    <url-pattern>/contactInfo</url-pattern>
+    <url-pattern>/authentication</url-pattern>
   </filter-mapping>
   <filter>
     <filter-name>SignUpFilter</filter-name>
@@ -34,6 +38,16 @@
   <filter-mapping>
     <filter-name>LoginFilter</filter-name>
     <url-pattern>/login</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>LogoutFilter</filter-name>
+    <filter-class>main.java.com.mosby.view.web.filters.LogoutFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>LogoutFilter</filter-name>
+    <url-pattern>/registeredTable</url-pattern>
+    <url-pattern>/changePassword</url-pattern>
+    <url-pattern>/contactInfo</url-pattern>
   </filter-mapping>
   <filter>
     <filter-name>CreateEventFilter</filter-name>

@@ -52,7 +52,8 @@ public class SignUpServlet extends HttpServlet {
 			request.getRequestDispatcher("/pages/signUp.jsp").forward(request,
 					response);
 		} else {
-			response.sendRedirect("index");
+			request.getRequestDispatcher("/pages/emailSent.jsp").forward(request,
+					response);
 		}
 	}
 }

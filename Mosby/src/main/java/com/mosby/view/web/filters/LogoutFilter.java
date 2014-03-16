@@ -14,29 +14,35 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-@WebFilter("/LoginFilter")
-public class LoginFilter implements Filter {
+@WebFilter("/LogoutFilter")
+public class LogoutFilter implements Filter {
 
-    public LoginFilter() {
+
+    public LogoutFilter() {
         // TODO Auto-generated constructor stub
     }
+
 
 	public void destroy() {
 		// TODO Auto-generated method stub
 	}
+
 
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
         HttpSession session = request.getSession(false);
     	System.out.println("filterLogin");
-        if (session == null || session.getAttribute("user") == null) {
+        if (session.getAttribute("user") != null) {
             chain.doFilter(request, response);
         } else {
 
         }
 	}
 
+	/**
+	 * @see Filter#init(FilterConfig)
+	 */
 	public void init(FilterConfig fConfig) throws ServletException {
 		// TODO Auto-generated method stub
 	}

@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import main.java.com.mosby.controller.dao.ReflectionDao;
 import main.java.com.mosby.model.User;
@@ -26,9 +27,13 @@ public class AuthenticationServlet extends HttpServlet {
 		ReflectionDao<User> usersDao = new ReflectionDao<>((Class<User>) user.getClass());
 		user = usersDao.selectObjects("authentication_code", code).get(0);
 		user.setActive(true);
-		usersDao.updateObjects(user, "id", user.getId());	
 		System.out.println(code);
-		response.sendRedirect("index");
+		usersDao.updateObjects(user);
+		System.out.println(user);
+		HttpSession session = request.getSession(false);
+		session.setAttribute("user", user);
+		session.setAttribute("userType", "common");
+		response.sendRedirect("contactInfo");
 	}
 
 

@@ -36,7 +36,7 @@ public class UpdateUserService {
 		boolean admin = ((User) session.getAttribute("user")).isAdmin();
 		
 		
-//		String userImage = "default.jpg";
+        String userImage = "default.jpg";
 //		Part filePart = request.getPart("profile_img");
 //		try {
 //			String contentType = filePart.getContentType();
