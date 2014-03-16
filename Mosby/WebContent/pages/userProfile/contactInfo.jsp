@@ -42,34 +42,7 @@
     </div>
 
     <div id="wrapper" class="row user-profile">
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="<c:url value="/contactInfo"/>">YOUR ACCOUNT</a>
-                </li>
-                <li>
-                    <a href="<c:url value="/contactInfo"/>">Contact Info</a>
-                </li>
-                <li>
-                    <a href="#">Tickets</a>
-                </li>
-                <li>
-                    <a href="#">Overview</a>
-                </li>
-                <li>
-                    <a href="#">Events</a>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Services</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
-            </ul>
-        </div>
+        <jsp:include page="parts/sideNavnar.jsp"/>
         <div id="page-content-wrapper">
             <div class="content-header">
                 <h1>
