@@ -126,21 +126,23 @@ public class ReflectionDao<T> {
 		}
 	}
 
-	public void deleteObjects(String whereField, Object whereValue) {
+	public void deleteObjects(T object) {
 		try {
-			query = queryStatements.createDeleteQuery(whereField);
+			query = queryStatements.createDeleteQuery();
 
 			Connection connection = ConnectionManager.getInstance()
 					.getConnection();
 			PreparedStatement preparedStatement = (PreparedStatement) connection
 					.prepareStatement(query);
-
-			preparedStatement.setObject(1, whereValue);
+			Method getIdMethod = type.getDeclaredMethod("getId");
+			preparedStatement.setObject(1, getIdMethod.invoke(object));
 
 			preparedStatement.addBatch();
 			preparedStatement.executeBatch();
 		} catch (SQLException | IllegalArgumentException
-				| ClassNotFoundException e) {
+				| ClassNotFoundException | NoSuchMethodException
+				| SecurityException | IllegalAccessException
+				| InvocationTargetException e) {
 			e.printStackTrace();
 		}
 	}

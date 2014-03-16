@@ -67,16 +67,13 @@ public class QueryStatements<T> {
 		return query;
 	}
 
-	public String createDeleteQuery(String whereField) {
+	public String createDeleteQuery() {
 		String query = null;
 
-		String whereColumn = reflectionTransformer
-				.fromFieldToColumnInDB(whereField);
 		String tableName = reflectionTransformer.fromFieldToColumnInDB(type
 				.getSimpleName()) + "s";
 
-		query = StringUtils.concat("DELETE FROM ", tableName, " WHERE ",
-				whereColumn, "=?");
+		query = StringUtils.concat("DELETE FROM ", tableName, " WHERE id=?");
 
 		System.out.println(query);
 
