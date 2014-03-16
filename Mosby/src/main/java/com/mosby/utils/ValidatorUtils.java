@@ -46,7 +46,7 @@ public class ValidatorUtils<T> {
 		Timestamp timestampStart = null;
 		for (Field field : type.getDeclaredFields()) {
 			System.out.println("I get field");
-			
+
 			if (field.isAnnotationPresent(NotNull.class)) {
 				field.setAccessible(true);
 				if (field.get(object) == null) {
@@ -54,7 +54,7 @@ public class ValidatorUtils<T> {
 					continue;
 				}
 			}
-			
+
 			if (field.isAnnotationPresent(Size.class)) {
 				Size annotation = (Size) field.getAnnotation(Size.class);
 				field.setAccessible(true);
@@ -77,7 +77,7 @@ public class ValidatorUtils<T> {
 				}
 
 			}
-			
+
 			if (field.isAnnotationPresent(Min.class)) {
 				Min annotation = (Min) field.getAnnotation(Min.class);
 				field.setAccessible(true);
@@ -95,7 +95,7 @@ public class ValidatorUtils<T> {
 				}
 
 			}
-			
+
 			if (field.isAnnotationPresent(Max.class)) {
 				Max annotation = (Max) field.getAnnotation(Max.class);
 				field.setAccessible(true);
@@ -113,7 +113,7 @@ public class ValidatorUtils<T> {
 				}
 
 			}
-			
+
 			if (field.isAnnotationPresent(Email.class)) {
 				Email annotation = (Email) field.getAnnotation(Email.class);
 				System.out.println("Email");
@@ -144,7 +144,8 @@ public class ValidatorUtils<T> {
 				Date date = new Date();
 				System.out.println(date.getTime());
 				Timestamp timestampNow = new Timestamp(date.getTime());
-				if (timestampStart != null && timestampStart.before(timestampNow)) {
+				if (timestampStart != null
+						&& timestampStart.before(timestampNow)) {
 					System.out.println("infunc");
 					errors.add(field.getName() + " don`t valid");
 				}
@@ -171,8 +172,12 @@ public class ValidatorUtils<T> {
 	}
 
 	public void checkConfirmPass(String pass, String confirmPass) {
-		if(!pass.equals(confirmPass)){
-			errors.add("Please input same paswords");
+		if (confirmPass != null) {
+			if (!pass.equals(confirmPass)) {
+				errors.add("Please input same paswords");
+			}
+		} else {
+			errors.add("Please input confirm password");
 		}
 	}
 

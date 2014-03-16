@@ -18,7 +18,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import main.java.com.mosby.controller.services.ReadGenericObjectService;
 import main.java.com.mosby.model.Event;
+import main.java.com.mosby.model.EventCategory;
+import main.java.com.mosby.model.EventType;
 import main.java.com.mosby.model.User;
 import main.java.com.mosby.utils.ValidatorUtils;
 
@@ -43,55 +46,71 @@ public class CreateEventFilter implements Filter {
 		HttpSession session = request.getSession(false);
 
 		System.out.println("createEventFilter");
-		Event event = new Event();
-		ValidatorUtils<Event> validatorUtils = new ValidatorUtils<>(
-				(Class<Event>) event.getClass());
 
 		if (session != null && session.getAttribute("user") != null) {
-			
-		
-			SimpleDateFormat parseDate = new SimpleDateFormat("dd/MM/yyyy hh:mm");
-	        if(request.getParameter("start_date") != null && request.getParameter("start_time") != null &&
-	        		request.getParameter("end_date") != null && request.getParameter("end_time") != null){
-	        String startTimestamp = request.getParameter("start_date") + " " + request.getParameter("start_time");
-	        String endTimestamp = request.getParameter("end_date") + " " + request.getParameter("end_time");
 
-	        Timestamp start = null;
-	        Timestamp end = null;
-	        try {
-	            start = new Timestamp(parseDate.parse(startTimestamp).getTime());
-	            end = new Timestamp(parseDate.parse(endTimestamp).getTime());
-	        } catch (ParseException e) {
-	            e.printStackTrace();
-	        }
-	        event = new Event(start, end);
-	        
-	        try {
-				validatorUtils.validate(event);
-			} catch (NoSuchMethodException | SecurityException
-					| IllegalAccessException | IllegalArgumentException
-					| InvocationTargetException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	        }
-	        
-	        
-			if (event == null || validatorUtils.getErrors().isEmpty() == false) {
+			Event event = new Event();
+			ValidatorUtils<Event> validatorUtils = new ValidatorUtils<>(
+					(Class<Event>) event.getClass());
+			EventCategory eventCategory = null;
+			EventType eventType = null;
+			SimpleDateFormat parseDate = new SimpleDateFormat(
+					"dd/MM/yyyy hh:mm");
+			if (request.getMethod().equals("POST")) {
+				String startTimestamp = request.getParameter("start_date")
+						+ " " + request.getParameter("start_time");
+				String endTimestamp = request.getParameter("end_date") + " "
+						+ request.getParameter("end_time");
+				String name = request.getParameter("event_name");
+				String description = request.getParameter("event_description");
 
-				request.setAttribute("errors", validatorUtils.getErrors());
-				System.out.println(validatorUtils.getErrors());
+				eventCategory = new ReadGenericObjectService<EventCategory>(
+						(Class<EventCategory>) new EventCategory().getClass())
+						.readById(Integer.parseInt(request
+								.getParameter("event_category")));
+				eventType = new ReadGenericObjectService<EventType>(
+						(Class<EventType>) new EventType().getClass())
+						.readById(Integer.parseInt(request
+								.getParameter("event_type")));
+
+				Timestamp start = null;
+				Timestamp end = null;
+				try {
+					start = new Timestamp(parseDate.parse(startTimestamp)
+							.getTime());
+					end = new Timestamp(parseDate.parse(endTimestamp).getTime());
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+				event = new Event(start, end, eventCategory, eventType);
+
+				try {
+					validatorUtils.validate(event);
+				} catch (NoSuchMethodException | SecurityException
+						| IllegalAccessException | IllegalArgumentException
+						| InvocationTargetException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				if (event == null
+						|| validatorUtils.getErrors().isEmpty() == false) {
+
+					request.setAttribute("errors", validatorUtils.getErrors());
+					System.out.println(validatorUtils.getErrors());
+					request.getRequestDispatcher("/pages/createEvent.jsp")
+							.forward(request, response);
+				} else {
+					chain.doFilter(request, response);
+				}
+			} else {
 				request.getRequestDispatcher("/pages/createEvent.jsp").forward(
 						request, response);
-			}
-			else {
-				chain.doFilter(request, response);
 			}
 		} else {
 
 		}
 	}
-				
 
 	public void init(FilterConfig fConfig) throws ServletException {
 		// TODO Auto-generated method stub

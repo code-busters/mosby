@@ -21,9 +21,11 @@ public class Event {
 	@Column(name = "description")
 	private String description;
 
+	@NotNull
 	@Key(name = "category_ref")
 	private EventCategory eventCategory;
 
+	@NotNull
 	@Key(name = "type_ref")
 	private EventType eventType;
 
@@ -106,10 +108,12 @@ public class Event {
 
 
 
-	public Event(Timestamp startDateTime, Timestamp endDateTime) {
+	public Event(Timestamp startDateTime, Timestamp endDateTime, EventCategory eventCategory, EventType eventType) {
 		super();
 		this.startDateTime = startDateTime;
 		this.endDateTime = endDateTime;
+		this.eventCategory = eventCategory;
+		this.eventType = eventType;
 	}
 
 	public int getId() {

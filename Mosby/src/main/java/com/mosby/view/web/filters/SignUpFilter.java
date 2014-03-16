@@ -35,36 +35,42 @@ public class SignUpFilter implements Filter {
 		HttpServletResponse response = (HttpServletResponse) res;
 		HttpSession session = request.getSession(false);
 
+
 		if (session == null || session.getAttribute("user") == null) {
+			System.out.println(request.getMethod());
+			if (request.getMethod().equals("POST")) {
+				System.out.println("validate....");
+				String firstName = request.getParameter("first_name");
+				String lastName = request.getParameter("last_name");
+				String email = request.getParameter("email");
+				String password = request.getParameter("password");
+				String confirmPassword = request
+						.getParameter("confirm_password");
 
-			String firstName = request.getParameter("first_name");
-			String lastName = request.getParameter("last_name");
-			String email = request.getParameter("email");
-			String password = request.getParameter("password");
-			String confirmPassword = request.getParameter("confirm_password");
-
-			User user = new User(firstName, lastName, email, password);
-			ValidatorUtils<User> validatorUtils = new ValidatorUtils<>(
-					(Class<User>) user.getClass());
-			try {
-				user = validatorUtils.validate(user);
-				if (password != null && confirmPassword != null) {
+				User user = new User(firstName, lastName, email, password);
+				ValidatorUtils<User> validatorUtils = new ValidatorUtils<>(
+						(Class<User>) user.getClass());
+				try {
+					user = validatorUtils.validate(user);
 					validatorUtils.checkConfirmPass(password, confirmPassword);
+				} catch (NoSuchMethodException | SecurityException
+						| IllegalAccessException | IllegalArgumentException
+						| InvocationTargetException e) {
+					e.printStackTrace();
 				}
-			} catch (NoSuchMethodException | SecurityException
-					| IllegalAccessException | IllegalArgumentException
-					| InvocationTargetException e) {
-				e.printStackTrace();
-			}
 
-			if (user == null || validatorUtils.getErrors().isEmpty() == false) {
+				if (user == null
+						|| validatorUtils.getErrors().isEmpty() == false) {
 
-				request.setAttribute("errors", validatorUtils.getErrors());
-				System.out.println(validatorUtils.getErrors());
-				request.getRequestDispatcher("/pages/signUp.jsp").forward(
-						request, response);
+					request.setAttribute("errors", validatorUtils.getErrors());
+					System.out.println(validatorUtils.getErrors());
+					request.getRequestDispatcher("/pages/signUp.jsp").forward(
+							request, response);
+				} else {
+					chain.doFilter(request, response);
+				}
 			} else {
-				chain.doFilter(request, response);
+				request.getRequestDispatcher("/pages/signUp.jsp").forward(request, response);
 			}
 		} else {
 
