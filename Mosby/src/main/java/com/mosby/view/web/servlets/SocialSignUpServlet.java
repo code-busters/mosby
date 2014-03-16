@@ -78,17 +78,16 @@ public class SocialSignUpServlet extends HttpServlet {
 		String sessionID = session.getId();
 		if (state.equals(sessionID)){
 			try {	
-				user = new SocialSignUpUserService().signUpUser(user );
-	
-				if(user == null){
+				//user = new SocialSignUpUserService().signUpUser(user );
+				session.setAttribute("user", user);
+				session.setAttribute("user_type", "facebook");
+				
+				if(new SocialSignUpUserService().signUpUser(user ) == null){
 					ReadUsersService readUsersService = new ReadUsersService();
 					
-					user = readUsersService.readSocialUser(email);
+					readUsersService.readSocialUser(user);
 					
 					System.out.println("signed in using facebook " + user);
-					
-					session.setAttribute("user", user);
-					session.setAttribute("user_type", "facebook");
 
 				} else{ 
 					System.out.println("signed up using facebook " + user);

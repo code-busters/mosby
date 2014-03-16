@@ -84,13 +84,17 @@
                 <div class="col-md-6">
                     <form action="contactInfo" method="post" id="contact-info-form">
                         <div class="form-group">
-                            <input type="file" class="hide" name="profile-img" id="open-profile-img" accept="image/*" />
-                            <p class="change-img-name"></p>
-                            <label for="open-profile-img">
-                                <span id="backup-profile-img" class="hide">media/images/users/${user.image}</span>
-                                <div class="flow-img user-profile-img" style="background-image: url(media/images/users/${user.image});"></div>
-                                <span class="change-img">Change photo</span>
-                            </label>
+                        	<% if (request.getSession().getAttribute("userType") == "common") { %>
+	                            <input type="file" class="hide" name="profile-img" id="open-profile-img" accept="image/*" />
+	                            <p class="change-img-name"></p>
+	                            <label for="open-profile-img">
+	                                <span id="backup-profile-img" class="hide">media/images/users/${user.image}</span>
+	                                <div class="flow-img user-profile-img" style="background-image: url(media/images/users/${user.image});"></div>
+	                                <span class="change-img">Change photo</span>
+	                            </label>
+	                        <% } else { %>
+	                        	<div class="flow-img user-profile-img" style="background-image: url(${user.image});"></div>
+	                        <% }%>
                         </div>
                         <div class="form-group">
                             <label for="first-name">First Name</label>

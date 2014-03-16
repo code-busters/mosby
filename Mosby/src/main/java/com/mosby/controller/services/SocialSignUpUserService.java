@@ -18,6 +18,7 @@ public class SocialSignUpUserService {
 			
 			String encryptedPassword = EncryptionUtils.createHash("");
 			user.setPassword(encryptedPassword);
+			user.setAuthenticationCode("1");
 			usersDao.insertObjects(user);
 
 			user = usersDao.selectObjects("email", user.getEmail()).get(0);
