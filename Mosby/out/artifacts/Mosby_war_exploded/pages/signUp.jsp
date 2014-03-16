@@ -77,7 +77,7 @@
                     <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit" value="Submit">
                         Submit
                     </button>
-                    <a class="login-link" href="#">
+                    <a class="login-link" href="<c:url value="/login"/>">
                         Already registered? Login here
                     </a>
                 </div>

@@ -119,11 +119,11 @@
     });
     $(document).ready(function () {
         $("#events").css("margin-top", $("#main-idea").height() + $("h1").height() + 1);
-        $("#main-idea").css("margin-top", 2*$(window).height()/5 - $("h1").height());
+        $("#main-idea").css("margin-top", $(window).height()/7 - $("h1").height());
     });
     $(window).resize(function () {
         $("#events").css("margin-top", $("#main-idea").height() + $("h1").height() + 1);
-        $("#main-idea").css("margin-top", 2*$(window).height()/5 - $("h1").height());
+        $("#main-idea").css("margin-top", $(window).height()/7 - $("h1").height());
     });
 </script>
 

@@ -182,15 +182,16 @@ String.prototype.repeat = function (num) {
         $(document).on('click', 'a[href="#fakelink"]', function (e) {
             e.preventDefault();
         });
-        
-        $("[data-toggle='switch']").wrap('<div class="switch" />').parent().bootstrapSwitch();
 
         // jQuery UI Datepicker
         $('#datepicker-start').datepicker({
             showOtherMonths: true,
             selectOtherMonths: true,
             dateFormat: "dd/mm/yy",
-            yearRange: '-1:+1'
+            changeMonth: 1,
+            changeYear: 1,
+            minDate: '0d',
+            yearRange: 'c:+3'
         }).prev('.btn').on('click', function (e) {
             e && e.preventDefault();
             $('#datepicker-start').focus();
@@ -205,7 +206,9 @@ String.prototype.repeat = function (num) {
             showOtherMonths: true,
             selectOtherMonths: true,
             dateFormat: "dd/mm/yy",
-            yearRange: '-1:+1'
+            changeMonth: 1,
+            changeYear: 1,
+            yearRange: '-1:+3'
         }).prev('.btn').on('click', function (e) {
             e && e.preventDefault();
             $('#datepicker-end').focus();
@@ -219,8 +222,11 @@ String.prototype.repeat = function (num) {
         $('#birthday').datepicker({
             showOtherMonths: true,
             selectOtherMonths: true,
+            defaultDate: "24/08/1991",
             dateFormat: "dd/mm/yy",
-            yearRange: '-1:+1'
+            changeMonth: 1,
+            changeYear: 1,
+            yearRange: '1950:-16'
         }).prev('.btn').on('click', function (e) {
             e && e.preventDefault();
             $('#birthday').focus();
@@ -230,7 +236,6 @@ String.prototype.repeat = function (num) {
                 return offset
             }
         });
-
 
         // Switch
         $("[data-toggle='switch']").wrap('<div class="switch" />').parent().bootstrapSwitch();

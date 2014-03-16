@@ -42,14 +42,14 @@
         <div class="on-background-block-header col-md-10 col-md-offset-1">
             <h4>Login</h4>
         </div>
-        <div class="errors">
-            <c:forEach items="${errors}" var="error">
-                <p>error</p>
-            </c:forEach>
-        </div>
         <div class="on-background-block login col-md-6 col-md-offset-1">
             <div class="hidden-lg hidden-md">
                 <h4>Login</h4>
+            </div>
+            <div class="errors">
+                <c:forEach items="${errors}" var="error">
+                    <p>${error}</p>
+                </c:forEach>
             </div>
             <form action="login" method="post" id="login-form">
                 <div class="form-group">
@@ -64,7 +64,7 @@
                     <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit" value="Submit">
                         Submit
                     </button>
-                    <a class="login-link" href="#">
+                    <a class="login-link" href="<c:url value="/signUp"/>">
                         Sign Up for free
                     </a>
                 </div>

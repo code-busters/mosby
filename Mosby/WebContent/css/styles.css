@@ -101,6 +101,9 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     -webkit-mask: url('../media/images/switch/mask.png') 0 0 no-repeat;
     mask: url('../images/media/iswitch/mask.png') 0 0 no-repeat;
 }
+.ui-datepicker select {
+    margin: 7px 0;
+}
 
 /*VIDEO BACKGROUND*/
 #main-idea {
@@ -539,7 +542,7 @@ footer {
 }
 .change-img {
 	width: 120px;
-	bottom: 9px;
+	bottom: 5px;
 	left: 0;
 	position: absolute;
 	padding: 7px 0;

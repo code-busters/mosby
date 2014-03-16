@@ -1,16 +1,17 @@
 package main.java.com.mosby.view.web.servlets.userProfile;
 
+import main.java.com.mosby.controller.services.UpdateUserService;
+
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import main.java.com.mosby.controller.services.UpdateUserService;
-
 import java.io.IOException;
 
 @WebServlet("/contactInfo")
+@MultipartConfig
 public class ContactInfoServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request,

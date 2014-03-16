@@ -1206,6 +1206,16 @@ input.search-query {
 .ui-datepicker select {
   font-size: 1em;
   margin: 1px 0;
+  height: 30px;
+  line-height: 30px;
+  display: inline-block;
+  padding: 4px 6px;
+  color: #555555;
+  vertical-align: middle;
+	outline: none;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
 }
 .ui-datepicker select.ui-datepicker-month-year {
   width: 100%;

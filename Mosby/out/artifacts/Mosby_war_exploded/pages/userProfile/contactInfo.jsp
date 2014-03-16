@@ -41,34 +41,7 @@
 </div>
 
 <div id="wrapper" class="row user-profile">
-    <div id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <li class="sidebar-brand">
-                <a href="<c:url value="/contactInfo"/>">YOUR ACCOUNT</a>
-            </li>
-            <li>
-                <a href="<c:url value="/contactInfo"/>">Contact Info</a>
-            </li>
-            <li>
-                <a href="#">Tickets</a>
-            </li>
-            <li>
-                <a href="#">Overview</a>
-            </li>
-            <li>
-                <a href="#">Events</a>
-            </li>
-            <li>
-                <a href="#">About</a>
-            </li>
-            <li>
-                <a href="#">Services</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
-            </li>
-        </ul>
-    </div>
+    <jsp:include page="parts/sideNavnar.jsp"/>
     <div id="page-content-wrapper">
         <div class="content-header">
             <h1>
@@ -82,15 +55,19 @@
         <div class="page-content inset">
             <div class="row">
                 <div class="col-md-6">
-                    <form action="contactInfo" method="post" id="contact-info-form">
+                    <form action="contactInfo" enctype="multipart/form-data" method="post" id="contact-info-form">
                         <div class="form-group">
-                            <input type="file" class="hide" name="profile-img" id="open-profile-img" accept="image/*" />
-                            <p class="change-img-name"></p>
-                            <label for="open-profile-img">
-                                <span id="backup-profile-img" class="hide">media/images/users/${user.image}</span>
-                                <div class="flow-img user-profile-img" style="background-image: url(media/images/users/${user.image});"></div>
-                                <span class="change-img">Change photo</span>
-                            </label>
+                        	<% if (request.getSession().getAttribute("userType") == "common") { %>
+	                            <input type="file" class="hide" name="profile_img" id="open-profile-img" accept="image/*" />
+	                            <p class="change-img-name"></p>
+	                            <label for="open-profile-img">
+	                                <span id="backup-profile-img" class="hide">media/images/users/${user.image}</span>
+	                                <div class="flow-img user-profile-img" style="background-image: url(media/images/users/${user.image});"></div>
+	                                <span class="change-img">Change photo</span>
+	                            </label>
+	                        <% } else { %>
+	                        	<div class="flow-img user-profile-img" style="background-image: url(${user.image});"></div>
+	                        <% }%>
                         </div>
                         <div class="form-group">
                             <label for="first-name">First Name</label>
@@ -161,7 +138,7 @@
 <script src="js/classie.js"></script>
 <script src="js/cbpAnimatedHeader.min.js"></script>
 
-<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery-2.0.3.min.js"></script>
 <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
 <script src="js/jquery.ui.touch-punch.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -176,12 +153,6 @@
 <script src="js/application.js"></script>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        $("#background-block").css("height", 1 * $(window).height() / 5);
-    });
-    $(window).resize(function() {
-        $("#background-block").css("height", 1 * $(window).height() / 5);
-    });
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("active");

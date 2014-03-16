@@ -36,38 +36,11 @@
 
     <div class="row" style="background: #000">
         <div id="background-block" class="flow-img"
-             style="background-image: url(../media/images/bg_mask.png), url(media/images/default/holi-feast.jpg)"></div>
+             style="background-image: url(media/images/bg_mask.png), url(media/images/default/${event.background})"></div>
     </div>
 
     <div id="wrapper" class="row user-profile">
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    MANAGE EVENT
-                </li>
-                <li>
-                    <a href="#">Edit Event</a>
-                </li>
-                <li>
-                    <a href="#">Registered Table</a>
-                </li>
-                <li>
-                    <a href="#">Overview</a>
-                </li>
-                <li>
-                    <a href="#">Events</a>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Services</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
-            </ul>
-        </div>
+        <jsp:include page="parts/sideNavnar.jsp"/>
         <div id="page-content-wrapper">
             <div class="content-header">
                 <h3>
@@ -108,7 +81,7 @@
                                                        name="checked_tickets" data-toggle="checkbox">
                                             </label>
                                         </td>
-                                        <td>1</td>
+                                        <td>${ticket.id}</td>
                                         <td>
                                             <div class="switch switch-square" data-on-label="<i class='fui-check'></i>"
                                                  data-off-label="<i class='fui-cross'></i>">

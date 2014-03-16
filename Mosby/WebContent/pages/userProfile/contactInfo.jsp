@@ -55,7 +55,7 @@
         <div class="page-content inset">
             <div class="row">
                 <div class="col-md-6">
-                    <form enctype="multipart/form-data" action="contactInfo" method="post" id="contact-info-form">
+                    <form action="contactInfo" enctype="multipart/form-data" method="post" id="contact-info-form">
                         <div class="form-group">
                         	<% if (request.getSession().getAttribute("userType") == "common") { %>
 	                            <input type="file" class="hide" name="profile_img" id="open-profile-img" accept="image/*" />
@@ -138,7 +138,7 @@
 <script src="js/classie.js"></script>
 <script src="js/cbpAnimatedHeader.min.js"></script>
 
-<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery-2.0.3.min.js"></script>
 <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
 <script src="js/jquery.ui.touch-punch.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -153,12 +153,6 @@
 <script src="js/application.js"></script>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        $("#background-block").css("height", 1 * $(window).height() / 5);
-    });
-    $(window).resize(function() {
-        $("#background-block").css("height", 1 * $(window).height() / 5);
-    });
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("active");
