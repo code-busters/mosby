@@ -75,7 +75,7 @@ public class SignUpFilter implements Filter {
 						request, response);
 			}
 		} else {
-			response.sendRedirect(request.getContextPath() + "/logout");
+			response.sendRedirect(request.getContextPath() + "/index");
 		}
 	}
 

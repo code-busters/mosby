@@ -33,10 +33,10 @@ public class LogoutFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) res;
         HttpSession session = request.getSession(false);
     	System.out.println("filterLogin");
-        if (session.getAttribute("user") == null) {
+        if (session.getAttribute("user") != null) {
             chain.doFilter(request, response);
         } else {
-            response.sendRedirect(request.getContextPath() + "/login");
+            response.sendRedirect(request.getContextPath() + "/index");
         }
 	}
 
