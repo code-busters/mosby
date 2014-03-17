@@ -21,6 +21,16 @@ public class ReadGenericObjectService<T> {
 			List<T> list = (List<T>) tDao.selectObjects("", null);
 			return (List<T>) list;
 		}
+		
+		public List<T> readListByField(String fieldName, Object variable){
+			try {
+				tDao = new ReflectionDao<>((Class<T>) type.newInstance().getClass());
+			} catch (InstantiationException | IllegalAccessException e) {
+				e.printStackTrace();
+			}
+			List<T> list = (List<T>) tDao.selectObjects(fieldName, variable);
+			return (List<T>) list;
+		}
 
 		public T readById(int id){
 			T type1 = (T) type;

@@ -112,47 +112,50 @@
 
             <div id="googleMap" class="" style="height:380px;"></div>
             <form action="registerServlet" method="post" id="register-for-event-form">
-                <div id="tickets">
-                    <div class="row create-tickets-header hidden-xs">
-                        <div class="col-md-8 col-sm-8">Ticket type</div>
-                        <div class="col-md-2 col-sm-2">Price</div>
-                        <div class="col-md-2 col-sm-2">Quantity</div>
-                    </div>
-                    <div id="tickets-body">
-                        <div id="0" class="row">
-                            <div class="col-md-8 col-sm-8">
-                                <h6 class="visible-xs">Ticket type</h6>
-                                <p>Early bird</p>
-									<span class="ticket-info">
-										Include free beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer beer
-									</span>
-                            </div>
-                            <div class="col-md-2 col-sm-2">
-                                <h6 class="visible-xs">Price</h6>
-                                <p>$220</p>
-                            </div>
-                            <div class="col-md-2 col-sm-2">
-                                <h6 class="visible-xs">Quantity</h6>
-                                <select name="ticket_quantity_0" value="0" class="select-block ticket-quantity" form="register-for-event-form">
-                                    <option value="0" selected="selected">0</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row ">
-                        <div class="pull-right">
-                            <div class="col-md-5 text-right">
-                                <label for="promo-code">Promo code:</label>
-                            </div>
-                            <div class="col-md-7">
-                                <input type="text" class="form-control" placeholder="Enter code" name="promo_code" id="promo-code" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <input type="hidden" name="eventId" value="${event.id}" />
+	                <div id="tickets">
+	                    <div class="row create-tickets-header hidden-xs">
+	                        <div class="col-md-8 col-sm-8">Ticket type</div>
+	                        <div class="col-md-2 col-sm-2">Price</div>
+	                        <div class="col-md-2 col-sm-2">Quantity</div>
+	                    </div>
+	            	<c:forEach items="${tickets}" var="ticketInfo">
+	                    <div id="tickets-body">
+	                        <div id="0" class="row">
+	                            <div class="col-md-8 col-sm-8">
+	                                <h6 class="visible-xs">Ticket type</h6>
+	                                <p>${ticketInfo.name}</p>
+										<span class="ticket-info">
+											${ticketInfo.description}
+										</span>
+	                            </div>
+	                            <div class="col-md-2 col-sm-2">
+	                                <h6 class="visible-xs">Price</h6>
+	                                <p>${ticketInfo.price}</p>
+	                            </div>
+	                            <div class="col-md-2 col-sm-2">
+	                                <h6 class="visible-xs">Quantity</h6>
+	                                <select name="ticket_quantity_${ticketInfo.id}" class="select-block ticket-quantity" form="register-for-event-form">
+	                                    <option value="0" selected="selected">0</option>
+	                                    <option value="1">1</option>
+	                                    <option value="2">2</option>
+	                                    <option value="3">3</option>
+	                                </select>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </c:forEach>
+	                    <div class="row ">
+	                        <div class="pull-right">
+	                            <div class="col-md-5 text-right">
+	                                <label for="promo-code">Promo code:</label>
+	                            </div>
+	                            <div class="col-md-7">
+	                                <input type="text" class="form-control" placeholder="Enter code" name="promo_code" id="promo-code" />
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
                 <!--END TICKETS-->
                 <div class="col-md-3 col-sm-3 col-md-offset-9 col-sm-offset-9">
                     <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit" value="Order Now">

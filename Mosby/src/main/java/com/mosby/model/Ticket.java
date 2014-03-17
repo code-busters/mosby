@@ -1,10 +1,11 @@
 package main.java.com.mosby.model;
 
+import java.util.Date;
+
 import main.java.com.mosby.model.annotations.dao.Column;
 import main.java.com.mosby.model.annotations.dao.Key;
 import main.java.com.mosby.model.annotations.dao.Table;
 
-import java.sql.Date;
 
 @Table(name="tickets")
 public class Ticket {
@@ -31,6 +32,16 @@ public class Ticket {
 	private Event event;
 
 	public Ticket() {
+	}
+
+
+	public Ticket(TicketInfo ticketInfo, Date timeOfPurchase, PromoCode promoCode, boolean checked, User user, Event event) {
+		this.ticketInfo = ticketInfo;
+		this.timeOfPurchase = timeOfPurchase;
+		this.promoCode = promoCode;
+		this.checked = checked;
+		this.user = user;
+		this.event = event;
 	}
 
 
