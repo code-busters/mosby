@@ -151,14 +151,6 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <h4>Event categoty</h4>
-                        <p>${eventCategory}</p>
-                        <p>${tempCategory}</p>
-                        <h4>Event type</h4>
-                        <p>${eventType}</p>
-                        <p>${tempType}</p>
-                    </div>
-                    <div class="form-group">
                         <label for="event-description">Event Description</label>
                         <textarea rows="4" placeholder="Tell users about your event" class="form-control"
                                   name="event_description" value="${event.description}" id="event-description"

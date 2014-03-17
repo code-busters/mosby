@@ -9,10 +9,10 @@
             <a href="<c:url value="/editEvent"/>">Edit Event</a>
         </li>
         <li>
-            <a href="<c:url value="/registeredTable"/>">Registered Table</a>
+            <a href=""<c:url value="/editTicketsPromoCodes"/>">Edit Tickets &amp; Promo-codes</a>
         </li>
         <li>
-            <a href="#">Overview</a>
+            <a href="<c:url value="/registeredTable"/>">Registered Table</a>
         </li>
         <li>
             <a href="#">Events</a>

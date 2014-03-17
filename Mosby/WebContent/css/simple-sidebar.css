@@ -2,7 +2,7 @@
 	transition: all 0.4s ease 0s;
 }
 #sidebar-wrapper {
-	margin-left: -250px;
+	margin-left: -260px;
 	left: 250px;
 	width: 160px;
 	background: #e6e6e6;
@@ -24,14 +24,13 @@
 	margin: 0;
 	padding: 0;
 }
-.sidebar-nav li {
-	font-size: 0.9em;
-	line-height: 40px;
-	text-indent: 20px;
-}
 .sidebar-nav li a {
+	margin-left: 0.7em;
+	padding: 0.9em;
+	font-size: 0.9em;
 	color: #999999;
 	display: block;
+	line-height: 1.1;
 	text-decoration: none;
 }
 .sidebar-nav li a:hover {
@@ -44,6 +43,7 @@
 }
 .sidebar-nav > .sidebar-brand {
 	height: 65px;
+	padding-left: 1.4em;
 	line-height: 60px;
 	font-size: 0.9em;;
 }
@@ -88,7 +88,7 @@
 	}
 	#wrapper.active #page-content-wrapper {
 		position: relative;
-		left: 180px;
+		left: 160px;
 	}
 	#wrapper.active #sidebar-wrapper {
 		left: 250px;

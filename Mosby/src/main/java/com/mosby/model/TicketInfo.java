@@ -1,10 +1,14 @@
 package main.java.com.mosby.model;
 
+import main.java.com.mosby.model.annotations.dao.Column;
+import main.java.com.mosby.model.annotations.dao.Key;
+import main.java.com.mosby.model.annotations.dao.Table;
+import main.java.com.mosby.model.annotations.validate.EndFuture;
+import main.java.com.mosby.model.annotations.validate.NotNull;
+import main.java.com.mosby.model.annotations.validate.StartFuture;
+
 import java.sql.Timestamp;
 import java.util.Date;
-
-import main.java.com.mosby.model.annotations.dao.*;
-import main.java.com.mosby.model.annotations.validate.*;
 
 @Table(name="tickets_infos")
 public class TicketInfo {
@@ -14,22 +18,6 @@ public class TicketInfo {
 	
 	@Column(name="name")
 	private String name;
-	
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Event getEvent() {
-		return event;
-	}
-
-	public void setEvent(Event event) {
-		this.event = event;
-	}
 
 	@Key(name = "event_ref")
 	private Event event;
@@ -105,6 +93,22 @@ public class TicketInfo {
 		this.endDate = endDate;
 		this.endTime = endTime;
 	}
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Event getEvent() {
+        return event;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
+    }
 
 	public Date getStartDate() {
 		return startDate;
