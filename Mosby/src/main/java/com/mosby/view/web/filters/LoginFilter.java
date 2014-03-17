@@ -33,7 +33,7 @@ public class LoginFilter implements Filter {
         if (session == null || session.getAttribute("user") == null) {
             chain.doFilter(request, response);
         } else {
-
+        	response.sendRedirect(request.getContextPath() + "/logout");
         }
 	}
 

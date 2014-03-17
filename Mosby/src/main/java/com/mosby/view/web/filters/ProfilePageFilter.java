@@ -34,9 +34,10 @@ public class ProfilePageFilter implements Filter {
 
             chain.doFilter(request, response);
         } else {
-
+        	session.setAttribute("waitUrl", request.getRequestURL());
+            response.sendRedirect(request.getContextPath() + "/login");
         }
-		chain.doFilter(request, response);
+
 	}
 
 	public void init(FilterConfig fConfig) throws ServletException {

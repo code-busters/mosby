@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
 		User user = readUsersService.readUser(email, password);
 
 		if (user == null || !user.isActive()) {
-			
+
 			List<String> errors = new ArrayList<>();
 			errors.add("Please enter correct field");
 			request.setAttribute("erros", errors);
@@ -55,7 +55,12 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("user", user);
 			session.setAttribute("userType", "common");
 
-			response.sendRedirect("index");
+			if (session.getAttribute("waitUrl") != null) {
+				String url = session.getAttribute("waitUrl").toString();
+				response.sendRedirect(url);
+			} else {
+				response.sendRedirect("index");
+			}
 		}
 	}
 }

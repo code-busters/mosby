@@ -69,14 +69,13 @@ public class SignUpFilter implements Filter {
 					chain.doFilter(request, response);
 				}
 			} else if (request.getMethod().equals("GET")) {
-				System.out.println("bb");
 				chain.doFilter(request, response);
 			} else {
 				request.getRequestDispatcher("/pages/signUp.jsp").forward(
 						request, response);
 			}
 		} else {
-
+			response.sendRedirect(request.getContextPath() + "/logout");
 		}
 	}
 

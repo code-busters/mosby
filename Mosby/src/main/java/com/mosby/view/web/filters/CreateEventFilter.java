@@ -108,7 +108,8 @@ public class CreateEventFilter implements Filter {
 						request, response);
 			}
 		} else {
-
+        	session.setAttribute("waitUrl", request.getRequestURL());
+            response.sendRedirect(request.getContextPath() + "/login");
 		}
 	}
 
