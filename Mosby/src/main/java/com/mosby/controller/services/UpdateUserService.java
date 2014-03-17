@@ -2,7 +2,9 @@ package main.java.com.mosby.controller.services;
 
 import main.java.com.mosby.controller.dao.ReflectionDao;
 import main.java.com.mosby.model.User;
+import main.java.com.mosby.utils.EncryptionUtils;
 import main.java.com.mosby.utils.FileUploadUtils;
+
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
@@ -65,5 +68,32 @@ public class UpdateUserService {
 		User user = new User(id, firstName, lastName, email, password, credits, admin, userImage, country, city, birthDate, site, about, authenticationCode, active);
 		usersDao.updateObjects(user);
 		session.setAttribute("user", user);
+	}
+	
+	public String changePassword(HttpServletRequest request){
+		String result = null; 
+		HttpSession session = request.getSession(false);
+		ReflectionDao<User> usersDao = new ReflectionDao<>((Class<User>) User.class);
+
+        User sessionUser = (User) session.getAttribute("user");
+        if ((request.getParameter("new_password")).equals(request.getParameter("confirm_password"))){
+        	String currentPassword = request.getParameter("current_password");
+        	String correctHash = sessionUser.getPassword();
+        	if (EncryptionUtils.validatePassword(currentPassword, correctHash)){
+        		String encryptedPassword = EncryptionUtils.createHash(request.getParameter("new_password"));
+        		sessionUser.setPassword(encryptedPassword);
+        		result = "password changed successfully";
+        	}
+        	else {
+        		result = "enter correct current password";
+			}
+        }
+        else {
+        	result = "passwords don't match";
+		}
+		
+		usersDao.updateObjects(sessionUser);
+		session.setAttribute("user", sessionUser);
+		return result;
 	}
 }
