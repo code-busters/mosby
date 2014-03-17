@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" href="media/images/favicon.png"/>
     <meta name="description" content="Mosby - make it simple. New event management system"/>
 
-    <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <!-- Loading Bootstrap -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -25,44 +25,6 @@
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->
-
-    <!--	AIzaSyD548jnqtWftyB35lh_iMInJQhedC1XRc8   -->
-    <!--	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD548jnqtWftyB35lh_iMInJQhedC1XRc8&sensor=false"></script>-->
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-
-    <script>
-        var map, geocoder;
-        var address = '${event.location}';
-
-        function initialize() {
-            geocoder = new google.maps.Geocoder();
-            var mapProp = {
-                zoom: 15,
-                mapTypeControl: true,
-                mapTypeControlOptions: {
-                    mapTypeIds: [google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.SATELLITE],
-                    style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
-                }
-            };
-
-
-            map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-            geocoder.geocode({
-                'address': address
-            }, function (results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    map.setCenter(results[0].geometry.location);
-                    var marker = new google.maps.Marker({
-                        map: map,
-                        position: results[0].geometry.location
-                    });
-                } else {
-                    alert('Geocode was not successful for the following reason: ' + status);
-                }
-            });
-        }
-        google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
 </head>
 
 <body>
@@ -72,7 +34,7 @@
     </div>
 
     <div class="row" style="background: #000">
-        <div id="background-block" class="flow-img"
+        <div id="background-block" class="flow-img big-background"
              style="background-image: url(media/images/bg_mask.png), url(media/images/events/background/${event.background})"></div>
     </div>
 
@@ -101,8 +63,8 @@
             <h2>${event.name}</h2>
 
             <c:if test="${!(empty event.logo)}">
-                <div>
-                    <img class="event-logo center-block" src="media/images/events/logo/${event.logo}">
+                <div class="center-block">
+                    <img class="event-logo" src="media/images/events/logo/${event.logo}">
                 </div>
             </c:if>
 
@@ -193,7 +155,7 @@
 <script src="js/classie.js"></script>
 <script src="js/cbpAnimatedHeader.min.js"></script>
 
-<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery-2.0.3.min.js"></script>
 <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
 <script src="js/jquery.ui.touch-punch.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -204,18 +166,45 @@
 <script src="js/jquery.tagsinput.js"></script>
 <script src="js/jquery.placeholder.js"></script>
 
+<!--	AIzaSyD548jnqtWftyB35lh_iMInJQhedC1XRc8   -->
+<!--	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD548jnqtWftyB35lh_iMInJQhedC1XRc8&sensor=false"></script>-->
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 
-<script src="http://vjs.zencdn.net/4.3/video.js"></script>
-<script src="js/application.js"></script>
+<script>
+    var map, geocoder;
+    var address = '${event.location}';
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#background-block").css("height", 4*$(window).height()/5);
-    });
-    $(window).resize(function () {
-        $("#background-block").css("height", 4*$(window).height()/5);
-    });
+    function initialize() {
+        geocoder = new google.maps.Geocoder();
+        var mapProp = {
+            zoom: 15,
+            mapTypeControl: true,
+            mapTypeControlOptions: {
+                mapTypeIds: [google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.SATELLITE],
+                style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+            }
+        };
+
+
+        map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+        geocoder.geocode({
+            'address': address
+        }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                map.setCenter(results[0].geometry.location);
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location
+                });
+            } else {
+                alert('Geocode was not successful for the following reason: ' + status);
+            }
+        });
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
 </script>
+
+<script src="js/application.js"></script>
 
 </body>
 

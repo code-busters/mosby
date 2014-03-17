@@ -9,23 +9,8 @@
     </div>
     <div class="collapse navbar-collapse" id="navbar-collapse-01">
         <ul class="nav navbar-nav navbar-left">
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    Categories
-                    <b class="caret"></b>
-                </a>
-                <span class="dropdown-arrow"></span>
-                <ul class="dropdown-menu">
-                    <c:forEach items="${eventCategories}" var="category">
-                        <li>
-                            <a href="#">${category.category}</a>
-                        </li>
-                    </c:forEach>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">All</a>
-                    </li>
-                </ul>
+            <li>
+                <a href="<c:url value="/index"/>">Index</a>
             </li>
         </ul>
         <% if (request.getSession().getAttribute("user") != null) { %>

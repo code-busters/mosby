@@ -18,7 +18,6 @@
         <url-pattern>/eventPage</url-pattern>
         <url-pattern>/login</url-pattern>
         <url-pattern>/logout</url-pattern>
-        <url-pattern>/profilePage</url-pattern>
         <url-pattern>/signUp</url-pattern>
         <url-pattern>/socialSignUp</url-pattern>
         <url-pattern>/registeredTable</url-pattern>
@@ -67,7 +66,8 @@
     </filter>
     <filter-mapping>
         <filter-name>ProfilePageFilter</filter-name>
-        <url-pattern>/profilePage</url-pattern>
+        <url-pattern>/contactInfo</url-pattern>
+        <url-pattern>/changePassword</url-pattern>
     </filter-mapping>
     <filter>
         <filter-name>EncodingFilter</filter-name>

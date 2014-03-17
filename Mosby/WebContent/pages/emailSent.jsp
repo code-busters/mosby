@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" href="media/images/favicon.png" />
     <meta name="description" content="Mosby - make it simple. New event management system" />
 
-    <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <meta http-equiv="Refresh" content="2;url=<c:url value="/index"/>">
 

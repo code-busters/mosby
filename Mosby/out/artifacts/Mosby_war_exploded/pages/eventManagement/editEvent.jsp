@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" href="media/images/favicon.png"/>
     <meta name="description" content="Mosby - make it simple. New event management system"/>
 
-    <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <!-- Loading Bootstrap -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -60,7 +60,7 @@
                                name="event_name" id="event-name" required/>
                     </div>
                     <div class="form-group">
-                        <span class="as-label">Event Logo</span>
+                        <label for="open-event-logo">Event logo</label>
                         <input type="file" class="hide" name="event_logo" id="open-event-logo" accept="image/*"/>
                         <label for="open-event-logo">
                             <c:choose>
@@ -79,18 +79,17 @@
                     </div>
                     <div class="form-group">
                         <label for="event-background">Event Background</label>
-
                         <div class="input-group">
-							<span class="input-group-btn">
-								<span class="btn btn-primary btn-file">
-									Open
-									<input type="file" name="event_background" id="event-background" accept="image/*"/>
+								<span class="input-group-btn">
+									<span class="btn btn-primary btn-file">
+										Open
+										<span id="backup-img" class="hide">media/images/events/default/concert-smoke.jpg</span>
+										<input type="file" name="event_background" id="event-background" accept="image/*" />
+									</span>
 								</span>
-							</span>
-                            <span id="backup-img" class="hide">media/images/events/background/${event.background}</span>
-                            <input type="text" class="form-control" value="${event.background}" readonly=""
-                                   disabled="disabled">
+                            <input type="text" class="form-control" readonly="" disabled="disabled">
                         </div>
+                        <span class="change-img-name"></span>
                         <span class="additional-input-info">Select image with big resolution for better result</span>
                     </div>
                     <div class="form-group">
@@ -204,7 +203,7 @@
 <script src="js/classie.js"></script>
 <script src="js/cbpAnimatedHeader.min.js"></script>
 
-<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery-2.0.3.min.js"></script>
 <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
 <script src="js/jquery.ui.touch-punch.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -220,7 +219,106 @@
 <!--	AIzaSyD548jnqtWftyB35lh_iMInJQhedC1XRc8   -->
 <!--		<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD548jnqtWftyB35lh_iMInJQhedC1XRc8&sensor=true&libraries=places"></script>-->
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=places"></script>
-<script src="js/geocoding.js"></script>
+<script>
+    var map, autocomplete, geocoder;
+
+    function initialize() {
+        var mapProp = {
+            zoom: 15,
+            mapTypeControl: true,
+            mapTypeControlOptions: {
+                mapTypeIds: [google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.SATELLITE],
+                style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+            },
+        };
+
+        map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+        var input = (document.getElementById('event-location'));
+        geocoder = new google.maps.Geocoder();
+
+        geocoder.geocode({
+            'address': input.value
+        }, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                map.setCenter(results[0].geometry.location);
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location
+                });
+            } else {
+                alert('Geocode was not successful for the following reason: ' + status);
+            }
+        });
+
+        autocomplete = new google.maps.places.Autocomplete(input);
+        autocomplete.bindTo('bounds', map);
+
+        var infowindow = new google.maps.InfoWindow();
+        var marker = new google.maps.Marker({
+            map: map
+        });
+
+        google.maps.event.addListener(autocomplete, 'place_changed', function() {
+            infowindow.close();
+            marker.setVisible(false);
+            var place = autocomplete.getPlace();
+            if (!place.geometry) {
+                return;
+            }
+
+            // If the place has a geometry, then present it on a map.
+            if (place.geometry.viewport) {
+                map.fitBounds(place.geometry.viewport);
+            } else {
+                map.setCenter(place.geometry.location);
+                map.setZoom(17); // Why 17? Because it looks good.
+            }
+            marker.setPosition(place.geometry.location);
+            marker.setVisible(true);
+
+            var address = '';
+            if (place.address_components) {
+                address = [
+                    (place.address_components[0] && place.address_components[0].short_name || ''), (place.address_components[1] && place.address_components[1].short_name || ''), (place.address_components[2] && place.address_components[2].short_name || '')
+                ].join(' ');
+            }
+
+            infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+            infowindow.open(map, marker);
+        });
+    }
+
+    function handleNoGeolocation(errorFlag) {
+        if (errorFlag) {
+            var content = 'Error: The Geolocation service failed.';
+        } else {
+            var content = 'Error: Your browser doesn\'t support geolocation.';
+        }
+
+        var options = {
+            map: map,
+            position: new google.maps.LatLng(60, 105),
+            content: content
+        };
+
+        var infowindow = new google.maps.InfoWindow(options);
+        map.setCenter(options.position);
+    }
+
+    function geolocate() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var geolocation = new google.maps.LatLng(
+                        position.coords.latitude, position.coords.longitude);
+                autocomplete.setBounds(new google.maps.LatLngBounds(geolocation,
+                        geolocation));
+            });
+        }
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>
 
 <script src="js/application.js"></script>
 

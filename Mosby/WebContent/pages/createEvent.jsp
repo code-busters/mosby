@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" href="media/images/favicon.png"/>
     <meta name="description" content="Mosby - make it simple. New event management system"/>
 
-    <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <!-- Loading Bootstrap -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -18,108 +18,6 @@
     <link href="css/flat-ui.css" rel="stylesheet">
     <link href="css/pro-features.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
-
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=places"></script>
-    <script>
-        var map, autocomplete, geocoder;
-
-        function initialize() {
-            var mapProp = {
-                zoom: 15,
-                mapTypeControl: true,
-                mapTypeControlOptions: {
-                    mapTypeIds: [google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.SATELLITE],
-                    style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
-                },
-            };
-
-            map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-
-            // Try HTML5 geolocation
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function (position) {
-                    var pos = new google.maps.LatLng(position.coords.latitude,
-                            position.coords.longitude);
-                    map.setCenter(pos);
-                }, function () {
-                    handleNoGeolocation(true);
-                });
-            } else {
-                // Browser doesn't support Geolocation
-                handleNoGeolocation(false);
-            }
-
-            var input = /** @type {HTMLInputElement} */ (
-                    document.getElementById('event-location'));
-            autocomplete = new google.maps.places.Autocomplete(input);
-            autocomplete.bindTo('bounds', map);
-
-            var infowindow = new google.maps.InfoWindow();
-            var marker = new google.maps.Marker({
-                map: map
-            });
-
-            google.maps.event.addListener(autocomplete, 'place_changed', function () {
-                infowindow.close();
-                marker.setVisible(false);
-                var place = autocomplete.getPlace();
-                if (!place.geometry) {
-                    return;
-                }
-
-                // If the place has a geometry, then present it on a map.
-                if (place.geometry.viewport) {
-                    map.fitBounds(place.geometry.viewport);
-                } else {
-                    map.setCenter(place.geometry.location);
-                    map.setZoom(17); // Why 17? Because it looks good.
-                }
-                marker.setPosition(place.geometry.location);
-                marker.setVisible(true);
-
-                var address = '';
-                if (place.address_components) {
-                    address = [
-                        (place.address_components[0] && place.address_components[0].short_name || ''), (place.address_components[1] && place.address_components[1].short_name || ''), (place.address_components[2] && place.address_components[2].short_name || '')
-                    ].join(' ');
-                }
-
-                infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
-                infowindow.open(map, marker);
-            });
-        }
-
-        function handleNoGeolocation(errorFlag) {
-            if (errorFlag) {
-                var content = 'Error: The Geolocation service failed.';
-            } else {
-                var content = 'Error: Your browser doesn\'t support geolocation.';
-            }
-
-            var options = {
-                map: map,
-                position: new google.maps.LatLng(60, 105),
-                content: content
-            };
-
-            var infowindow = new google.maps.InfoWindow(options);
-            map.setCenter(options.position);
-        }
-
-        function geolocate() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function (position) {
-                    var geolocation = new google.maps.LatLng(
-                            position.coords.latitude, position.coords.longitude);
-                    autocomplete.setBounds(new google.maps.LatLngBounds(geolocation,
-                            geolocation));
-                });
-            }
-        }
-
-        google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
-
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
     <!--[if lt IE 9]>
@@ -135,12 +33,12 @@
 </div>
 
 <div class="row" style="background: #000">
-    <div id="background-block" class="flow-img"
+    <div id="background-block" class="flow-img big-background"
          style="background-image: url(media/images/bg_mask.png), url(media/images/default/concert-smoke.jpg)"></div>
 </div>
 
 <div class="row">
-<div class="on-background-block-header col-md-10 col-md-offset-1">
+<div class="on-background-block-header col-md-10 col-md-offset-1 hidden-xs">
     <h4>Create event for free</h4>
 </div>
 <div class="on-background-block col-md-10 col-md-offset-1">
@@ -349,6 +247,11 @@
 <script src="js/jquery.tagsinput.js"></script>
 <script src="js/jquery.placeholder.js"></script>
 
+<!--	AIzaSyD548jnqtWftyB35lh_iMInJQhedC1XRc8   -->
+<!--		<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD548jnqtWftyB35lh_iMInJQhedC1XRc8&sensor=true&libraries=places"></script>-->
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=places"></script>
+<script src="js/geocoding.js"></script>
+
 <script src="js/application.js"></script>
 
 <script type="text/javascript">
@@ -360,8 +263,6 @@
         }
     });
     $(document).ready(function () {
-        $("#background-block").css("height", 2 * $(window).height() / 5);
-
         $('#free-ticket').click(function () {
             var id = getLastId()
             var priceInput = '<input type="text" class="form-control" value="Free" name="event_ticket_price_' + id + '" id="event-ticket-price-' + id + '" readonly="" disabled="disabled" />';
@@ -491,10 +392,6 @@
             return id;
         };
 
-    });
-
-    $(window).resize(function () {
-        $("#background-block").css("height", 2 * $(window).height() / 5);
     });
 
     $(document).on('click', ".delete-nearby-row", function () {

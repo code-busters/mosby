@@ -13,6 +13,10 @@ body {
 	opacity: 0.7;
     height: 12em;
 }
+#background-block.big-background {
+	opacity: 0.7;
+    height: 40em;
+}
 .on-background-block-header {
 	margin-top: -330px;
 	color: #fff;
@@ -31,6 +35,7 @@ body {
 	-moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5);
 	box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5);
 }
+
 .on-background-block h4 {
 	margin-top: -1em;
 	color: #212121;
@@ -103,7 +108,10 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     mask: url('../images/media/iswitch/mask.png') 0 0 no-repeat;
 }
 .ui-datepicker select {
-  margin: 7px 0;
+  margin: 7px 0 6px;
+}
+label {
+	display: block;
 }
 
 /*VIDEO BACKGROUND*/
@@ -357,7 +365,7 @@ footer {
 .event-details h2 {
 	margin: 0.6em 0 0.4em;
 }
-.event-logo {
+.event .event-logo {
 	max-height: 20em;
 	margin-top: 0.5em;
 	margin-bottom: 1em;
@@ -408,10 +416,11 @@ footer {
 }
 .change-img-name {
 	position: relative;
+	margin-left: 0.6em;
 	font-size: 0.9em; 
 }
 .cancel-upload {
-	margin-left: 0.2em;
+	margin-left: 0.3em;
 	font-size: 0.7em;
 	cursor: pointer;
 }
@@ -543,7 +552,7 @@ footer {
 }
 .change-img {
 	width: 120px;
-	bottom: 5px;
+	bottom: 0;
 	left: 0;
 	position: absolute;
 	padding: 7px 0;
@@ -642,8 +651,12 @@ footer {
 }
 @media (max-width: 767px) {
 	#main-idea h1 {
-		font-size: 3em;
+		font-size: 2.5em;
 		line-height: 0.9em;
+	}
+	#background-block.big-background {
+		opacity: 0.7;
+		height: 25em;
 	}
 	.navbar {
 		border-radius: 0;
@@ -653,6 +666,11 @@ footer {
 		-webkit-transition: all 0.2s;
 		-moz-transition: all 0.2s;
 		transition: all 0.2s;
+	}
+	.navbar-brand {
+		height: 45px;
+		width: 138px;
+		background-size: 138px 45px;
 	}
 	.nav-transparent-shrink {
 		padding-bottom: 0.9em; 
@@ -694,6 +712,20 @@ footer {
 	.on-background-block {
 		margin-right: 0;
 	}
+
+    .input-datepicker input[type="text"],
+    .input-datepicker .uneditable-input {
+        width: 8em;
+        margin: 0 0 0.5em;
+    }
+    .time {
+        width: 8em;
+        margin-left: 0.4em;
+    }
+    #promo-codes,
+    #tickets {
+        margin: 0;
+    }
 	.add-ticket {
 		margin-bottom: 0.8em;
 	}

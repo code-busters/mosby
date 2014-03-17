@@ -17,15 +17,30 @@ String.prototype.repeat = function (num) {
 		$('.btn-file :file').on('fileselect', function (event, numFiles, label) {
 
 			var input = $(this).parents('.input-group').find(':text'),
+				elem = $(this).parents('.form-group').find('.change-img-name'),
 				log = numFiles > 1 ? numFiles + ' files selected' : label;
 
 			if (input.length) {
 				input.val(log);
+				elem.text(log);
+				elem.append("<span id='cancel-file' class='fui-cross'></span>");
 			} else {
 				if (log) alert(log);
 			}
 
 		});
+	});
+	$(document).on('click', "#cancel-file", function () {
+		var control = $("#event-background:file");
+		control.replaceWith(control = control.clone(true));
+		var backup = $(this).closest('div').find('#backup-img').text();
+		var image = $('#background-block');
+		image.fadeOut(200, function () {
+			image.css("background-image", "url(" + backup + ")");
+			image.fadeIn(200);
+		});
+		$(this).closest('div').find(':text').val('');
+		$(this).closest('div').find('.change-img-name').empty();
 	});
 
 	$(document).on('change', '#open-event-logo:file', function () {
@@ -54,12 +69,10 @@ String.prototype.repeat = function (num) {
 		var backup = $(this).closest('div').find('#backup-img').text();
 		var image = $('.event-logo');
 		image.fadeOut(200, function () {
-			//            image.css("background-image", "url(" + backup + ")");
-			//			image.src = backup;
 			image.attr('src', backup);
 			image.fadeIn(200);
 		});
-		$('.change-img-name').empty();
+		$(this).closest('div').find('.change-img-name').empty();
 	});
 
 	// Contact info image uploading
@@ -92,7 +105,7 @@ String.prototype.repeat = function (num) {
 			image.css("background-image", "url(" + backup + ")");
 			image.fadeIn(200);
 		});
-		$('.change-img-name').empty();
+		$(this).closest('div').find('.change-img-name').empty();
 	});
 
 	function readURL(input, element, target) {
@@ -100,12 +113,16 @@ String.prototype.repeat = function (num) {
 			var reader = new FileReader();
 
 			reader.onload = function (e) {
-				if (target == 'src') {
-					$(element).src = e.target.result;
-					$(element).attr('src', e.target.result);
-				} else {
-					$(element).css("background-image", "url(" + e.target.result + ")");
-				}
+				var elem = $(element);
+				elem.fadeOut(200, function () {
+					if (target == 'src') {
+						elem.attr('src', e.target.result);
+
+					} else {
+						$(element).css("background-image", "url(" + e.target.result + ")");
+					}
+					elem.fadeIn(200);
+				});
 			};
 			reader.readAsDataURL(input.files[0]);
 		}

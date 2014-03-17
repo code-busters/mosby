@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" href="media/images/favicon.png"/>
     <meta name="description" content="Mosby - make it simple. New event managment system"/>
 
-    <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -89,7 +89,7 @@
 <script src="js/classie.js"></script>
 <script src="js/cbpAnimatedHeader.min.js"></script>
 
-<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery-2.0.3.min.js"></script>
 <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
 <script src="js/jquery.ui.touch-punch.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -114,7 +114,7 @@
             "height": 720,
             "path": "media/videos/",
             "filename": "startuppreview",
-            "types": ["mp4", "ogg", "webm"]
+            "types": ["ogg", "mp4", "webm"]
         });
     });
     $(document).ready(function () {
