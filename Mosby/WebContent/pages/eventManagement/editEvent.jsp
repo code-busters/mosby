@@ -79,12 +79,15 @@
                     </div>
                     <div class="form-group">
                         <label for="event-background">Event Background</label>
+
                         <div class="input-group">
 								<span class="input-group-btn">
 									<span class="btn btn-primary btn-file">
 										Open
-										<span id="backup-img" class="hide">media/images/events/default/concert-smoke.jpg</span>
-										<input type="file" name="event_background" id="event-background" accept="image/*" />
+										<span id="backup-img"
+                                              class="hide">media/images/events/default/concert-smoke.jpg</span>
+										<input type="file" name="event_background" id="event-background"
+                                               accept="image/*"/>
 									</span>
 								</span>
                             <input type="text" class="form-control" readonly="" disabled="disabled">
@@ -119,14 +122,16 @@
                         </div>
                         <input type="time" class="form-control time" value="${event.endTime}" name="end_time" required>
                     </div>
+
+
                     <div class="form-group">
                         <label for="event-category">Category</label>
                         <select name="event_category" class="select-block" id="event-category" form="edit-event-form">
                             <c:set var="eventCategory" value="${event.eventCategory.category}"/>
                             <c:forEach items="${eventCategories}" var="category">
                                 <c:set var="tempCategory" value="${category.category}"/>
-                                <option value="${category.id}" >
-                                        <%--<c:if test="${eventCategory == tempCategory"> selected </c:if> >--%>
+                                <option value="${category.id}"
+                                        <c:if test="${eventCategory == tempCategory}"> selected </c:if> >
                                         ${category.category}
                                 </option>
                             </c:forEach>
@@ -139,8 +144,8 @@
                             <c:forEach items="${eventTypes}" var="type">
                                 <c:set var="tempType" value="${type.type}"/>
                                 <option value="${type.id}"
-                                        <%--<c:if test="${eventType == tempType"> selected </c:if> >--%>
-                                        ${type.type}>
+                                    <c:if test="${eventType == tempType}"> selected </c:if> >
+                                    ${type.type}
                                 </option>
                             </c:forEach>
                         </select>
@@ -229,7 +234,7 @@
             mapTypeControlOptions: {
                 mapTypeIds: [google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.SATELLITE],
                 style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
-            },
+            }
         };
 
         map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
@@ -239,7 +244,7 @@
 
         geocoder.geocode({
             'address': input.value
-        }, function(results, status) {
+        }, function (results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
                 map.setCenter(results[0].geometry.location);
                 var marker = new google.maps.Marker({
@@ -259,7 +264,7 @@
             map: map
         });
 
-        google.maps.event.addListener(autocomplete, 'place_changed', function() {
+        google.maps.event.addListener(autocomplete, 'place_changed', function () {
             infowindow.close();
             marker.setVisible(false);
             var place = autocomplete.getPlace();
@@ -308,7 +313,7 @@
 
     function geolocate() {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
+            navigator.geolocation.getCurrentPosition(function (position) {
                 var geolocation = new google.maps.LatLng(
                         position.coords.latitude, position.coords.longitude);
                 autocomplete.setBounds(new google.maps.LatLngBounds(geolocation,
