@@ -28,8 +28,7 @@ public class User {
 	private String email;
 
 	@NotNull
-	@Size(min = 8, max = 250)
-	@Password(pattern = "((?=.*\\d)((?=.*[a-z])|(?=.*[à-ÿ]))((?=.*[A-Z])|(?=.*[À-ß])).{3,250})")
+	@Password(pattern = "((?=.*\\d)((?=.*[a-z])|(?=.*[à-ÿ]))((?=.*[A-Z])|(?=.*[À-ß])).{8,250})")
 	@Column(name = "password")
 	private String password;
 

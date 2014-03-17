@@ -1,10 +1,13 @@
 package main.java.com.mosby.utils;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.Date;
 
@@ -14,6 +17,7 @@ public class ValidatorUtils<T> {
 
 	private Class<T> type;
 	private List<String> errors = new ArrayList<>();
+	Properties connectionPr = new Properties();
 
 	public List<String> getErrors() {
 		return errors;
@@ -37,20 +41,29 @@ public class ValidatorUtils<T> {
 
 	public ValidatorUtils(Class<T> type) {
 		this.type = type;
+		try {
+			InputStream is = new FileInputStream(
+					"E:/файли/Олексій/workspaceEE/Mosby/src/main/java/com/mosby/utils/internationalization/errorsEN.properties");
+			connectionPr.load(is);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public T validate(T object) throws NoSuchMethodException,
 			SecurityException, IllegalAccessException,
 			IllegalArgumentException, InvocationTargetException {
-		System.out.println("I am validaotr");
+
 		Timestamp timestampStart = null;
+
 		for (Field field : type.getDeclaredFields()) {
-			System.out.println("I get field");
 
 			if (field.isAnnotationPresent(NotNull.class)) {
 				field.setAccessible(true);
 				if (field.get(object) == null) {
-					errors.add(field.getName() + " must don`t be null");
+					errors.add(connectionPr.getProperty("PleaseEnterField")
+							+ " \"" + connectionPr.getProperty(field.getName())
+							+ "\".");
 					continue;
 				}
 			}
@@ -59,8 +72,6 @@ public class ValidatorUtils<T> {
 				Size annotation = (Size) field.getAnnotation(Size.class);
 				field.setAccessible(true);
 				double value = 0;
-				System.out.println("size");
-
 				if (field.getType() == String.class) {
 					value = field.get(object).toString().length();
 				} else if (field.getType() == int.class
@@ -68,14 +79,21 @@ public class ValidatorUtils<T> {
 					value = (double) field.get(object);
 				}
 				if (value < annotation.min()) {
-					errors.add(field.getName() + " must be > "
-							+ annotation.min());
+					errors.add(connectionPr.getProperty("TheSizeOfField")
+							+ " \"" + connectionPr.getProperty(field.getName())
+							+ "\" " + connectionPr.getProperty("mustBe") + " "
+							+ connectionPr.getProperty("atLeast") + " "
+							+ annotation.min() + " "
+							+ connectionPr.getProperty("characters") + ".");
 				}
 				if (value > annotation.max()) {
-					errors.add(field.getName() + " must be < "
-							+ annotation.max());
+					errors.add(connectionPr.getProperty("TheSizeOfField")
+							+ " \"" + connectionPr.getProperty(field.getName())
+							+ "\" " + connectionPr.getProperty("mustBe") + " "
+							+ connectionPr.getProperty("noMore") + " "
+							+ annotation.max() + " "
+							+ connectionPr.getProperty("characters") + ".");
 				}
-
 			}
 
 			if (field.isAnnotationPresent(Min.class)) {
@@ -90,8 +108,12 @@ public class ValidatorUtils<T> {
 					value = (double) field.get(object);
 				}
 				if (value < annotation.value()) {
-					errors.add(field.getName() + " must be > "
-							+ annotation.value());
+					errors.add(connectionPr.getProperty("TheSizeOfField")
+							+ " \"" + connectionPr.getProperty(field.getName())
+							+ "\" " + connectionPr.getProperty("mustBe") + " "
+							+ connectionPr.getProperty("atLeast") + " "
+							+ annotation.value() + " "
+							+ connectionPr.getProperty("characters") + ".");
 				}
 
 			}
@@ -100,7 +122,6 @@ public class ValidatorUtils<T> {
 				Max annotation = (Max) field.getAnnotation(Max.class);
 				field.setAccessible(true);
 				double value = 0;
-
 				if (field.getType() == String.class) {
 					value = field.get(object).toString().length();
 				} else if (field.getType() == int.class
@@ -108,21 +129,24 @@ public class ValidatorUtils<T> {
 					value = (double) field.get(object);
 				}
 				if (value > annotation.value()) {
-					errors.add(field.getName() + " must be < "
-							+ annotation.value());
+					errors.add(connectionPr.getProperty("TheSizeOfField")
+							+ " \"" + connectionPr.getProperty(field.getName())
+							+ "\" " + connectionPr.getProperty("mustBe") + " "
+							+ connectionPr.getProperty("noMore") + " "
+							+ annotation.value() + " "
+							+ connectionPr.getProperty("characters") + ".");
 				}
 
 			}
 
 			if (field.isAnnotationPresent(Email.class)) {
 				Email annotation = (Email) field.getAnnotation(Email.class);
-				System.out.println("Email");
 				field.setAccessible(true);
 				java.util.regex.Pattern pattern = java.util.regex.Pattern
 						.compile(annotation.pattern());
 				Matcher mathcer = pattern.matcher(field.get(object).toString());
 				if (!mathcer.matches()) {
-					errors.add(field.getName() + " don`t valid");
+					errors.add(connectionPr.getProperty("validateEmail"));
 				}
 
 			}
@@ -134,34 +158,28 @@ public class ValidatorUtils<T> {
 						.compile(annotation.pattern());
 				Matcher mathcer = pattern.matcher(field.get(object).toString());
 				if (!mathcer.matches()) {
-					errors.add(field.getName() + " don`t valid");
+					errors.add(connectionPr.getProperty("validatePassword"));
 				}
 			}
 			if (field.isAnnotationPresent(StartFuture.class)) {
 				field.setAccessible(true);
-				System.out.println("start");
 				timestampStart = (Timestamp) field.get(object);
 				Date date = new Date();
-				System.out.println(date.getTime());
 				Timestamp timestampNow = new Timestamp(date.getTime());
 				if (timestampStart != null
 						&& timestampStart.before(timestampNow)) {
-					System.out.println("infunc");
-					errors.add(field.getName() + " don`t valid");
+					errors.add(connectionPr.getProperty("validateDataTime"));
 				}
 
 			}
 			if (field.isAnnotationPresent(EndFuture.class)
 					&& timestampStart != null) {
 				field.setAccessible(true);
-				System.out.println("end");
 				Timestamp timestampEnd = (Timestamp) field.get(object);
 				if (timestampEnd.before(timestampStart)) {
-					errors.add(field.getName() + " don`t valid");
+					errors.add(connectionPr.getProperty("validateStartEnd"));
 				}
-
 			}
-
 		}
 
 		if (errors.isEmpty()) {
@@ -172,12 +190,12 @@ public class ValidatorUtils<T> {
 	}
 
 	public void checkConfirmPass(String pass, String confirmPass) {
-		if (confirmPass != null) {
+		if (pass != null && confirmPass != null) {
 			if (!pass.equals(confirmPass)) {
-				errors.add("Please input same paswords");
+				errors.add(connectionPr.getProperty("samePassword"));
 			}
 		} else {
-			errors.add("Please input confirm password");
+			errors.add(connectionPr.getProperty("confirmPassword"));
 		}
 	}
 

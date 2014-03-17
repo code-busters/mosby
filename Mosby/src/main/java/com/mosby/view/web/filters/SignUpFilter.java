@@ -35,7 +35,6 @@ public class SignUpFilter implements Filter {
 		HttpServletResponse response = (HttpServletResponse) res;
 		HttpSession session = request.getSession(false);
 
-
 		if (session == null || session.getAttribute("user") == null) {
 			System.out.println(request.getMethod());
 			if (request.getMethod().equals("POST")) {
@@ -69,8 +68,12 @@ public class SignUpFilter implements Filter {
 				} else {
 					chain.doFilter(request, response);
 				}
+			} else if (request.getMethod().equals("GET")) {
+				System.out.println("bb");
+				chain.doFilter(request, response);
 			} else {
-				request.getRequestDispatcher("/pages/signUp.jsp").forward(request, response);
+				request.getRequestDispatcher("/pages/signUp.jsp").forward(
+						request, response);
 			}
 		} else {
 

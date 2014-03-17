@@ -141,7 +141,7 @@
                                 <c:set var="tempType" value="${type.type}"/>
                                 <option value="${type.id}"
                                         <%--<c:if test="${eventType == tempType"> selected </c:if> >--%>
-                                        ${type.type}
+                                        ${type.type}>
                                 </option>
                             </c:forEach>
                         </select>
