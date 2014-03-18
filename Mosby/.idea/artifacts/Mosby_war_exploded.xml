@@ -15,6 +15,8 @@
           <element id="library" level="project" name="java-mail-1.4" />
           <element id="library" level="project" name="commons-beanutils-1.8.2" />
           <element id="library" level="project" name="junit-4.11" />
+          <element id="library" level="project" name="ezmorph-1.0.6" />
+          <element id="library" level="project" name="itextpdf-5.5.0" />
         </element>
       </element>
       <element id="library" level="module" name="mysql-connector-java-5.1.28-bin.jar" module-name="Mosby" />

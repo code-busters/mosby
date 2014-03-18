@@ -6,8 +6,8 @@
     <meta charset="utf-8">
     <title>Mosby - event management</title>
     <link rel="shortcut icon" href="media/images/favicon.ico">
-    <link rel="icon" type="image/png" href="media/images/favicon.png" />
-    <meta name="description" content="Mosby - make it simple. New event management system" />
+    <link rel="icon" type="image/png" href="media/images/favicon.png"/>
+    <meta name="description" content="Mosby - make it simple. New event management system"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
@@ -37,7 +37,8 @@
     </div>
 
     <div class="row" style="background: #000">
-        <div id="background-block" class="flow-img" style="background-image: url(media/images/bg_mask.png), url(media/images/default/holi-feast.jpg)"></div>
+        <div id="background-block" class="flow-img"
+             style="background-image: url(media/images/bg_mask.png), url(media/images/default/holi-feast.jpg)"></div>
     </div>
 
     <div id="wrapper" class="row user-profile">
@@ -55,21 +56,30 @@
             <div class="page-content inset">
                 <div class="row">
                     <div class="col-md-6">
+                        <div class="errors">
+                            <c:forEach items="${errors}" var="error">
+                                <p>${error}</p>
+                            </c:forEach>
+                        </div>
                         <form action="changePassword" method="post" id="change-password-form">
                             <div class="form-group">
                                 <label for="current-password">Current Password</label>
-                                <input class="form-control" type="password" placeholder="Current Password" name="current_password" id="current-password" />
+                                <input class="form-control" type="password" placeholder="Current Password"
+                                       name="current_password" id="current-password"/>
                             </div>
                             <div class="form-group">
                                 <label for="new-password">New Password</label>
-                                <input class="form-control" type="password" placeholder="New Password" name="new_password" id="new-password" />
+                                <input class="form-control" type="password" placeholder="New Password"
+                                       name="new_password" id="new-password"/>
                             </div>
                             <div class="form-group">
                                 <label for="confirm-password">Confirm Password</label>
-                                <input class="form-control" type="password" placeholder="Confirm Password" name="confirm_password" id="confirm-password" />
+                                <input class="form-control" type="password" placeholder="Confirm Password"
+                                       name="confirm_password" id="confirm-password"/>
                             </div>
                             <div class="form-group">
-                                <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit" value="Change password">
+                                <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit"
+                                        value="Change password">
                                     Change password
                                 </button>
                             </div>

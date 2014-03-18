@@ -51,6 +51,11 @@
                 </h3>
             </div>
             <div class="page-content inset">
+                <div class="errors">
+                    <c:forEach items="${errors}" var="error">
+                        <p>${error}</p>
+                    </c:forEach>
+                </div>
                 <form action="editEvent" enctype="multipart/form-data" method="post" id="edit-event-form">
                     <h5>Event Detail</h5>
 
@@ -144,8 +149,8 @@
                             <c:forEach items="${eventTypes}" var="type">
                                 <c:set var="tempType" value="${type.type}"/>
                                 <option value="${type.id}"
-                                    <c:if test="${eventType == tempType}"> selected </c:if> >
-                                    ${type.type}
+                                        <c:if test="${eventType == tempType}"> selected </c:if> >
+                                        ${type.type}
                                 </option>
                             </c:forEach>
                         </select>

@@ -51,6 +51,11 @@
                 </h3>
             </div>
             <div class="page-content inset">
+                <div class="errors">
+                    <c:forEach items="${errors}" var="error">
+                        <p>${error}</p>
+                    </c:forEach>
+                </div>
                 <form action="registeredTable" method="post" id="registered-table-form">
                     <div class="row registered-table">
                         <div class="table-responsive">

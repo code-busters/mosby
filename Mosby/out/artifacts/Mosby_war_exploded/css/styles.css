@@ -1,7 +1,7 @@
 body {
     background: rgb(244, 244, 244);
     color: #212121;
-	transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
 }
 /*ADDITIONAL FEATURES*/
 .flow-img {
@@ -523,6 +523,10 @@ footer {
 #tickets-body label {
     font-size: 0.9em;
 }
+[id^="ticket-datepicker"] {
+    width: 10em;
+    display: inline-block;
+}
 
 
 /*SIGN UP*/
@@ -588,7 +592,7 @@ footer {
 }
 /*EDIT TICKETS & PROMO CODES*/
 #edit-tickets-codes-form button[type=submit] {
-	margin-top: 3em;	
+    margin-top: 3em;
 }
 
 
