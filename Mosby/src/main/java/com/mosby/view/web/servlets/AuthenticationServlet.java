@@ -21,6 +21,7 @@ public class AuthenticationServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
+    @SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String code = request.getParameter("authentication_code");
 		User user = new User();

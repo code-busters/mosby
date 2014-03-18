@@ -4,7 +4,6 @@ import main.java.com.mosby.controller.services.ReadGenericObjectService;
 import main.java.com.mosby.model.Event;
 import main.java.com.mosby.model.PromoCode;
 import main.java.com.mosby.model.TicketInfo;
-import main.java.com.mosby.model.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +17,10 @@ import java.util.List;
 @WebServlet("/eventPage")
 public class EventPageServlet extends HttpServlet {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private static final long serialVersionUID = 1L;
+
+	@SuppressWarnings("unchecked")
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getParameter("eventId") != null) {
             int eventId = Integer.parseInt(request.getParameter("eventId"));
             Event event = new ReadGenericObjectService<Event>((Class<Event>) new Event().getClass()).readById(eventId); 

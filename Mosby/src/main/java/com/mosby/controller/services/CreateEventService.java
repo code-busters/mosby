@@ -2,7 +2,6 @@ package main.java.com.mosby.controller.services;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -35,6 +34,7 @@ public class CreateEventService {
 	
 	private static Logger log = Logger.getLogger(CreateEventService.class);
 
+	@SuppressWarnings("unchecked")
 	public int create(HttpServletRequest request, HttpServlet servlet) throws IllegalStateException, IOException, ServletException {
 
 //      Image uploading
@@ -62,7 +62,6 @@ public class CreateEventService {
 		}
 		
 //Event builder		
-		int organizerRef = 5;
 		String name = request.getParameter("event_name");
 		String description = request.getParameter("event_description");
 
@@ -130,7 +129,7 @@ public class CreateEventService {
 			}
 			TicketInfo ticketInfo = new TicketInfo(ticketInfoName, event, type, ticketDescription, maxNumber, price, startDate, startTime, endDate, endTime);
 					
-			int ticketInfoId = ticketInfoDao.insertObjects(ticketInfo);
+			ticketInfoDao.insertObjects(ticketInfo);
 			System.out.println(ticketInfo);
 		}		
 		
@@ -148,7 +147,7 @@ public class CreateEventService {
 			
 			PromoCode promoCode = new PromoCode(event, code, discount, promoCodeDescription, maxNumber);
 					
-			int promoCodeId = promoCodeDao.insertObjects(promoCode);
+			promoCodeDao.insertObjects(promoCode);
 			System.out.println(promoCode);
 		}		
 		

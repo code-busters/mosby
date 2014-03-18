@@ -5,7 +5,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -22,14 +21,10 @@ import main.java.com.mosby.controller.services.ReadGenericObjectService;
 import main.java.com.mosby.model.Event;
 import main.java.com.mosby.model.EventCategory;
 import main.java.com.mosby.model.EventType;
-import main.java.com.mosby.model.User;
 import main.java.com.mosby.utils.ValidatorUtils;
 
 @WebFilter("/CreateEventFilter")
 public class CreateEventFilter implements Filter {
-
-	private static final String DATE_FORMAT = "dd/MM/yyyy";
-	private static final String TIME_FORMAT = "HH:mm";
 
 	public CreateEventFilter() {
 		// TODO Auto-generated constructor stub
@@ -39,6 +34,7 @@ public class CreateEventFilter implements Filter {
 		// TODO Auto-generated method stub
 	}
 
+	@SuppressWarnings("unchecked")
 	public void doFilter(ServletRequest req, ServletResponse res,
 			FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) req;
@@ -50,8 +46,10 @@ public class CreateEventFilter implements Filter {
 		if (session != null && session.getAttribute("user") != null) {
 
 			Event event = new Event();
+			
 			ValidatorUtils<Event> validatorUtils = new ValidatorUtils<>(
 					(Class<Event>) event.getClass());
+			
 			EventCategory eventCategory = null;
 			EventType eventType = null;
 			SimpleDateFormat parseDate = new SimpleDateFormat(
@@ -61,8 +59,6 @@ public class CreateEventFilter implements Filter {
 						+ " " + request.getParameter("start_time");
 				String endTimestamp = request.getParameter("end_date") + " "
 						+ request.getParameter("end_time");
-				String name = request.getParameter("event_name");
-				String description = request.getParameter("event_description");
 
 				eventCategory = new ReadGenericObjectService<EventCategory>(
 						(Class<EventCategory>) new EventCategory().getClass())

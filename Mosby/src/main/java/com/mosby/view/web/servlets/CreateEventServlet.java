@@ -18,13 +18,17 @@ import java.io.IOException;
 @WebServlet("/createEvent")
 @MultipartConfig
 public class CreateEventServlet extends HttpServlet {
-    private static Logger log = Logger.getLogger(CreateEventServlet.class);
+
+	private static final long serialVersionUID = 1L;
+	
+	private static Logger log = Logger.getLogger(CreateEventServlet.class);
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("/pages/createEvent.jsp").forward(request, response);
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    @SuppressWarnings("unchecked")
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         try {
             int eventId = new CreateEventService().create(request, this);

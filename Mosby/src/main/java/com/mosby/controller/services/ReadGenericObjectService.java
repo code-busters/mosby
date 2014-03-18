@@ -12,6 +12,7 @@ public class ReadGenericObjectService<T> {
 			this.type = type;
 		}
 		
+		@SuppressWarnings("unchecked")
 		public List<T> readList(){
 			try {
 				tDao = new ReflectionDao<>((Class<T>) type.newInstance().getClass());
@@ -22,6 +23,7 @@ public class ReadGenericObjectService<T> {
 			return (List<T>) list;
 		}
 		
+		@SuppressWarnings("unchecked")
 		public List<T> readListByField(String fieldName, Object variable){
 			try {
 				tDao = new ReflectionDao<>((Class<T>) type.newInstance().getClass());
@@ -32,6 +34,7 @@ public class ReadGenericObjectService<T> {
 			return (List<T>) list;
 		}
 
+		@SuppressWarnings("unchecked")
 		public T readById(int id){
 			T type1 = (T) type;
 			try {

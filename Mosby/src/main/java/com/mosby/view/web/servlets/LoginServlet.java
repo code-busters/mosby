@@ -16,6 +16,9 @@ import java.util.List;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
+
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -46,7 +49,7 @@ public class LoginServlet extends HttpServlet {
 
 			List<String> errors = new ArrayList<>();
 			errors.add("Please enter correct field");
-			request.setAttribute("erros", errors);
+			request.setAttribute("errors", errors);
 			request.getRequestDispatcher("/pages/login.jsp").forward(request,
 					response);
 		} else {

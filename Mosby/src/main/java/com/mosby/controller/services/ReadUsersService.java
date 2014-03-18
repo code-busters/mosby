@@ -6,6 +6,7 @@ import main.java.com.mosby.utils.EncryptionUtils;
 
 public class ReadUsersService {
 
+	@SuppressWarnings("unchecked")
 	public User readUser(String email, String password) {
 		User user = new User();
 
@@ -32,6 +33,7 @@ public class ReadUsersService {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	public User readSocialUser(User user){
 		ReflectionDao<User> usersDao = new ReflectionDao<>((Class<User>) user.getClass());
 		

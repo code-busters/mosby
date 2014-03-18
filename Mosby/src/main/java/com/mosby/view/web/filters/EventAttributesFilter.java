@@ -1,7 +1,6 @@
 package main.java.com.mosby.view.web.filters;
 
 import main.java.com.mosby.controller.services.ReadGenericObjectService;
-import main.java.com.mosby.model.Event;
 import main.java.com.mosby.model.EventCategory;
 import main.java.com.mosby.model.EventType;
 
@@ -17,15 +16,13 @@ import java.util.List;
 @WebFilter("/EventAttributesFilter")
 public class EventAttributesFilter implements Filter {
 
+	@SuppressWarnings("unchecked")
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
 
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) res;
 		HttpSession session = request.getSession(false);
 
-		if (session == null) {
-			session = request.getSession();
-		}
 		if ((session.getAttribute("eventTypes") == null) || (session.getAttribute("eventCategories") == null)) {
 			
 			List<EventType> listEventTypes = new ReadGenericObjectService<EventType>((Class<EventType>) new EventType().getClass()).readList();

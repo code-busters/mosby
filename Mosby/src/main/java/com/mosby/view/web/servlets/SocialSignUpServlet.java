@@ -16,6 +16,9 @@ import java.io.IOException;
 
 @WebServlet("/socialSignUp")
 public class SocialSignUpServlet extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
+	
 	private static Logger log = Logger.getLogger(SocialSignUpServlet.class);
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,7 +34,6 @@ public class SocialSignUpServlet extends HttpServlet {
 		FacebookUserGetDataService userService = new FacebookUserGetDataService();
 		
 		User user = userService.getUserDataFromFacebook(faceCode, session);
-		String email = user.getEmail();
 		
 		String sessionID = session.getId();
 		if (state.equals(sessionID)){

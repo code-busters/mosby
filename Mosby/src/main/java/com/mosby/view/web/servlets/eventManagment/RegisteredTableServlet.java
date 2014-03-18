@@ -10,7 +10,9 @@ import java.io.IOException;
 @WebServlet("/registeredTable")
 public class RegisteredTableServlet extends HttpServlet {
 
-    protected void doGet(HttpServletRequest request,
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request,
                          HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("/pages/eventManagement/registeredTable.jsp").forward(request, response);
     }

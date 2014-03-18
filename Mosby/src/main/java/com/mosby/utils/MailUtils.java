@@ -1,15 +1,28 @@
 package main.java.com.mosby.utils;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
 import java.util.List;
 import java.util.Properties;
 
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import javax.mail.util.ByteArrayDataSource;
+
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 
 public class MailUtils {
 	
@@ -20,6 +33,7 @@ public class MailUtils {
 	
 	
 	private Properties props;
+	private Session session;
 	
 	public MailUtils() {
 		props = new Properties();
@@ -28,6 +42,12 @@ public class MailUtils {
 	    props.put("mail.port", PORT);
 	    props.put("mail.smtp.starttls.enable", "true");
 	    props.put("mail.smtp.auth", "true");
+	    session = Session.getInstance(getProps(), new Authenticator() {
+	        @Override
+	        protected PasswordAuthentication getPasswordAuthentication() {
+	            return new PasswordAuthentication(USERNAME, PASSWORD);
+	        }
+	    });
 	}
 	
 	public Properties getProps() {
@@ -40,18 +60,13 @@ public class MailUtils {
 	
 	public void sendMessage(String email, String authentication){
 
-	    Session session = Session.getInstance(getProps(), new Authenticator() {
-	        @Override
-	        protected PasswordAuthentication getPasswordAuthentication() {
-	            return new PasswordAuthentication(USERNAME, PASSWORD);
-	        }
-	    });
 	    try {
 	        MimeMessage msg = new MimeMessage(session);
 	        msg.setFrom();
 	        msg.setSubject("Mosby Autentification");
 	        msg.setSentDate(new java.util.Date());
 	        msg.setText("You are register on MosbyEvent! Welcome!\nYou register code http://localhost:8080/Mosby/authentication?authentication_code=" + authentication);
+	        msg.setFileName("E:/файли/Олексій/wpace.xml");
 	        msg.setRecipients(Message.RecipientType.TO,
 	                          email);
 	        Transport.send(msg);
@@ -62,12 +77,6 @@ public class MailUtils {
 
 	public void sendMessage(List<String> emails, String message, String subject){
 
-	    Session session = Session.getInstance(getProps(), new Authenticator() {
-	        @Override
-	        protected PasswordAuthentication getPasswordAuthentication() {
-	            return new PasswordAuthentication(USERNAME, PASSWORD);
-	        }
-	    });
 	    try {
 	        MimeMessage msg = new MimeMessage(session);
 	        msg.setFrom();
@@ -83,4 +92,76 @@ public class MailUtils {
 	        System.out.println("send failed, exception: " + mex);
 	     }
 	}
+	
+	public void writePdf(OutputStream outputStream) throws Exception {
+        Document document = new Document();
+        PdfWriter.getInstance(document, outputStream);
+         
+        document.open();
+         
+        document.addTitle("Test PDF");
+        document.addSubject("Testing email PDF");
+        document.addKeywords("iText, email");
+        document.addAuthor("Jee Vang");
+        document.addCreator("Jee Vang");
+         
+        Paragraph paragraph = new Paragraph();
+        paragraph.add(new Chunk("hello!"));
+        document.add(paragraph);
+         
+        document.close();
+    }
+	
+	public void sendTicket(String recipient) {
+                 
+        String content = "Tickects"; //this will be the text of the email
+        String subject = "Your ticket"; //this will be the subject of the email
+         
+        ByteArrayOutputStream outputStream = null;
+         
+        try {           
+            //construct the text body part
+            MimeBodyPart textBodyPart = new MimeBodyPart();
+            textBodyPart.setText(content);
+             
+            //now write the PDF content to the output stream
+            outputStream = new ByteArrayOutputStream();
+            writePdf(outputStream);
+            byte[] bytes = outputStream.toByteArray();
+             
+            //construct the pdf body part
+            DataSource dataSource = new ByteArrayDataSource(bytes, "application/pdf");
+            MimeBodyPart pdfBodyPart = new MimeBodyPart();
+            pdfBodyPart.setDataHandler(new DataHandler(dataSource));
+            pdfBodyPart.setFileName("test.pdf");
+                         
+            //construct the mime multi part
+            MimeMultipart mimeMultipart = new MimeMultipart();
+            mimeMultipart.addBodyPart(textBodyPart);
+            mimeMultipart.addBodyPart(pdfBodyPart);
+             
+            //create the sender/recipient addresses
+            InternetAddress iaSender = new InternetAddress(USERNAME);
+            InternetAddress iaRecipient = new InternetAddress(recipient);
+             
+            //construct the mime message
+            MimeMessage mimeMessage = new MimeMessage(session);
+            mimeMessage.setSender(iaSender);
+            mimeMessage.setSubject(subject);
+            mimeMessage.setRecipient(Message.RecipientType.TO, iaRecipient);
+            mimeMessage.setContent(mimeMultipart);
+             
+            //send off the email
+            Transport.send(mimeMessage);
+                      
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            //clean off
+            if(null != outputStream) {
+                try { outputStream.close(); outputStream = null; }
+                catch(Exception ex) { }
+            }
+        }
+    }
 }

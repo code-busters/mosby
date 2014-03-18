@@ -1,7 +1,6 @@
 package main.java.com.mosby.model;
 
 import main.java.com.mosby.model.annotations.dao.*;
-import main.java.com.mosby.model.annotations.validate.*;
 
 @Table(name="promo_codes")
 public class PromoCode {

@@ -9,6 +9,7 @@ import main.java.com.mosby.utils.MailUtils;
 
 public class SignUpUserService {
 
+	@SuppressWarnings({ "unchecked", "static-access" })
 	public User signUpUser(String firstName, String lastName, String email,
 			String password) {
 
@@ -26,7 +27,7 @@ public class SignUpUserService {
 			SecureRandom random = new SecureRandom();
 	        byte[] code = new byte[24];
 	        random.nextBytes(code);
-	        String authentication = new EncryptionUtils().toHex(code);
+	        String authentication = new EncryptionUtils().toHex(code) + new EncryptionUtils().toHex(email.getBytes());
 	        
 			user = new User(firstName, lastName, email, encryptedPassword, authentication);
 			usersDao.insertObjects(user);

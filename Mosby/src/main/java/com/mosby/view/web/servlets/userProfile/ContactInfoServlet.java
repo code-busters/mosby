@@ -14,6 +14,8 @@ import java.io.IOException;
 @MultipartConfig
 public class ContactInfoServlet extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
+
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher("/pages/userProfile/contactInfo.jsp").forward(request,response);

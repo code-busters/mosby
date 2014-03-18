@@ -3,10 +3,10 @@ package main.java.com.mosby.controller.services;
 import main.java.com.mosby.controller.dao.ReflectionDao;
 import main.java.com.mosby.model.User;
 import main.java.com.mosby.utils.EncryptionUtils;
-import main.java.com.mosby.utils.MailUtils;
 
 public class SocialSignUpUserService {
 	
+	@SuppressWarnings("unchecked")
 	public User signUpUser(User user) {
 		
 		ReflectionDao<User> usersDao = new ReflectionDao<>(

@@ -14,6 +14,7 @@ import main.java.com.mosby.model.User;
 
 public class RegisterTicketsService {
 	
+	@SuppressWarnings("unchecked")
 	public void register(HttpServletRequest request){
 		ReflectionDao<Ticket> ticketDao = new ReflectionDao<>((Class<Ticket>) Ticket.class);
 		int eventId = Integer.parseInt(request.getParameter("eventId"));
