@@ -73,7 +73,11 @@ public class ValidatorUtils<T> {
 				field.setAccessible(true);
 				double value = 0;
 				if (field.getType() == String.class) {
+					if(field.get(object) != null){
 					value = field.get(object).toString().length();
+					} else {
+						value = 0;
+					}
 				} else if (field.getType() == int.class
 						|| field.getType() == double.class) {
 					value = (double) field.get(object);
@@ -102,7 +106,11 @@ public class ValidatorUtils<T> {
 				double value = 0;
 
 				if (field.getType() == String.class) {
-					value = field.get(object).toString().length();
+					if(field.get(object) != null){
+						value = field.get(object).toString().length();
+						} else {
+							value = 0;
+						}
 				} else if (field.getType() == int.class
 						|| field.getType() == double.class) {
 					value = (double) field.get(object);
@@ -123,7 +131,11 @@ public class ValidatorUtils<T> {
 				field.setAccessible(true);
 				double value = 0;
 				if (field.getType() == String.class) {
-					value = field.get(object).toString().length();
+					if(field.get(object) != null){
+						value = field.get(object).toString().length();
+						} else {
+							value = 0;
+						}
 				} else if (field.getType() == int.class
 						|| field.getType() == double.class) {
 					value = (double) field.get(object);

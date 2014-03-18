@@ -23,7 +23,7 @@ public class User {
 
 	@NotNull
 	@Size(min = 1, max = 30)
-	@Email(pattern = "[a-zA-Z]{1}[a-zA-Z\\d\\u002E\\u005F]+@([a-zA-Z]+\\u002E){1,2}((net)|(com)|(org))")
+	@Email(pattern = "[a-zA-Z]{1}[a-zA-Z\\d\\u002E\\u005F]+@([a-zA-Z]+\\u002E){1,2}((net)|(com)|(org)|(ru))")
 	@Column(name = "email")
 	private String email;
 
@@ -32,30 +32,37 @@ public class User {
 	@Column(name = "password")
 	private String password;
 
+	@Min(value = 0)
 	@Column(name = "credits")
 	private double credits;
 
 	@Column(name = "admin")
 	private boolean admin;
 
+	@Size(min = 0, max = 100)
 	@Column(name = "image")
 	private String image = "default.png";
 
+	@Size(min = 0, max = 45)
 	@Column(name = "country")
 	private String country;
 
+	@Size(min = 0, max = 45)
 	@Column(name = "city")
 	private String city;
 
 	@Column(name = "birth_date")
 	private Date birthDate;
 
+	@Size(min = 0, max = 45)
 	@Column(name = "site")
 	private String site;
 
+	@Min(value = 0)
 	@Column(name = "about")
 	private String about;
 	
+	@Size(min = 0, max = 200)
 	@Column(name = "authentication_code")
 	private String authenticationCode;
 	

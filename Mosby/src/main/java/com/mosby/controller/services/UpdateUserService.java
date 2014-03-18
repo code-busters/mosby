@@ -4,6 +4,7 @@ import main.java.com.mosby.controller.dao.ReflectionDao;
 import main.java.com.mosby.model.User;
 import main.java.com.mosby.utils.EncryptionUtils;
 import main.java.com.mosby.utils.FileUploadUtils;
+import main.java.com.mosby.utils.ValidatorUtils;
 
 import org.apache.log4j.Logger;
 
@@ -15,6 +16,7 @@ import javax.servlet.http.Part;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -66,6 +68,17 @@ public class UpdateUserService {
 		boolean active = sessionUser.isActive();
 		
 		User user = new User(id, firstName, lastName, email, password, credits, admin, userImage, country, city, birthDate, site, about, authenticationCode, active);
+		ValidatorUtils<User> validatorUtils = new ValidatorUtils<>(
+				(Class<User>) user.getClass());
+			try {
+				user = validatorUtils.validate(user);
+			} catch (NoSuchMethodException | SecurityException
+					| IllegalAccessException | IllegalArgumentException
+					| InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		System.out.println(validatorUtils.getErrors());
 		usersDao.updateObjects(user);
 		session.setAttribute("user", user);
 	}

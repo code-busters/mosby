@@ -66,7 +66,6 @@ public class MailUtils {
 	        msg.setSubject("Mosby Autentification");
 	        msg.setSentDate(new java.util.Date());
 	        msg.setText("You are register on MosbyEvent! Welcome!\nYou register code http://localhost:8080/Mosby/authentication?authentication_code=" + authentication);
-	        msg.setFileName("E:/файли/Олексій/wpace.xml");
 	        msg.setRecipients(Message.RecipientType.TO,
 	                          email);
 	        Transport.send(msg);
