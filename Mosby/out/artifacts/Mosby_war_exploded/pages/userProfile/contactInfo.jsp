@@ -56,6 +56,11 @@
             <div class="page-content inset">
                 <div class="row">
                     <div class="col-md-6">
+                        <div class="errors">
+                            <c:forEach items="${errors}" var="error">
+                                <p>${error}</p>
+                            </c:forEach>
+                        </div>
                         <form action="contactInfo" enctype="multipart/form-data" method="post" id="contact-info-form">
                             <div class="form-group">
                                 <% if (request.getSession().getAttribute("userType") == "common") { %>

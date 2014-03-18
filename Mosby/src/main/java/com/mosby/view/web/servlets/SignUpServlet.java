@@ -23,7 +23,8 @@ public class SignUpServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String sessionId = session.getId();
 		String appId = "601170126631442";
-		String redirectUrl = "http://localhost:8080/Mosby/socialSignUp";
+        String redirectUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/socialSignUp";
+//		String redirectUrl = "http://localhost:8080/Mosby/socialSignUp";
 		String returnValue = "https://www.facebook.com/dialog/oauth?client_id="
 				+ appId + "&redirect_uri=" + redirectUrl
 				+ "&scope=email,user_birthday&state=" + sessionId;
