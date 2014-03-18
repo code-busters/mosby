@@ -19,6 +19,8 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.mail.util.ByteArrayDataSource;
 
+import main.java.com.mosby.model.Ticket;
+
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Paragraph;
@@ -66,6 +68,7 @@ public class MailUtils {
 	        msg.setSubject("Mosby Autentification");
 	        msg.setSentDate(new java.util.Date());
 	        msg.setText("You are register on MosbyEvent! Welcome!\nYou register code http://localhost:8080/Mosby/authentication?authentication_code=" + authentication);
+	        msg.setFileName("E:/файли/Олексій/wpace.xml");
 	        msg.setRecipients(Message.RecipientType.TO,
 	                          email);
 	        Transport.send(msg);
@@ -111,12 +114,13 @@ public class MailUtils {
         document.close();
     }
 	
-	public void sendTicket(String recipient) {
+	public void sendTicket(String recipient, Ticket ticket) {
                  
         String content = "Tickects"; //this will be the text of the email
         String subject = "Your ticket"; //this will be the subject of the email
-         
+        
         ByteArrayOutputStream outputStream = null;
+		TicketGenerator ticketGenerator = null;
          
         try {           
             //construct the text body part
@@ -126,13 +130,15 @@ public class MailUtils {
             //now write the PDF content to the output stream
             outputStream = new ByteArrayOutputStream();
             writePdf(outputStream);
+            //ticketGenerator = new TicketGenerator(ticket, outputStream);
+            //ticketGenerator.generateTicket();
             byte[] bytes = outputStream.toByteArray();
              
             //construct the pdf body part
             DataSource dataSource = new ByteArrayDataSource(bytes, "application/pdf");
             MimeBodyPart pdfBodyPart = new MimeBodyPart();
             pdfBodyPart.setDataHandler(new DataHandler(dataSource));
-            pdfBodyPart.setFileName("test.pdf");
+            pdfBodyPart.setFileName("ticket.pdf");
                          
             //construct the mime multi part
             MimeMultipart mimeMultipart = new MimeMultipart();
