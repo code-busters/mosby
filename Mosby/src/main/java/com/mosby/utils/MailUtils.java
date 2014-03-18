@@ -68,7 +68,6 @@ public class MailUtils {
 	        msg.setSubject("Mosby Autentification");
 	        msg.setSentDate(new java.util.Date());
 	        msg.setText("You are register on MosbyEvent! Welcome!\nYou register code http://localhost:8080/Mosby/authentication?authentication_code=" + authentication);
-	        msg.setFileName("E:/файли/Олексій/wpace.xml");
 	        msg.setRecipients(Message.RecipientType.TO,
 	                          email);
 	        Transport.send(msg);
@@ -95,25 +94,6 @@ public class MailUtils {
 	     }
 	}
 	
-	public void writePdf(OutputStream outputStream) throws Exception {
-        Document document = new Document();
-        PdfWriter.getInstance(document, outputStream);
-         
-        document.open();
-         
-        document.addTitle("Test PDF");
-        document.addSubject("Testing email PDF");
-        document.addKeywords("iText, email");
-        document.addAuthor("Jee Vang");
-        document.addCreator("Jee Vang");
-         
-        Paragraph paragraph = new Paragraph();
-        paragraph.add(new Chunk("hello!"));
-        document.add(paragraph);
-         
-        document.close();
-    }
-	
 	public void sendTicket(String recipient, Ticket ticket) {
                  
         String content = "Tickects"; //this will be the text of the email
@@ -129,9 +109,9 @@ public class MailUtils {
              
             //now write the PDF content to the output stream
             outputStream = new ByteArrayOutputStream();
-            writePdf(outputStream);
-            //ticketGenerator = new TicketGenerator(ticket, outputStream);
-            //ticketGenerator.generateTicket();
+            //writePdf(outputStream);
+            ticketGenerator = new TicketGenerator(ticket, outputStream);
+            ticketGenerator.generateTicket();
             byte[] bytes = outputStream.toByteArray();
              
             //construct the pdf body part

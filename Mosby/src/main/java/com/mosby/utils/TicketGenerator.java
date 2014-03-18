@@ -207,7 +207,7 @@ public class TicketGenerator {
 
 		Image image;
 		if (logoPath != null) {
-			image = Image.getInstance("Mosby\\WebContent\\media\\images\\events\\logo\\default.png");
+			image = Image.getInstance("E:\\файли\\Олексій\\workspaceEE\\Mosby\\WebContent\\media\\images\\events\\logo\\default.png");
 		} else {
 			image = Image.getInstance(EVENT_LOGO_PATH + "\\default.png");
 		}

@@ -19,7 +19,7 @@ public class Ticket {
 	@Column(name="time_of_purchase")	
 	private Date timeOfPurchase;
 	
-	@Key(name="promo_code_ref")	
+	@Key(name="promo_codes_ref")	
 	private PromoCode promoCode;
 	
 	@Column(name="checked")	
