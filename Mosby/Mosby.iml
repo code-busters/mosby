@@ -64,6 +64,7 @@
     <orderEntry type="library" name="junit-4.11" level="project" />
     <orderEntry type="library" name="ezmorph-1.0.6" level="project" />
     <orderEntry type="library" name="itextpdf-5.5.0" level="project" />
+    <orderEntry type="library" name="hamcrest-library-1.3" level="project" />
   </component>
 </module>
 

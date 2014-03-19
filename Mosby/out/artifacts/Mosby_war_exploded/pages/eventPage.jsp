@@ -73,7 +73,7 @@
             </p>
 
             <div id="googleMap" class="" style="height:380px;"></div>
-            <form action="registerServlet" method="post" id="register-for-event-form">
+            <form action="register" method="post" id="register-for-event-form">
             <input type="hidden" name="eventId" value="${event.id}" />
 	                <div id="tickets">
 	                    <div class="row create-tickets-header hidden-xs">

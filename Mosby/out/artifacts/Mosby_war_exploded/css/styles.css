@@ -411,7 +411,7 @@ footer {
 }
 
 /*CREATE EVENT*/
-.event-logo {
+.logo {
     margin: 0;
     max-height: 80px;
     cursor: pointer;
@@ -484,39 +484,56 @@ footer {
 #create-event-form label.radio {
     font-size: 0.9em;
 }
+.add-button a,
 .add-promo-code a,
 .add-ticket a {
     font-size: 0.8em;
 }
+#my-events,
+#organizers,
 #promo-codes,
 #tickets {
     margin: 0 0.7em;
     border: 1px solid #d1cbcb;
 }
+#my-events .row,
+#organizers .row,
 #promo-codes .row,
 #tickets .row {
     margin: 0;
     padding: 0.6em 0;
     border-bottom: 1px solid #e7e7e7;
 }
+#my-events .row:last-child,
+#organizers .row:last-child,
 #promo-codes .row:last-child,
 #tickets .row:last-child {
     border-bottom: 0;
 }
+.my-events-header,
+.organizers-header,
 .promo-codes-header,
 .create-tickets-header {
     background: #f2f2f2;
     font-size: 0.7em;
     font-weight: 600;
 }
+#my-events-body .row:nth-child(even),
+#organizers-body .row:nth-child(even),
 #promo-codes-body .row:nth-child(even),
 #tickets-body .row:nth-child(even) {
     background: #fafafa;
 }
+#my-events-body .row:hover,
+#organizers-body .row:hover,
 #promo-codes-body .row:hover,
 #tickets-body .row:hover {
     background: #f6f6f6;
 }
+#my-events-body .as-label,
+#my-events-body label,
+#organizers-body .as-label,
+#organizers-body label,
 #promo-codes-body .as-label,
 #promo-codes-body label,
 #tickets-body .as-label,
@@ -552,8 +569,8 @@ footer {
 
 /*--CONTACT INFO*/
 .user-profile-img {
-    height: 120px;
-    width: 120px;
+    /*    height: 120px;*/
+    /*    width: 120px;*/
     cursor: pointer;
 }
 .change-img {
@@ -580,6 +597,16 @@ footer {
     margin-left: 0.6em;
     font-size: 0.7em;
     cursor: pointer;
+}
+
+/*--CREATE ORGANIZATION*/
+.organizer-logo {
+    max-height: 120px;
+}
+
+/*--MY organizers*/
+.add-button {
+    margin-top: 2em;
 }
 
 /*REGISTERED TABLE*/

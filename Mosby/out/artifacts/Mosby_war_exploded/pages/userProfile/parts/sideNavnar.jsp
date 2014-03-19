@@ -3,7 +3,7 @@
 <div id="sidebar-wrapper">
     <ul class="sidebar-nav">
         <li class="sidebar-brand">
-            <a href="<c:url value="/contactInfo"/>">YOUR ACCOUNT</a>
+            YOUR ACCOUNT
         </li>
         <li>
             <a href="<c:url value="/contactInfo"/>">Contact Info</a>
@@ -15,10 +15,10 @@
             <a href="<c:url value="/changePassword"/>">Change Password</a>
         </li>
         <li>
-            <a href="#">Overview</a>
+            <a href="<c:url value="/myEvents"/>">My Events</a>
         </li>
         <li>
-            <a href="#">Events</a>
+            <a href="<c:url value="/myOrganizers"/>">Organizers</a>
         </li>
         <li>
             <a href="#">About</a>

@@ -174,10 +174,6 @@
 <script src="js/application.js"></script>
 
 <script type="text/javascript">
-    $("#menu-toggle").click(function (e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("active");
-    });
     $(function () {
         var countries = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),

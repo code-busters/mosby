@@ -61,10 +61,10 @@
             </div>
             <div class="form-group">
                 <span class="as-label">Event Logo</span>
-                <input type="file" class="hide" name="event_logo" id="open-event-logo" accept="image/*"/>
-                <label for="open-event-logo">
+                <input type="file" class="hide" name="event_logo" id="open-logo" accept="image/*" />
+                <label for="open-logo">
                     <span id="backup-img" class="hide">media/images/events/logo/default.png</span>
-                    <img class="event-logo" src="media/images/events/logo/default.png">
+                    <img class="logo" src="media/images/events/logo/default.png">
                 </label>
                 <span class="change-img-name"></span>
                 <span class="additional-input-info">Click on image to browse your logo</span>
