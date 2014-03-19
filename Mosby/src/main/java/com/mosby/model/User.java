@@ -28,9 +28,13 @@ public class User {
 	private String email;
 
 	@NotNull
-	@Password(pattern = "((?=.*\\d)((?=.*[a-z])|(?=.*[à-ÿ]))((?=.*[A-Z])|(?=.*[À-ß])).{8,250})")
+	@Password(pattern = "((?=.*\\d)((?=.*[a-z])|(?=.*[à-ÿ])).{8,250})")
 	@Column(name = "password")
 	private String password;
+	
+	@Size(min=0, max = 20)
+	@Column(name = "gender")
+	private String gender;
 
 	@Min(value = 0)
 	@Column(name = "credits")
@@ -72,17 +76,17 @@ public class User {
 
 	}
 
-	
 	public User(int id, String firstName, String lastName, String email,
-			String password, double credits, boolean admin, String image,
-			String country, String city, Date birthDate, String site,
-			String about, String authenticationCode, boolean active) {
+			String password, String gender, double credits, boolean admin,
+			String image, String country, String city, Date birthDate,
+			String site, String about, String authenticationCode, boolean active) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
+		this.gender = gender;
 		this.credits = credits;
 		this.admin = admin;
 		this.image = image;
@@ -95,14 +99,14 @@ public class User {
 		this.active = active;
 	}
 
-
-	public User(String firstName, String lastName, String email, String password, String authenticationCode) {
+	public User(String firstName, String lastName, String email, String password, String authenticationCode, boolean admin) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
 		this.authenticationCode = authenticationCode;
+		this.admin = admin;
 	}
 	
 	public User(String firstName, String lastName, String email, String password) {
@@ -152,6 +156,16 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public String getGender() {
+		return gender;
+	}
+
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
 
 	public double getCredits() {
 		return credits;

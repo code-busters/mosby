@@ -49,7 +49,7 @@ public class SignUpFilter implements Filter {
 
 				User user = new User(firstName, lastName, email, password);
 				ValidatorUtils<User> validatorUtils = new ValidatorUtils<>(
-						(Class<User>) user.getClass());
+						(Class<User>) user.getClass(), "en");
 				try {
 					user = validatorUtils.validate(user);
 					validatorUtils.checkConfirmPass(password, confirmPassword);

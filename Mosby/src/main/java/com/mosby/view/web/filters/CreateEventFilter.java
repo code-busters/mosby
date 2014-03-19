@@ -48,7 +48,7 @@ public class CreateEventFilter implements Filter {
 			Event event = new Event();
 			
 			ValidatorUtils<Event> validatorUtils = new ValidatorUtils<>(
-					(Class<Event>) event.getClass());
+					(Class<Event>) event.getClass(), "en");
 			
 			EventCategory eventCategory = null;
 			EventType eventType = null;

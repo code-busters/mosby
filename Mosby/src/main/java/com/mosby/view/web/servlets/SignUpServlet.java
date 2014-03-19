@@ -40,7 +40,7 @@ public class SignUpServlet extends HttpServlet {
 		String lastName = request.getParameter("last_name");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		
+		System.out.println("posttt");
 		User user = null;
 		user = new SignUpUserService().signUpUser(firstName, lastName, email,
 				password);

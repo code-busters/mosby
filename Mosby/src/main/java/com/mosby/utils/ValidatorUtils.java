@@ -7,7 +7,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Properties;
+import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.Date;
 
@@ -17,7 +19,7 @@ public class ValidatorUtils<T> {
 
 	private Class<T> type;
 	private List<String> errors = new ArrayList<>();
-	Properties connectionPr = new Properties();
+	ResourceBundle labels;
 
 	public List<String> getErrors() {
 		return errors;
@@ -39,15 +41,10 @@ public class ValidatorUtils<T> {
 		this.type = type;
 	}
 
-	public ValidatorUtils(Class<T> type) {
+	public ValidatorUtils(Class<T> type, String loc) {
 		this.type = type;
-		try {
-			InputStream is = new FileInputStream(
-					"C:/Backup/Develop/Workspace/MosbyOnServer/Mosby/src/main/java/com/mosby/utils/internationalization/errorsEN.properties");
-			connectionPr.load(is);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		Locale locale = new Locale(loc);
+		labels = ResourceBundle.getBundle("main.java.com.mosby.i18n.errors", locale);
 	}
 
 	public T validate(T object) throws NoSuchMethodException,
@@ -61,8 +58,8 @@ public class ValidatorUtils<T> {
 			if (field.isAnnotationPresent(NotNull.class)) {
 				field.setAccessible(true);
 				if (field.get(object) == null) {
-					errors.add(connectionPr.getProperty("PleaseEnterField")
-							+ " \"" + connectionPr.getProperty(field.getName())
+					errors.add(labels.getString("PleaseEnterField")
+							+ " \"" + labels.getString(field.getName())
 							+ "\".");
 					continue;
 				}
@@ -83,20 +80,20 @@ public class ValidatorUtils<T> {
 					value = (double) field.get(object);
 				}
 				if (value < annotation.min()) {
-					errors.add(connectionPr.getProperty("TheSizeOfField")
-							+ " \"" + connectionPr.getProperty(field.getName())
-							+ "\" " + connectionPr.getProperty("mustBe") + " "
-							+ connectionPr.getProperty("atLeast") + " "
+					errors.add(labels.getString("TheSizeOfField")
+							+ " \"" + labels.getString(field.getName())
+							+ "\" " + labels.getString("mustBe") + " "
+							+ labels.getString("atLeast") + " "
 							+ annotation.min() + " "
-							+ connectionPr.getProperty("characters") + ".");
+							+ labels.getString("characters") + ".");
 				}
 				if (value > annotation.max()) {
-					errors.add(connectionPr.getProperty("TheSizeOfField")
-							+ " \"" + connectionPr.getProperty(field.getName())
-							+ "\" " + connectionPr.getProperty("mustBe") + " "
-							+ connectionPr.getProperty("noMore") + " "
+					errors.add(labels.getString("TheSizeOfField")
+							+ " \"" + labels.getString(field.getName())
+							+ "\" " + labels.getString("mustBe") + " "
+							+ labels.getString("noMore") + " "
 							+ annotation.max() + " "
-							+ connectionPr.getProperty("characters") + ".");
+							+ labels.getString("characters") + ".");
 				}
 			}
 
@@ -116,12 +113,12 @@ public class ValidatorUtils<T> {
 					value = (double) field.get(object);
 				}
 				if (value < annotation.value()) {
-					errors.add(connectionPr.getProperty("TheSizeOfField")
-							+ " \"" + connectionPr.getProperty(field.getName())
-							+ "\" " + connectionPr.getProperty("mustBe") + " "
-							+ connectionPr.getProperty("atLeast") + " "
+					errors.add(labels.getString("TheSizeOfField")
+							+ " \"" + labels.getString(field.getName())
+							+ "\" " + labels.getString("mustBe") + " "
+							+ labels.getString("atLeast") + " "
 							+ annotation.value() + " "
-							+ connectionPr.getProperty("characters") + ".");
+							+ labels.getString("characters") + ".");
 				}
 
 			}
@@ -141,12 +138,12 @@ public class ValidatorUtils<T> {
 					value = (double) field.get(object);
 				}
 				if (value > annotation.value()) {
-					errors.add(connectionPr.getProperty("TheSizeOfField")
-							+ " \"" + connectionPr.getProperty(field.getName())
-							+ "\" " + connectionPr.getProperty("mustBe") + " "
-							+ connectionPr.getProperty("noMore") + " "
+					errors.add(labels.getString("TheSizeOfField")
+							+ " \"" + labels.getString(field.getName())
+							+ "\" " + labels.getString("mustBe") + " "
+							+ labels.getString("noMore") + " "
 							+ annotation.value() + " "
-							+ connectionPr.getProperty("characters") + ".");
+							+ labels.getString("characters") + ".");
 				}
 
 			}
@@ -158,7 +155,7 @@ public class ValidatorUtils<T> {
 						.compile(annotation.pattern());
 				Matcher mathcer = pattern.matcher(field.get(object).toString());
 				if (!mathcer.matches()) {
-					errors.add(connectionPr.getProperty("validateEmail"));
+					errors.add(labels.getString("validateEmail"));
 				}
 
 			}
@@ -170,7 +167,7 @@ public class ValidatorUtils<T> {
 						.compile(annotation.pattern());
 				Matcher mathcer = pattern.matcher(field.get(object).toString());
 				if (!mathcer.matches()) {
-					errors.add(connectionPr.getProperty("validatePassword"));
+					errors.add(labels.getString("validatePassword"));
 				}
 			}
 			if (field.isAnnotationPresent(StartFuture.class)) {
@@ -180,7 +177,7 @@ public class ValidatorUtils<T> {
 				Timestamp timestampNow = new Timestamp(date.getTime());
 				if (timestampStart != null
 						&& timestampStart.before(timestampNow)) {
-					errors.add(connectionPr.getProperty("validateDataTime"));
+					errors.add(labels.getString("validateDataTime"));
 				}
 
 			}
@@ -189,7 +186,7 @@ public class ValidatorUtils<T> {
 				field.setAccessible(true);
 				Timestamp timestampEnd = (Timestamp) field.get(object);
 				if (timestampEnd.before(timestampStart)) {
-					errors.add(connectionPr.getProperty("validateStartEnd"));
+					errors.add(labels.getString("validateStartEnd"));
 				}
 			}
 		}
@@ -204,10 +201,10 @@ public class ValidatorUtils<T> {
 	public void checkConfirmPass(String pass, String confirmPass) {
 		if (pass != null && confirmPass != null) {
 			if (!pass.equals(confirmPass)) {
-				errors.add(connectionPr.getProperty("samePassword"));
+				errors.add(labels.getString("samePassword"));
 			}
 		} else {
-			errors.add(connectionPr.getProperty("confirmPassword"));
+			errors.add(labels.getString("confirmPassword"));
 		}
 	}
 

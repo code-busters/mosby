@@ -77,7 +77,7 @@ public class UpdateUserService {
 		String authenticationCode = sessionUser.getAuthenticationCode();
 		boolean active = sessionUser.isActive();
 
-		User user = new User(id, firstName, lastName, email, password, credits,
+		User user = new User(id, firstName, lastName, email, password,  "", credits,
 				admin, userImage, country, city, birthDate, site, about,
 				authenticationCode, active);
 		// ValidatorUtils<User> validatorUtils = new

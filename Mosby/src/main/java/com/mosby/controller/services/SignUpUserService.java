@@ -29,7 +29,7 @@ public class SignUpUserService {
 	        random.nextBytes(code);
 	        String authentication = new EncryptionUtils().toHex(code) + new EncryptionUtils().toHex(email.getBytes());
 	        
-			user = new User(firstName, lastName, email, encryptedPassword, authentication);
+			user = new User(firstName, lastName, email, encryptedPassword, authentication, false);
 			usersDao.insertObjects(user);
 
 			

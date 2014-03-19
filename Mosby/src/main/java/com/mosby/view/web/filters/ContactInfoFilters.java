@@ -77,11 +77,11 @@ public class ContactInfoFilters implements Filter {
 				String authenticationCode = sessionUser.getAuthenticationCode();
 				boolean active = sessionUser.isActive();
 
-				User user = new User(id, firstName, lastName, email, password,
+				User user = new User(id, firstName, lastName, email, password, "",
 						credits, admin, userImage, country, city, birthDate,
 						site, about, authenticationCode, active);
 				ValidatorUtils<User> validatorUtils = new ValidatorUtils<>(
-						(Class<User>) user.getClass());
+						(Class<User>) user.getClass(), "en");
 				try {
 					user = validatorUtils.validate(user);
 				} catch (NoSuchMethodException | SecurityException
