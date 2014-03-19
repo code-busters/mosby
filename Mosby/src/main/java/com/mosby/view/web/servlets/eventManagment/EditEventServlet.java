@@ -32,6 +32,8 @@ public class EditEventServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	System.out.println(request.getParameter("eventId"));
+    	System.out.println(request.getParameter("event_name"));
     	if (request.getParameter("eventId") != null) {
 	    	int eventId = Integer.parseInt(request.getParameter("eventId"));
 	    	UpdateEventService updateEventService = new UpdateEventService();

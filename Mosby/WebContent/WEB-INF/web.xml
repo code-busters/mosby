@@ -24,7 +24,6 @@
     <url-pattern>/contactInfo</url-pattern>
     <url-pattern>/authentication</url-pattern>
     <url-pattern>/editEvent</url-pattern>
-    <url-pattern>/*</url-pattern>
   </filter-mapping>
   <filter>
     <filter-name>EncodingFilter</filter-name>
