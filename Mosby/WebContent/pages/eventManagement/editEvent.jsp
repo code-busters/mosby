@@ -57,12 +57,12 @@
                     </c:forEach>
                 </div>
                 <form action="editEvent" enctype="multipart/form-data" method="post" id="edit-event-form">
+                    <input type="hidden" name="eventId" value="${event.id}" />
                     <h5>Event Detail</h5>
 
                     <div class="form-group">
                         <label for="event-name">Event Name</label>
-                        <input type="text" class="form-control" placeholder="Choose Event Name" value=""
-                               name="event_name" id="event-name" required/>
+                        <input type="text" class="form-control" placeholder="Choose Event Name" value="${event.name}" name="event_name" id="event-name" required/>
                     </div>
                     <div class="form-group">
                         <label for="open-event-logo">Event logo</label>

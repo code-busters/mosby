@@ -1,6 +1,7 @@
 package main.java.com.mosby.view.web.servlets.eventManagment;
 
 import main.java.com.mosby.controller.services.ReadGenericObjectService;
+import main.java.com.mosby.controller.services.UpdateEventService;
 import main.java.com.mosby.model.Event;
 
 import javax.servlet.ServletException;
@@ -31,7 +32,15 @@ public class EditEventServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    	if (request.getParameter("eventId") != null) {
+	    	int eventId = Integer.parseInt(request.getParameter("eventId"));
+	    	UpdateEventService updateEventService = new UpdateEventService();
+	    	updateEventService.updateEvent(request, this);
+	    	response.sendRedirect("/Mosby/editEvent?eventId=" + eventId);
+    	} else {
+    		response.sendRedirect("index");
+        }
+    	
     }
 
 }

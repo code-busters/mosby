@@ -26,11 +26,9 @@ public class UpdateUserService {
 	private static final String USER_IMAGE_PATH = "media\\images\\users";
 	private static Logger log = Logger.getLogger(UpdateUserService.class);
 
-	public void update(HttpServletRequest request, HttpServlet servlet)
-			throws IllegalStateException, IOException, ServletException {
+	public void update(HttpServletRequest request, HttpServlet servlet) throws IllegalStateException, IOException, ServletException {
 		HttpSession session = request.getSession(false);
-		ReflectionDao<User> usersDao = new ReflectionDao<>(
-				(Class<User>) User.class);
+		ReflectionDao<User> usersDao = new ReflectionDao<>((Class<User>) User.class);
 
 		User sessionUser = (User) session.getAttribute("user");
 
@@ -59,11 +57,10 @@ public class UpdateUserService {
 
 		String country = request.getParameter("country");
 		String city = request.getParameter("city");
-		Date birthDate = null;
+		Date birthDate = sessionUser.getBirthDate();
 		if (request.getParameter("birthday") != null) {
 			try {
-				birthDate = new SimpleDateFormat(DATE_FORMAT).parse(request
-						.getParameter("birthday"));
+				birthDate = new SimpleDateFormat(DATE_FORMAT).parse(request.getParameter("birthday"));
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
@@ -73,11 +70,9 @@ public class UpdateUserService {
 		String authenticationCode = sessionUser.getAuthenticationCode();
 		boolean active = sessionUser.isActive();
 
-		User user = new User(id, firstName, lastName, email, password, credits,
-				admin, userImage, country, city, birthDate, site, about,
+		User user = new User(id, firstName, lastName, email, password, credits, admin, userImage, country, city, birthDate, site, about,
 				authenticationCode, active);
-		ValidatorUtils<User> validatorUtils = new ValidatorUtils<>(
-				(Class<User>) user.getClass());
+		ValidatorUtils<User> validatorUtils = new ValidatorUtils<>((Class<User>) user.getClass());
 		try {
 			user = validatorUtils.validate(user);
 		} catch (NoSuchMethodException | SecurityException
@@ -94,17 +89,14 @@ public class UpdateUserService {
 	public String changePassword(HttpServletRequest request) {
 		String result = null;
 		HttpSession session = request.getSession(false);
-		ReflectionDao<User> usersDao = new ReflectionDao<>(
-				(Class<User>) User.class);
+		ReflectionDao<User> usersDao = new ReflectionDao<>((Class<User>) User.class);
 
 		User sessionUser = (User) session.getAttribute("user");
-		if ((request.getParameter("new_password")).equals(request
-				.getParameter("confirm_password"))) {
+		if ((request.getParameter("new_password")).equals(request.getParameter("confirm_password"))) {
 			String currentPassword = request.getParameter("current_password");
 			String correctHash = sessionUser.getPassword();
 			if (EncryptionUtils.validatePassword(currentPassword, correctHash)) {
-				String encryptedPassword = EncryptionUtils.createHash(request
-						.getParameter("new_password"));
+				String encryptedPassword = EncryptionUtils.createHash(request.getParameter("new_password"));
 				sessionUser.setPassword(encryptedPassword);
 				result = "password changed successfully";
 			} else {

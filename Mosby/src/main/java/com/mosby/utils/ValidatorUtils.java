@@ -43,7 +43,7 @@ public class ValidatorUtils<T> {
 		this.type = type;
 		try {
 			InputStream is = new FileInputStream(
-					"E:/файли/Олексій/workspaceEE/Mosby/src/main/java/com/mosby/utils/internationalization/errorsEN.properties");
+					"C:/Backup/Develop/Workspace/MosbyOnServer/Mosby/src/main/java/com/mosby/utils/internationalization/errorsEN.properties");
 			connectionPr.load(is);
 		} catch (Exception e) {
 			e.printStackTrace();
