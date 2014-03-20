@@ -68,17 +68,17 @@
 								value="${event.name}" name="event_name" id="event-name" required />
 						</div>
 						<div class="form-group">
-							<label for="open-event-logo">Event logo</label> <input
-								type="file" class="hide" name="event_logo" id="open-event-logo"
-								accept="image/*" /> <label for="open-event-logo"> <c:choose>
+							<label for="open-logo">Event logo</label> <input
+								type="file" class="hide" name="event_logo" id="open-logo"
+								accept="image/*" /> <label for="open-logo"> <c:choose>
 									<c:when test="${empty event.logo}">
 										<span id="backup-img" class="hide">media/images/events/logo/default.png</span>
-										<img class="event-logo"
+										<img class="logo"
 											src="media/images/events/logo/default.png">
 									</c:when>
 									<c:otherwise>
 										<span id="backup-img" class="hide">media/images/events/logo/${event.logo}</span>
-										<img class="event-logo"
+										<img class="logo"
 											src="media/images/events/logo/${event.logo}">
 									</c:otherwise>
 								</c:choose>
