@@ -27,7 +27,7 @@ import main.java.com.mosby.model.TicketInfo;
 import main.java.com.mosby.utils.FileUploadUtils;
 
 public class CreateEventService {
-	private static final String DATE_FORMAT = "dd/MM/yyyy";
+	private static final String DATE_FORMAT = "dd-MM-yyyy";
 	private static final String TIME_FORMAT = "HH:mm";
     private static final String EVENT_BACKGROUND_PATH = "media\\images\\events\\background";
     private static final String EVENT_LOGO_PATH = "media\\images\\events\\logo";
@@ -69,7 +69,7 @@ public class CreateEventService {
 		EventType eventType = new ReadGenericObjectService<EventType>((Class<EventType>) new EventType().getClass()).readById(Integer.parseInt(request.getParameter("event_type")));
 		
 		Date startDate = null, endDate = null, startTime = null, endTime = null;
-        SimpleDateFormat parseDate = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+        SimpleDateFormat parseDate = new SimpleDateFormat("dd-MM-yyyy hh:mm");
         
         String startTimestamp = request.getParameter("start_date") + " " + request.getParameter("start_time");
         String endTimestamp = request.getParameter("end_date") + " " + request.getParameter("end_time");

@@ -196,6 +196,22 @@ public class Event {
 		this.endTime = endTime;
 	}
 
+	public Timestamp getStartDateTime() {
+		return startDateTime;
+	}
+
+	public void setStartDateTime(Timestamp startDateTime) {
+		this.startDateTime = startDateTime;
+	}
+
+	public Timestamp getEndDateTime() {
+		return endDateTime;
+	}
+
+	public void setEndDateTime(Timestamp endDateTime) {
+		this.endDateTime = endDateTime;
+	}
+
 	public String getLocation() {
 		return location;
 	}

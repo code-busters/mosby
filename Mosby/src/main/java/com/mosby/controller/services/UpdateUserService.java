@@ -22,15 +22,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class UpdateUserService {
-	private static final String DATE_FORMAT = "dd/MM/yyyy";
+	private static final String DATE_FORMAT = "dd-MM-yyyy";
 	private static final String USER_IMAGE_PATH = "media\\images\\users";
 	private static Logger log = Logger.getLogger(UpdateUserService.class);
 
-	public void update(HttpServletRequest request, HttpServlet servlet)
-			throws IllegalStateException, IOException, ServletException {
+	public void update(HttpServletRequest request, HttpServlet servlet) throws IllegalStateException, IOException, ServletException {
 		HttpSession session = request.getSession(false);
-		ReflectionDao<User> usersDao = new ReflectionDao<>(
-				(Class<User>) User.class);
+		ReflectionDao<User> usersDao = new ReflectionDao<>((Class<User>) User.class);
 
 		User sessionUser = (User) session.getAttribute("user");
 
@@ -55,19 +53,15 @@ public class UpdateUserService {
 		} catch (Exception e) {
 			log.error(e);
 		}
-		;
 
 		String country = request.getParameter("country");
 		String city = request.getParameter("city");
 		Date birthDate = sessionUser.getBirthDate();
-		if (birthDate != null
-				&& birthDate.toString()
-						.equals(request.getParameter("birthday"))) {
+		if (birthDate != null && birthDate.toString().equals(request.getParameter("birthday"))) {
 
 		} else if (request.getParameter("birthday") != null) {
 			try {
-				birthDate = new SimpleDateFormat(DATE_FORMAT).parse(request
-						.getParameter("birthday"));
+				birthDate = new SimpleDateFormat(DATE_FORMAT).parse(request.getParameter("birthday"));
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
@@ -77,9 +71,7 @@ public class UpdateUserService {
 		String authenticationCode = sessionUser.getAuthenticationCode();
 		boolean active = sessionUser.isActive();
 
-		User user = new User(id, firstName, lastName, email, password,  "", credits,
-				admin, userImage, country, city, birthDate, site, about,
-				authenticationCode, active);
+		User user = new User(id, firstName, lastName, email, password,  "", credits, admin, userImage, country, city, birthDate, site, about, authenticationCode, active);
 		// ValidatorUtils<User> validatorUtils = new
 		// ValidatorUtils<>((Class<User>) user.getClass());
 		// try {

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 
+import org.apache.catalina.connector.Request;
 import org.apache.log4j.Logger;
 
 import main.java.com.mosby.controller.dao.ReflectionDao;
@@ -22,20 +23,24 @@ import main.java.com.mosby.model.User;
 import main.java.com.mosby.utils.FileUploadUtils;
 
 public class UpdateEventService {
-	private static final String DATE_FORMAT = "dd/MM/yyyy";
+	private static final String DATE_FORMAT = "dd-MM-yyyy";
 	private static final String TIME_FORMAT = "HH:mm";
+	private static final String EVENT_LOGO_PATH = "media\\images\\events\\logo";
     private static final String EVENT_BACKGROUND_PATH = "media\\images\\events\\background";
-    private static final String EVENT_LOGO_PATH = "media\\images\\events\\logo";
     
 	private static Logger log = Logger.getLogger(UpdateEventService.class);
 	
 	public void updateEvent(HttpServletRequest request, HttpServlet servlet) throws IllegalStateException, IOException, ServletException{
 		int eventId = Integer.parseInt(request.getParameter("eventId"));
+		Event event = new ReadGenericObjectService<Event>((Class<Event>) new Event().getClass()).readById(eventId); 
+		
 
 //get info from JSP
 		
 //Image uploading
-		String eventLogo = "default.png";
+
+		String eventLogo = event.getLogo(); 
+		
 		Part filePart = request.getPart("event_logo");
 		try {
 			String contentType = filePart.getContentType();
@@ -46,7 +51,7 @@ public class UpdateEventService {
 		} catch (Exception e) {
 			log.error(e);
 		}
-		String eventBackground = "default.jpg";
+		String eventBackground = event.getBackground();
 		filePart = request.getPart("event_background");
 		try {
 			String contentType = filePart.getContentType();
@@ -63,7 +68,7 @@ public class UpdateEventService {
 		String name = request.getParameter("event_name");
 
 		Date startDate = null, endDate = null, startTime = null, endTime = null;
-        SimpleDateFormat parseDate = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+        SimpleDateFormat parseDate = new SimpleDateFormat("dd-MM-yyyy hh:mm");
         String startTimestamp = request.getParameter("start_date") + " " + request.getParameter("start_time");
         String endTimestamp = request.getParameter("end_date") + " " + request.getParameter("end_time");
         Timestamp start = null;
