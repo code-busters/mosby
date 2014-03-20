@@ -133,8 +133,8 @@
                             <div class="form-group">
                                 <label for="about">About</label>
                                 <textarea class="form-control" rows="4" placeholder="Tell about yourself"
-                                          value="${user.about}" name="about" id="about"
-                                          form="contact-info-form"></textarea>
+                                          name="about" id="about"
+                                          form="contact-info-form">${user.about}</textarea>
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit"

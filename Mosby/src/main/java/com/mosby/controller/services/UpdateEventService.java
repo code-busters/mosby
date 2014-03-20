@@ -1,26 +1,22 @@
 package main.java.com.mosby.controller.services;
 
+import main.java.com.mosby.controller.dao.ReflectionDao;
+import main.java.com.mosby.model.Event;
+import main.java.com.mosby.model.EventCategory;
+import main.java.com.mosby.model.EventType;
+import main.java.com.mosby.utils.FileUploadUtils;
+import org.apache.log4j.Logger;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.Part;
-
-import org.apache.catalina.connector.Request;
-import org.apache.log4j.Logger;
-
-import main.java.com.mosby.controller.dao.ReflectionDao;
-import main.java.com.mosby.model.Event;
-import main.java.com.mosby.model.EventCategory;
-import main.java.com.mosby.model.EventType;
-import main.java.com.mosby.model.User;
-import main.java.com.mosby.utils.FileUploadUtils;
 
 public class UpdateEventService {
 	private static final String DATE_FORMAT = "dd-MM-yyyy";

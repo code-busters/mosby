@@ -122,8 +122,7 @@
                                                   class="form-control"
                                                   id="ticket-description-${ticket.id}"
                                                   name="ticket_description_${ticket.id}"
-                                                  value="${ticket.description}"
-                                                  form="edit-tickets-codes-form"></textarea>
+                                                  form="edit-tickets-codes-form">${ticket.description}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="ticket-datepicker-start-${ticket.id}">Start Date &amp; Time For
@@ -243,9 +242,8 @@
                                                   placeholder="Additional info about promo code"
                                                   class="form-control"
                                                   name="promo_code_description_${promoCode.id}"
-                                                  value="${promoCode.description}"
                                                   id="promo-code-description-${promoCode.id}"
-                                                  form="edit-tickets-codes-form"></textarea>
+                                                  form="edit-tickets-codes-form">${promoCode.description}</textarea>
                                     </div>
                                 </div>
                             </div>

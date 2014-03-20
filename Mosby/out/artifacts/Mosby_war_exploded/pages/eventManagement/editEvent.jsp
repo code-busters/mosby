@@ -163,8 +163,8 @@
 							<label for="event-description">Event Description</label>
 							<textarea rows="4" placeholder="Tell users about your event"
 								class="form-control" name="event_description"
-								value="${event.description}" id="event-description"
-								form="edit-event-form"></textarea>
+                                id="event-description"
+								form="edit-event-form">${event.description}</textarea>
 						</div>
 						<div class="form-group">
 							<label for="event-location">Address</label> <input type="text"

@@ -262,23 +262,6 @@ String.prototype.repeat = function (num) {
                 return offset
             }
         });
-        //		$('#datepicker-end').datepicker({
-        //			showOtherMonths: true,
-        //			selectOtherMonths: true,
-        //			dateFormat: "dd/mm/yy",
-        //			changeMonth: 1,
-        //			changeYear: 1,
-        //			minDate: '0d',
-        //			yearRange: 'c:+3'
-        //		}).prev('.btn').on('click', function (e) {
-        //			e && e.preventDefault();
-        //			$('#datepicker-end').focus();
-        //		});
-        //		$.extend($.datepicker, {
-        //			_checkOffset: function (inst, offset, isFixed) {
-        //				return offset
-        //			}
-        //		});
 
         $('#birthday').datepicker({
             showOtherMonths: true,
