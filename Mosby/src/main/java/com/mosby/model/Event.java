@@ -105,6 +105,45 @@ public class Event {
 		this.logo = logo;
 		this.background = background;
 	}
+	
+	public Event(int id, Organizer organizer, String name, String description,
+			EventCategory eventCategory, EventType eventType, Date startDate,
+			Date startTime, Date endDate, Date endTime, String location, String logo,
+			String background) {
+		super();
+		this.id = id;
+		this.organizer = organizer;
+		this.name = name;
+		this.description = description;
+		this.eventCategory = eventCategory;
+		this.eventType = eventType;
+		this.startDate = startDate;
+		this.startTime = startTime;
+		this.endDate = endDate;
+		this.endTime = endTime;
+		this.location = location;
+		this.logo = logo;
+		this.background = background;
+	}
+	
+	public Event( Organizer organizer, String name, String description,
+			EventCategory eventCategory, EventType eventType, Date startDate,
+			Date startTime, Date endDate, Date endTime, String location, String logo,
+			String background) {
+		super();
+		this.organizer = organizer;
+		this.name = name;
+		this.description = description;
+		this.eventCategory = eventCategory;
+		this.eventType = eventType;
+		this.startDate = startDate;
+		this.startTime = startTime;
+		this.endDate = endDate;
+		this.endTime = endTime;
+		this.location = location;
+		this.logo = logo;
+		this.background = background;
+	}
 
 
 

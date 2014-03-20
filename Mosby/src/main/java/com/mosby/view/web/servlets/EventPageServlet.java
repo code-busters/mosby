@@ -25,10 +25,8 @@ public class EventPageServlet extends HttpServlet {
             int eventId = Integer.parseInt(request.getParameter("eventId"));
             Event event = new ReadGenericObjectService<Event>((Class<Event>) new Event().getClass()).readById(eventId); 
             List <TicketInfo> ticketsInfoList = new ReadGenericObjectService<TicketInfo>((Class<TicketInfo>) new TicketInfo().getClass()).readListByField("event_ref", (Integer)eventId);
-            List <PromoCode> promoCodesList = new ReadGenericObjectService<PromoCode>((Class<PromoCode>) new PromoCode().getClass()).readListByField("event_ref", (Integer)eventId);
             request.setAttribute("event", event);
             request.setAttribute("tickets", ticketsInfoList);
-            request.setAttribute("codes", promoCodesList);
             request.getRequestDispatcher("/pages/eventPage.jsp").forward(request, response);
         } else {
             response.sendRedirect("index");

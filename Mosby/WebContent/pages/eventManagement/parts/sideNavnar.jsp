@@ -6,13 +6,13 @@
             MANAGE EVENT
         </li>
         <li>
-            <a href="<c:url value="/editEvent"/>">Edit Event</a>
+            <a href="<c:url value="/editEvent?eventId=${event.id}"/>">Edit Event</a>
         </li>
         <li>
-            <a href=""<c:url value="/editTicketsPromoCodes"/>">Edit Tickets &amp; Promo-codes</a>
+            <a href="<c:url value="/editTicketsPromoCodes?eventId=${event.id}"/>">Edit Tickets &amp; Promo-codes</a>
         </li>
         <li>
-            <a href="<c:url value="/registeredTable"/>">Registered Table</a>
+            <a href="<c:url value="/registeredTable?eventId=${event.id}"/>">Registered Table</a>
         </li>
         <li>
             <a href="#">Events</a>

@@ -22,7 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class UpdateUserService {
-	private static final String DATE_FORMAT = "dd-MM-yyyy";
+	private static final String DATE_FORMAT = "yyyy-MM-dd";
 	private static final String USER_IMAGE_PATH = "media\\images\\users";
 	private static Logger log = Logger.getLogger(UpdateUserService.class);
 

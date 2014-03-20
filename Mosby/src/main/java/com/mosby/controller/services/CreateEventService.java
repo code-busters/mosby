@@ -69,19 +69,6 @@ public class CreateEventService {
 		EventType eventType = new ReadGenericObjectService<EventType>((Class<EventType>) new EventType().getClass()).readById(Integer.parseInt(request.getParameter("event_type")));
 		
 		Date startDate = null, endDate = null, startTime = null, endTime = null;
-        SimpleDateFormat parseDate = new SimpleDateFormat("dd-MM-yyyy hh:mm");
-        
-        String startTimestamp = request.getParameter("start_date") + " " + request.getParameter("start_time");
-        String endTimestamp = request.getParameter("end_date") + " " + request.getParameter("end_time");
-
-        Timestamp start = null;
-        Timestamp end = null;
-        try {
-            start = new Timestamp(parseDate.parse(startTimestamp).getTime());
-            end = new Timestamp(parseDate.parse(endTimestamp).getTime());
-        } catch (ParseException e) {
-            log.error(e);
-        }
 
 		try {
 			startDate = new SimpleDateFormat(DATE_FORMAT).parse(request.getParameter("start_date"));
@@ -97,7 +84,7 @@ public class CreateEventService {
 
 		String location = request.getParameter("event_location");
 
-		Event event = new Event(null, name, description, eventCategory, eventType, startDate, startTime, start, endDate, endTime, end, location, eventLogo, eventBackground);
+		Event event = new Event(null, name, description, eventCategory, eventType, startDate, startTime, endDate, endTime, location, eventLogo, eventBackground);
 		System.out.println(event);
 
 		ReflectionDao<Event> eventDao = new ReflectionDao<>((Class<Event>) Event.class);
@@ -106,7 +93,7 @@ public class CreateEventService {
 		event.setId(id);
 
 		
-//Tickets builder
+//Tickets Info builder
 		ReflectionDao<TicketInfo> ticketInfoDao = new ReflectionDao<>((Class<TicketInfo>) TicketInfo.class);
 		String idTicketsArray = request.getParameter("tickets_id");
 		List<String> idTicketsList = new ArrayList<String>(Arrays.asList(idTicketsArray.split("_")));

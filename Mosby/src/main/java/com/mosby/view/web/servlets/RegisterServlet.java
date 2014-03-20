@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import main.java.com.mosby.controller.services.RegisterTicketsService;
+import main.java.com.mosby.controller.services.TicketsService;
 
 
 @WebServlet("/register")
@@ -21,10 +21,7 @@ public class RegisterServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		RegisterTicketsService registerTicketsService = new RegisterTicketsService();
-		registerTicketsService.register(request);
-		
+		new TicketsService().register(request);
         response.sendRedirect("index");
 	}
 

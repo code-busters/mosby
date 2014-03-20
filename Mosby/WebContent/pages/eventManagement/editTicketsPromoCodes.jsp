@@ -56,7 +56,8 @@
         <p>${error}</p>
     </c:forEach>
 </div>
-<form action="editTicketsCodes" method="post" id="edit-tickets-codes-form">
+<form action="editTicketsPromoCodes" method="post" id="edit-tickets-codes-form">
+<input type="hidden" name="eventId" value="${event.id}" />
 <h5>Tickets</h5>
 
 <div class="form-group">
@@ -69,7 +70,7 @@
         </div>
         <div id="tickets-body">
             <input class="hide" type="text" value="" name="tickets_id"/>
-            <c:forEach items="${tickets}" var="ticket">
+            <c:forEach items="${ticketsInfo}" var="ticket">
                 <div id="${ticket.id}" class="row">
                     <div class="col-md-6 col-sm-6">
                         <label class="visible-xs" for="event-ticket-name-${ticket.id}">Ticket

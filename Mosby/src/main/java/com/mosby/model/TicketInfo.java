@@ -50,7 +50,6 @@ public class TicketInfo {
 	@Column(name = "end_time")
 	private Date endTime;
 
-
 	@EndFuture
 	@NotNull
 	private Timestamp endDateTime;
@@ -82,6 +81,21 @@ public class TicketInfo {
 			String description, int maxNumber, int price, Date startDate,
 			Date startTime, Date endDate, Date endTime) {
 		super();
+		this.name = name;
+		this.event = event;
+		this.type = type;
+		this.description = description;
+		this.maxNumber = maxNumber;
+		this.price = price;
+		this.startDate = startDate;
+		this.startTime = startTime;
+		this.endDate = endDate;
+		this.endTime = endTime;
+	}
+	
+	public TicketInfo(int id, String name, Event event, String type, String description, int maxNumber, int price, Date startDate, Date startTime, Date endDate, Date endTime) {
+		super();
+		this.id = id;
 		this.name = name;
 		this.event = event;
 		this.type = type;
@@ -157,10 +171,6 @@ public class TicketInfo {
 	public void setEndDateTime(Timestamp endDateTime) {
 		this.endDateTime = endDateTime;
 	}
-
-
-
-
 	
 	public int getId() {
 		return id;
