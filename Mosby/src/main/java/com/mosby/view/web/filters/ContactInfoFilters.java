@@ -27,7 +27,7 @@ import main.java.com.mosby.utils.ValidatorUtils;
 @WebFilter("/ContactInfoFilters")
 public class ContactInfoFilters implements Filter {
 
-	private static final String DATE_FORMAT = "dd/MM/yyyy";
+	private static final String DATE_FORMAT = "yyyy-MM-dd";
 	private static final String USER_IMAGE_PATH = "media\\images\\users";
 
 	public ContactInfoFilters() {

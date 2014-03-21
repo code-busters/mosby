@@ -67,11 +67,22 @@ public class QueryStatements<T> {
 		return query;
 	}
 
+//	public String createDeleteQuery() {
+//		String query = null;
+//
+//		String tableName = reflectionTransformer.fromFieldToColumnInDB(type
+//				.getSimpleName()) + "s";
+//
+//		query = StringUtils.concat("DELETE FROM ", tableName, " WHERE id=?");
+//
+//		System.out.println(query);
+//
+//		return query;
+//	}
 	public String createDeleteQuery() {
 		String query = null;
 
-		String tableName = reflectionTransformer.fromFieldToColumnInDB(type
-				.getSimpleName()) + "s";
+		String tableName = type.getAnnotation(Table.class).name();
 
 		query = StringUtils.concat("DELETE FROM ", tableName, " WHERE id=?");
 
@@ -79,6 +90,8 @@ public class QueryStatements<T> {
 
 		return query;
 	}
+	
+	
 
 	private String getUpdateColumns() {
 		String tableColumns = null;

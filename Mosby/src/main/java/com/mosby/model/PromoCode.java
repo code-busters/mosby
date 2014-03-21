@@ -9,7 +9,7 @@ public class PromoCode {
 	private int id;
 	
 	@Key(name="event_ref")	
-	private Event event = null;
+	private Event event;
 	
 	@Column(name="code")	
 	private String code;

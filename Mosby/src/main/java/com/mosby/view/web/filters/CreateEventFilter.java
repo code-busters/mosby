@@ -53,7 +53,7 @@ public class CreateEventFilter implements Filter {
 			EventCategory eventCategory = null;
 			EventType eventType = null;
 			SimpleDateFormat parseDate = new SimpleDateFormat(
-					"dd/MM/yyyy hh:mm");
+					"yyyy-MM-dd hh:mm");
 			if (request.getMethod().equals("POST")) {
 				String startTimestamp = request.getParameter("start_date")
 						+ " " + request.getParameter("start_time");
