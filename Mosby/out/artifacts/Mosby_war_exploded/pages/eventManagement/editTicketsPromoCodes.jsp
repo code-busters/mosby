@@ -56,7 +56,8 @@
         <p>${error}</p>
     </c:forEach>
 </div>
-<form action="editTicketsCodes" method="post" id="edit-tickets-codes-form">
+<form action="editTicketsPromoCodes" method="post" id="edit-tickets-codes-form">
+<input type="hidden" name="eventId" value="${event.id}"/>
 <h5>Tickets</h5>
 
 <div class="form-group">
@@ -69,7 +70,7 @@
         </div>
         <div id="tickets-body">
             <input class="hide" type="text" value="" name="tickets_id"/>
-            <c:forEach items="${tickets}" var="ticket">
+            <c:forEach items="${ticketsInfo}" var="ticket">
                 <div id="${ticket.id}" class="row">
                     <div class="col-md-6 col-sm-6">
                         <label class="visible-xs" for="event-ticket-name-${ticket.id}">Ticket
@@ -96,8 +97,8 @@
                     </div>
                     <div class="col-md-2 col-sm-2 actions text-center">
                         <label class="visible-xs text-left">Ticket name</label>
-                        <a href="#" data-toggle="modal" data-target="#my-modal-${ticket.id}">
-                            <span class="fui-gear"></span>
+                        <a id="open-falldown" href="#fakelink">
+                            <span class="fui-new"></span>
                         </a>
                         <a class="delete-nearby-row" href="#">
                             <span class="fui-trash"></span>
@@ -114,50 +115,52 @@
                                         Settings</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <div class="form-group">
-                                        <label for="ticket-description-${ticket.id}">Ticket
-                                            Description</label>
-                                        <textarea rows="3"
-                                                  placeholder="Additional info about ticket"
-                                                  class="form-control"
-                                                  id="ticket-description-${ticket.id}"
-                                                  name="ticket_description_${ticket.id}"
-                                                  value="${ticket.description}"
-                                                  form="edit-tickets-codes-form"></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="ticket-datepicker-start-${ticket.id}">Start Date &amp; Time For
-                                            Ticket</label>
-                                        <input type="date" class="form-control" placeholder="Start date for ticket"
-                                               name="ticket_start_date_${ticket.id}"
-                                               value="${ticket.startDate}" id="ticket-datepicker-start-${ticket.id}">
-                                        <input type="time" class="form-control time" value="${ticket.startTime}"
-                                               name="ticket_start_time_${ticket.id}">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="ticket-datepicker-end-${ticket.id}">End Date &amp; Time For
-                                            Ticket</label>
-                                        <input type="date" class="form-control" placeholder="End date for ticket"
-                                               name="ticket_end_date_${ticket.id}"
-                                               value="${ticket.endDate}" id="ticket-datepicker-end-${ticket.id}">
-                                        <input type="time" class="form-control time" value="${ticket.endTime}"
-                                               name="ticket_end_time_${ticket.id}">
-                                    </div>
-                                    <div class="form-group">
-                                        <span>Tickets Allowed Per Order</span>
-                                        <label class="additional"
-                                               for="ticket-min-per-order-${ticket.id}">Min</label>
-                                        <input type="number" class="form-control" placeholder="1"
-                                               value="1" name="ticket_min_per_order_${ticket.id}" value=""
-                                               id="ticket-min-per-order-${ticket.id}" min="1"/>
-                                        <label class="additional"
-                                               for="ticket-max-per-order-${ticket.id}">Max</label>
-                                        <input type="number" class="form-control" placeholder="1"
-                                               name="ticket_max_per_order_${ticket.id}" value=""
-                                               id="ticket-max-per-order-${ticket.id}" min="1"/>
-                                    </div>
+
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div id="falldown-${ticket.id}" class="falldown col-md-12">
+                        <div class="form-group">
+                            <label for="ticket-description-${ticket.id}">Ticket
+                                Description</label>
+                            <textarea rows="3"
+                                      placeholder="Additional info about ticket"
+                                      class="form-control"
+                                      id="ticket-description-${ticket.id}"
+                                      name="ticket_description_${ticket.id}"
+                                      form="edit-tickets-codes-form">${ticket.description}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="ticket-datepicker-start-${ticket.id}">Start Date &amp; Time For
+                                Ticket</label>
+                            <input type="date" class="form-control" placeholder="Start date for ticket"
+                                   name="ticket_start_date_${ticket.id}"
+                                   value="${ticket.startDate}" id="ticket-datepicker-start-${ticket.id}">
+                            <input type="time" class="form-control time" value="${ticket.startTime}"
+                                   name="ticket_start_time_${ticket.id}">
+                        </div>
+                        <div class="form-group">
+                            <label for="ticket-datepicker-end-${ticket.id}">End Date &amp; Time For
+                                Ticket</label>
+                            <input type="date" class="form-control" placeholder="End date for ticket"
+                                   name="ticket_end_date_${ticket.id}"
+                                   value="${ticket.endDate}" id="ticket-datepicker-end-${ticket.id}">
+                            <input type="time" class="form-control time" value="${ticket.endTime}"
+                                   name="ticket_end_time_${ticket.id}">
+                        </div>
+                        <div class="form-group">
+                            <span>Tickets Allowed Per Order</span>
+                            <label class="additional"
+                                   for="ticket-min-per-order-${ticket.id}">Min</label>
+                            <input type="number" class="form-control" placeholder="1"
+                                   value="1" name="ticket_min_per_order_${ticket.id}" value=""
+                                   id="ticket-min-per-order-${ticket.id}" min="1"/>
+                            <label class="additional"
+                                   for="ticket-max-per-order-${ticket.id}">Max</label>
+                            <input type="number" class="form-control" placeholder="1"
+                                   name="ticket_max_per_order_${ticket.id}" value=""
+                                   id="ticket-max-per-order-${ticket.id}" min="1"/>
                         </div>
                     </div>
                 </div>
@@ -217,38 +220,24 @@
                     </div>
                     <div class="col-md-2 col-sm-2 actions text-center">
                         <label class="visible-xs text-left">Actions</label>
-                        <a href="#" data-toggle="modal" data-target="#my-promo-modal-${promoCode.id}">
-                            <span class="fui-gear"></span>
+                        <a id="open-falldown" href="#fakelink">
+                            <span class="fui-new"></span>
                         </a>
                         <a class="delete-nearby-row" href="#">
                             <span class="fui-trash"></span>
                         </a>
                     </div>
-                    <div class="modal fade" id="my-promo-modal-${promoCode.id}" tabindex="-1" role="dialog"
-                         aria-labelledby="my-promo-modal-label-${promoCode.id}" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal"
-                                            aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title" id="my-promo-modal-label-${promoCode.id}">Promo
-                                        Code
-                                        Settings</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label for="promo-code-description-${promoCode.id}">Promo Code
-                                            Description</label>
-                                        <textarea rows="3"
-                                                  placeholder="Additional info about promo code"
-                                                  class="form-control"
-                                                  name="promo_code_description_${promoCode.id}"
-                                                  value="${promoCode.description}"
-                                                  id="promo-code-description-${promoCode.id}"
-                                                  form="edit-tickets-codes-form"></textarea>
-                                    </div>
-                                </div>
-                            </div>
+                    <div id="falldown-${promoCode.id}" class="falldown col-md-12">
+
+                        <div class="form-group">
+                            <label for="promo-code-description-${promoCode.id}">Promo Code
+                                Description</label>
+                            <textarea rows="3"
+                                      placeholder="Additional info about promo code"
+                                      class="form-control"
+                                      name="promo_code_description_${promoCode.id}"
+                                      id="promo-code-description-${promoCode.id}"
+                                      form="edit-tickets-codes-form">${promoCode.description}</textarea>
                         </div>
                     </div>
                 </div>

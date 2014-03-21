@@ -23,90 +23,123 @@ public class Organizer {
 	@Column(name = "about")
 	private String about;
 
-	@Column(name = "location")
-	private String location;
+    @Column(name = "site")
+    private String site;
+
+    @Column(name = "google_plus")
+    private String googlePlus;
+
+    @Column(name = "facebook")
+    private String facebook;
+
+    @Column(name = "twitter")
+    private String twitter;
 	
-	@Column(name = "logo_image")
-	private String logoImage;
+	@Column(name = "logo")
+	private String logo;
 
 	public Organizer() {
 	}
 
-	public Organizer(int id, User user, String name, String email,
-			String phone, String about, String location, String logoImage) {
-		super();
-		this.id = id;
-		this.user = user;
-		this.name = name;
-		this.email = email;
-		this.phone = phone;
-		this.about = about;
-		this.location = location;
-		this.logoImage = logoImage;
-	}
+    public Organizer(int id, User user, String name, String email, String phone, String about, String site, String googlePlus, String facebook, String twitter, String logo) {
+        this.id = id;
+        this.user = user;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.about = about;
+        this.site = site;
+        this.googlePlus = googlePlus;
+        this.facebook = facebook;
+        this.twitter = twitter;
+        this.logo = logo;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public User getUser() {
-		return user;
-	}
+    public User getUser() {
+        return user;
+    }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+    public void setUser(User user) {
+        this.user = user;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public String getPhone() {
-		return phone;
-	}
+    public String getPhone() {
+        return phone;
+    }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
-	public String getAbout() {
-		return about;
-	}
+    public String getAbout() {
+        return about;
+    }
 
-	public void setAbout(String about) {
-		this.about = about;
-	}
+    public void setAbout(String about) {
+        this.about = about;
+    }
 
-	public String getLocation() {
-		return location;
-	}
+    public String getSite() {
+        return site;
+    }
 
-	public void setLocation(String location) {
-		this.location = location;
-	}
+    public void setSite(String site) {
+        this.site = site;
+    }
 
-	public String getLogoImage() {
-		return logoImage;
-	}
+    public String getGooglePlus() {
+        return googlePlus;
+    }
 
-	public void setLogoImage(String logoImage) {
-		this.logoImage = logoImage;
-	}
+    public void setGooglePlus(String googlePlus) {
+        this.googlePlus = googlePlus;
+    }
 
+    public String getFacebook() {
+        return facebook;
+    }
+
+    public void setFacebook(String facebook) {
+        this.facebook = facebook;
+    }
+
+    public String getTwitter() {
+        return twitter;
+    }
+
+    public void setTwitter(String twitter) {
+        this.twitter = twitter;
+    }
+
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
 }

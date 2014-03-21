@@ -6,8 +6,8 @@
     <meta charset="utf-8">
     <title>Mosby - event management</title>
     <link rel="shortcut icon" href="media/images/favicon.ico">
-    <link rel="icon" type="image/png" href="media/images/favicon.png" />
-    <meta name="description" content="Mosby - make it simple. New event management system" />
+    <link rel="icon" type="image/png" href="media/images/favicon.png"/>
+    <meta name="description" content="Mosby - make it simple. New event management system"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
@@ -37,7 +37,8 @@
     </div>
 
     <div class="row" style="background: #000">
-        <div id="background-block" class="flow-img" style="background-image: url(media/images/bg_mask.png), url(media/images/default/holi-feast.jpg)"></div>
+        <div id="background-block" class="flow-img"
+             style="background-image: url(media/images/bg_mask.png), url(media/images/default/holi-feast.jpg)"></div>
     </div>
 
     <div id="wrapper" class="row user-profile">
@@ -54,40 +55,106 @@
             <!-- Keep all page content within the page-content inset div! -->
             <div class="page-content inset">
                 <div class="row">
-                    <div id="organizers">
-                        <div class="row organizers-header hidden-xs">
-                            <div class="col-md-6 col-sm-6">Organizer</div>
-                            <div class="col-md-2 col-sm-2">Email</div>
-                            <div class="col-md-2 col-sm-2 text-center">Actions</div>
-                        </div>
-                        <div id="organizers-body">
-                            <c:forEach items="${organizers}" var="organizer">
-                            <div id="${organizer.id}" class="row">
-                                <div class="col-md-6 col-sm-6">
-                                    <span class="as-label visible-xs">Organizer</span>
-                                    <a href="#">${organizer.name}</a>
-                                </div>
-                                <div class="col-md-2 col-sm-2">
-                                    <span class="as-label visible-xs">Email</span>
-                                    <p>${organizer.email}</p>
-                                </div>
-                                <div class="col-md-2 col-sm-2 actions text-center">
-                                    <label class="visible-xs text-left">Actions</label>
-                                    <a href="#">
-                                        <span class="fui-new"></span>
-                                    </a>
-                                    <a href="#">
-                                        <span class="fui-trash"></span>
-                                    </a>
-                                </div>
+                    <form action="updateOrganizer" enctype="multipart/form-data" method="post" id="organizers-form">
+                        <div id="organizers">
+                            <div class="row organizers-header hidden-xs">
+                                <div class="col-md-6 col-sm-6">Organizer</div>
+                                <div class="col-md-2 col-sm-2">Email</div>
+                                <div class="col-md-2 col-sm-2 text-center">Actions</div>
                             </div>
-                            </c:forEach>
+                            <div id="organizers-body">
+                                <c:forEach items="${organizers}" var="organizer">
+                                    <div id="${organizer.id}" class="row">
+                                        <div class="col-md-6 col-sm-6">
+                                            <span class="as-label visible-xs">Organizer</span>
+                                            <a href="#">${organizer.name}</a>
+                                        </div>
+                                        <div class="col-md-2 col-sm-2">
+                                            <span class="as-label visible-xs">Email</span>
+
+                                            <p>${organizer.email}</p>
+                                        </div>
+                                        <div class="col-md-2 col-sm-2 actions text-center">
+                                            <label class="visible-xs text-left">Actions</label>
+                                            <a id="open-falldown" href="#fakelink">
+                                                <span class="fui-new"></span>
+                                            </a>
+                                            <a href="#">
+                                                <span class="fui-trash"></span>
+                                            </a>
+                                        </div>
+                                        <div id="falldown-${organizer.id}" class="falldown col-md-12">
+                                            <div class="form-group">
+                                                <label for="open-logo-${organizer.id}">Logo</label>
+                                                <input type="file" class="hide" name="logo_${organizer.id}"
+                                                       id="open-logo-${organizer.id}" accept="image/*"/>
+                                                <label for="open-logo-${organizer.id}">
+                                                    <span id="backup-img" class="hide">media/images/organizers/${organizer.logo}</span>
+                                                    <img class="logo" src="media/images/organizers/${organizer.logo}">
+                                                </label>
+                                                <span class="change-img-name"></span>
+                                                <span class="additional-input-info">Click on image to browse your logo</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="name-${organizer.id}">Name</label>
+                                                <input class="form-control" placeholder="Name"
+                                                       name="name_${organizer.id}" id="name-${organizer.id}" value="${organizer.name}" required/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email-${organizer.id}">Contact Email</label>
+                                                <input class="form-control" type="email" placeholder="Contact email"
+                                                       name="email_${organizer.id}" pattern="[^ @]*@[^ @]*\.[^ @]{2,}"
+                                                       id="email-${organizer.id}" value="${organizer.email}" required/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="phone-${organizer.id}">Phone</label>
+                                                <input class="form-control typeahead" placeholder="Your phone"
+                                                       name="phone_${organizer.id}" id="phone-${organizer.id}" value="${organizer.phone}"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="about-${organizer.id}">About</label>
+                                                <textarea rows="4" placeholder="Tell about organization"
+                                                          class="form-control" name="about_${organizer.id}"
+                                                          id="about-${organizer.id}" form="organizers-form">${organizer.about}</textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="website-${organizer.id}">Website</label>
+                                                <input type="url" class="form-control"
+                                                       placeholder="Enter organization's website or blog"
+                                                       name="website_${organizer.id}" value="${organizer.site}" id="website-${organizer.id}"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="google-plus-${organizer.id}">Google+</label>
+                                                <input type="url" class="form-control" placeholder="Google+"
+                                                       name="google_plus_${organizer.id}"
+                                                       value="${organizer.googlePlus}" id="google-plus-${organizer.id}"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="facebook-${organizer.id}">Facebook</label>
+                                                <input type="url" class="form-control" placeholder="Facebook"
+                                                       name="facebook_${organizer.id}" value="${organizer.facebook}" id="facebook-${organizer.id}"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="twitter-${organizer.id}">Twitter</label>
+                                                <input type="url" class="form-control" placeholder="Twitter"
+                                                       name="twitter_${organizer.id}" value="${organizer.twitter}" id="twitter-${organizer.id}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </c:forEach>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-2 col-sm-3 add-button">
-                        <a id="free-ticket" href="<c:url value="/createOrganizer"/>" class="btn btn-block btn-lg btn-primary">
-                            <span class="fui-plus"></span>Organizer</a>
-                    </div>
+                        <div class="col-md-2 col-sm-3 add-button">
+                            <a id="free-ticket" href="<c:url value="/createOrganizer"/>"
+                               class="btn btn-block btn-lg btn-primary">
+                                <span class="fui-plus"></span>Organizer</a>
+                        </div>
+                        <div id="save-button" class="col-md-2 col-sm-3 pull-right add-button hide">
+                            <button class="btn btn-info btn-lg btn-block" name="submit" type="submit" value="Submit">
+                                Save
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
