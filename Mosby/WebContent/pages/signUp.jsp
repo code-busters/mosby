@@ -85,16 +85,22 @@
         </div>
         <div class="other-sign-up col-md-4">
             <h4>Sign up with:</h4>
-            <div class="col-md-10">
-                <a class="btn btn-block btn-social btn-facebook" href="${facebookURL}">
-                    <i class="fa fa-facebook"></i>Sign in with Facebook
-                </a>
-                <a class="btn btn-block btn-social btn-google-plus">
-                    <i class="fa fa-google-plus"></i>Sign in with Google
-                </a>
-                <a class="btn btn-block btn-social btn-twitter">
-                    <i class="fa fa-twitter"></i>Sign in with Twitter
-                </a>
+            <div class="row">
+                <div class="col-md-10 col-sm-4">
+                    <a class="btn btn-block btn-social btn-facebook " href="${facebookURL}">
+                        <i class="fa fa-facebook"></i>Sign in with Facebook
+                    </a>
+                </div>
+                <div class="col-md-10 col-sm-4">
+                    <a class="btn btn-block btn-social btn-google-plus">
+                        <i class="fa fa-google-plus"></i>Sign in with Google
+                    </a>
+                </div>
+                <div class="col-md-10 col-sm-4">
+                    <a class="btn btn-block btn-social btn-twitter">
+                        <i class="fa fa-twitter"></i>Sign in with Twitter
+                    </a>
+                </div>
             </div>
         </div>
     </div>

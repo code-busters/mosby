@@ -1,7 +1,7 @@
 body {
     background: rgb(244, 244, 244);
     color: #212121;
-	transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
 }
 /*ADDITIONAL FEATURES*/
 .flow-img {
@@ -369,8 +369,8 @@ footer {
 }
 .event .event-logo {
     max-height: 20em;
-    margin-top: 0.5em;
-    margin-bottom: 1em;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
 }
 #googleMap {
     margin-top: 2em;
@@ -448,6 +448,9 @@ footer {
     -o-transition: border .25s linear, color .25s linear;
     transition: border .25s linear, color .25s linear;
     -webkit-backface-visibility: hidden;
+}
+.ui-datepicker .ui-datepicker-title {
+    height: 44px;
 }
 .time {
     width: 8em;
@@ -541,8 +544,8 @@ footer {
     font-size: 0.9em;
 }
 [id^="ticket-datepicker"] {
-	width: 10em;
-	display: inline-block;
+    width: 10em;
+    display: inline-block;
 }
 
 
@@ -556,7 +559,9 @@ footer {
     -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5);
     box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5);
 }
-
+.btn-social {
+    margin-bottom: 0.5em;
+}
 /*LOGIN*/
 .login .btn-social-icon {
     margin: 0 0.3em;
@@ -569,8 +574,8 @@ footer {
 
 /*--CONTACT INFO*/
 .user-profile-img {
-	height: 120px;
-	width: 120px;
+    height: 120px;
+    width: 120px;
     cursor: pointer;
 }
 .change-img {
@@ -601,22 +606,22 @@ footer {
 
 /*--CREATE ORGANIZATION*/
 .organizer-logo {
-	max-height: 120px;
+    max-height: 120px;
 }
 
 /*--MY ORGANIZERS*/
 .add-button {
-	margin-top: 2em;
+    margin-top: 2em;
 }
 .falldown {
-	margin-top: 0.5em;
+    margin-top: 0.5em;
     margin-bottom: -0.6em;
-	padding: 1em;
-	display: none;
-	background: #fafafa;
-	-webkit-box-shadow: inset 0px 1px 2px -1px rgba(0,0,0,0.5);
-	-moz-box-shadow: inset 0px 1px 2px -1px rgba(0,0,0,0.5);
-	box-shadow: inset 0px 1px 2px -1px rgba(0,0,0,0.5);
+    padding: 1em;
+    display: none;
+    background: #fafafa;
+    -webkit-box-shadow: inset 0px 1px 2px -1px rgba(0,0,0,0.5);
+    -moz-box-shadow: inset 0px 1px 2px -1px rgba(0,0,0,0.5);
+    box-shadow: inset 0px 1px 2px -1px rgba(0,0,0,0.5);
 }
 
 /*REGISTERED TABLE*/
@@ -629,10 +634,73 @@ footer {
 }
 /*EDIT TICKETS & PROMO CODES*/
 #edit-tickets-codes-form button[type=submit] {
-	margin-top: 3em;	
+    margin-top: 3em;
 }
 
-
+/*ORGANIZER PROFILE*/
+.profile-left {
+    width: 150px;
+    float: left;
+}
+.profile-img {
+    max-height: 140px;
+    max-width: 140px;
+}
+.profile-left ul {
+    margin: 0.8em 0.5em;
+    padding: 0;
+    list-style: none;
+    font-size: 0.8em;
+}
+.profile-left ul li span {
+    margin-right: 0.3em;
+    font-size: 0.8em;
+}
+.profile-details {
+    margin-left: 170px;
+}
+.profile-details h2 {
+    margin: 0 0 0.4em;
+    font-size: 1.8em;
+}
+.profile-details .dl-horizontal {
+    font-size: 0.9em;
+}
+.profile-details .dl-horizontal dt {
+    width: 50px;
+    clear: none;
+}
+.profile-details .dl-horizontal dd {
+    margin-left: 65px;
+}
+.organizer-events {
+    margin-top: 5em;
+}
+.organizer-events h4 {
+    font-size: 1.5em;
+}
+.organizer-events .event-image {
+    height: 100px;
+    width: 100px;
+    position: absolute;
+}
+.organizer-events .event-detail {
+    margin-left: 120px;
+}
+.organizer-events ul {
+    margin-left: -2.5em;
+    font-size: 0.8em;
+}
+.organizer-events p {
+    margin-top: -0.6em;
+    font-size: 0.85em;
+    line-height: 1.5;
+}
+.organizer-events .read-more {
+    margin-top: -1em;
+    font-size: 0.85em;
+    white-space:nowrap
+}
 
 /*RESPONSIVE*/
 @media (min-width: 768px) {
@@ -644,9 +712,12 @@ footer {
         background-color: rgba(255, 255, 255, 1);
         color: #212121;
     }
-	.add-promo-code,
+    .add-promo-code,
     .add-ticket {
         max-width: 200px;
+    }
+    .btn-social {
+        max-width: 220px;
     }
 }
 @media (max-width: 767px) {
@@ -728,5 +799,26 @@ footer {
     }
     .add-ticket {
         margin-bottom: 0.8em;
+    }
+    .profile-left {
+        float: none;
+    }
+    .profile-img  {
+        float: left;
+        max-width: 120px;
+        max-height: 120px;
+    }
+    .profile-left ul {
+        width: 100%;
+        margin: -5px 0 0 140px;
+    }
+    .profile-details {
+        margin: 2.5em 0 0;
+    }
+    .profile-details h2 {
+        margin: 0 0 0.4em;
+    }
+    .profile-details .dl-horizontal dd {
+        margin-top: -27px;
     }
 }

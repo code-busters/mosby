@@ -206,7 +206,7 @@
 								<span class="first-icon fui-radio-unchecked"></span>
 								<span class="second-icon fui-radio-checked"></span>
 							</span>
-                    <input type="radio" name="privacy_event" id="public-event" value="public" data-toggle="radio">
+                    <input type="radio" name="privacy_event" id="public-event" value="0" data-toggle="radio">
                     Public event
                     <span class="additional">list this event on Eventbrite and search engines</span>
                 </label>
@@ -215,7 +215,7 @@
 								<span class="first-icon fui-radio-unchecked"></span>
 								<span class="second-icon fui-radio-checked"></span>
 							</span>
-                    <input type="radio" name="privacy_event" id="private-event" value="private" data-toggle="radio">
+                    <input type="radio" name="privacy_event" id="private-event" value="1" data-toggle="radio">
                     Private event
                     <span class="additional">do not list this event publicly</span>
                 </label>

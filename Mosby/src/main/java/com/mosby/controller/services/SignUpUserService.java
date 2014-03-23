@@ -1,11 +1,11 @@
 package main.java.com.mosby.controller.services;
 
-import java.security.SecureRandom;
-
 import main.java.com.mosby.controller.dao.ReflectionDao;
 import main.java.com.mosby.model.User;
 import main.java.com.mosby.utils.EncryptionUtils;
 import main.java.com.mosby.utils.MailUtils;
+
+import java.security.SecureRandom;
 
 public class SignUpUserService {
 
@@ -14,8 +14,7 @@ public class SignUpUserService {
 			String password) {
 
 		User user = new User();
-		;
-		ReflectionDao<User> usersDao = new ReflectionDao<>(
+        ReflectionDao<User> usersDao = new ReflectionDao<>(
 				(Class<User>) user.getClass());
 
 		if (!usersDao.selectObjects("email", email).isEmpty()) {
