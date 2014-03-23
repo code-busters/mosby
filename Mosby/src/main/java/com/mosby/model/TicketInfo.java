@@ -5,6 +5,7 @@ import main.java.com.mosby.model.annotations.dao.Key;
 import main.java.com.mosby.model.annotations.dao.Table;
 import main.java.com.mosby.model.annotations.validate.EndFuture;
 import main.java.com.mosby.model.annotations.validate.NotNull;
+import main.java.com.mosby.model.annotations.validate.Size;
 import main.java.com.mosby.model.annotations.validate.StartFuture;
 
 import java.sql.Timestamp;
@@ -16,15 +17,20 @@ public class TicketInfo {
 	@Column(name="id")
 	private int id;
 	
+	@NotNull
 	@Column(name="name")
 	private String name;
 
+	@NotNull
 	@Key(name = "event_ref")
 	private Event event;
 	
+	@NotNull
+	@Size(min=0, max=45)
 	@Column(name="type")
 	private String type;
 	
+	@Size(min=0, max=60)
 	@Column(name="description")
 	private String description;
 	

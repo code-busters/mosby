@@ -1,6 +1,8 @@
 package main.java.com.mosby.model;
 
 import main.java.com.mosby.model.annotations.dao.*;
+import main.java.com.mosby.model.annotations.validate.NotNull;
+import main.java.com.mosby.model.annotations.validate.Size;
 
 @Table(name="event_categories")
 public class EventCategory {
@@ -8,6 +10,8 @@ public class EventCategory {
 	@Column(name="id")
 	private int id;
 	
+	@NotNull
+	@Size(min=0, max=45)
 	@Column(name="category")	
 	private String category;
 

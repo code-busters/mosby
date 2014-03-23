@@ -88,7 +88,7 @@ public class UpdateEventService {
 		String location = request.getParameter("event_location");
 
 		
-		Event updatedEvent = new Event(eventId, null, name, description, eventCategory, eventType, startDate, startTime, endDate, endTime, location, eventLogo, eventBackground);
+		Event updatedEvent = new Event(eventId, null, name, description, eventCategory, eventType, startDate, startTime, endDate, endTime, location, eventLogo, eventBackground, false);
 		
 		ReflectionDao<Event> eventDao = new ReflectionDao<>((Class<Event>) Event.class);
 		eventDao.updateObjects(updatedEvent);

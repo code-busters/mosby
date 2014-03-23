@@ -1,6 +1,7 @@
 package main.java.com.mosby.model;
 
 import main.java.com.mosby.model.annotations.dao.*;
+import main.java.com.mosby.model.annotations.validate.Size;
 
 @Table(name = "organizers")
 public class Organizer {
@@ -9,32 +10,41 @@ public class Organizer {
 	private int id;
 	
 	@Key(name = "user_ref")
-	private User user = null;
+	private User user;
 	
+	@Size(min=0, max=150)
 	@Column(name = "name")
 	private String name;
 
+	@Size(min=0, max=50)
 	@Column(name = "email")
 	private String email;
 	
+	@Size(min=0, max=18)
 	@Column(name = "phone")
 	private String phone;
 	
+	@Size(min=0, max=500)
 	@Column(name = "about")
 	private String about;
 
+	@Size(min=0, max=100)
     @Column(name = "site")
     private String site;
 
+    @Size(min=0, max=100)
     @Column(name = "google_plus")
     private String googlePlus;
 
+    @Size(min=0, max=100)
     @Column(name = "facebook")
     private String facebook;
 
+    @Size(min=0, max=100)
     @Column(name = "twitter")
     private String twitter;
 	
+    @Size(min=0, max=100)
 	@Column(name = "logo")
 	private String logo;
 

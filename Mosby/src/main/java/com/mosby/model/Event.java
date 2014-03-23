@@ -15,6 +15,8 @@ public class Event {
 	@Key(name = "organizer_ref")
 	private Organizer organizer;
 
+	@NotNull
+	@Size(min=0, max=40)
 	@Column(name = "name")
 	private String name;
 
@@ -49,67 +51,28 @@ public class Event {
 	@NotNull
 	private Timestamp endDateTime;
 
+	@Size(min=0, max=150)
 	@Column(name = "location")
 	private String location;
 
+	@Size(min=0, max=100)
 	@Column(name = "logo")
 	private String logo;
 
+	@Size(min=0, max=100)
 	@Column(name = "background")
 	private String background;
+	
+	@Column(name = "privacy")
+	private boolean privacy;
 
 	public Event() {
-	}
-
-	public Event(Organizer organizer, String name, String description,
-			EventCategory eventCategory, EventType eventType, Date startDate,
-			Date startTime, Timestamp startDateTime, Date endDate,
-			Date endTime, Timestamp endDateTime, String location, String logo,
-			String background) {
-		super();
-		this.organizer = organizer;
-		this.name = name;
-		this.description = description;
-		this.eventCategory = eventCategory;
-		this.eventType = eventType;
-		this.startDate = startDate;
-		this.startTime = startTime;
-		this.startDateTime = startDateTime;
-		this.endDate = endDate;
-		this.endTime = endTime;
-		this.endDateTime = endDateTime;
-		this.location = location;
-		this.logo = logo;
-		this.background = background;
-	}
-
-	public Event(int id, Organizer organizer, String name, String description,
-			EventCategory eventCategory, EventType eventType, Date startDate,
-			Date startTime, Timestamp startDateTime, Date endDate,
-			Date endTime, Timestamp endDateTime, String location, String logo,
-			String background) {
-		super();
-		this.id = id;
-		this.organizer = organizer;
-		this.name = name;
-		this.description = description;
-		this.eventCategory = eventCategory;
-		this.eventType = eventType;
-		this.startDate = startDate;
-		this.startTime = startTime;
-		this.startDateTime = startDateTime;
-		this.endDate = endDate;
-		this.endTime = endTime;
-		this.endDateTime = endDateTime;
-		this.location = location;
-		this.logo = logo;
-		this.background = background;
 	}
 	
 	public Event(int id, Organizer organizer, String name, String description,
 			EventCategory eventCategory, EventType eventType, Date startDate,
 			Date startTime, Date endDate, Date endTime, String location, String logo,
-			String background) {
+			String background, boolean privacy) {
 		super();
 		this.id = id;
 		this.organizer = organizer;
@@ -124,12 +87,13 @@ public class Event {
 		this.location = location;
 		this.logo = logo;
 		this.background = background;
+		this.privacy=privacy;
 	}
 	
 	public Event( Organizer organizer, String name, String description,
 			EventCategory eventCategory, EventType eventType, Date startDate,
 			Date startTime, Date endDate, Date endTime, String location, String logo,
-			String background) {
+			String background, boolean privacy) {
 		super();
 		this.organizer = organizer;
 		this.name = name;
@@ -143,12 +107,14 @@ public class Event {
 		this.location = location;
 		this.logo = logo;
 		this.background = background;
+		this.privacy=privacy;
 	}
 
 
 
-	public Event(Timestamp startDateTime, Timestamp endDateTime, EventCategory eventCategory, EventType eventType) {
+	public Event(String name, Timestamp startDateTime, Timestamp endDateTime, EventCategory eventCategory, EventType eventType) {
 		super();
+		this.name=name;
 		this.startDateTime = startDateTime;
 		this.endDateTime = endDateTime;
 		this.eventCategory = eventCategory;
@@ -276,6 +242,14 @@ public class Event {
 	}
 
 	
+
+	public boolean isPrivacy() {
+		return privacy;
+	}
+
+	public void setPrivacy(boolean privacy) {
+		this.privacy = privacy;
+	}
 
 	@Override
 	public String toString() {

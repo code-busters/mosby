@@ -44,6 +44,7 @@ public class MailUtils {
 	    props.put("mail.port", PORT);
 	    props.put("mail.smtp.starttls.enable", "true");
 	    props.put("mail.smtp.auth", "true");
+	    props.put("mail.transport.protocol", "smtp");
 	    session = Session.getInstance(getProps(), new Authenticator() {
 	        @Override
 	        protected PasswordAuthentication getPasswordAuthentication() {

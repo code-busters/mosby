@@ -3,6 +3,7 @@ package main.java.com.mosby.model;
 import main.java.com.mosby.model.annotations.dao.Column;
 import main.java.com.mosby.model.annotations.dao.Key;
 import main.java.com.mosby.model.annotations.dao.Table;
+import main.java.com.mosby.model.annotations.validate.NotNull;
 
 @Table(name="event_admins")
 public class EventAdmin {
@@ -10,14 +11,16 @@ public class EventAdmin {
 	@Column(name="id")
 	private int id;
 	
+	@NotNull
 	@Key(name="event_ref")	
-	private Event event = null;
+	private Event event;
 	
+	@NotNull
 	@Key(name="user_ref")
-	private User user = null;
+	private User user;
 	
 	@Key(name="permission_ref")
-	private Permission permission = null;
+	private Permission permission;
 	
 	public EventAdmin() {
 	}

@@ -173,8 +173,10 @@ public class ValidatorUtils<T> {
 			if (field.isAnnotationPresent(StartFuture.class)) {
 				field.setAccessible(true);
 				timestampStart = (Timestamp) field.get(object);
+				System.out.println(timestampStart);
 				Date date = new Date();
 				Timestamp timestampNow = new Timestamp(date.getTime());
+				System.out.println(timestampNow);
 				if (timestampStart != null
 						&& timestampStart.before(timestampNow)) {
 					errors.add(labels.getString("validateDataTime"));
@@ -185,6 +187,8 @@ public class ValidatorUtils<T> {
 					&& timestampStart != null) {
 				field.setAccessible(true);
 				Timestamp timestampEnd = (Timestamp) field.get(object);
+				System.out.println(timestampStart);
+				System.out.println(timestampEnd);
 				if (timestampEnd.before(timestampStart)) {
 					errors.add(labels.getString("validateStartEnd"));
 				}
@@ -206,6 +210,10 @@ public class ValidatorUtils<T> {
 		} else {
 			errors.add(labels.getString("confirmPassword"));
 		}
+	}
+	
+	public void correctFields(){
+		errors.add(labels.getString("correctFields"));
 	}
 
 }

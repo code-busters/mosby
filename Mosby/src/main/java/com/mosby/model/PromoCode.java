@@ -1,6 +1,8 @@
 package main.java.com.mosby.model;
 
 import main.java.com.mosby.model.annotations.dao.*;
+import main.java.com.mosby.model.annotations.validate.NotNull;
+import main.java.com.mosby.model.annotations.validate.Size;
 
 @Table(name="promo_codes")
 public class PromoCode {
@@ -8,9 +10,12 @@ public class PromoCode {
 	@Column(name="id")
 	private int id;
 	
+	@NotNull
 	@Key(name="event_ref")	
 	private Event event;
 	
+	@NotNull
+	@Size(min=0, max=50)
 	@Column(name="code")	
 	private String code;
 	

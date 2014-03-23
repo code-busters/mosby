@@ -5,6 +5,7 @@ import java.util.Date;
 import main.java.com.mosby.model.annotations.dao.Column;
 import main.java.com.mosby.model.annotations.dao.Key;
 import main.java.com.mosby.model.annotations.dao.Table;
+import main.java.com.mosby.model.annotations.validate.NotNull;
 
 
 @Table(name="tickets")
@@ -13,12 +14,15 @@ public class Ticket {
 	@Column(name="id")
 	private int id;
 	
+	@NotNull
 	@Key(name="ticket_info_ref")	
 	private TicketInfo ticketInfo;
 	
+	@NotNull
 	@Column(name="time_of_purchase")	
 	private Date timeOfPurchase;
 	
+	@NotNull
 	@Key(name="promo_codes_ref")	
 	private PromoCode promoCode;
 	

@@ -21,6 +21,7 @@ import main.java.com.mosby.controller.services.ReadGenericObjectService;
 import main.java.com.mosby.model.Event;
 import main.java.com.mosby.model.EventCategory;
 import main.java.com.mosby.model.EventType;
+import main.java.com.mosby.model.User;
 import main.java.com.mosby.utils.ValidatorUtils;
 
 @WebFilter("/CreateEventFilter")
@@ -45,10 +46,10 @@ public class CreateEventFilter implements Filter {
 
 		if (session != null && session.getAttribute("user") != null) {
 
-			Event event = new Event();
+			Event event = null;
 			
 			ValidatorUtils<Event> validatorUtils = new ValidatorUtils<>(
-					(Class<Event>) event.getClass(), "en");
+					Event.class, "en");
 			
 			EventCategory eventCategory = null;
 			EventType eventType = null;
@@ -68,6 +69,7 @@ public class CreateEventFilter implements Filter {
 						(Class<EventType>) new EventType().getClass())
 						.readById(Integer.parseInt(request
 								.getParameter("event_type")));
+				String name = request.getParameter("event_name");
 
 				Timestamp start = null;
 				Timestamp end = null;
@@ -78,7 +80,7 @@ public class CreateEventFilter implements Filter {
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}
-				event = new Event(start, end, eventCategory, eventType);
+				event = new Event(name, start, end, eventCategory, eventType);
 
 				try {
 					validatorUtils.validate(event);
