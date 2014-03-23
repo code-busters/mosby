@@ -13,6 +13,7 @@ import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
+import javax.mail.URLName;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
@@ -25,6 +26,7 @@ import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.sun.mail.smtp.SMTPTransport;
 
 public class MailUtils {
 	
@@ -39,12 +41,13 @@ public class MailUtils {
 	
 	public MailUtils() {
 		props = new Properties();
+	    props.put("mail.transport.protocol", "smtp");
 	    props.put("mail.smtp.host", SMPT_HOSTNAME);
 	    props.put("mail.from", USERNAME);
+	    props.put("mail.smtp.socketFactory.port", PORT);
 	    props.put("mail.port", PORT);
 	    props.put("mail.smtp.starttls.enable", "true");
 	    props.put("mail.smtp.auth", "true");
-	    props.put("mail.transport.protocol", "smtp");
 	    session = Session.getInstance(getProps(), new Authenticator() {
 	        @Override
 	        protected PasswordAuthentication getPasswordAuthentication() {
@@ -71,7 +74,12 @@ public class MailUtils {
 	        msg.setText("You are register on MosbyEvent! Welcome!\nYou register code http://localhost:8080/Mosby/authentication?authentication_code=" + authentication);
 	        msg.setRecipients(Message.RecipientType.TO,
 	                          email);
-	        Transport.send(msg);
+
+	        Transport transport = session.getTransport("smtps");
+	        transport.connect(SMPT_HOSTNAME, Integer.parseInt(PORT), USERNAME, PASSWORD);
+	        transport.send(msg);
+	        transport.close();
+
 	     } catch (MessagingException mex) {
 	        System.out.println("send failed, exception: " + mex);
 	     }

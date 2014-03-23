@@ -37,7 +37,7 @@ public class IndexServlet extends HttpServlet {
 		
 //		Ticket ticket = (Ticket) new ReadGenericObjectService<Ticket>((Class<Ticket>) new Ticket().getClass()).readList().get(0);
 //		System.out.println(ticket);
-		//new MailUtils().sendMessage("AlexHamer777@gmail.com", "...");
+		new MailUtils().sendMessage("AlexHamer777@gmail.com", "...");
 		System.out.println("WORKS");
         request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
         
