@@ -84,6 +84,7 @@
                                             </a>
                                         </div>
                                         <div id="falldown-${organizer.id}" class="falldown col-md-12">
+                                        <input type="hidden" name="organizerId" value="${organizer.id}" />
                                             <div class="form-group">
                                                 <label for="open-logo-${organizer.id}">Logo</label>
                                                 <input type="file" class="hide" name="logo_${organizer.id}"

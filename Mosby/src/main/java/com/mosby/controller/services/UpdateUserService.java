@@ -46,8 +46,7 @@ public class UpdateUserService {
 		try {
 			String contentType = filePart.getContentType();
 			if (contentType.startsWith("image")) {
-				File image = FileUploadUtils.uploadFile(servlet,
-						USER_IMAGE_PATH, filePart);
+				File image = FileUploadUtils.uploadFile(servlet, USER_IMAGE_PATH, filePart);
 				userImage = FileUploadUtils.getFilename(image);
 			}
 		} catch (Exception e) {

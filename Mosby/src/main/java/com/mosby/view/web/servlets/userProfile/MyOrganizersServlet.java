@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import main.java.com.mosby.controller.services.ReadGenericObjectService;
+import main.java.com.mosby.controller.services.UpdateOrganizerService;
 import main.java.com.mosby.model.Organizer;
 import main.java.com.mosby.model.TicketInfo;
 import main.java.com.mosby.model.User;
@@ -29,7 +30,6 @@ public class MyOrganizersServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 
 }
