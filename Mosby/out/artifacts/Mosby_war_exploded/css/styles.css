@@ -1,6 +1,8 @@
 body {
     background: rgb(244, 244, 244);
     color: #212121;
+    -webkit-transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
     transition: all 0.4s ease 0s;
 }
 /*ADDITIONAL FEATURES*/
@@ -114,6 +116,11 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 }
 label {
     display: block;
+}
+.as-label {
+    display: block;
+    font-size: 0.9em;
+    margin-bottom: 0.5em;
 }
 
 /*VIDEO BACKGROUND*/
@@ -262,6 +269,122 @@ label {
     padding: 0.7em;
 }
 
+.sb-search {
+    position: relative;
+    margin-top: -2px;
+    width: 0%;
+    min-width: 60px;
+    min-height: 50px;
+    float: left;
+    overflow: hidden;
+    -webkit-transition: width 0.3s;
+    -moz-transition: width 0.3s;
+    transition: width 0.3s;
+    -webkit-backface-visibility: hidden;
+}
+
+.sb-search-input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0);
+    width: 100%;
+    height: 50px;
+    margin: 0;
+    z-index: 10;
+    padding: 20px 65px 20px 20px;
+    font-family: inherit;
+    font-size: 1.2em;
+    color: rgba(255, 255, 255, 1);
+}
+
+.sb-search-input::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.sb-search-input:-moz-placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.sb-search-input::-moz-placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.sb-search-input:-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.sb-icon-gear,
+.sb-icon-search,
+.sb-search-submit  {
+    width: 50px;
+    height: 50px;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0;
+    margin: 0;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.sb-search-submit {
+    background: #fff; /* IE needs this */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; /* IE 8 */
+    filter: alpha(opacity=0); /* IE 5-7 */
+    opacity: 0;
+    color: transparent;
+    border: none;
+    outline: none;
+    z-index: -1;
+}
+
+.sb-icon-gear,
+.sb-icon-search {
+    color: #fff;
+    background: rgba(255, 255, 255, 0);
+    z-index: 90;
+    font-size: 22px;
+    font-family: 'Flat-UI-Icons';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+.sb-icon-search:before {
+    content: "\e01c";
+}
+.sb-icon-gear:before {
+    content: "\e024";
+}
+
+/* Open state */
+.sb-search.sb-search-open,
+.no-js .sb-search {
+    width: 300px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.sb-search.sb-search-open .sb-icon-search,
+.no-js .sb-search .sb-icon-search {
+    background: rgba(255, 255, 255, 0);
+    color: #1abc9c;
+    z-index: 11;
+}
+
+.sb-search.sb-search-open .sb-search-submit,
+.no-js .sb-search .sb-search-submit {
+    z-index: 90;
+}
+
+
 /*NAVBAR AFTER SCROLL*/
 .nav-transparent-shrink {
     -webkit-transition: all 0.2s;
@@ -298,6 +421,27 @@ label {
     right: 1.6em;
     top: 4.5em;
 }
+.nav-transparent-shrink .sb-search {
+    margin-top: 3px;
+}
+.nav-transparent-shrink .sb-search-input {
+    color: #212121;
+}
+.nav-transparent-shrink .sb-search-input::-webkit-input-placeholder {
+    color: rgba(33, 33, 33, 0.7);
+}
+.nav-transparent-shrink .sb-search-input:-moz-placeholder {
+    color: rgba(33, 33, 33, 0.7);
+}
+.nav-transparent-shrink .sb-search-input::-moz-placeholder {
+    color: rgba(33, 33, 33, 0.7);
+}
+.nav-transparent-shrink .sb-search-input:-ms-input-placeholder {
+    color: rgba(33, 33, 33, 0.7);
+}
+.nav-transparent-shrink .sb-icon-search {
+    color: #212121;
+}
 
 /*FOOTER*/
 footer {
@@ -325,6 +469,78 @@ footer {
 }
 .bottom-links a {
     font-size: 0.9em;
+}
+
+/*SEARCH*/
+.search-results {
+    display: block;
+}
+
+.search-results .sb-search {
+    margin: 0 0 2em;
+    width: 100%;
+}
+
+.search-results .sb-search-input {
+    /*	right: 50px;*/
+    padding-right: 115px;
+    background: rgba(216, 215, 215, 0.3);
+    color: #212121;
+    -webkit-transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+}
+
+.search-results .sb-search-input:focus {
+    background: rgba(201, 201, 201, 0.3);
+    -webkit-transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+}
+
+.search-results .sb-search-input::-webkit-input-placeholder {
+    color: rgba(33, 33, 33, 0.7);
+}
+.search-results .sb-search-input:-moz-placeholder {
+    color: rgba(33, 33, 33, 0.7);
+}
+.search-results .sb-search-input::-moz-placeholder {
+    color: rgba(33, 33, 33, 0.7);
+}
+.search-results .sb-search-input:-ms-input-placeholder {
+    color: rgba(33, 33, 33, 0.7);
+}
+
+.search-results .sb-icon-gear,
+.search-results .sb-icon-search {
+    color: #212121;
+    right: 50px;
+    background: rgba(212, 212, 212, 0.3);
+    -webkit-transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+}
+.search-results .sb-icon-gear:hover,
+.search-results .sb-icon-search:hover {
+    color: #1abc9c;
+    -webkit-transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+}
+.search-results .sb-icon-gear {
+    right: 0;
+    border-left: 1px solid #e0e0e0;
+}
+.search-results .falldown {
+    margin: 0;
+    margin-top: 50px;
+    border: 1px solid rgba(212, 212, 212, 0.9);
+    padding-bottom: 3em;
+}
+.search-results .price {
+    width: 100px;
+    float: left;
+    margin-right: 10px;
 }
 
 /*EVENTS*/
@@ -457,7 +673,6 @@ footer {
     margin-left: 2em;
     display: inline-block;
 }
-.as-label,
 #create-event-form label {
     display: block;
     font-size: 1.1em;
@@ -679,23 +894,32 @@ footer {
 .organizer-events h4 {
     font-size: 1.5em;
 }
+.search-results .event,
+.organizer-events .event {
+    clear: both;
+}
+.search-results .event-image,
 .organizer-events .event-image {
     height: 100px;
     width: 100px;
     position: absolute;
 }
+.search-results .event-detail,
 .organizer-events .event-detail {
     margin-left: 120px;
 }
+.search-results ul,
 .organizer-events ul {
     margin-left: -2.5em;
     font-size: 0.8em;
 }
+.search-results p,
 .organizer-events p {
     margin-top: -0.6em;
     font-size: 0.85em;
     line-height: 1.5;
 }
+.search-results .read-more,
 .organizer-events .read-more {
     margin-top: -1em;
     font-size: 0.85em;
@@ -727,7 +951,7 @@ footer {
     }
     #background-block.big-background {
         opacity: 0.7;
-        height: 25em;
+        height: 35em;
     }
     .navbar {
         border-radius: 0;

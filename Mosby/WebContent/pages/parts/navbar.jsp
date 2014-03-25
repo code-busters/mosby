@@ -9,8 +9,12 @@
     </div>
     <div class="collapse navbar-collapse" id="navbar-collapse-01">
         <ul class="nav navbar-nav navbar-left">
-            <li>
-                <a href="<c:url value="/index"/>">Index</a>
+            <li id="sb-search" class="sb-search">
+                <form action="search" method="GET">
+                    <input class="sb-search-input" placeholder="Enter your search term..." type="search" value="" name="search" id="search">
+                    <input class="sb-search-submit" type="submit" value="search">
+                    <span class="sb-icon-search"></span>
+                </form>
             </li>
         </ul>
         <% if (request.getSession().getAttribute("user") != null) { %>

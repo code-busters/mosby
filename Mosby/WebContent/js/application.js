@@ -5,6 +5,7 @@ String.prototype.repeat = function (num) {
 };
 
 (function ($) {
+
     // Create event image uploading
     $(document).on('change', '.btn-file :file', function () {
         var input = $(this),
@@ -157,6 +158,11 @@ String.prototype.repeat = function (num) {
         falldown.slideToggle("slow");
     });
 
+    $(document).on('click', "#open-falldown-search", function () {
+        var falldown = $(this).closest('div').find("#falldown");
+        falldown.slideToggle("slow");
+    });
+
     $(document).on('change', 'input', function () {
         var save = $('#save-button');
         if (save.hasClass('hide')) {
@@ -167,6 +173,7 @@ String.prototype.repeat = function (num) {
         }
     });
 
+    // Ellipsis
     $(function () {
 
         // Todo list
@@ -274,7 +281,7 @@ String.prototype.repeat = function (num) {
             yearRange: 'c:+3'
         }).prev('.btn').on('click', function (e) {
             e && e.preventDefault();
-            $('[id*="datepicker"]').focus();
+            $(this).closest('.input-datepicker').find('[id*="datepicker"]').focus();
         });
         $.extend($.datepicker, {
             _checkOffset: function (inst, offset, isFixed) {
