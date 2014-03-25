@@ -65,7 +65,23 @@ public class Organizer {
         this.logo = logo;
     }
 
-    public int getId() {
+    public Organizer(User user, String name, String email, String phone,
+			String about, String site, String googlePlus, String facebook,
+			String twitter, String logo) {
+		super();
+		this.user = user;
+		this.name = name;
+		this.email = email;
+		this.phone = phone;
+		this.about = about;
+		this.site = site;
+		this.googlePlus = googlePlus;
+		this.facebook = facebook;
+		this.twitter = twitter;
+		this.logo = logo;
+	}
+
+	public int getId() {
         return id;
     }
 

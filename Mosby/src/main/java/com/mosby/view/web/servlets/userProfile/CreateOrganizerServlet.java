@@ -6,6 +6,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import main.java.com.mosby.controller.services.CreateOrganizerService;
+
 import java.io.IOException;
 
 @WebServlet("/createOrganizer")
@@ -18,7 +21,9 @@ public class CreateOrganizerServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String test = request.getParameter("about");
+        CreateOrganizerService createOrganizerService = new CreateOrganizerService();
+        createOrganizerService.create(request, this);
+        response.sendRedirect("myOrganizers");
     }
 
 }

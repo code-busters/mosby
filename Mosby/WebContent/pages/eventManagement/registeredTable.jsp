@@ -57,6 +57,7 @@
                     </c:forEach>
                 </div>
                 <form action="registeredTable" method="post" id="registered-table-form">
+                <input type="hidden" name="eventId" value="${event.id}" />
                     <div class="row registered-table">
                         <div class="table-responsive">
                             <table class="table table-striped table-hover table-bordered">
