@@ -75,7 +75,7 @@
                                     </div>
                                     <div class="col-md-2 col-sm-2">
                                         <span class="as-label visible-xs">Sold</span>
-                                        <p>100/240</p>
+                                        <p>200/240</p>
                                     </div>
                                     <div class="col-md-2 col-sm-2 actions text-center">
                                         <label class="visible-xs text-left">Actions</label>

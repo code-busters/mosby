@@ -163,12 +163,18 @@ String.prototype.repeat = function (num) {
         falldown.slideToggle("slow");
     });
 
+    $(document).on('change', "#checkbox-promo-code", function () {
+        var elem = $(this).closest('.row').find("#promo-code-div");
+        elem.toggle(300);
+    });
+
+
     $(document).on('change', 'input', function () {
         var save = $('#save-button');
         if (save.hasClass('hide')) {
             save.fadeOut(200, function () {
                 save.removeClass('hide');
-                save.fadeIn(200);
+                save.fadeIn(200).animate(200);
             });
         }
     });
@@ -184,6 +190,10 @@ String.prototype.repeat = function (num) {
         // Custom Selects
         //    $("select[name='huge']").selectpicker({style: 'btn-hg btn-primary', menuStyle: 'dropdown-inverse'});
         $(".ticket-quantity").selectpicker({
+            style: 'btn-default',
+            menuStyle: 'dropdown-inverse'
+        });
+        $("#organizer").selectpicker({
             style: 'btn-default',
             menuStyle: 'dropdown-inverse'
         });

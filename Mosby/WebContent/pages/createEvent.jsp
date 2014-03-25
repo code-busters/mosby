@@ -220,6 +220,16 @@
                     <span class="additional">do not list this event publicly</span>
                 </label>
             </div>
+            <div class="form-group">
+                <label for="organizer">Organize by</label>
+                <select name="organizer" class="select-block" id="organizer" form="create-event-form">
+                    <c:forEach items="${organizers}" var="organizer">
+                        <option value="${organizer.id}">
+                                ${organizer.name}
+                        </option>
+                    </c:forEach>
+                </select>
+            </div>
 
             <div class="col-md-4 col-md-offset-4">
                 <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit" value="Submit">

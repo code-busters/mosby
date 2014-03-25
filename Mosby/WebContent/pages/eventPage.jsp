@@ -82,36 +82,57 @@
                         <div class="col-md-2 col-sm-2">Price</div>
                         <div class="col-md-2 col-sm-2">Quantity</div>
                     </div>
-                    <c:forEach items="${tickets}" var="ticketInfo">
-                        <div id="tickets-body">
+                    <div id="tickets-body">
+                        <c:forEach items="${tickets}" var="ticketInfo">
                             <div id="0" class="row">
                                 <div class="col-md-8 col-sm-8">
                                     <h6 class="visible-xs">Ticket type</h6>
 
                                     <p>${ticketInfo.name}</p>
-										<span class="ticket-info">
-                                                ${ticketInfo.description}
-                                        </span>
+
+                                    <p class="ticket-info">
+                                            ${ticketInfo.description}
+                                    </p>
                                 </div>
                                 <div class="col-md-2 col-sm-2">
                                     <h6 class="visible-xs">Price</h6>
 
-                                    <p>${ticketInfo.price}</p>
+                                    <p>
+                                        <c:choose>
+                                            <c:when test="${ticketInfo.price == 0}">
+                                                Free
+                                            </c:when>
+                                            <c:otherwise>
+                                                ${ticketInfo.price}
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </p>
                                 </div>
                                 <div class="col-md-2 col-sm-2">
                                     <h6 class="visible-xs">Quantity</h6>
-                                    <select name="ticket_quantity_${ticketInfo.id}" class="select-block ticket-quantity"
-                                            form="register-for-event-form">
-                                        <c:forEach var="quantity" begin="0" end="${ticketInfo.maxNumber}" step="1">
-                                            <option value="${quantity}">${quantity}</option>
-                                        </c:forEach>
-                                    </select>
+                                    <input type="number" class="form-control" placeholder="0"
+                                           name="ticket_quantity_${ticketInfo.id}" id="promo-code-discount-0" min="0"
+                                           max="${ticketInfo.maxNumber}">
+                                        <%--<span class="additional-input-info">Min ${ticketInfo.minNumber}</span>--%>
+                                    <span class="additional-input-info">Max ${ticketInfo.maxNumber}</span>
+                                        <%--<select name="ticket_quantity_${ticketInfo.id}" class="select-block ticket-quantity"--%>
+                                        <%--form="register-for-event-form">--%>
+                                        <%--<c:forEach var="quantity" begin="0" end="${ticketInfo.maxNumber}" step="1">--%>
+                                        <%--<option value="${quantity}">${quantity}</option>--%>
+                                        <%--</c:forEach>--%>
+                                        <%--</select>--%>
                                 </div>
                             </div>
-                        </div>
-                    </c:forEach>
+                        </c:forEach>
+                    </div>
                     <div class="row ">
-                        <div class="pull-right">
+                        <div class="col-md-5">
+                            <label class="checkbox" for="checkbox-promo-code">
+                                <input type="checkbox" value="" id="checkbox-promo-code" data-toggle="checkbox">
+                                Do you have promo code?
+                            </label>
+                        </div>
+                        <div id="promo-code-div" class="pull-right">
                             <div class="col-md-5 text-right">
                                 <label for="promo-code">Promo code:</label>
                             </div>

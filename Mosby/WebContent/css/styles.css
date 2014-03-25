@@ -390,7 +390,7 @@ label {
     -webkit-transition: all 0.2s;
     -moz-transition: all 0.2s;
     transition: all 0.2s;
-    padding: 0.7em 3.5em 0.6em;
+    padding: 0.7em 3.5em 0.2em;
     background-color: rgba(255, 255, 255, 1) !important;
     background: #FFF !important;
     -webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.3);
@@ -469,6 +469,10 @@ footer {
 }
 .bottom-links a {
     font-size: 0.9em;
+}
+.bottom-icons .lang {
+    font-size: 0.8em;
+    line-height: 2.3em;
 }
 
 /*SEARCH*/
@@ -620,10 +624,23 @@ footer {
     font-size: 1.1em;
     font-weight: 600;
 }
+.event #tickets .row {
+    padding-bottom: 0;
+}
+.event #tickets .row:last-child {
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid #e7e7e7;
+}
 .ticket-info {
     font-size: 0.7em;
     line-height: 1.2;
     color: #838383;
+}
+#promo-code-div {
+    display: none;
+}
+#tickets .additional-input-info {
+    font-size: 0.6em;
 }
 
 /*CREATE EVENT*/

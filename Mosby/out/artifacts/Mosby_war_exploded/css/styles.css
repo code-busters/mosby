@@ -470,6 +470,10 @@ footer {
 .bottom-links a {
     font-size: 0.9em;
 }
+.bottom-icons .lang {
+    font-size: 0.8em;
+    line-height: 2.3em;
+}
 
 /*SEARCH*/
 .search-results {
@@ -620,10 +624,23 @@ footer {
     font-size: 1.1em;
     font-weight: 600;
 }
+.event #tickets .row {
+    padding-bottom: 0;
+}
+.event #tickets .row:last-child {
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid #e7e7e7;
+}
 .ticket-info {
     font-size: 0.7em;
     line-height: 1.2;
     color: #838383;
+}
+#promo-code-div {
+    display: none;
+}
+#tickets .additional-input-info {
+    font-size: 0.6em;
 }
 
 /*CREATE EVENT*/
