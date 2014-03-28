@@ -33,24 +33,11 @@
 
     <div class="col-md-2 col-sm-3">
         <ul class="bottom-icons">
-            <%--<li class="lang">--%>
-            <%--<c:choose>--%>
-                <%--<c:when test="${language} == 'uk'">--%>
-                   <%--UA|<a href="<%= request.getContextPath()%>?language='en'}">EN</a>--%>
-                <%--</c:when>--%>
-                <%--<c:when test="${language}== 'en'">--%>
-                    <%--<a href="<%= request.getContextPath()%>?language='uk'">UA</a>|EN--%>
-                <%--</c:when>--%>
-                <%--<c:otherwise>--%>
-                    <%--No ${language == 'uk' ? 'EN' : 'UA'}--%>
-                <%--</c:otherwise>--%>
-            <%--</c:choose>--%>
-            <%--</li>--%>
-                <li class="lang">
-                    <a href="<%= request.getContextPath()%>?language=${language == 'uk' ? 'en' : 'uk'}">
+            <li class="lang">
+                <a href="<%= request.getContextPath()%>?language=${language == 'uk' ? 'en' : 'uk'}">
                     ${language == 'uk' ? 'EN' : 'UA'}
                 </a>
-                </li>
+            </li>
             <li>
                 <a href="#fakelink" class="fui-googleplus"></a>
             </li>

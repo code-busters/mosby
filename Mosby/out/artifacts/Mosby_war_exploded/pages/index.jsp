@@ -32,6 +32,18 @@
         <jsp:include page="parts/navbar.jsp"/>
     </div>
 
+    <%--<div class="row" style="background: #000">--%>
+        <%--<div id="background-block" class="flow-img full-background" style="background-image: url(media/images/bg_mask.png), url(media/images/default/video-poster.jpg)"></div>--%>
+    <%--</div>--%>
+
+    <div class="row">
+        <video id='video-player' preload='metadata' autoplay loop>
+            <source src="media/videos/startuppreview.mp4" />
+            <source src="media/videos/startuppreview.webm" type='video/webm; codecs="vp8, vorbis"' />
+            <source src="media/videos/startuppreview.ogg" type='video/ogg; codecs="theora, vorbis"' />
+        </video>
+    </div>
+
     <div id="main-idea" class="row">
         <div class="col-md-10 col-md-offset-1">
             <h1>
@@ -70,7 +82,7 @@
                         <span class="fui-location"></span>${event.location}
                     </li>
                 </ul>
-                <p>
+                <p class="ellipsis-3">
                    ${event.description}
                 </p>
                 <div class="text-right">
@@ -100,31 +112,20 @@
 <script src="js/flatui-radio.js"></script>
 <script src="js/jquery.tagsinput.js"></script>
 <script src="js/jquery.placeholder.js"></script>
+<script src="js/jquery.ellipsis.js"></script>
 
-
-<script src="http://vjs.zencdn.net/4.3/video.js"></script>
 <script src="js/application.js"></script>
-
-
-<script src="js/jquery.backgroundvideo.min.js"></script>
 <script type="text/javascript">
-    $(document).ready(function () {
-        var videobackground = new $.backgroundVideo($('body'), {
-            "align": "centerXY",
-            "width": 1280,
-            "height": 720,
-            "path": "media/videos/",
-            "filename": "startuppreview",
-            "types": ["ogg", "mp4", "webm"]
-        });
-    });
-    $(document).ready(function () {
-        $("#events").css("margin-top", $("#main-idea").height() + $("h1").height() + 1);
-        $("#main-idea").css("margin-top", $(window).height()/7 - $("h1").height());
-    });
-    $(window).resize(function () {
-        $("#events").css("margin-top", $("#main-idea").height() + $("h1").height() + 1);
-        $("#main-idea").css("margin-top", $(window).height()/7 - $("h1").height());
+//    $(document).ready(function () {
+//        $("#events").css("margin-top", $("#main-idea").height() + $("h1").height() + 1);
+//        $("#main-idea").css("margin-top", $(window).height()/6 - $("h1").height());
+//    });
+//    $(window).resize(function () {
+//        $("#events").css("margin-top", $("#main-idea").height() + $("h1").height() + 1);
+//        $("#main-idea").css("margin-top", $(window).height()/6 - $("h1").height());
+//    });
+    $('.ellipsis-3').ellipsis({
+        row: 3
     });
 </script>
 
