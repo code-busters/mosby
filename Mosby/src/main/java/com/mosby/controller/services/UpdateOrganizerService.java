@@ -37,7 +37,7 @@ public class UpdateOrganizerService {
     		String facebook = request.getParameter("facebook_" + id);
     		String twitter = request.getParameter("twitter_" + id);
     		
-    		String logo = (new ReadGenericObjectService<Organizer>((Class<Organizer>) new Organizer().getClass()).readById(id)).getLogo();
+    		String logo = (new ReadGenericObjectService<Organizer>((Class<Organizer>) Organizer.class).readById(id)).getLogo();
     		Part filePart = request.getPart("logo_" + id);
     		try {
     			String contentType = filePart.getContentType();

@@ -80,8 +80,8 @@ public class UpdateEventService {
 			e.printStackTrace();
 		}
 
-		EventCategory eventCategory = new ReadGenericObjectService<EventCategory>((Class<EventCategory>) new EventCategory().getClass()).readById(Integer.parseInt(request.getParameter("event_category")));  
-		EventType eventType = new ReadGenericObjectService<EventType>((Class<EventType>) new EventType().getClass()).readById(Integer.parseInt(request.getParameter("event_type")));
+		EventCategory eventCategory = new ReadGenericObjectService<EventCategory>((Class<EventCategory>) EventCategory.class).readById(Integer.parseInt(request.getParameter("event_category")));  
+		EventType eventType = new ReadGenericObjectService<EventType>((Class<EventType>) EventType.class).readById(Integer.parseInt(request.getParameter("event_type")));
 
 		String description = request.getParameter("event_description");
 
@@ -99,7 +99,7 @@ public class UpdateEventService {
 		int eventId = Integer.parseInt(request.getParameter("eventId"));
 		
 		Event event = new ReadGenericObjectService<Event>((Class<Event>) new Event().getClass()).readById(eventId);
-		List <TicketInfo> currentTicketsInfoList = new ReadGenericObjectService<TicketInfo>((Class<TicketInfo>) new TicketInfo().getClass()).readListByField("event_ref", (Integer)eventId);
+		List <TicketInfo> currentTicketsInfoList = new ReadGenericObjectService<TicketInfo>((Class<TicketInfo>) TicketInfo.class).readListByField("event_ref", (Integer)eventId);
 		List<String> currentIdTicketsInfoList = new ArrayList<>();
 		for (TicketInfo ticketInfo : currentTicketsInfoList) {
 			currentIdTicketsInfoList.add(Integer.toString(ticketInfo.getId()));
@@ -150,9 +150,9 @@ public class UpdateEventService {
 		
 		for (String id : currentIdTicketsInfoList) {
 			if (!newIdTicketsInfoList.contains(id)){
-				List <Ticket> ticketsList = new ReadGenericObjectService<Ticket>((Class<Ticket>) new Ticket().getClass()).readListByField("ticket_info_ref", Integer.parseInt(id));
+				List <Ticket> ticketsList = new ReadGenericObjectService<Ticket>((Class<Ticket>) Ticket.class).readListByField("ticket_info_ref", Integer.parseInt(id));
 				if (ticketsList.isEmpty()){
-					TicketInfo ticketInfo = new ReadGenericObjectService<TicketInfo>((Class<TicketInfo>) new TicketInfo().getClass()).readById(Integer.parseInt(id));
+					TicketInfo ticketInfo = new ReadGenericObjectService<TicketInfo>((Class<TicketInfo>) TicketInfo.class).readById(Integer.parseInt(id));
 					ticketInfoDao.deleteObjects(ticketInfo);
 				}
 				else{
@@ -166,8 +166,8 @@ public class UpdateEventService {
 		ReflectionDao<PromoCode> promoCodeDao = new ReflectionDao<>((Class<PromoCode>) PromoCode.class);
 		int eventId = Integer.parseInt(request.getParameter("eventId"));
 		
-		Event event = new ReadGenericObjectService<Event>((Class<Event>) new Event().getClass()).readById(eventId);
-		List <PromoCode> currentPromoCodesList = new ReadGenericObjectService<PromoCode>((Class<PromoCode>) new PromoCode().getClass()).readListByField("event_ref", (Integer)eventId);
+		Event event = new ReadGenericObjectService<Event>((Class<Event>) Event.class).readById(eventId);
+		List <PromoCode> currentPromoCodesList = new ReadGenericObjectService<PromoCode>((Class<PromoCode>) PromoCode.class).readListByField("event_ref", (Integer)eventId);
 		List<String> currentIdPromoCodesList = new ArrayList<>();
 		for (PromoCode promoCode : currentPromoCodesList) {
 			currentIdPromoCodesList.add(Integer.toString(promoCode.getId()));
@@ -197,9 +197,9 @@ public class UpdateEventService {
 		
 		for (String id : currentIdPromoCodesList ) {
 			if (!newIdPromoCodesList.contains(id)){
-				List <Ticket> ticketsList = new ReadGenericObjectService<Ticket>((Class<Ticket>) new Ticket().getClass()).readListByField("promo_codes_ref", Integer.parseInt(id));
+				List <Ticket> ticketsList = new ReadGenericObjectService<Ticket>((Class<Ticket>) Ticket.class).readListByField("promo_codes_ref", Integer.parseInt(id));
 				if (ticketsList.isEmpty()){
-					PromoCode promoCode = new ReadGenericObjectService<PromoCode>((Class<PromoCode>) new PromoCode().getClass()).readById(Integer.parseInt(id));
+					PromoCode promoCode = new ReadGenericObjectService<PromoCode>((Class<PromoCode>) PromoCode.class).readById(Integer.parseInt(id));
 					promoCodeDao.deleteObjects(promoCode);
 				}
 				else{

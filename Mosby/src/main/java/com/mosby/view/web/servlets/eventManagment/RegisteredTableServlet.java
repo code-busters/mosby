@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import main.java.com.mosby.controller.services.ReadGenericObjectService;
+import main.java.com.mosby.controller.services.TicketsService;
 import main.java.com.mosby.model.Event;
 import main.java.com.mosby.model.Ticket;
 import main.java.com.mosby.model.TicketInfo;
@@ -41,27 +42,15 @@ public class RegisteredTableServlet extends HttpServlet {
     }
 	@Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String[] users = request.getParameterValues("checked_tickets");
+        TicketsService ticketsService = new TicketsService();
         if (request.getParameter("delete") != null) {
-            deleteUsers(request, users);
-        } else if (request.getParameter("update") != null) {
-            updateUsers(request, users);
+        	ticketsService.delete(request);
+        } else if (request.getParameter("check") != null) {
+            ticketsService.check(request);
         } else if (request.getParameter("save") != null) {
-            saveUsers(request, users);
+            ticketsService.save(request);
         }
         int eventId = Integer.parseInt(request.getParameter("eventId"));
         response.sendRedirect("/Mosby/editEvent?eventId=" + eventId);
-    }
-
-    public void deleteUsers(HttpServletRequest request, String[] users) throws ServletException, IOException {
-
-    }
-
-    public void updateUsers(HttpServletRequest request, String[] users) throws ServletException, IOException {
-
-    }
-
-    public void saveUsers(HttpServletRequest request, String[] users) throws ServletException, IOException {
-
     }
 }

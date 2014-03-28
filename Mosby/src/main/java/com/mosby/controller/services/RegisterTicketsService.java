@@ -23,16 +23,16 @@ public class RegisterTicketsService {
 		Date timeOfPurchase = new Date();
 		PromoCode promoCode = null;
 		String enteredPromoCode = request.getParameter("promo_code"); 
-		List <PromoCode> promoCodesList = new ReadGenericObjectService<PromoCode>((Class<PromoCode>) new PromoCode().getClass()).readListByField("event_ref", (Integer)eventId);
+		List <PromoCode> promoCodesList = new ReadGenericObjectService<PromoCode>((Class<PromoCode>) PromoCode.class).readListByField("event_ref", (Integer)eventId);
         for (PromoCode code : promoCodesList) {
 			if (code.getCode().equals(enteredPromoCode)){
 				promoCode = code;
 			}
 		}
         User user = (User) request.getSession(false).getAttribute("user");
-        Event event = new ReadGenericObjectService<Event>((Class<Event>) new Event().getClass()).readById(eventId);
+        Event event = new ReadGenericObjectService<Event>((Class<Event>) Event.class).readById(eventId);
         
-        List <TicketInfo> ticketsInfoList = new ReadGenericObjectService<TicketInfo>((Class<TicketInfo>) new TicketInfo().getClass()).readListByField("event_ref", (Integer)eventId);
+        List <TicketInfo> ticketsInfoList = new ReadGenericObjectService<TicketInfo>((Class<TicketInfo>) TicketInfo.class).readListByField("event_ref", (Integer)eventId);
         for (TicketInfo ticketInfo : ticketsInfoList) {
         	int ticketInfoId = ticketInfo.getId();
         	if (request.getParameter("ticket_quantity_" + ticketInfoId) != null){
