@@ -9,32 +9,42 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
-@WebFilter("/EncodingFilter")
-public class EncodingFilter implements Filter {
-	
-	private String encoding = "utf-8";
-    
-    public EncodingFilter() {
+/**
+ * Servlet Filter implementation class CreatePromoCodeFilter
+ */
+@WebFilter("/CreatePromoCodeFilter")
+public class CreatePromoCodeFilter implements Filter {
+
+    /**
+     * Default constructor. 
+     */
+    public CreatePromoCodeFilter() {
         // TODO Auto-generated constructor stub
     }
 
+	/**
+	 * @see Filter#destroy()
+	 */
 	public void destroy() {
 		// TODO Auto-generated method stub
 	}
 
-
+	/**
+	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
+	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		request.setCharacterEncoding(encoding);
-		
+		// TODO Auto-generated method stub
+		// place your code here
+
+		// pass the request along the filter chain
 		chain.doFilter(request, response);
 	}
 
-
+	/**
+	 * @see Filter#init(FilterConfig)
+	 */
 	public void init(FilterConfig fConfig) throws ServletException {
-		String encodingParam = fConfig.getInitParameter("encoding");
-		if (encodingParam != null) {
-			encoding = encodingParam;
-		}
+		// TODO Auto-generated method stub
 	}
 
 }

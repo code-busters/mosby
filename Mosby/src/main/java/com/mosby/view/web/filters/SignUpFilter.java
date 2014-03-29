@@ -21,14 +21,13 @@ import main.java.com.mosby.utils.ValidatorUtils;
 public class SignUpFilter implements Filter {
 
 	public SignUpFilter() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public void destroy() {
-		// TODO Auto-generated method stub
+		
 	}
 
-	@SuppressWarnings("unchecked")
 	public void doFilter(ServletRequest req, ServletResponse res,
 			FilterChain chain) throws IOException, ServletException {
 
@@ -48,8 +47,15 @@ public class SignUpFilter implements Filter {
 						.getParameter("confirm_password");
 
 				User user = new User(firstName, lastName, email, password);
-				ValidatorUtils<User> validatorUtils = new ValidatorUtils<>(
+				ValidatorUtils<User> validatorUtils = null;
+				if(request.getParameter("language").equals("ru_RU")){
+				validatorUtils = new ValidatorUtils<>(
 						User.class, "en");
+				} else {
+				validatorUtils = new ValidatorUtils<>(
+							User.class, request.getParameter("language"));
+				}
+				
 				try {
 					user = validatorUtils.validate(user);
 					validatorUtils.checkConfirmPass(password, confirmPassword);
@@ -63,7 +69,9 @@ public class SignUpFilter implements Filter {
 						|| validatorUtils.getErrors().isEmpty() == false) {
 
 					request.setAttribute("errors", validatorUtils.getErrors());
-					System.out.println(validatorUtils.getErrors());
+					request.setAttribute("first_name", firstName);
+					request.setAttribute("last_name", lastName);
+					request.setAttribute("email", email);
 					request.getRequestDispatcher("/pages/signUp.jsp").forward(
 							request, response);
 				} else {
@@ -81,7 +89,7 @@ public class SignUpFilter implements Filter {
 	}
 
 	public void init(FilterConfig fConfig) throws ServletException {
-		// TODO Auto-generated method stub
+		
 	}
 
 }

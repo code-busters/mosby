@@ -2,6 +2,7 @@ package main.java.com.mosby.view.web.servlets;
 
 import main.java.com.mosby.controller.services.SignUpUserService;
 import main.java.com.mosby.model.User;
+import main.java.com.mosby.utils.ValidatorUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,7 +25,6 @@ public class SignUpServlet extends HttpServlet {
 		String sessionId = session.getId();
 		String appId = "601170126631442";
         String redirectUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/socialSignUp";
-//		String redirectUrl = "http://localhost:8080/Mosby/socialSignUp";
 		String returnValue = "https://www.facebook.com/dialog/oauth?client_id="
 				+ appId + "&redirect_uri=" + redirectUrl
 				+ "&scope=email,user_birthday&state=" + sessionId;
@@ -46,9 +46,19 @@ public class SignUpServlet extends HttpServlet {
 				password);
 
 		if (user == null) {
-			List<String> errors = new ArrayList<>();
-			errors.add("This email present! Change email!");
-			request.setAttribute("errors", errors);
+			ValidatorUtils<User> validatorUtils = null;
+			if(request.getParameter("language").equals("ru_RU")){
+			validatorUtils = new ValidatorUtils<>(
+					User.class, "en");
+			} else {
+			validatorUtils = new ValidatorUtils<>(
+						User.class, request.getParameter("language"));
+			}
+			validatorUtils.changeEmail();
+			request.setAttribute("errors", validatorUtils.getErrors());
+			request.setAttribute("first_name", firstName);
+			request.setAttribute("last_name", lastName);
+			request.setAttribute("email", email);
 			request.getRequestDispatcher("/pages/signUp.jsp").forward(request,
 					response);
 		} else {

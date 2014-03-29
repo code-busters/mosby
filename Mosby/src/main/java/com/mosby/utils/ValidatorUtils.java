@@ -215,5 +215,9 @@ public class ValidatorUtils<T> {
 	public void correctFields(){
 		errors.add(labels.getString("correctFields"));
 	}
+	
+	public void changeEmail(){
+		errors.add(labels.getString("changeEmail"));
+	}
 
 }

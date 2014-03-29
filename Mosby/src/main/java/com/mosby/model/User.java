@@ -23,7 +23,7 @@ public class User {
 
 	@NotNull
 	@Size(min = 1, max = 30)
-	@Email(pattern = "[a-zA-Z]{1}[a-zA-Z\\d\\u002E\\u005F]+@([a-zA-Z]+\\u002E){1,2}((net)|(com)|(org)|(ru))")
+	@Email(pattern = "[a-zA-Z]{1}[a-zA-Z\\d\\u002E\\u005F]+@[a-z]*{2}.[a-z]*{2}")
 	@Column(name = "email")
 	private String email;
 
