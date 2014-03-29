@@ -1,6 +1,6 @@
 package main.java.com.mosby.view.web.servlets.userProfile;
 
-import main.java.com.mosby.controller.services.UpdateUserService;
+import main.java.com.mosby.controller.services.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -22,7 +22,7 @@ public class ContactInfoServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UpdateUserService updateUserService = new UpdateUserService();
+		UserService updateUserService = new UserService();
 		updateUserService.update(request, this);
 		response.sendRedirect("contactInfo");
 	}

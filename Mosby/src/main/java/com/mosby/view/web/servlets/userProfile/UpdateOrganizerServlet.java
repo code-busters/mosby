@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import main.java.com.mosby.controller.services.UpdateOrganizerService;
+import main.java.com.mosby.controller.services.OrganizerService;
 
 
 @WebServlet("/updateOrganizer")
@@ -23,7 +23,7 @@ public class UpdateOrganizerServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	UpdateOrganizerService updateOrganizerService = new UpdateOrganizerService();
+    	OrganizerService updateOrganizerService = new OrganizerService();
     	updateOrganizerService.update(request, this);
     	response.sendRedirect("myOrganizers");
 	}

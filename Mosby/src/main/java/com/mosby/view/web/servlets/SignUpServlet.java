@@ -1,6 +1,6 @@
 package main.java.com.mosby.view.web.servlets;
 
-import main.java.com.mosby.controller.services.SignUpUserService;
+import main.java.com.mosby.controller.services.UserService;
 import main.java.com.mosby.model.User;
 import main.java.com.mosby.utils.ValidatorUtils;
 
@@ -42,7 +42,7 @@ public class SignUpServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		System.out.println("posttt");
 		User user = null;
-		user = new SignUpUserService().signUpUser(firstName, lastName, email,
+		user = new UserService().signUpUser(firstName, lastName, email,
 				password);
 
 		if (user == null) {

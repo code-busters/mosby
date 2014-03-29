@@ -1,6 +1,6 @@
 package main.java.com.mosby.view.web.servlets;
 
-import main.java.com.mosby.controller.services.ReadUsersService;
+import main.java.com.mosby.controller.services.UserService;
 import main.java.com.mosby.model.User;
 import main.java.com.mosby.utils.ValidatorUtils;
 
@@ -41,7 +41,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		ReadUsersService readUsersService = new ReadUsersService();
+		UserService readUsersService = new UserService();
 
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");

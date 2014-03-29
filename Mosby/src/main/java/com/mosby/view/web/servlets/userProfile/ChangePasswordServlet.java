@@ -7,14 +7,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-<<<<<<< HEAD
 
-import main.java.com.mosby.controller.services.UpdateUserService;
+
+import main.java.com.mosby.controller.services.UserService;
 import main.java.com.mosby.model.User;
 import main.java.com.mosby.utils.ValidatorUtils;
 
-=======
->>>>>>> c7e9d9188ce95a404db94b3d01a59657a750f796
 import java.io.IOException;
 
 @WebServlet("/changePassword")
@@ -27,8 +25,7 @@ public class ChangePasswordServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-<<<<<<< HEAD
-    	UpdateUserService updateUserService = new UpdateUserService();
+    	UserService updateUserService = new UserService();
     	if(updateUserService.changePassword(request)){
     	response.sendRedirect("/Mosby/contactInfo");
     	} else {
@@ -44,10 +41,5 @@ public class ChangePasswordServlet extends HttpServlet {
 			request.setAttribute("errors", validatorUtils.getErrors());
     		request.getRequestDispatcher("/pages/userProfile/changePassword.jsp").forward(request,response);
     	}
-=======
-    	UserService userService = new UserService();
-    	String result = userService.changePassword(request);
-    	response.sendRedirect("/Mosby/changePassword?" + result);
->>>>>>> c7e9d9188ce95a404db94b3d01a59657a750f796
     }
 }

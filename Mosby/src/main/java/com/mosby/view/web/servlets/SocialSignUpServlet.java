@@ -1,8 +1,7 @@
 package main.java.com.mosby.view.web.servlets;
 
 import main.java.com.mosby.controller.services.FacebookUserGetDataService;
-import main.java.com.mosby.controller.services.ReadUsersService;
-import main.java.com.mosby.controller.services.SocialSignUpUserService;
+import main.java.com.mosby.controller.services.UserService;
 import main.java.com.mosby.model.User;
 import org.apache.log4j.Logger;
 
@@ -41,8 +40,8 @@ public class SocialSignUpServlet extends HttpServlet {
 				session.setAttribute("user", user);
 				session.setAttribute("user_type", "facebook");
 				
-				if(new SocialSignUpUserService().signUpUser(user ) == null){
-					ReadUsersService readUsersService = new ReadUsersService();
+				if(new UserService().socialSignUpUser(user ) == null){
+					UserService readUsersService = new UserService();
 					
 					readUsersService.readSocialUser(user);
 					
