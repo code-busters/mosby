@@ -1,10 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="language"
+       value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
+       scope="session"/>
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="main.java.com.mosby.i18n.text"/>
 <html>
 
 <head>
     <meta charset="utf-8">
-    <title>Login - Mosby - event management</title>
+    <title>Login - Mosby - <fmt:message key="title"/></title>
     <!--	<link rel="shortcut icon" href="media/images/favicon.ico">-->
     <link rel="icon" type="image/png" href="media/images/favicon.png" />
     <meta name="description" content="Mosby - make it simple. New event management system" />
@@ -40,11 +46,11 @@
 
     <div class="row">
         <div class="on-background-block-header col-md-10 col-md-offset-1 hidden-xs">
-            <h4>Login</h4>
+            <h4><fmt:message key="login.login"/></h4>
         </div>
         <div class="on-background-block login col-md-6 col-md-offset-1">
             <div class="hidden-lg hidden-md">
-                <h4>Login</h4>
+                <h4><fmt:message key="login.login"/></h4>
             </div>
             <div class="errors">
                 <c:forEach items="${errors}" var="error">
@@ -53,19 +59,19 @@
             </div>
             <form action="login" method="post" id="login-form">
                 <div class="form-group">
-                    <input class="form-control" type="email" placeholder="Email" name="email" pattern="[^ @]*@[^ @]*\.[^ @]{2,}" required id="email" />
+                    <input class="form-control" type="email" placeholder=<fmt:message key="login.email"/> name="email" pattern="[^ @]*@[^ @]*\.[^ @]{2,}" required id="email" />
                     <label class="login-field-icon fui-mail" for="email"></label>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="password" placeholder="Password" name="password" required id="password" />
+                    <input class="form-control" type="password" placeholder=<fmt:message key="login.password"/> name="password" required id="password" />
                     <label class="login-field-icon fui-lock" for="password"></label>
                 </div>
                 <div class="form-group">
                     <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit" value="Submit">
-                        Submit
+                        <fmt:message key="login.submit"/>
                     </button>
                     <a class="login-link" href="<c:url value="/signUp"/>">
-                        Sign Up for free
+                        <fmt:message key="login.loginWith"/>:
                     </a>
                 </div>
             </form>

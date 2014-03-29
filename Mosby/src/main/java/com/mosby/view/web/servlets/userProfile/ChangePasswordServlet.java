@@ -1,13 +1,12 @@
 package main.java.com.mosby.view.web.servlets.userProfile;
 
+import main.java.com.mosby.controller.services.UserService;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import main.java.com.mosby.controller.services.UpdateUserService;
-
 import java.io.IOException;
 
 @WebServlet("/changePassword")
@@ -20,8 +19,8 @@ public class ChangePasswordServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	UpdateUserService updateUserService = new UpdateUserService();
-    	String result = updateUserService.changePassword(request);
+    	UserService userService = new UserService();
+    	String result = userService.changePassword(request);
     	response.sendRedirect("/Mosby/changePassword?" + result);
     }
 }

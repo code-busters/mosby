@@ -10,7 +10,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Mosby - event management</title>
+    <title>Sign up - Mosby - <fmt:message key="title"/></title>
     <link rel="shortcut icon" href="media/images/favicon.ico">
     <link rel="icon" type="image/png" href="media/images/favicon.png" />
     <meta name="description" content="Mosby - make it simple. New event management system" />
@@ -47,11 +47,11 @@
 
     <div class="row">
         <div class="on-background-block-header col-md-10 col-md-offset-1 hidden-xs">
-            <h4>Sign up for free</h4>
+            <h4><fmt:message key="signUp.signUpForFree"/></h4>
         </div>
         <div class="on-background-block col-md-6 col-md-offset-1">
             <div class="hidden-lg hidden-md">
-                <h4>Sign up for free</h4>
+                <h4><fmt:message key="signUp.signUpForFree"/></h4>
             </div>
             <div class="errors">
                 <c:forEach items="${errors}" var="error">
@@ -59,52 +59,53 @@
                 </c:forEach>
             </div>
             <form action="signUp" method="post" id="sign-up-form">
+                <input type="hidden" name="language" value="${language}" />
                 <div class="form-group">
-                    <input class="form-control" placeholder="First Name" name="first_name" required id="first-name" />
+                    <input value="${first_name}" class="form-control" placeholder=<fmt:message key="signUp.firstName"/> name="first_name" required id="first-name" />
                     <label class="login-field-icon fui-user" for="first-name"></label>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" placeholder="Last Name" name="last_name" required id="last-name" />
+                    <input value="${last_name}" class="form-control" placeholder=<fmt:message key="signUp.lastName"/> name="last_name" required id="last-name" />
                     <label class="login-field-icon fui-user" for="last-name"></label>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="email" placeholder="Email" name="email" pattern="[^ @]*@[^ @]*\.[^ @]{2,}" required id="email" />
+                    <input value="${email}" class="form-control" type="email" placeholder=<fmt:message key="signUp.email"/> name="email" pattern="[^ @]*@[^ @]*\.[^ @]{2,}" required id="email" />
                     <label class="login-field-icon fui-mail" for="email"></label>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="password" placeholder="Password" name="password" required id="password" />
+                    <input class="form-control" type="password" placeholder=<fmt:message key="signUp.password"/> name="password" required id="password" />
                     <label class="login-field-icon fui-lock" for="password"></label>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="password" placeholder="Confirm Password" name="confirm_password" required id="confirm-password" />
+                    <input class="form-control" type="password" placeholder=<fmt:message key="signUp.confirmPassword"/> name="confirm_password" required id="confirm-password" />
                     <label class="login-field-icon fui-lock" for="password"></label>
                 </div>
                 <div class="form-group">
                     <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit" value="Submit">
-                        Submit
+                        <fmt:message key="signUp.submit"/>
                     </button>
                     <a class="login-link" href="<c:url value="/login"/>">
-                        Already registered? Login here
+                        <fmt:message key="signUp.alreadyRegistered?LoginHere"/>
                     </a>
                 </div>
             </form>
         </div>
         <div class="other-sign-up col-md-4">
-            <h4>Sign up with:</h4>
+            <h4><fmt:message key="signUp.signUpWith"/>:</h4>
             <div class="row">
                 <div class="col-md-10 col-sm-4">
                     <a class="btn btn-block btn-social btn-facebook " href="${facebookURL}">
-                        <i class="fa fa-facebook"></i>Sign in with Facebook
+                        <i class="fa fa-facebook"></i>Facebook
                     </a>
                 </div>
                 <div class="col-md-10 col-sm-4">
                     <a class="btn btn-block btn-social btn-google-plus">
-                        <i class="fa fa-google-plus"></i>Sign in with Google
+                        <i class="fa fa-google-plus"></i>Google
                     </a>
                 </div>
                 <div class="col-md-10 col-sm-4">
                     <a class="btn btn-block btn-social btn-twitter">
-                        <i class="fa fa-twitter"></i>Sign in with Twitter
+                        <i class="fa fa-twitter"></i>Twitter
                     </a>
                 </div>
             </div>

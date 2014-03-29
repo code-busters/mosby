@@ -1,16 +1,11 @@
 package main.java.com.mosby.controller.services;
 
-import java.util.Date;
-import java.util.List;
+import main.java.com.mosby.controller.dao.ReflectionDao;
+import main.java.com.mosby.model.*;
 
 import javax.servlet.http.HttpServletRequest;
-
-import main.java.com.mosby.controller.dao.ReflectionDao;
-import main.java.com.mosby.model.Event;
-import main.java.com.mosby.model.PromoCode;
-import main.java.com.mosby.model.Ticket;
-import main.java.com.mosby.model.TicketInfo;
-import main.java.com.mosby.model.User;
+import java.util.Date;
+import java.util.List;
 
 public class TicketsService {
 	
