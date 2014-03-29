@@ -9,7 +9,10 @@ import java.io.IOException;
 
 @WebServlet("/apiAccess")
 public class ApiAccessServlet extends HttpServlet {
-    @Override
+
+	private static final long serialVersionUID = 1L;
+
+	@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("/pages/userProfile/apiAccess.jsp").forward(request, response);
     }

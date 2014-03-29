@@ -47,7 +47,7 @@ public class SignUpServlet extends HttpServlet {
 
 		if (user == null) {
 			ValidatorUtils<User> validatorUtils = null;
-			if(request.getParameter("language").equals("ru_RU")){
+			if(!request.getParameter("language").equals("en")&&!request.getParameter("language").equals("uk")){
 			validatorUtils = new ValidatorUtils<>(
 					User.class, "en");
 			} else {

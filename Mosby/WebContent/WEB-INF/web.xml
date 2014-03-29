@@ -34,6 +34,9 @@
 		<url-pattern>/authentication</url-pattern>
 		<url-pattern>/editEvent</url-pattern>
 	</filter-mapping>
+	<session-config>
+        <session-timeout>60</session-timeout>
+    </session-config>
 	<filter>
 		<filter-name>EncodingFilter</filter-name>
 		<filter-class>main.java.com.mosby.view.web.filters.EncodingFilter</filter-class>

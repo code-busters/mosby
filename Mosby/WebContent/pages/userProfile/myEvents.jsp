@@ -1,5 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="language"
+       value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
+       scope="session"/>
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="main.java.com.mosby.i18n.text"/>
 <html>
 
 <head>
@@ -49,7 +55,7 @@
                     <a id="menu-toggle" href="#" class="btn btn-default">
                         <span class="fui-list-columned"></span>
                     </a>
-                    My Events
+                    <fmt:message key="myEvents.myEvents"/>
                 </h1>
             </div>
             <!-- Keep all page content within the page-content inset div! -->
@@ -57,28 +63,28 @@
                 <div class="row">
                     <div id="my-events">
                         <div class="row my-events-header hidden-xs">
-                            <div class="col-md-6 col-sm-6">Event name</div>
-                            <div class="col-md-2 col-sm-2">Start date</div>
-                            <div class="col-md-2 col-sm-2">Sold</div>
-                            <div class="col-md-2 col-sm-2 text-center">Actions</div>
+                            <div class="col-md-6 col-sm-6"><fmt:message key="myEvents.eventName"/></div>
+                            <div class="col-md-2 col-sm-2"><fmt:message key="myEvents.startDate"/></div>
+                            <div class="col-md-2 col-sm-2"><fmt:message key="myEvents.sold"/></div>
+                            <div class="col-md-2 col-sm-2 text-center"><fmt:message key="myEvents.actions"/></div>
                         </div>
                         <div id="my-events-body">
                             <c:forEach items="${events}" var="event">
                                 <div id="${event.id}" class="row">
                                     <div class="col-md-6 col-sm-6">
-                                        <span class="as-label visible-xs">Event name</span>
+                                        <span class="as-label visible-xs"><fmt:message key="myEvents.eventName"/></span>
                                         <a href="<c:url value="/eventPage?eventId=${event.id}"/>">${event.name}</a>
                                     </div>
                                     <div class="col-md-2 col-sm-2">
-                                        <span class="as-label visible-xs">Start date</span>
+                                        <span class="as-label visible-xs"><fmt:message key="myEvents.startDate"/></span>
                                         <p>${event.startDate}</p>
                                     </div>
                                     <div class="col-md-2 col-sm-2">
-                                        <span class="as-label visible-xs">Sold</span>
+                                        <span class="as-label visible-xs"><fmt:message key="myEvents.sold"/></span>
                                         <p>200/240</p>
                                     </div>
                                     <div class="col-md-2 col-sm-2 actions text-center">
-                                        <label class="visible-xs text-left">Actions</label>
+                                        <label class="visible-xs text-left"><fmt:message key="myEvents.actions"/></label>
                                         <a href="<c:url value="/editEvent?eventId=${event.id}"/>">
                                             <span class="fui-new"></span>
                                         </a>
@@ -93,7 +99,7 @@
                     <div class="col-md-2 col-sm-3 add-button">
                         <a id="free-ticket" href="<c:url value="/createEvent"/>"
                            class="btn btn-block btn-lg btn-primary">
-                            <span class="fui-plus"></span>Event</a>
+                            <span class="fui-plus"></span><fmt:message key="myEvents.event"/></a>
                     </div>
                 </div>
             </div>

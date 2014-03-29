@@ -59,7 +59,7 @@ public class ContactInfoFilter implements Filter {
 					site, "", authenticationCode, active);
 
 			ValidatorUtils<User> validatorUtils = null;
-			if (request.getParameter("language").equals("ru_RU")) {
+			if (!request.getParameter("language").equals("en")&&!request.getParameter("language").equals("uk")) {
 				validatorUtils = new ValidatorUtils<>(User.class, "en");
 			} else {
 				validatorUtils = new ValidatorUtils<>(User.class,

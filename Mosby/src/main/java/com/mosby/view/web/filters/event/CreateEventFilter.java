@@ -46,7 +46,7 @@ public class CreateEventFilter implements Filter {
 			Event event = null;
 
 			ValidatorUtils<Event> validatorUtils = null;
-			if (request.getParameter("language").equals("ru_RU")) {
+			if (!request.getParameter("language").equals("en")&&!request.getParameter("language").equals("uk")) {
 				validatorUtils = new ValidatorUtils<>(Event.class, "en");
 			} else {
 				validatorUtils = new ValidatorUtils<>(Event.class,

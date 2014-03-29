@@ -30,7 +30,7 @@ public class ChangePasswordServlet extends HttpServlet {
     	response.sendRedirect("/Mosby/contactInfo");
     	} else {
     		ValidatorUtils<User> validatorUtils = null;
-			if(request.getParameter("language").equals("ru_RU")){
+			if(!request.getParameter("language").equals("en")&&!request.getParameter("language").equals("uk")){
 			validatorUtils = new ValidatorUtils<>(
 					User.class, "en");
 			} else {

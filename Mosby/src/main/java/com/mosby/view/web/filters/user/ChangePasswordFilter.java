@@ -50,7 +50,7 @@ public class ChangePasswordFilter implements Filter {
 			User user = new User(firstName, lastName, email, newPassword);
 
 			ValidatorUtils<User> validatorUtils = null;
-			if (request.getParameter("language").equals("ru_RU")) {
+			if (!request.getParameter("language").equals("en")&&!request.getParameter("language").equals("uk")) {
 				validatorUtils = new ValidatorUtils<>(User.class, "en");
 			} else {
 				validatorUtils = new ValidatorUtils<>(User.class,

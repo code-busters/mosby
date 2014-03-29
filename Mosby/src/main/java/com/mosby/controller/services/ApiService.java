@@ -3,15 +3,17 @@ package main.java.com.mosby.controller.services;
 import main.java.com.mosby.controller.dao.ReflectionDao;
 import main.java.com.mosby.model.Api;
 import main.java.com.mosby.model.Organizer;
+
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+
 import java.util.Date;
 import java.util.UUID;
 
 public class ApiService {
-    private static Logger log = Logger.getLogger(ApiService.class);
+	private static Logger log = Logger.getLogger(ApiService.class);
 
     public String generateKey(HttpServletRequest request, HttpServlet servlet)  {
         UUID key = UUID.randomUUID();
