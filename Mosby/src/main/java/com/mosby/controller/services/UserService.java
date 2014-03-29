@@ -4,6 +4,7 @@ import main.java.com.mosby.controller.dao.ReflectionDao;
 import main.java.com.mosby.model.User;
 import main.java.com.mosby.utils.EncryptionUtils;
 import main.java.com.mosby.utils.FileUploadUtils;
+import main.java.com.mosby.utils.MailUtils;
 import main.java.com.mosby.utils.ValidatorUtils;
 
 import org.apache.log4j.Logger;
@@ -17,14 +18,68 @@ import javax.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.security.SecureRandom;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class UpdateUserService {
+public class UserService {
 	private static final String DATE_FORMAT = "yyyy-MM-dd";
 	private static final String USER_IMAGE_PATH = "media\\images\\users";
-	private static Logger log = Logger.getLogger(UpdateUserService.class);
+	private static Logger log = Logger.getLogger(UserService.class);
+
+	@SuppressWarnings("unchecked")
+	public User readUser(String email, String password) {
+		User user = new User();
+		ReflectionDao<User> usersDao = new ReflectionDao<>((Class<User>) user.getClass());
+
+		if (!usersDao.selectObjects("email", email).isEmpty()) {
+			user = usersDao.selectObjects("email", email).get(0);
+			if(!user.isActive()){
+				return null;
+			}
+
+			String correctHash = user.getPassword();
+
+			if (!EncryptionUtils.validatePassword(password, correctHash)) {
+				user = null;
+				System.out.println("login fail");
+			}
+			return user;
+
+		} else {
+			return null;
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	public User readSocialUser(User user){
+		ReflectionDao<User> usersDao = new ReflectionDao<>((Class<User>) user.getClass());
+		
+		System.out.println(user.toString());
+		
+		if (!usersDao.selectObjects("email", user.getEmail()).isEmpty()) {
+			User usr = usersDao.selectObjects("email", user.getEmail()).get(0);
+
+			user.setId(usr.getId());
+			user.setCity(usr.getCity());
+			user.setCountry(usr.getCountry());
+			user.setPassword(usr.getPassword());
+			user.setSite(usr.getSite());
+			user.setAbout(usr.getAbout());
+			user.setActive(true);
+			usersDao.updateObjects(user);
+
+			return user;
+
+		} else {
+			return null;
+		}
+	}
+
+	
+	
+	
 
 	public void update(HttpServletRequest request, HttpServlet servlet)
 			throws IllegalStateException, IOException, ServletException {
@@ -105,4 +160,56 @@ public class UpdateUserService {
 			return false;
 		}
 	}
+
+	@SuppressWarnings({ "unchecked", "static-access" })
+	public User signUpUser(String firstName, String lastName, String email,
+			String password) {
+
+		User user = new User();
+        ReflectionDao<User> usersDao = new ReflectionDao<>(
+				(Class<User>) user.getClass());
+
+		if (!usersDao.selectObjects("email", email).isEmpty()) {
+			System.out.println("signUp fail! change email!");
+			return null;
+		} else {
+			String encryptedPassword = EncryptionUtils.createHash(password);
+
+			SecureRandom random = new SecureRandom();
+	        byte[] code = new byte[24];
+	        random.nextBytes(code);
+	        String authentication = new EncryptionUtils().toHex(code) + new EncryptionUtils().toHex(email.getBytes());
+	        
+			user = new User(firstName, lastName, email, encryptedPassword, authentication, false);
+			usersDao.insertObjects(user);
+
+			
+			new MailUtils().sendMessage(email, authentication);
+			user = usersDao.selectObjects("email", email).get(0);
+
+			return user;
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	public User socialSignUpUser(User user) {
+		
+		ReflectionDao<User> usersDao = new ReflectionDao<>(
+				(Class<User>) user.getClass());
+
+		if (!usersDao.selectObjects("email", user.getEmail()).isEmpty()) {
+			return null;
+		} else {
+			
+			String encryptedPassword = EncryptionUtils.createHash("");
+			user.setPassword(encryptedPassword);
+			user.setAuthenticationCode("1");
+			usersDao.insertObjects(user);
+
+			user = usersDao.selectObjects("email", user.getEmail()).get(0);
+
+			return user;
+		}
+	}
+
 }

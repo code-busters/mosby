@@ -1,4 +1,4 @@
-package main.java.com.mosby.view.web;
+package main.java.com.mosby.view.web.servlets;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

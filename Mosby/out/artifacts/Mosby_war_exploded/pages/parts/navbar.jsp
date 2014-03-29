@@ -1,5 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="language"
+       value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
+       scope="session"/>
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="main.java.com.mosby.i18n.text"/>
 <nav class="navbar navbar-default navbar-fixed-top nav-transparent" role="navigation">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
@@ -11,7 +17,7 @@
         <ul class="nav navbar-nav navbar-left">
             <li id="sb-search" class="sb-search">
                 <form action="search" method="GET">
-                    <input class="sb-search-input" placeholder="Enter your search term..." type="search" value="" name="search" id="search">
+                    <input class="sb-search-input" placeholder="<fmt:message key="navbar.enterYourSearchTerm"/>..." type="search" value="" name="search" id="search">
                     <input class="sb-search-submit" type="submit" value="search">
                     <span class="sb-icon-search"></span>
                 </form>
@@ -72,11 +78,11 @@
         <% } else {%>
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <a href="<c:url value="/login"/>">Login</a>
+                <a href="<c:url value="/login"/>"><fmt:message key="navbar.login"/></a>
             </li>
             <li class="divider"></li>
             <li>
-                <a href="<c:url value="/signUp"/>">Sign up</a>
+                <a href="<c:url value="/signUp"/>"><fmt:message key="navbar.signUp"/></a>
             </li>
         </ul>
         <% } %>

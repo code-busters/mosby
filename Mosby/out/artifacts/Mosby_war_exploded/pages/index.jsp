@@ -1,10 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="language"
+       value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
+       scope="session"/>
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="main.java.com.mosby.i18n.text"/>
 <html>
 
 <head>
     <meta charset="utf-8">
-    <title>Mosby - event managment</title>
+    <title>Mosby - <fmt:message key="title"/></title>
     <link rel="shortcut icon" href="media/images/favicon.ico">
     <link rel="icon" type="image/png" href="media/images/favicon.png"/>
     <meta name="description" content="Mosby - make it simple. New event managment system"/>
@@ -47,20 +53,20 @@
     <div id="main-idea" class="row">
         <div class="col-md-10 col-md-offset-1">
             <h1>
-                Mosby - event managment system
+                Mosby - <fmt:message key="index.eventManagmentSystem"/>
 					<span>
-						Make it simple.
+						<fmt:message key="index.makeItSimple"/>.
 					</span>
             </h1>
         </div>
         <div class="scrolldown showscrolldown">
-            <p>discover more</p>
+            <p><fmt:message key="index.discoverMore"/></p>
         </div>
     </div>
 
     <div id="events" class="row">
         <div class="col-md-10 col-md-offset-1">
-            <h3>Most popular</h3>
+            <h3><fmt:message key="index.mostPopular"/>:</h3>
         </div>
         <c:forEach items="${eventList}" var="event">
             <div class="col-md-10 col-sm-6 col-md-offset-1 event">
@@ -86,7 +92,7 @@
                    ${event.description}
                 </p>
                 <div class="text-right">
-                    <a href="<c:url value="/eventPage?eventId=${event.id}"/>">Read more >></a>
+                    <a href="<c:url value="/eventPage?eventId=${event.id}"/>"><fmt:message key="index.readMore"/> >></a>
                 </div>
             </div>
         </c:forEach>

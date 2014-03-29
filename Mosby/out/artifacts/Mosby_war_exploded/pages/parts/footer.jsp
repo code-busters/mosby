@@ -14,19 +14,7 @@
     <div class="col-md-7 col-sm-6">
         <ul class="bottom-links">
             <li>
-                <a href="#fakelink">About Us</a>
-            </li>
-            <li>
-                <a href="#fakelink">Store</a>
-            </li>
-            <li>
-                <a href="#fakelink">Privacy</a>
-            </li>
-            <li>
-                <a href="#fakelink">Follow Us</a>
-            </li>
-            <li>
-                <a href="#fakelink">Support</a>
+                <a href="#fakelink"><fmt:message key="footer.aboutUs"/></a>
             </li>
         </ul>
     </div>

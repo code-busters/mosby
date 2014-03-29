@@ -1,18 +1,15 @@
 package main.java.com.mosby.view.web.servlets.userProfile;
 
+import main.java.com.mosby.controller.services.ReadGenericObjectService;
+import main.java.com.mosby.model.Organizer;
+import main.java.com.mosby.model.User;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import main.java.com.mosby.controller.services.ReadGenericObjectService;
-import main.java.com.mosby.controller.services.UpdateOrganizerService;
-import main.java.com.mosby.model.Organizer;
-import main.java.com.mosby.model.TicketInfo;
-import main.java.com.mosby.model.User;
-
 import java.io.IOException;
 import java.util.List;
 
