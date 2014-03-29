@@ -1,7 +1,7 @@
 package main.java.com.mosby.view.web.servlets.eventManagment;
 
 import main.java.com.mosby.controller.services.ReadGenericObjectService;
-import main.java.com.mosby.controller.services.UpdateEventService;
+import main.java.com.mosby.controller.services.EventService;
 import main.java.com.mosby.model.Event;
 import main.java.com.mosby.model.PromoCode;
 import main.java.com.mosby.model.TicketInfo;
@@ -41,9 +41,9 @@ public class EditTicketsPromoCodesServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	if (request.getParameter("eventId") != null) {
     		int eventId = Integer.parseInt(request.getParameter("eventId"));
-    		UpdateEventService updateEventService = new UpdateEventService();
-    		updateEventService.updateTicketsInfo(request);
-    		updateEventService.updatePromoCodes(request);
+    		EventService eventService = new EventService();
+    		eventService.updateTicketsInfo(request);
+    		eventService.updatePromoCodes(request);
     		response.sendRedirect("/Mosby/editTicketsPromoCodes?eventId=" + eventId);
     	} else {
     		response.sendRedirect("index");

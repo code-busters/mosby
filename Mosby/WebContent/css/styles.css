@@ -964,6 +964,64 @@ video {
     white-space:nowrap
 }
 
+/*ERRROR PAGE*/
+.error-page {
+    width: 100%;
+    min-height: 100%;
+    position: absolute;
+    background-image: url(../media/images/bg_mask.png), url(../media/images/default/error.jpg);
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.display-error {
+    position: relative;
+    margin: 9em 1.5em 0;
+    color: #fff;
+}
+.display-error .navbar-brand {
+    margin: 0;
+    height: 80px;
+    width: 246px;
+    background-size: 246px 80px;
+}
+.display-error p {
+    margin-top: 2em;
+    display: block;
+    font-size: 4em;
+    line-height: 1;
+}
+.display-error label {
+    margin-top: 2.5em;
+    font-size: 1.5em;
+    line-height: 1;
+    color: #fff;
+}
+.display-error .sb-search {
+    margin-top: 0.5em;
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+}
+.display-error .sb-search-input {
+    padding: 0 2em 0 0.5em;
+    -webkit-transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+}
+
+.display-error .sb-search-input:focus {
+    -webkit-transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+}
+.display-error .sb-icon-search:hover {
+    color: #1abc9c;
+}
+
+
 /*RESPONSIVE*/
 @media (min-width: 768px) {
     .navbar {
@@ -1081,5 +1139,22 @@ video {
     }
     .profile-details .dl-horizontal dd {
         margin-top: -27px;
+    }
+    .display-error {
+        margin: 4em 0.5em 0;
+    }
+    .display-error .navbar-brand {
+        height: 60px;
+        width: 184px;
+        background-size: 184px 60px;
+    }
+    .display-error p {
+        margin-top: 2em;
+        font-size: 3em;
+    }
+    .display-error label {
+        margin-top: 1.5em;
+        font-size: 1.5em;
+        color: #fff;
     }
 }

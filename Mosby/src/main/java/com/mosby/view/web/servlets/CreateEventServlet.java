@@ -1,8 +1,9 @@
 package main.java.com.mosby.view.web.servlets;
 
-import main.java.com.mosby.controller.services.CreateEventService;
 import main.java.com.mosby.controller.services.ReadGenericObjectService;
+import main.java.com.mosby.controller.services.EventService;
 import main.java.com.mosby.model.Event;
+
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
 
 @WebServlet("/createEvent")
@@ -30,8 +32,8 @@ public class CreateEventServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         try {
-            int eventId = new CreateEventService().create(request, this);
-            Event event = new ReadGenericObjectService<Event>((Class<Event>) new Event().getClass()).readById(eventId);
+            int eventId = new EventService().create(request, this);
+            Event event = new ReadGenericObjectService<Event>((Class<Event>) Event.class).readById(eventId);
             request.setAttribute("event", event);
             response.sendRedirect("/Mosby/eventPage?eventId=" + event.getId());
         } catch (Exception e) {
