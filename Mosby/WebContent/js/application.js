@@ -302,8 +302,8 @@ String.prototype.repeat = function (num) {
         $('#birthday').datepicker({
             showOtherMonths: true,
             selectOtherMonths: true,
-            defaultDate: "24-08-1991",
-            dateFormat: "dd-mm-yy",
+            defaultDate: "1991-08-24",
+            dateFormat: "yy-mm-dd",
             changeMonth: 1,
             changeYear: 1,
             yearRange: '1950:-16'

@@ -136,6 +136,7 @@ public class UserService {
 				about, authenticationCode, active);
 
 		usersDao.updateObjects(user);
+		session.removeAttribute("user");
 		session.setAttribute("user", user);
 	}
 
