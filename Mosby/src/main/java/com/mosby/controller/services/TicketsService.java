@@ -21,7 +21,7 @@ public class TicketsService {
 		Date timeOfPurchase = new Date();
 		PromoCode promoCode = null;
 		String enteredPromoCode = request.getParameter("promo_code"); 
-		List <PromoCode> promoCodesList = new ReadGenericObjectService<PromoCode>((Class<PromoCode>) new PromoCode().getClass()).readListByField("event_ref", (Integer)eventId);
+		List <PromoCode> promoCodesList = new ReadGenericObjectService<PromoCode>((Class<PromoCode>) PromoCode.class).readListByField("event_ref", (Integer)eventId);
         for (PromoCode code : promoCodesList) {
 			if (code.getCode().equals(enteredPromoCode)){
 				promoCode = code;
@@ -43,4 +43,28 @@ public class TicketsService {
         	}
 		}
 	}
+	
+	public void check(HttpServletRequest request){
+		ReflectionDao<Ticket> ticketDao = new ReflectionDao<>((Class<Ticket>) Ticket.class);
+		String[] tickets = request.getParameterValues("checked_tickets");
+		for (String string : tickets) {
+			Ticket ticket = new ReadGenericObjectService<Ticket>((Class<Ticket>) Ticket.class).readById(Integer.parseInt(string));
+			ticket.setChecked(true);
+			ticketDao.updateObjects(ticket);
+		}
+	}
+	
+	public void delete(HttpServletRequest request){
+		ReflectionDao<Ticket> ticketDao = new ReflectionDao<>((Class<Ticket>) Ticket.class);
+		String[] tickets = request.getParameterValues("checked_tickets");
+		for (String string : tickets) {
+			Ticket ticket = new ReadGenericObjectService<Ticket>((Class<Ticket>) Ticket.class).readById(Integer.parseInt(string));
+			ticketDao.deleteObjects(ticket);
+		}
+	}
+	
+	public void save(HttpServletRequest request){
+		
+	}
+	
 }
