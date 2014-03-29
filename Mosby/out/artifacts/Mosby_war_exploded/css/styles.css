@@ -745,6 +745,7 @@ video {
 .add-ticket a {
     font-size: 0.8em;
 }
+#my-apis,
 #my-events,
 #organizers,
 #promo-codes,
@@ -752,6 +753,7 @@ video {
     margin: 0 0.7em;
     border: 1px solid #d1cbcb;
 }
+#my-apis .row,
 #my-events .row,
 #organizers .row,
 #promo-codes .row,
@@ -760,12 +762,14 @@ video {
     padding: 0.6em 0;
     border-bottom: 1px solid #e7e7e7;
 }
+#my-apis .row:last-child,
 #my-events .row:last-child,
 #organizers .row:last-child,
 #promo-codes .row:last-child,
 #tickets .row:last-child {
     border-bottom: 0;
 }
+.my-apis-header,
 .my-events-header,
 .organizers-header,
 .promo-codes-header,
@@ -774,18 +778,22 @@ video {
     font-size: 0.7em;
     font-weight: 600;
 }
+#my-apis .row:nth-child(even),
 #my-events-body .row:nth-child(even),
 #organizers-body .row:nth-child(even),
 #promo-codes-body .row:nth-child(even),
 #tickets-body .row:nth-child(even) {
     background: #fafafa;
 }
+#my-apis .row:hover,
 #my-events-body .row:hover,
 #organizers-body .row:hover,
 #promo-codes-body .row:hover,
 #tickets-body .row:hover {
     background: #f6f6f6;
 }
+#my-apis-body .as-label,
+#my-apis-body label,
 #my-events-body .as-label,
 #my-events-body label,
 #organizers-body .as-label,
@@ -875,6 +883,23 @@ video {
     -webkit-box-shadow: inset 0px 1px 2px -1px rgba(0,0,0,0.5);
     -moz-box-shadow: inset 0px 1px 2px -1px rgba(0,0,0,0.5);
     box-shadow: inset 0px 1px 2px -1px rgba(0,0,0,0.5);
+}
+
+/*--API ACCESS*/
+.secure-key {
+    padding: 1em;
+    display: block;
+    background: #e5e5e5;
+}
+.secure-key p {
+    margin: 0;
+    font-size: 2em;
+}
+#qr-code {
+    width: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /*REGISTERED TABLE*/
@@ -1038,6 +1063,10 @@ video {
     }
     .btn-social {
         max-width: 220px;
+    }
+    .generate {
+        margin-top: 2.3em;
+        max-width: 9em;
     }
 }
 @media (max-width: 767px) {

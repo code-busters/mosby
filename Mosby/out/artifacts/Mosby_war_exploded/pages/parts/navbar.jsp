@@ -33,14 +33,14 @@
                 <span class="dropdown-arrow"></span>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="<c:url value="/contactInfo"/>">View profile</a>
+                        <a href="<c:url value="/contactInfo"/>"><fmt:message key="navbar.viewProfile"/></a>
                     </li>
                     <li>
-                        <a href="<c:url value="/createEvent"/>">Create event</a>
+                        <a href="<c:url value="/createEvent"/>"><fmt:message key="navbar.createEvent"/></a>
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="<c:url value="/logout"/>">Log Out</a>
+                        <a href="<c:url value="/logout"/>"><fmt:message key="navbar.logOut"/></a>
                     </li>
                 </ul>
             </li>
@@ -67,18 +67,18 @@
                     <h4>${user.firstName} ${user.lastName}
                         <span>${user.email}</span>
                     </h4>
-                    <a href="<c:url value="/contactInfo"/>">View profile</a>
-                    <a href="<c:url value="/createEvent"/>">Create event</a>
+                    <a href="<c:url value="/contactInfo"/>"><fmt:message key="navbar.viewProfile"/></a>
+                    <a href="<c:url value="/createEvent"/>"><fmt:message key="navbar.createEvent"/></a>
                 </div>
                 <div class="bottom-settings">
-                    <a href="<c:url value="/logout"/>" class="btn btn-primary pull-right">Log Out</a>
+                    <a href="<c:url value="/logout"/>" class="btn btn-primary pull-right"><fmt:message key="navbar.logOut"/></a>
                 </div>
             </div>
         </ul>
         <% } else {%>
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <a href="<c:url value="/login"/>"><fmt:message key="navbar.login"/></a>
+                <a href="<c:url value="/login"/>"><fmt:message key="navbar.logIn"/></a>
             </li>
             <li class="divider"></li>
             <li>

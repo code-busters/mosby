@@ -10,7 +10,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Login - Mosby - <fmt:message key="title"/></title>
+    <title>Log In - Mosby - <fmt:message key="title"/></title>
     <!--	<link rel="shortcut icon" href="media/images/favicon.ico">-->
     <link rel="icon" type="image/png" href="media/images/favicon.png" />
     <meta name="description" content="Mosby - make it simple. New event management system" />
@@ -46,11 +46,11 @@
 
     <div class="row">
         <div class="on-background-block-header col-md-10 col-md-offset-1 hidden-xs">
-            <h4><fmt:message key="login.login"/></h4>
+            <h4><fmt:message key="login.logIn"/></h4>
         </div>
         <div class="on-background-block login col-md-6 col-md-offset-1">
             <div class="hidden-lg hidden-md">
-                <h4><fmt:message key="login.login"/></h4>
+                <h4><fmt:message key="login.logIn"/></h4>
             </div>
             <div class="errors">
                 <c:forEach items="${errors}" var="error">
@@ -58,6 +58,7 @@
                 </c:forEach>
             </div>
             <form action="login" method="post" id="login-form">
+                <input type="hidden" name="language" value="${language}" />
                 <div class="form-group">
                     <input class="form-control" type="email" placeholder=<fmt:message key="login.email"/> name="email" pattern="[^ @]*@[^ @]*\.[^ @]{2,}" required id="email" />
                     <label class="login-field-icon fui-mail" for="email"></label>

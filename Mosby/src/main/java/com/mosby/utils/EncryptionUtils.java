@@ -5,6 +5,7 @@ import org.apache.log4j.Logger;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import java.math.BigInteger;
+import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
@@ -21,6 +22,8 @@ public class EncryptionUtils {
     private static final int ITERATION_INDEX = 0;
     private static final int SALT_INDEX = 1;
     private static final int PBKDF2_INDEX = 2;
+
+    private static final char[] HEX = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
 
     public static String createHash(String password) {
         return createHash(password.toCharArray());
@@ -90,5 +93,25 @@ public class EncryptionUtils {
             diff |= a[i] ^ b[i];
         }
         return diff == 0;
+    }
+
+    public static String getStringFromSHA256(String stringToEncrypt) {
+        MessageDigest messageDigest = null;
+        try {
+            messageDigest = MessageDigest.getInstance("SHA-256");
+        } catch (NoSuchAlgorithmException e) {
+            log.error(e);
+        }
+        messageDigest.update(stringToEncrypt.getBytes());
+        return byteArray2Hex(messageDigest.digest());
+    }
+
+    public static String byteArray2Hex(byte[] bytes) {
+        StringBuffer sb = new StringBuffer(bytes.length * 2);
+        for(final byte b : bytes) {
+            sb.append(HEX[(b & 0xF0) >> 4]);
+            sb.append(HEX[b & 0x0F]);
+        }
+        return sb.toString();
     }
 }

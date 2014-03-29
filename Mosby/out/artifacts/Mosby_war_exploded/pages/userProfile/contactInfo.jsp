@@ -1,5 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="language"
+       value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
+       scope="session"/>
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="main.java.com.mosby.i18n.text"/>
 <html>
 
 <head>
@@ -49,7 +55,7 @@
                     <a id="menu-toggle" href="#" class="">
                         <span class="btn btn-default fui-list-numbered"></span>
                     </a>
-                    Contact info
+                    <fmt:message key="contactInfo.contactInfo"/>
                 </h1>
             </div>
             <!-- Keep all page content within the page-content inset div! -->
@@ -62,6 +68,7 @@
                             </c:forEach>
                         </div>
                         <form action="contactInfo" enctype="multipart/form-data" method="post" id="contact-info-form">
+                            <input type="hidden" name="language" value="${language}" />
                             <div class="form-group">
                                 <% if (request.getSession().getAttribute("userType") == "common") { %>
                                 <input type="file" class="hide" name="profile_img" id="open-profile-img"
@@ -73,7 +80,7 @@
 
                                     <div class="flow-img user-profile-img"
                                          style="background-image: url(media/images/users/${user.image});"></div>
-                                    <span class="change-img">Change photo</span>
+                                    <span class="change-img"><fmt:message key="contactInfo.changePhoto"/></span>
                                 </label>
                                 <% } else { %>
                                 <div class="flow-img user-profile-img"
@@ -81,65 +88,65 @@
                                 <% }%>
                             </div>
                             <div class="form-group">
-                                <label for="first-name">First Name</label>
-                                <input class="form-control" placeholder="First Name" value="${user.firstName}"
+                                <label for="first-name"><fmt:message key="contactInfo.firstName"/></label>
+                                <input class="form-control" placeholder=<fmt:message key="contactInfo.firstName"/> value="${user.firstName}"
                                        name="first_name" id="first-name"/>
                             </div>
                             <div class="form-group">
-                                <label for="last-name">Last Name</label>
-                                <input class="form-control" placeholder="Last Name" value="${user.lastName}"
+                                <label for="last-name"><fmt:message key="contactInfo.lastName"/></label>
+                                <input class="form-control" placeholder=<fmt:message key="contactInfo.lastName"/> value="${user.lastName}"
                                        name="last_name" id="last-name"/>
                             </div>
                             <div class="form-group">
-                                <label for="country">Country</label>
-                                <input class="form-control typeahead" placeholder="Country" value="${user.country}"
+                                <label for="country"><fmt:message key="contactInfo.country"/></label>
+                                <input class="form-control typeahead" placeholder=<fmt:message key="contactInfo.country"/> value="${user.country}"
                                        name="country" id="country"/>
                             </div>
                             <div class="form-group">
-                                <label for="city">City</label>
-                                <input class="form-control" placeholder="City" value="${user.city}" name="city"
+                                <label for="city"><fmt:message key="contactInfo.city"/></label>
+                                <input class="form-control" placeholder=<fmt:message key="contactInfo.city"/> value="${user.city}" name="city"
                                        id="city"/>
                             </div>
                             <div class="form-group">
-                                <label for="birthday">Birthday</label>
+                                <label for="birthday"><fmt:message key="contactInfo.birthday"/></label>
 
                                 <div class="input-prepend input-datepicker">
                                     <button type="button" class="btn">
                                         <span class="fui-calendar"></span>
                                     </button>
-                                    <input type="text" placeholder="Your Birthday" value="${user.birthDate}"
+                                    <input type="text" placeholder=<fmt:message key="contactInfo.birthday"/> value="${user.birthDate}"
                                            name="birthday" id="birthday" readonly="">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="gender">Gender</label>
+                                <label for="gender"><fmt:message key="contactInfo.gender"/></label>
                                 <select class="select-block" name="gender" id="gender" form="contact-info-form">
                                     <option value="-1">
-                                        Please select your gender
+                                        <fmt:message key="contactInfo.pleaseSelectYourGender"/>
                                     </option>
                                     <option value="Male">
-                                        Male
+                                        <fmt:message key="contactInfo.male"/>
                                     </option>
                                     <option value="Female">
-                                        Female
+                                        <fmt:message key="contactInfo.female"/>
                                     </option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="website">Website</label>
-                                <input type="url" class="form-control" placeholder="Enter your website or blog"
+                                <label for="website"><fmt:message key="contactInfo.website"/></label>
+                                <input type="url" class="form-control" placeholder=<fmt:message key="contactInfo.enterYourWebsiteOrBlog"/>
                                        value="${user.site}" name="website" id="website"/>
                             </div>
                             <div class="form-group">
-                                <label for="about">About</label>
-                                <textarea class="form-control" rows="4" placeholder="Tell about yourself"
+                                <label for="about"><fmt:message key="contactInfo.about"/></label>
+                                <textarea class="form-control" rows="4" placeholder=<fmt:message key="contactInfo.tellAboutYourself"/>
                                           name="about" id="about"
                                           form="contact-info-form">${user.about}</textarea>
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit"
                                         value="Submit">
-                                    Save
+                                    <fmt:message key="contactInfo.save"/>
                                 </button>
                             </div>
                         </form>

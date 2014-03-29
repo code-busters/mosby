@@ -1,18 +1,16 @@
 package main.java.com.mosby.view.web.servlets.eventManagment;
 
+import main.java.com.mosby.controller.services.ReadGenericObjectService;
+import main.java.com.mosby.controller.services.TicketsService;
+import main.java.com.mosby.model.Event;
+import main.java.com.mosby.model.Ticket;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import main.java.com.mosby.controller.services.ReadGenericObjectService;
-import main.java.com.mosby.controller.services.TicketsService;
-import main.java.com.mosby.model.Event;
-import main.java.com.mosby.model.Ticket;
-import main.java.com.mosby.model.TicketInfo;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -29,7 +27,7 @@ public class RegisteredTableServlet extends HttpServlet {
         	int eventId = Integer.parseInt(request.getParameter("eventId"));
         	Event event = new ReadGenericObjectService<Event>((Class<Event>) new Event().getClass()).readById(eventId);
             request.setAttribute("event", event);
-            List <Ticket> ticketsList = new ReadGenericObjectService<Ticket>((Class<Ticket>) new Ticket().getClass()).readListByField("event_ref", (Integer)eventId);
+            List <Ticket> ticketsList = new ReadGenericObjectService<Ticket>((Class<Ticket>) new Ticket().getClass()).readListByField("event_ref", eventId);
             request.setAttribute("tickets", ticketsList);
             request.getRequestDispatcher("/pages/eventManagement/registeredTable.jsp").forward(request, response);
         } else {

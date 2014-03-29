@@ -52,7 +52,7 @@
         </div>
         <form enctype="multipart/form-data" action="createEvent" method="post" id="create-event-form">
             <h5>Event Detail</h5>
-
+            <input type="hidden" name="language" value="${language}" />
             <div class="form-group">
                 <label for="event-name">Event Name</label>
                 <input type="text" class="form-control" placeholder="Choose Event Name" name="event_name"

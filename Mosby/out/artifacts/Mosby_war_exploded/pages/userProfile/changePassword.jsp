@@ -1,5 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="language"
+       value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
+       scope="session"/>
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="main.java.com.mosby.i18n.text"/>
 <html>
 
 <head>
@@ -49,7 +55,7 @@
                     <a id="menu-toggle" href="#" class="btn btn-default">
                         <span class="fui-list-columned"></span>
                     </a>
-                    Your password
+                    <fmt:message key="changePassword.changePassword"/>
                 </h1>
             </div>
             <!-- Keep all page content within the page-content inset div! -->
@@ -62,25 +68,26 @@
                             </c:forEach>
                         </div>
                         <form action="changePassword" method="post" id="change-password-form">
+                            <input type="hidden" name="language" value="${language}" />
                             <div class="form-group">
-                                <label for="current-password">Current Password</label>
-                                <input class="form-control" type="password" placeholder="Current Password"
+                                <label for="current-password"><fmt:message key="changePassword.currentPassword"/></label>
+                                <input class="form-control" type="password" placeholder=<fmt:message key="changePassword.currentPassword"/>
                                        name="current_password" id="current-password"/>
                             </div>
                             <div class="form-group">
-                                <label for="new-password">New Password</label>
-                                <input class="form-control" type="password" placeholder="New Password"
+                                <label for="new-password"><fmt:message key="changePassword.newPassword"/></label>
+                                <input class="form-control" type="password" placeholder=<fmt:message key="changePassword.newPassword"/>
                                        name="new_password" id="new-password"/>
                             </div>
                             <div class="form-group">
-                                <label for="confirm-password">Confirm Password</label>
-                                <input class="form-control" type="password" placeholder="Confirm Password"
+                                <label for="confirm-password"><fmt:message key="changePassword.confirmPassword"/></label>
+                                <input class="form-control" type="password" placeholder=<fmt:message key="changePassword.confirmPassword"/>
                                        name="confirm_password" id="confirm-password"/>
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit"
                                         value="Change password">
-                                    Change password
+                                    <fmt:message key="changePassword.changePassword"/>
                                 </button>
                             </div>
                         </form>

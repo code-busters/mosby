@@ -27,6 +27,9 @@ public class Api {
     @Column(name="time_of_creation")
     private Date timeOfCreation;
 
+    public Api() {
+    }
+
     public Api(int id, Organizer organizer, String name, String key, Date timeOfCreation) {
         this.id = id;
         this.organizer = organizer;

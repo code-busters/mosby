@@ -1,5 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="language"
+       value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
+       scope="session"/>
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="main.java.com.mosby.i18n.text"/>
 <html>
 
 <head>
@@ -49,7 +55,7 @@
                     <a id="menu-toggle" href="#" class="btn btn-default">
                         <span class="fui-list-columned"></span>
                     </a>
-                    My Organizers
+                    <fmt:message key="myOrganizers.myOrganizers"/>
                 </h1>
             </div>
             <!-- Keep all page content within the page-content inset div! -->
@@ -58,24 +64,24 @@
                     <form action="updateOrganizer" enctype="multipart/form-data" method="post" id="organizers-form">
                         <div id="organizers">
                             <div class="row organizers-header hidden-xs">
-                                <div class="col-md-6 col-sm-6">Organizer</div>
-                                <div class="col-md-2 col-sm-2">Email</div>
-                                <div class="col-md-2 col-sm-2 text-center">Actions</div>
+                                <div class="col-md-6 col-sm-6"><fmt:message key="myOrganizers.organizer"/></div>
+                                <div class="col-md-2 col-sm-2"><fmt:message key="myOrganizers.email"/></div>
+                                <div class="col-md-2 col-sm-2 text-center"><fmt:message key="myOrganizers.actions"/></div>
                             </div>
                             <div id="organizers-body">
                                 <c:forEach items="${organizers}" var="organizer">
                                     <div id="${organizer.id}" class="row">
                                         <div class="col-md-6 col-sm-6">
-                                            <span class="as-label visible-xs">Organizer</span>
+                                            <span class="as-label visible-xs"><fmt:message key="myOrganizers.organizer"/></span>
                                             <a href="#">${organizer.name}</a>
                                         </div>
                                         <div class="col-md-2 col-sm-2">
-                                            <span class="as-label visible-xs">Email</span>
+                                            <span class="as-label visible-xs"><fmt:message key="myOrganizers.email"/></span>
 
                                             <p>${organizer.email}</p>
                                         </div>
                                         <div class="col-md-2 col-sm-2 actions text-center">
-                                            <label class="visible-xs text-left">Actions</label>
+                                            <label class="visible-xs text-left"><fmt:message key="myOrganizers.actions"/></label>
                                             <a id="open-falldown" href="#fakelink">
                                                 <span class="fui-new"></span>
                                             </a>
@@ -148,7 +154,7 @@
                         <div class="col-md-2 col-sm-3 add-button">
                             <a id="free-ticket" href="<c:url value="/createOrganizer"/>"
                                class="btn btn-block btn-lg btn-primary">
-                                <span class="fui-plus"></span>Organizer</a>
+                                <span class="fui-plus"></span><fmt:message key="myOrganizers.organizer"/></a>
                         </div>
                         <div id="save-button" class="col-md-2 col-sm-3 pull-right add-button hide">
                             <button class="btn btn-info btn-lg btn-block" name="submit" type="submit" value="Submit">
