@@ -26,9 +26,11 @@ public class UpdateUserService {
 	private static final String USER_IMAGE_PATH = "media\\images\\users";
 	private static Logger log = Logger.getLogger(UpdateUserService.class);
 
-	public void update(HttpServletRequest request, HttpServlet servlet) throws IllegalStateException, IOException, ServletException {
+	public void update(HttpServletRequest request, HttpServlet servlet)
+			throws IllegalStateException, IOException, ServletException {
 		HttpSession session = request.getSession(false);
-		ReflectionDao<User> usersDao = new ReflectionDao<>((Class<User>) User.class);
+		ReflectionDao<User> usersDao = new ReflectionDao<>(
+				(Class<User>) User.class);
 
 		User sessionUser = (User) session.getAttribute("user");
 
@@ -37,7 +39,7 @@ public class UpdateUserService {
 		String lastName = request.getParameter("last_name");
 		String email = sessionUser.getEmail();
 		String password = sessionUser.getPassword();
-		System.out.println(password);
+		String gender = request.getParameter("gender");
 		double credits = sessionUser.getCredits();
 		boolean admin = sessionUser.isAdmin();
 
@@ -46,7 +48,8 @@ public class UpdateUserService {
 		try {
 			String contentType = filePart.getContentType();
 			if (contentType.startsWith("image")) {
-				File image = FileUploadUtils.uploadFile(servlet, USER_IMAGE_PATH, filePart);
+				File image = FileUploadUtils.uploadFile(servlet,
+						USER_IMAGE_PATH, filePart);
 				userImage = FileUploadUtils.getFilename(image);
 			}
 		} catch (Exception e) {
@@ -56,11 +59,14 @@ public class UpdateUserService {
 		String country = request.getParameter("country");
 		String city = request.getParameter("city");
 		Date birthDate = sessionUser.getBirthDate();
-		if (birthDate != null && birthDate.toString().equals(request.getParameter("birthday"))) {
+		if (birthDate != null
+				&& birthDate.toString()
+						.equals(request.getParameter("birthday"))) {
 
-		} else if (request.getParameter("birthday") != null) {
+		} else if (!request.getParameter("birthday").equals("")) {
 			try {
-				birthDate = new SimpleDateFormat(DATE_FORMAT).parse(request.getParameter("birthday"));
+				birthDate = new SimpleDateFormat(DATE_FORMAT).parse(request
+						.getParameter("birthday"));
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
@@ -70,47 +76,33 @@ public class UpdateUserService {
 		String authenticationCode = sessionUser.getAuthenticationCode();
 		boolean active = sessionUser.isActive();
 
-		User user = new User(id, firstName, lastName, email, password,  "", credits, admin, userImage, country, city, birthDate, site, about, authenticationCode, active);
-		// ValidatorUtils<User> validatorUtils = new
-		// ValidatorUtils<>((Class<User>) user.getClass());
-		// try {
-		// user = validatorUtils.validate(user);
-		// } catch (NoSuchMethodException | SecurityException
-		// | IllegalAccessException | IllegalArgumentException
-		// | InvocationTargetException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-		// System.out.println(validatorUtils.getErrors());
+		User user = new User(id, firstName, lastName, email, password, gender,
+				credits, admin, userImage, country, city, birthDate, site,
+				about, authenticationCode, active);
+
 		usersDao.updateObjects(user);
 		session.setAttribute("user", user);
 	}
 
-	public String changePassword(HttpServletRequest request) {
-		String result = null;
+	public boolean changePassword(HttpServletRequest request) {
+
 		HttpSession session = request.getSession(false);
 		ReflectionDao<User> usersDao = new ReflectionDao<>(
 				(Class<User>) User.class);
 
 		User sessionUser = (User) session.getAttribute("user");
-		if ((request.getParameter("new_password")).equals(request
-				.getParameter("confirm_password"))) {
-			String currentPassword = request.getParameter("current_password");
-			String correctHash = sessionUser.getPassword();
-			if (EncryptionUtils.validatePassword(currentPassword, correctHash)) {
-				String encryptedPassword = EncryptionUtils.createHash(request
-						.getParameter("new_password"));
-				sessionUser.setPassword(encryptedPassword);
-				result = "password changed successfully";
-			} else {
-				result = "enter correct current password";
-			}
-		} else {
-			result = "passwords don't match";
-		}
 
-		usersDao.updateObjects(sessionUser);
-		session.setAttribute("user", sessionUser);
-		return result;
+		String currentPassword = request.getParameter("current_password");
+		String correctHash = sessionUser.getPassword();
+		if (EncryptionUtils.validatePassword(currentPassword, correctHash)) {
+			String encryptedPassword = EncryptionUtils.createHash(request
+					.getParameter("new_password"));
+			sessionUser.setPassword(encryptedPassword);
+			usersDao.updateObjects(sessionUser);
+			session.setAttribute("user", sessionUser);
+			return true;
+		} else {
+			return false;
+		}
 	}
 }

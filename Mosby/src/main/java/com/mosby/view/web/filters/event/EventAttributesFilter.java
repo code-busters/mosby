@@ -1,4 +1,4 @@
-package main.java.com.mosby.view.web.filters;
+package main.java.com.mosby.view.web.filters.event;
 
 import main.java.com.mosby.controller.services.ReadGenericObjectService;
 import main.java.com.mosby.model.EventCategory;

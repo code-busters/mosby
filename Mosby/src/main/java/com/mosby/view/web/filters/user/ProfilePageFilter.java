@@ -1,4 +1,4 @@
-package main.java.com.mosby.view.web.filters;
+package main.java.com.mosby.view.web.filters.user;
 
 import java.io.IOException;
 
@@ -28,11 +28,11 @@ public class ProfilePageFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
         HttpSession session = request.getSession(false);
-        System.out.println("profileFilter");
+        System.out.println("logFilter");
 
-        if (session != null && session.getAttribute("user") != null) {
-
+        if (session.getAttribute("user") != null) {
             chain.doFilter(request, response);
+            
         } else {
         	session.setAttribute("waitUrl", request.getRequestURL());
             response.sendRedirect(request.getContextPath() + "/login");

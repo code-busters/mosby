@@ -62,7 +62,6 @@ public class User {
 	@Column(name = "site")
 	private String site;
 
-	@Min(value = 0)
 	@Column(name = "about")
 	private String about;
 	

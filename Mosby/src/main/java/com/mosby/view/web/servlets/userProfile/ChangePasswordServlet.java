@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import main.java.com.mosby.controller.services.UpdateUserService;
+import main.java.com.mosby.model.User;
+import main.java.com.mosby.utils.ValidatorUtils;
 
 import java.io.IOException;
 
@@ -21,7 +23,20 @@ public class ChangePasswordServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	UpdateUserService updateUserService = new UpdateUserService();
-    	String result = updateUserService.changePassword(request);
-    	response.sendRedirect("/Mosby/changePassword?" + result);
+    	if(updateUserService.changePassword(request)){
+    	response.sendRedirect("/Mosby/contactInfo");
+    	} else {
+    		ValidatorUtils<User> validatorUtils = null;
+			if(request.getParameter("language").equals("ru_RU")){
+			validatorUtils = new ValidatorUtils<>(
+					User.class, "en");
+			} else {
+			validatorUtils = new ValidatorUtils<>(
+						User.class, request.getParameter("language"));
+			}
+			validatorUtils.changePassword();
+			request.setAttribute("errors", validatorUtils.getErrors());
+    		request.getRequestDispatcher("/pages/userProfile/changePassword.jsp").forward(request,response);
+    	}
     }
 }

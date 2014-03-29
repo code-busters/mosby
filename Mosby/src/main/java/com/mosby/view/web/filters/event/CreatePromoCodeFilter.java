@@ -1,4 +1,4 @@
-package main.java.com.mosby.view.web.filters;
+package main.java.com.mosby.view.web.filters.event;
 
 import java.io.IOException;
 import javax.servlet.Filter;
@@ -9,10 +9,10 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
-@WebFilter("/CreateTicketsFilter")
-public class CreateTicketsFilter implements Filter {
+@WebFilter("/CreatePromoCodeFilter")
+public class CreatePromoCodeFilter implements Filter {
 
-    public CreateTicketsFilter() {
+    public CreatePromoCodeFilter() {
         // TODO Auto-generated constructor stub
     }
 
@@ -21,8 +21,6 @@ public class CreateTicketsFilter implements Filter {
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		// TODO Auto-generated method stub
-		// place your code here
 
 		// pass the request along the filter chain
 		chain.doFilter(request, response);

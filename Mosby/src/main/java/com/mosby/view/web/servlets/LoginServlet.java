@@ -50,8 +50,14 @@ public class LoginServlet extends HttpServlet {
 
 		if (user == null || !user.isActive()) {
 
-			ValidatorUtils<User> validatorUtils = new ValidatorUtils<>(
+			ValidatorUtils<User> validatorUtils = null;
+			if(request.getParameter("language").equals("ru_RU")){
+			validatorUtils = new ValidatorUtils<>(
 					User.class, "en");
+			} else {
+			validatorUtils = new ValidatorUtils<>(
+						User.class, request.getParameter("language"));
+			}
 			validatorUtils.correctFields();
 			request.setAttribute("errors", validatorUtils.getErrors());
 			request.getRequestDispatcher("/pages/login.jsp").forward(request,

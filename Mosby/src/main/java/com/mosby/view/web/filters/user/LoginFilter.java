@@ -1,4 +1,4 @@
-package main.java.com.mosby.view.web.filters;
+package main.java.com.mosby.view.web.filters.user;
 
 import java.io.IOException;
 

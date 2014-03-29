@@ -219,5 +219,9 @@ public class ValidatorUtils<T> {
 	public void changeEmail(){
 		errors.add(labels.getString("changeEmail"));
 	}
+	
+	public void changePassword(){
+		errors.add(labels.getString("changePassword"));
+	}
 
 }
