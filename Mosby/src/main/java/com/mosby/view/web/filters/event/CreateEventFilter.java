@@ -49,26 +49,17 @@ public class CreateEventFilter implements Filter {
 			if (!request.getParameter("language").equals("en")&&!request.getParameter("language").equals("uk")) {
 				validatorUtils = new ValidatorUtils<>(Event.class, "en");
 			} else {
-				validatorUtils = new ValidatorUtils<>(Event.class,
-						request.getParameter("language"));
+				validatorUtils = new ValidatorUtils<>(Event.class, request.getParameter("language"));
 			}
 
 			EventCategory eventCategory = null;
 			EventType eventType = null;
 			SimpleDateFormat parseDate = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-			String startTimestamp = request.getParameter("start_date") + " "
-					+ request.getParameter("start_time");
-			String endTimestamp = request.getParameter("end_date") + " "
-					+ request.getParameter("end_time");
+			String startTimestamp = request.getParameter("start_date") + " " + request.getParameter("start_time");
+			String endTimestamp = request.getParameter("end_date") + " " + request.getParameter("end_time");
 
-			eventCategory = new ReadGenericObjectService<EventCategory>(
-					(Class<EventCategory>) new EventCategory().getClass())
-					.readById(Integer.parseInt(request
-							.getParameter("event_category")));
-			eventType = new ReadGenericObjectService<EventType>(
-					(Class<EventType>) new EventType().getClass())
-					.readById(Integer.parseInt(request
-							.getParameter("event_type")));
+			eventCategory = new ReadGenericObjectService<EventCategory>((Class<EventCategory>) new EventCategory().getClass()).readById(Integer.parseInt(request.getParameter("event_category")));
+			eventType = new ReadGenericObjectService<EventType>((Class<EventType>) new EventType().getClass()).readById(Integer.parseInt(request.getParameter("event_type")));
 			String name = request.getParameter("event_name");
 
 			Timestamp start = null;

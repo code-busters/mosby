@@ -13,10 +13,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-
-
 import java.io.IOException;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 @WebServlet("/index")
@@ -32,6 +33,19 @@ public class IndexServlet extends HttpServlet {
 	//@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Event> list = new ReadGenericObjectService<Event>((Class<Event>) Event.class).readList();
+		Collections.sort(list, new Comparator<Event>() {
+			public int compare(Event o1, Event o2) {
+				return o1.getStartDate().compareTo(o2.getStartDate());
+			}
+		});
+		Date currentDate = new Date();
+		Iterator<Event> iter = list.iterator();
+		while (iter.hasNext()){
+			if (iter.next().getStartDate().compareTo(currentDate) < 0){
+				iter.remove();
+			}		
+		}
+	
 		request.setAttribute("eventList", list);
 		System.out.println(request.getAttribute("eventList"));
 		
