@@ -284,7 +284,7 @@ String.prototype.repeat = function (num) {
         $('[id*="datepicker"]').datepicker({
             showOtherMonths: true,
             selectOtherMonths: true,
-            dateFormat: "dd-mm-yy",
+            dateFormat: "yy-mm-dd",
             changeMonth: 1,
             changeYear: 1,
             minDate: '0d',
