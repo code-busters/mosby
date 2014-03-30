@@ -20,7 +20,7 @@ public class Api {
     private String name;
 
     @NotNull
-    @Column(name = "key")
+    @Column(name = "code")
     private String key;
 
     @NotNull

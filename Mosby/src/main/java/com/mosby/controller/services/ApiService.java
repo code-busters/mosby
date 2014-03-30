@@ -3,29 +3,34 @@ package main.java.com.mosby.controller.services;
 import main.java.com.mosby.controller.dao.ReflectionDao;
 import main.java.com.mosby.model.Api;
 import main.java.com.mosby.model.Organizer;
-import main.java.com.mosby.utils.EncryptionUtils;
-import org.apache.log4j.Logger;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.UUID;
 
 public class ApiService {
-	private static Logger log = Logger.getLogger(ApiService.class);
+    private ReflectionDao<Api> apiDao;
 
-    public String generateKey(HttpServletRequest request, HttpServlet servlet)  {
+    public ApiService() {
+        apiDao = new ReflectionDao<>(Api.class);
+    }
+
+    public String generateKey(HttpServletRequest request) {
         UUID key = UUID.randomUUID();
 
         String name = request.getParameter("name");
         int organizerId = Integer.parseInt(request.getParameter("organizer"));
-        Organizer organizer = new ReadGenericObjectService<Organizer>((Class<Organizer>) new Organizer().getClass()).readById(organizerId);
+        Organizer organizer = new ReadGenericObjectService<>((Class<Organizer>) new Organizer().getClass()).readById(organizerId);
         Date timeOfCreation = new Date();
 
         Api api = new Api(organizer, name, key.toString(), timeOfCreation);
-        ReflectionDao<Api> apiDao = new ReflectionDao<>((Class<Api>) Api.class);
         apiDao.insertObjects(api);
-        String key2 = EncryptionUtils.getStringFromSHA256(key.toString());
         return key.toString();
+    }
+
+    public void deleteKey(HttpServletRequest request) {
+        int apiId = Integer.parseInt(request.getParameter("delete"));
+        Api api = new ReadGenericObjectService<>(Api.class).readById(apiId);
+        apiDao.deleteObjects(api);
     }
 }

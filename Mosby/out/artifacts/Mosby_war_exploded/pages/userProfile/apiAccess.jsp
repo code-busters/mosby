@@ -88,15 +88,11 @@
                             <div class="form-group col-md-3 col-sm-3">
                                 <label for="organizer">Organizer</label>
                                 <select name="organizer" class="select-block" id="organizer" form="generate-key-form">
-                                    <option value="5">
-                                        Company
-                                    </option>
-                                    <option value="1">
-                                        GDG Lviv
-                                    </option>
-                                    <option value="2">
-                                        TEDxLNU
-                                    </option>
+                                    <c:forEach items="${organizers}" var="organizer">
+                                        <option value="${organizer.id}">
+                                                ${organizer.name}
+                                        </option>
+                                    </c:forEach>
                                 </select>
                             </div>
                             <div class="form-group col-md-4 col-sm-4">
@@ -137,7 +133,7 @@
                                     </div>
                                     <div class="col-md-1 col-sm-1 actions text-center">
                                         <label class="visible-xs text-left">Actions</label>
-                                        <a class="delete-nearby-row" href="#">
+                                        <a class="delete-nearby-row" href="<c:url value="/apiAccess"/>?delete=${key.id}">
                                             <span class="fui-trash"></span>
                                         </a>
                                     </div>
