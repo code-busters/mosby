@@ -2,7 +2,6 @@ package main.java.com.mosby.controller.dao;
 
 import java.lang.reflect.Field;
 
-import main.java.com.mosby.controller.transformers.ReflectionTransformer;
 import main.java.com.mosby.model.annotations.dao.Column;
 import main.java.com.mosby.model.annotations.dao.Key;
 import main.java.com.mosby.model.annotations.dao.Table;
@@ -11,27 +10,22 @@ import main.java.com.mosby.utils.StringUtils;
 public class QueryStatements<T> {
 
 	private Class<T> type;
-	private ReflectionTransformer<T> reflectionTransformer;
 
 	public QueryStatements(Class<T> type) {
 		this.type = type;
-		this.reflectionTransformer = new ReflectionTransformer<>();
 	}
 
-	public String createSelectQuery(String fieldName, Object whereObj) {
+		public String createSelectQuery(Object... whereArguments) {
 		String query = null;
 		String tableName = type.getAnnotation(Table.class).name();
 		String tableColumns = getColumns(false);
-
-		if (fieldName.equals("")) {
+		
+		if (whereArguments.length == 0 || (whereArguments[0].toString().equals(""))) {
 			query = StringUtils.concat("SELECT ", tableColumns, "FROM ",
 					tableName);
 		} else {
-			String whereColumn = reflectionTransformer
-					.fromFieldToColumnInDB(fieldName);
-			String whereValue = whereObj.toString();
 			query = StringUtils.concat("SELECT ", tableColumns, "FROM ",
-					tableName, " WHERE ", whereColumn, "='", whereValue, "'");
+					tableName, " WHERE ", getWhereColumns(whereArguments));
 		}
 
 		System.out.println(query);
@@ -67,18 +61,6 @@ public class QueryStatements<T> {
 		return query;
 	}
 
-//	public String createDeleteQuery() {
-//		String query = null;
-//
-//		String tableName = reflectionTransformer.fromFieldToColumnInDB(type
-//				.getSimpleName()) + "s";
-//
-//		query = StringUtils.concat("DELETE FROM ", tableName, " WHERE id=?");
-//
-//		System.out.println(query);
-//
-//		return query;
-//	}
 	public String createDeleteQuery() {
 		String query = null;
 
@@ -92,31 +74,6 @@ public class QueryStatements<T> {
 	}
 	
 	
-
-	private String getUpdateColumns() {
-		String tableColumns = null;
-		StringBuilder stringBuilder = new StringBuilder();
-
-		for (Field field : type.getDeclaredFields()) {
-			String fieldName = null;
-			if (field.isAnnotationPresent(Column.class)) {
-				Column annotation = (Column) field.getAnnotation(Column.class);
-				fieldName = annotation.name();
-				if (!fieldName.equals("id")) {
-					stringBuilder.append(fieldName).append("=?, ");
-				}
-			} else if (field.isAnnotationPresent(Key.class)) {
-				Key annotation = (Key) field.getAnnotation(Key.class);
-				fieldName = annotation.name();
-				stringBuilder.append(fieldName).append("=?, ");
-			}
-		}
-		stringBuilder.deleteCharAt(stringBuilder.length() - 2);
-		tableColumns = stringBuilder.toString();
-
-		return tableColumns;
-	}
-
 	private String getColumns(boolean hasValues) {
 		String tableColumns = null;
 		StringBuilder stringBuilder = new StringBuilder();
@@ -142,8 +99,45 @@ public class QueryStatements<T> {
 			}
 		}
 		stringBuilder.deleteCharAt(stringBuilder.length() - 2);
-		tableColumns = reflectionTransformer
-				.fromFieldToColumnInDB(stringBuilder.toString());
+		tableColumns = stringBuilder.toString();
+
+		return tableColumns;
+	}
+	
+	private String getWhereColumns(Object...whereArguments) {
+		String whereStatement = null;
+		StringBuilder stringBuilder = new StringBuilder();
+
+		for (int i = 1; i < whereArguments.length; i += 2) {
+			stringBuilder.append(whereArguments[i - 1].toString()).append("='").append(whereArguments[i].toString()).append("', ");
+		}
+		
+		stringBuilder.deleteCharAt(stringBuilder.length() - 2);
+		whereStatement = stringBuilder.toString();
+
+		return whereStatement;
+	}
+	
+	private String getUpdateColumns() {
+		String tableColumns = null;
+		StringBuilder stringBuilder = new StringBuilder();
+
+		for (Field field : type.getDeclaredFields()) {
+			String fieldName = null;
+			if (field.isAnnotationPresent(Column.class)) {
+				Column annotation = (Column) field.getAnnotation(Column.class);
+				fieldName = annotation.name();
+				if (!fieldName.equals("id")) {
+					stringBuilder.append(fieldName).append("=?, ");
+				}
+			} else if (field.isAnnotationPresent(Key.class)) {
+				Key annotation = (Key) field.getAnnotation(Key.class);
+				fieldName = annotation.name();
+				stringBuilder.append(fieldName).append("=?, ");
+			}
+		}
+		stringBuilder.deleteCharAt(stringBuilder.length() - 2);
+		tableColumns = stringBuilder.toString();
 
 		return tableColumns;
 	}

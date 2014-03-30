@@ -9,13 +9,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.apache.log4j.Logger;
+
 import main.java.com.mosby.controller.dao.ReflectionDao;
 import main.java.com.mosby.model.annotations.dao.Column;
 import main.java.com.mosby.model.annotations.dao.Key;
 
 public class ReflectionTransformer<T> {
 
-	public T fromRStoObject(T object, ResultSet resultSet, Class<T> type) {
+	private static Logger logger = Logger.getLogger(ReflectionTransformer.class);
+	
+	public T fromRStoObject(T object, ResultSet resultSet, Class<T> type) {//throws Exception {
 
 		for (Field field : type.getDeclaredFields()) {
 
@@ -23,9 +27,8 @@ public class ReflectionTransformer<T> {
 			try {
 				if (field.isAnnotationPresent(Column.class)) {
 					if (field.getType().equals(boolean.class)) {
-						int state = (int) resultSet
-								.getObject(fromFieldToColumnInDB(field
-										.getName()));
+						int state = (int) resultSet.getObject(field.getAnnotation(
+								Column.class).name());
 						if (state == 0) {
 							value = new Boolean(false);
 						} else if (state == 1) {
@@ -56,68 +59,71 @@ public class ReflectionTransformer<T> {
 			} catch (IntrospectionException | IllegalAccessException
 					| IllegalArgumentException | InvocationTargetException
 					| SQLException e) {
-				e.printStackTrace();
+				logger.error("From ResultSet to Object exception", e);
 			}
 		}
 		return object;
 	}
 
 	public PreparedStatement fromObjectToStatement(
-			PreparedStatement preparedStatement, Class<T> type, T object, boolean isUpdate) {
+			PreparedStatement preparedStatement, Class<T> type, T object,
+			boolean isUpdate) {//throws Exception {
 		int columnIndex = 0;
 		System.out.println(object);
 		for (Field field : type.getDeclaredFields()) {
 			if (!(isUpdate && field.getName().equals("id"))) {
-			PropertyDescriptor propertyDescriptor;
-			try {
-				if (field.isAnnotationPresent(Column.class)) {
-					propertyDescriptor = new PropertyDescriptor(
-							field.getName(), type);
-					Method method = propertyDescriptor.getReadMethod();
-					System.out.println(method.getName().toString());
-					Object value = method.invoke(object);
-					if (value != null) {
-						System.out.println(value);
-					} else {
-						System.out.println("Null");
-					}
-					preparedStatement.setObject(++columnIndex, value);
-					
-				} else if (field.isAnnotationPresent(Key.class)) {
-					Class<?> fieldClass = field.getType();
-					System.out.println(fieldClass.toString());
-
-					propertyDescriptor = new PropertyDescriptor(
-							field.getName(), type);
-					Method mainMethod = propertyDescriptor.getReadMethod();
-					System.out.println(mainMethod.getName().toString());
-					Object fieldObject = mainMethod.invoke(object);
-
-					if (fieldObject != null) {
-						System.out.println(fieldObject.toString());
-
-						Method currentObjectMethod = fieldClass
-								.getDeclaredMethod("getId");
-						System.out.println(currentObjectMethod.getName()
-								.toString());
-						Object value = currentObjectMethod.invoke(fieldObject);
-
-						System.out.println(value);
-
+				PropertyDescriptor propertyDescriptor;
+				try {
+					if (field.isAnnotationPresent(Column.class)) {
+						propertyDescriptor = new PropertyDescriptor(
+								field.getName(), type);
+						Method method = propertyDescriptor.getReadMethod();
+						System.out.println(method.getName().toString());
+						Object value = method.invoke(object);
+						if (value != null) {
+							System.out.println(value);
+						} else {
+							System.out.println("Null");
+						}
 						preparedStatement.setObject(++columnIndex, value);
-					} else {
-						System.out.println("Null");
-						preparedStatement.setObject(++columnIndex, null);
-					}
 
+					} else if (field.isAnnotationPresent(Key.class)) {
+						Class<?> fieldClass = field.getType();
+						System.out.println(fieldClass.toString());
+
+						propertyDescriptor = new PropertyDescriptor(
+								field.getName(), type);
+						Method mainMethod = propertyDescriptor.getReadMethod();
+						System.out.println(mainMethod.getName().toString());
+						Object fieldObject = mainMethod.invoke(object);
+
+						if (fieldObject != null) {
+							System.out.println(fieldObject.toString());
+
+							Method currentObjectMethod = fieldClass
+									.getDeclaredMethod("getId");
+							System.out.println(currentObjectMethod.getName()
+									.toString());
+							Object value = currentObjectMethod
+									.invoke(fieldObject);
+
+							System.out.println(value);
+
+							preparedStatement.setObject(++columnIndex, value);
+						} else {
+							System.out.println("Null");
+							preparedStatement.setObject(++columnIndex, null);
+						}
+
+					}
+				} catch (IntrospectionException | IllegalAccessException
+						| IllegalArgumentException | InvocationTargetException
+						| SQLException | SecurityException
+						| NoSuchMethodException e) {
+					logger.error("From Object to Statement exception", e);
 				}
-			} catch (IntrospectionException | IllegalAccessException
-					| IllegalArgumentException | InvocationTargetException
-					| SQLException | SecurityException | NoSuchMethodException e) {
-				e.printStackTrace();
+				System.out.println(columnIndex);
 			}
-			System.out.println(columnIndex);
-		}
 		}
 		return preparedStatement;
 	}
@@ -133,19 +139,19 @@ public class ReflectionTransformer<T> {
 		return columnCount;
 	}
 
-	public String fromFieldToColumnInDB(String line) {
-		String dbColumn = "";
-		StringBuilder currentLine = new StringBuilder();
-
-		for (int i = 0; i < line.length(); ++i) {
-			if (Character.isUpperCase(line.charAt(i)) && i != 0) {
-				currentLine.append("_");
-			}
-			currentLine.append(line.charAt(i));
-		}
-		dbColumn = currentLine.toString().toLowerCase();
-
-		return dbColumn;
-	}
+	// public String fromFieldToColumnInDB(String line) {
+	// String dbColumn = "";
+	// StringBuilder currentLine = new StringBuilder();
+	//
+	// for (int i = 0; i < line.length(); ++i) {
+	// if (Character.isUpperCase(line.charAt(i)) && i != 0) {
+	// currentLine.append("_");
+	// }
+	// currentLine.append(line.charAt(i));
+	// }
+	// dbColumn = currentLine.toString().toLowerCase();
+	//
+	// return dbColumn;
+	// }
 
 }

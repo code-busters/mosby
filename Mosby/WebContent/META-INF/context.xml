@@ -2,7 +2,7 @@
     <Resource name="jdbc/onlinedb"
               type="javax.sql.DataSource"
               factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
-              maxActive="20" maxIdle="10"
+              maxActive="40" maxIdle="20"
               maxWait="-1"
               username="mosby"
               password="code_busters"

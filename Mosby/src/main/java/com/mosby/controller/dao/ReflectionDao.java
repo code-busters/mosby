@@ -6,16 +6,20 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.log4j.Logger;
 
 import main.java.com.mosby.controller.persistence.ConnectionManager;
 import main.java.com.mosby.controller.transformers.ReflectionTransformer;
 
-import com.mysql.jdbc.Statement;
 
 public class ReflectionDao<T> {
 
+	private static Logger logger = Logger.getLogger(ReflectionDao.class);
+	
 	private Class<T> type;
 	private String query;
 	private ReflectionTransformer<T> reflectionTransformer;
@@ -43,14 +47,12 @@ public class ReflectionDao<T> {
 	public void setQuery(String queryStatement) {
 		this.query = queryStatement;
 	}
-
-	public List<T> selectObjects(String fieldName, Object whereObj) {
+	
+	public List<T> selectObjects(Object... whereArguments) {//throws Exception {
 		List<T> objects = new ArrayList<>();
-		try {
-			query = queryStatements.createSelectQuery(fieldName, whereObj);
+		try (Connection connection = ConnectionManager.getInstance().getConnection()) {
+			query = queryStatements.createSelectQuery(whereArguments);
 
-			Connection connection = ConnectionManager.getInstance()
-					.getConnection();
 			PreparedStatement preparedStatement = (PreparedStatement) connection
 					.prepareStatement(query);
 			ResultSet resultSet = preparedStatement.executeQuery();
@@ -64,18 +66,16 @@ public class ReflectionDao<T> {
 			preparedStatement.close();
 		} catch (ClassNotFoundException | SQLException | InstantiationException
 				| IllegalAccessException e) {
-			e.printStackTrace();
+			logger.error("SQL Select exception", e);
 		}
 		return objects;
 	}
 
-	public int insertObjects(T object) {
+	public int insertObjects(T object) {//throws Exception {
 		int generatedId = -1;
-		try {
+		try (Connection connection = ConnectionManager.getInstance().getConnection()) {
 			query = queryStatements.createInsertQuery();
 
-			Connection connection = ConnectionManager.getInstance()
-					.getConnection();
 			PreparedStatement preparedStatement = (PreparedStatement) connection
 					.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
@@ -94,17 +94,15 @@ public class ReflectionDao<T> {
 			preparedStatement.close();
 		} catch (SQLException | IllegalArgumentException
 				| ClassNotFoundException e) {
-			e.printStackTrace();
+			logger.error("SQL Insert exception", e);
 		}
 		return generatedId;
 	}
 
-	public void updateObjects(T object) {
-		try {
+	public void updateObjects(T object) {//throws Exception {
+		try (Connection connection = ConnectionManager.getInstance().getConnection()) {
 			query = queryStatements.createUpdateQuery();
 
-			Connection connection = ConnectionManager.getInstance()
-					.getConnection();
 			PreparedStatement preparedStatement = (PreparedStatement) connection
 					.prepareStatement(query);
 			preparedStatement = (PreparedStatement) reflectionTransformer
@@ -122,16 +120,14 @@ public class ReflectionDao<T> {
 				| ClassNotFoundException | NoSuchMethodException
 				| SecurityException | IllegalAccessException
 				| InvocationTargetException e) {
-			e.printStackTrace();
+			logger.error("SQL Update exception", e);
 		}
 	}
 
-	public void deleteObjects(T object) {
-		try {
+	public void deleteObjects(T object) {//throws Exception {
+		try (Connection connection = ConnectionManager.getInstance().getConnection()) {
 			query = queryStatements.createDeleteQuery();
 
-			Connection connection = ConnectionManager.getInstance()
-					.getConnection();
 			PreparedStatement preparedStatement = (PreparedStatement) connection
 					.prepareStatement(query);
 			Method getIdMethod = type.getDeclaredMethod("getId");
@@ -143,7 +139,7 @@ public class ReflectionDao<T> {
 				| ClassNotFoundException | NoSuchMethodException
 				| SecurityException | IllegalAccessException
 				| InvocationTargetException e) {
-			e.printStackTrace();
+			logger.error("SQL Delete exception", e);
 		}
 	}
 

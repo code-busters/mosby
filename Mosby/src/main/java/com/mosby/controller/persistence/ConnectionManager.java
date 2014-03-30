@@ -14,15 +14,14 @@ public class ConnectionManager {
 
 	private static ConnectionManager instance = null;
 
-	private Connection conn = null;
+	private DataSource datasource = null;
 
 	private ConnectionManager() {
         try {
             Context initContext = new InitialContext();
             Context envContext = (Context) initContext.lookup("java:/comp/env");
-            DataSource datasource = (DataSource) envContext.lookup("jdbc/onlinedb");
-            conn = datasource.getConnection();
-        } catch (NamingException | SQLException e) {
+            datasource = (DataSource) envContext.lookup("jdbc/onlinedb");
+        } catch (NamingException e) {
             log.error(e);
         }
     }
@@ -36,6 +35,12 @@ public class ConnectionManager {
 	}
 
 	public Connection getConnection() {
-		return conn;
+		try {
+			return  datasource.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 }
