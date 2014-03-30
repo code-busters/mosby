@@ -32,6 +32,7 @@ public class SessionFilter implements Filter {
 
 		if (session == null) {
 			session = request.getSession();
+			session.setMaxInactiveInterval(-1);
 		}
 		chain.doFilter(request, response);
 	}
