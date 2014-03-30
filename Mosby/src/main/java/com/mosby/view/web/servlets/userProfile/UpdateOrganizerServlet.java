@@ -23,8 +23,7 @@ public class UpdateOrganizerServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	OrganizerService updateOrganizerService = new OrganizerService();
-    	updateOrganizerService.update(request, this);
+    	new OrganizerService().update(request, this);
     	response.sendRedirect("myOrganizers");
 	}
 }

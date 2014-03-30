@@ -42,28 +42,23 @@ public class SignUpServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		System.out.println("posttt");
 		User user = null;
-		user = new UserService().signUpUser(firstName, lastName, email,
-				password);
+		user = new UserService().signUpUser(firstName, lastName, email, password);
 
 		if (user == null) {
 			ValidatorUtils<User> validatorUtils = null;
 			if(!request.getParameter("language").equals("en")&&!request.getParameter("language").equals("uk")){
-			validatorUtils = new ValidatorUtils<>(
-					User.class, "en");
+			validatorUtils = new ValidatorUtils<>(User.class, "en");
 			} else {
-			validatorUtils = new ValidatorUtils<>(
-						User.class, request.getParameter("language"));
+			validatorUtils = new ValidatorUtils<>(User.class, request.getParameter("language"));
 			}
 			validatorUtils.changeEmail();
 			request.setAttribute("errors", validatorUtils.getErrors());
 			request.setAttribute("first_name", firstName);
 			request.setAttribute("last_name", lastName);
 			request.setAttribute("email", email);
-			request.getRequestDispatcher("/pages/signUp.jsp").forward(request,
-					response);
+			request.getRequestDispatcher("/pages/signUp.jsp").forward(request, response);
 		} else {
-			request.getRequestDispatcher("/pages/emailSent.jsp").forward(request,
-					response);
+			request.getRequestDispatcher("/pages/emailSent.jsp").forward(request, response);
 		}
 	}
 }

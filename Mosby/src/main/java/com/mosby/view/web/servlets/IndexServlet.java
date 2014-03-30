@@ -31,7 +31,7 @@ public class IndexServlet extends HttpServlet {
 
 	//@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Event> list = new ReadGenericObjectService<Event>((Class<Event>) new Event().getClass()).readList();
+		List<Event> list = new ReadGenericObjectService<Event>((Class<Event>) Event.class).readList();
 		request.setAttribute("eventList", list);
 		System.out.println(request.getAttribute("eventList"));
 		

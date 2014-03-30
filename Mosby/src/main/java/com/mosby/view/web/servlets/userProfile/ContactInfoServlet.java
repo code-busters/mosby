@@ -22,8 +22,7 @@ public class ContactInfoServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserService updateUserService = new UserService();
-		updateUserService.update(request, this);
+		new UserService().update(request, this);
 		response.sendRedirect("contactInfo");
 	}
 }

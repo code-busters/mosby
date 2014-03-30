@@ -23,8 +23,8 @@ public class EventPageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getParameter("eventId") != null) {
             int eventId = Integer.parseInt(request.getParameter("eventId"));
-            Event event = new ReadGenericObjectService<Event>((Class<Event>) new Event().getClass()).readById(eventId); 
-            List <TicketInfo> ticketsInfoList = new ReadGenericObjectService<TicketInfo>((Class<TicketInfo>) new TicketInfo().getClass()).readListByField("event_ref", (Integer)eventId);
+            Event event = new ReadGenericObjectService<Event>((Class<Event>) Event.class).readById(eventId); 
+            List <TicketInfo> ticketsInfoList = new ReadGenericObjectService<TicketInfo>((Class<TicketInfo>) TicketInfo.class).readListByField("event_ref", (Integer)eventId);
             request.setAttribute("event", event);
             request.setAttribute("tickets", ticketsInfoList);
             request.getRequestDispatcher("/pages/eventPage.jsp").forward(request, response);

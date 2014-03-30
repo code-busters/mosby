@@ -21,7 +21,6 @@ import javax.servlet.http.Part;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -51,7 +50,7 @@ public class EventService {
 				eventLogo = FileUploadUtils.getFilename(image);
 			}
 		} catch (Exception e) {
-			log.error(e);
+			log.error(e);	
 		}
 		String eventBackground = "default.jpg";
 		filePart = request.getPart("event_background");
@@ -85,10 +84,13 @@ public class EventService {
 		}
 		System.out.println(request.getParameter("start_time"));
 
-
 		String location = request.getParameter("event_location");
+		boolean privacy = false;
+		if (!request.getParameter("privacy_event").equals("0")){
+			privacy = true;
+		}
 
-		Event event = new Event(null, name, description, eventCategory, eventType, startDate, startTime, endDate, endTime, location, eventLogo, eventBackground, false);
+		Event event = new Event(null, name, description, eventCategory, eventType, startDate, startTime, endDate, endTime, location, eventLogo, eventBackground, privacy);
 		System.out.println(event);
 
 		ReflectionDao<Event> eventDao = new ReflectionDao<>((Class<Event>) Event.class);
@@ -147,7 +149,7 @@ public class EventService {
 	
 	public void updateEvent(HttpServletRequest request, HttpServlet servlet) throws IllegalStateException, IOException, ServletException{
 		int eventId = Integer.parseInt(request.getParameter("eventId"));
-		Event event = new ReadGenericObjectService<Event>((Class<Event>) new Event().getClass()).readById(eventId); 
+		Event event = new ReadGenericObjectService<Event>((Class<Event>) Event.class).readById(eventId); 
 		
 		//get info from JSP
 		
@@ -195,11 +197,10 @@ public class EventService {
 		EventType eventType = new ReadGenericObjectService<EventType>((Class<EventType>) EventType.class).readById(Integer.parseInt(request.getParameter("event_type")));
 
 		String description = request.getParameter("event_description");
-
 		String location = request.getParameter("event_location");
-
+		boolean privacy = false;
 		
-		Event updatedEvent = new Event(eventId, null, name, description, eventCategory, eventType, startDate, startTime, endDate, endTime, location, eventLogo, eventBackground, false);
+		Event updatedEvent = new Event(eventId, null, name, description, eventCategory, eventType, startDate, startTime, endDate, endTime, location, eventLogo, eventBackground, privacy);
 		
 		ReflectionDao<Event> eventDao = new ReflectionDao<>((Class<Event>) Event.class);
 		eventDao.updateObjects(updatedEvent);

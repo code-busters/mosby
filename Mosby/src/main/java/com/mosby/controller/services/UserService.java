@@ -5,7 +5,6 @@ import main.java.com.mosby.model.User;
 import main.java.com.mosby.utils.EncryptionUtils;
 import main.java.com.mosby.utils.FileUploadUtils;
 import main.java.com.mosby.utils.MailUtils;
-import main.java.com.mosby.utils.ValidatorUtils;
 
 import org.apache.log4j.Logger;
 

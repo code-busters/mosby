@@ -21,8 +21,7 @@ public class CreateOrganizerServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        OrganizerService createOrganizerService = new OrganizerService();
-        createOrganizerService.create(request, this);
+        new OrganizerService().create(request, this);
         response.sendRedirect("myOrganizers");
     }
 

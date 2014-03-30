@@ -35,10 +35,10 @@ public class ApiAccessServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
         User sessionUser = (User) session.getAttribute("user");
         int userId = sessionUser.getId();
-        List<Organizer> organizersList = new ReadGenericObjectService<>((Class<Organizer>) new Organizer().getClass()).readListByField("user_ref", userId);
+        List<Organizer> organizersList = new ReadGenericObjectService<>((Class<Organizer>) Organizer.class).readListByField("user_ref", userId);
         List<Api> apiList = new ArrayList<>();
         for (Organizer organizer : organizersList) {
-            List<Api> tempApiList = new ReadGenericObjectService<>((Class<Api>) new Api().getClass()).readListByField("organizer_ref", organizer.getId());
+            List<Api> tempApiList = new ReadGenericObjectService<>((Class<Api>) Api.class).readListByField("organizer_ref", organizer.getId());
             apiList.addAll(tempApiList);
         }
 

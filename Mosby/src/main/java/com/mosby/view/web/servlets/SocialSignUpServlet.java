@@ -41,9 +41,7 @@ public class SocialSignUpServlet extends HttpServlet {
 				session.setAttribute("user_type", "facebook");
 				
 				if(new UserService().socialSignUpUser(user ) == null){
-					UserService readUsersService = new UserService();
-					
-					readUsersService.readSocialUser(user);
+					new UserService().readSocialUser(user);
 					
 					System.out.println("signed in using facebook " + user);
 

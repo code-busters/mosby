@@ -12,7 +12,6 @@ import javax.servlet.http.Part;
 import org.apache.log4j.Logger;
 
 import main.java.com.mosby.controller.dao.ReflectionDao;
-import main.java.com.mosby.model.Event;
 import main.java.com.mosby.model.Organizer;
 import main.java.com.mosby.model.User;
 import main.java.com.mosby.utils.FileUploadUtils;

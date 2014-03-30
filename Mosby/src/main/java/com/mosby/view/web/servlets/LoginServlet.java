@@ -41,12 +41,12 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		UserService readUsersService = new UserService();
+		UserService userService = new UserService();
 
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 
-		User user = readUsersService.readUser(email, password);
+		User user = userService.readUser(email, password);
 
 		if (user == null || !user.isActive()) {
 

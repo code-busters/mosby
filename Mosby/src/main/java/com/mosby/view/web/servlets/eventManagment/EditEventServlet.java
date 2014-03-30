@@ -24,7 +24,7 @@ public class EditEventServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getParameter("eventId") != null) {
             int eventId = Integer.parseInt(request.getParameter("eventId"));
-            Event event = new ReadGenericObjectService<Event>((Class<Event>) new Event().getClass()).readById(eventId);
+            Event event = new ReadGenericObjectService<Event>((Class<Event>) Event.class).readById(eventId);
             request.setAttribute("event", event);
             request.getRequestDispatcher("/pages/eventManagement/editEvent.jsp").forward(request, response);
         } else {

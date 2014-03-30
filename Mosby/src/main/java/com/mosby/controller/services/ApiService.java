@@ -20,7 +20,7 @@ public class ApiService {
 
         String name = request.getParameter("name");
         int organizerId = Integer.parseInt(request.getParameter("organizer"));
-        Organizer organizer = new ReadGenericObjectService<>((Class<Organizer>) new Organizer().getClass()).readById(organizerId);
+        Organizer organizer = new ReadGenericObjectService<>((Class<Organizer>) Organizer.class).readById(organizerId);
         Date timeOfCreation = new Date();
 
         Api api = new Api(organizer, name, key.toString(), timeOfCreation);

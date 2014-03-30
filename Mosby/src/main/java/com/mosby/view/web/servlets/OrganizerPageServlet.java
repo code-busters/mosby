@@ -18,8 +18,8 @@ public class OrganizerPageServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getParameter("id") != null) {
             int organizerId = Integer.parseInt(request.getParameter("id"));
-            Organizer organizer = new ReadGenericObjectService<Organizer>((Class<Organizer>) new Organizer().getClass()).readById(organizerId);
-            List<Event> eventsList = new ReadGenericObjectService<Event>((Class<Event>) new Event().getClass()).readListByField("organizer_ref", (Integer)organizerId);
+            Organizer organizer = new ReadGenericObjectService<Organizer>((Class<Organizer>) Organizer.class).readById(organizerId);
+            List<Event> eventsList = new ReadGenericObjectService<Event>((Class<Event>) Event.class).readListByField("organizer_ref", (Integer)organizerId);
             request.setAttribute("organizer", organizer);
             request.setAttribute("events", eventsList);
             request.getRequestDispatcher("/pages/organizerPage.jsp").forward(request, response);
