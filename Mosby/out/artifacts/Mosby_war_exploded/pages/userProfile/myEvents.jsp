@@ -81,14 +81,15 @@
                                     </div>
                                     <div class="col-md-2 col-sm-2">
                                         <span class="as-label visible-xs"><fmt:message key="myEvents.sold"/></span>
-                                        <p>200/240</p>
+                                        <c:set var="eventId" value="${event.id}"/>
+                                        <p>${ticketsSold[eventId]}/${tickets[eventId]}</p>
                                     </div>
                                     <div class="col-md-2 col-sm-2 actions text-center">
                                         <label class="visible-xs text-left"><fmt:message key="myEvents.actions"/></label>
                                         <a href="<c:url value="/editEvent?eventId=${event.id}"/>">
                                             <span class="fui-new"></span>
                                         </a>
-                                        <a href="#">
+                                        <a href="<c:url value="/myEvents?delete=${event.id}"/>">
                                             <span class="fui-trash"></span>
                                         </a>
                                     </div>

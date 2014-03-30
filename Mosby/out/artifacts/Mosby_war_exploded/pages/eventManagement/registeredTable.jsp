@@ -106,7 +106,7 @@
                                             <a href="#">${ticket.promoCode.code}</a>
                                         </td>
                                         <td class="text-center">
-                                            <a class="delete-nearby-row" href="#">
+                                            <a class="delete-nearby-row" href="<c:url value="/registeredTable?delete=${ticket.id}"/>">
                                                 <span class="fui-trash"></span>
                                             </a>
                                         </td>

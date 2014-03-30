@@ -80,9 +80,12 @@
                                 </div>
                             </div>
                             <% } else { %>
+                            <c:forEach items="${errors}" var="error">
+                                <p>${error}</p>
+                            </c:forEach>
                             <div class="form-group col-md-5 col-sm-5">
                                 <label for="name">Name</label>
-                                <input class="form-control" type="text" placeholder="Name" name="name" id="name"/>
+                                <input class="form-control" type="text" placeholder="Name" name="name" id="name" required />
                                 <span class="additional-input-info">ex: "Android App", "Google Glass"</span>
                             </div>
                             <div class="form-group col-md-3 col-sm-3">

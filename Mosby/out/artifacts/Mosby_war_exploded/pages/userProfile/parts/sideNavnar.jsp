@@ -27,7 +27,7 @@
             <a href="<c:url value="/myOrganizers"/>"><fmt:message key="sideNavnar.myOrganizers"/></a>
         </li>
         <li>
-            <a href="<c:url value="/apiAccess"/>">Api Access</a>
+            <a href="<c:url value="/apiAccess"/>"><fmt:message key="sideNavnar.apiAccess"/></a>
         </li>
         <li>
             <a href="#"><fmt:message key="sideNavnar.services"/></a>

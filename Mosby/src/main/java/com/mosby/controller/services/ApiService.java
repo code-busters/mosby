@@ -16,16 +16,16 @@ public class ApiService {
     }
 
     public String generateKey(HttpServletRequest request) {
-        UUID key = UUID.randomUUID();
+        String key = UUID.randomUUID().toString().replaceAll("-", "");
 
         String name = request.getParameter("name");
         int organizerId = Integer.parseInt(request.getParameter("organizer"));
-        Organizer organizer = new ReadGenericObjectService<>((Class<Organizer>) Organizer.class).readById(organizerId);
+        Organizer organizer = new ReadGenericObjectService<>(Organizer.class).readById(organizerId);
         Date timeOfCreation = new Date();
 
-        Api api = new Api(organizer, name, key.toString(), timeOfCreation);
+        Api api = new Api(organizer, name, key, timeOfCreation);
         apiDao.insertObjects(api);
-        return key.toString();
+        return key;
     }
 
     public void deleteKey(HttpServletRequest request) {

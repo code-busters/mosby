@@ -43,7 +43,7 @@ public class CreateEventServlet extends HttpServlet {
             int eventId = new EventService().create(request, this);
             Event event = new ReadGenericObjectService<Event>((Class<Event>) Event.class).readById(eventId);
             request.setAttribute("event", event);
-            response.sendRedirect("/Mosby/eventPage?eventId=" + event.getId());
+            response.sendRedirect("eventPage?eventId=" + event.getId());
         } catch (Exception e) {
             e.printStackTrace();
             log.error(e);

@@ -23,10 +23,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class EventService {
 	private static final String DATE_FORMAT = "yyyy-MM-dd";
@@ -333,27 +330,29 @@ public class EventService {
     	HttpSession session = request.getSession(false);
     	User sessionUser = (User) session.getAttribute("user");
     	int userId = sessionUser.getId();
-    	List <Organizer> organizersList = new ReadGenericObjectService<Organizer>((Class<Organizer>) new Organizer().getClass()).readListByField("user_ref", (Integer)userId);
+    	List <Organizer> organizersList = new ReadGenericObjectService<>(Organizer.class).readListByField("user_ref", userId);
     	List <Event> myEvents = new ArrayList<>();
+
+        Map <Integer, Integer> ticketsSold = new HashMap<>();
+        Map <Integer, Integer> tickets = new HashMap<>();
     	for (Organizer organizer : organizersList) {
-    		List <Event> currentEvents = new ReadGenericObjectService<Event>((Class<Event>) new Event().getClass()).readListByField("organizer_ref", organizer.getId());
+    		List <Event> currentEvents = new ReadGenericObjectService<>(Event.class).readListByField("organizer_ref", organizer.getId());
     		for (Event event : currentEvents) {
-    			String atributeNameTickets = "tickets_" + event.getId(); 
     			int allTickets = 0;
-    			List <TicketInfo> ticketsInfo = new ReadGenericObjectService<TicketInfo>((Class<TicketInfo>) new TicketInfo().getClass()).readListByField("event_ref", event.getId());
+    			List <TicketInfo> ticketsInfo = new ReadGenericObjectService<>(TicketInfo.class).readListByField("event_ref", event.getId());
     			for (TicketInfo ticketInfo : ticketsInfo) {
-    				allTickets = allTickets + ticketInfo.getMaxNumber();
+    				allTickets += ticketInfo.getMaxNumber();
 				}
-    			request.setAttribute(atributeNameTickets, allTickets);
-    			
-    			String atributeNameTicketsSold = "tickets_sold_" + event.getId();
-    			List <Ticket> tickets = new ReadGenericObjectService<Ticket>((Class<Ticket>) new Ticket().getClass()).readListByField("event_ref", event.getId());
-    			int ticketsSold = tickets.size();
-    			request.setAttribute(atributeNameTicketsSold, ticketsSold);
+                tickets.put(event.getId(), allTickets);
+
+    			List <Ticket> soldTicketList = new ReadGenericObjectService<>(Ticket.class).readListByField("event_ref", event.getId());
+                ticketsSold.put(event.getId(), soldTicketList.size());
 			}
     		myEvents.addAll(currentEvents);
     	}
     	request.setAttribute("events", myEvents);
+        request.setAttribute("tickets", tickets);
+        request.setAttribute("ticketsSold", ticketsSold);
 		return request;
 	}
 }
