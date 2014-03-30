@@ -1,10 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="language"
+       value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
+       scope="session"/>
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="main.java.com.mosby.i18n.text"/>
 <html>
 
 <head>
     <meta charset="utf-8">
-    <title>Mosby - event management</title>
+    <title><fmt:message key="apiAccess.apiAccessKeys"/> - Mosby - <fmt:message key="title"/></title>
     <link rel="shortcut icon" href="media/images/favicon.ico">
     <link rel="icon" type="image/png" href="media/images/favicon.png"/>
     <meta name="description" content="Mosby - make it simple. New event management system"/>
@@ -49,7 +55,7 @@
                     <a id="menu-toggle" href="#" class="btn btn-default">
                         <span class="fui-list-columned"></span>
                     </a>
-                    API Access Keys
+                    <fmt:message key="apiAccess.apiAccessKeys"/>
                 </h1>
             </div>
             <div class="page-content inset">
@@ -84,12 +90,11 @@
                                 <p>${error}</p>
                             </c:forEach>
                             <div class="form-group col-md-5 col-sm-5">
-                                <label for="name">Name</label>
-                                <input class="form-control" type="text" placeholder="Name" name="name" id="name" required />
-                                <span class="additional-input-info">ex: "Android App", "Google Glass"</span>
+                                <label for="name"><fmt:message key="apiAccess.name"/></label>
+                                <input class="form-control" type="text" placeholder="<fmt:message key="apiAccess.exampleAndroidAppGoogleGlass"/>" name="name" id="name" required />
                             </div>
                             <div class="form-group col-md-3 col-sm-3">
-                                <label for="organizer">Organizer</label>
+                                <label for="organizer"><fmt:message key="apiAccess.organizer"/></label>
                                 <select name="organizer" class="select-block" id="organizer" form="generate-key-form">
                                     <c:forEach items="${organizers}" var="organizer">
                                         <option value="${organizer.id}">
@@ -101,7 +106,7 @@
                             <div class="form-group col-md-4 col-sm-4">
                                 <button class="btn btn-primary btn-lg btn-block generate" name="submit" type="submit"
                                         value="Generate">
-                                    Generate key
+                                    <fmt:message key="apiAccess.generateKey"/>
                                 </button>
                             </div>
                             <% }%>
@@ -111,31 +116,31 @@
                 <div class="row">
                     <div id="my-apis">
                         <div class="row my-apis-header hidden-xs">
-                            <div class="col-md-6 col-sm-6">Api access name</div>
-                            <div class="col-md-2 col-sm-2">Organizer</div>
-                            <div class="col-md-3 col-sm-3">Creation date</div>
-                            <div class="col-md-1 col-sm-1 text-center">Actions</div>
+                            <div class="col-md-6 col-sm-6"><fmt:message key="apiAccess.apiAccessName"/></div>
+                            <div class="col-md-2 col-sm-2"><fmt:message key="apiAccess.organizer"/></div>
+                            <div class="col-md-3 col-sm-3"><fmt:message key="apiAccess.creationDate"/></div>
+                            <div class="col-md-1 col-sm-1 text-center"><fmt:message key="apiAccess.actions"/></div>
                         </div>
                         <div id="my-apis-body">
                             <c:forEach items="${keys}" var="key">
                                 <div id="${key.id}" class="row">
                                     <div class="col-md-6 col-sm-6">
-                                        <span class="as-label visible-xs">Api access name</span>
+                                        <span class="as-label visible-xs"><fmt:message key="apiAccess.apiAccessName"/></span>
 
                                         <p>${key.name}</p>
                                     </div>
                                     <div class="col-md-2 col-sm-2">
-                                        <span class="as-label visible-xs">Organizer</span>
+                                        <span class="as-label visible-xs"><fmt:message key="apiAccess.organizer"/></span>
 
                                         <p>${key.organizer.name}</p>
                                     </div>
                                     <div class="col-md-3 col-sm-3">
-                                        <span class="as-label visible-xs">Creation date</span>
+                                        <span class="as-label visible-xs"><fmt:message key="apiAccess.creationDate"/></span>
 
                                         <p>${key.timeOfCreation}</p>
                                     </div>
                                     <div class="col-md-1 col-sm-1 actions text-center">
-                                        <label class="visible-xs text-left">Actions</label>
+                                        <label class="visible-xs text-left"><fmt:message key="apiAccess.actions"/></label>
                                         <a class="delete-nearby-row" href="<c:url value="/apiAccess"/>?delete=${key.id}">
                                             <span class="fui-trash"></span>
                                         </a>

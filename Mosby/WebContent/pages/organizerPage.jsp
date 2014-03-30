@@ -1,10 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="language"
+       value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
+       scope="session"/>
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="main.java.com.mosby.i18n.text"/>
 <html>
 
 <head>
     <meta charset="utf-8">
-    <title>Mosby - event management</title>
+    <title><fmt:message key="organizerPage.organizer"/> - Mosby - <fmt:message key="title"/></title>
     <link rel="shortcut icon" href="media/images/favicon.ico">
     <link rel="icon" type="image/png" href="media/images/favicon.png"/>
     <meta name="description" content="Mosby - make it simple. New event management system"/>
@@ -53,7 +59,7 @@
                         <li>
                             <a href="mailto:${organizer.email}">
                                 <span class="fui-mail"></span>
-                                Send email
+                                <fmt:message key="organizerPage.sendEmail"/>
                             </a>
                         </li>
                         <li>
@@ -114,7 +120,7 @@
                             </p>
 
                             <div class="text-right read-more">
-                                <a href="<c:url value="/eventPage?eventId=${event.id}"/>">Read more ></a>
+                                <a href="<c:url value="/eventPage?eventId=${event.id}"/>"><fmt:message key="organizerPage.readMore"/></a>
                             </div>
                         </div>
                     </div>

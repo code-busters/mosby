@@ -1,10 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="language"
+       value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
+       scope="session"/>
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="main.java.com.mosby.i18n.text"/>
 <html>
 
 <head>
     <meta charset="utf-8">
-    <title>Mosby - event management</title>
+    <title>Mosby - <fmt:message key="title"/></title>
     <link rel="shortcut icon" href="media/images/favicon.ico">
     <link rel="icon" type="image/png" href="media/images/favicon.png" />
     <meta name="description" content="Mosby - make it simple. New event management system" />
@@ -32,7 +38,7 @@
 <div class="container-fluid">
     <div class="row dialog">
         <i class="fui-mail mrm"></i>
-        Thank you for registration! Instruction were sent on your email.
+        <fmt:message key="sendEmail.thankYouForRegistrationInstructionWereSentOnYourEmail"/>
     </div>
 </div>
 

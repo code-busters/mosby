@@ -10,7 +10,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Create event - Mosby - <fmt:message key="title"/></title>
+    <title><fmt:message key="createEvent.createEvent"/> - Mosby - <fmt:message key="title"/></title>
     <link rel="shortcut icon" href="media/images/favicon.ico">
     <link rel="icon" type="image/png" href="media/images/favicon.png"/>
     <meta name="description" content="Mosby - make it simple. New event management system"/>
@@ -182,15 +182,15 @@
                     <span class="fui-plus"></span><fmt:message key="createEvent.donation"/></a>
             </div>
 
-            <h5>Promo codes</h5>
+            <h5><fmt:message key="createEvent.promoCodes"/></h5>
 
             <div class="form-group">
                 <div id="promo-codes">
                     <div class="row promo-codes-header hidden-xs">
-                        <div class="col-md-6 col-sm-6">Promo code</div>
-                        <div class="col-md-2 col-sm-2">Quantity available</div>
-                        <div class="col-md-2 col-sm-2">Discount</div>
-                        <div class="col-md-2 col-sm-2 text-center">Actions</div>
+                        <div class="col-md-6 col-sm-6"><fmt:message key="createEvent.promoCode"/></div>
+                        <div class="col-md-2 col-sm-2"><fmt:message key="createEvent.quantityAvailable"/></div>
+                        <div class="col-md-2 col-sm-2"><fmt:message key="createEvent.discount"/></div>
+                        <div class="col-md-2 col-sm-2 text-center"><fmt:message key="createEvent.actions"/></div>
                     </div>
                     <div id="promo-codes-body">
                         <input class="hide" type="text" value="" name="promo_codes_id"/>
@@ -200,21 +200,21 @@
             </div>
             <div class="col-md-3 col-sm-4 add-promo-code">
                 <a id="add-promo-code" href="#fakelink" class="btn btn-block btn-lg btn-primary">
-                    <span class="fui-plus"></span>Promo code</a>
+                    <span class="fui-plus"></span><fmt:message key="createEvent.promoCode"/></a>
             </div>
 
-            <h5>Additional Settings</h5>
+            <h5><fmt:message key="createEvent.additionalSettings"/></h5>
 
             <div class="form-group">
-                <span class="as-label">Listing privacy</span>
+                <span class="as-label"><fmt:message key="createEvent.listingPrivacy"/></span>
                 <label class="radio checked">
 							<span class="icons">
 								<span class="first-icon fui-radio-unchecked"></span>
 								<span class="second-icon fui-radio-checked"></span>
 							</span>
                     <input type="radio" name="privacy_event" id="public-event" value="0" data-toggle="radio">
-                    Public event
-                    <span class="additional">list this event on Eventbrite and search engines</span>
+                    <fmt:message key="createEvent.publicEvent"/>
+                    <span class="additional"><fmt:message key="createEvent.listThisEventOnEventbriteAndSearchEngines"/></span>
                 </label>
                 <label class="radio">
 							<span class="icons">
@@ -222,12 +222,12 @@
 								<span class="second-icon fui-radio-checked"></span>
 							</span>
                     <input type="radio" name="privacy_event" id="private-event" value="1" data-toggle="radio">
-                    Private event
-                    <span class="additional">do not list this event publicly</span>
+                    <fmt:message key="createEvent.privateEvent"/>
+                    <span class="additional"><fmt:message key="createEvent.doNotListThisEventPublicly"/></span>
                 </label>
             </div>
             <div class="form-group">
-                <label for="organizer">Organize by</label>
+                <label for="organizer"><fmt:message key="createEvent.organizeBy"/></label>
                 <select name="organizer" class="select-block" id="organizer" form="create-event-form">
                     <c:forEach items="${organizers}" var="organizer">
                         <option value="${organizer.id}">
@@ -239,7 +239,7 @@
 
             <div class="col-md-4 col-md-offset-4">
                 <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit" value="Submit">
-                    Create event
+                    <fmt:message key="createEvent.createEvent"/>
                 </button>
             </div>
         </form>
