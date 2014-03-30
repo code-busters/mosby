@@ -89,22 +89,22 @@
                             </div>
                             <div class="form-group">
                                 <label for="first-name"><fmt:message key="contactInfo.firstName"/></label>
-                                <input class="form-control" placeholder=<fmt:message key="contactInfo.firstName"/> value="${user.firstName}"
+                                <input class="form-control" placeholder="<fmt:message key="contactInfo.firstName"/>" value="${user.firstName}"
                                        name="first_name" id="first-name"/>
                             </div>
                             <div class="form-group">
                                 <label for="last-name"><fmt:message key="contactInfo.lastName"/></label>
-                                <input class="form-control" placeholder=<fmt:message key="contactInfo.lastName"/> value="${user.lastName}"
+                                <input class="form-control" placeholder="<fmt:message key="contactInfo.lastName"/>" value="${user.lastName}"
                                        name="last_name" id="last-name"/>
                             </div>
                             <div class="form-group">
                                 <label for="country"><fmt:message key="contactInfo.country"/></label>
-                                <input class="form-control typeahead" placeholder=<fmt:message key="contactInfo.country"/> value="${user.country}"
+                                <input class="form-control typeahead" placeholder="<fmt:message key="contactInfo.country"/>" value="${user.country}"
                                        name="country" id="country"/>
                             </div>
                             <div class="form-group">
                                 <label for="city"><fmt:message key="contactInfo.city"/></label>
-                                <input class="form-control" placeholder=<fmt:message key="contactInfo.city"/> value="${user.city}" name="city"
+                                <input class="form-control" placeholder="<fmt:message key="contactInfo.city"/>" value="${user.city}" name="city"
                                        id="city"/>
                             </div>
                             <div class="form-group">
@@ -114,7 +114,7 @@
                                     <button type="button" class="btn">
                                         <span class="fui-calendar"></span>
                                     </button>
-                                    <input type="text" placeholder=<fmt:message key="contactInfo.birthday"/> value="${user.birthDate}"
+                                    <input type="text" placeholder="<fmt:message key="contactInfo.birthday"/>" value="${user.birthDate}"
                                            name="birthday" id="birthday" readonly="">
                                 </div>
                             </div>
@@ -124,22 +124,22 @@
                                     <option value="-1">
                                         <fmt:message key="contactInfo.pleaseSelectYourGender"/>
                                     </option>
-                                    <option value="Male">
+                                    <option value="Male" <c:if test="${user.gender == 'Male'}"> selected </c:if>>
                                         <fmt:message key="contactInfo.male"/>
                                     </option>
-                                    <option value="Female">
+                                    <option value="Female" <c:if test="${user.gender == 'Female'}"> selected </c:if>>
                                         <fmt:message key="contactInfo.female"/>
                                     </option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="website"><fmt:message key="contactInfo.website"/></label>
-                                <input type="url" class="form-control" placeholder=<fmt:message key="contactInfo.enterYourWebsiteOrBlog"/>
+                                <input type="url" class="form-control" placeholder="<fmt:message key="contactInfo.enterYourWebsiteOrBlog"/>"
                                        value="${user.site}" name="website" id="website"/>
                             </div>
                             <div class="form-group">
                                 <label for="about"><fmt:message key="contactInfo.about"/></label>
-                                <textarea class="form-control" rows="4" placeholder=<fmt:message key="contactInfo.tellAboutYourself"/>
+                                <textarea class="form-control" rows="4" placeholder="<fmt:message key="contactInfo.tellAboutYourself"/>"
                                           name="about" id="about"
                                           form="contact-info-form">${user.about}</textarea>
                             </div>
