@@ -1,12 +1,16 @@
 package main.java.com.mosby.model;
 
+import java.io.Serializable;
+
 import main.java.com.mosby.model.annotations.dao.*;
 import main.java.com.mosby.model.annotations.validate.NotNull;
 import main.java.com.mosby.model.annotations.validate.Size;
 
 
 @Table(name="event_types")
-public class EventType {
+public class EventType implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Column(name = "id")
 	private int id;

@@ -60,11 +60,11 @@
             <form action="login" method="post" id="login-form">
                 <input type="hidden" name="language" value="${language}" />
                 <div class="form-group">
-                    <input class="form-control" type="email" placeholder=<fmt:message key="login.email"/> name="email" pattern="[^ @]*@[^ @]*\.[^ @]{2,}" required id="email" />
+                    <input class="form-control" type="email" placeholder="<fmt:message key="login.email"/>" name="email" pattern="[^ @]*@[^ @]*\.[^ @]{2,}" required id="email" />
                     <label class="login-field-icon fui-mail" for="email"></label>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="password" placeholder=<fmt:message key="login.password"/> name="password" required id="password" />
+                    <input class="form-control" type="password" placeholder="<fmt:message key="login.password"/>" name="password" required id="password" />
                     <label class="login-field-icon fui-lock" for="password"></label>
                 </div>
                 <div class="form-group">

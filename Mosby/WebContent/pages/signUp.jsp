@@ -61,23 +61,23 @@
             <form action="signUp" method="post" id="sign-up-form">
                 <input type="hidden" name="language" value="${language}" />
                 <div class="form-group">
-                    <input value="${first_name}" class="form-control" placeholder=<fmt:message key="signUp.firstName"/> name="first_name" required id="first-name" />
+                    <input value="${first_name}" class="form-control" placeholder="<fmt:message key="signUp.firstName"/>" name="first_name" required id="first-name" />
                     <label class="login-field-icon fui-user" for="first-name"></label>
                 </div>
                 <div class="form-group">
-                    <input value="${last_name}" class="form-control" placeholder=<fmt:message key="signUp.lastName"/> name="last_name" required id="last-name" />
+                    <input value="${last_name}" class="form-control" placeholder="<fmt:message key="signUp.lastName"/>" name="last_name" required id="last-name" />
                     <label class="login-field-icon fui-user" for="last-name"></label>
                 </div>
                 <div class="form-group">
-                    <input value="${email}" class="form-control" type="email" placeholder=<fmt:message key="signUp.email"/> name="email" pattern="[^ @]*@[^ @]*\.[^ @]{2,}" required id="email" />
+                    <input value="${email}" class="form-control" type="email" placeholder="<fmt:message key="signUp.email"/>" name="email" pattern="[^ @]*@[^ @]*\.[^ @]{2,}" required id="email" />
                     <label class="login-field-icon fui-mail" for="email"></label>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="password" placeholder=<fmt:message key="signUp.password"/> name="password" required id="password" />
+                    <input class="form-control" type="password" placeholder="<fmt:message key="signUp.password"/>" name="password" required id="password" />
                     <label class="login-field-icon fui-lock" for="password"></label>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="password" placeholder=<fmt:message key="signUp.confirmPassword"/> name="confirm_password" required id="confirm-password" />
+                    <input class="form-control" type="password" placeholder="<fmt:message key="signUp.confirmPassword"/>" name="confirm_password" required id="confirm-password" />
                     <label class="login-field-icon fui-lock" for="password"></label>
                 </div>
                 <div class="form-group">
