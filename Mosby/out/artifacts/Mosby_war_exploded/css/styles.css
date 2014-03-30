@@ -435,6 +435,10 @@ footer {
 .bottom-links {
     display: block;
 }
+.copy-right {
+    padding-left: 2em;
+    /*    font-size: 0.8em;*/
+}
 .bottom-links a {
     font-size: 0.9em;
 }
@@ -1127,6 +1131,9 @@ video {
         width: 107px;
         height: 35px;
         margin-top: 0.7em;
+    }
+    .copy-right {
+        padding: 0;
     }
     .on-background-block {
         margin-right: 0;

@@ -78,7 +78,7 @@
       <file leaf-file-name="Api.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/model/Api.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4" max-vertical-offset="1156">
+            <state vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="1581">
               <caret line="28" column="192" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
               <folding />
             </state>
@@ -90,11 +90,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="319" max-vertical-offset="1122">
               <caret line="40" column="97" selection-start-line="40" selection-start-column="97" selection-end-line="40" selection-end-column="97" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#877#878#0" expanded="true" />
-                <element signature="e#922#923#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -102,22 +98,49 @@
       <file leaf-file-name="TicketsService.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/controller/services/TicketsService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="496" max-vertical-offset="1122">
+            <state vertical-scroll-proportion="0.0" vertical-offset="969" max-vertical-offset="1207">
               <caret line="57" column="44" selection-start-line="52" selection-start-column="8" selection-end-line="57" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ApiService.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ApiService.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/controller/services/ApiService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6789137" vertical-offset="0" max-vertical-offset="626">
-              <caret line="31" column="126" selection-start-line="31" selection-start-column="69" selection-end-line="31" selection-end-column="69" />
-              <folding>
-                <element signature="e#373#374#0" expanded="true" />
-                <element signature="e#428#429#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
+              <caret line="35" column="137" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="footer.jsp" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/WebContent/pages/parts/footer.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.205" vertical-offset="30" max-vertical-offset="816">
+              <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="styles.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebContent/css/styles.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="19723" max-vertical-offset="20417">
+              <caret line="1172" column="155" selection-start-line="1172" selection-start-column="25" selection-end-line="1172" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProfilePageFilter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/view/web/filters/user/ProfilePageFilter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="714">
+              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -162,7 +185,6 @@
         <option value="$PROJECT_DIR$/WebContent/js/application.js" />
         <option value="$PROJECT_DIR$/WebContent/pages/createEvent.jsp" />
         <option value="$PROJECT_DIR$/WebContent/pages/eventPage.jsp" />
-        <option value="$PROJECT_DIR$/WebContent/pages/parts/footer.jsp" />
         <option value="$PROJECT_DIR$/WebContent/pages/index.jsp" />
         <option value="$PROJECT_DIR$/WebContent/pages/signUp.jsp" />
         <option value="$PROJECT_DIR$/WebContent/pages/error.jsp" />
@@ -170,7 +192,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/view/web/servlets/userProfile/MyOrganizersServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/view/web/servlets/userProfile/ChangePasswordServlet.java" />
         <option value="$PROJECT_DIR$/WebContent/pages/parts/navbar.jsp" />
-        <option value="$PROJECT_DIR$/WebContent/css/styles.css" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/utils/EncryptionUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/view/web/servlets/eventManagment/RegisteredTableServlet.java" />
         <option value="$PROJECT_DIR$/WebContent/pages/userProfile/parts/sideNavnar.jsp" />
@@ -178,11 +199,13 @@
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/i18n/text.properties" />
         <option value="$PROJECT_DIR$/WebContent/pages/userProfile/contactInfo.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/model/Api.java" />
-        <option value="$PROJECT_DIR$/WebContent/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/WebContent/pages/userProfile/apiAccess.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/view/web/servlets/CreateEventServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/view/web/servlets/userProfile/ApiAccessServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/controller/services/ApiService.java" />
+        <option value="$PROJECT_DIR$/WebContent/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/WebContent/css/styles.css" />
+        <option value="$PROJECT_DIR$/WebContent/pages/parts/footer.jsp" />
       </list>
     </option>
   </component>
@@ -220,6 +243,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -544,8 +569,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -596,7 +619,7 @@
       <recent name="F:\development\GitHub\mosby\Mosby\WebContent\WEB-INF" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Login">
+  <component name="RunManager" selected="Tomcat Server.Api Access">
     <configuration default="false" name="StringUtilsTest.testConcat" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -2297,11 +2320,12 @@
       <workItem from="1396103191576" duration="7939000" />
       <workItem from="1396130691792" duration="7856000" />
       <workItem from="1396138670039" duration="2229000" />
+      <workItem from="1396168073991" duration="1266000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="141296000" />
+    <option name="totallyTimeSpent" value="142562000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
@@ -2312,7 +2336,6 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2335,16 +2358,17 @@
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2364,8 +2388,8 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.267316" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1609808" sideWeight="0.5007587" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -2403,13 +2427,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/WebContent/pages/eventPage.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.8197474" vertical-offset="2040" max-vertical-offset="4114">
-          <caret line="78" column="17" selection-start-line="78" selection-start-column="17" selection-end-line="78" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/view/web/servlets/AuthenticationServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
@@ -2443,14 +2460,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.673938" vertical-offset="1577" max-vertical-offset="2448">
           <caret line="7" column="57" selection-start-line="7" selection-start-column="57" selection-end-line="7" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/pages/parts/footer.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19517796" vertical-offset="34" max-vertical-offset="969">
-          <caret line="12" column="67" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2502,7 +2511,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.15594855" vertical-offset="1263" max-vertical-offset="2873">
           <caret line="80" column="75" selection-start-line="80" selection-start-column="39" selection-end-line="80" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2542,7 +2550,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="935" max-vertical-offset="1615">
           <caret line="55" column="16" selection-start-line="55" selection-start-column="16" selection-end-line="55" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2579,7 +2586,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="974" max-vertical-offset="1921">
           <caret line="101" column="34" selection-start-line="101" selection-start-column="34" selection-end-line="101" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2606,13 +2612,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/css/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="19402" max-vertical-offset="20298">
-          <caret line="1188" column="1" selection-start-line="1188" selection-start-column="1" selection-end-line="1188" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/view/web/servlets/EventPageServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
@@ -2632,7 +2631,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.0638977" vertical-offset="751" max-vertical-offset="2244">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2656,7 +2654,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0543131" vertical-offset="527" max-vertical-offset="3451">
           <caret line="36" column="25" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2665,7 +2662,7 @@
         <state vertical-scroll-proportion="0.33226836" vertical-offset="523" max-vertical-offset="2516">
           <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2699,7 +2696,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-21.692308" vertical-offset="1952" max-vertical-offset="6358">
           <caret line="148" column="118" selection-start-line="134" selection-start-column="0" selection-end-line="148" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2707,7 +2703,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="6.488333" vertical-offset="0" max-vertical-offset="4913">
           <caret line="229" column="34" selection-start-line="225" selection-start-column="19" selection-end-line="229" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2715,7 +2710,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-15.038462" vertical-offset="102" max-vertical-offset="748">
           <caret line="29" column="48" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2731,7 +2725,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.7380192" vertical-offset="0" max-vertical-offset="3417">
           <caret line="85" column="55" selection-start-line="85" selection-start-column="30" selection-end-line="85" selection-end-column="55" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2739,7 +2732,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.4361024" vertical-offset="4950" max-vertical-offset="5576">
           <caret line="118" column="40" selection-start-line="118" selection-start-column="24" selection-end-line="118" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2753,26 +2745,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="2550">
-          <caret line="61" column="41" selection-start-line="61" selection-start-column="41" selection-end-line="61" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/model/Api.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="4" max-vertical-offset="1156">
           <caret line="28" column="192" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/pages/userProfile/apiAccess.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.269231" vertical-offset="1908" max-vertical-offset="3315">
-          <caret line="131" column="110" selection-start-line="131" selection-start-column="68" selection-end-line="131" selection-end-column="68" />
           <folding />
         </state>
       </provider>
@@ -2789,22 +2765,55 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="319" max-vertical-offset="1122">
           <caret line="40" column="97" selection-start-line="40" selection-start-column="97" selection-end-line="40" selection-end-column="97" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#877#878#0" expanded="true" />
-            <element signature="e#922#923#0" expanded="true" />
-          </folding>
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/view/web/filters/user/ProfilePageFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="714">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.66557914" vertical-offset="1258" max-vertical-offset="2618">
+          <caret line="98" column="40" selection-start-line="98" selection-start-column="40" selection-end-line="98" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/controller/services/ApiService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6789137" vertical-offset="0" max-vertical-offset="626">
-          <caret line="31" column="126" selection-start-line="31" selection-start-column="69" selection-end-line="31" selection-end-column="69" />
-          <folding>
-            <element signature="e#373#374#0" expanded="true" />
-            <element signature="e#428#429#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
+          <caret line="35" column="137" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/css/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="19723" max-vertical-offset="20417">
+          <caret line="1172" column="155" selection-start-line="1172" selection-start-column="25" selection-end-line="1172" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/pages/userProfile/apiAccess.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.269231" vertical-offset="1908" max-vertical-offset="3315">
+          <caret line="131" column="110" selection-start-line="131" selection-start-column="68" selection-end-line="131" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/pages/parts/footer.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.205" vertical-offset="30" max-vertical-offset="816">
+          <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
