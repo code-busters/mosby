@@ -83,8 +83,7 @@ public class UserService {
 	public void update(HttpServletRequest request, HttpServlet servlet)
 			throws IllegalStateException, IOException, ServletException {
 		HttpSession session = request.getSession(false);
-		ReflectionDao<User> usersDao = new ReflectionDao<>(
-				(Class<User>) User.class);
+		ReflectionDao<User> usersDao = new ReflectionDao<>((Class<User>) User.class);
 
 		User sessionUser = (User) session.getAttribute("user");
 
@@ -102,8 +101,7 @@ public class UserService {
 		try {
 			String contentType = filePart.getContentType();
 			if (contentType.startsWith("image")) {
-				File image = FileUploadUtils.uploadFile(servlet,
-						USER_IMAGE_PATH, filePart);
+				File image = FileUploadUtils.uploadFile(servlet, USER_IMAGE_PATH, filePart);
 				userImage = FileUploadUtils.getFilename(image);
 			}
 		} catch (Exception e) {
@@ -113,14 +111,9 @@ public class UserService {
 		String country = request.getParameter("country");
 		String city = request.getParameter("city");
 		Date birthDate = sessionUser.getBirthDate();
-		if (birthDate != null
-				&& birthDate.toString()
-						.equals(request.getParameter("birthday"))) {
-
-		} else if (!request.getParameter("birthday").equals("")) {
+		if (!request.getParameter("birthday").equals("")) {
 			try {
-				birthDate = new SimpleDateFormat(DATE_FORMAT).parse(request
-						.getParameter("birthday"));
+				birthDate = new SimpleDateFormat(DATE_FORMAT).parse(request.getParameter("birthday"));
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
@@ -135,6 +128,7 @@ public class UserService {
 				about, authenticationCode, active);
 
 		usersDao.updateObjects(user);
+		user = new ReadGenericObjectService<User>((Class<User>) User.class).readById(user.getId());
 		session.removeAttribute("user");
 		session.setAttribute("user", user);
 	}
