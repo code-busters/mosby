@@ -31,7 +31,7 @@ public class CreateEventServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
         User sessionUser = (User) session.getAttribute("user");
         int userId = sessionUser.getId();
-        List<Organizer> organizersList = new ReadGenericObjectService<Organizer>((Class<Organizer>) Organizer.class).readListByField("user_ref", userId);
+        List<Organizer> organizersList = new ReadGenericObjectService<>(Organizer.class).readListByField("user_ref", userId);
         request.setAttribute("organizers", organizersList);
         request.getRequestDispatcher("/pages/createEvent.jsp").forward(request, response);
     }
@@ -41,7 +41,7 @@ public class CreateEventServlet extends HttpServlet {
 
         try {
             int eventId = new EventService().create(request, this);
-            Event event = new ReadGenericObjectService<Event>((Class<Event>) Event.class).readById(eventId);
+            Event event = new ReadGenericObjectService<>(Event.class).readById(eventId);
             request.setAttribute("event", event);
             response.sendRedirect("eventPage?eventId=" + event.getId());
         } catch (Exception e) {

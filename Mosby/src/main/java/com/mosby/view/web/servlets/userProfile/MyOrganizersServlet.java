@@ -20,7 +20,7 @@ public class MyOrganizersServlet extends HttpServlet {
     	HttpSession session = request.getSession(false);
     	User sessionUser = (User) session.getAttribute("user");
     	int userId = sessionUser.getId();
-    	List <Organizer> organizersList = new ReadGenericObjectService<Organizer>((Class<Organizer>) Organizer.class).readListByField("user_ref", (Integer)userId);
+    	List <Organizer> organizersList = new ReadGenericObjectService<>(Organizer.class).readListByField("user_ref", userId);
     	request.setAttribute("organizers", organizersList);
     	request.getRequestDispatcher("/pages/userProfile/myOrganizers.jsp").forward(request, response);
     }

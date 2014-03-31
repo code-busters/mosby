@@ -64,12 +64,12 @@ public class EventService {
 //Event builder		
 		
 		
-		Organizer organizer = new ReadGenericObjectService<Organizer>((Class<Organizer>) Organizer.class).readById(Integer.parseInt(request.getParameter("organizer")));
+		Organizer organizer = new ReadGenericObjectService<>(Organizer.class).readById(Integer.parseInt(request.getParameter("organizer")));
 		String name = request.getParameter("event_name");
 		String description = request.getParameter("event_description");
 
-		EventCategory eventCategory = new ReadGenericObjectService<EventCategory>((Class<EventCategory>) EventCategory.class).readById(Integer.parseInt(request.getParameter("event_category")));  
-		EventType eventType = new ReadGenericObjectService<EventType>((Class<EventType>) EventType.class).readById(Integer.parseInt(request.getParameter("event_type")));
+		EventCategory eventCategory = new ReadGenericObjectService<>(EventCategory.class).readById(Integer.parseInt(request.getParameter("event_category")));  
+		EventType eventType = new ReadGenericObjectService<>(EventType.class).readById(Integer.parseInt(request.getParameter("event_type")));
 		
 		Date startDate = null, endDate = null, startTime = null, endTime = null;
 
@@ -93,7 +93,7 @@ public class EventService {
 		Event event = new Event(organizer, name, description, eventCategory, eventType, startDate, startTime, endDate, endTime, location, eventLogo, eventBackground, privacy);
 		System.out.println(event);
 
-		ReflectionDao<Event> eventDao = new ReflectionDao<>((Class<Event>) Event.class);
+		ReflectionDao<Event> eventDao = new ReflectionDao<>(Event.class);
 
 		int id = eventDao.insertObjects(event);
 		event.setId(id);
@@ -102,7 +102,7 @@ public class EventService {
 //Tickets Info builder
 		String [] idTicketsInfoArray = request.getParameterValues("tickets_id");
 		if (!(idTicketsInfoArray[0].equals(""))){
-			ReflectionDao<TicketInfo> ticketInfoDao = new ReflectionDao<>((Class<TicketInfo>) TicketInfo.class);
+			ReflectionDao<TicketInfo> ticketInfoDao = new ReflectionDao<>(TicketInfo.class);
 			for (String currInt : idTicketsInfoArray){
 				int currentId = Integer.parseInt(currInt);
 				String type;
@@ -131,7 +131,7 @@ public class EventService {
 // Promo codes builder
 		String [] idPromoCodesArray = request.getParameterValues("promo_codes_id");
 		if (!(idPromoCodesArray[0].equals(""))){
-			ReflectionDao<PromoCode> promoCodeDao = new ReflectionDao<>((Class<PromoCode>) PromoCode.class);
+			ReflectionDao<PromoCode> promoCodeDao = new ReflectionDao<>(PromoCode.class);
 			for (String currInt : idPromoCodesArray){
 				int currentId = Integer.parseInt(currInt);
 				String code = request.getParameter("promo_code_code_" + currentId);
@@ -151,7 +151,7 @@ public class EventService {
 	
 	public void updateEvent(HttpServletRequest request, HttpServlet servlet) throws IllegalStateException, IOException, ServletException{
 		int eventId = Integer.parseInt(request.getParameter("eventId"));
-		Event event = new ReadGenericObjectService<Event>((Class<Event>) Event.class).readById(eventId); 
+		Event event = new ReadGenericObjectService<>(Event.class).readById(eventId); 
 		
 		//get info from JSP
 		
@@ -195,8 +195,8 @@ public class EventService {
 			e.printStackTrace();
 		}
 
-		EventCategory eventCategory = new ReadGenericObjectService<EventCategory>((Class<EventCategory>) EventCategory.class).readById(Integer.parseInt(request.getParameter("event_category")));  
-		EventType eventType = new ReadGenericObjectService<EventType>((Class<EventType>) EventType.class).readById(Integer.parseInt(request.getParameter("event_type")));
+		EventCategory eventCategory = new ReadGenericObjectService<>(EventCategory.class).readById(Integer.parseInt(request.getParameter("event_category")));  
+		EventType eventType = new ReadGenericObjectService<>(EventType.class).readById(Integer.parseInt(request.getParameter("event_type")));
 
 		String description = request.getParameter("event_description");
 		String location = request.getParameter("event_location");
@@ -207,28 +207,25 @@ public class EventService {
 		
 		Event updatedEvent = new Event(eventId, null, name, description, eventCategory, eventType, startDate, startTime, endDate, endTime, location, eventLogo, eventBackground, privacy);
 		
-		ReflectionDao<Event> eventDao = new ReflectionDao<>((Class<Event>) Event.class);
+		ReflectionDao<Event> eventDao = new ReflectionDao<>(Event.class);
 		eventDao.updateObjects(updatedEvent);
 	}
 	
 	public void updateTicketsInfo(HttpServletRequest request){
-		ReflectionDao<TicketInfo> ticketInfoDao = new ReflectionDao<>((Class<TicketInfo>) TicketInfo.class);
+		ReflectionDao<TicketInfo> ticketInfoDao = new ReflectionDao<>(TicketInfo.class);
 		int eventId = Integer.parseInt(request.getParameter("eventId"));
 		
-		Event event = new ReadGenericObjectService<Event>((Class<Event>) new Event().getClass()).readById(eventId);
-		List <TicketInfo> currentTicketsInfoList = new ReadGenericObjectService<TicketInfo>((Class<TicketInfo>) TicketInfo.class).readListByField("event_ref", (Integer)eventId);
+		Event event = new ReadGenericObjectService<>(Event.class).readById(eventId);
+		List <TicketInfo> currentTicketsInfoList = new ReadGenericObjectService<>(TicketInfo.class).readListByField("event_ref", (Integer)eventId);
 		List<String> currentIdTicketsInfoList = new ArrayList<>();
 		for (TicketInfo ticketInfo : currentTicketsInfoList) {
 			currentIdTicketsInfoList.add(Integer.toString(ticketInfo.getId()));
 		}
 		
-		String idTicketsArray = request.getParameter("tickets_id");
-		List<String> newIdTicketsInfoList = new ArrayList<String>(Arrays.asList(idTicketsArray.split("_")));
-		
-		for (String newId : newIdTicketsInfoList) {
+		String [] newIdTicketsInfoArray = request.getParameterValues("tickets_id");		
+		for (String newId : newIdTicketsInfoArray) {
 			TicketInfo ticketInfo;
 			int currentId = Integer.parseInt(newId);
-			
 			String ticketInfoName = request.getParameter("event_ticket_name_" + currentId);
 			String type;
 			String ticketDescription = request.getParameter("ticket_description_" + currentId);
@@ -245,7 +242,6 @@ public class EventService {
 			}
 			
 			Date startDate= null, startTime= null, endDate = null, endTime= null;
-
 			try {
 				startDate = new SimpleDateFormat(DATE_FORMAT).parse(request.getParameter("ticket_start_date_" + currentId));
 				endDate = new SimpleDateFormat(DATE_FORMAT).parse(request.getParameter("ticket_end_date_" + currentId));
@@ -265,11 +261,12 @@ public class EventService {
 			}
 		}
 		
+		List <String> newIdTicketsInfoList = new ArrayList<>(Arrays.asList(newIdTicketsInfoArray));
 		for (String id : currentIdTicketsInfoList) {
 			if (!newIdTicketsInfoList.contains(id)){
-				List <Ticket> ticketsList = new ReadGenericObjectService<Ticket>((Class<Ticket>) Ticket.class).readListByField("ticket_info_ref", Integer.parseInt(id));
+				List <Ticket> ticketsList = new ReadGenericObjectService<>(Ticket.class).readListByField("ticket_info_ref", Integer.parseInt(id));
 				if (ticketsList.isEmpty()){
-					TicketInfo ticketInfo = new ReadGenericObjectService<TicketInfo>((Class<TicketInfo>) TicketInfo.class).readById(Integer.parseInt(id));
+					TicketInfo ticketInfo = new ReadGenericObjectService<>(TicketInfo.class).readById(Integer.parseInt(id));
 					ticketInfoDao.deleteObjects(ticketInfo);
 				}
 				else{
@@ -280,20 +277,18 @@ public class EventService {
 	}
 	
 	public void updatePromoCodes(HttpServletRequest request){
-		ReflectionDao<PromoCode> promoCodeDao = new ReflectionDao<>((Class<PromoCode>) PromoCode.class);
+		ReflectionDao<PromoCode> promoCodeDao = new ReflectionDao<>(PromoCode.class);
 		int eventId = Integer.parseInt(request.getParameter("eventId"));
 		
-		Event event = new ReadGenericObjectService<Event>((Class<Event>) Event.class).readById(eventId);
-		List <PromoCode> currentPromoCodesList = new ReadGenericObjectService<PromoCode>((Class<PromoCode>) PromoCode.class).readListByField("event_ref", (Integer)eventId);
+		Event event = new ReadGenericObjectService<>(Event.class).readById(eventId);
+		List <PromoCode> currentPromoCodesList = new ReadGenericObjectService<>(PromoCode.class).readListByField("event_ref", eventId);
 		List<String> currentIdPromoCodesList = new ArrayList<>();
 		for (PromoCode promoCode : currentPromoCodesList) {
 			currentIdPromoCodesList.add(Integer.toString(promoCode.getId()));
 		}
 		
-		String idPromoCodesArray = request.getParameter("promo_codes_id");
-		List<String> newIdPromoCodesList = new ArrayList<String>(Arrays.asList(idPromoCodesArray.split("_")));
-		
-		for (String newId : newIdPromoCodesList) {
+		String [] newIdPromoCodesArray = request.getParameterValues("promo_codes_id");
+		for (String newId : newIdPromoCodesArray) {
 			PromoCode promoCode;
 			int currentId = Integer.parseInt(newId);
 			
@@ -312,11 +307,12 @@ public class EventService {
 			}
 		}
 		
+		List<String> newIdPromoCodesList = new ArrayList<String>(Arrays.asList(newIdPromoCodesArray));
 		for (String id : currentIdPromoCodesList ) {
 			if (!newIdPromoCodesList.contains(id)){
-				List <Ticket> ticketsList = new ReadGenericObjectService<Ticket>((Class<Ticket>) Ticket.class).readListByField("promo_codes_ref", Integer.parseInt(id));
+				List <Ticket> ticketsList = new ReadGenericObjectService<>(Ticket.class).readListByField("promo_codes_ref", Integer.parseInt(id));
 				if (ticketsList.isEmpty()){
-					PromoCode promoCode = new ReadGenericObjectService<PromoCode>((Class<PromoCode>) PromoCode.class).readById(Integer.parseInt(id));
+					PromoCode promoCode = new ReadGenericObjectService<>(PromoCode.class).readById(Integer.parseInt(id));
 					promoCodeDao.deleteObjects(promoCode);
 				}
 				else{

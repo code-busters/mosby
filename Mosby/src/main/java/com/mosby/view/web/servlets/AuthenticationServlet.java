@@ -25,7 +25,7 @@ public class AuthenticationServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String code = request.getParameter("authentication_code");
 		User user = new User();
-		ReflectionDao<User> usersDao = new ReflectionDao<>((Class<User>) user.getClass());
+		ReflectionDao<User> usersDao = new ReflectionDao<>(User.class);
 		user = usersDao.selectObjects("authentication_code", code).get(0);
 		user.setActive(true);
 		System.out.println(code);

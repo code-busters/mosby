@@ -32,7 +32,7 @@ public class IndexServlet extends HttpServlet {
 
 	//@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Event> list = new ReadGenericObjectService<Event>((Class<Event>) Event.class).readList();
+		List<Event> list = new ReadGenericObjectService<>(Event.class).readList();
 		Collections.sort(list, new Comparator<Event>() {
 			public int compare(Event o1, Event o2) {
 				return o1.getStartDate().compareTo(o2.getStartDate());
@@ -44,6 +44,9 @@ public class IndexServlet extends HttpServlet {
 			if (iter.next().getStartDate().compareTo(currentDate) < 0){
 				iter.remove();
 			}		
+		}
+		if (list.size()>12){
+			list.subList(0, 10).clear();
 		}
 	
 		request.setAttribute("eventList", list);

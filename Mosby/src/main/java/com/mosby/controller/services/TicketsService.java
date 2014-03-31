@@ -11,21 +11,21 @@ public class TicketsService {
 	
 	@SuppressWarnings("unchecked")
 	public void register(HttpServletRequest request){
-		ReflectionDao<Ticket> ticketDao = new ReflectionDao<>((Class<Ticket>) Ticket.class);
+		ReflectionDao<Ticket> ticketDao = new ReflectionDao<>(Ticket.class);
 		int eventId = Integer.parseInt(request.getParameter("eventId"));
 		Date timeOfPurchase = new Date();
 		PromoCode promoCode = null;
 		String enteredPromoCode = request.getParameter("promo_code"); 
-		List <PromoCode> promoCodesList = new ReadGenericObjectService<PromoCode>((Class<PromoCode>) PromoCode.class).readListByField("event_ref", (Integer)eventId);
+		List <PromoCode> promoCodesList = new ReadGenericObjectService<>(PromoCode.class).readListByField("event_ref", eventId);
         for (PromoCode code : promoCodesList) {
 			if (code.getCode().equals(enteredPromoCode)){
 				promoCode = code;
 			}
 		}
         User user = (User) request.getSession(false).getAttribute("user");
-        Event event = new ReadGenericObjectService<Event>((Class<Event>) new Event().getClass()).readById(eventId);
+        Event event = new ReadGenericObjectService<>(Event.class).readById(eventId);
         
-        List <TicketInfo> ticketsInfoList = new ReadGenericObjectService<TicketInfo>((Class<TicketInfo>) new TicketInfo().getClass()).readListByField("event_ref", (Integer)eventId);
+        List <TicketInfo> ticketsInfoList = new ReadGenericObjectService<>(TicketInfo.class).readListByField("event_ref", eventId);
         for (TicketInfo ticketInfo : ticketsInfoList) {
         	int ticketInfoId = ticketInfo.getId();
         	if (request.getParameter("ticket_quantity_" + ticketInfoId) != null){
@@ -40,20 +40,20 @@ public class TicketsService {
 	}
 	
 	public void check(HttpServletRequest request){
-		ReflectionDao<Ticket> ticketDao = new ReflectionDao<>((Class<Ticket>) Ticket.class);
+		ReflectionDao<Ticket> ticketDao = new ReflectionDao<>(Ticket.class);
 		String[] tickets = request.getParameterValues("checked_tickets");
 		for (String string : tickets) {
-			Ticket ticket = new ReadGenericObjectService<Ticket>((Class<Ticket>) Ticket.class).readById(Integer.parseInt(string));
+			Ticket ticket = new ReadGenericObjectService<>(Ticket.class).readById(Integer.parseInt(string));
 			ticket.setChecked(true);
 			ticketDao.updateObjects(ticket);
 		}
 	}
 	
 	public void delete(HttpServletRequest request){
-		ReflectionDao<Ticket> ticketDao = new ReflectionDao<>((Class<Ticket>) Ticket.class);
+		ReflectionDao<Ticket> ticketDao = new ReflectionDao<>(Ticket.class);
 		String[] tickets = request.getParameterValues("checked_tickets");
 		for (String string : tickets) {
-			Ticket ticket = new ReadGenericObjectService<Ticket>((Class<Ticket>) Ticket.class).readById(Integer.parseInt(string));
+			Ticket ticket = new ReadGenericObjectService<>(Ticket.class).readById(Integer.parseInt(string));
 			ticketDao.deleteObjects(ticket);
 		}
 	}

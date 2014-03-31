@@ -48,7 +48,7 @@ public class OrganizerService {
 		
 		Organizer organizer = new Organizer(user, name, email, phone, about, site, googlePlus, facebook, twitter, logo);
 		
-		ReflectionDao<Organizer> organizerDao = new ReflectionDao<>((Class<Organizer>) Organizer.class);
+		ReflectionDao<Organizer> organizerDao = new ReflectionDao<>(Organizer.class);
 		organizerDao.insertObjects(organizer);
 	}
 
@@ -69,7 +69,7 @@ public class OrganizerService {
     		String facebook = request.getParameter("facebook_" + id);
     		String twitter = request.getParameter("twitter_" + id);
     		
-    		String logo = (new ReadGenericObjectService<Organizer>((Class<Organizer>) Organizer.class).readById(id)).getLogo();
+    		String logo = (new ReadGenericObjectService<>(Organizer.class).readById(id)).getLogo();
     		Part filePart = request.getPart("logo_" + id);
     		try {
     			String contentType = filePart.getContentType();
@@ -84,7 +84,7 @@ public class OrganizerService {
     		
     		Organizer changedOrganizer = new Organizer(id, user, name, email, phone, about, site, googlePlus, facebook, twitter, logo);
     		
-    		ReflectionDao<Organizer> organizerDao = new ReflectionDao<>((Class<Organizer>) Organizer.class);
+    		ReflectionDao<Organizer> organizerDao = new ReflectionDao<>(Organizer.class);
     		organizerDao.updateObjects(changedOrganizer);
 			
 		}

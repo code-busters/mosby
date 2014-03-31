@@ -29,7 +29,7 @@ public class UserService {
 	@SuppressWarnings("unchecked")
 	public User readUser(String email, String password) {
 		User user = new User();
-		ReflectionDao<User> usersDao = new ReflectionDao<>((Class<User>) user.getClass());
+		ReflectionDao<User> usersDao = new ReflectionDao<>(User.class);
 
 		if (!usersDao.selectObjects("email", email).isEmpty()) {
 			user = usersDao.selectObjects("email", email).get(0);
@@ -52,7 +52,7 @@ public class UserService {
 
 	@SuppressWarnings("unchecked")
 	public User readSocialUser(User user){
-		ReflectionDao<User> usersDao = new ReflectionDao<>((Class<User>) user.getClass());
+		ReflectionDao<User> usersDao = new ReflectionDao<>(User.class);
 		
 		System.out.println(user.toString());
 		
@@ -82,7 +82,7 @@ public class UserService {
 	public void update(HttpServletRequest request, HttpServlet servlet)
 			throws IllegalStateException, IOException, ServletException {
 		HttpSession session = request.getSession(false);
-		ReflectionDao<User> usersDao = new ReflectionDao<>((Class<User>) User.class);
+		ReflectionDao<User> usersDao = new ReflectionDao<>(User.class);
 
 		User sessionUser = (User) session.getAttribute("user");
 
@@ -127,7 +127,7 @@ public class UserService {
 				about, authenticationCode, active);
 
 		usersDao.updateObjects(user);
-		user = new ReadGenericObjectService<User>((Class<User>) User.class).readById(user.getId());
+		user = new ReadGenericObjectService<>(User.class).readById(user.getId());
 		session.removeAttribute("user");
 		session.setAttribute("user", user);
 	}
@@ -135,8 +135,7 @@ public class UserService {
 	public boolean changePassword(HttpServletRequest request) {
 
 		HttpSession session = request.getSession(false);
-		ReflectionDao<User> usersDao = new ReflectionDao<>(
-				(Class<User>) User.class);
+		ReflectionDao<User> usersDao = new ReflectionDao<>(User.class);
 
 		User sessionUser = (User) session.getAttribute("user");
 
@@ -159,8 +158,7 @@ public class UserService {
 			String password) {
 
 		User user = new User();
-        ReflectionDao<User> usersDao = new ReflectionDao<>(
-				(Class<User>) user.getClass());
+        ReflectionDao<User> usersDao = new ReflectionDao<>(User.class);
 
 		if (!usersDao.selectObjects("email", email).isEmpty()) {
 			System.out.println("signUp fail! change email!");
@@ -187,8 +185,7 @@ public class UserService {
 	@SuppressWarnings("unchecked")
 	public User socialSignUpUser(User user) {
 		
-		ReflectionDao<User> usersDao = new ReflectionDao<>(
-				(Class<User>) user.getClass());
+		ReflectionDao<User> usersDao = new ReflectionDao<>(User.class);
 
 		if (!usersDao.selectObjects("email", user.getEmail()).isEmpty()) {
 			return null;

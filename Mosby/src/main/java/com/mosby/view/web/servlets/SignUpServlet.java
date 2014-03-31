@@ -33,8 +33,7 @@ public class SignUpServlet extends HttpServlet {
 		request.getRequestDispatcher("/pages/signUp.jsp").forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String firstName = request.getParameter("first_name");
 		String lastName = request.getParameter("last_name");
@@ -47,9 +46,9 @@ public class SignUpServlet extends HttpServlet {
 		if (user == null) {
 			ValidatorUtils<User> validatorUtils = null;
 			if(!request.getParameter("language").equals("en")&&!request.getParameter("language").equals("uk")){
-			validatorUtils = new ValidatorUtils<>(User.class, "en");
+				validatorUtils = new ValidatorUtils<>(User.class, "en");
 			} else {
-			validatorUtils = new ValidatorUtils<>(User.class, request.getParameter("language"));
+				validatorUtils = new ValidatorUtils<>(User.class, request.getParameter("language"));
 			}
 			validatorUtils.changeEmail();
 			request.setAttribute("errors", validatorUtils.getErrors());
