@@ -386,4 +386,8 @@ public class EventService {
 		}
 		return ticketsInfoList;
 	}
+
+	public void deleteEvent(HttpServletRequest request){
+		
+	}
 }

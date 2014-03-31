@@ -42,7 +42,8 @@ public class IndexServlet extends HttpServlet {
 		Date currentDate = new Date();
 		Iterator<Event> iter = list.iterator();
 		while (iter.hasNext()){
-			if (iter.next().getStartDate().compareTo(currentDate) < 0){
+			Event currentEvent = iter.next();
+			if (currentEvent.getStartDate().compareTo(currentDate) < 0 || currentEvent.isPrivacy()){
 				iter.remove();
 			}		
 		}

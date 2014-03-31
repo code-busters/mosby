@@ -12,6 +12,7 @@ public class TicketsService {
 	@SuppressWarnings("unchecked")
 	public void register(HttpServletRequest request){
 		ReflectionDao<Ticket> ticketDao = new ReflectionDao<>(Ticket.class);
+		ReflectionDao<User> userDao = new ReflectionDao<>(User.class);
 		int eventId = Integer.parseInt(request.getParameter("eventId"));
 		Date timeOfPurchase = new Date();
 		PromoCode promoCode = null;
@@ -32,8 +33,23 @@ public class TicketsService {
         		int ticketQuantity = Integer.parseInt(request.getParameter("ticket_quantity_" + ticketInfoId));
         		for (int i = 0; i < ticketQuantity; i++){
         			Ticket ticket = new Ticket(ticketInfo, timeOfPurchase, promoCode, false, user, event);
-        			System.out.println(ticket);
-        			ticketDao.insertObjects(ticket);
+                    int discount;
+                    if (promoCode == null){
+                        discount = 0;
+                    }
+                    else{
+                        discount = promoCode.getDiscount();
+                    }
+                    double priceOfTicket = ticketInfo.getPrice()-(ticketInfo.getPrice() * discount * 0.01);
+                    if (user.getCredits()>=priceOfTicket){
+                        ticketDao.insertObjects(ticket);
+                        user.setCredits(user.getCredits()-priceOfTicket);
+                        userDao.updateObjects(user);
+                        request.getSession().setAttribute("user", user);
+                    }
+                    else{
+                        System.out.println("You have not enouth minerals!!!");
+                    }
         		}
         	}
 		}
