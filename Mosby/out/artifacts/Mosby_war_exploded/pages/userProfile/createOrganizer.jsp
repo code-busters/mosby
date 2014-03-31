@@ -1,9 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="language"
+       value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
+       scope="session"/>
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="main.java.com.mosby.i18n.text"/>
 <html>
 
 <head>
     <meta charset="utf-8">
-    <title>Mosby - event management</title>
+    <title><fmt:message key="createOrganizer.createOrganizer"/> - Mosby - <fmt:message key="title"/></title>
     <link rel="shortcut icon" href="media/images/favicon.ico">
     <link rel="icon" type="image/png" href="media/images/favicon.png" />
     <meta name="description" content="Mosby - make it simple. New event management system" />
@@ -47,7 +54,7 @@
                 <a id="menu-toggle" href="#" class="btn btn-default">
                     <span class="fui-list-columned"></span>
                 </a>
-                Create Organization
+                <fmt:message key="createOrganizer.createOrganizer"/>
             </h1>
         </div>
         <!-- Keep all page content within the page-content inset div! -->
@@ -56,34 +63,34 @@
                 <div class="col-md-6">
                     <form action="createOrganizer" enctype="multipart/form-data" method="post" id="organizers-form">
                         <div class="form-group">
-                            <label for="open-logo">Logo</label>
+                            <label for="open-logo"><fmt:message key="createOrganizer.logo"/></label>
                             <input type="file" class="hide" name="logo" id="open-logo" accept="image/*" />
                             <label for="open-logo">
                                 <span id="backup-img" class="hide">media/images/organizers/default.png</span>
                                 <img class="logo" src="media/images/organizers/default.png">
                             </label>
                             <span class="change-img-name"></span>
-                            <span class="additional-input-info">Click on image to browse your logo</span>
+                            <span class="additional-input-info"><fmt:message key="createOrganizer.clickOnImageToBrowseYourLogo"/></span>
                         </div>
                         <div class="form-group">
-                            <label for="name">Name</label>
-                            <input class="form-control" placeholder="Name" name="name" id="name" required />
+                            <label for="name"><fmt:message key="createOrganizer.name"/></label>
+                            <input class="form-control" placeholder="<fmt:message key="createOrganizer.name"/>" name="name" id="name" required />
                         </div>
                         <div class="form-group">
-                            <label for="email">Contact Email</label>
-                            <input class="form-control" type="email" placeholder="Contact email" name="email" pattern="[^ @]*@[^ @]*\.[^ @]{2,}" id="email" required />
+                            <label for="email"><fmt:message key="createOrganizer.contactEmail"/></label>
+                            <input class="form-control" type="email" placeholder="<fmt:message key="createOrganizer.contactEmail"/>" name="email" pattern="[^ @]*@[^ @]*\.[^ @]{2,}" id="email" required />
                         </div>
                         <div class="form-group">
-                            <label for="phone">Phone</label>
-                            <input class="form-control typeahead" placeholder="Your phone" name="phone" id="phone" />
+                            <label for="phone"><fmt:message key="createOrganizer.organizersPhone"/></label>
+                            <input class="form-control typeahead" placeholder="<fmt:message key="createOrganizer.organizersPhone"/>" name="phone" id="phone" />
                         </div>
                         <div class="form-group">
-                            <label for="about">About</label>
-                            <textarea rows="4" placeholder="Tell about organization" class="form-control" name="about" id="about"></textarea>
+                            <label for="about"><fmt:message key="createOrganizer.about"/></label>
+                            <textarea rows="4" placeholder="<fmt:message key="createOrganizer.tellAboutOrganizer"/>" class="form-control" name="about" id="about"></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="website">Website</label>
-                            <input type="url" class="form-control" placeholder="Enter organization's website or blog" name="website" id="website" />
+                            <label for="website"><fmt:message key="createOrganizer.website"/></label>
+                            <input type="url" class="form-control" placeholder="<fmt:message key="createOrganizer.enterOrganizersWebsiteOrBlog"/>" name="website" id="website" />
                         </div>
                         <div class="form-group">
                             <label for="google-plus">Google+</label>
@@ -99,7 +106,7 @@
                         </div>
                         <div class="form-group">
                             <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit" value="Submit">
-                                Create
+                                <fmt:message key="createOrganizer.create"/>
                             </button>
                         </div>
                     </form>

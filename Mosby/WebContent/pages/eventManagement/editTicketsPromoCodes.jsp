@@ -46,7 +46,7 @@
 </div>
 
 <div id="wrapper" class="row user-profile">
-<jsp:include page="parts/sideNavnar.jsp"/>
+<jsp:include page="parts/sideNavbar.jsp"/>
 <div id="page-content-wrapper">
 <div class="content-header">
     <h3>
@@ -284,9 +284,8 @@
 <script src="js/jquery.placeholder.js"></script>
 <script src="js/jquery.stacktable.js"></script>
 
-<script src="js/tickets-promoCodes.js"></script>
 <script src="js/application.js"></script>
-
+<%@include file="../parts/ticketsPromoCodes.jsp" %>
 </body>
 
 </html>

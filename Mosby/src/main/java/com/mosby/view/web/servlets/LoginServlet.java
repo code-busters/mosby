@@ -1,5 +1,6 @@
 package main.java.com.mosby.view.web.servlets;
 
+import main.java.com.mosby.controller.services.GooglePlusService;
 import main.java.com.mosby.controller.services.UserService;
 import main.java.com.mosby.model.User;
 import main.java.com.mosby.utils.ValidatorUtils;
@@ -10,10 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.math.BigInteger;
+import java.security.SecureRandom;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
@@ -32,6 +32,10 @@ public class LoginServlet extends HttpServlet {
 		String returnValue = "https://www.facebook.com/dialog/oauth?client_id="
 				+ appId + "&redirect_uri=" + redirectUrl
 				+ "&scope=email,user_birthday&state=" + sessionId;
+
+        String state = new BigInteger(130, new SecureRandom()).toString(32);
+        request.getSession().setAttribute("state", state);
+        request.setAttribute("clientId", new GooglePlusService().getClientId());
 
 		request.setAttribute("facebookURL", returnValue);
 		request.getRequestDispatcher("/pages/login.jsp").forward(request,

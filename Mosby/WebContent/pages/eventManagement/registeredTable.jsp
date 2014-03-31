@@ -46,7 +46,7 @@
     </div>
 
     <div id="wrapper" class="row user-profile">
-        <jsp:include page="parts/sideNavnar.jsp"/>
+        <jsp:include page="parts/sideNavbar.jsp"/>
         <div id="page-content-wrapper">
             <div class="content-header">
                 <h3>

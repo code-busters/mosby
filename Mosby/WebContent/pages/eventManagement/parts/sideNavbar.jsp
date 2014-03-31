@@ -20,17 +20,5 @@
         <li>
             <a href="<c:url value="/registeredTable?eventId=${event.id}"/>"><fmt:message key="sideNavnar.registeredTable"/></a>
         </li>
-        <li>
-            <a href="#"><fmt:message key="sideNavnar.events"/></a>
-        </li>
-        <li>
-            <a href="#"><fmt:message key="sideNavnar.about"/></a>
-        </li>
-        <li>
-            <a href="#"><fmt:message key="sideNavnar.services"/></a>
-        </li>
-        <li>
-            <a href="#"><fmt:message key="sideNavnar.contact"/></a>
-        </li>
     </ul>
 </div>

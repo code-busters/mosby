@@ -1,10 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="language"
+       value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
+       scope="session"/>
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="main.java.com.mosby.i18n.text"/>
 <html>
 
 <head>
     <meta charset="utf-8">
-    <title>Create event - Mosby - event management</title>
+    <title><fmt:message key="createEvent.createEvent"/> - Mosby - <fmt:message key="title"/></title>
     <link rel="shortcut icon" href="media/images/favicon.ico">
     <link rel="icon" type="image/png" href="media/images/favicon.png"/>
     <meta name="description" content="Mosby - make it simple. New event management system"/>
@@ -39,11 +45,11 @@
 
 <div class="row">
     <div class="on-background-block-header col-md-10 col-md-offset-1 hidden-xs">
-        <h4>Create event for free</h4>
+        <h4><fmt:message key="createEvent.createEventForFree"/></h4>
     </div>
     <div class="on-background-block col-md-10 col-md-offset-1">
         <div class="hidden-lg hidden-md">
-            <h4>Create event for free</h4>
+            <h4><fmt:message key="createEvent.createEventForFree"/></h4>
         </div>
         <div class="errors">
             <c:forEach items="${errors}" var="error">
@@ -51,68 +57,68 @@
             </c:forEach>
         </div>
         <form enctype="multipart/form-data" action="createEvent" method="post" id="create-event-form">
-            <h5>Event Detail</h5>
+            <h5><fmt:message key="createEvent.eventDetail"/></h5>
             <input type="hidden" name="language" value="${language}" />
             <div class="form-group">
-                <label for="event-name">Event Name</label>
-                <input type="text" class="form-control" placeholder="Choose Event Name" name="event_name"
+                <label for="event-name"><fmt:message key="createEvent.eventName"/></label>
+                <input type="text" class="form-control" placeholder="<fmt:message key="createEvent.chooseEventName"/>" name="event_name"
                        id="event-name"
                        required/>
             </div>
             <div class="form-group">
-                <span class="as-label">Event Logo</span>
+                <span class="as-label"><fmt:message key="createEvent.eventLogo"/></span>
                 <input type="file" class="hide" name="event_logo" id="open-logo" accept="image/*" />
                 <label for="open-logo">
                     <span id="backup-img" class="hide">media/images/events/logo/default.png</span>
                     <img class="logo" src="media/images/events/logo/default.png">
                 </label>
                 <span class="change-img-name"></span>
-                <span class="additional-input-info">Click on image to browse your logo</span>
+                <span class="additional-input-info"><fmt:message key="createEvent.clickOnImageToBrowseYourLogo"/></span>
             </div>
             <div class="form-group">
-                <label for="event-background">Event Background</label>
+                <label for="event-background"><fmt:message key="createEvent.eventBackground"/></label>
 
                 <div class="input-group">
 							<span class="input-group-btn">
 								<span class="btn btn-primary btn-file">
-									Open
+									<fmt:message key="createEvent.open"/>
 									<input type="file" name="event_background" id="event-background" accept="image/*"/>
 								</span>
 							</span>
                     <input type="text" class="form-control" readonly="" disabled="disabled">
                 </div>
-                <span class="additional-input-info">Select image with big resolution for better result</span>
+                <span class="additional-input-info"><fmt:message key="createEvent.selectImageWithBigResolutionForBetterResult"/></span>
             </div>
             <div class="form-group">
-                <label for="datepicker-start">Start Date &amp; Time</label>
+                <label for="datepicker-start"><fmt:message key="createEvent.startDateTime"/></label>
 
                 <div class="input-prepend input-datepicker">
                     <button type="button" class="btn">
                         <span class="fui-calendar"></span>
                     </button>
-                    <input type="text" placeholder="Start date" name="start_date" id="datepicker-start" readonly=""
+                    <input type="text" placeholder="<fmt:message key="createEvent.startDate"/>" name="start_date" id="datepicker-start" readonly=""
                            required>
                 </div>
                 <input type="time" class="form-control time" value="00:00" name="start_time" required>
             </div>
             <div class="form-group">
-                <label for="datepicker-end">End Date &amp; Time</label>
+                <label for="datepicker-end"><fmt:message key="createEvent.endDateTime"/></label>
 
                 <div class="input-prepend input-datepicker">
                     <button type="button" class="btn">
                         <span class="fui-calendar"></span>
                     </button>
-                    <input type="text" placeholder="End date" name="end_date" id="datepicker-end" readonly="" required>
+                    <input type="text" placeholder="<fmt:message key="createEvent.endDate"/>" name="end_date" id="datepicker-end" readonly="" required>
                 </div>
                 <input type="time" class="form-control time" value="00:00" name="end_time" required>
             </div>
 
 
             <div class="form-group">
-                <label for="event-category">Category</label>
+                <label for="event-category"><fmt:message key="createEvent.category"/></label>
                 <select name="event_category" class="select-block" id="event-category" form="create-event-form">
                     <option value="-1">
-                        Select category...
+                        <fmt:message key="createEvent.selectCategory"/>...
                     </option>
                     <c:forEach items="${eventCategories}" var="category">
                         <option value="${category.id}">
@@ -122,10 +128,10 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="event-type">Type</label>
+                <label for="event-type"><fmt:message key="createEvent.type"/></label>
                 <select name="event_type" class="select-block" id="event-type" form="create-event-form">
                     <option value="-1">
-                        Select type...
+                        <fmt:message key="createEvent.selectType"/>...
                     </option>
                     <c:forEach items="${eventTypes}" var="type">
                         <option value="${type.id}">
@@ -135,27 +141,27 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="event-description">Event Description</label>
-                <textarea rows="4" placeholder="Tell users about your event" class="form-control"
+                <label for="event-description"><fmt:message key="createEvent.eventDescription"/></label>
+                <textarea rows="4" placeholder="<fmt:message key="createEvent.tellUsersAboutYourEvent"/>" class="form-control"
                           name="event_description"
                           id="event-description" form="create-event-form"></textarea>
             </div>
             <div class="form-group">
-                <label for="event-location">Address</label>
-                <input type="text" class="form-control" placeholder="Enter Address for your event" name="event_location"
+                <label for="event-location"><fmt:message key="createEvent.address"/></label>
+                <input type="text" class="form-control" placeholder="<fmt:message key="createEvent.enterAddressForYourEvent"/>" name="event_location"
                        id="event-location" onFocus="geolocate()"/>
             </div>
             <div class="form-group" id="googleMap" style="height:380px;"></div>
 
-            <h5>Create Tickets</h5>
+            <h5><fmt:message key="createEvent.createTickets"/></h5>
 
             <div class="form-group">
                 <div id="tickets">
                     <div class="row create-tickets-header hidden-xs">
-                        <div class="col-md-6 col-sm-6">Ticket name</div>
-                        <div class="col-md-2 col-sm-2">Quantity available</div>
-                        <div class="col-md-2 col-sm-2">Price</div>
-                        <div class="col-md-2 col-sm-2 text-center">Actions</div>
+                        <div class="col-md-6 col-sm-6"><fmt:message key="createEvent.ticketName"/></div>
+                        <div class="col-md-2 col-sm-2"><fmt:message key="createEvent.quantityAvailable"/></div>
+                        <div class="col-md-2 col-sm-2"><fmt:message key="createEvent.price"/></div>
+                        <div class="col-md-2 col-sm-2 text-center"><fmt:message key="createEvent.actions"/></div>
                     </div>
                     <div id="tickets-body">
                         <input class="hide" type="text" value="" name="tickets_id"/>
@@ -165,26 +171,26 @@
             </div>
             <div class="col-md-3 col-sm-4 add-ticket">
                 <a id="free-ticket" href="#fakelink" class="btn btn-block btn-lg btn-primary">
-                    <span class="fui-plus"></span>Free ticket</a>
+                    <span class="fui-plus"></span><fmt:message key="createEvent.freeTicket"/></a>
             </div>
             <div class="col-md-3 col-sm-4 add-ticket">
                 <a id="paid-ticket" href="#fakelink" class="btn btn-block btn-lg btn-primary">
-                    <span class="fui-plus"></span>Paid ticket</a>
+                    <span class="fui-plus"></span><fmt:message key="createEvent.paidTicket"/></a>
             </div>
             <div class="col-md-3 col-sm-4 add-ticket">
                 <a id="donation-ticket" href="#fakelink" class="btn btn-block btn-lg btn-default">
-                    <span class="fui-plus"></span>Donation</a>
+                    <span class="fui-plus"></span><fmt:message key="createEvent.donation"/></a>
             </div>
 
-            <h5>Promo codes</h5>
+            <h5><fmt:message key="createEvent.promoCodes"/></h5>
 
             <div class="form-group">
                 <div id="promo-codes">
                     <div class="row promo-codes-header hidden-xs">
-                        <div class="col-md-6 col-sm-6">Promo code</div>
-                        <div class="col-md-2 col-sm-2">Quantity available</div>
-                        <div class="col-md-2 col-sm-2">Discount</div>
-                        <div class="col-md-2 col-sm-2 text-center">Actions</div>
+                        <div class="col-md-6 col-sm-6"><fmt:message key="createEvent.promoCode"/></div>
+                        <div class="col-md-2 col-sm-2"><fmt:message key="createEvent.quantityAvailable"/></div>
+                        <div class="col-md-2 col-sm-2"><fmt:message key="createEvent.discount"/></div>
+                        <div class="col-md-2 col-sm-2 text-center"><fmt:message key="createEvent.actions"/></div>
                     </div>
                     <div id="promo-codes-body">
                         <input class="hide" type="text" value="" name="promo_codes_id"/>
@@ -194,21 +200,21 @@
             </div>
             <div class="col-md-3 col-sm-4 add-promo-code">
                 <a id="add-promo-code" href="#fakelink" class="btn btn-block btn-lg btn-primary">
-                    <span class="fui-plus"></span>Promo code</a>
+                    <span class="fui-plus"></span><fmt:message key="createEvent.promoCode"/></a>
             </div>
 
-            <h5>Additional Settings</h5>
+            <h5><fmt:message key="createEvent.additionalSettings"/></h5>
 
             <div class="form-group">
-                <span class="as-label">Listing privacy</span>
+                <span class="as-label"><fmt:message key="createEvent.listingPrivacy"/></span>
                 <label class="radio checked">
 							<span class="icons">
 								<span class="first-icon fui-radio-unchecked"></span>
 								<span class="second-icon fui-radio-checked"></span>
 							</span>
                     <input type="radio" name="privacy_event" id="public-event" value="0" data-toggle="radio">
-                    Public event
-                    <span class="additional">list this event on Eventbrite and search engines</span>
+                    <fmt:message key="createEvent.publicEvent"/>
+                    <span class="additional"><fmt:message key="createEvent.listThisEventOnEventbriteAndSearchEngines"/></span>
                 </label>
                 <label class="radio">
 							<span class="icons">
@@ -216,12 +222,12 @@
 								<span class="second-icon fui-radio-checked"></span>
 							</span>
                     <input type="radio" name="privacy_event" id="private-event" value="1" data-toggle="radio">
-                    Private event
-                    <span class="additional">do not list this event publicly</span>
+                    <fmt:message key="createEvent.privateEvent"/>
+                    <span class="additional"><fmt:message key="createEvent.doNotListThisEventPublicly"/></span>
                 </label>
             </div>
             <div class="form-group">
-                <label for="organizer">Organize by</label>
+                <label for="organizer"><fmt:message key="createEvent.organizeBy"/></label>
                 <select name="organizer" class="select-block" id="organizer" form="create-event-form">
                     <c:forEach items="${organizers}" var="organizer">
                         <option value="${organizer.id}">
@@ -233,7 +239,7 @@
 
             <div class="col-md-4 col-md-offset-4">
                 <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit" value="Submit">
-                    Create event
+                    <fmt:message key="createEvent.createEvent"/>
                 </button>
             </div>
         </form>
@@ -266,7 +272,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=places"></script>
 <script src="js/geocoding.js"></script>
 
-<script src="js/tickets-promoCodes.js"></script>
+<%--<script src="js/tickets-promoCodes.js"></script>--%>
 <script src="js/application.js"></script>
 
 <script type="text/javascript">
@@ -277,6 +283,7 @@
             return false;
         }
     });
+    <%@include file="parts/ticketsPromoCodes.jsp" %>
 </script>
 
 </body>

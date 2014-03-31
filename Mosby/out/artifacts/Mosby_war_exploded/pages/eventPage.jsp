@@ -1,10 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="language"
+       value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
+       scope="session"/>
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="main.java.com.mosby.i18n.text"/>
 <html>
 
 <head>
     <meta charset="utf-8">
-    <title>Mosby - event management</title>
+    <title><fmt:message key="eventPage.event"/> - Mosby - <fmt:message key="title"/></title>
     <link rel="shortcut icon" href="media/images/favicon.ico">
     <link rel="icon" type="image/png" href="media/images/favicon.png"/>
     <meta name="description" content="Mosby - make it simple. New event management system"/>
@@ -78,15 +84,15 @@
 
                 <div id="tickets">
                     <div class="row create-tickets-header hidden-xs">
-                        <div class="col-md-8 col-sm-8">Ticket type</div>
-                        <div class="col-md-2 col-sm-2">Price</div>
-                        <div class="col-md-2 col-sm-2">Quantity</div>
+                        <div class="col-md-8 col-sm-8"><fmt:message key="eventPage.ticketType"/></div>
+                        <div class="col-md-2 col-sm-2"><fmt:message key="eventPage.price"/></div>
+                        <div class="col-md-2 col-sm-2"><fmt:message key="eventPage.quantity"/></div>
                     </div>
                     <div id="tickets-body">
                         <c:forEach items="${tickets}" var="ticketInfo">
                             <div id="0" class="row">
                                 <div class="col-md-8 col-sm-8">
-                                    <h6 class="visible-xs">Ticket type</h6>
+                                    <h6 class="visible-xs"><fmt:message key="eventPage.ticketType"/></h6>
 
                                     <p>${ticketInfo.name}</p>
 
@@ -95,12 +101,12 @@
                                     </p>
                                 </div>
                                 <div class="col-md-2 col-sm-2">
-                                    <h6 class="visible-xs">Price</h6>
+                                    <h6 class="visible-xs"><fmt:message key="eventPage.price"/></h6>
 
                                     <p>
                                         <c:choose>
                                             <c:when test="${ticketInfo.price == 0}">
-                                                Free
+                                                <fmt:message key="eventPage.free"/>
                                             </c:when>
                                             <c:otherwise>
                                                 ${ticketInfo.price}
@@ -109,12 +115,12 @@
                                     </p>
                                 </div>
                                 <div class="col-md-2 col-sm-2">
-                                    <h6 class="visible-xs">Quantity</h6>
+                                    <h6 class="visible-xs"><fmt:message key="eventPage.quantity"/></h6>
                                     <input type="number" class="form-control" placeholder="0"
                                            name="ticket_quantity_${ticketInfo.id}" id="promo-code-discount-0" min="0"
                                            max="${ticketInfo.maxNumber}">
                                         <%--<span class="additional-input-info">Min ${ticketInfo.minNumber}</span>--%>
-                                    <span class="additional-input-info">Max ${ticketInfo.maxNumber}</span>
+                                    <span class="additional-input-info"><fmt:message key="eventPage.max"/> ${ticketInfo.maxNumber}</span>
                                         <%--<select name="ticket_quantity_${ticketInfo.id}" class="select-block ticket-quantity"--%>
                                         <%--form="register-for-event-form">--%>
                                         <%--<c:forEach var="quantity" begin="0" end="${ticketInfo.maxNumber}" step="1">--%>
@@ -129,15 +135,15 @@
                         <div class="col-md-5">
                             <label class="checkbox" for="checkbox-promo-code">
                                 <input type="checkbox" value="" id="checkbox-promo-code" data-toggle="checkbox">
-                                Do you have promo code?
+                                <fmt:message key="eventPage.doYouHavePromoCode"/>?
                             </label>
                         </div>
                         <div id="promo-code-div" class="pull-right">
                             <div class="col-md-5 text-right">
-                                <label for="promo-code">Promo code:</label>
+                                <label for="promo-code"><fmt:message key="eventPage.promoCode"/>:</label>
                             </div>
                             <div class="col-md-7">
-                                <input type="text" class="form-control" placeholder="Enter code" name="promo_code"
+                                <input type="text" class="form-control" placeholder="<fmt:message key="eventPage.enterCode"/>" name="promo_code"
                                        id="promo-code"/>
                             </div>
                         </div>
@@ -146,7 +152,7 @@
                 <!--END TICKETS-->
                 <div class="col-md-3 col-sm-3 col-md-offset-9 col-sm-offset-9">
                     <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit" value="Order Now">
-                        Order Now
+                        <fmt:message key="eventPage.orderNow"/>
                     </button>
                 </div>
             </form>

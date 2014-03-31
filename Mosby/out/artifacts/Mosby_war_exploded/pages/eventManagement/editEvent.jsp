@@ -1,10 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="language"
+       value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
+       scope="session"/>
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="main.java.com.mosby.i18n.text"/>
 <html>
 
 <head>
     <meta charset="utf-8">
-    <title>Mosby - event management</title>
+    <title><fmt:message key="editEvent.editEvent"/> - Mosby - <fmt:message key="title"/></title>
     <link rel="shortcut icon" href="media/images/favicon.ico">
     <link rel="icon" type="image/png" href="media/images/favicon.png"/>
     <meta name="description"
@@ -48,7 +54,7 @@
             <h3>
                 <a id="menu-toggle" href="#" class="btn btn-default"> <span
                         class="fui-list-columned"></span>
-                </a> Edit event details
+                </a> <fmt:message key="editEvent.editEventDetails"/>
             </h3>
         </div>
         <div class="page-content inset">
@@ -60,17 +66,17 @@
             <form action="editEvent" enctype="multipart/form-data"
                   method="post" id="edit-event-form">
                 <input type="hidden" name="eventId" value="${event.id}"/>
-                <h5>Event Detail</h5>
+                <h5><fmt:message key="editEvent.eventDetail"/></h5>
 
                 <div class="form-group">
-                    <label for="event-name">Event Name</label> <input type="text"
+                    <label for="event-name"><fmt:message key="editEvent.eventName"/></label> <input type="text"
                                                                       class="form-control"
-                                                                      placeholder="Choose Event Name"
+                                                                      placeholder="<fmt:message key="editEvent.chooseEventName"/>"
                                                                       value="${event.name}" name="event_name"
                                                                       id="event-name" required/>
                 </div>
                 <div class="form-group">
-                    <label for="open-logo">Event logo</label> <input
+                    <label for="open-logo"><fmt:message key="editEvent.eventLogo"/></label> <input
                         type="file" class="hide" name="event_logo" id="open-logo"
                         accept="image/*"/> <label for="open-logo"> <c:choose>
                     <c:when test="${empty event.logo}">
@@ -85,15 +91,14 @@
                     </c:otherwise>
                 </c:choose>
                 </label> <span class="change-img-name"></span> <span
-                        class="additional-input-info">Click on image to browse
-								your logo</span>
+                        class="additional-input-info"><fmt:message key="editEvent.clickOnImageToBrowseYourLogo"/></span>
                 </div>
                 <div class="form-group">
-                    <label for="event-background">Event Background</label>
+                    <label for="event-background"><fmt:message key="editEvent.eventBackground"/></label>
 
                     <div class="input-group">
 								<span class="input-group-btn"> <span
-                                        class="btn btn-primary btn-file"> Open <span
+                                        class="btn btn-primary btn-file"> <fmt:message key="editEvent.open"/> <span
                                         id="backup-img"
                                         class="hide">media/images/events/default/concert-smoke.jpg</span>
 										<input type="file" name="event_background"
@@ -103,17 +108,16 @@
                                                disabled="disabled">
                     </div>
                     <span class="change-img-name"></span> <span
-                        class="additional-input-info">Select image with big
-								resolution for better result</span>
+                        class="additional-input-info"><fmt:message key="editEvent.selectImageWithBigResolutionForBetterResult"/></span>
                 </div>
                 <div class="form-group">
-                    <label for="datepicker-start">Start Date &amp; Time</label>
+                    <label for="datepicker-start"><fmt:message key="editEvent.startDateTime"/></label>
 
                     <div class="input-prepend input-datepicker">
                         <button type="button" class="btn">
                             <span class="fui-calendar"></span>
                         </button>
-                        <input type="text" placeholder="Start date" name="start_date"
+                        <input type="text" placeholder="<fmt:message key="editEvent.startDate"/>" name="start_date"
                                value="${event.startDate}" id="datepicker-start" readonly=""
                                required>
                     </div>
@@ -121,13 +125,13 @@
                            value="${event.startTime}" name="start_time" required>
                 </div>
                 <div class="form-group">
-                    <label for="datepicker-end">End Date &amp; Time</label>
+                    <label for="datepicker-end"><fmt:message key="editEvent.endDateTime"/></label>
 
                     <div class="input-prepend input-datepicker">
                         <button type="button" class="btn">
                             <span class="fui-calendar"></span>
                         </button>
-                        <input type="text" placeholder="End date" name="end_date"
+                        <input type="text" placeholder="<fmt:message key="editEvent.endDate"/>" name="end_date"
                                value="${event.endDate}" id="datepicker-end" readonly=""
                                required>
                     </div>
@@ -137,7 +141,7 @@
 
 
                 <div class="form-group">
-                    <label for="event-category">Category</label> <select
+                    <label for="event-category"><fmt:message key="editEvent.category"/></label> <select
                         name="event_category" class="select-block" id="event-category"
                         form="edit-event-form">
                     <c:set var="eventCategory"
@@ -151,7 +155,7 @@
                 </select>
                 </div>
                 <div class="form-group">
-                    <label for="event-type">Type</label> <select name="event_type"
+                    <label for="event-type"><fmt:message key="editEvent.type"/></label> <select name="event_type"
                                                                  class="select-block" id="event-type"
                                                                  form="edit-event-form">
                     <c:set var="eventType" value="${event.eventType.type}"/>
@@ -164,26 +168,26 @@
                 </select>
                 </div>
                 <div class="form-group">
-                    <label for="event-description">Event Description</label>
-                    <textarea rows="4" placeholder="Tell users about your event"
+                    <label for="event-description"><fmt:message key="editEvent.eventDescription"/></label>
+                    <textarea rows="4" placeholder="<fmt:message key="editEvent.tellUsersAboutYourEvent"/>"
                               class="form-control" name="event_description"
                               id="event-description"
                               form="edit-event-form">${event.description}</textarea>
                 </div>
                 <div class="form-group">
-                    <label for="event-location">Address</label> <input type="text"
+                    <label for="event-location"><fmt:message key="editEvent.address"/></label> <input type="text"
                                                                        class="form-control"
-                                                                       placeholder="Enter Address for your event"
+                                                                       placeholder="<fmt:message key="editEvent.enterAddressForYourEvent"/>"
                                                                        value="${event.location}"
                                                                        name="event_location"
                                                                        id="event-location" onFocus="geolocate()"/>
                 </div>
                 <div class="form-group" id="googleMap" style="height: 380px;"></div>
 
-                <h5>Additional Settings</h5>
+                <h5><fmt:message key="editEvent.additionalSettings"/></h5>
 
                 <div class="form-group">
-                    <span class="as-label">Listing privacy</span>
+                    <span class="as-label"><fmt:message key="editEvent.listingPrivacy"/></span>
                     <label class="radio <c:if test="${event.privacy == false}"> checked </c:if>">
                             <span class="icons">
                                 <span class="first-icon fui-radio-unchecked"></span>
@@ -191,8 +195,8 @@
 							</span>
                         <input type="radio" name="privacy_event" id="public-event"
                                value="0" data-toggle="radio">
-                        Public event
-                        <span class="additional">list this event on Eventbrite and search engines</span>
+                        <fmt:message key="editEvent.publicEvent"/>
+                        <span class="additional"><fmt:message key="editEvent.listThisEventOnEventbriteAndSearchEngines"/></span>
                     </label>
                     <label class="radio <c:if test="${event.privacy}"> checked </c:if>">
                             <span class="icons">
@@ -201,13 +205,13 @@
 							</span>
                         <input type="radio" name="privacy_event" id="private-event"
                                value="1" data-toggle="radio">
-                        Private event
-                        <span class="additional">do not list this event publicly</span>
+                        <fmt:message key="editEvent.privateEvent"/>
+                        <span class="additional"><fmt:message key="editEvent.doNotListThisEventPublicly"/></span>
                     </label>
                 </div>
 
                 <div class="form-group">
-                    <label for="organizer">Organize by</label>
+                    <label for="organizer"><fmt:message key="editEvent.organizeBy"/></label>
                     <select name="organizer" class="select-block" id="organizer" form="edit-event-form">
                         <c:forEach items="${organizers}" var="organizer">
                             <option value="${organizer.id}" <c:if
@@ -220,7 +224,7 @@
 
                 <div class="col-md-4 col-md-offset-4">
                     <button class="btn btn-primary btn-lg btn-block" name="submit"
-                            type="submit" value="Submit">Save
+                            type="submit" value="Submit"><fmt:message key="editEvent.save"/>
                     </button>
                 </div>
             </form>
