@@ -15,7 +15,7 @@ public class QueryStatements<T> {
 		this.type = type;
 	}
 
-		public String createSelectQuery(Object... whereArguments) {
+	public String createSelectQuery(Object... whereArguments) {
 		String query = null;
 		String tableName = type.getAnnotation(Table.class).name();
 		String tableColumns = getColumns(false);
@@ -33,6 +33,23 @@ public class QueryStatements<T> {
 		return query;
 	}
 
+	public String createAggregateSelectQuery(String aggregateFunction, Object... whereArguments) {
+		String query = null;
+		String tableName = type.getAnnotation(Table.class).name();
+		
+		if (whereArguments.length == 0 || (whereArguments[0].toString().equals(""))) {
+			query = StringUtils.concat("SELECT ", aggregateFunction, " as aggregate_function FROM ",
+					tableName);
+		} else {
+			query = StringUtils.concat("SELECT ", aggregateFunction, " as aggregate_function FROM ",
+					tableName, " WHERE ", getWhereColumns(whereArguments));
+		}
+
+		System.out.println(query);
+
+		return query;
+	}
+	
 	public String createInsertQuery() {
 		String query = null;
 

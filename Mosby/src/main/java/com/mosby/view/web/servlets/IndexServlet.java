@@ -56,6 +56,8 @@ public class IndexServlet extends HttpServlet {
 //		System.out.println(ticket);
 //		new MailUtils().sendMessage("AlexHamer777@gmail.com", "...");
 //		System.out.println("WORKS");
+//		List<Long>  countUserTickets =  new ReflectionDao<>((Class<Ticket>) new Ticket().getClass()).selectAggregateObjects("COUNT(user_ref)");
+//		System.out.println(countUserTickets);
         request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
         
 	}

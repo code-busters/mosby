@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import org.apache.log4j.Logger;
 
 import main.java.com.mosby.controller.persistence.ConnectionManager;
@@ -59,13 +60,37 @@ public class ReflectionDao<T> {
 
 			while (resultSet.next()) {
 				objects.add(reflectionTransformer.fromRStoObject(
-						type.newInstance(), resultSet, type));
+						type.newInstance(), resultSet, type, false));
 			}
 
 			resultSet.close();
 			preparedStatement.close();
 		} catch (ClassNotFoundException | SQLException | InstantiationException
 				| IllegalAccessException e) {
+			logger.error("SQL Select exception", e);
+		}
+		return objects;
+	}
+	
+	public List<Long> selectAggregateObjects(String aggregateFunction, Object... whereArguments) {//throws Exception {
+		List<Long> objects = new ArrayList<>();
+		Long integer = 0L;
+		ReflectionTransformer<Long> integerTransformer = new ReflectionTransformer<>();
+		try (Connection connection = ConnectionManager.getInstance().getConnection()) {
+			query = queryStatements.createAggregateSelectQuery(aggregateFunction, whereArguments);
+			
+			PreparedStatement preparedStatement = (PreparedStatement) connection
+					.prepareStatement(query);
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+				objects.add(integerTransformer.fromRStoObject(
+						integer, resultSet, Long.class, true));
+			}
+
+			resultSet.close();
+			preparedStatement.close();
+		} catch (ClassNotFoundException | SQLException e) {
 			logger.error("SQL Select exception", e);
 		}
 		return objects;
@@ -116,6 +141,8 @@ public class ReflectionDao<T> {
 
 			preparedStatement.addBatch();
 			preparedStatement.executeBatch();
+			
+			preparedStatement.close();
 		} catch (SQLException | IllegalArgumentException
 				| ClassNotFoundException | NoSuchMethodException
 				| SecurityException | IllegalAccessException
@@ -135,6 +162,8 @@ public class ReflectionDao<T> {
 
 			preparedStatement.addBatch();
 			preparedStatement.executeBatch();
+			
+			preparedStatement.close();
 		} catch (SQLException | IllegalArgumentException
 				| ClassNotFoundException | NoSuchMethodException
 				| SecurityException | IllegalAccessException

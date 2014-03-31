@@ -17,57 +17,63 @@ import main.java.com.mosby.model.annotations.dao.Key;
 
 public class ReflectionTransformer<T> {
 
-	private static Logger logger = Logger.getLogger(ReflectionTransformer.class);
-	
-	public T fromRStoObject(T object, ResultSet resultSet, Class<T> type) {//throws Exception {
+	private static Logger logger = Logger
+			.getLogger(ReflectionTransformer.class);
 
-		for (Field field : type.getDeclaredFields()) {
+	@SuppressWarnings("unchecked")
+	public T fromRStoObject(T object, ResultSet resultSet, Class<T> type,
+			boolean hasAggregateFunction) {// throws Exception {
+		try {
+			if (hasAggregateFunction) {
+				object = (T) resultSet.getObject("aggregate_function");
+			} else {
+				for (Field field : type.getDeclaredFields()) {
 
-			Object value = null;
-			try {
-				if (field.isAnnotationPresent(Column.class)) {
-					if (field.getType().equals(boolean.class)) {
-						int state = (int) resultSet.getObject(field.getAnnotation(
-								Column.class).name());
-						if (state == 0) {
-							value = new Boolean(false);
-						} else if (state == 1) {
-							value = new Boolean(true);
+					Object value = null;
+					if (field.isAnnotationPresent(Column.class)) {
+						if (field.getType().equals(boolean.class)) {
+							int state = (int) resultSet.getObject(field
+									.getAnnotation(Column.class).name());
+							if (state == 0) {
+								value = new Boolean(false);
+							} else if (state == 1) {
+								value = new Boolean(true);
+							}
+						} else {
+
+							value = resultSet.getObject(field.getAnnotation(
+									Column.class).name());
 						}
-					} else {
-
+					} else if (field.isAnnotationPresent(Key.class)) {
 						value = resultSet.getObject(field.getAnnotation(
-								Column.class).name());
+								Key.class).name());
+						if (value != null) {
+							int currentId = Integer.parseInt(value.toString());
+							value = new ReflectionDao<>(field.getType())
+									.selectObjects("id", currentId).get(0);
+						}
 					}
-				} else if (field.isAnnotationPresent(Key.class)) {
-					value = resultSet.getObject(field.getAnnotation(Key.class)
-							.name());
-					if (value != null) {
-						int currentId = Integer.parseInt(value.toString());
-						value = new ReflectionDao<>(field.getType())
-								.selectObjects("id", currentId).get(0);
+					if (field.isAnnotationPresent(Key.class)
+							|| field.isAnnotationPresent(Column.class)) {
+						PropertyDescriptor propertyDescriptor;
+						propertyDescriptor = new PropertyDescriptor(
+								field.getName(), type);
+						Method method = propertyDescriptor.getWriteMethod();
+						method.invoke(object, value);
 					}
 				}
-				if (field.isAnnotationPresent(Key.class)
-						|| field.isAnnotationPresent(Column.class)) {
-					PropertyDescriptor propertyDescriptor;
-					propertyDescriptor = new PropertyDescriptor(
-							field.getName(), type);
-					Method method = propertyDescriptor.getWriteMethod();
-					method.invoke(object, value);
-				}
-			} catch (IntrospectionException | IllegalAccessException
-					| IllegalArgumentException | InvocationTargetException
-					| SQLException e) {
-				logger.error("From ResultSet to Object exception", e);
 			}
+		} catch (IntrospectionException | IllegalAccessException
+				| IllegalArgumentException | InvocationTargetException
+				| SQLException e) {
+			logger.error("From ResultSet to Object exception", e);
 		}
 		return object;
 	}
 
 	public PreparedStatement fromObjectToStatement(
 			PreparedStatement preparedStatement, Class<T> type, T object,
-			boolean isUpdate) {//throws Exception {
+			boolean isUpdate) {// throws Exception {
 		int columnIndex = 0;
 		System.out.println(object);
 		for (Field field : type.getDeclaredFields()) {
@@ -138,20 +144,5 @@ public class ReflectionTransformer<T> {
 		}
 		return columnCount;
 	}
-
-	// public String fromFieldToColumnInDB(String line) {
-	// String dbColumn = "";
-	// StringBuilder currentLine = new StringBuilder();
-	//
-	// for (int i = 0; i < line.length(); ++i) {
-	// if (Character.isUpperCase(line.charAt(i)) && i != 0) {
-	// currentLine.append("_");
-	// }
-	// currentLine.append(line.charAt(i));
-	// }
-	// dbColumn = currentLine.toString().toLowerCase();
-	//
-	// return dbColumn;
-	// }
 
 }
