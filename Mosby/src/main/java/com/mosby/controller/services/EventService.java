@@ -185,6 +185,7 @@ public class EventService {
 	//event builder		
 		String name = request.getParameter("event_name");
 
+		Organizer organizer = new ReadGenericObjectService<>(Organizer.class).readById(Integer.parseInt(request.getParameter("organizer")));
 		Date startDate = null, endDate = null, startTime = null, endTime = null;
 		try {
 			startDate = new SimpleDateFormat(DATE_FORMAT).parse(request.getParameter("start_date"));
@@ -205,7 +206,7 @@ public class EventService {
 			privacy = true;
 		}
 		
-		Event updatedEvent = new Event(eventId, null, name, description, eventCategory, eventType, startDate, startTime, endDate, endTime, location, eventLogo, eventBackground, privacy);
+		Event updatedEvent = new Event(eventId, organizer, name, description, eventCategory, eventType, startDate, startTime, endDate, endTime, location, eventLogo, eventBackground, privacy);
 		
 		ReflectionDao<Event> eventDao = new ReflectionDao<>(Event.class);
 		eventDao.updateObjects(updatedEvent);
@@ -350,5 +351,39 @@ public class EventService {
         request.setAttribute("tickets", tickets);
         request.setAttribute("ticketsSold", ticketsSold);
 		return request;
+	}
+
+	private Date combineDateTime (Date date, Date time){
+		Calendar calendarA = Calendar.getInstance();
+		calendarA.setTime(date);
+		Calendar calendarB = Calendar.getInstance();
+		calendarB.setTime(time);
+		
+		calendarA.set(Calendar.HOUR_OF_DAY, calendarB.get(Calendar.HOUR_OF_DAY));
+		calendarA.set(Calendar.MINUTE, calendarB.get(Calendar.MINUTE));
+		calendarA.set(Calendar.SECOND, calendarB.get(Calendar.SECOND));
+		calendarA.set(Calendar.MILLISECOND, calendarB.get(Calendar.MILLISECOND));
+		
+		Date result = calendarA.getTime();
+		return result;
+	}
+
+	public List<TicketInfo> readTicketInfo(int eventId){
+		List <TicketInfo> ticketsInfoList = new ReadGenericObjectService<>(TicketInfo.class).readListByField("event_ref", eventId);;
+        
+        Date currentDate = new Date();
+		Iterator<TicketInfo> iter = ticketsInfoList.iterator();
+		while (iter.hasNext()){
+			TicketInfo currentTicketInfo = iter.next();
+			Date startDate = combineDateTime(currentTicketInfo.getStartDate(), currentTicketInfo.getStartTime());
+			Date endDate = combineDateTime(currentTicketInfo.getEndDate(), currentTicketInfo.getEndTime());
+			if(startDate.compareTo(currentDate) > 0){
+				iter.remove();
+			}
+			else if (endDate.compareTo(currentDate) < 0){
+				iter.remove();
+			}
+		}
+		return ticketsInfoList;
 	}
 }
