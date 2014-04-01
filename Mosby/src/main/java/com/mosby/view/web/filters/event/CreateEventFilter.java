@@ -39,10 +39,7 @@ public class CreateEventFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) res;
 
-		System.out.println("createEventFilter");
-
 		if (request.getMethod().equals("POST")) {
-			System.out.println("validate....");
 			Event event = null;
 
 			ValidatorUtils<Event> validatorUtils = null;
@@ -78,14 +75,13 @@ public class CreateEventFilter implements Filter {
 			} catch (NoSuchMethodException | SecurityException
 					| IllegalAccessException | IllegalArgumentException
 					| InvocationTargetException e) {
-				// TODO Auto-generated catch block
+
 				e.printStackTrace();
 			}
 
 			if (event == null || validatorUtils.getErrors().isEmpty() == false) {
 
 				request.setAttribute("errors", validatorUtils.getErrors());
-				System.out.println(validatorUtils.getErrors());
 				request.getRequestDispatcher("/pages/createEvent.jsp").forward(
 						request, response);
 			} else {

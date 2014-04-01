@@ -228,6 +228,5 @@ public class ValidatorUtils<T> {
 	public void inputNumber(){
 		errors.add(labels.getString("inputNumber"));
 	}
-	}
 
 }

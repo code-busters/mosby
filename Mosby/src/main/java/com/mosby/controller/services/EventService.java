@@ -110,7 +110,16 @@ public class EventService {
 				String ticketDescription = request.getParameter("ticket_description_" + currentId);
 				int maxNumber = Integer.parseInt(request.getParameter("event_ticket_quantity_" + currentId));
 				String stringPrice = request.getParameter("event_ticket_price_" + currentId);
-				System.out.println(stringPrice);
+				
+				try {
+					startDate = new SimpleDateFormat(DATE_FORMAT).parse(request.getParameter("ticket_start_date_" + currentId));
+					endDate = new SimpleDateFormat(DATE_FORMAT).parse(request.getParameter("ticket_end_date_" + currentId));
+					startTime = new SimpleDateFormat(TIME_FORMAT).parse(request.getParameter("ticket_start_time_" + currentId));
+					endTime = new SimpleDateFormat(TIME_FORMAT).parse(request.getParameter("ticket_end_date_" + currentId));
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				int price;
 				if (stringPrice == null){
 					type = "Free";

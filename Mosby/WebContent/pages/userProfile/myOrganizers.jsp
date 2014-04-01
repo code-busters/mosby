@@ -92,7 +92,7 @@
                                         <div id="falldown-${organizer.id}" class="falldown col-md-12">
 											<input type="hidden" name="organizerId" value="${organizer.id}" />
                                             <div class="form-group">
-                                                <label for="open-logo-${organizer.id}">Logo</label>
+                                                <label for="open-logo-${organizer.id}"><fmt:message key="myOrganizers.logo"/></label>
                                                 <input type="file" class="hide" name="logo_${organizer.id}"
                                                        id="open-logo-${organizer.id}" accept="image/*"/>
                                                 <label for="open-logo-${organizer.id}">
@@ -100,34 +100,34 @@
                                                     <img class="logo" src="media/images/organizers/${organizer.logo}">
                                                 </label>
                                                 <span class="change-img-name"></span>
-                                                <span class="additional-input-info">Click on image to browse your logo</span>
+                                                <span class="additional-input-info"><fmt:message key="myOrganizers.clickOnImageToBrowseYourLogo"/></span>
                                             </div>
                                             <div class="form-group">
-                                                <label for="name-${organizer.id}">Name</label>
-                                                <input class="form-control" placeholder="Name"
+                                                <label for="name-${organizer.id}"><fmt:message key="myOrganizers.name"/></label>
+                                                <input class="form-control" placeholder="<fmt:message key="myOrganizers.name"/>"
                                                        name="name_${organizer.id}" id="name-${organizer.id}" value="${organizer.name}" required/>
                                             </div>
                                             <div class="form-group">
-                                                <label for="email-${organizer.id}">Contact Email</label>
-                                                <input class="form-control" type="email" placeholder="Contact email"
+                                                <label for="email-${organizer.id}"><fmt:message key="myOrganizers.contactEmail"/></label>
+                                                <input class="form-control" type="email" placeholder="<fmt:message key="myOrganizers.contactEmail"/>"
                                                        name="email_${organizer.id}" pattern="[^ @]*@[^ @]*\.[^ @]{2,}"
                                                        id="email-${organizer.id}" value="${organizer.email}" required/>
                                             </div>
                                             <div class="form-group">
-                                                <label for="phone-${organizer.id}">Phone</label>
-                                                <input class="form-control typeahead" placeholder="Your phone"
+                                                <label for="phone-${organizer.id}"><fmt:message key="myOrganizers.organizersPhone"/></label>
+                                                <input class="form-control typeahead" placeholder="<fmt:message key="myOrganizers.organizersPhone"/>"
                                                        name="phone_${organizer.id}" id="phone-${organizer.id}" value="${organizer.phone}"/>
                                             </div>
                                             <div class="form-group">
-                                                <label for="about-${organizer.id}">About</label>
-                                                <textarea rows="4" placeholder="Tell about organization"
+                                                <label for="about-${organizer.id}"><fmt:message key="myOrganizers.about"/></label>
+                                                <textarea rows="4" placeholder="<fmt:message key="myOrganizers.tellAboutOrganizer"/>"
                                                           class="form-control" name="about_${organizer.id}"
                                                           id="about-${organizer.id}" form="organizers-form">${organizer.about}</textarea>
                                             </div>
                                             <div class="form-group">
-                                                <label for="website-${organizer.id}">Website</label>
+                                                <label for="website-${organizer.id}"><fmt:message key="myOrganizers.website"/></label>
                                                 <input type="url" class="form-control"
-                                                       placeholder="Enter organization's website or blog"
+                                                       placeholder="<fmt:message key="myOrganizers.enterOrganizersWebsiteOrBlog"/>"
                                                        name="website_${organizer.id}" value="${organizer.site}" id="website-${organizer.id}"/>
                                             </div>
                                             <div class="form-group">
@@ -158,7 +158,7 @@
                         </div>
                         <div id="save-button" class="col-md-2 col-sm-3 pull-right add-button hide">
                             <button class="btn btn-info btn-lg btn-block" name="submit" type="submit" value="Submit">
-                                Save
+                                <fmt:message key="myOrganizers.save"/>
                             </button>
                         </div>
                     </form>

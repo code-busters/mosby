@@ -33,10 +33,7 @@ public class SessionFilter implements Filter {
 		if (session == null) {
 			System.out.println("create session");
 			session = request.getSession();
-			session.setMaxInactiveInterval(-1);
-			System.out.println(session.getMaxInactiveInterval());
 		}
-		System.out.println(session.getMaxInactiveInterval());
 		chain.doFilter(request, response);
 	}
 

@@ -16,27 +16,27 @@ import javax.servlet.http.HttpSession;
 @WebFilter("/ProfilePageFilter")
 public class ProfilePageFilter implements Filter {
 
-    public ProfilePageFilter() {
-        // TODO Auto-generated constructor stub
-    }
+	public ProfilePageFilter() {
 
-	public void destroy() {
-		// TODO Auto-generated method stub
 	}
 
-	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
-		HttpServletRequest request = (HttpServletRequest) req;
-        HttpServletResponse response = (HttpServletResponse) res;
-        HttpSession session = request.getSession(false);
-        System.out.println("logFilter");
+	public void destroy() {
 
-        if (session.getAttribute("user") != null) {
-            chain.doFilter(request, response);
-            
-        } else {
-        	session.setAttribute("waitUrl", request.getRequestURL());
-            response.sendRedirect(request.getContextPath() + "/login");
-        }
+	}
+
+	public void doFilter(ServletRequest req, ServletResponse res,
+			FilterChain chain) throws IOException, ServletException {
+		HttpServletRequest request = (HttpServletRequest) req;
+		HttpServletResponse response = (HttpServletResponse) res;
+		HttpSession session = request.getSession(false);
+
+		if (session != null && session.getAttribute("user") != null) {
+			chain.doFilter(request, response);
+
+		} else {
+			request.setAttribute("waitUrl", request.getRequestURL());
+			response.sendRedirect(request.getContextPath() + "/login");
+		}
 
 	}
 

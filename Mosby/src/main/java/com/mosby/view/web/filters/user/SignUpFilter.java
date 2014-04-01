@@ -36,9 +36,9 @@ public class SignUpFilter implements Filter {
 		HttpSession session = request.getSession(false);
 
 		if (session == null || session.getAttribute("user") == null) {
-			System.out.println(request.getMethod());
+
 			if (request.getMethod().equals("POST")) {
-				System.out.println("validate....");
+
 				String firstName = request.getParameter("first_name");
 				String lastName = request.getParameter("last_name");
 				String email = request.getParameter("email");

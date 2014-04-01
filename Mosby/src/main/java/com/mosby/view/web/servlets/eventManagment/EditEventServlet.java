@@ -3,6 +3,8 @@ package main.java.com.mosby.view.web.servlets.eventManagment;
 import main.java.com.mosby.controller.services.ReadGenericObjectService;
 import main.java.com.mosby.controller.services.EventService;
 import main.java.com.mosby.model.Event;
+import main.java.com.mosby.model.EventCategory;
+import main.java.com.mosby.model.EventType;
 import main.java.com.mosby.model.Organizer;
 import main.java.com.mosby.model.User;
 
@@ -33,6 +35,10 @@ public class EditEventServlet extends HttpServlet {
             int eventId = Integer.parseInt(request.getParameter("eventId"));
             Event event = new ReadGenericObjectService<>(Event.class).readById(eventId);
             List<Organizer> organizersList = new ReadGenericObjectService<>(Organizer.class).readListByField("user_ref", userId);
+            List<EventType> listEventTypes = new ReadGenericObjectService<>(EventType.class).readList();
+            request.setAttribute("eventTypes", listEventTypes);
+    		List<EventCategory> listEventCategories = new ReadGenericObjectService<>(EventCategory.class).readList();
+    		request.setAttribute("eventCategories", listEventCategories);
             request.setAttribute("organizers", organizersList);
             request.setAttribute("event", event);
             request.getRequestDispatcher("/pages/eventManagement/editEvent.jsp").forward(request, response);

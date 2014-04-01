@@ -9,16 +9,16 @@
 <div id="sidebar-wrapper">
     <ul class="sidebar-nav">
         <li class="sidebar-brand">
-            <fmt:message key="sideNavnar.manageEvent"/>
+            <fmt:message key="sideNavbar.manageEvent"/>
         </li>
         <li>
-            <a href="<c:url value="/editEvent?eventId=${event.id}"/>"><fmt:message key="sideNavnar.editEvent"/></a>
+            <a href="<c:url value="/editEvent?eventId=${event.id}"/>"><fmt:message key="sideNavbar.editEvent"/></a>
         </li>
         <li>
-            <a href="<c:url value="/editTicketsPromoCodes?eventId=${event.id}"/>"><fmt:message key="sideNavnar.editTicketsPromoCodes"/></a>
+            <a href="<c:url value="/editTicketsPromoCodes?eventId=${event.id}"/>"><fmt:message key="sideNavbar.editTicketsPromoCodes"/></a>
         </li>
         <li>
-            <a href="<c:url value="/registeredTable?eventId=${event.id}"/>"><fmt:message key="sideNavnar.registeredTable"/></a>
+            <a href="<c:url value="/registeredTable?eventId=${event.id}"/>"><fmt:message key="sideNavbar.registeredTable"/></a>
         </li>
     </ul>
 </div>

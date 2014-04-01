@@ -33,9 +33,8 @@ public class ContactInfoFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) res;
 		HttpSession session = request.getSession(false);
-		System.out.println("contact info filter");
+
 		if (request.getMethod().equals("POST")) {
-			System.out.println("validate....");
 
 			User sessionUser = (User) session.getAttribute("user");
 
@@ -59,7 +58,8 @@ public class ContactInfoFilter implements Filter {
 					site, "", authenticationCode, active);
 
 			ValidatorUtils<User> validatorUtils = null;
-			if (!request.getParameter("language").equals("en")&&!request.getParameter("language").equals("uk")) {
+			if (!request.getParameter("language").equals("en")
+					&& !request.getParameter("language").equals("uk")) {
 				validatorUtils = new ValidatorUtils<>(User.class, "en");
 			} else {
 				validatorUtils = new ValidatorUtils<>(User.class,
@@ -70,14 +70,11 @@ public class ContactInfoFilter implements Filter {
 			} catch (NoSuchMethodException | SecurityException
 					| IllegalAccessException | IllegalArgumentException
 					| InvocationTargetException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			System.out.println(validatorUtils.getErrors());
 			if (user == null || validatorUtils.getErrors().isEmpty() == false) {
 
 				request.setAttribute("errors", validatorUtils.getErrors());
-				System.out.println(validatorUtils.getErrors());
 				request.getRequestDispatcher(
 						"/pages/userProfile/contactInfo.jsp").forward(request,
 						response);

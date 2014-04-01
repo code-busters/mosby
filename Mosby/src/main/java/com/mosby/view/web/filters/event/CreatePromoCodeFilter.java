@@ -27,62 +27,69 @@ import main.java.com.mosby.utils.ValidatorUtils;
 @WebFilter("/CreatePromoCodeFilter")
 public class CreatePromoCodeFilter implements Filter {
 
-    public CreatePromoCodeFilter() {
-        // TODO Auto-generated constructor stub
-    }
+	public CreatePromoCodeFilter() {
 
-	public void destroy() {
-		// TODO Auto-generated method stub
 	}
 
-	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
+	public void destroy() {
+
+	}
+
+	public void doFilter(ServletRequest req, ServletResponse res,
+			FilterChain chain) throws IOException, ServletException {
 
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) res;
 
-		System.out.println("createPromoCodeFilter");
-
 		if (request.getMethod().equals("POST")) {
-			System.out.println("validate....");
-			String [] idPromoCodesArray = request.getParameterValues("promo_codes_id");
+
+			String[] idPromoCodesArray = request
+					.getParameterValues("promo_codes_id");
 			ValidatorUtils<PromoCode> validatorUtils = null;
-			
-			if (!request.getParameter("language").equals("en")&&!request.getParameter("language").equals("uk")) {
+
+			if (!request.getParameter("language").equals("en")
+					&& !request.getParameter("language").equals("uk")) {
 				validatorUtils = new ValidatorUtils<>(PromoCode.class, "en");
 			} else {
-				validatorUtils = new ValidatorUtils<>(PromoCode.class, request.getParameter("language"));
+				validatorUtils = new ValidatorUtils<>(PromoCode.class,
+						request.getParameter("language"));
 			}
-			if (!(idPromoCodesArray[0].equals(""))){
-				for (String currInt : idPromoCodesArray){
-					
+			if (!(idPromoCodesArray[0].equals(""))) {
+				for (String currInt : idPromoCodesArray) {
+
 					int currentId = Integer.parseInt(currInt);
 					int discount = 0, maxNumber = 0;
-					String code = request.getParameter("promo_code_code_" + currentId);
+					String code = request.getParameter("promo_code_code_"
+							+ currentId);
 					try {
-					discount = Integer.parseInt(request.getParameter("promo_code_discount_" + currentId));
-					maxNumber = Integer.parseInt(request.getParameter("promo_code_quantity_" + currentId));
-					} catch (NumberFormatException e){
+						discount = Integer.parseInt(request
+								.getParameter("promo_code_discount_"
+										+ currentId));
+						maxNumber = Integer.parseInt(request
+								.getParameter("promo_code_quantity_"
+										+ currentId));
+					} catch (NumberFormatException e) {
 						validatorUtils.inputNumber();
 					}
-					String promoCodeDescription = request.getParameter("promo_code_description_" + currentId);
-					
-					
-					PromoCode promoCode = new PromoCode(code, discount, promoCodeDescription, maxNumber);
+					String promoCodeDescription = request
+							.getParameter("promo_code_description_" + currentId);
+
+					PromoCode promoCode = new PromoCode(code, discount,
+							promoCodeDescription, maxNumber);
 					try {
 						validatorUtils.validate(promoCode);
 					} catch (NoSuchMethodException | SecurityException
 							| IllegalAccessException | IllegalArgumentException
 							| InvocationTargetException e) {
-						// TODO Auto-generated catch block
+						
 						e.printStackTrace();
-					}		
+					}
 				}
 			}
 
 			if (validatorUtils.getErrors().isEmpty() == false) {
 
 				request.setAttribute("errors", validatorUtils.getErrors());
-				System.out.println(validatorUtils.getErrors());
 				request.getRequestDispatcher("/pages/createEvent.jsp").forward(
 						request, response);
 			} else {
@@ -94,7 +101,7 @@ public class CreatePromoCodeFilter implements Filter {
 	}
 
 	public void init(FilterConfig fConfig) throws ServletException {
-		// TODO Auto-generated method stub
+		
 	}
 
 }

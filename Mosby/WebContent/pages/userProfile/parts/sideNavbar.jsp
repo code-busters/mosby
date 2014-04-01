@@ -9,25 +9,25 @@
 <div id="sidebar-wrapper">
     <ul class="sidebar-nav">
         <li class="sidebar-brand">
-            <fmt:message key="sideNavnar.myAccount"/>
+            <fmt:message key="sideNavbar.myAccount"/>
         </li>
         <li>
-            <a href="<c:url value="/contactInfo"/>"><fmt:message key="sideNavnar.contactInfo"/></a>
+            <a href="<c:url value="/contactInfo"/>"><fmt:message key="sideNavbar.contactInfo"/></a>
         </li>
         <li>
-            <a href="<c:url value="/contactInfo"/>"><fmt:message key="sideNavnar.tickets"/></a>
+            <a href="<c:url value="/contactInfo"/>"><fmt:message key="sideNavbar.tickets"/></a>
         </li>
         <li>
-            <a href="<c:url value="/changePassword"/>"><fmt:message key="sideNavnar.changePassword"/></a>
+            <a href="<c:url value="/changePassword"/>"><fmt:message key="sideNavbar.changePassword"/></a>
         </li>
         <li>
-            <a href="<c:url value="/myEvents"/>"><fmt:message key="sideNavnar.myEvents"/></a>
+            <a href="<c:url value="/myEvents"/>"><fmt:message key="sideNavbar.myEvents"/></a>
         </li>
         <li>
-            <a href="<c:url value="/myOrganizers"/>"><fmt:message key="sideNavnar.myOrganizers"/></a>
+            <a href="<c:url value="/myOrganizers"/>"><fmt:message key="sideNavbar.myOrganizers"/></a>
         </li>
         <li>
-            <a href="<c:url value="/apiAccess"/>"><fmt:message key="sideNavnar.apiAccess"/></a>
+            <a href="<c:url value="/apiAccess"/>"><fmt:message key="sideNavbar.apiAccess"/></a>
         </li>
     </ul>
 </div>

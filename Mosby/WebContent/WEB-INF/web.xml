@@ -13,27 +13,7 @@
     </filter>
     <filter-mapping>
         <filter-name>SessionFilter</filter-name>
-        <url-pattern>/apiAccess</url-pattern>
-        <url-pattern>/myOrganizers</url-pattern>
-        <url-pattern>/createOrganizer</url-pattern>
-        <url-pattern>/updateOrganizer</url-pattern>
-        <url-pattern>/organizerPage</url-pattern>
-        <url-pattern>/search</url-pattern>
-        <url-pattern>/myEvents</url-pattern>
-        <url-pattern>/editTicketsPromoCodes</url-pattern>
-        <url-pattern>/register</url-pattern>
-        <url-pattern>/index</url-pattern>
-        <url-pattern>/createEvent</url-pattern>
-        <url-pattern>/eventPage</url-pattern>
         <url-pattern>/login</url-pattern>
-        <url-pattern>/logout</url-pattern>
-        <url-pattern>/signUp</url-pattern>
-        <url-pattern>/socialSignUp</url-pattern>
-        <url-pattern>/registeredTable</url-pattern>
-        <url-pattern>/changePassword</url-pattern>
-        <url-pattern>/contactInfo</url-pattern>
-        <url-pattern>/authentication</url-pattern>
-        <url-pattern>/editEvent</url-pattern>
     </filter-mapping>
     <filter>
         <filter-name>EncodingFilter</filter-name>
@@ -41,36 +21,7 @@
     </filter>
     <filter-mapping>
         <filter-name>EncodingFilter</filter-name>
-        <url-pattern>/apiAccess</url-pattern>
-        <url-pattern>/myOrganizers</url-pattern>
-        <url-pattern>/createOrganizer</url-pattern>
-        <url-pattern>/updateOrganizer</url-pattern>
-        <url-pattern>/organizerPage</url-pattern>
-        <url-pattern>/search</url-pattern>
-        <url-pattern>/myEvents</url-pattern>
-        <url-pattern>/editTicketsPromoCodes</url-pattern>
-        <url-pattern>/register</url-pattern>
-        <url-pattern>/index</url-pattern>
-        <url-pattern>/createEvent</url-pattern>
-        <url-pattern>/eventPage</url-pattern>
-        <url-pattern>/login</url-pattern>
-        <url-pattern>/logout</url-pattern>
-        <url-pattern>/signUp</url-pattern>
-        <url-pattern>/socialSignUp</url-pattern>
-        <url-pattern>/registeredTable</url-pattern>
-        <url-pattern>/changePassword</url-pattern>
-        <url-pattern>/contactInfo</url-pattern>
-        <url-pattern>/authentication</url-pattern>
-        <url-pattern>/editEvent</url-pattern>
-    </filter-mapping>
-    <filter>
-        <filter-name>EventAttributesFilter</filter-name>
-        <filter-class>main.java.com.mosby.view.web.filters.event.EventAttributesFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>EventAttributesFilter</filter-name>
-        <url-pattern>/createEvent</url-pattern>
-        <url-pattern>/editEvent</url-pattern>
+        <url-pattern>/*</url-pattern>
     </filter-mapping>
     <filter>
         <filter-name>SignUpFilter</filter-name>
@@ -96,10 +47,12 @@
         <filter-name>ProfilePageFilter</filter-name>
         <url-pattern>/apiAccess</url-pattern>
         <url-pattern>/createEvent</url-pattern>
+        <url-pattern>/createOrganizer</url-pattern>
         <url-pattern>/changePassword</url-pattern>
         <url-pattern>/contactInfo</url-pattern>
         <url-pattern>/myOrganizers</url-pattern>
         <url-pattern>/myEvents</url-pattern>
+        <url-pattern>/updateOrganizer</url-pattern>
     </filter-mapping>
     <filter>
         <filter-name>CreateEventFilter</filter-name>

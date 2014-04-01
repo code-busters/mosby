@@ -3,9 +3,11 @@ package main.java.com.mosby.view.web.servlets;
 import main.java.com.mosby.controller.services.ReadGenericObjectService;
 import main.java.com.mosby.controller.services.EventService;
 import main.java.com.mosby.model.Event;
-
+import main.java.com.mosby.model.EventCategory;
+import main.java.com.mosby.model.EventType;
 import main.java.com.mosby.model.Organizer;
 import main.java.com.mosby.model.User;
+
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -32,6 +34,10 @@ public class CreateEventServlet extends HttpServlet {
         User sessionUser = (User) session.getAttribute("user");
         int userId = sessionUser.getId();
         List<Organizer> organizersList = new ReadGenericObjectService<>(Organizer.class).readListByField("user_ref", userId);
+        List<EventType> listEventTypes = new ReadGenericObjectService<>(EventType.class).readList();
+        request.setAttribute("eventTypes", listEventTypes);
+		List<EventCategory> listEventCategories = new ReadGenericObjectService<>(EventCategory.class).readList();
+		request.setAttribute("eventCategories", listEventCategories);
         request.setAttribute("organizers", organizersList);
         request.getRequestDispatcher("/pages/createEvent.jsp").forward(request, response);
     }
