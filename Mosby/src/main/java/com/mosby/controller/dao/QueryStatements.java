@@ -2,6 +2,8 @@ package main.java.com.mosby.controller.dao;
 
 import java.lang.reflect.Field;
 
+import org.apache.log4j.Logger;
+
 import main.java.com.mosby.model.annotations.dao.Column;
 import main.java.com.mosby.model.annotations.dao.Key;
 import main.java.com.mosby.model.annotations.dao.Table;
@@ -9,6 +11,8 @@ import main.java.com.mosby.utils.StringUtils;
 
 public class QueryStatements<T> {
 
+	private static Logger logger = Logger.getLogger(QueryStatements.class.getName());
+	
 	private Class<T> type;
 
 	public QueryStatements(Class<T> type) {
@@ -28,6 +32,7 @@ public class QueryStatements<T> {
 					tableName, " WHERE ", getWhereColumns(whereArguments));
 		}
 
+		//logger.info("Generated Query : " + query);
 		System.out.println(query);
 
 		return query;
@@ -126,10 +131,10 @@ public class QueryStatements<T> {
 		StringBuilder stringBuilder = new StringBuilder();
 
 		for (int i = 1; i < whereArguments.length; i += 2) {
-			stringBuilder.append(whereArguments[i - 1].toString()).append("='").append(whereArguments[i].toString()).append("', ");
+			stringBuilder.append(whereArguments[i - 1].toString()).append("='").append(whereArguments[i].toString()).append("' AND ");
 		}
 		
-		stringBuilder.deleteCharAt(stringBuilder.length() - 2);
+		stringBuilder.delete(stringBuilder.length() - 4, stringBuilder.length() - 1);
 		whereStatement = stringBuilder.toString();
 
 		return whereStatement;

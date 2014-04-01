@@ -28,7 +28,8 @@ import com.itextpdf.text.pdf.draw.DottedLineSeparator;
 
 public class TicketGenerator {
 
-	private static String EVENT_LOGO_PATH = "\\media\\images\\events\\logo\\";
+	private static final int QR_SEED = 9;
+	private static final int QR_SIZE = 10;
 
 	private Document document;
 
@@ -72,7 +73,7 @@ public class TicketGenerator {
 		this.ticketType = ticket.getTicketInfo().getType();
 		this.logoURL = StringUtils.concat(path, "\\media\\images\\events\\logo\\",ticket.getEvent().getLogo());
 		this.personName = StringUtils.concat(ticket.getUser().getFirstName(), "\n", ticket.getUser().getLastName());
-		this.qrCode = "temp QR-code";
+		this.qrCode = qrCodeString(ticket.getId());
 		this.promoCode = ticket.getPromoCode().getCode();
 		this.purchaseTime = ticket.getTimeOfPurchase();
 	}
@@ -206,12 +207,8 @@ public class TicketGenerator {
 			throws BadElementException, MalformedURLException, IOException {
 		PdfPCell cell;
 
-		Image image;
-		if (logoPath != null) {
-			image = Image.getInstance(logoPath);
-		} else {
-			image = Image.getInstance(EVENT_LOGO_PATH + "\\default.png");
-		}
+		Image image = Image.getInstance(logoPath);
+		
 		image.scaleToFit(100, 100);
 		image.setBorder(Image.BOX);
 		image.setBorderWidth(10);
@@ -241,7 +238,24 @@ public class TicketGenerator {
 
 		return cell;
 	}
-
+	
+	public String qrCodeString(int ticketId) {
+		String qrCode = Integer.toString(ticketId);
+		int numberSum = 0;
+		int residual = 0;
+		
+		for (int i = 0; i < qrCode.length(); i++) {
+			numberSum += Integer.parseInt(Character.toString(qrCode.charAt(i)));
+		}
+		residual = (Math.abs(numberSum - QR_SEED)) % 10;
+		while (qrCode.length() < QR_SIZE - 1) {
+			qrCode = StringUtils.concat(0, qrCode); 
+		}
+		qrCode = StringUtils.concat(qrCode, residual);
+		
+		return qrCode;
+	}
+	
 	private PdfPTable headerTable() {
 		PdfPTable headerTable = new PdfPTable(1);
 		headerTable.setWidthPercentage(50);
