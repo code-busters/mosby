@@ -71,8 +71,8 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("user", user);
 			session.setAttribute("userType", "common");
 
-			if (request.getParameter("waitUrl") != null) {
-				String url = request.getParameter("waitUrl");
+			if (session.getAttribute("waitUrl") != null) {
+				String url = session.getAttribute("waitUrl").toString();
 				response.sendRedirect(url);
 			} else {
 				response.sendRedirect("index");

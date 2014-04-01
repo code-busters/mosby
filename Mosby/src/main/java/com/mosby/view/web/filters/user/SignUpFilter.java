@@ -35,7 +35,7 @@ public class SignUpFilter implements Filter {
 		HttpServletResponse response = (HttpServletResponse) res;
 		HttpSession session = request.getSession(false);
 
-		if (session == null || session.getAttribute("user") == null) {
+		if (session.getAttribute("user") == null) {
 
 			if (request.getMethod().equals("POST")) {
 

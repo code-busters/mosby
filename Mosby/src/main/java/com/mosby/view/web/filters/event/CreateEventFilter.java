@@ -55,8 +55,8 @@ public class CreateEventFilter implements Filter {
 			String startTimestamp = request.getParameter("start_date") + " " + request.getParameter("start_time");
 			String endTimestamp = request.getParameter("end_date") + " " + request.getParameter("end_time");
 
-			eventCategory = new ReadGenericObjectService<EventCategory>((Class<EventCategory>) new EventCategory().getClass()).readById(Integer.parseInt(request.getParameter("event_category")));
-			eventType = new ReadGenericObjectService<EventType>((Class<EventType>) new EventType().getClass()).readById(Integer.parseInt(request.getParameter("event_type")));
+			eventCategory = new ReadGenericObjectService<EventCategory>(EventCategory.class).readById(Integer.parseInt(request.getParameter("event_category")));
+			eventType = new ReadGenericObjectService<EventType>(EventType.class).readById(Integer.parseInt(request.getParameter("event_type")));
 			String name = request.getParameter("event_name");
 			String location = request.getParameter("event_location");
 
@@ -82,6 +82,14 @@ public class CreateEventFilter implements Filter {
 			if (event == null || validatorUtils.getErrors().isEmpty() == false) {
 
 				request.setAttribute("errors", validatorUtils.getErrors());
+				request.setAttribute("event_name", name);
+				request.setAttribute("event_location", location);
+				request.setAttribute("event_category", request.getParameter("event_category"));
+				request.setAttribute("event_type", request.getParameter("event_type"));
+				request.setAttribute("start_date", request.getParameter("start_date"));
+				request.setAttribute("start_time", request.getParameter("start_time"));
+				request.setAttribute("end_date", request.getParameter("end_date"));
+				request.setAttribute("end_time", request.getParameter("end_time"));
 				request.getRequestDispatcher("/pages/createEvent.jsp").forward(
 						request, response);
 			} else {

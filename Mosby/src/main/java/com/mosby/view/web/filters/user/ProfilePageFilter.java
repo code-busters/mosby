@@ -30,11 +30,11 @@ public class ProfilePageFilter implements Filter {
 		HttpServletResponse response = (HttpServletResponse) res;
 		HttpSession session = request.getSession(false);
 
-		if (session != null && session.getAttribute("user") != null) {
+		if (session.getAttribute("user") != null) {
 			chain.doFilter(request, response);
 
 		} else {
-			request.setAttribute("waitUrl", request.getRequestURL());
+			session.setAttribute("waitUrl", request.getRequestURL());
 			response.sendRedirect(request.getContextPath() + "/login");
 		}
 

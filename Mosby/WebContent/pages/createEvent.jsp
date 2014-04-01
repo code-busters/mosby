@@ -61,7 +61,7 @@
             <input type="hidden" name="language" value="${language}" />
             <div class="form-group">
                 <label for="event-name"><fmt:message key="createEvent.eventName"/></label>
-                <input type="text" class="form-control" placeholder="<fmt:message key="createEvent.chooseEventName"/>" name="event_name"
+                <input value="${event_name}" type="text" class="form-control" placeholder="<fmt:message key="createEvent.chooseEventName"/>" name="event_name"
                        id="event-name"
                        required/>
             </div>
@@ -96,10 +96,10 @@
                     <button type="button" class="btn">
                         <span class="fui-calendar"></span>
                     </button>
-                    <input type="text" placeholder="<fmt:message key="createEvent.startDate"/>" name="start_date" id="datepicker-start" readonly=""
+                    <input value="${start_date}" type="text" placeholder="<fmt:message key="createEvent.startDate"/>" name="start_date" id="datepicker-start" readonly=""
                            required>
                 </div>
-                <input type="time" class="form-control time" value="00:00" name="start_time" required>
+                <input type="time" class="form-control time" value="${start_time}" placeholder="00:00" name="start_time" required>
             </div>
             <div class="form-group">
                 <label for="datepicker-end"><fmt:message key="createEvent.endDateTime"/></label>
@@ -108,9 +108,9 @@
                     <button type="button" class="btn">
                         <span class="fui-calendar"></span>
                     </button>
-                    <input type="text" placeholder="<fmt:message key="createEvent.endDate"/>" name="end_date" id="datepicker-end" readonly="" required>
+                    <input value="${end_date}" type="text" placeholder="<fmt:message key="createEvent.endDate"/>" name="end_date" id="datepicker-end" readonly="" required>
                 </div>
-                <input type="time" class="form-control time" value="00:00" name="end_time" required>
+                <input type="time" class="form-control time" value="${end_time}" placeholder="00:00" name="end_time" required>
             </div>
 
 

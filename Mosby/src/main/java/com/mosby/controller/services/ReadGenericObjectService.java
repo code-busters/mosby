@@ -42,7 +42,11 @@ public class ReadGenericObjectService<T> {
 			} catch (InstantiationException | IllegalAccessException e) {
 				e.printStackTrace();
 			}
+			if(!tDao.selectObjects("id", id).isEmpty()){
 			type1 = tDao.selectObjects("id", id).get(0);
 			return type1;
+			} else {
+				return null;
+			}
 		}
 }
