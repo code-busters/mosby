@@ -16,7 +16,7 @@ public class Event {
 	private Organizer organizer;
 
 	@NotNull
-	@Size(min=0, max=40)
+	@Size(min = 0, max = 40)
 	@Column(name = "name")
 	private String name;
 
@@ -51,28 +51,26 @@ public class Event {
 	@NotNull
 	private Timestamp endDateTime;
 
-	@Size(min=0, max=150)
+	@Size(min = 0, max = 150)
 	@Column(name = "location")
 	private String location;
 
-	@Size(min=0, max=100)
 	@Column(name = "logo")
 	private String logo;
 
-	@Size(min=0, max=100)
 	@Column(name = "background")
 	private String background;
-	
+
 	@Column(name = "privacy")
 	private boolean privacy;
 
 	public Event() {
 	}
-	
+
 	public Event(int id, Organizer organizer, String name, String description,
 			EventCategory eventCategory, EventType eventType, Date startDate,
-			Date startTime, Date endDate, Date endTime, String location, String logo,
-			String background, boolean privacy) {
+			Date startTime, Date endDate, Date endTime, String location,
+			String logo, String background, boolean privacy) {
 		super();
 		this.id = id;
 		this.organizer = organizer;
@@ -87,13 +85,13 @@ public class Event {
 		this.location = location;
 		this.logo = logo;
 		this.background = background;
-		this.privacy=privacy;
+		this.privacy = privacy;
 	}
-	
-	public Event( Organizer organizer, String name, String description,
+
+	public Event(Organizer organizer, String name, String description,
 			EventCategory eventCategory, EventType eventType, Date startDate,
-			Date startTime, Date endDate, Date endTime, String location, String logo,
-			String background, boolean privacy) {
+			Date startTime, Date endDate, Date endTime, String location,
+			String logo, String background, boolean privacy) {
 		super();
 		this.organizer = organizer;
 		this.name = name;
@@ -107,18 +105,18 @@ public class Event {
 		this.location = location;
 		this.logo = logo;
 		this.background = background;
-		this.privacy=privacy;
+		this.privacy = privacy;
 	}
 
-
-
-	public Event(String name, Timestamp startDateTime, Timestamp endDateTime, EventCategory eventCategory, EventType eventType) {
+	public Event(String name, Timestamp startDateTime, Timestamp endDateTime,
+			EventCategory eventCategory, EventType eventType, String location) {
 		super();
-		this.name=name;
+		this.name = name;
 		this.startDateTime = startDateTime;
 		this.endDateTime = endDateTime;
 		this.eventCategory = eventCategory;
 		this.eventType = eventType;
+		this.location = location;
 	}
 
 	public int getId() {
@@ -240,8 +238,6 @@ public class Event {
 	public void setBackground(String background) {
 		this.background = background;
 	}
-
-	
 
 	public boolean isPrivacy() {
 		return privacy;

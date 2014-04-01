@@ -21,7 +21,6 @@ public class TicketInfo {
 	@Column(name="name")
 	private String name;
 
-	@NotNull
 	@Key(name = "event_ref")
 	private Event event;
 	
@@ -63,23 +62,15 @@ public class TicketInfo {
 	public TicketInfo() {
 	}
 	
-	public TicketInfo(int id, String name, Event event, String type,
-			String description, int maxNumber, int price, Date startDate,
-			Date startTime, Timestamp startDateTime, Date endDate,
-			Date endTime, Timestamp endDateTime) {
+	public TicketInfo(String name, String type,
+			String description, int maxNumber, int price, Timestamp startDateTime, Timestamp endDateTime) {
 		super();
-		this.id = id;
 		this.name = name;
-		this.event = event;
 		this.type = type;
 		this.description = description;
 		this.maxNumber = maxNumber;
 		this.price = price;
-		this.startDate = startDate;
-		this.startTime = startTime;
 		this.startDateTime = startDateTime;
-		this.endDate = endDate;
-		this.endTime = endTime;
 		this.endDateTime = endDateTime;
 	}
 	

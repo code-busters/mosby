@@ -110,6 +110,14 @@
         <url-pattern>/createEvent</url-pattern>
     </filter-mapping>
     <filter>
+        <filter-name>CreatePromoCodeFilter</filter-name>
+        <filter-class>main.java.com.mosby.view.web.filters.event.CreatePromoCodeFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CreatePromoCodeFilter</filter-name>
+        <url-pattern>/createEvent</url-pattern>
+    </filter-mapping> 
+    <filter>
         <filter-name>ContactInfoFilter</filter-name>
         <filter-class>main.java.com.mosby.view.web.filters.user.ContactInfoFilter</filter-class>
     </filter>

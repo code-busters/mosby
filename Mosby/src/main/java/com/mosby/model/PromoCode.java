@@ -1,6 +1,7 @@
 package main.java.com.mosby.model;
 
 import main.java.com.mosby.model.annotations.dao.*;
+import main.java.com.mosby.model.annotations.validate.Min;
 import main.java.com.mosby.model.annotations.validate.NotNull;
 import main.java.com.mosby.model.annotations.validate.Size;
 
@@ -10,21 +11,22 @@ public class PromoCode {
 	@Column(name="id")
 	private int id;
 	
-	@NotNull
 	@Key(name="event_ref")	
 	private Event event;
 	
 	@NotNull
-	@Size(min=0, max=50)
+	@Size(min=1, max=50)
 	@Column(name="code")	
 	private String code;
 	
+	@Min(value=0)
 	@Column(name="discount")	
 	private int discount;
 	
 	@Column(name="description")	
 	private String description;
 	
+	@Min(value=1)
 	@Column(name="max_number")	
 	private int maxNumber;
 
@@ -46,6 +48,15 @@ public class PromoCode {
 			String description, int maxNumber) {
 		super();
 		this.event = event;
+		this.code = code;
+		this.discount = discount;
+		this.description = description;
+		this.maxNumber = maxNumber;
+	}
+	
+	public PromoCode(String code, int discount,
+			String description, int maxNumber) {
+		super();
 		this.code = code;
 		this.discount = discount;
 		this.description = description;

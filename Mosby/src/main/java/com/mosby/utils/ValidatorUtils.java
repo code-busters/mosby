@@ -108,8 +108,9 @@ public class ValidatorUtils<T> {
 						} else {
 							value = 0;
 						}
-				} else if (field.getType() == int.class
-						|| field.getType() == double.class) {
+				} else if (field.getType() == int.class) {
+					value = (int) field.get(object);
+				} else if (field.getType() == double.class){
 					value = (double) field.get(object);
 				}
 				if (value < annotation.value()) {
@@ -222,6 +223,11 @@ public class ValidatorUtils<T> {
 	
 	public void changePassword(){
 		errors.add(labels.getString("changePassword"));
+	}
+	
+	public void inputNumber(){
+		errors.add(labels.getString("inputNumber"));
+	}
 	}
 
 }

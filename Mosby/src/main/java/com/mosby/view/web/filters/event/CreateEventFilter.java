@@ -61,6 +61,7 @@ public class CreateEventFilter implements Filter {
 			eventCategory = new ReadGenericObjectService<EventCategory>((Class<EventCategory>) new EventCategory().getClass()).readById(Integer.parseInt(request.getParameter("event_category")));
 			eventType = new ReadGenericObjectService<EventType>((Class<EventType>) new EventType().getClass()).readById(Integer.parseInt(request.getParameter("event_type")));
 			String name = request.getParameter("event_name");
+			String location = request.getParameter("event_location");
 
 			Timestamp start = null;
 			Timestamp end = null;
@@ -70,7 +71,7 @@ public class CreateEventFilter implements Filter {
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
-			event = new Event(name, start, end, eventCategory, eventType);
+			event = new Event(name, start, end, eventCategory, eventType, location);
 
 			try {
 				validatorUtils.validate(event);
