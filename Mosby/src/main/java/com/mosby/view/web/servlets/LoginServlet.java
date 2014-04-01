@@ -28,7 +28,6 @@ public class LoginServlet extends HttpServlet {
 		String redirectUrl = request.getScheme() + "://"
 				+ request.getServerName() + ":" + request.getServerPort()
 				+ "/Mosby/socialSignUp";
-		// String redirectUrl = "http://localhost:8080/Mosby/socialSignUp";
 		String returnValue = "https://www.facebook.com/dialog/oauth?client_id="
 				+ appId + "&redirect_uri=" + redirectUrl
 				+ "&scope=email,user_birthday&state=" + sessionId;

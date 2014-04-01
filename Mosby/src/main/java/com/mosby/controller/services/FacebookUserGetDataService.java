@@ -7,6 +7,7 @@ import java.net.URLConnection;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import net.sf.json.JSONObject;
@@ -30,12 +31,14 @@ import main.java.com.mosby.view.web.servlets.SocialSignUpServlet;
 public class FacebookUserGetDataService {
 	private static Logger log = Logger.getLogger(SocialSignUpServlet.class);
 	
-	public User getUserDataFromFacebook(String faceCode, HttpSession session){
+	public User getUserDataFromFacebook(String faceCode, HttpServletRequest request){
 		User user = new User();
 		String token = null;
 		if (faceCode != null && ! "".equals(faceCode)) {
 			String appId = "601170126631442";
-			String redirectUrl = "http://localhost:8080/Mosby/socialSignUp";
+			String redirectUrl = request.getScheme() + "://"
+					+ request.getServerName() + ":" + request.getServerPort()
+					+ "/Mosby/socialSignUp";
 			String faceAppSecret = "f2d80932e636decfa07add67e1a05cbf";
 			String newUrl = "https://graph.facebook.com/oauth/access_token?client_id="
 					+ appId + "&redirect_uri=" + redirectUrl + "&client_secret=" 
@@ -59,12 +62,12 @@ public class FacebookUserGetDataService {
 			}
 		}
 		
-		user = getUserFromJsonResponse(token, session);
+		user = getUserFromJsonResponse(token);
 		return user;
 		
 	}
 	
-	private User getUserFromJsonResponse(String accessToken, HttpSession session) {
+	private User getUserFromJsonResponse(String accessToken) {
 		String email = null;
 		User user = new User();
 		HttpClient httpclient = new DefaultHttpClient();
@@ -93,9 +96,6 @@ public class FacebookUserGetDataService {
 				user.setBirthDate(new SimpleDateFormat("MM/dd/yyyy").parse(json.getString("birthday")));
 				
 				System.out.println("BIRTHDAY" + json.getString("birthday"));
-				
-				session.setAttribute("facebookUserImage", imageLocation);
-				session.setAttribute("userType", "facebookUser");
 				
 				String firstName = json.getString("first_name");
 				String lastName = json.getString("last_name");

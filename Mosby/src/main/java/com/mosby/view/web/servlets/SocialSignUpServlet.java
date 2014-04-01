@@ -33,14 +33,15 @@ public class SocialSignUpServlet extends HttpServlet {
         String faceCode = request.getParameter("code");
         if(faceCode != null) {
             FacebookUserGetDataService userService = new FacebookUserGetDataService();
-            User user = userService.getUserDataFromFacebook(faceCode, session);
+            User user = userService.getUserDataFromFacebook(faceCode, request);
 
             String sessionID = session.getId();
             if (state.equals(sessionID)) {
                 try {
                     session.setAttribute("user", user);
-                    session.setAttribute("user_type", "facebook");
-
+                    session.setAttribute("userType", "facebook");
+                    session.setAttribute("facebookUserImage", user.getImage());
+    				
                     if (new UserService().socialSignUpUser(user) == null) {
                         new UserService().readSocialUser(user);
 
