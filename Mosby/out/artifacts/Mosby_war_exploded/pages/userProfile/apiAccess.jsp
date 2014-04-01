@@ -65,23 +65,21 @@
                             <% if (request.getAttribute("generatedKey") != null) { %>
                             <div class="form-group col-md-12">
                                 <div class="col-md-8">
-                                    <p>You may now enter your new application-specific key into your application. Note
-                                        that this key grants complete access to your Mosby Account. For security
-                                        reasons, it will not be displayed again</p>
+                                    <p><fmt:message key="apiAccess.youMayNow"/></p>
 
                                     <div class="secure-key text-center">
                                         <div id="qr-code"></div>
                                         <p>${generatedKey}</p>
-                                        <span class="additional-input-info">No need to memorize this password.</span>
-                                        <span class="additional-input-info">You should need to enter it only once. Spaces don't matter.</span>
+                                        <span class="additional-input-info"><fmt:message key="apiAccess.noNeedToMemorizeThisPassword"/></span>
+                                        <span class="additional-input-info"><fmt:message key="apiAccess.youShouldNeed"/></span>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group col-md-12">
                                 <div class="form-group col-md-3 col-sm-3">
                                     <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit"
-                                            value="Done">
-                                        Done
+                                            value="<fmt:message key="apiAccess.done"/>">
+                                        <fmt:message key="apiAccess.done"/>
                                     </button>
                                 </div>
                             </div>

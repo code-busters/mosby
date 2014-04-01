@@ -17,9 +17,11 @@
         <li>
             <a href="<c:url value="/contactInfo"/>"><fmt:message key="sideNavbar.tickets"/></a>
         </li>
+        <c:if test="${user.password != null}">
         <li>
             <a href="<c:url value="/changePassword"/>"><fmt:message key="sideNavbar.changePassword"/></a>
         </li>
+        </c:if>
         <li>
             <a href="<c:url value="/myEvents"/>"><fmt:message key="sideNavbar.myEvents"/></a>
         </li>

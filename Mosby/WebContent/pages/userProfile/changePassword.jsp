@@ -68,21 +68,28 @@
                             </c:forEach>
                         </div>
                         <form action="changePassword" method="post" id="change-password-form">
-                            <input type="hidden" name="language" value="${language}" />
+                            <input type="hidden" name="language" value="${language}"/>
+
                             <div class="form-group">
-                                <label for="current-password"><fmt:message key="changePassword.currentPassword"/></label>
-                                <input class="form-control" type="password" placeholder="<fmt:message key="changePassword.currentPassword"/>"
-                                       name="current_password" id="current-password"/>
+                                <label for="current-password"><fmt:message
+                                        key="changePassword.currentPassword"/></label>
+                                <input class="form-control" type="password"
+                                       placeholder="<fmt:message key="changePassword.currentPassword"/>"
+                                       name="current_password" id="current-password" required/>
                             </div>
+
                             <div class="form-group">
                                 <label for="new-password"><fmt:message key="changePassword.newPassword"/></label>
-                                <input class="form-control" type="password" placeholder="<fmt:message key="changePassword.newPassword"/>"
-                                       name="new_password" id="new-password"/>
+                                <input class="form-control" type="password"
+                                       placeholder="<fmt:message key="changePassword.newPassword"/>"
+                                       name="new_password" id="new-password" required/>
                             </div>
                             <div class="form-group">
-                                <label for="confirm-password"><fmt:message key="changePassword.confirmPassword"/></label>
-                                <input class="form-control" type="password" placeholder="<fmt:message key="changePassword.confirmPassword"/>"
-                                       name="confirm_password" id="confirm-password"/>
+                                <label for="confirm-password"><fmt:message
+                                        key="changePassword.confirmPassword"/></label>
+                                <input class="form-control" type="password"
+                                       placeholder="<fmt:message key="changePassword.confirmPassword"/>"
+                                       name="confirm_password" id="confirm-password" required/>
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit"
