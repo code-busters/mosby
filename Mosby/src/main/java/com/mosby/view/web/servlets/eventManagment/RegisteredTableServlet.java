@@ -24,6 +24,9 @@ public class RegisteredTableServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("REGTABLE START");
 		if (request.getParameter("eventId") != null) {
+			if (request.getParameter("delete") != null){
+				new TicketsService().delete(request, Integer.parseInt(request.getParameter("delete")));
+			}
         	int eventId = Integer.parseInt(request.getParameter("eventId"));
         	Event event = new ReadGenericObjectService<>(Event.class).readById(eventId);
             request.setAttribute("event", event);

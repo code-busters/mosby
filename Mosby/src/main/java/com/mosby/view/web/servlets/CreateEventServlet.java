@@ -38,7 +38,6 @@ public class CreateEventServlet extends HttpServlet {
 
     @SuppressWarnings("unchecked")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         try {
             int eventId = new EventService().create(request, this);
             Event event = new ReadGenericObjectService<>(Event.class).readById(eventId);

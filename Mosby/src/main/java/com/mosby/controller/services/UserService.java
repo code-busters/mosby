@@ -184,22 +184,15 @@ public class UserService {
 
 	@SuppressWarnings("unchecked")
 	public User socialSignUpUser(User user) {
-		
-		ReflectionDao<User> usersDao = new ReflectionDao<>(User.class);
+        ReflectionDao<User> usersDao = new ReflectionDao<>(User.class);
 
-		if (!usersDao.selectObjects("email", user.getEmail()).isEmpty()) {
-			return null;
-		} else {
-			
-			String encryptedPassword = EncryptionUtils.createHash("");
-			user.setPassword(encryptedPassword);
-			user.setAuthenticationCode("1");
-			usersDao.insertObjects(user);
-
-			user = usersDao.selectObjects("email", user.getEmail()).get(0);
-
-			return user;
-		}
+        if (!usersDao.selectObjects("email", user.getEmail()).isEmpty()) {
+            return null;
+        } else {
+            usersDao.insertObjects(user);
+            user = usersDao.selectObjects("email", user.getEmail()).get(0);
+            return user;
+        }
 	}
 
 }

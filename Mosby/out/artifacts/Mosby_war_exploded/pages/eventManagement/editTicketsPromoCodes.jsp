@@ -1,10 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="language"
+       value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
+       scope="session"/>
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="main.java.com.mosby.i18n.text"/>
 <html>
 
 <head>
     <meta charset="utf-8">
-    <title>Mosby - event management</title>
+    <title><fmt:message key="editTicketsPromoCodes.editTicketsPromoCodes"/> - Mosby - <fmt:message key="title"/></title>
     <link rel="shortcut icon" href="media/images/favicon.ico">
     <link rel="icon" type="image/png" href="media/images/favicon.png"/>
     <meta name="description" content="Mosby - make it simple. New event management system"/>
@@ -47,7 +53,7 @@
         <a id="menu-toggle" href="#" class="btn btn-default">
             <span class="fui-list-columned"></span>
         </a>
-        Edit event details
+        <fmt:message key="editTicketsPromoCodes.editEventDetails"/>
     </h3>
 </div>
 <div class="page-content inset">
@@ -58,45 +64,43 @@
 </div>
 <form action="editTicketsPromoCodes" method="post" id="edit-tickets-codes-form">
 <input type="hidden" name="eventId" value="${event.id}"/>
-<h5>Tickets</h5>
+<h5><fmt:message key="editTicketsPromoCodes.tickets"/></h5>
 
 <div class="form-group">
     <div id="tickets">
         <div class="row create-tickets-header hidden-xs">
-            <div class="col-md-6 col-sm-6">Ticket name</div>
-            <div class="col-md-2 col-sm-2">Quantity available</div>
-            <div class="col-md-2 col-sm-2">Price</div>
-            <div class="col-md-2 col-sm-2 text-center">Actions</div>
+            <div class="col-md-6 col-sm-6"><fmt:message key="editTicketsPromoCodes.ticketName"/></div>
+            <div class="col-md-2 col-sm-2"><fmt:message key="editTicketsPromoCodes.quantityAvailable"/></div>
+            <div class="col-md-2 col-sm-2"><fmt:message key="editTicketsPromoCodes.price"/></div>
+            <div class="col-md-2 col-sm-2 text-center"><fmt:message key="editTicketsPromoCodes.actions"/></div>
         </div>
         <div id="tickets-body">
             <input class="hide" type="text" value="" name="tickets_id"/>
             <c:forEach items="${ticketsInfo}" var="ticket">
                 <div id="${ticket.id}" class="row">
                     <div class="col-md-6 col-sm-6">
-                        <label class="visible-xs" for="event-ticket-name-${ticket.id}">Ticket
-                            name</label>
+                        <label class="visible-xs" for="event-ticket-name-${ticket.id}"><fmt:message key="editTicketsPromoCodes.ticketName"/></label>
                         <input type="text" class="form-control"
-                               placeholder="Examples: Early Bird, VIP, Press"
+                               placeholder="<fmt:message key="editTicketsPromoCodes.examplesEarlyBirdVipPress"/>"
                                name="event_ticket_name_${ticket.id}" value="${ticket.name}"
                                id="event-ticket-name-${ticket.id}"/>
                     </div>
                     <div class="col-md-2 col-sm-2">
-                        <label class="visible-xs" for="event-ticket-quantity-${ticket.id}">Quantity
-                            available</label>
+                        <label class="visible-xs" for="event-ticket-quantity-${ticket.id}"><fmt:message key="editTicketsPromoCodes.quantityAvailable"/></label>
                         <input type="number" class="form-control" placeholder="100"
                                name="event_ticket_quantity_${ticket.id}" value="${ticket.maxNumber}"
                                id="event-ticket-quantity-${ticket.id}" min="1"/>
                     </div>
                     <div class="col-md-2 col-sm-2">
                         <label class="visible-xs"
-                               for="event-ticket-price-${ticket.id}">Price</label>
+                               for="event-ticket-price-${ticket.id}"><fmt:message key="editTicketsPromoCodes.price"/></label>
                         <input type="number" class="form-control" placeholder="0"
                                name="event_ticket_price_${ticket.id}" value="${ticket.price}"
                                id="event-ticket-price-${ticket.id}"
                                min="0"/>
                     </div>
                     <div class="col-md-2 col-sm-2 actions text-center">
-                        <label class="visible-xs text-left">Ticket name</label>
+                        <label class="visible-xs text-left"><fmt:message key="editTicketsPromoCodes.ticketName"/></label>
                         <a id="open-falldown" href="#fakelink">
                             <span class="fui-new"></span>
                         </a>
@@ -111,8 +115,7 @@
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal"
                                             aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title" id="my-modal-label-${ticket.id}">Ticket
-                                        Settings</h4>
+                                    <h4 class="modal-title" id="my-modal-label-${ticket.id}"><fmt:message key="editTicketsPromoCodes.ticketSettings"/></h4>
                                 </div>
                                 <div class="modal-body">
 
@@ -122,42 +125,39 @@
                     </div>
                     <div id="falldown-${ticket.id}" class="falldown col-md-12">
                         <div class="form-group">
-                            <label for="ticket-description-${ticket.id}">Ticket
-                                Description</label>
+                            <label for="ticket-description-${ticket.id}"><fmt:message key="editTicketsPromoCodes.ticketDescription"/></label>
                             <textarea rows="3"
-                                      placeholder="Additional info about ticket"
+                                      placeholder="<fmt:message key="editTicketsPromoCodes.additionalInfoAboutTicket"/>"
                                       class="form-control"
                                       id="ticket-description-${ticket.id}"
                                       name="ticket_description_${ticket.id}"
                                       form="edit-tickets-codes-form">${ticket.description}</textarea>
                         </div>
                         <div class="form-group">
-                            <label for="ticket-datepicker-start-${ticket.id}">Start Date &amp; Time For
-                                Ticket</label>
-                            <input type="date" class="form-control" placeholder="Start date for ticket"
+                            <label for="ticket-datepicker-start-${ticket.id}"><fmt:message key="editTicketsPromoCodes.startDateTimeForTicket"/></label>
+                            <input type="date" class="form-control" placeholder="<fmt:message key="editTicketsPromoCodes.startDate"/>"
                                    name="ticket_start_date_${ticket.id}"
                                    value="${ticket.startDate}" id="ticket-datepicker-start-${ticket.id}">
                             <input type="time" class="form-control time" value="${ticket.startTime}"
                                    name="ticket_start_time_${ticket.id}">
                         </div>
                         <div class="form-group">
-                            <label for="ticket-datepicker-end-${ticket.id}">End Date &amp; Time For
-                                Ticket</label>
-                            <input type="date" class="form-control" placeholder="End date for ticket"
+                            <label for="ticket-datepicker-end-${ticket.id}"><fmt:message key="editTicketsPromoCodes.endDateTimeForTicket"/></label>
+                            <input type="date" class="form-control" placeholder="<fmt:message key="editTicketsPromoCodes.endDate"/>"
                                    name="ticket_end_date_${ticket.id}"
                                    value="${ticket.endDate}" id="ticket-datepicker-end-${ticket.id}">
                             <input type="time" class="form-control time" value="${ticket.endTime}"
                                    name="ticket_end_time_${ticket.id}">
                         </div>
                         <div class="form-group">
-                            <span>Tickets Allowed Per Order</span>
+                            <span><fmt:message key="editTicketsPromoCodes.ticketsAllowedPerOrder"/></span>
                             <label class="additional"
-                                   for="ticket-min-per-order-${ticket.id}">Min</label>
+                                   for="ticket-min-per-order-${ticket.id}"><fmt:message key="editTicketsPromoCodes.min"/></label>
                             <input type="number" class="form-control" placeholder="1"
                                    value="1" name="ticket_min_per_order_${ticket.id}" value=""
                                    id="ticket-min-per-order-${ticket.id}" min="1"/>
                             <label class="additional"
-                                   for="ticket-max-per-order-${ticket.id}">Max</label>
+                                   for="ticket-max-per-order-${ticket.id}"><fmt:message key="editTicketsPromoCodes.max"/></label>
                             <input type="number" class="form-control" placeholder="1"
                                    name="ticket_max_per_order_${ticket.id}" value=""
                                    id="ticket-max-per-order-${ticket.id}" min="1"/>
@@ -172,54 +172,53 @@
 <div class="row">
     <div class="col-md-3 col-sm-4 add-ticket">
         <a id="free-ticket" href="#fakelink" class="btn btn-block btn-lg btn-primary">
-            <span class="fui-plus"></span>Free ticket</a>
+            <span class="fui-plus"></span><fmt:message key="editTicketsPromoCodes.freeTicket"/></a>
     </div>
     <div class="col-md-3 col-sm-4 add-ticket">
         <a id="paid-ticket" href="#fakelink" class="btn btn-block btn-lg btn-primary">
-            <span class="fui-plus"></span>Paid ticket</a>
+            <span class="fui-plus"></span><fmt:message key="editTicketsPromoCodes.paidTicket"/></a>
     </div>
     <div class="col-md-3 col-sm-4 add-ticket">
         <a id="donation-ticket" href="#fakelink" class="btn btn-block btn-lg btn-default">
-            <span class="fui-plus"></span>Donation</a>
+            <span class="fui-plus"></span><fmt:message key="editTicketsPromoCodes.donation"/></a>
     </div>
 </div>
 
-<h5>Promo codes</h5>
+<h5><fmt:message key="editTicketsPromoCodes.promoCodes"/></h5>
 
 <div class="form-group">
     <div id="promo-codes">
         <div class="row promo-codes-header hidden-xs">
-            <div class="col-md-6 col-sm-6">Promo code</div>
-            <div class="col-md-2 col-sm-2">Quantity available</div>
-            <div class="col-md-2 col-sm-2">Discount</div>
-            <div class="col-md-2 col-sm-2 text-center">Actions</div>
+            <div class="col-md-6 col-sm-6"><fmt:message key="editTicketsPromoCodes.promoCode"/></div>
+            <div class="col-md-2 col-sm-2"><fmt:message key="editTicketsPromoCodes.quantityAvailable"/></div>
+            <div class="col-md-2 col-sm-2"><fmt:message key="editTicketsPromoCodes.discount"/></div>
+            <div class="col-md-2 col-sm-2 text-center"><fmt:message key="editTicketsPromoCodes.actions"/></div>
         </div>
         <div id="promo-codes-body">
             <input class="hide" type="text" value="" name="promo_codes_id"/>
             <c:forEach items="${promoCodes}" var="promoCode">
                 <div id="${promoCode.id}" class="row">
                     <div class="col-md-6 col-sm-6">
-                        <label class="visible-xs" for="promo-code-code-${promoCode.id}">Promo code</label>
+                        <label class="visible-xs" for="promo-code-code-${promoCode.id}"><fmt:message key="editTicketsPromoCodes.promoCode"/></label>
                         <input type="text" class="form-control"
-                               placeholder="Examples: #Event_code32, R2D2"
+                               placeholder="<fmt:message key="editTicketsPromoCodes.examplesR2D2"/>"
                                name="promo_code_code_${promoCode.id}" value="${promoCode.code}"
                                id="promo-code-code-${promoCode.id}"/>
                     </div>
                     <div class="col-md-2 col-sm-2">
-                        <label class="visible-xs" for="promo-code-quantity-${promoCode.id}">Quantity
-                            available</label>
+                        <label class="visible-xs" for="promo-code-quantity-${promoCode.id}"><fmt:message key="editTicketsPromoCodes.quantityAvailable"/></label>
                         <input type="number" class="form-control" placeholder="5"
                                name="promo_code_quantity_${promoCode.id}" value="${promoCode.maxNumber}"
                                id="promo-code-quantity-${promoCode.id}" min="1"/>
                     </div>
                     <div class="col-md-2 col-sm-2">
-                        <label class="visible-xs" for="promo-code-discount-${promoCode.id}">Discount</label>
-                        <input type="number" class="form-control" placeholder="10%"
+                        <label class="visible-xs" for="promo-code-discount-${promoCode.id}"><fmt:message key="editTicketsPromoCodes.discount"/></label>
+                        <input type="number" class="form-control" placeholder="10"
                                name="promo_code_discount_${promoCode.id}" value="${promoCode.discount}"
                                id="promo-code-discount-${promoCode.id}" min="0"/>
                     </div>
                     <div class="col-md-2 col-sm-2 actions text-center">
-                        <label class="visible-xs text-left">Actions</label>
+                        <label class="visible-xs text-left"><fmt:message key="editTicketsPromoCodes.actions"/></label>
                         <a id="open-falldown" href="#fakelink">
                             <span class="fui-new"></span>
                         </a>
@@ -230,10 +229,9 @@
                     <div id="falldown-${promoCode.id}" class="falldown col-md-12">
 
                         <div class="form-group">
-                            <label for="promo-code-description-${promoCode.id}">Promo Code
-                                Description</label>
+                            <label for="promo-code-description-${promoCode.id}"><fmt:message key="editTicketsPromoCodes.promoCodeDescription"/></label>
                             <textarea rows="3"
-                                      placeholder="Additional info about promo code"
+                                      placeholder="<fmt:message key="editTicketsPromoCodes.additionalInfoAboutPromoCode"/>"
                                       class="form-control"
                                       name="promo_code_description_${promoCode.id}"
                                       id="promo-code-description-${promoCode.id}"
@@ -249,13 +247,13 @@
 <div class="row">
     <div class="col-md-3 col-sm-4 add-promo-code">
         <a id="add-promo-code" href="#fakelink" class="btn btn-block btn-lg btn-primary">
-            <span class="fui-plus"></span>Promo code</a>
+            <span class="fui-plus"></span><fmt:message key="editTicketsPromoCodes.promoCode"/></a>
     </div>
 </div>
 
 <div class="col-md-4 col-md-offset-4">
     <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit" value="Submit">
-        Save
+        <fmt:message key="editTicketsPromoCodes.save"/>
     </button>
 </div>
 </form>

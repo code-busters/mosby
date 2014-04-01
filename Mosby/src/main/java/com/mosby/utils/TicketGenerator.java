@@ -28,7 +28,7 @@ import com.itextpdf.text.pdf.draw.DottedLineSeparator;
 
 public class TicketGenerator {
 
-	private static String EVENT_LOGO_PATH = "media\\images\\events\\logo";
+	private static String EVENT_LOGO_PATH = "\\media\\images\\events\\logo\\";
 
 	private Document document;
 
@@ -56,7 +56,7 @@ public class TicketGenerator {
 
 	}
 
-	public TicketGenerator(Ticket ticket, OutputStream outputStream)
+	public TicketGenerator(Ticket ticket, OutputStream outputStream, String path)
 			throws FileNotFoundException, DocumentException {
 		super();
 		this.document = new Document(PageSize.A4);
@@ -70,9 +70,8 @@ public class TicketGenerator {
 		this.endTime = ticket.getEvent().getEndTime();
 		this.location = ticket.getEvent().getLocation();
 		this.ticketType = ticket.getTicketInfo().getType();
-		this.logoURL = ticket.getEvent().getLogo();
-		this.personName = ticket.getUser().getFirstName()
-				+ ticket.getUser().getLastName();
+		this.logoURL = StringUtils.concat(path, "\\media\\images\\events\\logo\\",ticket.getEvent().getLogo());
+		this.personName = StringUtils.concat(ticket.getUser().getFirstName(), "\n", ticket.getUser().getLastName());
 		this.qrCode = "temp QR-code";
 		this.promoCode = ticket.getPromoCode().getCode();
 		this.purchaseTime = ticket.getTimeOfPurchase();
@@ -82,10 +81,12 @@ public class TicketGenerator {
 			MalformedURLException, IOException {
 		document.open();
 
+		System.out.println("STARTING GENERATION TICKET...");
+		
 		document.add(headerTable());
 
 		Font namesFont = new Font(FontFamily.HELVETICA, 8f, 3, BaseColor.GRAY);
-		Font headerFont = new Font(FontFamily.HELVETICA, 19f, 1,
+		Font headerFont = new Font(FontFamily.HELVETICA, 17f, 1,
 				BaseColor.BLACK);
 		Font textFont = new Font(FontFamily.HELVETICA, 13f, 0, BaseColor.BLACK);
 
@@ -98,7 +99,7 @@ public class TicketGenerator {
 
 		PdfPCell nestedCell = generateCell();
 		nestedCell.setRotation(90);
-		nestedCell.setFixedHeight(300);
+		nestedCell.setFixedHeight(305);
 		nestedTable.addCell(nestedCell);
 		PdfPCell leftColumn = new PdfPCell();
 		leftColumn.addElement(nestedTable);
@@ -107,7 +108,7 @@ public class TicketGenerator {
 		nestedTable = new PdfPTable(1);
 		nestedTable.setWidthPercentage(100);
 
-		nestedCell = generateCell("Event", eventName, namesFont, headerFont, 60);
+		nestedCell = generateCell("Event", eventName, namesFont, headerFont, 65);
 		nestedTable.addCell(nestedCell);
 		nestedCell = generateCell("Type", eventType, namesFont, textFont, 45);
 		nestedTable.addCell(nestedCell);
@@ -133,7 +134,7 @@ public class TicketGenerator {
 
 		nestedCell = generateImageCell(logoURL);
 		nestedTable.addCell(nestedCell);
-		nestedCell = generateCell("Name", personName, namesFont, textFont, 40);
+		nestedCell = generateCell("Name", personName, namesFont, textFont, 60);
 		nestedTable.addCell(nestedCell);
 		nestedCell = generateCell("Ticket type", ticketType, namesFont,
 				textFont, 40);
@@ -147,14 +148,14 @@ public class TicketGenerator {
 		PdfPCell rightColumn = new PdfPCell();
 		rightColumn.addElement(nestedTable);
 		table.addCell(rightColumn);
-		table.setSpacingAfter(30);
+		table.setSpacingAfter(70);
 
 		document.add(table);
 
 		document.add(generateDottedLine());
 
 		document.close();
-		System.out.println("END");
+		System.out.println("ENDING GENERATION TICKET...");
 	}
 
 	private Chunk generateDottedLine() {
@@ -207,11 +208,11 @@ public class TicketGenerator {
 
 		Image image;
 		if (logoPath != null) {
-			image = Image.getInstance("E:\\файли\\Олексій\\workspaceEE\\Mosby\\WebContent\\media\\images\\events\\logo\\default.png");
+			image = Image.getInstance(logoPath);
 		} else {
 			image = Image.getInstance(EVENT_LOGO_PATH + "\\default.png");
 		}
-		image.scaleToFit(90, 90);
+		image.scaleToFit(100, 100);
 		image.setBorder(Image.BOX);
 		image.setBorderWidth(10);
 		image.setBorderColor(BaseColor.BLACK);
@@ -231,11 +232,11 @@ public class TicketGenerator {
 
 		BarcodeQRCode qrCode = new BarcodeQRCode(code, 1, 1, null);
 		Image image = qrCode.getImage();
-		image.scaleToFit(70, 70);
+		image.scaleToFit(75, 75);
 		cell = new PdfPCell(image);
 		cell.setHorizontalAlignment(Element.ALIGN_CENTER);
 		cell.setBorderWidth(4);
-		cell.setPadding(5f);
+		cell.setPadding(4.7f);
 		cell.setBorderColor(BaseColor.LIGHT_GRAY);
 
 		return cell;

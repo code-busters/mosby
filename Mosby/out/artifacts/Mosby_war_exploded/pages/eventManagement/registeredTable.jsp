@@ -1,10 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="language"
+       value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
+       scope="session"/>
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="main.java.com.mosby.i18n.text"/>
 <html>
 
 <head>
     <meta charset="utf-8">
-    <title>Mosby - event management</title>
+    <title><fmt:message key="registeredTable.registeredTable"/> - Mosby - <fmt:message key="title"/></title>
     <link rel="shortcut icon" href="media/images/favicon.ico">
     <link rel="icon" type="image/png" href="media/images/favicon.png"/>
     <meta name="description" content="Mosby - make it simple. New event management system"/>
@@ -47,7 +53,7 @@
                     <a id="menu-toggle" href="#" class="btn btn-default">
                         <span class="fui-list-columned"></span>
                     </a>
-                    Table of registered users
+                    <fmt:message key="registeredTable.tableOfRegisteredUsers"/>
                 </h3>
             </div>
             <div class="page-content inset">
@@ -70,12 +76,12 @@
                                         </label>
                                     </th>
                                     <th>#</th>
-                                    <th>Checked</th>
-                                    <th>User</th>
-                                    <th>Ticket</th>
-                                    <th>Time of purchase</th>
-                                    <th>Promo-code</th>
-                                    <th>Actions</th>
+                                    <th><fmt:message key="registeredTable.checked"/></th>
+                                    <th><fmt:message key="registeredTable.user"/></th>
+                                    <th><fmt:message key="registeredTable.ticket"/></th>
+                                    <th><fmt:message key="registeredTable.timeOfPurchase"/></th>
+                                    <th><fmt:message key="registeredTable.promoCode"/></th>
+                                    <th><fmt:message key="registeredTable.actions"/></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -118,13 +124,13 @@
                     </div>
                     <div class="row">
                         <button class="btn btn-info" name="check" type="submit" value="check">
-                            Check
+                            <fmt:message key="registeredTable.check"/>
                         </button>
                         <button class="btn btn-danger" name="delete" type="submit" value="delete">
-                            Delete
+                            <fmt:message key="registeredTable.delete"/>
                         </button>
                         <button class="btn btn-primary pull-right" name="save" type="submit" value="save">
-                            Save
+                            <fmt:message key="registeredTable.save"/>
                         </button>
                     </div>
                 </form>

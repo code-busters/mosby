@@ -1,9 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="language"
+       value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
+       scope="session"/>
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="main.java.com.mosby.i18n.text"/>
 <html>
 
 <head>
     <meta charset="utf-8">
-    <title>Mosby - event management</title>
+    <title><fmt:message key="error.error"/> - Mosby - <fmt:message key="title"/></title>
     <link rel="shortcut icon" href="media/images/favicon.ico">
     <link rel="icon" type="image/png" href="media/images/favicon.png" />
     <meta name="description" content="Mosby - make it simple. New event management system" />
@@ -32,11 +39,11 @@
             <div class="col-md-12">
                 <a class="navbar-brand" href="#"></a>
             </div>
-            <p>Oh no! Something has gone wrong...</p>
-            <label for="search">Maybe try searching for something?</label>
+            <p><fmt:message key="error.ohNoSomethingHasGoneWrong"/>...</p>
+            <label for="search"><fmt:message key="error.maybeTrySearchingForSomething"/>?</label>
             <div class="sb-search">
                 <form action="search" method="GET">
-                    <input class="sb-search-input" placeholder="Enter your search term..." type="search" value="" name="search" id="search">
+                    <input class="sb-search-input" placeholder="<fmt:message key="error.enterYourSearchTerm"/>..." type="search" value="" name="search" id="search">
                     <input class="sb-search-submit" type="submit" value="search">
                     <span class="sb-icon-search"></span>
                 </form>

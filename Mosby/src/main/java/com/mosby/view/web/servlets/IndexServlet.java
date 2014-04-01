@@ -1,5 +1,6 @@
 package main.java.com.mosby.view.web.servlets;
 
+import main.java.com.mosby.controller.dao.ReflectionDao;
 import main.java.com.mosby.controller.services.ReadGenericObjectService;
 import main.java.com.mosby.model.Event;
 import main.java.com.mosby.model.Ticket;
@@ -41,7 +42,8 @@ public class IndexServlet extends HttpServlet {
 		Date currentDate = new Date();
 		Iterator<Event> iter = list.iterator();
 		while (iter.hasNext()){
-			if (iter.next().getStartDate().compareTo(currentDate) < 0){
+			Event currentEvent = iter.next();
+			if (currentEvent.getStartDate().compareTo(currentDate) < 0 || currentEvent.isPrivacy()){
 				iter.remove();
 			}		
 		}
@@ -56,9 +58,12 @@ public class IndexServlet extends HttpServlet {
 //		System.out.println(ticket);
 //		new MailUtils().sendMessage("AlexHamer777@gmail.com", "...");
 //		System.out.println("WORKS");
-//		List<Long>  countUserTickets =  new ReflectionDao<>((Class<Ticket>) new Ticket().getClass()).selectAggregateObjects("COUNT(user_ref)");
+		
+		
+//		List<Long> countUserTickets =  new ReflectionDao<>(Ticket.class).selectAggregateObjects("COUNT(user_ref)");
 //		System.out.println(countUserTickets);
-        request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
+        
+		request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
         
 	}
 

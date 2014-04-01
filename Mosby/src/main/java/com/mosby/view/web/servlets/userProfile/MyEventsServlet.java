@@ -23,7 +23,11 @@ import java.util.List;
 public class MyEventsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	request = new EventService().readMyEvents(request);
+    	EventService eventService = new EventService();
+    	if (!(request.getParameter("delete") == null)){
+    		eventService.deleteEvent(request, Integer.parseInt(request.getParameter("delete")));
+    	}
+    	request = eventService.readMyEvents(request);
     	request.getRequestDispatcher("/pages/userProfile/myEvents.jsp").forward(request, response);
     }
 

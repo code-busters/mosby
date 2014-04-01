@@ -168,6 +168,9 @@ String.prototype.repeat = function (num) {
         elem.toggle(300);
     });
 
+    $('#google-plus-wrapper').click(function(event){
+        $('#google-plus-button button').click();
+    });
 
     $(document).on('change', 'input', function () {
         var save = $('#save-button');

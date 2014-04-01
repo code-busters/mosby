@@ -103,7 +103,7 @@ public class MailUtils {
 	     }
 	}
 	
-	public void sendTicket(String recipient, Ticket ticket) {
+	public void sendTicket(String recipient, Ticket ticket, String path) {
                  
         String content = "Tickects"; //this will be the text of the email
         String subject = "Your ticket"; //this will be the subject of the email
@@ -119,7 +119,7 @@ public class MailUtils {
             //now write the PDF content to the output stream
             outputStream = new ByteArrayOutputStream();
             //writePdf(outputStream);
-            ticketGenerator = new TicketGenerator(ticket, outputStream);
+            ticketGenerator = new TicketGenerator(ticket, outputStream, path);
             ticketGenerator.generateTicket();
             byte[] bytes = outputStream.toByteArray();
              

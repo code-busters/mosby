@@ -43,10 +43,11 @@
 	text-decoration: none;
 }
 .sidebar-nav > .sidebar-brand {
-	height: 65px;
-	padding-left: 1.4em;
-	line-height: 60px;
-	font-size: 0.9em;;
+    height: 65px;
+    margin-top: 2em;
+    padding-left: 1.4em;
+    line-height: 1.1;
+    font-size: 0.9em;
 }
 .sidebar-nav > .sidebar-brand a {
 	color: #999999;

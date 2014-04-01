@@ -46,7 +46,7 @@
     </div>
 
     <div id="wrapper" class="row user-profile">
-        <jsp:include page="parts/sideNavnar.jsp"/>
+        <jsp:include page="parts/sideNavbar.jsp"/>
         <div id="page-content-wrapper">
             <div class="content-header">
                 <h3>
@@ -112,7 +112,7 @@
                                             <a href="#">${ticket.promoCode.code}</a>
                                         </td>
                                         <td class="text-center">
-                                            <a class="delete-nearby-row" href="<c:url value="/registeredTable?delete=${ticket.id}"/>">
+                                            <a class="delete-nearby-row" href="<c:url value="/registeredTable?eventId=${event.id}&delete=${ticket.id}"/>">
                                                 <span class="fui-trash"></span>
                                             </a>
                                         </td>

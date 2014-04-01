@@ -13,6 +13,7 @@
     </filter>
     <filter-mapping>
         <filter-name>SessionFilter</filter-name>
+        <url-pattern>/apiAccess</url-pattern>
         <url-pattern>/myOrganizers</url-pattern>
         <url-pattern>/createOrganizer</url-pattern>
         <url-pattern>/updateOrganizer</url-pattern>
@@ -40,6 +41,7 @@
     </filter>
     <filter-mapping>
         <filter-name>EncodingFilter</filter-name>
+        <url-pattern>/apiAccess</url-pattern>
         <url-pattern>/myOrganizers</url-pattern>
         <url-pattern>/createOrganizer</url-pattern>
         <url-pattern>/updateOrganizer</url-pattern>
@@ -92,6 +94,7 @@
     </filter>
     <filter-mapping>
         <filter-name>ProfilePageFilter</filter-name>
+        <url-pattern>/apiAccess</url-pattern>
         <url-pattern>/createEvent</url-pattern>
         <url-pattern>/changePassword</url-pattern>
         <url-pattern>/contactInfo</url-pattern>

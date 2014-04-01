@@ -48,7 +48,7 @@
 </div>
 
 <div id="wrapper" class="row user-profile">
-    <jsp:include page="parts/sideNavnar.jsp"/>
+    <jsp:include page="parts/sideNavbar.jsp"/>
     <div id="page-content-wrapper">
         <div class="content-header">
             <h3>
@@ -258,8 +258,7 @@
 
 <!--	AIzaSyD548jnqtWftyB35lh_iMInJQhedC1XRc8   -->
 <!--		<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD548jnqtWftyB35lh_iMInJQhedC1XRc8&sensor=true&libraries=places"></script>-->
-<script
-        src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=places"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=places"></script>
 <script>
     var map, autocomplete, geocoder;
 

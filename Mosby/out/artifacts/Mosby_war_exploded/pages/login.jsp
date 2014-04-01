@@ -10,7 +10,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Log In - Mosby - <fmt:message key="title"/></title>
+    <title><fmt:message key="login.logIn"/> - Mosby - <fmt:message key="title"/></title>
     <!--	<link rel="shortcut icon" href="media/images/favicon.ico">-->
     <link rel="icon" type="image/png" href="media/images/favicon.png" />
     <meta name="description" content="Mosby - make it simple. New event management system" />
@@ -80,7 +80,18 @@
                 <a class="btn btn-social-icon btn-facebook" href="${facebookURL}">
                     <i class="fa fa-facebook"></i>
                 </a>
-                <a class="btn btn-social-icon btn-google-plus">
+                <div id="google-plus-button" class="hide">
+                    <button class="g-signin"
+                            data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email"
+                            data-requestvisibleactions="http://schemas.google.com/AddActivity"
+                            data-clientId="${clientId}"
+                            data-accesstype="offline"
+                            data-callback="onSignInCallback"
+                            data-theme="dark"
+                            data-cookiepolicy="single_host_origin">
+                    </button>
+                </div>
+                <a id="google-plus-wrapper" class="btn btn-social-icon btn-google-plus" href="#fakelink">
                     <i class="fa fa-google-plus"></i>
                 </a>
                 <a class="btn btn-social-icon btn-twitter">
@@ -112,6 +123,40 @@
 <script src="js/jquery.placeholder.js"></script>
 
 <script src="js/application.js"></script>
+<script type="text/javascript">
+    (function () {
+        var po = document.createElement('script');
+        po.type = 'text/javascript';
+        po.async = true;
+        po.src = 'https://plus.google.com/js/client:plusone.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(po, s);
+    })();
+    $(document).ready(function () {
+        $('#disconnect').click(helper.disconnectServer);
+        if ($('[data-clientid="YOUR_CLIENT_ID"]').length > 0) {
+            alert('This sample requires your OAuth credentials (client ID) ' +
+                            'from the Google APIs console:\n' +
+                            '    https://code.google.com/apis/console/#:access\n\n' +
+                            'Find and replace YOUR_CLIENT_ID with your client ID and ' +
+                            'YOUR_CLIENT_SECRET with your client secret in the project sources.'
+            );
+        }
+    });
+    function onSignInCallback(authResult) {
+        if (authResult['access_token']) {
+            $.ajax({
+                type: 'POST',
+                url: 'socialSignUp?state=${state}',
+                contentType: 'application/octet-stream; charset=utf-8',
+                success: function () {
+                    window.location.href = 'index';
+                }, sData: false,
+                data: authResult.code
+            });
+        }
+    }
+</script>
 </body>
 
 </html>

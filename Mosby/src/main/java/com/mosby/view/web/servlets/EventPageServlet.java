@@ -1,8 +1,8 @@
 package main.java.com.mosby.view.web.servlets;
 
+import main.java.com.mosby.controller.services.EventService;
 import main.java.com.mosby.controller.services.ReadGenericObjectService;
 import main.java.com.mosby.model.Event;
-import main.java.com.mosby.model.PromoCode;
 import main.java.com.mosby.model.TicketInfo;
 
 import javax.servlet.ServletException;
@@ -24,7 +24,8 @@ public class EventPageServlet extends HttpServlet {
         if (request.getParameter("eventId") != null) {
             int eventId = Integer.parseInt(request.getParameter("eventId"));
             Event event = new ReadGenericObjectService<>(Event.class).readById(eventId); 
-            List <TicketInfo> ticketsInfoList = new ReadGenericObjectService<>(TicketInfo.class).readListByField("event_ref", eventId);
+            List <TicketInfo> ticketsInfoList = new EventService().readTicketInfo(eventId);
+    		
             request.setAttribute("event", event);
             request.setAttribute("tickets", ticketsInfoList);
             request.getRequestDispatcher("/pages/eventPage.jsp").forward(request, response);
