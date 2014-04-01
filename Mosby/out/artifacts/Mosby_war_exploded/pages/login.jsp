@@ -94,9 +94,6 @@
                 <a id="google-plus-wrapper" class="btn btn-social-icon btn-google-plus" href="#fakelink">
                     <i class="fa fa-google-plus"></i>
                 </a>
-                <a class="btn btn-social-icon btn-twitter">
-                    <i class="fa fa-twitter"></i>
-                </a>
             </div>
         </div>
     </div>

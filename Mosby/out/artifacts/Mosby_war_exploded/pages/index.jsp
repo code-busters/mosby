@@ -35,18 +35,18 @@
 <body>
 <div class="container-fluid">
     <div class="row">
-        <jsp:include page="parts/navbar.jsp"/>
+        <jsp:include page="parts/navbarUnfixed.jsp"/>
     </div>
 
     <%--<div class="row" style="background: #000">--%>
-        <%--<div id="background-block" class="flow-img full-background" style="background-image: url(media/images/bg_mask.png), url(media/images/default/video-poster.jpg)"></div>--%>
+    <%--<div id="background-block" class="flow-img full-background" style="background-image: url(media/images/bg_mask.png), url(media/images/default/video-poster.jpg)"></div>--%>
     <%--</div>--%>
 
     <div class="row">
         <video id='video-player' preload='metadata' autoplay loop>
-            <source src="media/videos/startuppreview.mp4" />
-            <source src="media/videos/startuppreview.webm" type='video/webm; codecs="vp8, vorbis"' />
-            <source src="media/videos/startuppreview.ogg" type='video/ogg; codecs="theora, vorbis"' />
+            <source src="media/videos/startuppreview.mp4"/>
+            <source src="media/videos/startuppreview.webm" type='video/webm; codecs="vp8, vorbis"'/>
+            <source src="media/videos/startuppreview.ogg" type='video/ogg; codecs="theora, vorbis"'/>
         </video>
     </div>
 
@@ -68,34 +68,31 @@
         <div class="col-md-10 col-md-offset-1">
             <h3><fmt:message key="index.mostPopular"/>:</h3>
         </div>
-        <c:forEach items="${eventList}" var="event">
-            <div class="col-md-10 col-sm-6 col-md-offset-1 event">
-                <div class="col-md-3">
-                    <div class="event-image flow-img"
-                         style="background-image:url(media/images/events/background/${event.background})"></div>
+        <div class="col-md-10 col-md-offset-1">
+            <c:forEach items="${eventList}" var="event">
+                <div class="event col-md-6 col-sm-6">
+                    <div class="event-image flow-img" style="background-image:url(media/images/events/background/${event.background})"></div>
+                    <div class="event-detail">
+                        <h2>${event.name}</h2>
+                        <ul>
+                            <li>
+                                <span class="fui-calendar-solid"></span>
+                                    ${event.startDate} - ${event.endDate}
+                            </li>
+                            <li>
+                                <span class="fui-location"></span>${event.location}
+                            </li>
+                        </ul>
+                        <p class="ellipsis-3">
+                                ${event.description}
+                        </p>
+                        <div class="text-right read-more">
+                            <a href="<c:url value="/eventPage?eventId=${event.id}"/>"><fmt:message key="index.readMore"/> ></a>
+                        </div>
+                    </div>
                 </div>
-                <h2>${event.name}</h2>
-                <ul class="event-detail">
-                    <li>
-                        <span class="fui-calendar-solid"></span>
-                        ${event.startDate} - ${event.endDate}
-                    </li>
-                    <li>
-                        <span class="fui-time"></span>
-                        ${event.startTime} - ${event.endTime}
-                    </li>
-                    <li>
-                        <span class="fui-location"></span>${event.location}
-                    </li>
-                </ul>
-                <p class="ellipsis-3">
-                   ${event.description}
-                </p>
-                <div class="text-right">
-                    <a href="<c:url value="/eventPage?eventId=${event.id}"/>"><fmt:message key="index.readMore"/> >></a>
-                </div>
-            </div>
-        </c:forEach>
+            </c:forEach>
+        </div>
     </div>
 
     <div class="row">
@@ -105,7 +102,6 @@
 
 <!-- Load JS here for greater good =============================-->
 <script src="js/classie.js"></script>
-<script src="js/cbpAnimatedHeader.min.js"></script>
 <script src="js/uisearch.js"></script>
 
 <script src="js/jquery-2.0.3.min.js"></script>
@@ -122,14 +118,14 @@
 
 <script src="js/application.js"></script>
 <script type="text/javascript">
-//    $(document).ready(function () {
-//        $("#events").css("margin-top", $("#main-idea").height() + $("h1").height() + 1);
-//        $("#main-idea").css("margin-top", $(window).height()/6 - $("h1").height());
-//    });
-//    $(window).resize(function () {
-//        $("#events").css("margin-top", $("#main-idea").height() + $("h1").height() + 1);
-//        $("#main-idea").css("margin-top", $(window).height()/6 - $("h1").height());
-//    });
+    //    $(document).ready(function () {
+    //        $("#events").css("margin-top", $("#main-idea").height() + $("h1").height() + 1);
+    //        $("#main-idea").css("margin-top", $(window).height()/6 - $("h1").height());
+    //    });
+    //    $(window).resize(function () {
+    //        $("#events").css("margin-top", $("#main-idea").height() + $("h1").height() + 1);
+    //        $("#main-idea").css("margin-top", $(window).height()/6 - $("h1").height());
+    //    });
     $('.ellipsis-3').ellipsis({
         row: 3
     });

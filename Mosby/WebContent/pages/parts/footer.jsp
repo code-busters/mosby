@@ -8,7 +8,7 @@
 <fmt:setBundle basename="main.java.com.mosby.i18n.text"/>
 <footer class="bottom-menu">
     <div class="col-md-1 col-sm-2 col-xs-12 col-md-offset-1 col-sm-offset-1 brand">
-        <a class="navbar-brand" href="#"></a>
+        <a class="navbar-brand" href="<c:url value="/index"/>"></a>
     </div>
 
     <div class="col-md-7 col-sm-6">
@@ -17,7 +17,7 @@
                 &#64; Code busters 2014
             </li>
             <li>
-                <a href="#fakelink"><fmt:message key="footer.aboutUs"/></a>
+                <a href="<c:url value="/aboutUs"/>"><fmt:message key="footer.aboutUs"/></a>
             </li>
         </ul>
     </div>
@@ -34,9 +34,6 @@
             </li>
             <li>
                 <a href="#fakelink" class="fui-facebook"></a>
-            </li>
-            <li>
-                <a href="#fakelink" class="fui-twitter"></a>
             </li>
         </ul>
     </div>

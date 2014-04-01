@@ -70,7 +70,7 @@
 
             <c:if test="${event.logo != 'default.png'}">
                 <div class="center-block">
-                    <img class="event-logo" src="media/images/events/logo/${event.logo}">
+                    <img class="event-logo img-responsive" src="media/images/events/logo/${event.logo}">
                 </div>
             </c:if>
 

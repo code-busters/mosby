@@ -29,11 +29,5 @@
         <li>
             <a href="<c:url value="/apiAccess"/>"><fmt:message key="sideNavnar.apiAccess"/></a>
         </li>
-        <li>
-            <a href="#"><fmt:message key="sideNavnar.services"/></a>
-        </li>
-        <li>
-            <a href="#"><fmt:message key="sideNavnar.contact"/></a>
-        </li>
     </ul>
 </div>

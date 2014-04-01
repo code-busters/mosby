@@ -64,6 +64,32 @@
                     <div id="falldown" class="falldown col-md-12">
                         <h6>Adjust search</h6>
                         <div class="form-group">
+                            <label for="event-category">Category</label>
+                            <select name="event_category" class="select-block" id="event-category">
+                                <option value="-1">
+                                    Select categoty...
+                                </option>
+                                <c:forEach items="${eventCategories}" var="category">
+                                    <option value="${category.id}">
+                                            ${category.category}
+                                    </option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="event-type">Type</label>
+                            <select name="event_type" class="select-block" id="event-type">
+                                <option value="-1">
+                                    Select type...
+                                </option>
+                                <c:forEach items="${eventTypes}" var="type">
+                                    <option value="${type.id}">
+                                            ${type.type}
+                                    </option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <span class="as-label">Date</span>
                             <div class="input-prepend input-datepicker">
                                 <button type="button" class="btn">
@@ -91,6 +117,7 @@
             <div class="event">
                 <div class="event-image flow-img" style="background-image:url(media/images/events/background/${event.background})"></div>
                 <div class="event-detail">
+                    <h2>${event.name}</h2>
                     <ul>
                         <li>
                             <span class="fui-calendar-solid"></span>

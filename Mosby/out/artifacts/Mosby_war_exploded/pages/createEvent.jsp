@@ -272,7 +272,6 @@
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=places"></script>
 <script src="js/geocoding.js"></script>
 
-<%--<script src="js/tickets-promoCodes.js"></script>--%>
 <script src="js/application.js"></script>
 
 <script type="text/javascript">
@@ -283,9 +282,8 @@
             return false;
         }
     });
-    <%@include file="parts/ticketsPromoCodes.jsp" %>
 </script>
-
+<%@include file="parts/ticketsPromoCodes.jsp" %>
 </body>
 
 </html>

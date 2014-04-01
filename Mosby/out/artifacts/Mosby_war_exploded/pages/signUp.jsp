@@ -114,11 +114,6 @@
                         <i class="fa fa-google-plus"></i>Google
                     </a>
                 </div>
-                <div class="col-md-10 col-sm-4">
-                    <a class="btn btn-block btn-social btn-twitter">
-                        <i class="fa fa-twitter"></i>Twitter
-                    </a>
-                </div>
             </div>
         </div>
     </div>

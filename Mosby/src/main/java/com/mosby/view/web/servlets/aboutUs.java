@@ -7,10 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/error")
-public class ErrorServlet extends HttpServlet {
+@WebServlet("/aboutUs")
+public class aboutUs extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/pages/error.jsp").forward(request, response);
+        request.getRequestDispatcher("/pages/aboutUs.jsp").forward(request, response);
     }
 }
