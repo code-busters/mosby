@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 import org.apache.log4j.Logger;
 
 import main.java.com.mosby.controller.persistence.ConnectionManager;
@@ -52,12 +53,14 @@ public class ReflectionDao<T> {
 	public List<T> selectObjects(Object... whereArguments) {//throws Exception {
 		List<T> objects = new ArrayList<>();
 		try (Connection connection = ConnectionManager.getInstance().getConnection()) {
+			connection.setAutoCommit(false);
 			query = queryStatements.createSelectQuery(whereArguments);
 
 			PreparedStatement preparedStatement = (PreparedStatement) connection
 					.prepareStatement(query);
 			ResultSet resultSet = preparedStatement.executeQuery();
-
+			connection.commit();
+			
 			while (resultSet.next()) {
 				objects.add(reflectionTransformer.fromRStoObject(
 						type.newInstance(), resultSet, type, false));
@@ -77,12 +80,14 @@ public class ReflectionDao<T> {
 		Long integer = 0L;
 		ReflectionTransformer<Long> integerTransformer = new ReflectionTransformer<>();
 		try (Connection connection = ConnectionManager.getInstance().getConnection()) {
+			connection.setAutoCommit(false);
 			query = queryStatements.createAggregateSelectQuery(aggregateFunction, whereArguments);
 			
 			PreparedStatement preparedStatement = (PreparedStatement) connection
 					.prepareStatement(query);
 			ResultSet resultSet = preparedStatement.executeQuery();
-
+			connection.commit();
+			
 			while (resultSet.next()) {
 				objects.add(integerTransformer.fromRStoObject(
 						integer, resultSet, Long.class, true));
@@ -99,6 +104,7 @@ public class ReflectionDao<T> {
 	public int insertObjects(T object) {//throws Exception {
 		int generatedId = -1;
 		try (Connection connection = ConnectionManager.getInstance().getConnection()) {
+			connection.setAutoCommit(false);
 			query = queryStatements.createInsertQuery();
 
 			PreparedStatement preparedStatement = (PreparedStatement) connection
@@ -110,7 +116,8 @@ public class ReflectionDao<T> {
 
 			preparedStatement.addBatch();
 			preparedStatement.executeBatch();
-
+			connection.commit();
+			
 			ResultSet keys = preparedStatement.getGeneratedKeys();
 			keys.next();
 			generatedId = keys.getInt(1);
@@ -126,6 +133,7 @@ public class ReflectionDao<T> {
 
 	public void updateObjects(T object) {//throws Exception {
 		try (Connection connection = ConnectionManager.getInstance().getConnection()) {
+			connection.setAutoCommit(false);
 			query = queryStatements.createUpdateQuery();
 
 			PreparedStatement preparedStatement = (PreparedStatement) connection
@@ -141,7 +149,8 @@ public class ReflectionDao<T> {
 
 			preparedStatement.addBatch();
 			preparedStatement.executeBatch();
-			
+			connection.commit();
+
 			preparedStatement.close();
 		} catch (SQLException | IllegalArgumentException
 				| ClassNotFoundException | NoSuchMethodException
@@ -153,6 +162,8 @@ public class ReflectionDao<T> {
 
 	public void deleteObjects(T object) {//throws Exception {
 		try (Connection connection = ConnectionManager.getInstance().getConnection()) {
+			connection.setAutoCommit(false);
+
 			query = queryStatements.createDeleteQuery();
 
 			PreparedStatement preparedStatement = (PreparedStatement) connection
@@ -162,7 +173,8 @@ public class ReflectionDao<T> {
 
 			preparedStatement.addBatch();
 			preparedStatement.executeBatch();
-			
+			connection.commit();
+
 			preparedStatement.close();
 		} catch (SQLException | IllegalArgumentException
 				| ClassNotFoundException | NoSuchMethodException
