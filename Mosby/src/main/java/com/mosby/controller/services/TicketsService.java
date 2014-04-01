@@ -67,11 +67,29 @@ public class TicketsService {
 	
 	public void delete(HttpServletRequest request){
 		ReflectionDao<Ticket> ticketDao = new ReflectionDao<>(Ticket.class);
+		ReflectionDao<User> userDao = new ReflectionDao<>(User.class);
 		String[] tickets = request.getParameterValues("checked_tickets");
 		for (String string : tickets) {
 			Ticket ticket = new ReadGenericObjectService<>(Ticket.class).readById(Integer.parseInt(string));
+			double priceOfTicket = ticket.getTicketInfo().getPrice()-(ticket.getTicketInfo().getPrice() * ticket.getPromoCode().getDiscount() * 0.01);
+			ticket.getUser().setCredits(ticket.getUser().getCredits() + priceOfTicket);
+			userDao.updateObjects(ticket.getUser());
+			if (ticket.getUser().getId() == ((User) request.getSession(false).getAttribute("user")).getId()){
+				request.getSession(false).setAttribute("user", ticket.getUser());
+			}
 			ticketDao.deleteObjects(ticket);
 		}
+	}
+	
+	public void delete (HttpServletRequest request, int id){
+		Ticket ticket = new ReadGenericObjectService<>(Ticket.class).readById(id);
+		double priceOfTicket = ticket.getTicketInfo().getPrice()-(ticket.getTicketInfo().getPrice() * ticket.getPromoCode().getDiscount() * 0.01);
+		ticket.getUser().setCredits(ticket.getUser().getCredits() + priceOfTicket);
+		new ReflectionDao<>(User.class).updateObjects(ticket.getUser());
+		if (ticket.getUser().getId() == ((User) request.getSession(false).getAttribute("user")).getId()){
+			request.getSession(false).setAttribute("user", ticket.getUser());
+		}
+		new ReflectionDao<>(Ticket.class).deleteObjects(ticket);
 	}
 	
 	public void save(HttpServletRequest request){

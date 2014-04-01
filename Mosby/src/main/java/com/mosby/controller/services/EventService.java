@@ -387,7 +387,12 @@ public class EventService {
 		return ticketsInfoList;
 	}
 
-	public void deleteEvent(HttpServletRequest request){
-		
+	public void deleteEvent(HttpServletRequest request, int id){
+		List <Ticket> ticketsList = new ReadGenericObjectService<>(Ticket.class).readListByField("event_ref", id);
+		TicketsService ticketsService = new TicketsService();
+		for (Ticket ticket : ticketsList) {
+			ticketsService.delete(request, ticket.getId());
+		}
+		new ReflectionDao<>(Event.class).deleteObjects(new ReadGenericObjectService<>(Event.class).readById(id));
 	}
 }
