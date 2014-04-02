@@ -2,6 +2,7 @@ package main.java.com.mosby.controller.services;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +13,7 @@ import javax.servlet.http.Part;
 import org.apache.log4j.Logger;
 
 import main.java.com.mosby.controller.dao.ReflectionDao;
+import main.java.com.mosby.model.Event;
 import main.java.com.mosby.model.Organizer;
 import main.java.com.mosby.model.User;
 import main.java.com.mosby.utils.FileUploadUtils;
@@ -87,6 +89,13 @@ public class OrganizerService {
     		ReflectionDao<Organizer> organizerDao = new ReflectionDao<>(Organizer.class);
     		organizerDao.updateObjects(changedOrganizer);
 			
+		}
+	}
+	
+	public void delete (User user, int id){
+		if (user.getId() == id && new ReadGenericObjectService<>(Event.class).readListByField("organizer_ref", id).isEmpty()){
+			Organizer organizer = new ReadGenericObjectService<>(Organizer.class).readById(id);
+			new ReflectionDao<>(Organizer.class).deleteObjects(organizer);
 		}
 	}
 }
