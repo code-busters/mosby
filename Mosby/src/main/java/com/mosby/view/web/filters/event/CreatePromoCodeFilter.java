@@ -5,6 +5,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -43,19 +46,18 @@ public class CreatePromoCodeFilter implements Filter {
 
 		if (request.getMethod().equals("POST")) {
 
-			String[] idPromoCodesArray = request
-					.getParameterValues("promo_codes_id");
+	        String idPromoCodesArray = request.getParameter("promo_codes_id");
+	        List<String> newIdPromoCodesList = new ArrayList<String>(Arrays.asList(idPromoCodesArray.split("_")));
+			
 			ValidatorUtils<PromoCode> validatorUtils = null;
 
-			if (!request.getParameter("language").equals("en")
-					&& !request.getParameter("language").equals("uk")) {
+			if (!request.getParameter("language").equals("en") && !request.getParameter("language").equals("uk")) {
 				validatorUtils = new ValidatorUtils<>(PromoCode.class, "en");
 			} else {
-				validatorUtils = new ValidatorUtils<>(PromoCode.class,
-						request.getParameter("language"));
+				validatorUtils = new ValidatorUtils<>(PromoCode.class, request.getParameter("language"));
 			}
-			if (!(idPromoCodesArray[0].equals(""))) {
-				for (String currInt : idPromoCodesArray) {
+			if (!(newIdPromoCodesList.isEmpty())) {
+				for (String currInt : newIdPromoCodesList) {
 
 					int currentId = Integer.parseInt(currInt);
 					int discount = 0, maxNumber = 0;
