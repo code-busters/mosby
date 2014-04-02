@@ -142,13 +142,13 @@
             </div>
             <div class="form-group">
                 <label for="event-description"><fmt:message key="createEvent.eventDescription"/></label>
-                <textarea rows="4" placeholder="<fmt:message key="createEvent.tellUsersAboutYourEvent"/>" class="form-control"
+                <textarea value="${event_description}" rows="4" placeholder="<fmt:message key="createEvent.tellUsersAboutYourEvent"/>" class="form-control"
                           name="event_description"
                           id="event-description" form="create-event-form"></textarea>
             </div>
             <div class="form-group">
                 <label for="event-location"><fmt:message key="createEvent.address"/></label>
-                <input type="text" class="form-control" placeholder="<fmt:message key="createEvent.enterAddressForYourEvent"/>" name="event_location"
+                <input value="${event_location}" type="text" class="form-control" placeholder="<fmt:message key="createEvent.enterAddressForYourEvent"/>" name="event_location"
                        id="event-location" onFocus="geolocate()"/>
             </div>
             <div class="form-group" id="googleMap" style="height:380px;"></div>
