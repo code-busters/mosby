@@ -185,7 +185,7 @@
         color: '#212121',
         text: '${generatedKey}'
     });
-    $(".secure-key p").html(function (idx, html) {
+    $(".secured-key p").html(function (idx, html) {
         return html.replace(/(....)/g, '$1 ')
     });
 </script>

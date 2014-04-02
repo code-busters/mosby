@@ -78,6 +78,7 @@
             <input class="hide" type="text" value="" name="tickets_id"/>
             <c:forEach items="${ticketsInfo}" var="ticket">
                 <div id="${ticket.id}" class="row">
+                    <input class="hide" type="text" name="ticket_id" value="${ticket.id}" >
                     <div class="col-md-6 col-sm-6">
                         <label class="visible-xs" for="event-ticket-name-${ticket.id}"><fmt:message key="editTicketsPromoCodes.ticketName"/></label>
                         <input type="text" class="form-control"
@@ -198,6 +199,7 @@
             <input class="hide" type="text" value="" name="promo_codes_id"/>
             <c:forEach items="${promoCodes}" var="promoCode">
                 <div id="${promoCode.id}" class="row">
+                    <input class="hide" type="text" name="promo_code_id" value="${promoCode.id}">
                     <div class="col-md-6 col-sm-6">
                         <label class="visible-xs" for="promo-code-code-${promoCode.id}"><fmt:message key="editTicketsPromoCodes.promoCode"/></label>
                         <input type="text" class="form-control"

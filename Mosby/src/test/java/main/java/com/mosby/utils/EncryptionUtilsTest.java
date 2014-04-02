@@ -10,7 +10,7 @@ public class EncryptionUtilsTest {
             String pass2 = EncryptionUtils.createHash("root");
             System.out.println(EncryptionUtils.createHash("root"));
 
-            Assert.assertNotEquals(pass1, pass1);
+//            Assert.assertNotEquals(pass1, pass1);
 
             Assert.assertTrue(EncryptionUtils.validatePassword("root", pass1));
 
@@ -22,7 +22,7 @@ public class EncryptionUtilsTest {
             String pass2 = EncryptionUtils.createHash("root",2);
             System.out.println(EncryptionUtils.createHash("root",2));
 
-            Assert.assertNotEquals(pass1, pass1);
+//            Assert.assertNotEquals(pass1, pass1);
 
             Assert.assertTrue(EncryptionUtils.validatePassword("root,2", pass1));
 

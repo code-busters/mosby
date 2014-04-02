@@ -6,7 +6,7 @@
   </welcome-file-list>
   <filter>
     <filter-name>SessionFilter</filter-name>
-    <filter-class>main.java.com.mosby.view.web.filters.SessionFilter</filter-class>
+    <filter-class>main.java.com.mosby.web.filters.SessionFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>SessionFilter</filter-name>
@@ -14,7 +14,7 @@
   </filter-mapping>
   <filter>
     <filter-name>EncodingFilter</filter-name>
-    <filter-class>main.java.com.mosby.view.web.filters.EncodingFilter</filter-class>
+    <filter-class>main.java.com.mosby.web.filters.EncodingFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>EncodingFilter</filter-name>
@@ -22,7 +22,7 @@
   </filter-mapping>
   <filter>
     <filter-name>SignUpFilter</filter-name>
-    <filter-class>main.java.com.mosby.view.web.filters.user.SignUpFilter</filter-class>
+    <filter-class>main.java.com.mosby.web.filters.user.SignUpFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>SignUpFilter</filter-name>
@@ -30,7 +30,7 @@
   </filter-mapping>
   <filter>
     <filter-name>LoginFilter</filter-name>
-    <filter-class>main.java.com.mosby.view.web.filters.user.LoginFilter</filter-class>
+    <filter-class>main.java.com.mosby.web.filters.user.LoginFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>LoginFilter</filter-name>
@@ -38,7 +38,7 @@
   </filter-mapping>
   <filter>
     <filter-name>ProfilePageFilter</filter-name>
-    <filter-class>main.java.com.mosby.view.web.filters.user.ProfilePageFilter</filter-class>
+    <filter-class>main.java.com.mosby.web.filters.user.ProfilePageFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>ProfilePageFilter</filter-name>
@@ -54,16 +54,16 @@
   </filter-mapping>
   <filter>
     <filter-name>EventAttributesFilter</filter-name>
-    <filter-class>main.java.com.mosby.view.web.filters.event.EventAttributesFilter</filter-class>
+    <filter-class>main.java.com.mosby.web.filters.event.EventAttributesFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>EventAttributesFilter</filter-name>
     <url-pattern>/createEvent</url-pattern>
-    <url-pattern>/updateEvent</url-pattern>
+    <url-pattern>/editEvent</url-pattern>
   </filter-mapping>
   <filter>
     <filter-name>EventFilter</filter-name>
-    <filter-class>main.java.com.mosby.view.web.filters.event.EventFilter</filter-class>
+    <filter-class>main.java.com.mosby.web.filters.event.EventFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>EventFilter</filter-name>
@@ -71,7 +71,7 @@
   </filter-mapping>
   <filter>
     <filter-name>PromoCodeFilter</filter-name>
-    <filter-class>main.java.com.mosby.view.web.filters.event.PromoCodeFilter</filter-class>
+    <filter-class>main.java.com.mosby.web.filters.event.PromoCodeFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>PromoCodeFilter</filter-name>
@@ -79,7 +79,7 @@
   </filter-mapping>
   <filter>
     <filter-name>ContactInfoFilter</filter-name>
-    <filter-class>main.java.com.mosby.view.web.filters.user.ContactInfoFilter</filter-class>
+    <filter-class>main.java.com.mosby.web.filters.user.ContactInfoFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>ContactInfoFilter</filter-name>
@@ -87,7 +87,7 @@
   </filter-mapping>
   <filter>
     <filter-name>ChangePasswordFilter</filter-name>
-    <filter-class>main.java.com.mosby.view.web.filters.user.ChangePasswordFilter</filter-class>
+    <filter-class>main.java.com.mosby.web.filters.user.ChangePasswordFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>ChangePasswordFilter</filter-name>

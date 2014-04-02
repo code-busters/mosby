@@ -1,21 +1,19 @@
 package main.java.com.mosby.controller.services;
 
-import java.io.File;
-import java.io.IOException;
+import main.java.com.mosby.controller.dao.ReflectionDao;
+import main.java.com.mosby.model.Event;
+import main.java.com.mosby.model.Organizer;
+import main.java.com.mosby.model.User;
+import main.java.com.mosby.utils.FileUploadUtils;
+import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
-
-import org.apache.log4j.Logger;
-
-import main.java.com.mosby.controller.dao.ReflectionDao;
-import main.java.com.mosby.model.Event;
-import main.java.com.mosby.model.Organizer;
-import main.java.com.mosby.model.User;
-import main.java.com.mosby.utils.FileUploadUtils;
+import java.io.File;
+import java.io.IOException;
 
 public class OrganizerService {
 	private static final String ORGANIZER_LOGO_PATH = "media\\images\\organizers";
@@ -92,7 +90,7 @@ public class OrganizerService {
 	}
 	
 	public void delete (User user, int id){
-		if (user.getId() == id && new ReadGenericObjectService<>(Event.class).readListByField("organizer_ref", id).isEmpty()){
+		if (user.getId() == new ReadGenericObjectService<>(Organizer.class).readById(id).getUser().getId() && new ReadGenericObjectService<>(Event.class).readListByField("organizer_ref", id).isEmpty()){
 			Organizer organizer = new ReadGenericObjectService<>(Organizer.class).readById(id);
 			new ReflectionDao<>(Organizer.class).deleteObjects(organizer);
 		}

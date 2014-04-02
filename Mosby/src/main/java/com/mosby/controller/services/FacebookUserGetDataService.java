@@ -1,17 +1,9 @@
 package main.java.com.mosby.controller.services;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
-import javax.servlet.http.HttpServletRequest;
-
+import main.java.com.mosby.model.User;
+import main.java.com.mosby.web.servlets.SocialSignUpServlet;
 import net.sf.json.JSONObject;
 import net.sf.json.JSONSerializer;
-
 import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -24,8 +16,13 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
 
-import main.java.com.mosby.model.User;
-import main.java.com.mosby.view.web.servlets.SocialSignUpServlet;
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class FacebookUserGetDataService {
 	private static Logger log = Logger.getLogger(SocialSignUpServlet.class);
@@ -67,7 +64,6 @@ public class FacebookUserGetDataService {
 	}
 	
 	private User getUserFromJsonResponse(String accessToken) {
-		String email = null;
 		User user = new User();
 		HttpClient httpclient = new DefaultHttpClient();
 		try {
@@ -98,7 +94,7 @@ public class FacebookUserGetDataService {
 				
 				String firstName = json.getString("first_name");
 				String lastName = json.getString("last_name");
-				email= json.getString("email");
+                String email= json.getString("email");
 
 				System.out.println("facebookId " + facebookId + " | name " + firstName + " " + lastName + " | email " + email + " | " + imageLocation);
 			} else {

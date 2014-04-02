@@ -99,12 +99,11 @@ public class EventService {
 		
 //Tickets Info builder
 		
-		String idTicketsArray = request.getParameter("tickets_id");
-        List<String> newIdTicketsInfoList = new ArrayList<String>(Arrays.asList(idTicketsArray.split("_")));
+		String[] idTicketsArray = request.getParameterValues("ticket_id");
 		
-		if (!(newIdTicketsInfoList.isEmpty())){
+		if (idTicketsArray.length != 0){
 			ReflectionDao<TicketInfo> ticketInfoDao = new ReflectionDao<>(TicketInfo.class);
-			for (String currInt : newIdTicketsInfoList){
+			for (String currInt : idTicketsArray){
 				int currentId = Integer.parseInt(currInt);
 				String type;
 				String ticketInfoName = request.getParameter("event_ticket_name_" + currentId);
@@ -139,12 +138,11 @@ public class EventService {
 		
 		
 // Promo codes builder
-        String idPromoCodesArray = request.getParameter("promo_codes_id");
-        List<String> newIdPromoCodesList = new ArrayList<String>(Arrays.asList(idPromoCodesArray.split("_")));
+        String[] idPromoCodesArray = request.getParameterValues("promo_code_id");
 		
-		if (!(newIdPromoCodesList.isEmpty())){
+		if (idPromoCodesArray.length != 0){
 			ReflectionDao<PromoCode> promoCodeDao = new ReflectionDao<>(PromoCode.class);
-			for (String currInt : newIdPromoCodesList){
+			for (String currInt : idPromoCodesArray){
 				int currentId = Integer.parseInt(currInt);
 				String code = request.getParameter("promo_code_code_" + currentId);
 				int discount = Integer.parseInt(request.getParameter("promo_code_discount_" + currentId));
@@ -229,16 +227,15 @@ public class EventService {
 		int eventId = Integer.parseInt(request.getParameter("eventId"));
 		
 		Event event = new ReadGenericObjectService<>(Event.class).readById(eventId);
-		List <TicketInfo> currentTicketsInfoList = new ReadGenericObjectService<>(TicketInfo.class).readListByField("event_ref", (Integer)eventId);
+		List <TicketInfo> currentTicketsInfoList = new ReadGenericObjectService<>(TicketInfo.class).readListByField("event_ref", eventId);
 		List<String> currentIdTicketsInfoList = new ArrayList<>();
 		for (TicketInfo ticketInfo : currentTicketsInfoList) {
 			currentIdTicketsInfoList.add(Integer.toString(ticketInfo.getId()));
 		}
-		
-        String idTicketsArray = request.getParameter("tickets_id");
-        List<String> newIdTicketsInfoList = new ArrayList<String>(Arrays.asList(idTicketsArray.split("_")));
 
-		for (String newId : newIdTicketsInfoList) {
+        String[] idTicketsArray = request.getParameterValues("ticket_id");
+
+		for (String newId : idTicketsArray) {
 			TicketInfo ticketInfo;
 			int currentId = Integer.parseInt(newId);
 			String ticketInfoName = request.getParameter("event_ticket_name_" + currentId);
@@ -277,7 +274,7 @@ public class EventService {
 		}
 		
 		for (String id : currentIdTicketsInfoList) {
-			if (!newIdTicketsInfoList.contains(id)){
+			if (!Arrays.asList(idTicketsArray).contains(id)){
 				List <Ticket> ticketsList = new ReadGenericObjectService<>(Ticket.class).readListByField("ticket_info_ref", Integer.parseInt(id));
 				if (ticketsList.isEmpty()){
 					TicketInfo ticketInfo = new ReadGenericObjectService<>(TicketInfo.class).readById(Integer.parseInt(id));
@@ -300,11 +297,10 @@ public class EventService {
 		for (PromoCode promoCode : currentPromoCodesList) {
 			currentIdPromoCodesList.add(Integer.toString(promoCode.getId()));
 		}
-		
-        String idPromoCodesArray = request.getParameter("promo_codes_id");
-        List<String> newIdPromoCodesList = new ArrayList<String>(Arrays.asList(idPromoCodesArray.split("_")));
 
-		for (String newId : newIdPromoCodesList) {
+        String[] idPromoCodesArray = request.getParameterValues("promo_code_id");
+
+		for (String newId : idPromoCodesArray) {
 			PromoCode promoCode;
 			int currentId = Integer.parseInt(newId);
 			
@@ -324,7 +320,7 @@ public class EventService {
 		}
 		
 		for (String id : currentIdPromoCodesList ) {
-			if (!newIdPromoCodesList.contains(id)){
+			if (!Arrays.asList(idPromoCodesArray).contains(id)){
 				List <Ticket> ticketsList = new ReadGenericObjectService<>(Ticket.class).readListByField("promo_codes_ref", Integer.parseInt(id));
 				if (ticketsList.isEmpty()){
 					PromoCode promoCode = new ReadGenericObjectService<>(PromoCode.class).readById(Integer.parseInt(id));

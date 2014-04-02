@@ -1,16 +1,5 @@
 package main.java.com.mosby.controller.services;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.util.Date;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.log4j.Logger;
-
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeTokenRequest;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
@@ -22,6 +11,15 @@ import com.google.api.client.util.DateTime;
 import com.google.api.services.calendar.Calendar;
 import com.google.api.services.calendar.model.Event;
 import com.google.api.services.calendar.model.EventDateTime;
+import org.apache.log4j.Logger;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.util.Date;
 
 public class GoogleCalendarService {
  	private static final Logger log = Logger.getLogger(GooglePlusService.class);
@@ -69,9 +67,9 @@ public class GoogleCalendarService {
     		
     		service.events().insert("primary", event).execute();
     		
-    	} catch (IOException e1) {
+    	} catch (IOException e) {
     		
-    		e1.printStackTrace();
+    		e.printStackTrace();
     	}
 
     }

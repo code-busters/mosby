@@ -11,7 +11,7 @@
         $(document).ready(function () {
             $('#free-ticket').click(function () {
                 var id = getLastId();
-                var priceInput = '<input type="text" class="form-control" value="<fmt:message key="ticketsPromoCodes.free"/>" name="event_ticket_price_' + id + '" id="event-ticket-price-' + id + '" readonly="" disabled="disabled" />';
+                var priceInput = '<input type="text" class="form-control" value="<fmt:message key="ticketsPromoCodes.free"/>" name="event_ticket_price_' + id + '" id="event-ticket-price-' + id + '" readonly="" />';
                 addTicket(priceInput);
             });
 
@@ -23,7 +23,7 @@
 
             $('#donation-ticket').click(function () {
                 var id = getLastId();
-                var priceInput = '<input type="text" class="form-control" value="<fmt:message key="ticketsPromoCodes.donation"/>" name="event_ticket_price_' + id + '" id="event-ticket-price-' + id + '" readonly="" disabled="disabled" />';
+                var priceInput = '<input type="text" class="form-control" value="<fmt:message key="ticketsPromoCodes.donation"/>" name="event_ticket_price_' + id + '" id="event-ticket-price-' + id + '" readonly="" />';
                 addTicket(priceInput);
             });
 
@@ -31,7 +31,8 @@
                 var id = getLastId();
                 var tickets = $('#tickets > #tickets-body:last');
                 tickets.append(
-                                '<div id="' + id + '" class="row">' +
+                        '<div id="' + id + '" class="row">' +
+                                '<input class="hide" type="text" name="ticket_id" value="'+ id +'" > ' +
                                 '<div class="col-md-6 col-sm-6">' +
                                 '<label class="visible-xs" for="event-ticket-name-' + id + '"><fmt:message key="ticketsPromoCodes.ticketName"/></label>' +
                                 '<input type="text" class="form-control" placeholder="<fmt:message key="ticketsPromoCodes.examplesEarlyBirdVipPress"/>" name="event_ticket_name_' + id + '" id="event-ticket-name-' + id + '" required />' +
@@ -111,7 +112,8 @@
                     id = parseInt(stringId) + 1;
                 }
                 $('#promo-codes > #promo-codes-body:last').append(
-                                '<div id="' + id + '" class="row">' +
+                        '<div id="' + id + '" class="row">' +
+                                '<input class="hide" type="text" name="promo_code_id" value="'+ id +'""> ' +
                                 '<div class="col-md-6 col-sm-6">' +
                                 '<label class="visible-xs" for="promo-code-code-' + id + '"><fmt:message key="ticketsPromoCodes.promoCode"/></label>' +
                                 '<input type="text" class="form-control" placeholder="<fmt:message key="ticketsPromoCodes.examplesR2D2"/>" name="promo_code_code_' + id + '" id="promo-code-code-' + id + '" required />' +

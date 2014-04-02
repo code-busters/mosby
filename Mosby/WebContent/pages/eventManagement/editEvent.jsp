@@ -194,7 +194,7 @@
                                 <span class="second-icon fui-radio-checked"></span>
 							</span>
                         <input type="radio" name="privacy_event" id="public-event"
-                               value="0" data-toggle="radio">
+                               value="0" data-toggle="radio" <c:if test="${event.privacy == false}"> checked </c:if>>
                         <fmt:message key="editEvent.publicEvent"/>
                         <span class="additional"><fmt:message key="editEvent.listThisEventOnEventbriteAndSearchEngines"/></span>
                     </label>
@@ -204,7 +204,7 @@
                                 <span class="second-icon fui-radio-checked"></span>
 							</span>
                         <input type="radio" name="privacy_event" id="private-event"
-                               value="1" data-toggle="radio">
+                               value="1" data-toggle="radio" <c:if test="${event.privacy}"> checked </c:if>">
                         <fmt:message key="editEvent.privateEvent"/>
                         <span class="additional"><fmt:message key="editEvent.doNotListThisEventPublicly"/></span>
                     </label>
