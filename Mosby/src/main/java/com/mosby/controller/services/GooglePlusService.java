@@ -5,7 +5,6 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.api.client.googleapis.auth.oauth2.GoogleTokenResponse;
 import com.google.api.client.http.GenericUrl;
-import com.google.api.client.http.HttpResponse;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson.JacksonFactory;
@@ -116,7 +115,7 @@ public class GooglePlusService {
                     .setClientSecrets(CLIENT_ID, CLIENT_SECRET).build()
                     .setFromTokenResponse(JSON_FACTORY.fromString(
                             tokenData, GoogleTokenResponse.class));
-            HttpResponse revokeResponse = TRANSPORT.createRequestFactory()
+           TRANSPORT.createRequestFactory()
                     .buildGetRequest(new GenericUrl(
                             String.format(
                                     "https://accounts.google.com/o/oauth2/revoke?token=%s",

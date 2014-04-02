@@ -120,11 +120,9 @@
                     <option value="-1">
                         <fmt:message key="createEvent.selectCategory"/>...
                     </option>
-                    <c:set var="selectedCategory" value="${event_category}"/>
                     <c:forEach items="${eventCategories}" var="category">
-                        <c:set var="tempCategory" value="${category.category}"/>
                         <option value="${category.id}"
-                                <c:if test="${selectedCategory == tempCategory}"> selected </c:if>>
+                                <c:if test="${event_category == category.id}"> selected </c:if>>
                                 ${category.category}
                         </option>
                     </c:forEach>
@@ -136,11 +134,9 @@
                     <option value="-1">
                         <fmt:message key="createEvent.selectType"/>...
                     </option>
-                    <c:set var="selectedType" value="${event_type}"/>
                     <c:forEach items="${eventTypes}" var="type">
-                        <c:set var="tempType" value="${type.type}"/>
                         <option value="${type.id}"
-                                <c:if test="${selectedType == tempType}"> selected </c:if>>
+                                <c:if test="${event_type == type.id}"> selected </c:if>>
                                 ${type.type}
                         </option>
                     </c:forEach>
@@ -213,7 +209,7 @@
 
             <div class="form-group">
                 <span class="as-label"><fmt:message key="createEvent.listingPrivacy"/></span>
-                <label class="radio <c:if test="${privacy_event == '0'}"> checked </c:if>">
+                <label class="radio <c:if test="${privacy_event != '1'}"> checked </c:if>">
 							<span class="icons">
 								<span class="first-icon fui-radio-unchecked"></span>
 								<span class="second-icon fui-radio-checked"></span>

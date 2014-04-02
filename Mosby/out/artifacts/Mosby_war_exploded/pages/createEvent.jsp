@@ -124,11 +124,12 @@
                     <c:forEach items="${eventCategories}" var="category">
                         <c:set var="tempCategory" value="${category.category}"/>
                         <option value="${category.id}"
-                                <c:if test="${selectedCategory == tempCategory}"> selected </c:if>>
+                                <c:if test="${event_category == category.id}"> selected </c:if>>
                                 ${category.category}
                         </option>
                     </c:forEach>
                 </select>
+                <p>category: ${selectedCategory}</p>
             </div>
             <div class="form-group">
                 <label for="event-type"><fmt:message key="createEvent.type"/></label>
@@ -140,7 +141,7 @@
                     <c:forEach items="${eventTypes}" var="type">
                         <c:set var="tempType" value="${type.type}"/>
                         <option value="${type.id}"
-                                <c:if test="${selectedType == tempType}"> selected </c:if>>
+                                <c:if test="${event_type == type.id}"> selected </c:if>>
                                 ${type.type}
                         </option>
                     </c:forEach>
@@ -213,14 +214,14 @@
 
             <div class="form-group">
                 <span class="as-label"><fmt:message key="createEvent.listingPrivacy"/></span>
-                <label class="radio <c:if test="${privacy_event == '0'}"> checked </c:if>">
+                <label class="radio <c:if test="${privacy_event != '1'}"> checked </c:if>">
 							<span class="icons">
 								<span class="first-icon fui-radio-unchecked"></span>
 								<span class="second-icon fui-radio-checked"></span>
 							</span>
                     <input type="radio" name="privacy_event" id="public-event" value="0" data-toggle="radio">
                     <fmt:message key="createEvent.publicEvent"/>
-                    <span class="additional"><fmt:message key="createEvent.listThisEventOnEventbriteAndSearchEngines"/></span>
+                    <span class="additional"><fmt:message key="createEvent.listThisEventOnMosbyAndSearchEngines"/></span>
                 </label>
                 <label class="radio <c:if test="${privacy_event == '1'}"> checked </c:if>">
 							<span class="icons">
