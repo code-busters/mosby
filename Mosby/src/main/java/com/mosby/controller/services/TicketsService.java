@@ -9,7 +9,6 @@ import java.util.List;
 
 public class TicketsService {
 	
-	@SuppressWarnings("unchecked")
 	public void register(HttpServletRequest request){
 		ReflectionDao<Ticket> ticketDao = new ReflectionDao<>(Ticket.class);
 		ReflectionDao<User> userDao = new ReflectionDao<>(User.class);

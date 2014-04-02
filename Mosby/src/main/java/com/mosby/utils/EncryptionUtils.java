@@ -22,7 +22,7 @@ public class EncryptionUtils {
     private static final int SALT_INDEX = 1;
     private static final int PBKDF2_INDEX = 2;
 
-    private static final char[] HEX = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
+    //private static final char[] HEX = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
 
     public static String createHash(String password) {
         return createHash(password.toCharArray());

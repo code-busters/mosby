@@ -1,10 +1,7 @@
 package main.java.com.mosby.view.web.servlets;
 
-import main.java.com.mosby.controller.dao.ReflectionDao;
 import main.java.com.mosby.controller.services.ReadGenericObjectService;
 import main.java.com.mosby.model.Event;
-import main.java.com.mosby.model.Ticket;
-import main.java.com.mosby.utils.MailUtils;
 
 import org.apache.log4j.Logger;
 

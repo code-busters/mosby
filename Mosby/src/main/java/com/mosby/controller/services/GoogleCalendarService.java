@@ -67,7 +67,7 @@ public class GoogleCalendarService {
     		
     		Event event = createEvent(Integer.parseInt(request.getSession().getAttribute("eventId").toString()));
     		
-    		Event createdEvent = service.events().insert("primary", event).execute();
+    		service.events().insert("primary", event).execute();
     		
     	} catch (IOException e1) {
     		

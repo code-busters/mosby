@@ -2,9 +2,6 @@ package main.java.com.mosby.view.web.filters.event;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,11 +16,6 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import main.java.com.mosby.controller.dao.ReflectionDao;
-import main.java.com.mosby.controller.services.ReadGenericObjectService;
-import main.java.com.mosby.model.Event;
-import main.java.com.mosby.model.EventCategory;
-import main.java.com.mosby.model.EventType;
 import main.java.com.mosby.model.PromoCode;
 import main.java.com.mosby.utils.ValidatorUtils;
 

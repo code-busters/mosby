@@ -1,7 +1,6 @@
 package main.java.com.mosby.utils;
 
 import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
 import java.util.List;
 import java.util.Properties;
 
@@ -13,7 +12,6 @@ import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
-import javax.mail.URLName;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
@@ -21,12 +19,6 @@ import javax.mail.internet.MimeMultipart;
 import javax.mail.util.ByteArrayDataSource;
 
 import main.java.com.mosby.model.Ticket;
-
-import com.itextpdf.text.Chunk;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;
-import com.sun.mail.smtp.SMTPTransport;
 
 public class MailUtils {
 	

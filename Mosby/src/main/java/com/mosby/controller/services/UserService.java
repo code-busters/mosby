@@ -26,7 +26,6 @@ public class UserService {
 	private static final String USER_IMAGE_PATH = "media\\images\\users";
 	private static Logger log = Logger.getLogger(UserService.class);
 
-	@SuppressWarnings("unchecked")
 	public User readUser(String email, String password) {
 		User user = new User();
 		ReflectionDao<User> usersDao = new ReflectionDao<>(User.class);
@@ -50,7 +49,6 @@ public class UserService {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	public User readSocialUser(User user){
 		ReflectionDao<User> usersDao = new ReflectionDao<>(User.class);
 		
@@ -153,7 +151,6 @@ public class UserService {
 		}
 	}
 
-	@SuppressWarnings({ "unchecked", "static-access" })
 	public User signUpUser(String firstName, String lastName, String email,
 			String password) {
 
@@ -169,7 +166,7 @@ public class UserService {
 			SecureRandom random = new SecureRandom();
 	        byte[] code = new byte[24];
 	        random.nextBytes(code);
-	        String authentication = new EncryptionUtils().toHex(code) + new EncryptionUtils().toHex(email.getBytes());
+	        String authentication = EncryptionUtils.toHex(code) + EncryptionUtils.toHex(email.getBytes());
 	        
 			user = new User(firstName, lastName, email, encryptedPassword, authentication, false);
 			usersDao.insertObjects(user);
@@ -182,7 +179,6 @@ public class UserService {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	public User socialSignUpUser(User user) {
         ReflectionDao<User> usersDao = new ReflectionDao<>(User.class);
 

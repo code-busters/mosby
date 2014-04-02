@@ -14,7 +14,10 @@ import java.util.List;
 
 @WebServlet("/organizerPage")
 public class OrganizerPageServlet extends HttpServlet {
-    @Override
+
+	private static final long serialVersionUID = 1L;
+
+	@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getParameter("id") != null) {
             int organizerId = Integer.parseInt(request.getParameter("id"));

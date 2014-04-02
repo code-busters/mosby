@@ -22,7 +22,6 @@ public class EditTicketsPromoCodesServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getParameter("eventId") != null) {
             int eventId = Integer.parseInt(request.getParameter("eventId"));

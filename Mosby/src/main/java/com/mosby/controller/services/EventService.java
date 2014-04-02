@@ -33,8 +33,6 @@ public class EventService {
     
 	private static Logger log = Logger.getLogger(EventService.class);
 	
-	
-	@SuppressWarnings("unchecked")
 	public int create(HttpServletRequest request, HttpServlet servlet) throws IllegalStateException, IOException, ServletException {
 
 //      Image uploading

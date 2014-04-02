@@ -9,7 +9,10 @@ import java.io.IOException;
 
 @WebServlet("/error")
 public class ErrorServlet extends HttpServlet {
-    @Override
+
+	private static final long serialVersionUID = 1L;
+
+	@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("/pages/error.jsp").forward(request, response);
     }
