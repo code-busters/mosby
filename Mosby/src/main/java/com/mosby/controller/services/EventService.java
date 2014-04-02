@@ -404,12 +404,12 @@ public class EventService {
 			ticketsService.delete(request, ticket.getId());
 		}
 		ReflectionDao<TicketInfo> ticketInfoDao = new ReflectionDao<>(TicketInfo.class);
-		List <TicketInfo> ticketInfoList = new ReadGenericObjectService<>(TicketInfo.class).readListByField("event_ref", id);
+		List <TicketInfo> ticketInfoList = new ReadGenericObjectService<>(TicketInfo.class).readListByField("event_ref=", id);
 		for (TicketInfo ticketInfo : ticketInfoList) {
 			ticketInfoDao.deleteObjects(ticketInfo);
 		}
 		ReflectionDao<PromoCode> promoCodeDao = new ReflectionDao<>(PromoCode.class);
-		List <PromoCode> promoCodeList = new ReadGenericObjectService<>(PromoCode.class).readListByField("event_ref", id);
+		List <PromoCode> promoCodeList = new ReadGenericObjectService<>(PromoCode.class).readListByField("event_ref=", id);
 		for (PromoCode promoCode : promoCodeList) {
 			promoCodeDao.deleteObjects(promoCode);
 		}

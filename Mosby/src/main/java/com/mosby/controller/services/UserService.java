@@ -31,7 +31,7 @@ public class UserService {
 		ReflectionDao<User> usersDao = new ReflectionDao<>(User.class);
 
 		if (!usersDao.selectObjects(5,"email=", email).isEmpty()) {
-			user = usersDao.selectObjects(5,"email", email).get(0);
+			user = usersDao.selectObjects(5,"email=", email).get(0);
 			if(!user.isActive()){
 				return null;
 			}
@@ -55,7 +55,7 @@ public class UserService {
 		System.out.println(user.toString());
 		
 		if (!usersDao.selectObjects(5,"email=", user.getEmail()).isEmpty()) {
-			User usr = usersDao.selectObjects(5,"email", user.getEmail()).get(0);
+			User usr = usersDao.selectObjects(5,"email=", user.getEmail()).get(0);
 
 			user.setId(usr.getId());
 			user.setCity(usr.getCity());
@@ -173,7 +173,7 @@ public class UserService {
 
 			
 			new MailUtils().sendMessage(email, authentication);
-			user = usersDao.selectObjects(5,"email", email).get(0);
+			user = usersDao.selectObjects(5,"email=", email).get(0);
 
 			return user;
 		}
@@ -186,7 +186,7 @@ public class UserService {
             return null;
         } else {
             usersDao.insertObjects(user);
-            user = usersDao.selectObjects(5,"email", user.getEmail()).get(0);
+            user = usersDao.selectObjects(5,"email=", user.getEmail()).get(0);
             return user;
         }
 	}
