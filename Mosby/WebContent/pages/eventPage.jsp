@@ -157,7 +157,7 @@
                 </div>
                 <div>
 	                <a class="btn btn-social-icon btn-facebook" href="${calendarURL}">
-	                    <i class="fa fa-facebook">Add to google calendar</i>
+	                    <i class="fa fa-facebook"><fmt:message key="eventPage.addToGoogleCalendar"/></i>
 	                </a>
                 </div>
             </form>

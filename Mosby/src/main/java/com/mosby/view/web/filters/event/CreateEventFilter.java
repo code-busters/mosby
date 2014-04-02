@@ -82,8 +82,7 @@ public class CreateEventFilter implements Filter {
 			if (event == null || validatorUtils.getErrors().isEmpty() == false) {
 
 				request.setAttribute("errors", validatorUtils.getErrors());
-				request.setAttribute("event_name", name);
-				request.setAttribute("event_location", location);
+				request.setAttribute("event_name", request.getParameter("event_name"));
 				request.setAttribute("event_location", request.getParameter("event_location"));
 				request.setAttribute("start_date", request.getParameter("start_date"));
 				request.setAttribute("start_time", request.getParameter("start_time"));
