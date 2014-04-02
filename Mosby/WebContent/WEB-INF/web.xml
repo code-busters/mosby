@@ -62,19 +62,19 @@
     <url-pattern>/updateEvent</url-pattern>
   </filter-mapping>
   <filter>
-    <filter-name>CreateEventFilter</filter-name>
-    <filter-class>main.java.com.mosby.view.web.filters.event.CreateEventFilter</filter-class>
+    <filter-name>EventFilter</filter-name>
+    <filter-class>main.java.com.mosby.view.web.filters.event.EventFilter</filter-class>
   </filter>
   <filter-mapping>
-    <filter-name>CreateEventFilter</filter-name>
+    <filter-name>EventFilter</filter-name>
     <url-pattern>/createEvent</url-pattern>
   </filter-mapping>
   <filter>
-    <filter-name>CreatePromoCodeFilter</filter-name>
-    <filter-class>main.java.com.mosby.view.web.filters.event.CreatePromoCodeFilter</filter-class>
+    <filter-name>PromoCodeFilter</filter-name>
+    <filter-class>main.java.com.mosby.view.web.filters.event.PromoCodeFilter</filter-class>
   </filter>
   <filter-mapping>
-    <filter-name>CreatePromoCodeFilter</filter-name>
+    <filter-name>PromoCodeFilter</filter-name>
     <url-pattern>/createEvent</url-pattern>
   </filter-mapping>
   <filter>

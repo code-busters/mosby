@@ -27,10 +27,10 @@ import main.java.com.mosby.model.EventType;
 import main.java.com.mosby.model.PromoCode;
 import main.java.com.mosby.utils.ValidatorUtils;
 
-@WebFilter("/CreatePromoCodeFilter")
-public class CreatePromoCodeFilter implements Filter {
+@WebFilter("/PromoCodeFilter")
+public class PromoCodeFilter implements Filter {
 
-	public CreatePromoCodeFilter() {
+	public PromoCodeFilter() {
 
 	}
 
@@ -93,11 +93,16 @@ public class CreatePromoCodeFilter implements Filter {
 
 				request.setAttribute("errors", validatorUtils.getErrors());
 				request.setAttribute("event_name", request.getParameter("event_name"));
-				request.setAttribute("event_location", request.getParameter("event_location"));
 				request.setAttribute("start_date", request.getParameter("start_date"));
 				request.setAttribute("start_time", request.getParameter("start_time"));
 				request.setAttribute("end_date", request.getParameter("end_date"));
 				request.setAttribute("end_time", request.getParameter("end_time"));
+				request.setAttribute("event_category", request.getParameter("event_category"));
+				request.setAttribute("event_type", request.getParameter("event_type"));
+				request.setAttribute("event_description", request.getParameter("event_description"));
+				request.setAttribute("event_location", request.getParameter("event_location"));
+				request.setAttribute("privacy_event", request.getParameter("privacy_event"));
+				request.setAttribute("organizer", request.getParameter("organizer"));
 				request.getRequestDispatcher("/pages/createEvent.jsp").forward(
 						request, response);
 			} else {

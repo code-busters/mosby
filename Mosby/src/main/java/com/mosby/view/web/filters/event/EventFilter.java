@@ -22,10 +22,10 @@ import main.java.com.mosby.model.EventCategory;
 import main.java.com.mosby.model.EventType;
 import main.java.com.mosby.utils.ValidatorUtils;
 
-@WebFilter("/CreateEventFilter")
-public class CreateEventFilter implements Filter {
+@WebFilter("/EventFilter")
+public class EventFilter implements Filter {
 
-	public CreateEventFilter() {
+	public EventFilter() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -33,7 +33,6 @@ public class CreateEventFilter implements Filter {
 		// TODO Auto-generated method stub
 	}
 
-	@SuppressWarnings("unchecked")
 	public void doFilter(ServletRequest req, ServletResponse res,
 			FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) req;
@@ -83,11 +82,16 @@ public class CreateEventFilter implements Filter {
 
 				request.setAttribute("errors", validatorUtils.getErrors());
 				request.setAttribute("event_name", request.getParameter("event_name"));
-				request.setAttribute("event_location", request.getParameter("event_location"));
 				request.setAttribute("start_date", request.getParameter("start_date"));
 				request.setAttribute("start_time", request.getParameter("start_time"));
 				request.setAttribute("end_date", request.getParameter("end_date"));
 				request.setAttribute("end_time", request.getParameter("end_time"));
+				request.setAttribute("event_category", request.getParameter("event_category"));
+				request.setAttribute("event_type", request.getParameter("event_type"));
+				request.setAttribute("event_description", request.getParameter("event_description"));
+				request.setAttribute("event_location", request.getParameter("event_location"));
+				request.setAttribute("privacy_event", request.getParameter("privacy_event"));
+				request.setAttribute("organizer", request.getParameter("organizer"));
 				request.getRequestDispatcher("/pages/createEvent.jsp").forward(
 						request, response);
 			} else {

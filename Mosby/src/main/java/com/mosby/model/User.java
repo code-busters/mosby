@@ -1,12 +1,15 @@
 package main.java.com.mosby.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import main.java.com.mosby.model.annotations.dao.*;
 import main.java.com.mosby.model.annotations.validate.*;
 
 @Table(name = "users")
-public class User {
+public class User implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 	@Column(name = "id")
 	private int id;
