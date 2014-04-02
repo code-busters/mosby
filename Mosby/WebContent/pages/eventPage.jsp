@@ -121,12 +121,6 @@
                                            max="${ticketInfo.maxNumber}">
                                         <%--<span class="additional-input-info">Min ${ticketInfo.minNumber}</span>--%>
                                     <span class="additional-input-info"><fmt:message key="eventPage.max"/> ${ticketInfo.maxNumber}</span>
-                                        <%--<select name="ticket_quantity_${ticketInfo.id}" class="select-block ticket-quantity"--%>
-                                        <%--form="register-for-event-form">--%>
-                                        <%--<c:forEach var="quantity" begin="0" end="${ticketInfo.maxNumber}" step="1">--%>
-                                        <%--<option value="${quantity}">${quantity}</option>--%>
-                                        <%--</c:forEach>--%>
-                                        <%--</select>--%>
                                 </div>
                             </div>
                         </c:forEach>
@@ -155,30 +149,28 @@
                         <fmt:message key="eventPage.orderNow"/>
                     </button>
                 </div>
-                <div>
-	                <a class="btn btn-social-icon btn-facebook" href="${calendarURL}">
-	                    <i class="fa fa-facebook"><fmt:message key="eventPage.addToGoogleCalendar"/></i>
-	                </a>
-                </div>
             </form>
         </div>
-        <div class="organizer-details col-md-3">
-            <img src="media/images/users/GDG-Lviv.png">
-
-            <h3>GDG Lviv</h3>
-
-            <p>
-                Google Developer Group (GDG) Lviv meets for about two times a month in office of Lviv's IT companies.
-                The typical meeting formats are techtalk, bar camp or training, also from time to time we organize
-                hackathons.
-                <br>
-                <br>Who we are? Open and volunteer geek communities who create exciting projects and share experience
-                about Google technology with passion.
-            </p>
-            <span class="fui-mail"></span>
-            <span class="fui-facebook"></span>
-            <span class="fui-googleplus"></span>
-            <span class="fui-twitter"></span>
+        <div class="col-md-3">
+            <div class="organizer-details col-md-12">
+                <img src="media/images/users/GDG-Lviv.png">
+                <h3>GDG Lviv</h3>
+                <p>
+                    Google Developer Group (GDG) Lviv meets for about two times a month in office of Lviv's IT companies. The typical meeting formats are techtalk, bar camp or training, also from time to time we organize hackathons.
+                    <br>
+                    <br>Who we are? Open and volunteer geek communities who create exciting projects and share experience about Google technology with passion.
+                </p>
+                <span class="fui-mail"></span>
+                <span class="fui-facebook"></span>
+                <span class="fui-googleplus"></span>
+                <span class="fui-twitter"></span>
+            </div>
+            <div class="event-actions col-md-12">
+                <a href="${calendarURL}" class="btn btn-block btn-lg btn-primary">
+                    <span class="fui-plus"></span>
+                    <fmt:message key="eventPage.addToGoogleCalendar"/>
+                </a>
+            </div>
         </div>
     </div>
 

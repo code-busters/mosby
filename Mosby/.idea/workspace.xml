@@ -65,11 +65,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="createEvent.jsp" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="createEvent.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebContent/pages/createEvent.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.67333335" vertical-offset="1908" max-vertical-offset="5049">
+            <state vertical-scroll-proportion="-15.538462" vertical-offset="1908" max-vertical-offset="5049">
               <caret line="136" column="109" selection-start-line="136" selection-start-column="64" selection-end-line="136" selection-end-column="64" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="eventPage.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebContent/pages/eventPage.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.076923" vertical-offset="2465" max-vertical-offset="4165">
+              <caret line="165" column="110" selection-start-line="165" selection-start-column="49" selection-end-line="165" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="styles.css" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/WebContent/css/styles.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.32108626" vertical-offset="22562" max-vertical-offset="23256">
+              <caret line="1339" column="51" selection-start-line="1339" selection-start-column="25" selection-end-line="1339" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -129,11 +149,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/utils/ValidatorUtils.java" />
         <option value="$PROJECT_DIR$/WebContent/pages/parts/footer.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/view/web/filters/event/CreateTicketsFilter.java" />
-        <option value="$PROJECT_DIR$/WebContent/pages/eventPage.jsp" />
         <option value="$PROJECT_DIR$/WebContent/pages/aboutUs.jsp" />
         <option value="$PROJECT_DIR$/WebContent/pages/search.jsp" />
         <option value="$PROJECT_DIR$/WebContent/pages/parts/navbar-unfixed.jsp" />
-        <option value="$PROJECT_DIR$/WebContent/css/styles.css" />
         <option value="$PROJECT_DIR$/WebContent/pages/index.jsp" />
         <option value="$PROJECT_DIR$/WebContent/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/WebContent/css/simple-sidebar.css" />
@@ -146,6 +164,8 @@
         <option value="$PROJECT_DIR$/WebContent/pages/userProfile/myOrganizers.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/controller/services/GooglePlusService.java" />
         <option value="$PROJECT_DIR$/WebContent/pages/createEvent.jsp" />
+        <option value="$PROJECT_DIR$/WebContent/pages/eventPage.jsp" />
+        <option value="$PROJECT_DIR$/WebContent/css/styles.css" />
       </list>
     </option>
   </component>
@@ -2089,12 +2109,12 @@
       <workItem from="1396382249070" duration="4554000" />
       <workItem from="1396423446683" duration="2084000" />
       <workItem from="1396428261663" duration="2952000" />
-      <workItem from="1396433978567" duration="1627000" />
+      <workItem from="1396433978567" duration="3464000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="171584000" />
+    <option name="totallyTimeSpent" value="173421000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
@@ -2108,7 +2128,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29220778" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29220778" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -2382,25 +2402,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/css/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="22426" max-vertical-offset="23120">
-          <caret line="1354" column="1" selection-start-line="1354" selection-start-column="1" selection-end-line="1354" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.1677316" vertical-offset="663" max-vertical-offset="2805">
           <caret line="82" column="69" selection-start-line="82" selection-start-column="12" selection-end-line="82" selection-end-column="12" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/pages/eventPage.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-30.73077" vertical-offset="459" max-vertical-offset="4216">
-          <caret line="74" column="21" selection-start-line="74" selection-start-column="12" selection-end-line="74" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -2559,8 +2565,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/pages/createEvent.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.67333335" vertical-offset="1908" max-vertical-offset="5049">
+        <state vertical-scroll-proportion="-15.538462" vertical-offset="1908" max-vertical-offset="5049">
           <caret line="136" column="109" selection-start-line="136" selection-start-column="64" selection-end-line="136" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/pages/eventPage.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.076923" vertical-offset="2465" max-vertical-offset="4165">
+          <caret line="165" column="110" selection-start-line="165" selection-start-column="49" selection-end-line="165" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/css/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.32108626" vertical-offset="22562" max-vertical-offset="23256">
+          <caret line="1339" column="51" selection-start-line="1339" selection-start-column="25" selection-end-line="1339" selection-end-column="25" />
           <folding />
         </state>
       </provider>
