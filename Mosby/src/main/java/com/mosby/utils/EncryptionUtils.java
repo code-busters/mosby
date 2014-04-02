@@ -5,7 +5,6 @@ import org.apache.log4j.Logger;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import java.math.BigInteger;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
@@ -28,6 +27,9 @@ public class EncryptionUtils {
     public static String createHash(String password) {
         return createHash(password.toCharArray());
     }
+    public static String createHash(String password, int byteSize) {
+        return createHash(password.toCharArray(), byteSize);
+    }
 
     public static String createHash(char[] password) {
         SecureRandom random = new SecureRandom();
@@ -40,7 +42,21 @@ public class EncryptionUtils {
         } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
             log.error(e);
         }
-        return main.java.com.mosby.utils.StringUtils.concat(PBKDF2_ITERATIONS, ":", toHex(salt), ":", toHex(hash));
+        return StringUtils.concat(PBKDF2_ITERATIONS, ":", toHex(salt), ":", toHex(hash));
+    }
+
+    public static String createHash(char[] password, int byteSize) {
+        SecureRandom random = new SecureRandom();
+        byte[] salt = new byte[byteSize];
+        random.nextBytes(salt);
+
+        byte[] hash = new byte[0];
+        try {
+            hash = pbkdf2(password, salt, PBKDF2_ITERATIONS, byteSize);
+        } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+            log.error(e);
+        }
+        return toHex(hash);
     }
 
     private static byte[] pbkdf2(char[] password, byte[] salt, int iterations, int bytes)
@@ -93,25 +109,5 @@ public class EncryptionUtils {
             diff |= a[i] ^ b[i];
         }
         return diff == 0;
-    }
-
-    public static String getStringFromSHA256(String stringToEncrypt) {
-        MessageDigest messageDigest = null;
-        try {
-            messageDigest = MessageDigest.getInstance("SHA-256");
-        } catch (NoSuchAlgorithmException e) {
-            log.error(e);
-        }
-        messageDigest.update(stringToEncrypt.getBytes());
-        return byteArray2Hex(messageDigest.digest());
-    }
-
-    public static String byteArray2Hex(byte[] bytes) {
-        StringBuffer sb = new StringBuffer(bytes.length * 2);
-        for(final byte b : bytes) {
-            sb.append(HEX[(b & 0xF0) >> 4]);
-            sb.append(HEX[b & 0x0F]);
-        }
-        return sb.toString();
     }
 }

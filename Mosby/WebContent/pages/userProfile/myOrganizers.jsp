@@ -85,7 +85,7 @@
                                             <a id="open-falldown" href="#fakelink">
                                                 <span class="fui-new"></span>
                                             </a>
-                                            <a href="#">
+                                            <a href="<c:url value="/myOrganizers?delete=${organizer.id}"/>">
                                                 <span class="fui-trash"></span>
                                             </a>
                                         </div>

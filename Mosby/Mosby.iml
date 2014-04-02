@@ -65,6 +65,15 @@
     <orderEntry type="library" name="ezmorph-1.0.6" level="project" />
     <orderEntry type="library" name="itextpdf-5.5.0" level="project" />
     <orderEntry type="library" name="google-api-client-1.17.0-rc" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$APPLICATION_HOME_DIR$/lib/junit-4.11.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
 
