@@ -61,7 +61,7 @@
             <input type="hidden" name="language" value="${language}" />
             <div class="form-group">
                 <label for="event-name"><fmt:message key="createEvent.eventName"/></label>
-                <input type="text" class="form-control" placeholder="<fmt:message key="createEvent.chooseEventName"/>" name="event_name"
+                <input value="${event_name}" type="text" class="form-control" placeholder="<fmt:message key="createEvent.chooseEventName"/>" name="event_name"
                        id="event-name"
                        required/>
             </div>
@@ -96,10 +96,10 @@
                     <button type="button" class="btn">
                         <span class="fui-calendar"></span>
                     </button>
-                    <input type="text" placeholder="<fmt:message key="createEvent.startDate"/>" name="start_date" id="datepicker-start" readonly=""
+                    <input value="${start_date}" type="text" placeholder="<fmt:message key="createEvent.startDate"/>" name="start_date" id="datepicker-start" readonly=""
                            required>
                 </div>
-                <input type="time" class="form-control time" value="00:00" name="start_time" required>
+                <input type="time" class="form-control time" value="${start_time}" placeholder="00:00" name="start_time" required>
             </div>
             <div class="form-group">
                 <label for="datepicker-end"><fmt:message key="createEvent.endDateTime"/></label>
@@ -108,9 +108,9 @@
                     <button type="button" class="btn">
                         <span class="fui-calendar"></span>
                     </button>
-                    <input type="text" placeholder="<fmt:message key="createEvent.endDate"/>" name="end_date" id="datepicker-end" readonly="" required>
+                    <input value="${end_date}" type="text" placeholder="<fmt:message key="createEvent.endDate"/>" name="end_date" id="datepicker-end" readonly="" required>
                 </div>
-                <input type="time" class="form-control time" value="00:00" name="end_time" required>
+                <input type="time" class="form-control time" value="${end_time}" placeholder="00:00" name="end_time" required>
             </div>
 
 
@@ -120,8 +120,11 @@
                     <option value="-1">
                         <fmt:message key="createEvent.selectCategory"/>...
                     </option>
+                    <c:set var="selectedCategory" value="${event_category}"/>
                     <c:forEach items="${eventCategories}" var="category">
-                        <option value="${category.id}">
+                        <c:set var="tempCategory" value="${category.category}"/>
+                        <option value="${category.id}"
+                                <c:if test="${selectedCategory == tempCategory}"> selected </c:if>>
                                 ${category.category}
                         </option>
                     </c:forEach>
@@ -133,8 +136,11 @@
                     <option value="-1">
                         <fmt:message key="createEvent.selectType"/>...
                     </option>
+                    <c:set var="selectedType" value="${event_type}"/>
                     <c:forEach items="${eventTypes}" var="type">
-                        <option value="${type.id}">
+                        <c:set var="tempType" value="${type.type}"/>
+                        <option value="${type.id}"
+                                <c:if test="${selectedType == tempType}"> selected </c:if>>
                                 ${type.type}
                         </option>
                     </c:forEach>
@@ -142,13 +148,13 @@
             </div>
             <div class="form-group">
                 <label for="event-description"><fmt:message key="createEvent.eventDescription"/></label>
-                <textarea rows="4" placeholder="<fmt:message key="createEvent.tellUsersAboutYourEvent"/>" class="form-control"
+                <textarea value="${event_description}" rows="4" placeholder="<fmt:message key="createEvent.tellUsersAboutYourEvent"/>" class="form-control"
                           name="event_description"
-                          id="event-description" form="create-event-form"></textarea>
+                          id="event-description" form="create-event-form">${event_description}</textarea>
             </div>
             <div class="form-group">
                 <label for="event-location"><fmt:message key="createEvent.address"/></label>
-                <input type="text" class="form-control" placeholder="<fmt:message key="createEvent.enterAddressForYourEvent"/>" name="event_location"
+                <input value="${event_location}" type="text" class="form-control" placeholder="<fmt:message key="createEvent.enterAddressForYourEvent"/>" name="event_location"
                        id="event-location" onFocus="geolocate()"/>
             </div>
             <div class="form-group" id="googleMap" style="height:380px;"></div>
@@ -207,7 +213,7 @@
 
             <div class="form-group">
                 <span class="as-label"><fmt:message key="createEvent.listingPrivacy"/></span>
-                <label class="radio checked">
+                <label class="radio <c:if test="${privacy_event == '0'}"> checked </c:if>">
 							<span class="icons">
 								<span class="first-icon fui-radio-unchecked"></span>
 								<span class="second-icon fui-radio-checked"></span>
@@ -216,7 +222,7 @@
                     <fmt:message key="createEvent.publicEvent"/>
                     <span class="additional"><fmt:message key="createEvent.listThisEventOnEventbriteAndSearchEngines"/></span>
                 </label>
-                <label class="radio">
+                <label class="radio <c:if test="${privacy_event == '1'}"> checked </c:if>">
 							<span class="icons">
 								<span class="first-icon fui-radio-unchecked"></span>
 								<span class="second-icon fui-radio-checked"></span>
@@ -229,9 +235,10 @@
             <div class="form-group">
                 <label for="organizer"><fmt:message key="createEvent.organizeBy"/></label>
                 <select name="organizer" class="select-block" id="organizer" form="create-event-form">
-                    <c:forEach items="${organizers}" var="organizer">
-                        <option value="${organizer.id}">
-                                ${organizer.name}
+                    <c:forEach items="${organizers}" var="myOrganizer">
+                        <option value="${myOrganizer.id}"
+                                <c:if test="${myOrganizer.id == organizer}"> selected </c:if>>
+                                ${myOrganizer.name}
                         </option>
                     </c:forEach>
                 </select>

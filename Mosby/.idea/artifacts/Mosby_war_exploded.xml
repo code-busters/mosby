@@ -18,6 +18,7 @@
           <element id="library" level="project" name="ezmorph-1.0.6" />
           <element id="library" level="project" name="itextpdf-5.5.0" />
           <element id="library" level="project" name="google-api-client-1.17.0-rc" />
+          <element id="library" level="project" name="google-api-services-calendar-v3-rev77-1.17.0-rc" />
         </element>
       </element>
       <element id="library" level="module" name="mysql-connector-java-5.1.28-bin.jar" module-name="Mosby" />

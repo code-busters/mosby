@@ -37,7 +37,7 @@
     <div class="row display-error">
         <div class="col-md-6">
             <div class="col-md-12">
-                <a class="navbar-brand" href="#"></a>
+                <a class="navbar-brand" href="<c:url value="/index"/>"></a>
             </div>
             <p><fmt:message key="error.ohNoSomethingHasGoneWrong"/>...</p>
             <label for="search"><fmt:message key="error.maybeTrySearchingForSomething"/>?</label>

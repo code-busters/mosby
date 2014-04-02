@@ -155,6 +155,11 @@
                         <fmt:message key="eventPage.orderNow"/>
                     </button>
                 </div>
+                <div>
+	                <a class="btn btn-social-icon btn-facebook" href="${calendarURL}">
+	                    <i class="fa fa-facebook"><fmt:message key="eventPage.addToGoogleCalendar"/></i>
+	                </a>
+                </div>
             </form>
         </div>
         <div class="organizer-details col-md-3">

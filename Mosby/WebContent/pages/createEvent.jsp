@@ -220,7 +220,7 @@
 							</span>
                     <input type="radio" name="privacy_event" id="public-event" value="0" data-toggle="radio">
                     <fmt:message key="createEvent.publicEvent"/>
-                    <span class="additional"><fmt:message key="createEvent.listThisEventOnEventbriteAndSearchEngines"/></span>
+                    <span class="additional"><fmt:message key="createEvent.listThisEventOnMosbyAndSearchEngines"/></span>
                 </label>
                 <label class="radio <c:if test="${privacy_event == '1'}"> checked </c:if>">
 							<span class="icons">
@@ -235,10 +235,10 @@
             <div class="form-group">
                 <label for="organizer"><fmt:message key="createEvent.organizeBy"/></label>
                 <select name="organizer" class="select-block" id="organizer" form="create-event-form">
-                    <c:forEach items="${organizers}" var="organizer">
-                        <option value="${organizer.id}"
-                                <c:if test="${organizer.id == organizer}"> selected </c:if>>
-                                ${organizer.name}
+                    <c:forEach items="${organizers}" var="myOrganizer">
+                        <option value="${myOrganizer.id}"
+                                <c:if test="${myOrganizer.id == organizer}"> selected </c:if>>
+                                ${myOrganizer.name}
                         </option>
                     </c:forEach>
                 </select>

@@ -74,6 +74,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="google-api-services-calendar-v3-rev77-1.17.0-rc" level="project" />
   </component>
 </module>
 

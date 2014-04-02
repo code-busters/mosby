@@ -1,10 +1,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="language"
+       value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
+       scope="session"/>
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="main.java.com.mosby.i18n.text"/>
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
-    <title>About Us- Mosby - event management</title>
+    <title><fmt:message key="aboutUs.aboutUs"/> - Mosby - <fmt:message key="title"/></title>
     <link rel="icon" type="image/png" href="media/images/favicon.png"/>
     <meta name="description" content="Mosby - make it simple. New event management system"/>
 
@@ -39,21 +46,19 @@
 
     <div class="row">
         <div class="on-background-block-header col-md-10 col-md-offset-1">
-            <h4>About Us</h4>
+            <h4><fmt:message key="aboutUs.aboutUs"/></h4>
         </div>
         <div class="on-background-block col-md-10 col-md-offset-1">
             <div class="text-center">
-                <h2>The foundation of all great brands is trust.</h2>
+                <h2><fmt:message key="aboutUs.theFoundationOfAllGreatBrandsIsTrust"/>.</h2>
 
-                <p class="lead">"The way a team plays as a whole determines its success. You may have the greatest bunch
-                    of individual stars in the world, but if they don't play together, the club won't be worth a
-                    dime."</p>
+                <p class="lead">"<fmt:message key="aboutUs.theWayA"/>"</p>
             </div>
             <ul class="ch-grid">
                 <li>
                     <div class="ch-item" style="background-image:url(media/images/team/oleh.jpg)">
                         <div class="ch-info">
-                            <h3>Oleh Zasadnyy</h3>
+                            <h3><fmt:message key="aboutUs.olehZasadnyy"/></h3>
 
                             <p>Team lead, front-end, google+</p>
 								<span>
@@ -73,7 +78,7 @@
                 <li>
                     <div class="ch-item" style="background-image:url(media/images/team/oleksii.jpg)">
                         <div class="ch-info">
-                            <h3>Oleksii Khamar</h3>
+                            <h3><fmt:message key="aboutUs.oleksiiKhamar"/></h3>
 
                             <p>Validation, filters, i18n</p>
 								<span>
@@ -90,7 +95,7 @@
                 <li>
                     <div class="ch-item" style="background-image:url(media/images/team/oles.jpg)">
                         <div class="ch-info">
-                            <h3>Oles Laba</h3>
+                            <h3><fmt:message key="aboutUs.olesLaba"/></h3>
 
                             <p>DAO, Connection</p>
 								<span>
@@ -110,7 +115,7 @@
                 <li>
                     <div class="ch-item" style="background-image:url(media/images/team/andrew.jpg)">
                         <div class="ch-info">
-                            <h3>Andrew Prots</h3>
+                            <h3><fmt:message key="aboutUs.andrewProts"/></h3>
 
                             <p>Servlets, services</p>
 								<span>
@@ -130,9 +135,9 @@
                 <li>
                     <div class="ch-item" style="background-image:url(media/images/team/bohdan.jpg)">
                         <div class="ch-info">
-                            <h3>Bohdan Shchudlo</h3>
+                            <h3><fmt:message key="aboutUs.bohdanShchudlo"/></h3>
 
-                            <p>Facebook API</p>
+                            <p>Facebook API, Google Calendar</p>
 								<span>
 									<a href="https://www.facebook.com/shchudlobohdan" target="_blank">
                                         <i class="fa fa-facebook"></i>

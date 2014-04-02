@@ -55,19 +55,19 @@
             </div>
             <div id="sb-search" class="sb-search">
                 <form action="search" method="POST">
-                    <input class="sb-search-input" placeholder="Enter your search term..." type="search" value="This is test search" name="search_again" id="search">
+                    <input class="sb-search-input" placeholder="<fmt:message key="search.enterYourSearchTerm"/>..." type="search" value="<fmt:message key="search.enterYourSearchTerm"/>..." name="search_again" id="search">
                     <input class="sb-search-submit" type="submit" value="search-again">
                     <span class="sb-icon-search"></span>
                     <a id="open-falldown-search" href="#fakelink">
                         <span class="sb-icon-gear"></span>
                     </a>
                     <div id="falldown" class="falldown col-md-12">
-                        <h6>Adjust search</h6>
+                        <h6><fmt:message key="search.adjustSearch"/></h6>
                         <div class="form-group">
-                            <label for="event-category">Category</label>
+                            <label for="event-category"><fmt:message key="search.category"/></label>
                             <select name="event_category" class="select-block" id="event-category">
                                 <option value="-1">
-                                    Select categoty...
+                                    <fmt:message key="search.selectCategory"/>...
                                 </option>
                                 <c:forEach items="${eventCategories}" var="category">
                                     <option value="${category.id}">
@@ -77,10 +77,10 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="event-type">Type</label>
+                            <label for="event-type"><fmt:message key="search.type"/></label>
                             <select name="event_type" class="select-block" id="event-type">
                                 <option value="-1">
-                                    Select type...
+                                    <fmt:message key="search.selectType"/>...
                                 </option>
                                 <c:forEach items="${eventTypes}" var="type">
                                     <option value="${type.id}">
@@ -90,23 +90,23 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <span class="as-label">Date</span>
+                            <span class="as-label"><fmt:message key="search.date"/></span>
                             <div class="input-prepend input-datepicker">
                                 <button type="button" class="btn">
                                     <span class="fui-calendar"></span>
                                 </button>
-                                <input type="text" placeholder="Start date" name="start_date" id="datepicker-start" readonly="">
+                                <input type="text" placeholder="<fmt:message key="search.startDate"/>" name="start_date" id="datepicker-start" readonly="">
                             </div>
                             <span>-</span>
                             <div class="input-prepend input-datepicker">
                                 <button type="button" class="btn">
                                     <span class="fui-calendar"></span>
                                 </button>
-                                <input type="text" placeholder="End date" name="end_date" id="datepicker-end" readonly="">
+                                <input type="text" placeholder="<fmt:message key="search.endDate"/>" name="end_date" id="datepicker-end" readonly="">
                             </div>
                         </div>
                         <div class="form-group">
-                            <span class="as-label">Price</span>
+                            <span class="as-label"><fmt:message key="search.price"/></span>
                             <input type="number" class="form-control price" placeholder="1" value="1" name="min_price" id="min-price" min="0" />
                             <input type="number" class="form-control price" placeholder="1" name="max_price" id="max-price" min="0" />
                         </div>
@@ -136,7 +136,7 @@
                             ${event.description}
                     </p>
                     <div class="text-right read-more">
-                        <a href="<c:url value="/eventPage?eventId=${event.id}"/>">Read more ></a>
+                        <a href="<c:url value="/eventPage?eventId=${event.id}"/>"><fmt:message key="search.readMore"/> >></a>
                     </div>
                 </div>
             </div>
