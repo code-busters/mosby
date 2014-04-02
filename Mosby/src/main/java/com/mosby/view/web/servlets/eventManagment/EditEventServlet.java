@@ -29,18 +29,6 @@ public class EditEventServlet extends HttpServlet {
 	@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getParameter("eventId") != null) {
-            HttpSession session = request.getSession(false);
-            User sessionUser = (User) session.getAttribute("user");
-            int userId = sessionUser.getId();
-            int eventId = Integer.parseInt(request.getParameter("eventId"));
-            Event event = new ReadGenericObjectService<>(Event.class).readById(eventId);
-            List<Organizer> organizersList = new ReadGenericObjectService<>(Organizer.class).readListByField("user_ref", userId);
-            List<EventType> listEventTypes = new ReadGenericObjectService<>(EventType.class).readList();
-            request.setAttribute("eventTypes", listEventTypes);
-    		List<EventCategory> listEventCategories = new ReadGenericObjectService<>(EventCategory.class).readList();
-    		request.setAttribute("eventCategories", listEventCategories);
-            request.setAttribute("organizers", organizersList);
-            request.setAttribute("event", event);
             request.getRequestDispatcher("/pages/eventManagement/editEvent.jsp").forward(request, response);
         } else {
             response.sendRedirect("index");
