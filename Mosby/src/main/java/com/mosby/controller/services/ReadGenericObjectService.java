@@ -1,8 +1,8 @@
 package main.java.com.mosby.controller.services;
 
-import java.util.List;
-
 import main.java.com.mosby.controller.dao.ReflectionDao;
+
+import java.util.List;
 
 public class ReadGenericObjectService<T> {
 		private Class<T> type;
@@ -19,7 +19,7 @@ public class ReadGenericObjectService<T> {
 			} catch (InstantiationException | IllegalAccessException e) {
 				e.printStackTrace();
 			}
-			List<T> list = (List<T>) tDao.selectObjects("", null);
+			List<T> list = (List<T>) tDao.selectObjects(4);
 			return (List<T>) list;
 		}
 		
@@ -30,7 +30,7 @@ public class ReadGenericObjectService<T> {
 			} catch (InstantiationException | IllegalAccessException e) {
 				e.printStackTrace();
 			}
-			List<T> list = (List<T>) tDao.selectObjects(fieldName, variable);
+			List<T> list = (List<T>) tDao.selectObjects(5,fieldName, variable);
 			return (List<T>) list;
 		}
 
@@ -42,8 +42,8 @@ public class ReadGenericObjectService<T> {
 			} catch (InstantiationException | IllegalAccessException e) {
 				e.printStackTrace();
 			}
-			if(!tDao.selectObjects("id", id).isEmpty()){
-			type1 = tDao.selectObjects("id", id).get(0);
+			if(!tDao.selectObjects(5,"id", id).isEmpty()){
+			type1 = tDao.selectObjects(5,"id", id).get(0);
 			return type1;
 			} else {
 				return null;

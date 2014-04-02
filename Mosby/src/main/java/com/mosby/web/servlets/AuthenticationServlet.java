@@ -1,6 +1,7 @@
 package main.java.com.mosby.web.servlets;
 
-import java.io.IOException;
+import main.java.com.mosby.controller.dao.ReflectionDao;
+import main.java.com.mosby.model.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,9 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import main.java.com.mosby.controller.dao.ReflectionDao;
-import main.java.com.mosby.model.User;
+import java.io.IOException;
 
 @WebServlet("/authentication")
 public class AuthenticationServlet extends HttpServlet {
@@ -23,9 +22,8 @@ public class AuthenticationServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String code = request.getParameter("authentication_code");
-		User user = new User();
 		ReflectionDao<User> usersDao = new ReflectionDao<>(User.class);
-		user = usersDao.selectObjects("authentication_code", code).get(0);
+        User user = usersDao.selectObjects(5,"authentication_code", code).get(0);
 		user.setActive(true);
 		System.out.println(code);
 		usersDao.updateObjects(user);

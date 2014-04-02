@@ -18,34 +18,31 @@ import java.util.List;
 @WebFilter("/EventAttributesFilter")
 public class EventAttributesFilter implements Filter {
 
-	@SuppressWarnings("unchecked")
-	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
+    @SuppressWarnings("unchecked")
+    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
 
-		HttpServletRequest request = (HttpServletRequest) req;
-		HttpServletResponse response = (HttpServletResponse) res;
-		HttpSession session = request.getSession(false);
+        HttpServletRequest request = (HttpServletRequest) req;
+        HttpServletResponse response = (HttpServletResponse) res;
+        HttpSession session = request.getSession(false);
 
-		if ((session.getAttribute("eventTypes") == null) || (session.getAttribute("eventCategories") == null)) {
-			
-			List<EventType> listEventTypes = new ReadGenericObjectService<EventType>((Class<EventType>) new EventType().getClass()).readList();
-			session.setAttribute("eventTypes", listEventTypes);
-			
-			List<EventCategory> listEventCategories = new ReadGenericObjectService<EventCategory>((Class<EventCategory>) new EventCategory().getClass()).readList();
-			session.setAttribute("eventCategories", listEventCategories);
-			
-	        User sessionUser = (User) session.getAttribute("user");
-	        int userId = sessionUser.getId();
-	        List<Organizer> organizersList = new ReadGenericObjectService<>(Organizer.class).readListByField("user_ref", userId);
-	        session.setAttribute("organizers", organizersList);
-		}
-		chain.doFilter(request, response);
-	}
+        List<EventType> listEventTypes = new ReadGenericObjectService<>(EventType.class).readList();
+        session.setAttribute("eventTypes", listEventTypes);
 
-	@Override
-	public void destroy() {
-	}
+        List<EventCategory> listEventCategories = new ReadGenericObjectService<>(EventCategory.class).readList();
+        session.setAttribute("eventCategories", listEventCategories);
 
-	@Override
-	public void init(FilterConfig arg0) throws ServletException {
-	}
+        User sessionUser = (User) session.getAttribute("user");
+        int userId = sessionUser.getId();
+        List<Organizer> organizersList = new ReadGenericObjectService<>(Organizer.class).readListByField("user_ref", userId);
+        session.setAttribute("organizers", organizersList);
+        chain.doFilter(request, response);
+    }
+
+    @Override
+    public void destroy() {
+    }
+
+    @Override
+    public void init(FilterConfig arg0) throws ServletException {
+    }
 }

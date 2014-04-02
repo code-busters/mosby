@@ -1,187 +1,181 @@
 package main.java.com.mosby.controller.dao;
 
+import main.java.com.mosby.controller.persistence.ConnectionManager;
+import main.java.com.mosby.controller.transformers.ReflectionTransformer;
+import org.apache.log4j.Logger;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.math.BigDecimal;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 
-
-import org.apache.log4j.Logger;
-
-import main.java.com.mosby.controller.persistence.ConnectionManager;
-import main.java.com.mosby.controller.transformers.ReflectionTransformer;
-
-
 public class ReflectionDao<T> {
 
-	private static Logger logger = Logger.getLogger(ReflectionDao.class);
-	
-	private Class<T> type;
-	private String query;
-	private ReflectionTransformer<T> reflectionTransformer;
-	private QueryStatements<T> queryStatements;
+    private static Logger logger = Logger.getLogger(ReflectionDao.class);
 
-	public ReflectionDao(Class<T> type) {
-		this.type = type;
-		this.reflectionTransformer = new ReflectionTransformer<>();
-		this.queryStatements = new QueryStatements<>(type);
-		this.query = null;
-	}
+    private Class<T> type;
+    private String query;
+    private ReflectionTransformer<T> reflectionTransformer;
+    private QueryStatements<T> queryStatements;
 
-	public Class<T> getType() {
-		return type;
-	}
+    public ReflectionDao(Class<T> type) {
+        this.type = type;
+        this.reflectionTransformer = new ReflectionTransformer<>();
+        this.queryStatements = new QueryStatements<>(type);
+        this.query = null;
+    }
 
-	public void setType(Class<T> type) {
-		this.type = type;
-	}
+    public Class<T> getType() {
+        return type;
+    }
 
-	public String getQuery() {
-		return query;
-	}
+    public void setType(Class<T> type) {
+        this.type = type;
+    }
 
-	public void setQuery(String queryStatement) {
-		this.query = queryStatement;
-	}
-	
-	public List<T> selectObjects(Object... whereArguments) {//throws Exception {
-		List<T> objects = new ArrayList<>();
-		try (Connection connection = ConnectionManager.getInstance().getConnection()) {
-			connection.setAutoCommit(false);
-			query = queryStatements.createSelectQuery(whereArguments);
+    public String getQuery() {
+        return query;
+    }
 
-			PreparedStatement preparedStatement = (PreparedStatement) connection
-					.prepareStatement(query);
-			ResultSet resultSet = preparedStatement.executeQuery();
-			connection.commit();
-			
-			while (resultSet.next()) {
-				objects.add(reflectionTransformer.fromRStoObject(
-						type.newInstance(), resultSet, type, false));
-			}
+    public void setQuery(String queryStatement) {
+        this.query = queryStatement;
+    }
 
-			resultSet.close();
-			preparedStatement.close();
-		} catch (ClassNotFoundException | SQLException | InstantiationException
-				| IllegalAccessException e) {
-			logger.error("SQL Select exception", e);
-		}
-		return objects;
-	}
-	
-	public List<Long> selectAggregateObjects(String aggregateFunction, Object... whereArguments) {//throws Exception {
-		List<Long> objects = new ArrayList<>();
-		Long integer = 0L;
-		ReflectionTransformer<Long> integerTransformer = new ReflectionTransformer<>();
-		try (Connection connection = ConnectionManager.getInstance().getConnection()) {
-			connection.setAutoCommit(false);
-			query = queryStatements.createAggregateSelectQuery(aggregateFunction, whereArguments);
-			
-			PreparedStatement preparedStatement = (PreparedStatement) connection
-					.prepareStatement(query);
-			ResultSet resultSet = preparedStatement.executeQuery();
-			connection.commit();
-			
-			while (resultSet.next()) {
-				objects.add(integerTransformer.fromRStoObject(
-						integer, resultSet, Long.class, true));
-			}
+    public List<T> selectObjects(int depth, Object... whereArguments) {
+        List<T> objects = new ArrayList<>();
+        try (Connection connection = ConnectionManager.getInstance().getConnection()) {
+            connection.setAutoCommit(false);
+            query = queryStatements.createSelectQuery(whereArguments);
 
-			resultSet.close();
-			preparedStatement.close();
-		} catch (ClassNotFoundException | SQLException e) {
-			logger.error("SQL Select exception", e);
-		}
-		return objects;
-	}
+            PreparedStatement preparedStatement = (PreparedStatement) connection
+                    .prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            connection.commit();
 
-	public int insertObjects(T object) {//throws Exception {
-		int generatedId = -1;
-		try (Connection connection = ConnectionManager.getInstance().getConnection()) {
-			connection.setAutoCommit(false);
-			query = queryStatements.createInsertQuery();
+            while (resultSet.next()) {
+                objects.add(reflectionTransformer.fromRStoObject(
+                        type.newInstance(), resultSet, type, depth - 1, false));
+            }
 
-			PreparedStatement preparedStatement = (PreparedStatement) connection
-					.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            resultSet.close();
+            preparedStatement.close();
+        } catch (ClassNotFoundException | SQLException | InstantiationException
+                | IllegalAccessException e) {
+            logger.error("SQL Select exception", e);
+        }
+        return objects;
+    }
 
-			preparedStatement = (PreparedStatement) reflectionTransformer
-					.fromObjectToStatement(preparedStatement, type, object,
-							false);
+    public List<BigDecimal> selectAggregateObjects(String aggregateFunction, Object... whereArguments) {
+        List<BigDecimal> objects = new ArrayList<>();
+        BigDecimal integer = new BigDecimal(0);
+        ReflectionTransformer<BigDecimal> integerTransformer = new ReflectionTransformer<>();
+        try (Connection connection = ConnectionManager.getInstance().getConnection()) {
+            connection.setAutoCommit(false);
+            query = queryStatements.createAggregateSelectQuery(aggregateFunction, whereArguments);
 
-			preparedStatement.addBatch();
-			preparedStatement.executeBatch();
-			connection.commit();
-			
-			ResultSet keys = preparedStatement.getGeneratedKeys();
-			keys.next();
-			generatedId = keys.getInt(1);
+            PreparedStatement preparedStatement = (PreparedStatement) connection
+                    .prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            connection.commit();
 
-			keys.close();
-			preparedStatement.close();
-		} catch (SQLException | IllegalArgumentException
-				| ClassNotFoundException e) {
-			logger.error("SQL Insert exception", e);
-		}
-		return generatedId;
-	}
+            while (resultSet.next()) {
+                objects.add(integerTransformer.fromRStoObject(
+                        integer, resultSet, BigDecimal.class, 0, true));
+            }
 
-	public void updateObjects(T object) {//throws Exception {
-		try (Connection connection = ConnectionManager.getInstance().getConnection()) {
-			connection.setAutoCommit(false);
-			query = queryStatements.createUpdateQuery();
+            resultSet.close();
+            preparedStatement.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            logger.error("SQL Select exception", e);
+        }
+        return objects;
+    }
 
-			PreparedStatement preparedStatement = (PreparedStatement) connection
-					.prepareStatement(query);
-			preparedStatement = (PreparedStatement) reflectionTransformer
-					.fromObjectToStatement(preparedStatement, type, object,
-							true);
-			int whereColumnIndex = reflectionTransformer.columnCount(type);
+    public int insertObjects(T object) {
+        int generatedId = -1;
+        try (Connection connection = ConnectionManager.getInstance().getConnection()) {
+            connection.setAutoCommit(false);
+            query = queryStatements.createInsertQuery();
 
-			Method getIdMethod = type.getDeclaredMethod("getId");
-			preparedStatement.setObject(whereColumnIndex,
-					getIdMethod.invoke(object));
+            PreparedStatement preparedStatement = (PreparedStatement) connection
+                    .prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
-			preparedStatement.addBatch();
-			preparedStatement.executeBatch();
-			connection.commit();
+            preparedStatement = (PreparedStatement) reflectionTransformer
+                    .fromObjectToStatement(preparedStatement, type, object,
+                            false);
 
-			preparedStatement.close();
-		} catch (SQLException | IllegalArgumentException
-				| ClassNotFoundException | NoSuchMethodException
-				| SecurityException | IllegalAccessException
-				| InvocationTargetException e) {
-			logger.error("SQL Update exception", e);
-		}
-	}
+            preparedStatement.addBatch();
+            preparedStatement.executeBatch();
+            connection.commit();
 
-	public void deleteObjects(T object) {//throws Exception {
-		try (Connection connection = ConnectionManager.getInstance().getConnection()) {
-			connection.setAutoCommit(false);
+            ResultSet keys = preparedStatement.getGeneratedKeys();
+            keys.next();
+            generatedId = keys.getInt(1);
 
-			query = queryStatements.createDeleteQuery();
+            keys.close();
+            preparedStatement.close();
+        } catch (SQLException | IllegalArgumentException
+                | ClassNotFoundException e) {
+            logger.error("SQL Insert exception", e);
+        }
+        return generatedId;
+    }
 
-			PreparedStatement preparedStatement = (PreparedStatement) connection
-					.prepareStatement(query);
-			Method getIdMethod = type.getDeclaredMethod("getId");
-			preparedStatement.setObject(1, getIdMethod.invoke(object));
+    public void updateObjects(T object) {
+        try (Connection connection = ConnectionManager.getInstance().getConnection()) {
+            connection.setAutoCommit(false);
+            query = queryStatements.createUpdateQuery();
 
-			preparedStatement.addBatch();
-			preparedStatement.executeBatch();
-			connection.commit();
+            PreparedStatement preparedStatement = (PreparedStatement) connection
+                    .prepareStatement(query);
+            preparedStatement = (PreparedStatement) reflectionTransformer
+                    .fromObjectToStatement(preparedStatement, type, object,
+                            true);
+            int whereColumnIndex = reflectionTransformer.columnCount(type);
 
-			preparedStatement.close();
-		} catch (SQLException | IllegalArgumentException
-				| ClassNotFoundException | NoSuchMethodException
-				| SecurityException | IllegalAccessException
-				| InvocationTargetException e) {
-			logger.error("SQL Delete exception", e);
-		}
-	}
+            Method getIdMethod = type.getDeclaredMethod("getId");
+            preparedStatement.setObject(whereColumnIndex,
+                    getIdMethod.invoke(object));
+
+            preparedStatement.addBatch();
+            preparedStatement.executeBatch();
+            connection.commit();
+
+            preparedStatement.close();
+        } catch (SQLException | IllegalArgumentException
+                | ClassNotFoundException | NoSuchMethodException
+                | SecurityException | IllegalAccessException
+                | InvocationTargetException e) {
+            logger.error("SQL Update exception", e);
+        }
+    }
+
+    public void deleteObjects(T object) {
+        try (Connection connection = ConnectionManager.getInstance().getConnection()) {
+            connection.setAutoCommit(false);
+
+            query = queryStatements.createDeleteQuery();
+
+            PreparedStatement preparedStatement = (PreparedStatement) connection
+                    .prepareStatement(query);
+            Method getIdMethod = type.getDeclaredMethod("getId");
+            preparedStatement.setObject(1, getIdMethod.invoke(object));
+
+            preparedStatement.addBatch();
+            preparedStatement.executeBatch();
+            connection.commit();
+
+            preparedStatement.close();
+        } catch (SQLException | IllegalArgumentException
+                | ClassNotFoundException | NoSuchMethodException
+                | SecurityException | IllegalAccessException
+                | InvocationTargetException e) {
+            logger.error("SQL Delete exception", e);
+        }
+    }
 
 }
