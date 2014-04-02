@@ -30,7 +30,7 @@ public class RegisteredTableServlet extends HttpServlet {
         	int eventId = Integer.parseInt(request.getParameter("eventId"));
         	Event event = new ReadGenericObjectService<>(Event.class).readById(eventId);
             request.setAttribute("event", event);
-            List <Ticket> ticketsList = new ReadGenericObjectService<>(Ticket.class).readListByField("event_ref", eventId);
+            List <Ticket> ticketsList = new ReadGenericObjectService<>(Ticket.class).readListByField("event_ref=", eventId);
             request.setAttribute("tickets", ticketsList);
             request.getRequestDispatcher("/pages/eventManagement/registeredTable.jsp").forward(request, response);
         } else {

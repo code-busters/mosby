@@ -33,7 +33,7 @@ public class EventAttributesFilter implements Filter {
 
         User sessionUser = (User) session.getAttribute("user");
         int userId = sessionUser.getId();
-        List<Organizer> organizersList = new ReadGenericObjectService<>(Organizer.class).readListByField("user_ref", userId);
+        List<Organizer> organizersList = new ReadGenericObjectService<>(Organizer.class).readListByField("user_ref=", userId);
         session.setAttribute("organizers", organizersList);
         chain.doFilter(request, response);
     }

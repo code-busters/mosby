@@ -30,7 +30,7 @@ public class UserService {
 		User user = new User();
 		ReflectionDao<User> usersDao = new ReflectionDao<>(User.class);
 
-		if (!usersDao.selectObjects(5,"email", email).isEmpty()) {
+		if (!usersDao.selectObjects(5,"email=", email).isEmpty()) {
 			user = usersDao.selectObjects(5,"email", email).get(0);
 			if(!user.isActive()){
 				return null;
@@ -54,7 +54,7 @@ public class UserService {
 		
 		System.out.println(user.toString());
 		
-		if (!usersDao.selectObjects(5,"email", user.getEmail()).isEmpty()) {
+		if (!usersDao.selectObjects(5,"email=", user.getEmail()).isEmpty()) {
 			User usr = usersDao.selectObjects(5,"email", user.getEmail()).get(0);
 
 			user.setId(usr.getId());
@@ -157,7 +157,7 @@ public class UserService {
 		User user = new User();
         ReflectionDao<User> usersDao = new ReflectionDao<>(User.class);
 
-		if (!usersDao.selectObjects(5,"email", email).isEmpty()) {
+		if (!usersDao.selectObjects(5,"email=", email).isEmpty()) {
 			System.out.println("signUp fail! change email!");
 			return null;
 		} else {
@@ -182,7 +182,7 @@ public class UserService {
 	public User socialSignUpUser(User user) {
         ReflectionDao<User> usersDao = new ReflectionDao<>(User.class);
 
-        if (!usersDao.selectObjects(5,"email", user.getEmail()).isEmpty()) {
+        if (!usersDao.selectObjects(5,"email=", user.getEmail()).isEmpty()) {
             return null;
         } else {
             usersDao.insertObjects(user);

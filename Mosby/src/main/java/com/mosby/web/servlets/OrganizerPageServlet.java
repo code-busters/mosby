@@ -22,7 +22,7 @@ public class OrganizerPageServlet extends HttpServlet {
         if (request.getParameter("id") != null) {
             int organizerId = Integer.parseInt(request.getParameter("id"));
             Organizer organizer = new ReadGenericObjectService<>(Organizer.class).readById(organizerId);
-            List<Event> eventsList = new ReadGenericObjectService<>(Event.class).readListByField("organizer_ref", organizerId);
+            List<Event> eventsList = new ReadGenericObjectService<>(Event.class).readListByField("organizer_ref=", organizerId);
             request.setAttribute("organizer", organizer);
             request.setAttribute("events", eventsList);
             request.getRequestDispatcher("/pages/organizerPage.jsp").forward(request, response);

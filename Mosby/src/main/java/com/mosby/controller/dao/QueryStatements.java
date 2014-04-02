@@ -146,7 +146,7 @@ public class QueryStatements<T> {
         }
 
         for (int i = divideWhereArgs; i < whereArguments.length; i += 2) {
-            stringBuilder.append(whereArguments[i - 1].toString()).append("='").append(whereArguments[i].toString()).append("' AND ");
+            stringBuilder.append(whereArguments[i - 1].toString()).append("'").append(whereArguments[i].toString()).append("' AND ");
         }
 
         stringBuilder.delete(stringBuilder.length() - 4, stringBuilder.length() - 1);

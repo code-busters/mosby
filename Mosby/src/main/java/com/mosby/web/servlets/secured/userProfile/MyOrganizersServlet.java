@@ -28,7 +28,7 @@ public class MyOrganizersServlet extends HttpServlet {
     	if (!(request.getParameter("delete") == null)){
     		new OrganizerService().delete(sessionUser, Integer.parseInt(request.getParameter("delete")));
     	}
-    	List <Organizer> organizersList = new ReadGenericObjectService<>(Organizer.class).readListByField("user_ref", userId);
+    	List <Organizer> organizersList = new ReadGenericObjectService<>(Organizer.class).readListByField("user_ref=", userId);
     	request.setAttribute("organizers", organizersList);
     	request.getRequestDispatcher("/pages/userProfile/myOrganizers.jsp").forward(request, response);
     }

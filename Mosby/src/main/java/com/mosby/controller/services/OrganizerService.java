@@ -90,7 +90,7 @@ public class OrganizerService {
 	}
 	
 	public void delete (User user, int id){
-		if (user.getId() == new ReadGenericObjectService<>(Organizer.class).readById(id).getUser().getId() && new ReadGenericObjectService<>(Event.class).readListByField("organizer_ref", id).isEmpty()){
+		if (user.getId() == new ReadGenericObjectService<>(Organizer.class).readById(id).getUser().getId() && new ReadGenericObjectService<>(Event.class).readListByField("organizer_ref=", id).isEmpty()){
 			Organizer organizer = new ReadGenericObjectService<>(Organizer.class).readById(id);
 			new ReflectionDao<>(Organizer.class).deleteObjects(organizer);
 		}

@@ -26,8 +26,8 @@ public class EditTicketsPromoCodesServlet extends HttpServlet {
         if (request.getParameter("eventId") != null) {
             int eventId = Integer.parseInt(request.getParameter("eventId"));
             Event event = new ReadGenericObjectService<>(Event.class).readById(eventId); 
-            List <TicketInfo> ticketsInfoList = new ReadGenericObjectService<>(TicketInfo.class).readListByField("event_ref", eventId);
-            List <PromoCode> promoCodesList = new ReadGenericObjectService<>(PromoCode.class).readListByField("event_ref", eventId);
+            List <TicketInfo> ticketsInfoList = new ReadGenericObjectService<>(TicketInfo.class).readListByField("event_ref=", eventId);
+            List <PromoCode> promoCodesList = new ReadGenericObjectService<>(PromoCode.class).readListByField("event_ref=", eventId);
             request.setAttribute("event", event);
             request.setAttribute("ticketsInfo", ticketsInfoList);
             request.setAttribute("promoCodes", promoCodesList);

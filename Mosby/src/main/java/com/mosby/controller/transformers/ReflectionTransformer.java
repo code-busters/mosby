@@ -51,7 +51,7 @@ public class ReflectionTransformer<T> {
                         if (value != null && depth != 0) {
                             int currentId = Integer.parseInt(value.toString());
                             value = new ReflectionDao<>(field.getType())
-                                    .selectObjects(depth, "id", currentId).get(0);
+                                    .selectObjects(depth, "id=", currentId).get(0);
                         }
                     }
                     if (field.isAnnotationPresent(Key.class)

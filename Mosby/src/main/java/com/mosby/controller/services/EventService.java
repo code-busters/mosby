@@ -227,7 +227,7 @@ public class EventService {
 		int eventId = Integer.parseInt(request.getParameter("eventId"));
 		
 		Event event = new ReadGenericObjectService<>(Event.class).readById(eventId);
-		List <TicketInfo> currentTicketsInfoList = new ReadGenericObjectService<>(TicketInfo.class).readListByField("event_ref", eventId);
+		List <TicketInfo> currentTicketsInfoList = new ReadGenericObjectService<>(TicketInfo.class).readListByField("event_ref=", eventId);
 		List<String> currentIdTicketsInfoList = new ArrayList<>();
 		for (TicketInfo ticketInfo : currentTicketsInfoList) {
 			currentIdTicketsInfoList.add(Integer.toString(ticketInfo.getId()));
@@ -275,7 +275,7 @@ public class EventService {
 		
 		for (String id : currentIdTicketsInfoList) {
 			if (!Arrays.asList(idTicketsArray).contains(id)){
-				List <Ticket> ticketsList = new ReadGenericObjectService<>(Ticket.class).readListByField("ticket_info_ref", Integer.parseInt(id));
+				List <Ticket> ticketsList = new ReadGenericObjectService<>(Ticket.class).readListByField("ticket_info_ref=", Integer.parseInt(id));
 				if (ticketsList.isEmpty()){
 					TicketInfo ticketInfo = new ReadGenericObjectService<>(TicketInfo.class).readById(Integer.parseInt(id));
 					ticketInfoDao.deleteObjects(ticketInfo);
@@ -292,7 +292,7 @@ public class EventService {
 		int eventId = Integer.parseInt(request.getParameter("eventId"));
 		
 		Event event = new ReadGenericObjectService<>(Event.class).readById(eventId);
-		List <PromoCode> currentPromoCodesList = new ReadGenericObjectService<>(PromoCode.class).readListByField("event_ref", eventId);
+		List <PromoCode> currentPromoCodesList = new ReadGenericObjectService<>(PromoCode.class).readListByField("event_ref=", eventId);
 		List<String> currentIdPromoCodesList = new ArrayList<>();
 		for (PromoCode promoCode : currentPromoCodesList) {
 			currentIdPromoCodesList.add(Integer.toString(promoCode.getId()));
@@ -321,7 +321,7 @@ public class EventService {
 		
 		for (String id : currentIdPromoCodesList ) {
 			if (!Arrays.asList(idPromoCodesArray).contains(id)){
-				List <Ticket> ticketsList = new ReadGenericObjectService<>(Ticket.class).readListByField("promo_codes_ref", Integer.parseInt(id));
+				List <Ticket> ticketsList = new ReadGenericObjectService<>(Ticket.class).readListByField("promo_codes_ref=", Integer.parseInt(id));
 				if (ticketsList.isEmpty()){
 					PromoCode promoCode = new ReadGenericObjectService<>(PromoCode.class).readById(Integer.parseInt(id));
 					promoCodeDao.deleteObjects(promoCode);
@@ -337,22 +337,22 @@ public class EventService {
     	HttpSession session = request.getSession(false);
     	User sessionUser = (User) session.getAttribute("user");
     	int userId = sessionUser.getId();
-    	List <Organizer> organizersList = new ReadGenericObjectService<>(Organizer.class).readListByField("user_ref", userId);
+    	List <Organizer> organizersList = new ReadGenericObjectService<>(Organizer.class).readListByField("user_ref=", userId);
     	List <Event> myEvents = new ArrayList<>();
 
         Map <Integer, Integer> ticketsSold = new HashMap<>();
         Map <Integer, Integer> tickets = new HashMap<>();
     	for (Organizer organizer : organizersList) {
-    		List <Event> currentEvents = new ReadGenericObjectService<>(Event.class).readListByField("organizer_ref", organizer.getId());
+    		List <Event> currentEvents = new ReadGenericObjectService<>(Event.class).readListByField("organizer_ref=", organizer.getId());
     		for (Event event : currentEvents) {
     			int allTickets = 0;
-    			List <TicketInfo> ticketsInfo = new ReadGenericObjectService<>(TicketInfo.class).readListByField("event_ref", event.getId());
+    			List <TicketInfo> ticketsInfo = new ReadGenericObjectService<>(TicketInfo.class).readListByField("event_ref=", event.getId());
     			for (TicketInfo ticketInfo : ticketsInfo) {
     				allTickets += ticketInfo.getMaxNumber();
 				}
                 tickets.put(event.getId(), allTickets);
 
-    			List <Ticket> soldTicketList = new ReadGenericObjectService<>(Ticket.class).readListByField("event_ref", event.getId());
+    			List <Ticket> soldTicketList = new ReadGenericObjectService<>(Ticket.class).readListByField("event_ref=", event.getId());
                 ticketsSold.put(event.getId(), soldTicketList.size());
 			}
     		myEvents.addAll(currentEvents);
@@ -379,7 +379,7 @@ public class EventService {
 	}
 
 	public List<TicketInfo> readTicketInfo(int eventId){
-		List <TicketInfo> ticketsInfoList = new ReadGenericObjectService<>(TicketInfo.class).readListByField("event_ref", eventId);;
+		List <TicketInfo> ticketsInfoList = new ReadGenericObjectService<>(TicketInfo.class).readListByField("event_ref=", eventId);;
         
         Date currentDate = new Date();
 		Iterator<TicketInfo> iter = ticketsInfoList.iterator();
@@ -398,7 +398,7 @@ public class EventService {
 	}
 
 	public void deleteEvent(HttpServletRequest request, int id){
-		List <Ticket> ticketsList = new ReadGenericObjectService<>(Ticket.class).readListByField("event_ref", id);
+		List <Ticket> ticketsList = new ReadGenericObjectService<>(Ticket.class).readListByField("event_ref=", id);
 		TicketsService ticketsService = new TicketsService();
 		for (Ticket ticket : ticketsList) {
 			ticketsService.delete(request, ticket.getId());
