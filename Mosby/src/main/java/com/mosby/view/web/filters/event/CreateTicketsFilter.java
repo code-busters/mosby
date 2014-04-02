@@ -5,6 +5,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -44,12 +47,14 @@ public class CreateTicketsFilter implements Filter {
 		System.out.println("createTicketFilter");
 
 		if (request.getMethod().equals("POST")) {
-			System.out.println("validate....");
+//			System.out.println("validate....");
 //			
-//			String [] idTicketsInfoArray = request.getParameterValues("tickets_id");
-//			if (!(idTicketsInfoArray[0].equals(""))){
+//			String idTicketsArray = request.getParameter("tickets_id");
+//	        List<String> newIdTicketsInfoList = new ArrayList<String>(Arrays.asList(idTicketsArray.split("_")));
+//			
+//			if (!(newIdTicketsInfoList.isEmpty())){
 //				ReflectionDao<TicketInfo> ticketInfoDao = new ReflectionDao<>(TicketInfo.class);
-//				for (String currInt : idTicketsInfoArray){
+//				for (String currInt : newIdTicketsInfoList){
 //					int currentId = Integer.parseInt(currInt);
 //					String type;
 //					String ticketInfoName = request.getParameter("event_ticket_name_" + currentId);

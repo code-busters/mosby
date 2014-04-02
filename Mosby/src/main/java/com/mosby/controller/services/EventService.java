@@ -86,7 +86,7 @@ public class EventService {
 
 		String location = request.getParameter("event_location");
 		boolean privacy = false;
-		if (!request.getParameter("privacy_event").equals("0")){
+		if (!(request.getParameter("privacy_event") == null) && !(request.getParameter("privacy_event").equals("0"))){
 			privacy = true;
 		}
 
@@ -100,10 +100,13 @@ public class EventService {
 
 		
 //Tickets Info builder
-		String [] idTicketsInfoArray = request.getParameterValues("tickets_id");
-		if (!(idTicketsInfoArray[0].equals(""))){
+		
+		String idTicketsArray = request.getParameter("tickets_id");
+        List<String> newIdTicketsInfoList = new ArrayList<String>(Arrays.asList(idTicketsArray.split("_")));
+		
+		if (!(newIdTicketsInfoList.isEmpty())){
 			ReflectionDao<TicketInfo> ticketInfoDao = new ReflectionDao<>(TicketInfo.class);
-			for (String currInt : idTicketsInfoArray){
+			for (String currInt : newIdTicketsInfoList){
 				int currentId = Integer.parseInt(currInt);
 				String type;
 				String ticketInfoName = request.getParameter("event_ticket_name_" + currentId);
@@ -138,10 +141,12 @@ public class EventService {
 		
 		
 // Promo codes builder
-		String [] idPromoCodesArray = request.getParameterValues("promo_codes_id");
-		if (!(idPromoCodesArray[0].equals(""))){
+        String idPromoCodesArray = request.getParameter("promo_codes_id");
+        List<String> newIdPromoCodesList = new ArrayList<String>(Arrays.asList(idPromoCodesArray.split("_")));
+		
+		if (!(newIdPromoCodesList.isEmpty())){
 			ReflectionDao<PromoCode> promoCodeDao = new ReflectionDao<>(PromoCode.class);
-			for (String currInt : idPromoCodesArray){
+			for (String currInt : newIdPromoCodesList){
 				int currentId = Integer.parseInt(currInt);
 				String code = request.getParameter("promo_code_code_" + currentId);
 				int discount = Integer.parseInt(request.getParameter("promo_code_discount_" + currentId));
@@ -232,8 +237,10 @@ public class EventService {
 			currentIdTicketsInfoList.add(Integer.toString(ticketInfo.getId()));
 		}
 		
-		String [] newIdTicketsInfoArray = request.getParameterValues("tickets_id");		
-		for (String newId : newIdTicketsInfoArray) {
+        String idTicketsArray = request.getParameter("tickets_id");
+        List<String> newIdTicketsInfoList = new ArrayList<String>(Arrays.asList(idTicketsArray.split("_")));
+
+		for (String newId : newIdTicketsInfoList) {
 			TicketInfo ticketInfo;
 			int currentId = Integer.parseInt(newId);
 			String ticketInfoName = request.getParameter("event_ticket_name_" + currentId);
@@ -271,7 +278,6 @@ public class EventService {
 			}
 		}
 		
-		List <String> newIdTicketsInfoList = new ArrayList<>(Arrays.asList(newIdTicketsInfoArray));
 		for (String id : currentIdTicketsInfoList) {
 			if (!newIdTicketsInfoList.contains(id)){
 				List <Ticket> ticketsList = new ReadGenericObjectService<>(Ticket.class).readListByField("ticket_info_ref", Integer.parseInt(id));
@@ -297,8 +303,10 @@ public class EventService {
 			currentIdPromoCodesList.add(Integer.toString(promoCode.getId()));
 		}
 		
-		String [] newIdPromoCodesArray = request.getParameterValues("promo_codes_id");
-		for (String newId : newIdPromoCodesArray) {
+        String idPromoCodesArray = request.getParameter("promo_codes_id");
+        List<String> newIdPromoCodesList = new ArrayList<String>(Arrays.asList(idPromoCodesArray.split("_")));
+
+		for (String newId : newIdPromoCodesList) {
 			PromoCode promoCode;
 			int currentId = Integer.parseInt(newId);
 			
@@ -317,7 +325,6 @@ public class EventService {
 			}
 		}
 		
-		List<String> newIdPromoCodesList = new ArrayList<String>(Arrays.asList(newIdPromoCodesArray));
 		for (String id : currentIdPromoCodesList ) {
 			if (!newIdPromoCodesList.contains(id)){
 				List <Ticket> ticketsList = new ReadGenericObjectService<>(Ticket.class).readListByField("promo_codes_ref", Integer.parseInt(id));

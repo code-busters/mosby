@@ -47,9 +47,6 @@ public class TicketsService {
                         userDao.updateObjects(user);
                         request.getSession().setAttribute("user", user);
                     }
-                    else{
-                        System.out.println("You have not enouth minerals!!!");
-                    }
         		}
         	}
 		}
