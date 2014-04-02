@@ -421,4 +421,25 @@ public class EventService {
 		}
 		new ReflectionDao<>(Event.class).deleteObjects(new ReadGenericObjectService<>(Event.class).readById(id));
 	}
+
+	public List<Event> search (HttpServletRequest request){
+//show events for test
+		List <Event> events = new ReadGenericObjectService<>(Event.class).readList();
+
+//Query builder		
+		String searchText = request.getParameter("search_again");
+		int categotyId = Integer.parseInt(request.getParameter("event_category"));
+		int typeId = Integer.parseInt(request.getParameter("event_type"));
+		Date startDate = null, endDate = null;
+		try {
+			startDate = new SimpleDateFormat(DATE_FORMAT).parse(request.getParameter("start_date"));
+			endDate = new SimpleDateFormat(DATE_FORMAT).parse(request.getParameter("end_date"));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		int minPrice = Integer.parseInt(request.getParameter("min_price"));
+		int maxPrice = Integer.parseInt(request.getParameter("max_price"));
+		
+		return events;
+	}
 }
