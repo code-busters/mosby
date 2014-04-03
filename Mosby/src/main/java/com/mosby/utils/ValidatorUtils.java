@@ -244,5 +244,9 @@ public class ValidatorUtils<T> {
 	public void inputNumber(){
 		errors.add(labels.getString("inputNumber"));
 	}
+	
+	public void selectTicket(){
+		errors.add(labels.getString("selectTicket"));
+	}
 
 }

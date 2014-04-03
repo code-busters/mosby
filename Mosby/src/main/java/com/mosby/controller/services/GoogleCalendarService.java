@@ -79,8 +79,7 @@ public class GoogleCalendarService {
 
 		createdEvent.setSummary(event.getName());
 		createdEvent.setLocation(event.getLocation());
-		createdEvent.setDescription(event.getDescription());
-		
+
 		Date startDate = new Date(event.getStartDate().getTime() + event.getStartTime().getTime());
 		Date endDate = new Date(event.getEndDate().getTime() + event.getEndTime().getTime());
 		

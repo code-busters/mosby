@@ -56,7 +56,7 @@
             <div id="sb-search" class="sb-search">
                 <form action="search" method="POST">
                     <input class="sb-search-input" placeholder="<fmt:message key="search.enterYourSearchTerm"/>..." type="search" value="<fmt:message key="search.enterYourSearchTerm"/>..." name="search_again" id="search">
-                    <input class="sb-search-submit" type="submit" value="search">
+                    <input class="sb-search-submit" type="submit" value="search-again">
                     <span class="sb-icon-search"></span>
                     <a id="open-falldown-search" href="#fakelink">
                         <span class="sb-icon-gear"></span>

@@ -113,6 +113,7 @@ public class FacebookUserService {
 				String newUrl = "https://graph.facebook.com/me?access_token=" + accessToken;
 				httpclient = new DefaultHttpClient();
 				HttpGet httpget = new HttpGet(newUrl);
+				System.out.println("Get info from facebook --> executing request: " + httpget.getURI());
 				ResponseHandler<String> responseHandler = new BasicResponseHandler();
 				String responseBody = httpclient.execute(httpget, responseHandler);
 				JSONObject json = (JSONObject)JSONSerializer.toJSON(responseBody);
@@ -127,13 +128,23 @@ public class FacebookUserService {
 				user.setLastName(json.getString("last_name"));
 				user.setEmail(json.getString("email"));
 				user.setImage(imageLocation);	
+				user.setBirthDate(new SimpleDateFormat("MM/dd/yyyy").parse(json.getString("birthday")));
 				
+				System.out.println("BIRTHDAY" + json.getString("birthday"));
+				
+				String firstName = json.getString("first_name");
+				String lastName = json.getString("last_name");
+                String email= json.getString("email");
+
+				System.out.println("facebookId " + facebookId + " | name " + firstName + " " + lastName + " | email " + email + " | " + imageLocation);
 			} else {
-				log.error("facebook accessToken = null");
+				System.err.println("facebook accessToken = null");
 			}
 		} catch (ClientProtocolException e) {
 			log.error(e);
 		} catch (IOException e) {
+			log.error(e);
+		} catch (ParseException e) {
 			log.error(e);
 		} finally {
 			httpclient.getConnectionManager().shutdown();

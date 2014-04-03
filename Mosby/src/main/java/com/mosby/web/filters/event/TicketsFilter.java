@@ -130,6 +130,8 @@ public class TicketsFilter implements Filter {
 					}
 
 				}
+			} else {
+				//validatorUtils.selectTicket();
 			}
 
 			if (validatorUtils.getErrors().isEmpty() == false) {

@@ -177,8 +177,8 @@ public class UserService {
             return null;
         } else {
             usersDao.insertObjects(user);
-            user = usersDao.selectObjects(1,"email=", user.getEmail()).get(0);
             new OrganizerService().createDefaultOrganizer(user);
+            user = usersDao.selectObjects(1,"email=", user.getEmail()).get(0);
             return user;
         }
 	}
