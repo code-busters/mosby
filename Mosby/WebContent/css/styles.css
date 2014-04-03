@@ -950,6 +950,11 @@ video {
 .registered-table .table i[class*="fui-"] {
     font-size: 0.8em;
 }
+.additional-price-info {
+    display: block;
+    color: #a5a5a5;
+    font-size: 0.7em;
+}
 /*EDIT TICKETS & PROMO CODES*/
 #edit-tickets-codes-form button[type=submit] {
     margin-top: 3em;
