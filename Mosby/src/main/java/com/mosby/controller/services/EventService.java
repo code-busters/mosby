@@ -115,9 +115,8 @@ public class EventService {
 					startDate = new SimpleDateFormat(DATE_FORMAT).parse(request.getParameter("ticket_start_date_" + currentId));
 					endDate = new SimpleDateFormat(DATE_FORMAT).parse(request.getParameter("ticket_end_date_" + currentId));
 					startTime = new SimpleDateFormat(TIME_FORMAT).parse(request.getParameter("ticket_start_time_" + currentId));
-					endTime = new SimpleDateFormat(TIME_FORMAT).parse(request.getParameter("ticket_end_date_" + currentId));
+					endTime = new SimpleDateFormat(TIME_FORMAT).parse(request.getParameter("ticket_end_time_" + currentId));
 				} catch (ParseException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				int price;
@@ -349,9 +348,13 @@ public class EventService {
     	for (Organizer organizer : organizersList) {
     		List <Event> currentEvents = new ReadGenericObjectService<>(Event.class).readListByField("organizer_ref=", organizer.getId());
     		for (Event event : currentEvents) {
-    			int allTicketsSold = new ReflectionDao<>(Ticket.class).selectAggregateObjects("COUNT(event_ref)", "event_ref=", event.getId()).get(0).intValue();
+    			int allTicketsSold = 0;
+    			int allTickets = 0;
+    			if(new ReadGenericObjectService<>(TicketInfo.class).readListByField("event_ref", event.getId())!= null){
+    				allTicketsSold += new ReflectionDao<>(Ticket.class).selectAggregateObjects("COUNT(event_ref)", "event_ref=", event.getId()).get(0).intValue();    				
+    				allTickets += new ReflectionDao<>(TicketInfo.class).selectAggregateObjects("SUM(quantity_available)", "event_ref=", event.getId()).get(0).intValue() + allTicketsSold;
+    			}
     			ticketsSold.put(event.getId(), allTicketsSold);
-    			int allTickets = new ReflectionDao<>(TicketInfo.class).selectAggregateObjects("SUM(quantity_available)", "event_ref=", event.getId()).get(0).intValue() + allTicketsSold;
                 tickets.put(event.getId(), allTickets);
 			}
     		myEvents.addAll(currentEvents);
