@@ -81,89 +81,96 @@
 
             <div id="googleMap" class="" style="height:380px;"></div>
             <c:if test="${fn:length(tickets) > 0}">
-            <form action="register" method="post" id="register-for-event-form">
-                <input type="hidden" name="eventId" value="${event.id}"/>
-                <div id="tickets">
-                    <div class="row create-tickets-header hidden-xs">
-                        <div class="col-md-8 col-sm-8"><fmt:message key="eventPage.ticketType"/></div>
-                        <div class="col-md-2 col-sm-2"><fmt:message key="eventPage.price"/></div>
-                        <div class="col-md-2 col-sm-2"><fmt:message key="eventPage.quantity"/></div>
-                    </div>
-                    <div id="tickets-body">
-                        <c:forEach items="${tickets}" var="ticketInfo">
-                            <div id="0" class="row">
-                                <div class="col-md-8 col-sm-8">
-                                    <h6 class="visible-xs"><fmt:message key="eventPage.ticketType"/></h6>
+                <form action="register" method="post" id="register-for-event-form">
+                    <input type="hidden" name="eventId" value="${event.id}"/>
 
-                                    <p>${ticketInfo.name}</p>
+                    <div id="tickets">
+                        <div class="row create-tickets-header hidden-xs">
+                            <div class="col-md-8 col-sm-8"><fmt:message key="eventPage.ticketType"/></div>
+                            <div class="col-md-2 col-sm-2"><fmt:message key="eventPage.price"/></div>
+                            <div class="col-md-2 col-sm-2"><fmt:message key="eventPage.quantity"/></div>
+                        </div>
+                        <div id="tickets-body">
+                            <c:forEach items="${tickets}" var="ticketInfo">
+                                <div id="0" class="row">
+                                    <div class="col-md-8 col-sm-8">
+                                        <h6 class="visible-xs"><fmt:message key="eventPage.ticketType"/></h6>
 
-                                    <p class="ticket-info">
-                                            ${ticketInfo.description}
-                                    </p>
-                                </div>
-                                <div class="col-md-2 col-sm-2">
-                                    <h6 class="visible-xs"><fmt:message key="eventPage.price"/></h6>
+                                        <p>${ticketInfo.name}</p>
 
-                                    <p>
+                                        <p class="ticket-info">
+                                                ${ticketInfo.description}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-2 col-sm-2">
+                                        <h6 class="visible-xs"><fmt:message key="eventPage.price"/></h6>
                                         <c:choose>
                                             <c:when test="${ticketInfo.type == 'Free'}">
-                                                <fmt:message key="eventPage.free"/>
+                                                <p><fmt:message key="eventPage.free"/></p>
                                             </c:when>
                                             <c:when test="${ticketInfo.type == 'Donation'}">
-                                                <input type="number" class="form-control" value="0" placeholder="0" name="ticket_price_${ticketInfo.id}">
+                                                <input type="number" class="form-control" value="0" placeholder="0"
+                                                       name="ticket_price_${ticketInfo.id}">
                                                 <span class="additional-input-info">*Donation</span>
                                             </c:when>
                                             <c:otherwise>
-                                                ${ticketInfo.price}
+                                                <p> ${ticketInfo.price} </p>
                                             </c:otherwise>
                                         </c:choose>
-                                    </p>
+                                    </div>
+                                    <div class="col-md-2 col-sm-2">
+                                        <h6 class="visible-xs"><fmt:message key="eventPage.quantity"/></h6>
+                                        <input type="number" class="form-control" placeholder="0"
+                                               name="ticket_quantity_${ticketInfo.id}" id="promo-code-discount-0"
+                                               min="0"
+                                               max="${ticketInfo.quantityAvailable}">
+                                        <span class="additional-input-info"><fmt:message
+                                                key="eventPage.max"/> ${ticketInfo.quantityAvailable}</span>
+                                    </div>
                                 </div>
-                                <div class="col-md-2 col-sm-2">
-                                    <h6 class="visible-xs"><fmt:message key="eventPage.quantity"/></h6>
-                                    <input type="number" class="form-control" placeholder="0"
-                                           name="ticket_quantity_${ticketInfo.id}" id="promo-code-discount-0" min="0"
-                                           max="${ticketInfo.quantityAvailable}">
-                                    <span class="additional-input-info"><fmt:message key="eventPage.max"/> ${ticketInfo.quantityAvailable}</span>
+                            </c:forEach>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-5">
+                                <label class="checkbox" for="checkbox-promo-code">
+                                    <input type="checkbox" value="" id="checkbox-promo-code" data-toggle="checkbox">
+                                    <fmt:message key="eventPage.doYouHavePromoCode"/>?
+                                </label>
+                            </div>
+                            <div id="promo-code-div" class="pull-right">
+                                <div class="col-md-5 text-right">
+                                    <label for="promo-code"><fmt:message key="eventPage.promoCode"/>:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" class="form-control"
+                                           placeholder="<fmt:message key="eventPage.enterCode"/>" name="promo_code"
+                                           id="promo-code"/>
                                 </div>
                             </div>
-                        </c:forEach>
-                    </div>
-                    <div class="row ">
-                        <div class="col-md-5">
-                            <label class="checkbox" for="checkbox-promo-code">
-                                <input type="checkbox" value="" id="checkbox-promo-code" data-toggle="checkbox">
-                                <fmt:message key="eventPage.doYouHavePromoCode"/>?
-                            </label>
-                        </div>
-                        <div id="promo-code-div" class="pull-right">
-                            <div class="col-md-5 text-right">
-                                <label for="promo-code"><fmt:message key="eventPage.promoCode"/>:</label>
-                            </div>
-                            <div class="col-md-7">
-                                <input type="text" class="form-control" placeholder="<fmt:message key="eventPage.enterCode"/>" name="promo_code"
-                                       id="promo-code"/>
-                            </div>
                         </div>
                     </div>
-                </div>
-                <!--END TICKETS-->
-                <div class="col-md-3 col-sm-3 col-md-offset-9 col-sm-offset-9">
-                    <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit" value="Order Now">
-                        <fmt:message key="eventPage.orderNow"/>
-                    </button>
-                </div>
-            </form>
+                    <!--END TICKETS-->
+                    <div class="col-md-3 col-sm-3 col-md-offset-9 col-sm-offset-9">
+                        <button class="btn btn-primary btn-lg btn-block" name="submit" type="submit" value="Order Now">
+                            <fmt:message key="eventPage.orderNow"/>
+                        </button>
+                    </div>
+                </form>
             </c:if>
         </div>
         <div class="col-md-3">
             <div class="organizer-details col-md-12">
                 <img src="media/images/users/GDG-Lviv.png">
+
                 <h3>GDG Lviv</h3>
+
                 <p>
-                    Google Developer Group (GDG) Lviv meets for about two times a month in office of Lviv's IT companies. The typical meeting formats are techtalk, bar camp or training, also from time to time we organize hackathons.
+                    Google Developer Group (GDG) Lviv meets for about two times a month in office of Lviv's IT
+                    companies. The typical meeting formats are techtalk, bar camp or training, also from time to time we
+                    organize hackathons.
                     <br>
-                    <br>Who we are? Open and volunteer geek communities who create exciting projects and share experience about Google technology with passion.
+                    <br>Who we are? Open and volunteer geek communities who create exciting projects and share
+                    experience about Google technology with passion.
                 </p>
                 <span class="fui-mail"></span>
                 <span class="fui-facebook"></span>

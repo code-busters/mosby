@@ -6,7 +6,7 @@
        scope="session"/>
 <fmt:setLocale value="${language}"/>
 <fmt:setBundle basename="main.java.com.mosby.i18n.text"/>
-<nav class="navbar navbar-default nav-transparent" role="navigation">
+<nav class="navbar navbar-default navbar-not-fixed nav-transparent" role="navigation">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
             <span class="sr-only">Toggle navigation</span>

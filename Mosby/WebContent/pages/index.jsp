@@ -51,7 +51,7 @@
     </div>
 
     <div id="main-idea" class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-10 col-md-offset-1 col-sm-offset-1">
             <h1>
                 Mosby - <fmt:message key="index.eventManagmentSystem"/>
 					<span>
@@ -108,24 +108,24 @@
 <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
 <script src="js/jquery.ui.touch-punch.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/bootstrap-select.js"></script>
-<script src="js/bootstrap-switch.js"></script>
-<script src="js/flatui-checkbox.js"></script>
-<script src="js/flatui-radio.js"></script>
-<script src="js/jquery.tagsinput.js"></script>
-<script src="js/jquery.placeholder.js"></script>
 <script src="js/jquery.ellipsis.js"></script>
 
 <script src="js/application.js"></script>
 <script type="text/javascript">
-    //    $(document).ready(function () {
-    //        $("#events").css("margin-top", $("#main-idea").height() + $("h1").height() + 1);
-    //        $("#main-idea").css("margin-top", $(window).height()/6 - $("h1").height());
-    //    });
-    //    $(window).resize(function () {
-    //        $("#events").css("margin-top", $("#main-idea").height() + $("h1").height() + 1);
-    //        $("#main-idea").css("margin-top", $(window).height()/6 - $("h1").height());
-    //    });
+//    (function ($) {
+//        $(document).ready(function () {
+////            $("#events").css("margin-top", $("#main-idea").height() + $("h1").height() + 1);
+//            $("#events").css("margin-top", 100 - $("nav").height() + "vh");
+//            console.log("height " + $(window).height());
+////            $("#main-idea").css("margin-top", $(window).height()/6 - $("h1").height());
+//        });
+//        $(window).resize(function () {
+////            $("#events").css("margin-top", $("#main-idea").height() + $("h1").height() + 1);
+//            $("#events").css("margin-top", $(window).height());
+//            console.log("height resize " + $(window).height());
+////            $("#main-idea").css("margin-top", $(window).height()/6 - $("h1").height());
+//        });
+//    })(jQuery);
     $('.ellipsis-3').ellipsis({
         row: 3
     });
