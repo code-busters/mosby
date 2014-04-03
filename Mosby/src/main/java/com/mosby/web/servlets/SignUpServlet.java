@@ -24,7 +24,10 @@ public class SignUpServlet extends HttpServlet {
         request.getSession().setAttribute("state", state);
 		String appId = "601170126631442";
 
-        String redirectUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/socialSignUp";
+//        String redirectUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/socialSignUp";
+        String redirectUrl = request.getScheme() + "://"
+                + request.getServerName() + ":" + request.getServerPort()
+                + request.getContextPath() + "/socialSignUp";
 		String returnValue = "https://www.facebook.com/dialog/oauth?client_id="
 				+ appId + "&redirect_uri=" + redirectUrl
 				+ "&scope=email,user_birthday&state=" + state;

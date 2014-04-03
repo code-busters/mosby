@@ -81,24 +81,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MailUtils.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/utils/MailUtils.java">
+      <file leaf-file-name="SignUpServlet.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/web/servlets/SignUpServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="2346">
-              <caret line="67" column="12" selection-start-line="67" selection-start-column="12" selection-end-line="67" selection-end-column="12" />
-              <folding>
-                <element signature="e#1208#1421#0" expanded="true" />
-                <element signature="e#1410#1411#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="1037">
+              <caret line="29" column="78" selection-start-line="27" selection-start-column="8" selection-end-line="29" selection-end-column="61" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IndexServlet.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/web/servlets/IndexServlet.java">
+      <file leaf-file-name="SocialSignUpServlet.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/web/servlets/SocialSignUpServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.591133" vertical-offset="252" max-vertical-offset="969">
-              <caret line="50" column="53" selection-start-line="50" selection-start-column="36" selection-end-line="50" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.33333334" vertical-offset="52" max-vertical-offset="1071">
+              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FacebookUserGetDataService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/controller/services/FacebookUserGetDataService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1700">
+              <caret line="37" column="108" selection-start-line="37" selection-start-column="65" selection-end-line="37" selection-end-column="65" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoginServlet.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/web/servlets/LoginServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="154" max-vertical-offset="1326">
+              <caret line="39" column="46" selection-start-line="39" selection-start-column="46" selection-end-line="39" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -114,29 +131,20 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/mosby/view/web/servlets/aboutUs.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/mosby/utils/ValidatorUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/mosby/view/web/filters/event/CreateTicketsFilter.java" />
         <option value="$PROJECT_DIR$/WebContent/pages/aboutUs.jsp" />
         <option value="$PROJECT_DIR$/WebContent/pages/search.jsp" />
         <option value="$PROJECT_DIR$/WebContent/pages/parts/navbar-unfixed.jsp" />
         <option value="$PROJECT_DIR$/WebContent/pages/index.jsp" />
         <option value="$PROJECT_DIR$/WebContent/css/simple-sidebar.css" />
-        <option value="$PROJECT_DIR$/WebContent/pages/userProfile/parts/sideNavbar.jsp" />
         <option value="$PROJECT_DIR$/WebContent/pages/userProfile/changePassword.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/view/web/servlets/userProfile/ChangePasswordServlet.java" />
         <option value="$PROJECT_DIR$/WebContent/pages/error.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/mosby/utils/EncryptionUtils.java" />
         <option value="$PROJECT_DIR$/WebContent/pages/userProfile/myOrganizers.jsp" />
         <option value="$PROJECT_DIR$/WebContent/pages/eventPage.jsp" />
         <option value="$PROJECT_DIR$/src/test/java/main/java/com/mosby/utils/EncryptionUtilsTest.java" />
         <option value="$PROJECT_DIR$/WebContent/css/styles.css" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/web/servlets/eventManagment/EditEventServlet.java" />
         <option value="$PROJECT_DIR$/WebContent/pages/eventManagement/editEvent.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/mosby/controller/services/OrganizerService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/mosby/web/servlets/LoginServlet.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/mosby/controller/services/FacebookUserGetDataService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/mosby/web/servlets/SignUpServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/web/servlets/SocialSignUpServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/web/servlets/GoogleCalendarServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/controller/services/GoogleCalendarService.java" />
@@ -152,11 +160,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/controller/dao/ReflectionDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/controller/transformers/ReflectionTransformer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/controller/services/ReadGenericObjectService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/mosby/controller/services/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/web/servlets/AuthenticationServlet.java" />
         <option value="$PROJECT_DIR$/WebContent/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/web/filters/event/EventAttributesFilter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/mosby/controller/services/GooglePlusService.java" />
         <option value="$PROJECT_DIR$/WebContent/pages/userProfile/contactInfo.jsp" />
         <option value="$PROJECT_DIR$/WebContent/pages/parts/footer.jsp" />
         <option value="$PROJECT_DIR$/WebContent/pages/createEvent.jsp" />
@@ -165,6 +171,17 @@
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/web/filters/event/TicketsFilter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/utils/MailUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/web/servlets/IndexServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mosby/utils/EncryptionUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mosby/controller/services/GooglePlusService.java" />
+        <option value="$PROJECT_DIR$/WebContent/pages/userProfile/parts/sideNavbar.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mosby/web/servlets/secured/userProfile/ChangePasswordServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mosby/controller/services/OrganizerService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mosby/controller/services/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mosby/controller/services/ApiService.java" />
+        <option value="$PROJECT_DIR$/WebContent/pages/userProfile/apiAccess.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mosby/web/servlets/SignUpServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mosby/web/servlets/LoginServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mosby/controller/services/FacebookUserGetDataService.java" />
       </list>
     </option>
   </component>
@@ -487,7 +504,7 @@
       <recent name="F:\development\GitHub\mosby\Mosby\WebContent\WEB-INF" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Index">
+  <component name="RunManager" selected="Tomcat Server.Login">
     <configuration default="false" name="StringUtilsTest.testConcat" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -2276,15 +2293,15 @@
       <workItem from="1396428261663" duration="2952000" />
       <workItem from="1396433978567" duration="3464000" />
       <workItem from="1396442878031" duration="14034000" />
-      <workItem from="1396525813358" duration="5465000" />
+      <workItem from="1396525813358" duration="9670000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="192920000" />
+    <option name="totallyTimeSpent" value="197125000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-1928" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -2292,6 +2309,7 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32792208" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2314,7 +2332,6 @@
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3285985" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -2375,7 +2392,7 @@
           <option name="timeStamp" value="28" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="31" />
+      <option name="time" value="35" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -2383,42 +2400,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/WebContent/pages/userProfile/changePassword.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/css/simple-sidebar.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/pages/parts/navbar.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/web/servlets/secured/userProfile/ChangePasswordServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/utils/EncryptionUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/pages/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
@@ -2437,6 +2418,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
           <caret line="6" column="25" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2458,32 +2440,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/controller/services/OrganizerService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1530">
-          <caret line="92" column="106" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/controller/services/FacebookUserGetDataService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="636" max-vertical-offset="1683">
-          <caret line="66" column="52" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/pages/signUp.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="31.384615" vertical-offset="816" max-vertical-offset="3111">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/web/servlets/SignUpServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="986">
-          <caret line="35" column="85" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -2499,14 +2459,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.43651927" vertical-offset="0" max-vertical-offset="701">
           <caret line="25" column="20" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/web/servlets/SocialSignUpServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39372325" vertical-offset="132" max-vertical-offset="1105">
-          <caret line="37" column="70" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -2533,14 +2485,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="714">
           <caret line="16" column="13" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/web/servlets/LoginServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1275">
-          <caret line="27" column="24" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2620,23 +2564,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3638">
           <caret line="32" column="105" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/controller/dao/ReflectionDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="3179">
-          <caret line="46" column="25" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#937#938#0" expanded="false" />
-            <element signature="e#964#965#0" expanded="false" />
-            <element signature="e#1006#1007#0" expanded="false" />
-            <element signature="e#1038#1039#0" expanded="false" />
-            <element signature="e#1070#1071#0" expanded="false" />
-            <element signature="e#1098#1099#0" expanded="false" />
-            <element signature="e#1149#1150#0" expanded="false" />
-            <element signature="e#1192#1193#0" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2650,21 +2579,6 @@
             <element signature="e#647#677#0" expanded="false" />
             <element signature="e#1029#1059#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/controller/services/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2394" max-vertical-offset="3077">
-          <caret line="188" column="44" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/controller/transformers/ReflectionTransformer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="674" max-vertical-offset="2635">
-          <caret line="53" column="37" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -2688,6 +2602,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3566334" vertical-offset="2130" max-vertical-offset="7157">
           <caret line="163" column="51" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2703,14 +2618,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
           <caret line="23" column="72" selection-start-line="23" selection-start-column="62" selection-end-line="23" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/controller/services/GooglePlusService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1048" max-vertical-offset="1955">
-          <caret line="95" column="63" selection-start-line="95" selection-start-column="63" selection-end-line="95" selection-end-column="63" />
           <folding />
         </state>
       </provider>
@@ -2731,20 +2638,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/pages/userProfile/contactInfo.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.65384614" vertical-offset="1479" max-vertical-offset="3757">
-          <caret line="86" column="48" selection-start-line="86" selection-start-column="48" selection-end-line="86" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/js/application.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2444062" vertical-offset="4839" max-vertical-offset="5729">
           <caret line="293" column="136" selection-start-line="293" selection-start-column="29" selection-end-line="293" selection-end-column="29" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2796,6 +2695,128 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.591133" vertical-offset="252" max-vertical-offset="969">
           <caret line="50" column="53" selection-start-line="50" selection-start-column="36" selection-end-line="50" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/controller/transformers/ReflectionTransformer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="528" max-vertical-offset="2635">
+          <caret line="54" column="131" selection-start-line="54" selection-start-column="25" selection-end-line="54" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/pages/userProfile/contactInfo.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26243567" vertical-offset="1071" max-vertical-offset="3757">
+          <caret line="72" column="39" selection-start-line="72" selection-start-column="39" selection-end-line="72" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/pages/userProfile/parts/sideNavbar.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46655232" vertical-offset="51" max-vertical-offset="680">
+          <caret line="19" column="45" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/web/servlets/secured/userProfile/ChangePasswordServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16748768" vertical-offset="0" max-vertical-offset="731">
+          <caret line="15" column="74" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/controller/services/GooglePlusService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="770" max-vertical-offset="1972">
+          <caret line="86" column="101" selection-start-line="86" selection-start-column="12" selection-end-line="86" selection-end-column="99" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/controller/services/OrganizerService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="247" max-vertical-offset="1734">
+          <caret line="51" column="35" selection-start-line="51" selection-start-column="35" selection-end-line="51" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/controller/services/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2119" max-vertical-offset="2992">
+          <caret line="176" column="99" selection-start-line="176" selection-start-column="24" selection-end-line="176" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/utils/EncryptionUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="462" max-vertical-offset="1955">
+          <caret line="54" column="92" selection-start-line="54" selection-start-column="25" selection-end-line="54" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/controller/services/ApiService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.50246304" vertical-offset="0" max-vertical-offset="609">
+          <caret line="27" column="102" selection-start-line="27" selection-start-column="64" selection-end-line="27" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/controller/dao/ReflectionDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3858785" vertical-offset="2281" max-vertical-offset="2890">
+          <caret line="165" column="0" selection-start-line="165" selection-start-column="0" selection-end-line="165" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/pages/userProfile/apiAccess.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31560892" vertical-offset="2604" max-vertical-offset="3281">
+          <caret line="164" column="46" selection-start-line="164" selection-start-column="46" selection-end-line="164" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/web/servlets/SignUpServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="1037">
+          <caret line="29" column="78" selection-start-line="27" selection-start-column="8" selection-end-line="29" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/controller/services/FacebookUserGetDataService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1700">
+          <caret line="37" column="108" selection-start-line="37" selection-start-column="65" selection-end-line="37" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/web/servlets/LoginServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="154" max-vertical-offset="1326">
+          <caret line="39" column="46" selection-start-line="39" selection-start-column="46" selection-end-line="39" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/web/servlets/SocialSignUpServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="52" max-vertical-offset="1071">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding />
         </state>
       </provider>

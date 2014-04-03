@@ -17,7 +17,7 @@
         <li>
             <a href="<c:url value="/contactInfo"/>"><fmt:message key="sideNavbar.tickets"/></a>
         </li>
-        <c:if test="${user.password != null}">
+        <c:if test="${userType == 'common'}">
         <li>
             <a href="<c:url value="/changePassword"/>"><fmt:message key="sideNavbar.changePassword"/></a>
         </li>

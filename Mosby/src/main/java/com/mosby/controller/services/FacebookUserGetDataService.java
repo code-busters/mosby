@@ -1,6 +1,7 @@
 package main.java.com.mosby.controller.services;
 
 import main.java.com.mosby.model.User;
+import main.java.com.mosby.utils.EncryptionUtils;
 import main.java.com.mosby.web.servlets.SocialSignUpServlet;
 import net.sf.json.JSONObject;
 import net.sf.json.JSONSerializer;
@@ -32,9 +33,9 @@ public class FacebookUserGetDataService {
 		String token = null;
 		if (faceCode != null && ! "".equals(faceCode)) {
 			String appId = "601170126631442";
-			String redirectUrl = request.getScheme() + "://"
-					+ request.getServerName() + ":" + request.getServerPort()
-					+ "/Mosby/socialSignUp";
+            String redirectUrl = request.getScheme() + "://"
+                    + request.getServerName() + ":" + request.getServerPort()
+                    + request.getContextPath() + "/socialSignUp";
 			String faceAppSecret = "f2d80932e636decfa07add67e1a05cbf";
 			String newUrl = "https://graph.facebook.com/oauth/access_token?client_id="
 					+ appId + "&redirect_uri=" + redirectUrl + "&client_secret=" 
@@ -87,7 +88,8 @@ public class FacebookUserGetDataService {
 				user.setFirstName(json.getString("first_name"));
 				user.setLastName(json.getString("last_name"));
 				user.setEmail(json.getString("email"));
-				user.setImage(imageLocation);	
+				user.setImage(imageLocation);
+                user.setPassword(EncryptionUtils.createHash(EncryptionUtils.generateSecureRandom(24)));
 				user.setBirthDate(new SimpleDateFormat("MM/dd/yyyy").parse(json.getString("birthday")));
 				
 				System.out.println("BIRTHDAY" + json.getString("birthday"));

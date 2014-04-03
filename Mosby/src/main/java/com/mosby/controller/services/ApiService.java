@@ -3,6 +3,7 @@ package main.java.com.mosby.controller.services;
 import main.java.com.mosby.controller.dao.ReflectionDao;
 import main.java.com.mosby.model.Api;
 import main.java.com.mosby.model.Organizer;
+import main.java.com.mosby.utils.EncryptionUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
@@ -16,7 +17,8 @@ public class ApiService {
     }
 
     public String generateKey(HttpServletRequest request) {
-        String key = UUID.randomUUID().toString().replaceAll("-", "");
+        String uniqueKey = UUID.randomUUID().toString();
+        String key = EncryptionUtils.createHash(uniqueKey,8);
 
         String name = request.getParameter("name");
         int organizerId = Integer.parseInt(request.getParameter("organizer"));

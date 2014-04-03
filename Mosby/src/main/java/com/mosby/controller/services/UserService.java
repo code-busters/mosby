@@ -5,7 +5,6 @@ import main.java.com.mosby.model.User;
 import main.java.com.mosby.utils.EncryptionUtils;
 import main.java.com.mosby.utils.FileUploadUtils;
 import main.java.com.mosby.utils.MailUtils;
-
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -13,10 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
-
 import java.io.File;
 import java.io.IOException;
-import java.security.SecureRandom;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -153,28 +150,21 @@ public class UserService {
 
 	public User signUpUser(String firstName, String lastName, String email,
 			String password) {
-
-		User user = new User();
         ReflectionDao<User> usersDao = new ReflectionDao<>(User.class);
 
-		if (!usersDao.selectObjects(5,"email=", email).isEmpty()) {
+		if (!usersDao.selectObjects(1,"email=", email).isEmpty()) {
 			System.out.println("signUp fail! change email!");
 			return null;
 		} else {
 			String encryptedPassword = EncryptionUtils.createHash(password);
+            String authentication = EncryptionUtils.generateSecureRandom(24) + EncryptionUtils.toHex(email.getBytes());
 
-			SecureRandom random = new SecureRandom();
-	        byte[] code = new byte[24];
-	        random.nextBytes(code);
-	        String authentication = EncryptionUtils.toHex(code) + EncryptionUtils.toHex(email.getBytes());
-	        
-			user = new User(firstName, lastName, email, encryptedPassword, authentication, false);
+            User user = new User(firstName, lastName, email, encryptedPassword, authentication, false);
 			new OrganizerService().createDefaultOrganizer(user);
 			usersDao.insertObjects(user);
-
 			
 			new MailUtils().sendMessage(email, authentication);
-			user = usersDao.selectObjects(5,"email=", email).get(0);
+			user = usersDao.selectObjects(1,"email=", email).get(0);
 
 			return user;
 		}
@@ -183,12 +173,12 @@ public class UserService {
 	public User socialSignUpUser(User user) {
         ReflectionDao<User> usersDao = new ReflectionDao<>(User.class);
 
-        if (!usersDao.selectObjects(5,"email=", user.getEmail()).isEmpty()) {
+        if (!usersDao.selectObjects(1,"email=", user.getEmail()).isEmpty()) {
             return null;
         } else {
             usersDao.insertObjects(user);
             new OrganizerService().createDefaultOrganizer(user);
-            user = usersDao.selectObjects(5,"email=", user.getEmail()).get(0);
+            user = usersDao.selectObjects(1,"email=", user.getEmail()).get(0);
             return user;
         }
 	}

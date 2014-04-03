@@ -22,13 +22,11 @@ public class EncryptionUtils {
     private static final int SALT_INDEX = 1;
     private static final int PBKDF2_INDEX = 2;
 
-    //private static final char[] HEX = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
-
     public static String createHash(String password) {
         return createHash(password.toCharArray());
     }
     public static String createHash(String password, int byteSize) {
-        return createHash(password.toCharArray(), byteSize);
+        return createHashOnly(password.toCharArray(), byteSize);
     }
 
     public static String createHash(char[] password) {
@@ -45,7 +43,7 @@ public class EncryptionUtils {
         return StringUtils.concat(PBKDF2_ITERATIONS, ":", toHex(salt), ":", toHex(hash));
     }
 
-    public static String createHash(char[] password, int byteSize) {
+    public static String createHashOnly(char[] password, int byteSize) {
         SecureRandom random = new SecureRandom();
         byte[] salt = new byte[byteSize];
         random.nextBytes(salt);
@@ -57,6 +55,13 @@ public class EncryptionUtils {
             log.error(e);
         }
         return toHex(hash);
+    }
+
+    public static String generateSecureRandom(int byteSize) {
+        SecureRandom random = new SecureRandom();
+        byte[] salt = new byte[byteSize];
+        random.nextBytes(salt);
+        return toHex(salt);
     }
 
     private static byte[] pbkdf2(char[] password, byte[] salt, int iterations, int bytes)

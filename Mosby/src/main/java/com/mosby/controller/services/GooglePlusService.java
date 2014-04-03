@@ -13,6 +13,7 @@ import com.google.api.services.plus.Plus;
 import com.google.api.services.plus.model.Person;
 import main.java.com.mosby.controller.dao.ReflectionDao;
 import main.java.com.mosby.model.User;
+import main.java.com.mosby.utils.EncryptionUtils;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
@@ -83,6 +84,7 @@ public class GooglePlusService {
             user.setFirstName(firstName);
             user.setLastName(lastName);
             user.setEmail(email);
+            user.setPassword(EncryptionUtils.createHash(EncryptionUtils.generateSecureRandom(24)));
             user.setSite(googlePlusUrl);
             user.setImage(imgUrl);
             user.setActive(true);
