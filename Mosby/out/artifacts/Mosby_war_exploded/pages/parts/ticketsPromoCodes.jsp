@@ -11,7 +11,7 @@
         $(document).ready(function () {
             $('#free-ticket').click(function () {
                 var id = getLastId();
-                var priceInput = '<input type="text" class="form-control" value="<fmt:message key="ticketsPromoCodes.free"/>" name="event_ticket_price_' + id + '" id="event-ticket-price-' + id + '" readonly="" />';
+                var priceInput = '<input type="text" class="form-control" value="Free" name="event_ticket_price_' + id + '" id="event-ticket-price-' + id + '" readonly="" />';
                 addTicket(priceInput);
             });
 
@@ -23,7 +23,7 @@
 
             $('#donation-ticket').click(function () {
                 var id = getLastId();
-                var priceInput = '<input type="text" class="form-control" value="<fmt:message key="ticketsPromoCodes.donation"/>" name="event_ticket_price_' + id + '" id="event-ticket-price-' + id + '" readonly="" />';
+                var priceInput = '<input type="text" class="form-control" value="Donation" name="event_ticket_price_' + id + '" id="event-ticket-price-' + id + '" readonly="" />';
                 addTicket(priceInput);
             });
 

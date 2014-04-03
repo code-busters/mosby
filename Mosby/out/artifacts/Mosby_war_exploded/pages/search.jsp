@@ -107,8 +107,8 @@
                         </div>
                         <div class="form-group">
                             <span class="as-label"><fmt:message key="search.price"/></span>
-                            <input type="number" class="form-control price" placeholder="1" value="1" name="min_price" id="min-price" min="0" />
-                            <input type="number" class="form-control price" placeholder="1" name="max_price" id="max-price" min="0" />
+                            <input type="number" class="form-control price" placeholder="1" value="0" name="min_price" id="min-price" min="0" />
+                            <input type="number" class="form-control price" placeholder="1" value="0" name="max_price" id="max-price" min="0" />
                         </div>
                     </div>
                 </form>

@@ -642,9 +642,6 @@ video {
 }
 
 /*EVENT DETAIL*/
-.event .breadcrumb-text a {
-    font-size: 0.7em;
-}
 .event .breadcrumb-text a:last-child:after {
     content: none;
 }
@@ -681,9 +678,13 @@ video {
     font-size: 0.9em;
     margin-right: 0.8em;
 }
+.button-to-page {
+    margin-top: 1.5em;
+}
 .event-actions {
     margin-top: 0;
 }
+.button-to-page span,
 .event-actions span {
     padding-top: 0.4em;
     font-size: 0.8em;
@@ -821,7 +822,7 @@ video {
     font-size: 0.7em;
     font-weight: 600;
 }
-#my-apis .row:nth-child(even),
+#my-apis-body .row:nth-child(even),
 #my-events-body .row:nth-child(even),
 #organizers-body .row:nth-child(even),
 #promo-codes-body .row:nth-child(even),
@@ -846,6 +847,13 @@ video {
 #tickets-body .as-label,
 #tickets-body label {
     font-size: 0.9em;
+}
+#my-apis-body .row,
+#my-events-body .row,
+#organizers-body .row,
+#promo-codes-body .row,
+#tickets-body .row {
+    padding-top: 1em;
 }
 [id^="ticket-datepicker"] {
     width: 10em;
@@ -877,6 +885,10 @@ video {
 }
 
 /*--CONTACT INFO*/
+.credits {
+    display: block;
+    margin-top: -1em;
+}
 .user-profile-img {
     height: 120px;
     width: 120px;

@@ -61,23 +61,23 @@
                 <div class="profile-details">
                     <h2>${user.firstName} ${user.lastName}</h2>
                     <dl class="dl-horizontal">
-                        <c:if test="${user.gender != null}">
+                        <c:if test="${user.gender != ''}">
                             <dt>Gender</dt>
                             <dd>${user.gender}</dd>
                         </c:if>
-                        <c:if test="${user.country != null}">
+                        <c:if test="${user.country != ''}">
                             <dt>Country</dt>
                             <dd>${user.country}</dd>
                         </c:if>
-                        <c:if test="${user.city != null}">
+                        <c:if test="${user.city != ''}">
                             <dt>City</dt>
                             <dd>${user.city}</dd>
                         </c:if>
-                        <c:if test="${user.about != null}">
+                        <c:if test="${user.about != ''}">
                             <dt>About</dt>
                             <dd>${user.about}</dd>
                         </c:if>
-                        <c:if test="${user.site != null}">
+                        <c:if test="${user.site != ''}">
                             <dt>Site</dt>
                             <dd>
                                 <a href="${user.site}">${user.site}</a>

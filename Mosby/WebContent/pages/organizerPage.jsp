@@ -52,13 +52,13 @@
                         <img class="profile-img" src="media/images/users/${organizer.logo}">
                     </c:if>
                     <ul>
-                        <c:if test="${organizer.phone != null}">
+                        <c:if test="${organizer.phone != ''}">
                             <li>
                                 <span class="fui-user"></span>
                                     ${organizer.phone}
                             </li>
                         </c:if>
-                        <c:if test="${organizer.email != null}">
+                        <c:if test="${organizer.email != ''}">
                             <li>
                                 <a href="mailto:${organizer.email}">
                                     <span class="fui-mail"></span>
@@ -66,7 +66,7 @@
                                 </a>
                             </li>
                         </c:if>
-                        <c:if test="${organizer.facebook != null}">
+                        <c:if test="${organizer.facebook != ''}">
                             <li>
                                 <a href="${organizer.facebook}">
                                     <span class="fui-facebook"></span>
@@ -74,7 +74,7 @@
                                 </a>
                             </li>
                         </c:if>
-                        <c:if test="${organizer.googlePlus != null}">
+                        <c:if test="${organizer.googlePlus != ''}">
                             <li>
                                 <a href="${organizer.googlePlus}">
                                     <span class="fui-googleplus"></span>
@@ -82,7 +82,7 @@
                                 </a>
                             </li>
                         </c:if>
-                        <c:if test="${organizer.twitter != null}">
+                        <c:if test="${organizer.twitter != ''}">
                             <li>
                                 <a href="${organizer.twitter}">
                                     <span class="fui-twitter"></span>
@@ -95,11 +95,11 @@
                 <div class="profile-details">
                     <h2>${organizer.name}</h2>
                     <dl class="dl-horizontal">
-                        <c:if test="${organizer.about != null}">
+                        <c:if test="${organizer.twitter != ''}">
                             <dt>About</dt>
                             <dd>${organizer.about}</dd>
                         </c:if>
-                        <c:if test="${organizer.site != null}">
+                        <c:if test="${organizer.twitter != ''}">
                             <dt>Site</dt>
                             <dd>
                                 <a href="${organizer.site}">${organizer.site}</a>
@@ -135,7 +135,7 @@
 
                             <div class="text-right read-more">
                                 <a href="<c:url value="/eventPage?eventId=${event.id}"/>"><fmt:message
-                                        key="organizerPage.readMore"/></a>
+                                        key="organizerPage.readMore"/> ></a>
                             </div>
                         </div>
                     </div>
