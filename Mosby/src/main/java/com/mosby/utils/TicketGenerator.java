@@ -18,6 +18,7 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.Font.FontFamily;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.BarcodeQRCode;
@@ -28,6 +29,7 @@ import com.itextpdf.text.pdf.draw.DottedLineSeparator;
 
 public class TicketGenerator {
 
+	private static final String LOGO_PATH = "\\media\\images\\events\\logo\\";
 	private static final int QR_SEED = 9;
 	private static final int QR_SIZE = 10;
 
@@ -35,6 +37,8 @@ public class TicketGenerator {
 
 	private String eventName;
 
+	private String fullPath;
+	
 	private String eventCategory;
 	private String eventType;
 
@@ -57,11 +61,16 @@ public class TicketGenerator {
 
 	}
 
-	public TicketGenerator(Ticket ticket, OutputStream outputStream, String path)
+	public TicketGenerator(OutputStream outputStream, String path)
 			throws FileNotFoundException, DocumentException {
 		super();
 		this.document = new Document(PageSize.A4);
 		PdfWriter.getInstance(document, outputStream);
+		this.fullPath = StringUtils.concat(path, LOGO_PATH);
+	}
+
+	private void ticketData (Ticket ticket) {
+		
 		this.eventName = ticket.getEvent().getName();
 		this.eventCategory = ticket.getEvent().getEventCategory().getCategory();
 		this.eventType = ticket.getEvent().getEventType().getType();
@@ -69,22 +78,44 @@ public class TicketGenerator {
 		this.endDate = ticket.getEvent().getEndDate();
 		this.startTime = ticket.getEvent().getStartTime();
 		this.endTime = ticket.getEvent().getEndTime();
-		this.location = ticket.getEvent().getLocation();
-		this.ticketType = ticket.getTicketInfo().getType();
-		this.logoURL = StringUtils.concat(path, "\\media\\images\\events\\logo\\",ticket.getEvent().getLogo());
+		this.logoURL = StringUtils.concat(fullPath, ticket.getEvent().getLogo());
 		this.personName = StringUtils.concat(ticket.getUser().getFirstName(), "\n", ticket.getUser().getLastName());
-		this.qrCode = qrCodeString(ticket.getId());
-		this.promoCode = ticket.getPromoCode().getCode();
-		this.purchaseTime = ticket.getTimeOfPurchase();
-	}
-
-	public void generateTicket() throws DocumentException,
-			MalformedURLException, IOException {
-		document.open();
-
-		System.out.println("STARTING GENERATION TICKET...");
 		
-		document.add(headerTable());
+		if (!ticket.getEvent().getLocation().equals("")) {
+			this.location = ticket.getEvent().getLocation();
+		} else {
+			this.location = "";
+		}
+		
+		this.ticketType = ticket.getTicketInfo().getType();
+		this.qrCode = qrCodeString(ticket.getId());
+		this.purchaseTime = ticket.getTimeOfPurchase();
+		
+		if (ticket.getPromoCode() != null) {
+			this.promoCode = ticket.getPromoCode().getCode();
+		} else {
+			this.promoCode = "none";
+		}
+	}
+	
+	public void createTickets(Ticket...tickets) {
+		document.open();
+		try {
+			document.add(headerTable());
+			generateTicket(tickets);
+		} catch (DocumentException | IOException e) {
+			e.printStackTrace();
+		} 
+		
+		document.close();
+	}
+	
+	public void generateTicket(Ticket...tickets) throws DocumentException,
+			MalformedURLException, IOException {
+
+		for (int i = 0; i < tickets.length; i++) {
+		System.out.println("STARTING GENERATION TICKET...");
+		ticketData(tickets[i]);
 
 		Font namesFont = new Font(FontFamily.HELVETICA, 8f, 3, BaseColor.GRAY);
 		Font headerFont = new Font(FontFamily.HELVETICA, 17f, 1,
@@ -117,7 +148,7 @@ public class TicketGenerator {
 				textFont, 45);
 		nestedTable.addCell(nestedCell);
 		nestedCell = generateCell("Date & Time", "From " + startDate.toString()
-				+ " To " + endDate.toString() + " : " + startTime.toString()
+				+ " To " + endDate.toString() + " / " + startTime.toString()
 				+ " - " + endTime.toString(), namesFont, textFont, 50);
 		nestedTable.addCell(nestedCell);
 		nestedCell = generateCell("Location", location, namesFont, textFont, 50);
@@ -149,14 +180,18 @@ public class TicketGenerator {
 		PdfPCell rightColumn = new PdfPCell();
 		rightColumn.addElement(nestedTable);
 		table.addCell(rightColumn);
-		table.setSpacingAfter(70);
+		table.setSpacingAfter(30);
 
 		document.add(table);
 
-		document.add(generateDottedLine());
-
-		document.close();
+		Chunk dottedLine = generateDottedLine();
+		
+		document.add(dottedLine);
+		Paragraph lastParagraph = new Paragraph();
+		lastParagraph.setSpacingAfter(30);
+		document.add(lastParagraph);
 		System.out.println("ENDING GENERATION TICKET...");
+	}
 	}
 
 	private Chunk generateDottedLine() {
@@ -273,4 +308,5 @@ public class TicketGenerator {
 		return headerTable;
 	}
 
+	
 }

@@ -1,5 +1,6 @@
 package main.java.com.mosby.utils;
 
+import main.java.com.mosby.controller.services.EventService;
 import main.java.com.mosby.model.Ticket;
 
 import javax.activation.DataHandler;
@@ -10,17 +11,22 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.mail.util.ByteArrayDataSource;
+
+import org.apache.log4j.Logger;
+
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 import java.util.Properties;
 
 public class MailUtils {
 	
+	private static Logger log = Logger.getLogger(EventService.class);
 	private static String SMPT_HOSTNAME = "smtp.gmail.com";
 	private static String USERNAME = "mosby.events@gmail.com";
 	private static String PASSWORD = "code_busters";
 	private static String PORT = "465";
-	
+	private static String REGISTER = "You are register on MosbyEvent! Welcome!\nYou register code http://localhost:8080/Mosby/authentication?authentication_code=";
+	private static String AUTENTIFICATION = "Mosby autentification";
 	
 	private Properties props;
 	private Session session;
@@ -55,20 +61,15 @@ public class MailUtils {
 	    try {
 	        MimeMessage msg = new MimeMessage(session);
 	        msg.setFrom();
-	        msg.setSubject("Mosby Autentification");
+	        msg.setSubject(AUTENTIFICATION);
 	        msg.setSentDate(new java.util.Date());
-	        msg.setText("You are register on MosbyEvent! Welcome!\nYou register code http://localhost:8080/Mosby/authentication?authentication_code=" + authentication);
+	        msg.setText(REGISTER + authentication);
 	        msg.setRecipients(Message.RecipientType.TO,
 	                          email);
-
-//            Transport transport = session.getTransport("smtps");
-//            transport.connect(SMPT_HOSTNAME, Integer.parseInt(PORT), USERNAME, PASSWORD);
-//            transport.send(msg);
-//            transport.close();
             Transport.send(msg);
 
 	     } catch (MessagingException mex) {
-	        System.out.println("send failed, exception: " + mex);
+	        log.error("send failed, exception: " + mex);
 	     }
 	}
 
@@ -86,12 +87,12 @@ public class MailUtils {
 	        	Transport.send(msg);
 			}
 	     } catch (MessagingException mex) {
-	        System.out.println("send failed, exception: " + mex);
+	    	 log.error("send failed, exception: " + mex);
 	     }
 	}
 	
-	public void sendTicket(String recipient, Ticket ticket, String path) {
-                 
+	public void sendTicket(String recipient, String path, Ticket...tickets) {
+        
         String content = "Tickects"; //this will be the text of the email
         String subject = "Your ticket"; //this will be the subject of the email
         
@@ -106,8 +107,9 @@ public class MailUtils {
             //now write the PDF content to the output stream
             outputStream = new ByteArrayOutputStream();
             //writePdf(outputStream);
-            ticketGenerator = new TicketGenerator(ticket, outputStream, path);
-            ticketGenerator.generateTicket();
+            ticketGenerator = new TicketGenerator(outputStream, path);
+            //ticketGenerator.generateTicket();
+            ticketGenerator.createTickets(tickets);
             byte[] bytes = outputStream.toByteArray();
              
             //construct the pdf body part
