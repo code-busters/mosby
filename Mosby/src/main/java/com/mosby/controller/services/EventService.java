@@ -115,9 +115,8 @@ public class EventService {
 					startDate = new SimpleDateFormat(DATE_FORMAT).parse(request.getParameter("ticket_start_date_" + currentId));
 					endDate = new SimpleDateFormat(DATE_FORMAT).parse(request.getParameter("ticket_end_date_" + currentId));
 					startTime = new SimpleDateFormat(TIME_FORMAT).parse(request.getParameter("ticket_start_time_" + currentId));
-					endTime = new SimpleDateFormat(TIME_FORMAT).parse(request.getParameter("ticket_end_date_" + currentId));
+					endTime = new SimpleDateFormat(TIME_FORMAT).parse(request.getParameter("ticket_end_time_" + currentId));
 				} catch (ParseException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				int price;
@@ -349,9 +348,13 @@ public class EventService {
     	for (Organizer organizer : organizersList) {
     		List <Event> currentEvents = new ReadGenericObjectService<>(Event.class).readListByField("organizer_ref=", organizer.getId());
     		for (Event event : currentEvents) {
-    			int allTicketsSold = new ReflectionDao<>(Ticket.class).selectAggregateObjects("COUNT(event_ref)", "event_ref=", event.getId()).get(0).intValue();
+    			int allTicketsSold = 0;
+    			int allTickets = 0;
+    			if(new ReadGenericObjectService<>(TicketInfo.class).readListByField("event_ref", event.getId())!= null){
+    				allTicketsSold += new ReflectionDao<>(Ticket.class).selectAggregateObjects("COUNT(event_ref)", "event_ref=", event.getId()).get(0).intValue();    				
+    				allTickets += new ReflectionDao<>(TicketInfo.class).selectAggregateObjects("SUM(quantity_available)", "event_ref=", event.getId()).get(0).intValue() + allTicketsSold;
+    			}
     			ticketsSold.put(event.getId(), allTicketsSold);
-    			int allTickets = new ReflectionDao<>(TicketInfo.class).selectAggregateObjects("SUM(quantity_available)", "event_ref=", event.getId()).get(0).intValue() + allTicketsSold;
                 tickets.put(event.getId(), allTickets);
 			}
     		myEvents.addAll(currentEvents);
@@ -417,27 +420,23 @@ public class EventService {
 
 	public List<Event> search (HttpServletRequest request){
 		//Query builder		
-				String searchText = request.getParameter("search_again");
-				String query = "name,%" + searchText + "%, description, %" + searchText + "%";
+				String searchText = request.getParameter("search");
+				String query = "name,%" + searchText + "%, description,%" + searchText + "%";
 				
-				String categotyId = request.getParameter("event_category");
-				if (!categotyId.equals("-1")){
-					query = query + ", category_ref=, " + categotyId;
+				if (!(request.getParameter("event_category") == null) && !request.getParameter("event_category").equals("-1")){
+					query = query + ", category_ref=, " + request.getParameter("event_category");
 				}
 								
-				String typeId = request.getParameter("event_type");
-				if (!categotyId.equals("-1")){
-					query = query + ", type_ref=, " + typeId;
+				if (!(request.getParameter("event_type") == null) && !request.getParameter("event_type").equals("-1")){
+					query = query + ", type_ref=, " + request.getParameter("event_type");
 				}
 				
-				String startDate = request.getParameter("start_date");
-				if (!startDate.isEmpty()){
-					query = query + ", start_date>" + startDate;
+				if (!(request.getParameter("start_date") == null) && !request.getParameter("start_date").equals("")){
+					query = query + ", start_date>" + request.getParameter("start_date");
 				}
 				
-				String endDate = (request.getParameter("end_date"));
-				if (!endDate.isEmpty()){
-					query = query + ", end_date<" + startDate;
+				if (!(request.getParameter("end_date") == null) && !request.getParameter("end_date").equals("")){
+					query = query + ", end_date<" + request.getParameter("end_date");
 				}
 
 				String[] queryToExecute = query.split(",");
@@ -445,22 +444,21 @@ public class EventService {
 				List <Event> events = new ReflectionDao<>(Event.class).selectObjects(2, queryToExecute);
 
 				Iterator<Event> iter = events.iterator();
-				int minPrice = Integer.parseInt(request.getParameter("min_price"));
-				if (minPrice != 0){
+
+				if (!(request.getParameter("min_price") == null) && !request.getParameter("min_price").equals("0")){
 					while (iter.hasNext()){
 						Event currentEvent = iter.next();
-						List<TicketInfo> currentEventTicketsInfo = new ReflectionDao<>(TicketInfo.class).selectObjects(1, "event_ref=", currentEvent.getId(), "price>", minPrice);
+						List<TicketInfo> currentEventTicketsInfo = new ReflectionDao<>(TicketInfo.class).selectObjects(1, "event_ref=", currentEvent.getId(), "price>", request.getParameter("min_price"));
 						if (currentEventTicketsInfo.isEmpty()){
 							iter.remove();
 						}		
 					}
 				}
 				
-				int maxPrice = Integer.parseInt(request.getParameter("max_price"));
-				if (maxPrice !=0){
+				if (!(request.getParameter("max_price") == null) && !request.getParameter("max_price").equals("0")){
 					while (iter.hasNext()){
 						Event currentEvent = iter.next();
-						List<TicketInfo> currentEventTicketsInfo = new ReflectionDao<>(TicketInfo.class).selectObjects(1, "event_ref=", currentEvent.getId(), "price<", maxPrice);
+						List<TicketInfo> currentEventTicketsInfo = new ReflectionDao<>(TicketInfo.class).selectObjects(1, "event_ref=", currentEvent.getId(), "price<", request.getParameter("max_price"));
 						if (currentEventTicketsInfo.isEmpty()){
 							iter.remove();
 						}		
