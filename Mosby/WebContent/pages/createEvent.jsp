@@ -286,7 +286,7 @@
         }
     });
 </script>
-<%@include file="parts/ticketsPromoCodes.jsp" %>
+<jsp:include page="parts/ticketsPromoCodes.jsp"/>
 </body>
 
 </html>

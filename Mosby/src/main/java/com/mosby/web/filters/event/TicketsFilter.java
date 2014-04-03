@@ -1,14 +1,12 @@
 package main.java.com.mosby.web.filters.event;
 
+import main.java.com.mosby.model.TicketInfo;
+import main.java.com.mosby.utils.ValidatorUtils;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import main.java.com.mosby.model.PromoCode;
-import main.java.com.mosby.model.TicketInfo;
-import main.java.com.mosby.utils.ValidatorUtils;
-
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Timestamp;
@@ -71,10 +69,10 @@ public class TicketsFilter implements Filter {
 
 					SimpleDateFormat parseDate = new SimpleDateFormat(
 							"yyyy-MM-dd hh:mm");
-					String startTimestamp = request.getParameter("ticket_start_date_")
-							+ " " + request.getParameter("ticket_start_time_");
-					String endTimestamp = request.getParameter("ticket_end_date_")
-							+ " " + request.getParameter("ticket_end_time_");
+					String startTimestamp = request.getParameter("ticket_start_date_"+ currentId)
+							+ " " + request.getParameter("ticket_start_time_"+ currentId);
+					String endTimestamp = request.getParameter("ticket_end_date_"+ currentId)
+							+ " " + request.getParameter("ticket_end_time_"+ currentId);
 					Timestamp start = null;
 					Timestamp end = null;
 					try {

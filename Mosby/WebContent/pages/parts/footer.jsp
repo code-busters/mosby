@@ -30,10 +30,10 @@
                 </a>
             </li>
             <li>
-                <a href="#fakelink" class="fui-googleplus"></a>
+                <a href="https://plus.google.com/100002641608230461293" target="_blank" class="fui-googleplus"></a>
             </li>
             <li>
-                <a href="#fakelink" class="fui-facebook"></a>
+                <a href="mailto:mosby.events@gmail.com" target="_blank" class="fui-mail"></a>
             </li>
         </ul>
     </div>

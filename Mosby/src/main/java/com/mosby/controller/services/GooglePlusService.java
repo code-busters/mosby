@@ -93,7 +93,7 @@ public class GooglePlusService {
         }
         User temp = new UserService().socialSignUpUser(user);
         ReflectionDao<User> usersDao = new ReflectionDao<>(User.class);
-        return (temp != null) ? temp : usersDao.selectObjects(4, "email=", user.getEmail()).get(0);
+        return (temp != null) ? temp : usersDao.selectObjects(1, "email=", user.getEmail()).get(0);
     }
 
     private static void getContent(InputStream inputStream, ByteArrayOutputStream outputStream)

@@ -168,7 +168,7 @@ String.prototype.repeat = function (num) {
         elem.toggle(300);
     });
 
-    $('#google-plus-wrapper').click(function(event){
+    $('#google-plus-wrapper').click(function (event) {
         $('#google-plus-button button').click();
     });
 
@@ -290,11 +290,12 @@ String.prototype.repeat = function (num) {
             dateFormat: "yy-mm-dd",
             changeMonth: 1,
             changeYear: 1,
-            minDate: '0d',
+            minDate: 0,
             yearRange: 'c:+3'
-        }).prev('.btn').on('click', function (e) {
+        });
+        $(document).on('click', ".input-datepicker .btn", function (e) {
             e && e.preventDefault();
-            $(this).closest('.input-datepicker').find('[id*="datepicker"]').focus();
+            $(this).closest('.input-datepicker').find('input').focus();
         });
         $.extend($.datepicker, {
             _checkOffset: function (inst, offset, isFixed) {

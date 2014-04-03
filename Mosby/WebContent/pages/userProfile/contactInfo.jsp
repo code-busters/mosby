@@ -84,7 +84,7 @@
                                 </label>
                                 <% } else { %>
                                 <div class="flow-img user-profile-img"
-                                     style="background-image: url(${user.image});"></div>
+                                     style="background-image: url(${user.image}); cursor: default;"></div>
                                 <% }%>
                             </div>
                             <div class="form-group">

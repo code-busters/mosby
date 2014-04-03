@@ -1,24 +1,18 @@
 package main.java.com.mosby.utils;
 
-import java.io.ByteArrayOutputStream;
-import java.util.List;
-import java.util.Properties;
+import main.java.com.mosby.model.Ticket;
 
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
-import javax.mail.Authenticator;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
+import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.mail.util.ByteArrayDataSource;
-
-import main.java.com.mosby.model.Ticket;
+import java.io.ByteArrayOutputStream;
+import java.util.List;
+import java.util.Properties;
 
 public class MailUtils {
 	
@@ -30,23 +24,23 @@ public class MailUtils {
 	
 	private Properties props;
 	private Session session;
-	
-	public MailUtils() {
-		props = new Properties();
-	    props.put("mail.transport.protocol", "smtp");
-	    props.put("mail.smtp.host", SMPT_HOSTNAME);
-	    props.put("mail.from", USERNAME);
-	    props.put("mail.smtp.socketFactory.port", PORT);
-	    props.put("mail.port", PORT);
-	    props.put("mail.smtp.starttls.enable", "true");
-	    props.put("mail.smtp.auth", "true");
-	    session = Session.getInstance(getProps(), new Authenticator() {
-	        @Override
-	        protected PasswordAuthentication getPasswordAuthentication() {
-	            return new PasswordAuthentication(USERNAME, PASSWORD);
-	        }
-	    });
-	}
+
+    public MailUtils() {
+        props = new Properties();
+        props.put("mail.smtp.host", SMPT_HOSTNAME);
+        props.put("mail.from", USERNAME);
+        props.put("mail.smtp.socketFactory.port", PORT);
+        props.put("mail.smtp.socketFactory.class",
+                "javax.net.ssl.SSLSocketFactory");
+        props.put("mail.port", PORT);
+        props.put("mail.smtp.auth", "true");
+        session = Session.getInstance(getProps(), new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(USERNAME, PASSWORD);
+            }
+        });
+    }
 	
 	public Properties getProps() {
 		return props;
@@ -67,10 +61,11 @@ public class MailUtils {
 	        msg.setRecipients(Message.RecipientType.TO,
 	                          email);
 
-	        Transport transport = session.getTransport("smtps");
-	        transport.connect(SMPT_HOSTNAME, Integer.parseInt(PORT), USERNAME, PASSWORD);
-	        transport.send(msg);
-	        transport.close();
+//            Transport transport = session.getTransport("smtps");
+//            transport.connect(SMPT_HOSTNAME, Integer.parseInt(PORT), USERNAME, PASSWORD);
+//            transport.send(msg);
+//            transport.close();
+            Transport.send(msg);
 
 	     } catch (MessagingException mex) {
 	        System.out.println("send failed, exception: " + mex);
