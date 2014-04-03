@@ -30,7 +30,7 @@ public class GoogleCalendarService {
     
     public GoogleCalendarService() {
         try {
-            InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("/calendar_client_secret.json");
+            InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("/client_secrets.json");
             Reader reader = new InputStreamReader(inputStream);
             clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, reader);
             CLIENT_ID = clientSecrets.getWeb().getClientId();

@@ -13,8 +13,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.math.BigInteger;
+import java.security.SecureRandom;
 import java.util.Collections;
 import java.util.List;
 
@@ -26,8 +27,8 @@ public class EventPageServlet extends HttpServlet {
 	@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getParameter("eventId") != null) {
-        	HttpSession session = request.getSession();
-    		String sessionId = session.getId();
+            String state = new BigInteger(130, new SecureRandom()).toString(32);
+            request.getSession().setAttribute("state", state);
     		
     		String clientId = new GoogleCalendarService().getClientId();
             String redirectUrl = request.getScheme() + "://"
@@ -36,7 +37,7 @@ public class EventPageServlet extends HttpServlet {
     		
     		GoogleAuthorizationCodeRequestUrl calendarRequestUrl = new GoogleAuthorizationCodeRequestUrl(clientId, redirectUrl, Collections.singleton(CalendarScopes.CALENDAR));
     		calendarRequestUrl.setApprovalPrompt("auto");
-    		calendarRequestUrl.setState(sessionId);
+    		calendarRequestUrl.setState(state);
     		request.setAttribute("calendarURL", calendarRequestUrl.build());
     		
             int eventId = Integer.parseInt(request.getParameter("eventId"));

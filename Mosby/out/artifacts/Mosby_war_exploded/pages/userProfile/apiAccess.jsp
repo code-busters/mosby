@@ -91,7 +91,7 @@
                                 <p>${error}</p>
                             </c:forEach>
                             <div class="form-group col-md-5 col-sm-5">
-                                <label for="name"><fmt:message key="apiAccess.name"/></label>
+                                <label for="name"><fmt:message key="apiAccess.name"/>*</label>
                                 <input class="form-control" type="text"
                                        placeholder="<fmt:message key="apiAccess.exampleAndroidAppGoogleGlass"/>"
                                        name="name" id="name" required/>

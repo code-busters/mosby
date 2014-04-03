@@ -73,7 +73,7 @@
                                     <div id="${organizer.id}" class="row">
                                         <div class="col-md-6 col-sm-6">
                                             <span class="as-label visible-xs"><fmt:message key="myOrganizers.organizer"/>*</span>
-                                            <a href="#">${organizer.name}</a>
+                                            <a href="<c:url value="/organizerPage"/>?id=${organizer.id}">${organizer.name}</a>
                                         </div>
                                         <div class="col-md-2 col-sm-2">
                                             <span class="as-label visible-xs"><fmt:message key="myOrganizers.email"/>*</span>

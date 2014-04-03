@@ -106,8 +106,12 @@
 
                                     <p>
                                         <c:choose>
-                                            <c:when test="${ticketInfo.price == 0}">
+                                            <c:when test="${ticketInfo.type == 'Free'}">
                                                 <fmt:message key="eventPage.free"/>
+                                            </c:when>
+                                            <c:when test="${ticketInfo.type == 'Donation'}">
+                                                <input type="number" class="form-control" value="0" placeholder="0" name="ticket_price_${ticketInfo.id}">
+                                                <span class="additional-input-info">*Donation</span>
                                             </c:when>
                                             <c:otherwise>
                                                 ${ticketInfo.price}

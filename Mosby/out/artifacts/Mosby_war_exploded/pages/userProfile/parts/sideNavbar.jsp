@@ -15,7 +15,7 @@
             <a href="<c:url value="/contactInfo"/>"><fmt:message key="sideNavbar.contactInfo"/></a>
         </li>
         <li>
-            <a href="<c:url value="/contactInfo"/>"><fmt:message key="sideNavbar.tickets"/></a>
+            <a href="<c:url value="/myTickets"/>"><fmt:message key="sideNavbar.tickets"/></a>
         </li>
         <c:if test="${userType == 'common'}">
         <li>
