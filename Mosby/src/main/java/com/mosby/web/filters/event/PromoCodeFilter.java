@@ -27,7 +27,6 @@ public class PromoCodeFilter implements Filter {
 
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) res;
-		System.out.println("PromoFilter");
 
 		if (request.getMethod().equals("POST")) {
 

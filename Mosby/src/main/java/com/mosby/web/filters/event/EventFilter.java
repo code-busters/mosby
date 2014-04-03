@@ -20,11 +20,11 @@ import java.text.SimpleDateFormat;
 public class EventFilter implements Filter {
 
     public EventFilter() {
-        // TODO Auto-generated constructor stub
+        
     }
 
     public void destroy() {
-        // TODO Auto-generated method stub
+        
     }
 
     public void doFilter(ServletRequest req, ServletResponse res,
@@ -93,7 +93,7 @@ public class EventFilter implements Filter {
     }
 
     public void init(FilterConfig fConfig) throws ServletException {
-        // TODO Auto-generated method stub
+        
     }
 
 }

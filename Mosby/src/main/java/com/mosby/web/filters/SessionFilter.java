@@ -11,11 +11,11 @@ import java.io.IOException;
 public class SessionFilter implements Filter {
 
 	public SessionFilter() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public void destroy() {
-		// TODO Auto-generated method stub
+		
 	}
 
 	public void doFilter(ServletRequest req, ServletResponse res,
@@ -26,7 +26,6 @@ public class SessionFilter implements Filter {
 
 		if (request.getMethod().equals("GET")) {
 			if (session == null) {
-				System.out.println("create session");
 				session = request.getSession();
 			}
 		}
@@ -35,7 +34,7 @@ public class SessionFilter implements Filter {
 	}
 
 	public void init(FilterConfig fConfig) throws ServletException {
-		// TODO Auto-generated method stub
+		
 	}
 
 }

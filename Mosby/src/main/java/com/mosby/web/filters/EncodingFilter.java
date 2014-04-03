@@ -15,11 +15,11 @@ public class EncodingFilter implements Filter {
 	private String encoding = "utf-8";
     
     public EncodingFilter() {
-        // TODO Auto-generated constructor stub
+        
     }
 
 	public void destroy() {
-		// TODO Auto-generated method stub
+		
 	}
 
 
