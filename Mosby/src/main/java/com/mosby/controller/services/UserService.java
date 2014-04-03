@@ -169,6 +169,7 @@ public class UserService {
 	        String authentication = EncryptionUtils.toHex(code) + EncryptionUtils.toHex(email.getBytes());
 	        
 			user = new User(firstName, lastName, email, encryptedPassword, authentication, false);
+			new OrganizerService().createDefaultOrganizer(user);
 			usersDao.insertObjects(user);
 
 			
@@ -186,6 +187,7 @@ public class UserService {
             return null;
         } else {
             usersDao.insertObjects(user);
+            new OrganizerService().createDefaultOrganizer(user);
             user = usersDao.selectObjects(5,"email=", user.getEmail()).get(0);
             return user;
         }

@@ -46,11 +46,23 @@ public class OrganizerService {
 		}
 		
 		Organizer organizer = new Organizer(user, name, email, phone, about, site, googlePlus, facebook, twitter, logo);
-		
-		ReflectionDao<Organizer> organizerDao = new ReflectionDao<>(Organizer.class);
-		organizerDao.insertObjects(organizer);
+		new ReflectionDao<>(Organizer.class).insertObjects(organizer);
 	}
 
+	public void createDefaultOrganizer(User user){
+		
+		String name = user.getFirstName() + "company";
+		String email = "office@mosby.com";
+		String phone = "+38 032 222 22 22";
+		String about = "At Mosby, we believe that gathering with others is the best way for people to learn, grow, get inspired, feel connected, get healthy, give back, and celebrate. So we're building technology that facilitates those gatherings, by helping people find and attend events that feed their interests, while connecting them with others who share their passions.When we indulge our curiosity, events can transform us and make us better. We want everyone to join us in creating a world where we are encouraged to get out there and try new things, indulge in the things we love, and to express ourselves, improve ourselves and build our communities. We are here to bring people together.";
+		String site = "www.mosby.com";
+		String googlePlus = "plus.google.com";
+		String facebook = "facebook.com";
+		String twitter = "twitter.com";
+		String logo =  "default.png";
+		Organizer organizer = new Organizer(user, name, email, phone, about, site, googlePlus, facebook, twitter, logo);
+		new ReflectionDao<>(Organizer.class).insertObjects(organizer);
+	} 
 	
 	public void update(HttpServletRequest request, HttpServlet servlet) throws IllegalStateException, IOException, ServletException{
     	HttpSession session = request.getSession(false);
