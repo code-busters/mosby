@@ -69,7 +69,7 @@
                 <h5><fmt:message key="editEvent.eventDetail"/></h5>
 
                 <div class="form-group">
-                    <label for="event-name"><fmt:message key="editEvent.eventName"/></label> <input type="text"
+                    <label for="event-name"><fmt:message key="editEvent.eventName"/>*</label> <input type="text"
                                                                       class="form-control"
                                                                       placeholder="<fmt:message key="editEvent.chooseEventName"/>"
                                                                       value="${event.name}" name="event_name"
@@ -111,7 +111,7 @@
                         class="additional-input-info"><fmt:message key="editEvent.selectImageWithBigResolutionForBetterResult"/></span>
                 </div>
                 <div class="form-group">
-                    <label for="datepicker-start"><fmt:message key="editEvent.startDateTime"/></label>
+                    <label for="datepicker-start"><fmt:message key="editEvent.startDateTime"/>*</label>
 
                     <div class="input-prepend input-datepicker">
                         <button type="button" class="btn">
@@ -125,7 +125,7 @@
                            value="${event.startTime}" name="start_time" required>
                 </div>
                 <div class="form-group">
-                    <label for="datepicker-end"><fmt:message key="editEvent.endDateTime"/></label>
+                    <label for="datepicker-end"><fmt:message key="editEvent.endDateTime"/>*</label>
 
                     <div class="input-prepend input-datepicker">
                         <button type="button" class="btn">
@@ -141,7 +141,7 @@
 
 
                 <div class="form-group">
-                    <label for="event-category"><fmt:message key="editEvent.category"/></label> <select
+                    <label for="event-category"><fmt:message key="editEvent.category"/>*</label> <select
                         name="event_category" class="select-block" id="event-category"
                         form="edit-event-form">
                     <c:set var="eventCategory"
@@ -155,7 +155,7 @@
                 </select>
                 </div>
                 <div class="form-group">
-                    <label for="event-type"><fmt:message key="editEvent.type"/></label> <select name="event_type"
+                    <label for="event-type"><fmt:message key="editEvent.type"/>*</label> <select name="event_type"
                                                                  class="select-block" id="event-type"
                                                                  form="edit-event-form">
                     <c:set var="eventType" value="${event.eventType.type}"/>

@@ -1,5 +1,7 @@
 package main.java.com.mosby.web.servlets;
 
+import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeRequestUrl;
+import com.google.api.services.calendar.CalendarScopes;
 import main.java.com.mosby.controller.services.EventService;
 import main.java.com.mosby.controller.services.GoogleCalendarService;
 import main.java.com.mosby.controller.services.ReadGenericObjectService;
@@ -12,10 +14,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeRequestUrl;
-import com.google.api.services.calendar.CalendarScopes;
-
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
@@ -31,10 +29,10 @@ public class EventPageServlet extends HttpServlet {
         	HttpSession session = request.getSession();
     		String sessionId = session.getId();
     		
-    		String clientId = new GoogleCalendarService().getClientId();	
-    		String redirectUrl = request.getScheme() + "://"
-    				+ request.getServerName() + ":" + request.getServerPort()
-    				+ "/Mosby/calendarServlet";   		
+    		String clientId = new GoogleCalendarService().getClientId();
+            String redirectUrl = request.getScheme() + "://"
+                    + request.getServerName() + ":" + request.getServerPort()
+                    + request.getContextPath() + "/calendarServlet";
     		
     		GoogleAuthorizationCodeRequestUrl calendarRequestUrl = new GoogleAuthorizationCodeRequestUrl(clientId, redirectUrl, Collections.singleton(CalendarScopes.CALENDAR));
     		calendarRequestUrl.setApprovalPrompt("auto");

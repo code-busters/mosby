@@ -73,11 +73,11 @@
                             <span class="additional-input-info"><fmt:message key="createOrganizer.clickOnImageToBrowseYourLogo"/></span>
                         </div>
                         <div class="form-group">
-                            <label for="name"><fmt:message key="createOrganizer.name"/></label>
+                            <label for="name"><fmt:message key="createOrganizer.name"/>*</label>
                             <input class="form-control" placeholder="<fmt:message key="createOrganizer.name"/>" name="name" id="name" required />
                         </div>
                         <div class="form-group">
-                            <label for="email"><fmt:message key="createOrganizer.contactEmail"/></label>
+                            <label for="email"><fmt:message key="createOrganizer.contactEmail"/>*</label>
                             <input class="form-control" type="email" placeholder="<fmt:message key="createOrganizer.contactEmail"/>" name="email" pattern="[^ @]*@[^ @]*\.[^ @]{2,}" id="email" required />
                         </div>
                         <div class="form-group">

@@ -14,7 +14,6 @@ import com.google.api.services.calendar.model.EventDateTime;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -46,11 +45,11 @@ public class GoogleCalendarService {
         return CLIENT_ID;
     }
 
-    public void addEvent(HttpServletRequest request, HttpServletResponse response, String googleCode) {
+    public void addEvent(HttpServletRequest request, String googleCode) {
     	try {
-    		String redirectUrl = request.getScheme() + "://"
-    				+ request.getServerName() + ":" + request.getServerPort()
-    				+ "/Mosby/calendarServlet";
+            String redirectUrl = request.getScheme() + "://"
+                    + request.getServerName() + ":" + request.getServerPort()
+                    + request.getContextPath() + "/calendarServlet";
     		GoogleTokenResponse tokenResponse =
     	            new GoogleAuthorizationCodeTokenRequest(TRANSPORT, JSON_FACTORY,
     	                    CLIENT_ID, CLIENT_SECRET, googleCode, redirectUrl).execute();

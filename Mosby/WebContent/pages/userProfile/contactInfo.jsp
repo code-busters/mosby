@@ -88,14 +88,14 @@
                                 <% }%>
                             </div>
                             <div class="form-group">
-                                <label for="first-name"><fmt:message key="contactInfo.firstName"/></label>
+                                <label for="first-name"><fmt:message key="contactInfo.firstName"/>*</label>
                                 <input class="form-control" placeholder="<fmt:message key="contactInfo.firstName"/>" value="${user.firstName}"
-                                       name="first_name" id="first-name"/>
+                                       name="first_name" id="first-name" required />
                             </div>
                             <div class="form-group">
-                                <label for="last-name"><fmt:message key="contactInfo.lastName"/></label>
+                                <label for="last-name"><fmt:message key="contactInfo.lastName"/>*</label>
                                 <input class="form-control" placeholder="<fmt:message key="contactInfo.lastName"/>" value="${user.lastName}"
-                                       name="last_name" id="last-name"/>
+                                       name="last_name" id="last-name" required />
                             </div>
                             <div class="form-group">
                                 <label for="country"><fmt:message key="contactInfo.country"/></label>

@@ -60,7 +60,7 @@
             <h5><fmt:message key="createEvent.eventDetail"/></h5>
             <input type="hidden" name="language" value="${language}" />
             <div class="form-group">
-                <label for="event-name"><fmt:message key="createEvent.eventName"/></label>
+                <label for="event-name"><fmt:message key="createEvent.eventName"/>*</label>
                 <input value="${event_name}" type="text" class="form-control" placeholder="<fmt:message key="createEvent.chooseEventName"/>" name="event_name"
                        id="event-name"
                        required/>
@@ -90,7 +90,7 @@
                 <span class="additional-input-info"><fmt:message key="createEvent.selectImageWithBigResolutionForBetterResult"/></span>
             </div>
             <div class="form-group">
-                <label for="datepicker-start"><fmt:message key="createEvent.startDateTime"/></label>
+                <label for="datepicker-start"><fmt:message key="createEvent.startDateTime"/>*</label>
 
                 <div class="input-prepend input-datepicker">
                     <button type="button" class="btn">
@@ -102,7 +102,7 @@
                 <input type="time" class="form-control time" value="${start_time}" placeholder="00:00" name="start_time" required>
             </div>
             <div class="form-group">
-                <label for="datepicker-end"><fmt:message key="createEvent.endDateTime"/></label>
+                <label for="datepicker-end"><fmt:message key="createEvent.endDateTime"/>*</label>
 
                 <div class="input-prepend input-datepicker">
                     <button type="button" class="btn">
@@ -115,7 +115,7 @@
 
 
             <div class="form-group">
-                <label for="event-category"><fmt:message key="createEvent.category"/></label>
+                <label for="event-category"><fmt:message key="createEvent.category"/>*</label>
                 <select name="event_category" class="select-block" id="event-category" form="create-event-form">
                     <option value="-1">
                         <fmt:message key="createEvent.selectCategory"/>...
@@ -129,7 +129,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="event-type"><fmt:message key="createEvent.type"/></label>
+                <label for="event-type"><fmt:message key="createEvent.type"/>*</label>
                 <select name="event_type" class="select-block" id="event-type" form="create-event-form">
                     <option value="-1">
                         <fmt:message key="createEvent.selectType"/>...
@@ -160,9 +160,9 @@
             <div class="form-group">
                 <div id="tickets">
                     <div class="row create-tickets-header hidden-xs">
-                        <div class="col-md-6 col-sm-6"><fmt:message key="createEvent.ticketName"/></div>
-                        <div class="col-md-2 col-sm-2"><fmt:message key="createEvent.quantityAvailable"/></div>
-                        <div class="col-md-2 col-sm-2"><fmt:message key="createEvent.price"/></div>
+                        <div class="col-md-6 col-sm-6"><fmt:message key="createEvent.ticketName"/>*</div>
+                        <div class="col-md-2 col-sm-2"><fmt:message key="createEvent.quantityAvailable"/>*</div>
+                        <div class="col-md-2 col-sm-2"><fmt:message key="createEvent.price"/>*</div>
                         <div class="col-md-2 col-sm-2 text-center"><fmt:message key="createEvent.actions"/></div>
                     </div>
                     <div id="tickets-body">
@@ -189,9 +189,9 @@
             <div class="form-group">
                 <div id="promo-codes">
                     <div class="row promo-codes-header hidden-xs">
-                        <div class="col-md-6 col-sm-6"><fmt:message key="createEvent.promoCode"/></div>
-                        <div class="col-md-2 col-sm-2"><fmt:message key="createEvent.quantityAvailable"/></div>
-                        <div class="col-md-2 col-sm-2"><fmt:message key="createEvent.discount"/></div>
+                        <div class="col-md-6 col-sm-6"><fmt:message key="createEvent.promoCode"/>*</div>
+                        <div class="col-md-2 col-sm-2"><fmt:message key="createEvent.quantityAvailable"/>*</div>
+                        <div class="col-md-2 col-sm-2"><fmt:message key="createEvent.discount"/>*</div>
                         <div class="col-md-2 col-sm-2 text-center"><fmt:message key="createEvent.actions"/></div>
                     </div>
                     <div id="promo-codes-body">

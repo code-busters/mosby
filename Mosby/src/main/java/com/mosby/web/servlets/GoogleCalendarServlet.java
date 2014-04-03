@@ -24,7 +24,7 @@ public class GoogleCalendarServlet extends HttpServlet {
 		String googleCode = request.getParameter("code");
 
 		if (googleCode != null && state.equals(request.getSession().getAttribute("state"))) {
-            new GoogleCalendarService().addEvent(request, response, googleCode);
+            new GoogleCalendarService().addEvent(request, googleCode);
 		}
 		response.sendRedirect("eventPage?eventId="
 				+ request.getSession().getAttribute("eventId"));

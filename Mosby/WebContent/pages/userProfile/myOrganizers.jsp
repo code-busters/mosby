@@ -72,11 +72,11 @@
                                 <c:forEach items="${organizers}" var="organizer">
                                     <div id="${organizer.id}" class="row">
                                         <div class="col-md-6 col-sm-6">
-                                            <span class="as-label visible-xs"><fmt:message key="myOrganizers.organizer"/></span>
+                                            <span class="as-label visible-xs"><fmt:message key="myOrganizers.organizer"/>*</span>
                                             <a href="#">${organizer.name}</a>
                                         </div>
                                         <div class="col-md-2 col-sm-2">
-                                            <span class="as-label visible-xs"><fmt:message key="myOrganizers.email"/></span>
+                                            <span class="as-label visible-xs"><fmt:message key="myOrganizers.email"/>*</span>
 
                                             <p>${organizer.email}</p>
                                         </div>

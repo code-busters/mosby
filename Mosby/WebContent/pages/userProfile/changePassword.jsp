@@ -72,21 +72,21 @@
 
                             <div class="form-group">
                                 <label for="current-password"><fmt:message
-                                        key="changePassword.currentPassword"/></label>
+                                        key="changePassword.currentPassword"/>*</label>
                                 <input class="form-control" type="password"
                                        placeholder="<fmt:message key="changePassword.currentPassword"/>"
                                        name="current_password" id="current-password" required/>
                             </div>
 
                             <div class="form-group">
-                                <label for="new-password"><fmt:message key="changePassword.newPassword"/></label>
+                                <label for="new-password"><fmt:message key="changePassword.newPassword"/>*</label>
                                 <input class="form-control" type="password"
                                        placeholder="<fmt:message key="changePassword.newPassword"/>"
                                        name="new_password" id="new-password" required/>
                             </div>
                             <div class="form-group">
                                 <label for="confirm-password"><fmt:message
-                                        key="changePassword.confirmPassword"/></label>
+                                        key="changePassword.confirmPassword"/>*</label>
                                 <input class="form-control" type="password"
                                        placeholder="<fmt:message key="changePassword.confirmPassword"/>"
                                        name="confirm_password" id="confirm-password" required/>

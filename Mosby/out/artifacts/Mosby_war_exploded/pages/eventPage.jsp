@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="language"
        value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
@@ -79,9 +80,9 @@
             </p>
 
             <div id="googleMap" class="" style="height:380px;"></div>
+            <c:if test="${fn:length(tickets) > 0}">
             <form action="register" method="post" id="register-for-event-form">
                 <input type="hidden" name="eventId" value="${event.id}"/>
-
                 <div id="tickets">
                     <div class="row create-tickets-header hidden-xs">
                         <div class="col-md-8 col-sm-8"><fmt:message key="eventPage.ticketType"/></div>
@@ -119,7 +120,6 @@
                                     <input type="number" class="form-control" placeholder="0"
                                            name="ticket_quantity_${ticketInfo.id}" id="promo-code-discount-0" min="0"
                                            max="${ticketInfo.quantityAvailable}">
-                                        <%--<span class="additional-input-info">Min ${ticketInfo.minNumber}</span>--%>
                                     <span class="additional-input-info"><fmt:message key="eventPage.max"/> ${ticketInfo.quantityAvailable}</span>
                                 </div>
                             </div>
@@ -150,6 +150,7 @@
                     </button>
                 </div>
             </form>
+            </c:if>
         </div>
         <div class="col-md-3">
             <div class="organizer-details col-md-12">

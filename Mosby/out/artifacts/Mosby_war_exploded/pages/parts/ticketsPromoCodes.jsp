@@ -17,7 +17,7 @@
 
             $('#paid-ticket').click(function () {
                 var id = getLastId();
-                var priceInput = '<input type="number" class="form-control" placeholder="0" name="event_ticket_price_' + id + '" id="event-ticket-price-' + id + '" min="0" />';
+                var priceInput = '<input type="number" class="form-control" placeholder="0" name="event_ticket_price_' + id + '" id="event-ticket-price-' + id + '" min="0" required />';
                 addTicket(priceInput);
             });
 
@@ -34,15 +34,15 @@
                         '<div id="' + id + '" class="row">' +
                                 '<input class="hide" type="text" name="ticket_id" value="'+ id +'" > ' +
                                 '<div class="col-md-6 col-sm-6">' +
-                                '<label class="visible-xs" for="event-ticket-name-' + id + '"><fmt:message key="ticketsPromoCodes.ticketName"/></label>' +
+                                '<label class="visible-xs" for="event-ticket-name-' + id + '"><fmt:message key="ticketsPromoCodes.ticketName"/>*</label>' +
                                 '<input type="text" class="form-control" placeholder="<fmt:message key="ticketsPromoCodes.examplesEarlyBirdVipPress"/>" name="event_ticket_name_' + id + '" id="event-ticket-name-' + id + '" required />' +
                                 '</div>' +
                                 '<div class="col-md-2 col-sm-2">' +
-                                '<label class="visible-xs" for="event-ticket-quantity-' + id + '"><fmt:message key="ticketsPromoCodes.quantityAvailable"/></label>' +
-                                '<input type="number" class="form-control" placeholder="100" name="event_ticket_quantity_' + id + '" id="event-ticket-quantity-' + id + '" min="1" />' +
+                                '<label class="visible-xs" for="event-ticket-quantity-' + id + '"><fmt:message key="ticketsPromoCodes.quantityAvailable"/>*</label>' +
+                                '<input type="number" class="form-control" placeholder="100" name="event_ticket_quantity_' + id + '" id="event-ticket-quantity-' + id + '" min="1" required />' +
                                 '</div>' +
                                 '<div class="col-md-2 col-sm-2">' +
-                                '<label class="visible-xs" for="event-ticket-price-' + id + '"><fmt:message key="ticketsPromoCodes.price"/></label>' +
+                                '<label class="visible-xs" for="event-ticket-price-' + id + '"><fmt:message key="ticketsPromoCodes.price"/>*</label>' +
                                 priceInput +
                                 '</div>' +
                                 '<div class="col-md-2 col-sm-2 actions text-center">' +
@@ -57,7 +57,7 @@
                                 '<div id="falldown-' + id + '" class="falldown col-md-12">' +
                                 '<div class="form-group">' +
                                 '<label for="ticket-description-' + id + '"><fmt:message key="ticketsPromoCodes.ticketDescription"/></label>' +
-                                '<textarea rows="3" placeholder="<fmt:message key="ticketsPromoCodes.additionalInfoAboutTicket"/>" class="form-control" id="ticket-description-' + id + '" form="create-event-form"></textarea>' +
+                                '<textarea rows="3" placeholder="<fmt:message key="ticketsPromoCodes.additionalInfoAboutTicket"/>" class="form-control" id="ticket-description-' + id + '"></textarea>' +
                                 '</div>' +
                                 '<div class="form-group">' +
                                 '<label for="ticket-datepicker-start-' + id + '"><fmt:message key="ticketsPromoCodes.startDateTimeForTicket"/></label>' +
@@ -65,9 +65,9 @@
                                 '<button type="button" class="btn">' +
                                 '<span class="fui-calendar"></span>' +
                                 '</button>' +
-                                '<input type="text" placeholder="<fmt:message key="ticketsPromoCodes.startDate"/>" name="ticket_start_date_' + id + '" id="ticket-datepicker-start-' + id + '" readonly="" required>' +
+                                '<input type="text" placeholder="<fmt:message key="ticketsPromoCodes.startDate"/>" name="ticket_start_date_' + id + '" id="ticket-datepicker-start-' + id + '" readonly="">' +
                                 '</div>' +
-                                '<input type="time" class="form-control time" value="00:00" name="ticket_start_time_' + id + '" required>' +
+                                '<input type="time" class="form-control time" value="00:00" name="ticket_start_time_' + id + '">' +
                                 '</div>' +
                                 '<div class="form-group">' +
                                 '<label for="ticket-datepicker-end-' + id + '"><fmt:message key="ticketsPromoCodes.endDateTimeForTicket"/></label>' +
@@ -75,9 +75,9 @@
                                 '<button type="button" class="btn">' +
                                 '<span class="fui-calendar"></span>' +
                                 '</button>' +
-                                '<input type="text" placeholder="<fmt:message key="ticketsPromoCodes.endDate"/>" name="ticket_end_date_' + id + '" id="ticket-datepicker-end-' + id + '" readonly="" required>' +
+                                '<input type="text" placeholder="<fmt:message key="ticketsPromoCodes.endDate"/>" name="ticket_end_date_' + id + '" id="ticket-datepicker-end-' + id + '" readonly="">' +
                                 '</div>' +
-                                '<input type="time" class="form-control time" value="00:00" name="ticket_end_time_' + id + '" required>' +
+                                '<input type="time" class="form-control time" value="00:00" name="ticket_end_time_' + id + '">' +
                                 '</div>' +
                                 '<div class="form-group">' +
                                 '</div>' +
@@ -115,16 +115,16 @@
                         '<div id="' + id + '" class="row">' +
                                 '<input class="hide" type="text" name="promo_code_id" value="'+ id +'""> ' +
                                 '<div class="col-md-6 col-sm-6">' +
-                                '<label class="visible-xs" for="promo-code-code-' + id + '"><fmt:message key="ticketsPromoCodes.promoCode"/></label>' +
+                                '<label class="visible-xs" for="promo-code-code-' + id + '"><fmt:message key="ticketsPromoCodes.promoCode"/>*</label>' +
                                 '<input type="text" class="form-control" placeholder="<fmt:message key="ticketsPromoCodes.examplesR2D2"/>" name="promo_code_code_' + id + '" id="promo-code-code-' + id + '" required />' +
                                 '</div>' +
                                 '<div class="col-md-2 col-sm-2">' +
-                                '<label class="visible-xs" for="promo-code-quantity-' + id + '"><fmt:message key="ticketsPromoCodes.quantityAvailable"/></label>' +
-                                '<input type="number" class="form-control" placeholder="5" name="promo_code_quantity_' + id + '" id="promo-code-quantity-' + id + '" min="1" />' +
+                                '<label class="visible-xs" for="promo-code-quantity-' + id + '"><fmt:message key="ticketsPromoCodes.quantityAvailable"/>*</label>' +
+                                '<input type="number" class="form-control" placeholder="5" name="promo_code_quantity_' + id + '" id="promo-code-quantity-' + id + '" min="1" required />' +
                                 '</div>' +
                                 '<div class="col-md-2 col-sm-2">' +
-                                '<label class="visible-xs" for="promo-code-discount-' + id + '"><fmt:message key="ticketsPromoCodes.discount"/></label>' +
-                                '<input type="number" class="form-control" placeholder="10" name="promo_code_discount_' + id + '" id="promo-code-discount-' + id + '" min="0" />' +
+                                '<label class="visible-xs" for="promo-code-discount-' + id + '"><fmt:message key="ticketsPromoCodes.discount"/>*</label>' +
+                                '<input type="number" class="form-control" placeholder="10" name="promo_code_discount_' + id + '" id="promo-code-discount-' + id + '" min="0" required />' +
                                 '</div>' +
                                 '<div class="col-md-2 col-sm-2 actions text-center">' +
                                 '<label class="visible-xs text-left"><fmt:message key="ticketsPromoCodes.actions"/></label>' +

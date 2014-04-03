@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="language"
        value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
@@ -70,8 +71,10 @@
                                     <div class="secure-key text-center">
                                         <div id="qr-code"></div>
                                         <p class="key">${generatedKey}</p>
-                                        <span class="additional-input-info"><fmt:message key="apiAccess.noNeedToMemorizeThisPassword"/></span>
-                                        <span class="additional-input-info"><fmt:message key="apiAccess.youShouldNeed"/></span>
+                                        <span class="additional-input-info"><fmt:message
+                                                key="apiAccess.noNeedToMemorizeThisPassword"/></span>
+                                        <span class="additional-input-info"><fmt:message
+                                                key="apiAccess.youShouldNeed"/></span>
                                     </div>
                                 </div>
                             </div>
@@ -89,7 +92,9 @@
                             </c:forEach>
                             <div class="form-group col-md-5 col-sm-5">
                                 <label for="name"><fmt:message key="apiAccess.name"/></label>
-                                <input class="form-control" type="text" placeholder="<fmt:message key="apiAccess.exampleAndroidAppGoogleGlass"/>" name="name" id="name" required />
+                                <input class="form-control" type="text"
+                                       placeholder="<fmt:message key="apiAccess.exampleAndroidAppGoogleGlass"/>"
+                                       name="name" id="name" required/>
                             </div>
                             <div class="form-group col-md-3 col-sm-3">
                                 <label for="organizer"><fmt:message key="apiAccess.organizer"/></label>
@@ -111,43 +116,50 @@
                         </form>
                     </div>
                 </div>
-                <div class="row">
-                    <div id="my-apis">
-                        <div class="row my-apis-header hidden-xs">
-                            <div class="col-md-6 col-sm-6"><fmt:message key="apiAccess.apiAccessName"/></div>
-                            <div class="col-md-2 col-sm-2"><fmt:message key="apiAccess.organizer"/></div>
-                            <div class="col-md-3 col-sm-3"><fmt:message key="apiAccess.creationDate"/></div>
-                            <div class="col-md-1 col-sm-1 text-center"><fmt:message key="apiAccess.actions"/></div>
-                        </div>
-                        <div id="my-apis-body">
-                            <c:forEach items="${keys}" var="key">
-                                <div id="${key.id}" class="row">
-                                    <div class="col-md-6 col-sm-6">
-                                        <span class="as-label visible-xs"><fmt:message key="apiAccess.apiAccessName"/></span>
+                <c:if test="${fn:length(keys) > 0}">
+                    <div class="row">
+                        <div id="my-apis">
+                            <div class="row my-apis-header hidden-xs">
+                                <div class="col-md-6 col-sm-6"><fmt:message key="apiAccess.apiAccessName"/></div>
+                                <div class="col-md-2 col-sm-2"><fmt:message key="apiAccess.organizer"/></div>
+                                <div class="col-md-3 col-sm-3"><fmt:message key="apiAccess.creationDate"/></div>
+                                <div class="col-md-1 col-sm-1 text-center"><fmt:message key="apiAccess.actions"/></div>
+                            </div>
+                            <div id="my-apis-body">
+                                <c:forEach items="${keys}" var="key">
+                                    <div id="${key.id}" class="row">
+                                        <div class="col-md-6 col-sm-6">
+                                            <span class="as-label visible-xs"><fmt:message
+                                                    key="apiAccess.apiAccessName"/></span>
 
-                                        <p>${key.name}</p>
-                                    </div>
-                                    <div class="col-md-2 col-sm-2">
-                                        <span class="as-label visible-xs"><fmt:message key="apiAccess.organizer"/></span>
+                                            <p>${key.name}</p>
+                                        </div>
+                                        <div class="col-md-2 col-sm-2">
+                                            <span class="as-label visible-xs"><fmt:message
+                                                    key="apiAccess.organizer"/></span>
 
-                                        <p>${key.organizer.name}</p>
-                                    </div>
-                                    <div class="col-md-3 col-sm-3">
-                                        <span class="as-label visible-xs"><fmt:message key="apiAccess.creationDate"/></span>
+                                            <p>${key.organizer.name}</p>
+                                        </div>
+                                        <div class="col-md-3 col-sm-3">
+                                            <span class="as-label visible-xs"><fmt:message
+                                                    key="apiAccess.creationDate"/></span>
 
-                                        <p>${key.timeOfCreation}</p>
+                                            <p>${key.timeOfCreation}</p>
+                                        </div>
+                                        <div class="col-md-1 col-sm-1 actions text-center">
+                                            <label class="visible-xs text-left"><fmt:message
+                                                    key="apiAccess.actions"/></label>
+                                            <a class="delete-nearby-row"
+                                               href="<c:url value="/apiAccess"/>?delete=${key.id}">
+                                                <span class="fui-trash"></span>
+                                            </a>
+                                        </div>
                                     </div>
-                                    <div class="col-md-1 col-sm-1 actions text-center">
-                                        <label class="visible-xs text-left"><fmt:message key="apiAccess.actions"/></label>
-                                        <a class="delete-nearby-row" href="<c:url value="/apiAccess"/>?delete=${key.id}">
-                                            <span class="fui-trash"></span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </c:forEach>
+                                </c:forEach>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </c:if>
             </div>
         </div>
 
