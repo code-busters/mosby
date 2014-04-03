@@ -34,33 +34,33 @@ public class PromoCode {
 	}
 
 	public PromoCode(int id, Event event, String code, int discount,
-			String description, int maxNumber) {
+			String description, int quantityAvailable) {
 		super();
 		this.id = id;
 		this.event = event;
 		this.code = code;
 		this.discount = discount;
 		this.description = description;
-		this.maxNumber = maxNumber;
+		this.quantityAvailable = quantityAvailable;
 	}
 
 	public PromoCode(Event event, String code, int discount,
-			String description, int maxNumber) {
+			String description, int quantityAvailable) {
 		super();
 		this.event = event;
 		this.code = code;
 		this.discount = discount;
 		this.description = description;
-		this.maxNumber = maxNumber;
+		this.quantityAvailable = quantityAvailable;
 	}
 	
 	public PromoCode(String code, int discount,
-			String description, int maxNumber) {
+			String description, int quantityAvailable) {
 		super();
 		this.code = code;
 		this.discount = discount;
 		this.description = description;
-		this.maxNumber = maxNumber;
+		this.quantityAvailable = quantityAvailable;
 	}
 
 	public int getId() {
@@ -103,12 +103,12 @@ public class PromoCode {
 		this.description = description;
 	}
 
-	public int getMaxNumber() {
-		return maxNumber;
+	public int getQuantityAvailable() {
+		return quantityAvailable;
 	}
 
-	public void setMaxNumber(int maxNumber) {
-		this.maxNumber = maxNumber;
+	public void setQuantityAvailable(int quantityAvailable) {
+		this.quantityAvailable = quantityAvailable;
 	}
 	
 }

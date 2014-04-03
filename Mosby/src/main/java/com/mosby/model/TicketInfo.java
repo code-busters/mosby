@@ -66,26 +66,26 @@ public class TicketInfo {
 	}
 	
 	public TicketInfo(String name, String type,
-			String description, int maxNumber, int price, Timestamp startDateTime, Timestamp endDateTime) {
+			String description, int quantityAvailable, int price, Timestamp startDateTime, Timestamp endDateTime) {
 		super();
 		this.name = name;
 		this.type = type;
 		this.description = description;
-		this.maxNumber = maxNumber;
+		this.quantityAvailable = quantityAvailable;
 		this.price = price;
 		this.startDateTime = startDateTime;
 		this.endDateTime = endDateTime;
 	}
 	
 	public TicketInfo(String name, Event event, String type,
-			String description, int maxNumber, int price, Date startDate,
+			String description, int quantityAvailable, int price, Date startDate,
 			Date startTime, Date endDate, Date endTime) {
 		super();
 		this.name = name;
 		this.event = event;
 		this.type = type;
 		this.description = description;
-		this.maxNumber = maxNumber;
+		this.quantityAvailable = quantityAvailable;
 		this.price = price;
 		this.startDate = startDate;
 		this.startTime = startTime;
@@ -93,14 +93,14 @@ public class TicketInfo {
 		this.endTime = endTime;
 	}
 	
-	public TicketInfo(int id, String name, Event event, String type, String description, int maxNumber, int price, Date startDate, Date startTime, Date endDate, Date endTime) {
+	public TicketInfo(int id, String name, Event event, String type, String description, int quantityAvailable, int price, Date startDate, Date startTime, Date endDate, Date endTime) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.event = event;
 		this.type = type;
 		this.description = description;
-		this.maxNumber = maxNumber;
+		this.quantityAvailable = quantityAvailable;
 		this.price = price;
 		this.startDate = startDate;
 		this.startTime = startTime;
@@ -196,12 +196,12 @@ public class TicketInfo {
 		this.description = description;
 	}
 
-	public int getMaxNumber() {
-		return maxNumber;
+	public int getQuantityAvailable() {
+		return quantityAvailable;
 	}
 
-	public void setMaxNumber(int maxNumber) {
-		this.maxNumber = maxNumber;
+	public void setQuantityAvailable(int quantityAvailable) {
+		this.quantityAvailable = quantityAvailable;
 	}
 
 	public int getPrice() {

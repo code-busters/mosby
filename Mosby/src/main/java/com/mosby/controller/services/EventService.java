@@ -347,15 +347,10 @@ public class EventService {
     	for (Organizer organizer : organizersList) {
     		List <Event> currentEvents = new ReadGenericObjectService<>(Event.class).readListByField("organizer_ref=", organizer.getId());
     		for (Event event : currentEvents) {
-    			int allTickets = 0;
-    			List <TicketInfo> ticketsInfo = new ReadGenericObjectService<>(TicketInfo.class).readListByField("event_ref=", event.getId());
-    			for (TicketInfo ticketInfo : ticketsInfo) {
-    				allTickets += ticketInfo.getMaxNumber();
-				}
+    			int allTicketsSold = new ReflectionDao<>(Ticket.class).selectAggregateObjects("COUNT(event_ref)", "event_ref=", event.getId()).get(0).intValue();
+    			ticketsSold.put(event.getId(), allTicketsSold);
+    			int allTickets = new ReflectionDao<>(TicketInfo.class).selectAggregateObjects("SUM(quantity_available)", "event_ref=", event.getId()).get(0).intValue() + allTicketsSold;
                 tickets.put(event.getId(), allTickets);
-
-    			List <Ticket> soldTicketList = new ReadGenericObjectService<>(Ticket.class).readListByField("event_ref=", event.getId());
-                ticketsSold.put(event.getId(), soldTicketList.size());
 			}
     		myEvents.addAll(currentEvents);
     	}

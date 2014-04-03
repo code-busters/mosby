@@ -118,9 +118,9 @@
                                     <h6 class="visible-xs"><fmt:message key="eventPage.quantity"/></h6>
                                     <input type="number" class="form-control" placeholder="0"
                                            name="ticket_quantity_${ticketInfo.id}" id="promo-code-discount-0" min="0"
-                                           max="${ticketInfo.maxNumber}">
+                                           max="${ticketInfo.quantityAvailable}">
                                         <%--<span class="additional-input-info">Min ${ticketInfo.minNumber}</span>--%>
-                                    <span class="additional-input-info"><fmt:message key="eventPage.max"/> ${ticketInfo.maxNumber}</span>
+                                    <span class="additional-input-info"><fmt:message key="eventPage.max"/> ${ticketInfo.quantityAvailable}</span>
                                 </div>
                             </div>
                         </c:forEach>
