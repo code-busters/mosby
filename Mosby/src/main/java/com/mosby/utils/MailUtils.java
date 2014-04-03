@@ -91,10 +91,17 @@ public class MailUtils {
 	     }
 	}
 	
+<<<<<<< HEAD
 	public void sendTicket(String recipient, Ticket ticket, String path) {
                  
         String content = "Tickects"; 
         String subject = "Your ticket"; 
+=======
+	public void sendTicket(String recipient, String path, Ticket...tickets) {
+        
+        String content = "Tickects"; //this will be the text of the email
+        String subject = "Your ticket"; //this will be the subject of the email
+>>>>>>> 45dbea0deb3be30d2c7a4337dd3cdfa476c82b0d
         
         ByteArrayOutputStream outputStream = null;
 		TicketGenerator ticketGenerator = null;
@@ -107,8 +114,9 @@ public class MailUtils {
             //now write the PDF content to the output stream
             outputStream = new ByteArrayOutputStream();
             //writePdf(outputStream);
-            ticketGenerator = new TicketGenerator(ticket, outputStream, path);
-            ticketGenerator.generateTicket();
+            ticketGenerator = new TicketGenerator(outputStream, path);
+            //ticketGenerator.generateTicket();
+            ticketGenerator.createTickets(tickets);
             byte[] bytes = outputStream.toByteArray();
              
             //construct the pdf body part

@@ -22,7 +22,6 @@ public class ReflectionTransformer<T> {
 
     public T fromRStoObject(T object, ResultSet resultSet, Class<T> type, int depth,
                             boolean hasAggregateFunction) {
-        System.out.println("DEPTH : " + depth);
         try {
             if (hasAggregateFunction) {
                 BigDecimal decimal = new BigDecimal(resultSet.getObject("aggregate_function").toString());
@@ -52,6 +51,8 @@ public class ReflectionTransformer<T> {
                             int currentId = Integer.parseInt(value.toString());
                             value = new ReflectionDao<>(field.getType())
                                     .selectObjects(depth, "id=", currentId).get(0);
+                        } else {
+                        	value = null;
                         }
                     }
                     if (field.isAnnotationPresent(Key.class)

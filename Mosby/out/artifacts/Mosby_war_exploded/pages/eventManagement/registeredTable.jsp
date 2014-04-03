@@ -63,7 +63,8 @@
                     </c:forEach>
                 </div>
                 <form action="registeredTable" method="post" id="registered-table-form">
-                <input type="hidden" name="eventId" value="${event.id}" />
+                    <input type="hidden" name="eventId" value="${event.id}"/>
+
                     <div class="row registered-table">
                         <div class="table-responsive">
                             <table class="table table-striped table-hover table-bordered">
@@ -78,6 +79,7 @@
                                     <th>#</th>
                                     <th><fmt:message key="registeredTable.checked"/></th>
                                     <th><fmt:message key="registeredTable.user"/></th>
+                                    <th>Email</th>
                                     <th><fmt:message key="registeredTable.ticket"/></th>
                                     <th><fmt:message key="registeredTable.timeOfPurchase"/></th>
                                     <th><fmt:message key="registeredTable.promoCode"/></th>
@@ -88,6 +90,7 @@
                                 <c:forEach items="${tickets}" var="ticket">
                                     <tr>
                                         <td>
+                                            <input type="number" name="id" class="hide" value="${ticket.id}">
                                             <label class="checkbox no-label" for="checkbox-table-${ticket.id}">
                                                 <input type="checkbox" value="${ticket.id}"
                                                        id="checkbox-table-${ticket.id}"
@@ -98,21 +101,43 @@
                                         <td>
                                             <div class="switch switch-square" data-on-label="<i class='fui-check'></i>"
                                                  data-off-label="<i class='fui-cross'></i>">
-                                                <input type="checkbox" name="checked_in_tickets_${ticket.id}"/>
+                                                <input type="checkbox" name="checked_in_tickets_${ticket.id}"
+                                                        <c:if test="${ticket.checked}"> checked </c:if> />
                                             </div>
                                         </td>
                                         <td>
-                                            <a href="#">${ticket.user.firstName} ${ticket.user.lastName}</a>
+                                            <a href="<c:url value='/userPage'/>?id=${ticket.user.id}>"
+                                               target="_blank">${ticket.user.firstName} ${ticket.user.lastName}</a>
                                         </td>
                                         <td>
-                                            <a href="#">${ticket.ticketInfo.name}</a>
+                                            <a href="mailto:${ticket.user.email}"
+                                               target="_blank">${ticket.user.email}</a>
                                         </td>
-                                        <td>${ticket.timeOfPurchase}</td>
                                         <td>
-                                            <a href="#">${ticket.promoCode.code}</a>
+                                            <span>${ticket.ticketInfo.name}</span>
+                                            <span class="additional-price-info">*
+                                                <c:choose>
+                                                    <c:when test="${ticket.ticketInfo.type == 'Free'}">
+                                                        Free
+                                                    </c:when>
+                                                    <c:when test="${ticket.ticketInfo.type == 'Donation'}">
+                                                        Donation
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        ${ticket.ticketInfo.price}
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <p>${ticket.timeOfPurchase}</p>
+                                        </td>
+                                        <td>
+                                            <p>${ticket.promoCode.code}</p>
                                         </td>
                                         <td class="text-center">
-                                            <a class="delete-nearby-row" href="<c:url value="/registeredTable?eventId=${event.id}&delete=${ticket.id}"/>">
+                                            <a class="delete-nearby-row"
+                                               href="<c:url value="/registeredTable?eventId=${event.id}&delete=${ticket.id}"/>">
                                                 <span class="fui-trash"></span>
                                             </a>
                                         </td>

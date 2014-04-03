@@ -152,6 +152,9 @@ label {
 .navbar-fixed-top {
     border: 0;
 }
+.navbar-not-fixed {
+    padding-right: 4em;
+}
 .navbar-default .navbar-nav > li > a {
     color: #fff;
     font-size: 1.3em;
@@ -592,7 +595,7 @@ video {
 
 /*EVENTS*/
 #events  {
-    margin-top: 45%;
+    margin-top: 82vh;
     background: #fff;
 }
 #events h3 {
@@ -639,9 +642,6 @@ video {
 }
 
 /*EVENT DETAIL*/
-.event .breadcrumb-text a {
-    font-size: 0.7em;
-}
 .event .breadcrumb-text a:last-child:after {
     content: none;
 }
@@ -678,9 +678,13 @@ video {
     font-size: 0.9em;
     margin-right: 0.8em;
 }
+.button-to-page {
+    margin-top: 1.5em;
+}
 .event-actions {
     margin-top: 0;
 }
+.button-to-page span,
 .event-actions span {
     padding-top: 0.4em;
     font-size: 0.8em;
@@ -818,7 +822,7 @@ video {
     font-size: 0.7em;
     font-weight: 600;
 }
-#my-apis .row:nth-child(even),
+#my-apis-body .row:nth-child(even),
 #my-events-body .row:nth-child(even),
 #organizers-body .row:nth-child(even),
 #promo-codes-body .row:nth-child(even),
@@ -843,6 +847,13 @@ video {
 #tickets-body .as-label,
 #tickets-body label {
     font-size: 0.9em;
+}
+#my-apis-body .row,
+#my-events-body .row,
+#organizers-body .row,
+#promo-codes-body .row,
+#tickets-body .row {
+    padding-top: 1em;
 }
 [id^="ticket-datepicker"] {
     width: 10em;
@@ -874,6 +885,10 @@ video {
 }
 
 /*--CONTACT INFO*/
+.credits {
+    display: block;
+    margin-top: -1em;
+}
 .user-profile-img {
     height: 120px;
     width: 120px;
@@ -949,6 +964,11 @@ video {
 }
 .registered-table .table i[class*="fui-"] {
     font-size: 0.8em;
+}
+.additional-price-info {
+    display: block;
+    color: #a5a5a5;
+    font-size: 0.7em;
 }
 /*EDIT TICKETS & PROMO CODES*/
 #edit-tickets-codes-form button[type=submit] {
@@ -1064,24 +1084,20 @@ video {
     text-align: center;
     width: 100%;
 }
-
 .ch-grid:after,
 .ch-item:before {
     content: '';
     display: table;
 }
-
 .ch-grid:after {
     clear: both;
 }
-
 .ch-grid li {
     width: 220px;
     height: 220px;
     display: inline-block;
     margin: 20px;
 }
-
 .ch-item {
     background-size: 220px;
     width: 100%;
@@ -1123,7 +1139,6 @@ video {
     -webkit-backface-visibility: hidden; /*for a smooth font */
 
 }
-
 .ch-info h3 {
     color: #fff;
     text-transform: uppercase;
@@ -1138,7 +1153,6 @@ video {
         0 0 1px #fff,
         0 1px 2px rgba(0,0,0,0.3);
 }
-
 .ch-info p {
     color: #fff;
     padding: 10px 5px 0;
@@ -1147,7 +1161,6 @@ video {
     font-size: 12px;
     border-top: 1px solid rgba(255,255,255,0.5);
 }
-
 .ch-info span {
     display: block;
 }
@@ -1159,29 +1172,39 @@ video {
     font-size: 0.9em;
     padding: 0 2px;
 }
-
 .ch-info span a:hover {
     color: #fff222;
     color: rgba(255,242,34, 0.8);
 }
-
 .ch-item:hover {
     box-shadow:
         inset 0 0 0 110px rgba(86, 185, 209, 0.4),
         inset 0 0 0 16px rgba(255,255,255,0.8),
         0 1px 2px rgba(0,0,0,0.1);
 }
-
 .ch-item:hover .ch-info {
     opacity: 1;
-
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
     -o-transform: scale(1);
     -ms-transform: scale(1);
     transform: scale(1);
 }
-
+#github-text {
+    margin-top: 2em;
+}
+#github-text p {
+    margin: 0;
+}
+#github-text a {
+    margin-top: -0.3em;
+    display: block;
+    font-size: 4em;
+    color: #212121;
+}
+#github-text a:hover {
+    color: #363636;
+}
 
 
 /*RESPONSIVE*/
@@ -1209,16 +1232,13 @@ video {
 @media (max-width: 767px) {
     #main-idea {
         padding-left: 1.2em;
-        top: 50%;
+        top: 60vh;
     }
     #main-idea h1 {
-        font-size: 2.2em;
+        font-size: 2.7em;
     }
     .scrolldown {
         display: none;
-    }
-    #events {
-        margin-top: 120%;
     }
     #background-block.big-background {
         opacity: 0.7;

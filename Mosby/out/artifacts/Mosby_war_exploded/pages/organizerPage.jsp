@@ -48,49 +48,63 @@
         <div class="on-background-block col-md-7 col-md-offset-1">
             <div class="row">
                 <div class="profile-left">
-                    <c:if test="${event.logo != 'default.png'}">
+                    <c:if test="${organizer.logo != 'default.png'}">
                         <img class="profile-img" src="media/images/users/${organizer.logo}">
                     </c:if>
                     <ul>
-                        <li>
-                            <span class="fui-user"></span>
-                            ${organizer.phone}
-                        </li>
-                        <li>
-                            <a href="mailto:${organizer.email}">
-                                <span class="fui-mail"></span>
-                                <fmt:message key="organizerPage.sendEmail"/>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="${organizer.facebook}">
-                                <span class="fui-facebook"></span>
-                                Facebook
-                            </a>
-                        </li>
-                        <li>
-                            <a href="${organizer.googlePlus}">
-                                <span class="fui-googleplus"></span>
-                                Google+
-                            </a>
-                        </li>
-                        <li>
-                            <a href="${organizer.twitter}">
-                                <span class="fui-twitter"></span>
-                                Twitter
-                            </a>
-                        </li>
+                        <c:if test="${organizer.phone != ''}">
+                            <li>
+                                <span class="fui-user"></span>
+                                    ${organizer.phone}
+                            </li>
+                        </c:if>
+                        <c:if test="${organizer.email != ''}">
+                            <li>
+                                <a href="mailto:${organizer.email}">
+                                    <span class="fui-mail"></span>
+                                    <fmt:message key="organizerPage.sendEmail"/>
+                                </a>
+                            </li>
+                        </c:if>
+                        <c:if test="${organizer.facebook != ''}">
+                            <li>
+                                <a href="${organizer.facebook}">
+                                    <span class="fui-facebook"></span>
+                                    Facebook
+                                </a>
+                            </li>
+                        </c:if>
+                        <c:if test="${organizer.googlePlus != ''}">
+                            <li>
+                                <a href="${organizer.googlePlus}">
+                                    <span class="fui-googleplus"></span>
+                                    Google+
+                                </a>
+                            </li>
+                        </c:if>
+                        <c:if test="${organizer.twitter != ''}">
+                            <li>
+                                <a href="${organizer.twitter}">
+                                    <span class="fui-twitter"></span>
+                                    Twitter
+                                </a>
+                            </li>
+                        </c:if>
                     </ul>
                 </div>
                 <div class="profile-details">
                     <h2>${organizer.name}</h2>
                     <dl class="dl-horizontal">
-                        <dt>About</dt>
-                        <dd>${organizer.about}</dd>
-                        <dt>Site</dt>
-                        <dd>
-                            <a href="${organizer.site}">${organizer.site}</a>
-                        </dd>
+                        <c:if test="${organizer.twitter != ''}">
+                            <dt>About</dt>
+                            <dd>${organizer.about}</dd>
+                        </c:if>
+                        <c:if test="${organizer.twitter != ''}">
+                            <dt>Site</dt>
+                            <dd>
+                                <a href="${organizer.site}">${organizer.site}</a>
+                            </dd>
+                        </c:if>
                     </dl>
                 </div>
             </div>
@@ -104,23 +118,24 @@
                             <ul>
                                 <li>
                                     <span class="fui-calendar-solid"></span>
-                                    ${event.startDate} - ${event.endDate}
+                                        ${event.startDate} - ${event.endDate}
                                 </li>
                                 <li>
                                     <span class="fui-time"></span>
-                                    ${event.startTime} - ${event.endTime}
+                                        ${event.startTime} - ${event.endTime}
                                 </li>
                                 <li>
                                     <span class="fui-location"></span>
-                                    ${event.location}
+                                        ${event.location}
                                 </li>
                             </ul>
                             <p class="ellipsis-3">
-                               ${event.description}
+                                    ${event.description}
                             </p>
 
                             <div class="text-right read-more">
-                                <a href="<c:url value="/eventPage?eventId=${event.id}"/>"><fmt:message key="organizerPage.readMore"/></a>
+                                <a href="<c:url value="/eventPage?eventId=${event.id}"/>"><fmt:message
+                                        key="organizerPage.readMore"/> ></a>
                             </div>
                         </div>
                     </div>

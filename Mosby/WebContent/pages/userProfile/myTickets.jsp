@@ -102,7 +102,7 @@
                                     </div>
                                     <div class="col-md-1 col-sm-1 actions text-center">
                                         <label class="visible-xs text-left">Actions</label>
-                                        <a class="delete-nearby-row" href="#?${ticket.id}" target="_blank">
+                                        <a class="delete-nearby-row" href="<c:url value="/showTicket?id=${ticket.id}"/>" target="_blank">
                                             <span class="fui-export"></span>
                                         </a>
                                     </div>

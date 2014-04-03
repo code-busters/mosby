@@ -160,22 +160,17 @@
         </div>
         <div class="col-md-3">
             <div class="organizer-details col-md-12">
-                <img src="media/images/users/GDG-Lviv.png">
+                <c:if test="${event.organizer.logo != 'default.png'}">
+                    <img class="img-responsive" src="media/images/users/${event.organizer.logo}">
+                </c:if>
 
-                <h3>GDG Lviv</h3>
-
-                <p>
-                    Google Developer Group (GDG) Lviv meets for about two times a month in office of Lviv's IT
-                    companies. The typical meeting formats are techtalk, bar camp or training, also from time to time we
-                    organize hackathons.
-                    <br>
-                    <br>Who we are? Open and volunteer geek communities who create exciting projects and share
-                    experience about Google technology with passion.
-                </p>
-                <span class="fui-mail"></span>
-                <span class="fui-facebook"></span>
-                <span class="fui-googleplus"></span>
-                <span class="fui-twitter"></span>
+                <h3>${event.organizer.name}</h3>
+                <c:if test="${event.organizer.about != null}">
+                    <p>${event.organizer.about}</p>
+                </c:if>
+                <a href="<c:url value='/organizerPage'/>?id=${event.organizer.id}" class="btn btn-block btn-lg btn-default button-to-page">
+                    <span class="fui-user"></span>Organizer page
+                </a>
             </div>
             <div class="event-actions col-md-12">
                 <a href="${calendarURL}" class="btn btn-block btn-lg btn-primary">

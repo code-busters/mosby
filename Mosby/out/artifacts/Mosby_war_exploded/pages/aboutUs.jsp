@@ -153,7 +153,12 @@
                     </div>
                 </li>
             </ul>
-
+            <div id="github-text" class="text-center">
+                <p class="lead">All code available on GitHub</p>
+                <a href="https://github.com/code-busters/mosby" target="_blank">
+                    <i class="fa fa-github"></i>
+                </a>
+            </div>
         </div>
     </div>
 
