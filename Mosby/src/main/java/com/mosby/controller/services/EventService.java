@@ -246,15 +246,17 @@ public class EventService {
 			int maxNumber = Integer.parseInt(request.getParameter("event_ticket_quantity_" + currentId));
 			String stringPrice = request.getParameter("event_ticket_price_" + currentId);
 			int price;
-			if (stringPrice == null || stringPrice.equals("0")){
+			if (stringPrice.equals("Free")){
 				type = "Free";
 				price = 0;
-			}
-			else {
-				type = "paid";
+			} else if (stringPrice.equals("Donation")){
+				type = "Donation";
+				price = 0;
+			} else {
+				type = "Paid";
 				price = Integer.parseInt(request.getParameter("event_ticket_price_" + currentId));
 			}
-			
+
 			Date startDate= null, startTime= null, endDate = null, endTime= null;
 			try {
 				startDate = new SimpleDateFormat(DATE_FORMAT).parse(request.getParameter("ticket_start_date_" + currentId));
