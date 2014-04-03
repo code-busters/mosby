@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 public class LoginFilter implements Filter {
 
 	public LoginFilter() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public void destroy() {

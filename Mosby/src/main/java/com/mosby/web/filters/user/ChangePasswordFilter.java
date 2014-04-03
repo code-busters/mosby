@@ -21,11 +21,11 @@ import main.java.com.mosby.utils.ValidatorUtils;
 public class ChangePasswordFilter implements Filter {
 
 	public ChangePasswordFilter() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public void destroy() {
-		// TODO Auto-generated method stub
+		
 	}
 
 	public void doFilter(ServletRequest req, ServletResponse res,
@@ -77,7 +77,7 @@ public class ChangePasswordFilter implements Filter {
 	}
 
 	public void init(FilterConfig fConfig) throws ServletException {
-		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -7,21 +7,23 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @WebFilter("/TicketsFilter")
 public class TicketsFilter implements Filter {
 
 	public TicketsFilter() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public void destroy() {
-		// TODO Auto-generated method stub
+
 	}
 
 	public void doFilter(ServletRequest req, ServletResponse res,
@@ -29,8 +31,6 @@ public class TicketsFilter implements Filter {
 
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) res;
-
-		System.out.println("TicketsFilter");
 
 		if (request.getMethod().equals("POST")) {
 
@@ -57,11 +57,10 @@ public class TicketsFilter implements Filter {
 							.getParameter("ticket_description_" + currentId);
 					int maxNumber = 1;
 					try {
-					maxNumber = Integer
-							.parseInt(request
-									.getParameter("event_ticket_quantity_"
-											+ currentId));
-					} catch (NumberFormatException e){
+						maxNumber = Integer.parseInt(request
+								.getParameter("event_ticket_quantity_"
+										+ currentId));
+					} catch (NumberFormatException e) {
 						validatorUtils.inputNumber();
 					}
 					String stringPrice = request
@@ -69,32 +68,52 @@ public class TicketsFilter implements Filter {
 
 					SimpleDateFormat parseDate = new SimpleDateFormat(
 							"yyyy-MM-dd hh:mm");
-					String startTimestamp = request.getParameter("ticket_start_date_"+ currentId)
-							+ " " + request.getParameter("ticket_start_time_"+ currentId);
-					String endTimestamp = request.getParameter("ticket_end_date_"+ currentId)
-							+ " " + request.getParameter("ticket_end_time_"+ currentId);
+					String startTimestamp = request
+							.getParameter("ticket_start_date_" + currentId)
+							+ " "
+							+ request.getParameter("ticket_start_time_"
+									+ currentId);
+					String endTimestamp = request
+							.getParameter("ticket_end_date_" + currentId)
+							+ " "
+							+ request.getParameter("ticket_end_time_"
+									+ currentId);
 					Timestamp start = null;
 					Timestamp end = null;
-					try {
-						start = new Timestamp(parseDate.parse(startTimestamp)
-								.getTime());
-						end = new Timestamp(parseDate.parse(endTimestamp)
-								.getTime());
-					} catch (ParseException e) {
-						e.printStackTrace();
+					if (startTimestamp != null && endTimestamp != null) {
+						try {
+							start = new Timestamp(parseDate.parse(
+									startTimestamp).getTime());
+							end = new Timestamp(parseDate.parse(endTimestamp)
+									.getTime());
+						} catch (ParseException e) {
+							e.printStackTrace();
+						}
+					} else {
+						start = new Timestamp(new Date().getTime());
+						try {
+							end = new Timestamp(parseDate.parse(
+									request.getParameter("end_date") + " "
+											+ request.getParameter("end_time"))
+									.getTime());
+						} catch (ParseException e) {
+							e.printStackTrace();
+						}
 					}
 					int price = 0;
-					if (stringPrice.equals("Free")){
+					if (stringPrice.equals("Free")) {
 						type = "Free";
 						price = 0;
-					} else if (stringPrice.equals("Donation")){
+					} else if (stringPrice.equals("Donation")) {
 						type = "Donation";
 						price = 0;
 					} else {
 						type = "Paid";
-						try{
-						price = Integer.parseInt(request.getParameter("event_ticket_price_" + currentId));
-						} catch (NumberFormatException e){
+						try {
+							price = Integer.parseInt(request
+									.getParameter("event_ticket_price_"
+											+ currentId));
+						} catch (NumberFormatException e) {
 							validatorUtils.inputNumber();
 						}
 					}
@@ -102,7 +121,8 @@ public class TicketsFilter implements Filter {
 							ticketDescription, maxNumber, price, start, end);
 
 					try {
-						validatorUtils.validate(ticketInfo, "ticket", ticketInfoName);
+						validatorUtils.validate(ticketInfo, "ticket",
+								ticketInfoName);
 					} catch (NoSuchMethodException | SecurityException
 							| IllegalAccessException | IllegalArgumentException
 							| InvocationTargetException e) {
@@ -115,17 +135,28 @@ public class TicketsFilter implements Filter {
 			if (validatorUtils.getErrors().isEmpty() == false) {
 
 				request.setAttribute("errors", validatorUtils.getErrors());
-				request.setAttribute("event_name", request.getParameter("event_name"));
-                request.setAttribute("start_date", request.getParameter("start_date"));
-                request.setAttribute("start_time", request.getParameter("start_time"));
-                request.setAttribute("end_date", request.getParameter("end_date"));
-                request.setAttribute("end_time", request.getParameter("end_time"));
-                request.setAttribute("event_category", request.getParameter("event_category"));
-                request.setAttribute("event_type", request.getParameter("event_type"));
-                request.setAttribute("event_description", request.getParameter("event_description"));
-                request.setAttribute("event_location", request.getParameter("event_location"));
-                request.setAttribute("privacy_event", request.getParameter("privacy_event"));
-                request.setAttribute("organizer", request.getParameter("organizer"));
+				request.setAttribute("event_name",
+						request.getParameter("event_name"));
+				request.setAttribute("start_date",
+						request.getParameter("start_date"));
+				request.setAttribute("start_time",
+						request.getParameter("start_time"));
+				request.setAttribute("end_date",
+						request.getParameter("end_date"));
+				request.setAttribute("end_time",
+						request.getParameter("end_time"));
+				request.setAttribute("event_category",
+						request.getParameter("event_category"));
+				request.setAttribute("event_type",
+						request.getParameter("event_type"));
+				request.setAttribute("event_description",
+						request.getParameter("event_description"));
+				request.setAttribute("event_location",
+						request.getParameter("event_location"));
+				request.setAttribute("privacy_event",
+						request.getParameter("privacy_event"));
+				request.setAttribute("organizer",
+						request.getParameter("organizer"));
 				request.getRequestDispatcher("/pages/createEvent.jsp").forward(
 						request, response);
 			} else {

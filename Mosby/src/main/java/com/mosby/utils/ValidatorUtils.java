@@ -10,11 +10,13 @@ import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.Date;
 
-import main.java.com.mosby.model.Ticket;
+import org.apache.log4j.Logger;
+
 import main.java.com.mosby.model.annotations.validate.*;
 
 public class ValidatorUtils<T> {
 
+	private static Logger log = Logger.getLogger(ValidatorUtils.class);
 	private Class<T> type;
 	private List<String> errors = new ArrayList<>();
 	ResourceBundle labels;
@@ -79,8 +81,9 @@ public class ValidatorUtils<T> {
 					} else {
 						value = 0;
 					}
-				} else if (field.getType() == int.class
-						|| field.getType() == double.class) {
+				} else if (field.getType() == int.class) {
+					value = (int) field.get(object);
+				} else if (field.getType() == double.class){
 					value = (double) field.get(object);
 				}
 				if (value < annotation.min()) {
@@ -138,8 +141,9 @@ public class ValidatorUtils<T> {
 						} else {
 							value = 0;
 						}
-				} else if (field.getType() == int.class
-						|| field.getType() == double.class) {
+				} else if (field.getType() == int.class) {
+					value = (int) field.get(object);
+				} else if (field.getType() == double.class){
 					value = (double) field.get(object);
 				}
 				if (value > annotation.value()) {
@@ -178,10 +182,8 @@ public class ValidatorUtils<T> {
 			if (field.isAnnotationPresent(StartFuture.class)) {
 				field.setAccessible(true);
 				timestampStart = (Timestamp) field.get(object);
-				System.out.println(timestampStart);
 				Date date = new Date();
 				Timestamp timestampNow = new Timestamp(date.getTime());
-				System.out.println(timestampNow);
 				if (timestampStart != null
 						&& timestampStart.before(timestampNow)) {
 					if(name.length == 0){
@@ -196,8 +198,6 @@ public class ValidatorUtils<T> {
 					&& timestampStart != null) {
 				field.setAccessible(true);
 				Timestamp timestampEnd = (Timestamp) field.get(object);
-				System.out.println(timestampStart);
-				System.out.println(timestampEnd);
 				if (timestampEnd.before(timestampStart)) {
 					if(name.length == 0){
 					errors.add(labels.getString("validateStartEnd") + ".");
@@ -211,6 +211,10 @@ public class ValidatorUtils<T> {
 		if (errors.isEmpty()) {
 			return object;
 		} else {
+			log.error("validating is fail:");
+			for (String error : errors) {
+			log.error(error);	
+			}
 			return null;
 		}
 	}
