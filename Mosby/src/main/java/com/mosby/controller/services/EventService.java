@@ -101,7 +101,7 @@ public class EventService {
 		
 		String[] idTicketsArray = request.getParameterValues("ticket_id");
 		
-		if (idTicketsArray.length != 0){
+		if (idTicketsArray != null && idTicketsArray.length != 0){
 			ReflectionDao<TicketInfo> ticketInfoDao = new ReflectionDao<>(TicketInfo.class);
 			for (String currInt : idTicketsArray){
 				int currentId = Integer.parseInt(currInt);
@@ -121,12 +121,14 @@ public class EventService {
 					e.printStackTrace();
 				}
 				int price;
-				if (stringPrice == null){
+				if (stringPrice.equals("Free")){
 					type = "Free";
 					price = 0;
-				}
-				else {
-					type = "paid";
+				} else if (stringPrice.equals("Donation")){
+					type = "Donation";
+					price = 0;
+				} else {
+					type = "Paid";
 					price = Integer.parseInt(request.getParameter("event_ticket_price_" + currentId));
 				}
 				TicketInfo ticketInfo = new TicketInfo(ticketInfoName, event, type, ticketDescription, maxNumber, price, startDate, startTime, endDate, endTime);
@@ -140,7 +142,7 @@ public class EventService {
 // Promo codes builder
         String[] idPromoCodesArray = request.getParameterValues("promo_code_id");
 		
-		if (idPromoCodesArray.length != 0){
+		if (idPromoCodesArray != null && idPromoCodesArray.length != 0){
 			ReflectionDao<PromoCode> promoCodeDao = new ReflectionDao<>(PromoCode.class);
 			for (String currInt : idPromoCodesArray){
 				int currentId = Integer.parseInt(currInt);

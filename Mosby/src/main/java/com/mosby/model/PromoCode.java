@@ -19,7 +19,7 @@ public class PromoCode {
 	@Column(name="code")	
 	private String code;
 	
-	@Min(value=0)
+	@Size(min=1, max=100)
 	@Column(name="discount")	
 	private int discount;
 	
@@ -27,8 +27,8 @@ public class PromoCode {
 	private String description;
 	
 	@Min(value=1)
-	@Column(name="max_number")	
-	private int maxNumber;
+	@Column(name="quantity_available")	
+	private int quantityAvailable;
 
 	public PromoCode() {
 	}

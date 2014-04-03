@@ -69,6 +69,14 @@
     <filter-name>EventFilter</filter-name>
     <url-pattern>/createEvent</url-pattern>
   </filter-mapping>
+    <filter>
+    <filter-name>TicketsFilter</filter-name>
+    <filter-class>main.java.com.mosby.web.filters.event.TicketsFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>TicketsFilter</filter-name>
+    <url-pattern>/createEvent</url-pattern>
+  </filter-mapping>
   <filter>
     <filter-name>PromoCodeFilter</filter-name>
     <filter-class>main.java.com.mosby.web.filters.event.PromoCodeFilter</filter-class>

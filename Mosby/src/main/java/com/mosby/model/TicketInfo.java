@@ -4,6 +4,7 @@ import main.java.com.mosby.model.annotations.dao.Column;
 import main.java.com.mosby.model.annotations.dao.Key;
 import main.java.com.mosby.model.annotations.dao.Table;
 import main.java.com.mosby.model.annotations.validate.EndFuture;
+import main.java.com.mosby.model.annotations.validate.Min;
 import main.java.com.mosby.model.annotations.validate.NotNull;
 import main.java.com.mosby.model.annotations.validate.Size;
 import main.java.com.mosby.model.annotations.validate.StartFuture;
@@ -18,6 +19,7 @@ public class TicketInfo {
 	private int id;
 	
 	@NotNull
+	@Size(min=1, max=20)
 	@Column(name="name")
 	private String name;
 
@@ -25,7 +27,7 @@ public class TicketInfo {
 	private Event event;
 	
 	@NotNull
-	@Size(min=0, max=45)
+	@Size(min=1, max=45)
 	@Column(name="type")
 	private String type;
 	
@@ -33,8 +35,9 @@ public class TicketInfo {
 	@Column(name="description")
 	private String description;
 	
-	@Column(name="max_number")
-	private int maxNumber;
+	@Min(value=1)
+	@Column(name="quantity_available")
+	private int quantityAvailable;
 	
 	@Column(name="price")
 	private int price;
