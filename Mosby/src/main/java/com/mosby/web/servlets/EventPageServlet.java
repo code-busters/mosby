@@ -27,13 +27,13 @@ public class EventPageServlet extends HttpServlet {
 	@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getParameter("eventId") != null) {
-            String state = new BigInteger(130, new SecureRandom()).toString(32);
-            request.getSession().setAttribute("state", state);
-    		
-    		String clientId = new GoogleCalendarService().getClientId();
-            String redirectUrl = request.getScheme() + "://"
-                    + request.getServerName() + ":" + request.getServerPort()
-                    + request.getContextPath() + "/calendarServlet";
+        	String state = new BigInteger(130, new SecureRandom()).toString(32);
+        	request.getSession().setAttribute("state", state);
+        	 
+    		String clientId = new GoogleCalendarService().getClientId();	
+    		String redirectUrl = request.getScheme() + "://"
+    				+ request.getServerName() + ":" + request.getServerPort()
+    				+ request.getContextPath() + "/calendarServlet";   		
     		
     		GoogleAuthorizationCodeRequestUrl calendarRequestUrl = new GoogleAuthorizationCodeRequestUrl(clientId, redirectUrl, Collections.singleton(CalendarScopes.CALENDAR));
     		calendarRequestUrl.setApprovalPrompt("auto");

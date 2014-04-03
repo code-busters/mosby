@@ -39,7 +39,6 @@ public class GoogleCalendarService {
             throw new Error("No calendar_client_secret.json found", e);
         }
     }
-    
 
     public String getClientId() {
         return CLIENT_ID;

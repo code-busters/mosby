@@ -1,10 +1,12 @@
 package main.java.com.mosby.web.servlets;
 
 import com.google.gson.Gson;
-import main.java.com.mosby.controller.services.FacebookUserGetDataService;
+
+import main.java.com.mosby.controller.services.FacebookUserService;
 import main.java.com.mosby.controller.services.GooglePlusService;
 import main.java.com.mosby.controller.services.UserService;
 import main.java.com.mosby.model.User;
+
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import java.io.IOException;
 
 @WebServlet("/socialSignUp")
@@ -28,14 +31,14 @@ public class SocialSignUpServlet extends HttpServlet {
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession(false);
+    	HttpSession session = request.getSession(false);
         String state = request.getParameter("state");
         String faceCode = request.getParameter("code");
         if(faceCode != null) {
-            FacebookUserGetDataService userService = new FacebookUserGetDataService();
+            FacebookUserService userService = new FacebookUserService();
             User user = userService.getUserDataFromFacebook(faceCode, request);
 
-            if (state.equals(request.getSession().getAttribute("state"))) {
+            if (state.equals(request.getSession(false).getAttribute("state"))) {
                 try {
                     session.setAttribute("user", user);
                     session.setAttribute("userType", "facebook");

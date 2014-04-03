@@ -1,5 +1,6 @@
 package main.java.com.mosby.web.servlets;
 
+import main.java.com.mosby.controller.services.FacebookUserService;
 import main.java.com.mosby.controller.services.GooglePlusService;
 import main.java.com.mosby.controller.services.UserService;
 import main.java.com.mosby.model.User;
@@ -10,9 +11,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
-import java.math.BigInteger;
-import java.security.SecureRandom;
 
 @WebServlet("/signUp")
 public class SignUpServlet extends HttpServlet {
@@ -20,22 +20,9 @@ public class SignUpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String state = new BigInteger(130, new SecureRandom()).toString(32);
-        request.getSession().setAttribute("state", state);
-		String appId = "601170126631442";
+		request.setAttribute("clientId", new GooglePlusService().getClientId());
 
-//        String redirectUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/socialSignUp";
-        String redirectUrl = request.getScheme() + "://"
-                + request.getServerName() + ":" + request.getServerPort()
-                + request.getContextPath() + "/socialSignUp";
-		String returnValue = "https://www.facebook.com/dialog/oauth?client_id="
-				+ appId + "&redirect_uri=" + redirectUrl
-				+ "&scope=email,user_birthday&state=" + state;
-
-
-        request.setAttribute("clientId", new GooglePlusService().getClientId());
-
-		request.setAttribute("facebookURL", returnValue);
+		request.setAttribute("facebookURL", new FacebookUserService().generateRedirectUrl(request));
 		request.getRequestDispatcher("/pages/signUp.jsp").forward(request, response);
 	}
 
