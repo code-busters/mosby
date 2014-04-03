@@ -63,7 +63,7 @@ public class PromoCodeFilter implements Filter {
 					PromoCode promoCode = new PromoCode(code, discount,
 							promoCodeDescription, maxNumber);
 					try {
-						validatorUtils.validate(promoCode);
+						validatorUtils.validate(promoCode, "promoCode", code);
 					} catch (NoSuchMethodException | SecurityException
 							| IllegalAccessException | IllegalArgumentException
 							| InvocationTargetException e) {

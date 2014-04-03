@@ -17,7 +17,7 @@ public class AuthenticationServlet extends HttpServlet {
        
     public AuthenticationServlet() {
         super();
-        // TODO Auto-generated constructor stub
+        
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -25,9 +25,7 @@ public class AuthenticationServlet extends HttpServlet {
 		ReflectionDao<User> usersDao = new ReflectionDao<>(User.class);
         User user = usersDao.selectObjects(5,"authentication_code=", code).get(0);
 		user.setActive(true);
-		System.out.println(code);
 		usersDao.updateObjects(user);
-		System.out.println(user);
 		HttpSession session = request.getSession(false);
 		session.setAttribute("user", user);
 		session.setAttribute("userType", "common");
@@ -36,7 +34,7 @@ public class AuthenticationServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 	}
 
 }

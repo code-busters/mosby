@@ -4,6 +4,7 @@ import main.java.com.mosby.controller.services.FacebookUserService;
 import main.java.com.mosby.controller.services.GooglePlusService;
 import main.java.com.mosby.controller.services.UserService;
 import main.java.com.mosby.model.User;
+import main.java.com.mosby.utils.MailUtils;
 import main.java.com.mosby.utils.ValidatorUtils;
 
 import javax.servlet.ServletException;

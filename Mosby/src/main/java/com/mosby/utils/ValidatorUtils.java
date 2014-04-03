@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.Date;
 
+import main.java.com.mosby.model.Ticket;
 import main.java.com.mosby.model.annotations.validate.*;
 
 public class ValidatorUtils<T> {
@@ -44,20 +45,26 @@ public class ValidatorUtils<T> {
 		labels = ResourceBundle.getBundle("main.java.com.mosby.i18n.errors", locale);
 	}
 
-	public T validate(T object) throws NoSuchMethodException,
+	public T validate(T object, String ... name) throws NoSuchMethodException,
 			SecurityException, IllegalAccessException,
 			IllegalArgumentException, InvocationTargetException {
 
 		Timestamp timestampStart = null;
-
+		
 		for (Field field : type.getDeclaredFields()) {
 
 			if (field.isAnnotationPresent(NotNull.class)) {
 				field.setAccessible(true);
 				if (field.get(object) == null) {
+					if(name.length == 0){
 					errors.add(labels.getString("PleaseEnterField")
 							+ " \"" + labels.getString(field.getName())
 							+ "\".");
+					} else if(name.length == 2){
+					errors.add(labels.getString("PleaseEnterField")
+								+ " \"" + labels.getString(field.getName())
+								+ "\" " + labels.getString("in") + " " + labels.getString(name[0]) + " " + name[1]);	
+					}
 					continue;
 				}
 			}
@@ -177,7 +184,11 @@ public class ValidatorUtils<T> {
 				System.out.println(timestampNow);
 				if (timestampStart != null
 						&& timestampStart.before(timestampNow)) {
-					errors.add(labels.getString("validateDataTime"));
+					if(name.length == 0){
+					errors.add(labels.getString("validateDataTime") + ".");
+					} else if(name.length == 2){
+						errors.add(labels.getString("validateDataTime") + labels.getString("in") + " " + labels.getString(name[0]) + " " + name[1] + ".");	
+					}
 				}
 
 			}
@@ -188,7 +199,11 @@ public class ValidatorUtils<T> {
 				System.out.println(timestampStart);
 				System.out.println(timestampEnd);
 				if (timestampEnd.before(timestampStart)) {
-					errors.add(labels.getString("validateStartEnd"));
+					if(name.length == 0){
+					errors.add(labels.getString("validateStartEnd") + ".");
+					} else if(name.length == 2){
+						errors.add(labels.getString("validateStartEnd") + labels.getString("in") + " " + labels.getString(name[0]) + " " + name[1] + ".");	
+					}
 				}
 			}
 		}

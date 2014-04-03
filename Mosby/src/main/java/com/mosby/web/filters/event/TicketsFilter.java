@@ -102,7 +102,7 @@ public class TicketsFilter implements Filter {
 							ticketDescription, maxNumber, price, start, end);
 
 					try {
-						validatorUtils.validate(ticketInfo);
+						validatorUtils.validate(ticketInfo, "ticket", ticketInfoName);
 					} catch (NoSuchMethodException | SecurityException
 							| IllegalAccessException | IllegalArgumentException
 							| InvocationTargetException e) {
