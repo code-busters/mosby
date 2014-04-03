@@ -416,23 +416,64 @@ public class EventService {
 	}
 
 	public List<Event> search (HttpServletRequest request){
-//Query builder		
-		String searchText = request.getParameter("search_again");
-//		int categotyId = Integer.parseInt(request.getParameter("event_category"));
-//		int typeId = Integer.parseInt(request.getParameter("event_type"));
-//		Date startDate = null, endDate = null;
-//		try {
-//			startDate = new SimpleDateFormat(DATE_FORMAT).parse(request.getParameter("start_date"));
-//			endDate = new SimpleDateFormat(DATE_FORMAT).parse(request.getParameter("end_date"));
-//		} catch (ParseException e) {
-//			e.printStackTrace();
-//		}
-//		int minPrice = Integer.parseInt(request.getParameter("min_price"));
-//		int maxPrice = Integer.parseInt(request.getParameter("max_price"));
-		
-//select events
-		List <Event> events = new ReflectionDao<>(Event.class).selectObjects(2, "name", "%gp%");
-		
-		return events;
+		//Query builder		
+				String searchText = request.getParameter("search_again");
+				String query = "name,%" + searchText + "%, description, %" + searchText + "%";
+				
+				String categotyId = request.getParameter("event_category");
+				if (!categotyId.equals("-1")){
+					query = query + ", category_ref=, " + categotyId;
+				}
+								
+				String typeId = request.getParameter("event_type");
+				if (!categotyId.equals("-1")){
+					query = query + ", type_ref=, " + typeId;
+				}
+				
+				String startDate = request.getParameter("start_date");
+				if (!startDate.isEmpty()){
+					query = query + ", start_date>" + startDate;
+				}
+				
+				String endDate = (request.getParameter("end_date"));
+				if (!endDate.isEmpty()){
+					query = query + ", end_date<" + startDate;
+				}
+
+				String[] queryToExecute = query.split(",");
+				
+				List <Event> events = new ReflectionDao<>(Event.class).selectObjects(2, queryToExecute);
+
+				Iterator<Event> iter = events.iterator();
+				int minPrice = Integer.parseInt(request.getParameter("min_price"));
+				if (minPrice != 0){
+					while (iter.hasNext()){
+						Event currentEvent = iter.next();
+						List<TicketInfo> currentEventTicketsInfo = new ReflectionDao<>(TicketInfo.class).selectObjects(1, "event_ref=", currentEvent.getId(), "price>", minPrice);
+						if (currentEventTicketsInfo.isEmpty()){
+							iter.remove();
+						}		
+					}
+				}
+				
+				int maxPrice = Integer.parseInt(request.getParameter("max_price"));
+				if (maxPrice !=0){
+					while (iter.hasNext()){
+						Event currentEvent = iter.next();
+						List<TicketInfo> currentEventTicketsInfo = new ReflectionDao<>(TicketInfo.class).selectObjects(1, "event_ref=", currentEvent.getId(), "price<", maxPrice);
+						if (currentEventTicketsInfo.isEmpty()){
+							iter.remove();
+						}		
+					}
+				}
+				
+				request.removeAttribute("search_again"); 
+				request.removeAttribute("event_category");
+				request.removeAttribute("event_type");
+				request.removeAttribute("start_date");
+				request.removeAttribute("end_date");
+				request.removeAttribute("min_price");
+				request.removeAttribute("max_price");
+				return events;
 	}
 }
