@@ -169,7 +169,7 @@
                     <p>${event.organizer.about}</p>
                 </c:if>
                 <a href="<c:url value='/organizerPage'/>?id=${event.organizer.id}" class="btn btn-block btn-lg btn-default button-to-page">
-                    <span class="fui-user"></span>Organizer page
+                    <span class="fui-user"></span><fmt:message key="eventPage.organizerPage"/>
                 </a>
             </div>
             <div class="event-actions col-md-12">

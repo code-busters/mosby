@@ -30,14 +30,17 @@ public class CreatePromoCodeFilter implements Filter {
 
 		if (request.getMethod().equals("POST")) {
 
-	        String[] idPromoCodesArray = request.getParameterValues("promo_code_id");
-			
+			String[] idPromoCodesArray = request
+					.getParameterValues("promo_code_id");
+
 			ValidatorUtils<PromoCode> validatorUtils = null;
 
-			if (!request.getParameter("language").equals("en") && !request.getParameter("language").equals("uk")) {
+			if (!request.getParameter("language").equals("en")
+					&& !request.getParameter("language").equals("uk")) {
 				validatorUtils = new ValidatorUtils<>(PromoCode.class, "en");
 			} else {
-				validatorUtils = new ValidatorUtils<>(PromoCode.class, request.getParameter("language"));
+				validatorUtils = new ValidatorUtils<>(PromoCode.class,
+						request.getParameter("language"));
 			}
 			if (idPromoCodesArray != null && idPromoCodesArray.length != 0) {
 				for (String currInt : idPromoCodesArray) {
@@ -66,7 +69,7 @@ public class CreatePromoCodeFilter implements Filter {
 					} catch (NoSuchMethodException | SecurityException
 							| IllegalAccessException | IllegalArgumentException
 							| InvocationTargetException e) {
-						
+
 						e.printStackTrace();
 					}
 				}
@@ -75,17 +78,28 @@ public class CreatePromoCodeFilter implements Filter {
 			if (validatorUtils.getErrors().isEmpty() == false) {
 
 				request.setAttribute("errors", validatorUtils.getErrors());
-				request.setAttribute("event_name", request.getParameter("event_name"));
-				request.setAttribute("start_date", request.getParameter("start_date"));
-				request.setAttribute("start_time", request.getParameter("start_time"));
-				request.setAttribute("end_date", request.getParameter("end_date"));
-				request.setAttribute("end_time", request.getParameter("end_time"));
-				request.setAttribute("event_category", request.getParameter("event_category"));
-				request.setAttribute("event_type", request.getParameter("event_type"));
-				request.setAttribute("event_description", request.getParameter("event_description"));
-				request.setAttribute("event_location", request.getParameter("event_location"));
-				request.setAttribute("privacy_event", request.getParameter("privacy_event"));
-				request.setAttribute("organizer", request.getParameter("organizer"));
+				request.setAttribute("event_name",
+						request.getParameter("event_name"));
+				request.setAttribute("start_date",
+						request.getParameter("start_date"));
+				request.setAttribute("start_time",
+						request.getParameter("start_time"));
+				request.setAttribute("end_date",
+						request.getParameter("end_date"));
+				request.setAttribute("end_time",
+						request.getParameter("end_time"));
+				request.setAttribute("event_category",
+						request.getParameter("event_category"));
+				request.setAttribute("event_type",
+						request.getParameter("event_type"));
+				request.setAttribute("event_description",
+						request.getParameter("event_description"));
+				request.setAttribute("event_location",
+						request.getParameter("event_location"));
+				request.setAttribute("privacy_event",
+						request.getParameter("privacy_event"));
+				request.setAttribute("organizer",
+						request.getParameter("organizer"));
 				request.getRequestDispatcher("/pages/createEvent.jsp").forward(
 						request, response);
 			} else {
@@ -97,7 +111,7 @@ public class CreatePromoCodeFilter implements Filter {
 	}
 
 	public void init(FilterConfig fConfig) throws ServletException {
-		
+
 	}
 
 }

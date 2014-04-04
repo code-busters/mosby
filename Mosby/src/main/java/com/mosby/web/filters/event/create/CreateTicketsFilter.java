@@ -13,7 +13,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 @WebFilter("/CreateTicketsFilter")
 public class CreateTicketsFilter implements Filter {
@@ -86,20 +85,7 @@ public class CreateTicketsFilter implements Filter {
 								.getTime());
 						end = new Timestamp(parseDate.parse(endTimestamp)
 								.getTime());
-					} catch (ParseException e) {
-						try {
-							start = new Timestamp(parseDate.parse(
-									request.getParameter("start_date") + " "
-											+ request.getParameter("start_time"))
-									.getTime());
-							end = new Timestamp(parseDate.parse(
-									request.getParameter("end_date") + " "
-											+ request.getParameter("end_time"))
-									.getTime());
-						} catch (ParseException ex) {
-							ex.printStackTrace();
-						}
-					}
+					} catch (ParseException e){}
 						
 					int price = 0;
 					if (stringPrice.equals("Free")) {
@@ -131,9 +117,7 @@ public class CreateTicketsFilter implements Filter {
 					}
 
 				}
-			} else {
-				// validatorUtils.selectTicket();
-			}
+			} 
 
 			if (validatorUtils.getErrors().isEmpty() == false) {
 

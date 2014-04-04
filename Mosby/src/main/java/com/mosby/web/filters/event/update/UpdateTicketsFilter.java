@@ -33,7 +33,6 @@ public class UpdateTicketsFilter implements Filter {
 
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) res;
-		//HttpSession session = request.getSession(false);
 
 		if (request.getMethod().equals("POST")) {
 
@@ -88,14 +87,7 @@ public class UpdateTicketsFilter implements Filter {
 								.getTime());
 						end = new Timestamp(parseDate.parse(endTimestamp)
 								.getTime());
-					} catch (ParseException e) {
-						e.printStackTrace();
-					}
-					if (start == null || end == null) {
-							Event event = (Event) request.getSession().getAttribute("event");
-							start = event.getStartDateTime();
-							end = event.getEndDateTime();	
-					}
+					} catch (ParseException e) {}
 					int price = 0;
 					if (stringPrice.equals("Free")) {
 						type = "Free";

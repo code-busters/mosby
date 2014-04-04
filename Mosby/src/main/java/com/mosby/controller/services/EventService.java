@@ -3,7 +3,6 @@ package main.java.com.mosby.controller.services;
 import main.java.com.mosby.controller.dao.ReflectionDao;
 import main.java.com.mosby.model.*;
 import main.java.com.mosby.utils.FileUploadUtils;
-import main.java.com.mosby.utils.MailUtils;
 
 import org.apache.log4j.Logger;
 
@@ -142,7 +141,6 @@ public class EventService {
 						endTime = new SimpleDateFormat(TIME_FORMAT).parse(request
 								.getParameter("end_time"));
 					} catch (ParseException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				}
@@ -268,13 +266,6 @@ public class EventService {
 
 		ReflectionDao<Event> eventDao = new ReflectionDao<>(Event.class);
 		eventDao.updateObjects(updatedEvent);
-		
-		Set<String> usersMails = new HashSet<>();
-		  List <Ticket> ticketsList = new ReflectionDao<>(Ticket.class).selectObjects(3, "event_ref=", updatedEvent);
-		  for (Ticket ticket : ticketsList) {
-			  usersMails.add(ticket.getUser().getEmail());
-		  }
-		  new MailUtils().sendMessage(new ArrayList<String>(usersMails), "Event \"" + updatedEvent.getName() + "\" has been changed. Please, visit our Mosby-site to see changes.\n Mosby =)", "\"" + updatedEvent.getName() + "\" has some new changes");
 	}
 
 	public void updateTicketsInfo(HttpServletRequest request) {
