@@ -98,8 +98,7 @@ public class TicketGenerator {
 		document.close();
 	}
 	
-	public void generateTicket(Ticket...tickets) throws DocumentException,
-			MalformedURLException, IOException {
+	public void generateTicket(Ticket...tickets) throws DocumentException, IOException {
 
 		for (int i = 0; i < tickets.length; i++) {
 		System.out.println("STARTING GENERATION TICKET...");
@@ -227,7 +226,7 @@ public class TicketGenerator {
 	}
 
 	private PdfPCell generateImageCell(String logoPath)
-			throws BadElementException, MalformedURLException, IOException {
+			throws BadElementException, IOException {
 		PdfPCell cell;
 
 		Image image = Image.getInstance(logoPath);
@@ -247,7 +246,7 @@ public class TicketGenerator {
 	}
 
 	private PdfPCell generateQrCodeCell(String code)
-			throws BadElementException, MalformedURLException, IOException {
+			throws BadElementException, IOException {
 		PdfPCell cell;
 
 		BarcodeQRCode qrCode = new BarcodeQRCode(code, 1, 1, null);

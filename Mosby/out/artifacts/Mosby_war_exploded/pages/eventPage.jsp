@@ -161,7 +161,7 @@
         <div class="col-md-3">
             <div class="organizer-details col-md-12">
                 <c:if test="${event.organizer.logo != 'default.png'}">
-                    <img class="img-responsive" src="media/images/users/${event.organizer.logo}">
+                    <img class="img-responsive" src="media/images/organizers/${event.organizer.logo}">
                 </c:if>
 
                 <h3>${event.organizer.name}</h3>

@@ -98,7 +98,7 @@
                                     </div>
                                     <div class="col-md-2 col-sm-2">
                                         <span class="as-label visible-xs">Start date</span>
-                                        <p>${ticket.event.organizer.startDate}</p>
+                                        <p>${ticket.event.startDate}</p>
                                     </div>
                                     <div class="col-md-1 col-sm-1 actions text-center">
                                         <label class="visible-xs text-left">Actions</label>

@@ -28,7 +28,7 @@ public class ShowTicketServlet extends HttpServlet {
 		response.setContentType("application/pdf");
 		OutputStream out = response.getOutputStream();
 		User user = (User) request.getSession().getAttribute("user");
-		Ticket ticket = (Ticket) new ReflectionDao<>(Ticket.class).selectObjects(4, "id=", request.getParameter("id").toString(), "user_ref=", user.getId());
+		Ticket ticket = new ReflectionDao<>(Ticket.class).selectObjects(4, "id=", request.getParameter("id").toString(), "user_ref=", user.getId()).get(0);
 		try {
 			TicketGenerator ticketGenerator = new TicketGenerator(out, getServletContext().getRealPath(""));
 			ticketGenerator.createTickets(ticket);
