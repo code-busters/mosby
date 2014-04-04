@@ -13,6 +13,8 @@ import main.java.com.mosby.utils.FileUploadUtils;
 
 import org.apache.log4j.Logger;
 
+import com.mysql.jdbc.exceptions.MySQLSyntaxErrorException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +23,7 @@ import javax.servlet.http.Part;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -336,7 +339,7 @@ public class EventService {
 		}
 	}
 
-	public HttpServletRequest readMyEvents(HttpServletRequest request){
+	public HttpServletRequest readMyEvents(HttpServletRequest request) throws MySQLSyntaxErrorException{
     	HttpSession session = request.getSession(false);
     	User sessionUser = (User) session.getAttribute("user");
     	int userId = sessionUser.getId();
@@ -350,10 +353,14 @@ public class EventService {
     		for (Event event : currentEvents) {
     			int allTicketsSold = 0;
     			int allTickets = 0;
-    			if(!new ReadGenericObjectService<>(TicketInfo.class).readListByField("event_ref", event.getId()).isEmpty()){
-    				allTicketsSold += new ReflectionDao<>(Ticket.class).selectAggregateObjects("COUNT(event_ref)", "event_ref=", event.getId()).get(0).intValue();    				
-    				allTickets += new ReflectionDao<>(TicketInfo.class).selectAggregateObjects("SUM(quantity_available)", "event_ref=", event.getId()).get(0).intValue() + allTicketsSold;
-    			}
+    			try {
+					if(!new ReadGenericObjectService<>(TicketInfo.class).readListByField("event_ref", event.getId()).isEmpty()){
+						allTicketsSold += new ReflectionDao<>(Ticket.class).selectAggregateObjects("COUNT(event_ref)", "event_ref=", event.getId()).get(0).intValue();    				
+						allTickets += new ReflectionDao<>(TicketInfo.class).selectAggregateObjects("SUM(quantity_available)", "event_ref=", event.getId()).get(0).intValue() + allTicketsSold;
+					}
+				} catch (Exception e) {
+					log.debug("There is no tickets to event");
+				}
     			ticketsSold.put(event.getId(), allTicketsSold);
                 tickets.put(event.getId(), allTickets);
 			}
