@@ -41,7 +41,7 @@
     </div>
 
     <div class="row" style="background: #000">
-        <div id="background-block" class="flow-img big-background" style="background-image: url(media/images/bg_mask.png), url(media/images/default/google-team-speak.jpg)"></div>
+        <div id="background-block" class="flow-img big-background" style="background-image: url(media/images/bg_mask.png), url(media/images/default/login.jpg)"></div>
     </div>
 
     <div class="row">
