@@ -43,20 +43,25 @@ public class TicketsService {
         						int discount = 0;
         						if (promoCode != null && promoCode.getQuantityAvailable() > 0){
         							discount = promoCode.getDiscount();
+        							promoCode.setQuantityAvailable(promoCode.getQuantityAvailable()-1);
+        							new ReflectionDao<>(PromoCode.class).updateObjects(promoCode);
         						}
         						priceOfTicket = ticketInfo.getPrice()-(ticketInfo.getPrice() * discount * 0.01);
         					}        				
         					if (user.getCredits()>=priceOfTicket){
         						ticketInfo.setQuantityAvailable(ticketInfo.getQuantityAvailable()-1);
-        						promoCode.setQuantityAvailable(promoCode.getQuantityAvailable()-1);
         						new ReflectionDao<>(Ticket.class).insertObjects(ticket);
         						new ReflectionDao<>(TicketInfo.class).updateObjects(ticketInfo);
-        						new ReflectionDao<>(PromoCode.class).updateObjects(promoCode);
         						user.setCredits(user.getCredits()-priceOfTicket);
         						new ReflectionDao<>(User.class).updateObjects(user);
         						request.getSession().setAttribute("user", user);        						
         					}
-        				}        				
+        				}
+        				else{
+        					ticketInfo.setQuantityAvailable(ticketInfo.getQuantityAvailable()-1);
+        					new ReflectionDao<>(Ticket.class).insertObjects(ticket);
+        					new ReflectionDao<>(TicketInfo.class).updateObjects(ticketInfo);        					
+        				}
         			}
         		}
         	}
