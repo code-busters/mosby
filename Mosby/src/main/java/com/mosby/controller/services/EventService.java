@@ -132,7 +132,18 @@ public class EventService {
 					endTime = new SimpleDateFormat(TIME_FORMAT).parse(request
 							.getParameter("ticket_end_time_" + currentId));
 				} catch (ParseException e) {
-					e.printStackTrace();
+					try {
+						startDate = new SimpleDateFormat(TIME_FORMAT).parse(String.valueOf(new Date().getTime()));
+						endDate = new SimpleDateFormat(DATE_FORMAT).parse(request
+								.getParameter("end_date"));
+						startTime = new SimpleDateFormat(TIME_FORMAT).parse(request
+								.getParameter(String.valueOf(new Date().getTime())));
+						endTime = new SimpleDateFormat(TIME_FORMAT).parse(request
+								.getParameter("end_time"));
+					} catch (ParseException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 				int price;
 				if (stringPrice.equals("Free")) {

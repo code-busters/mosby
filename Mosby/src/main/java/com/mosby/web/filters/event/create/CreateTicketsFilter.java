@@ -88,7 +88,10 @@ public class CreateTicketsFilter implements Filter {
 								.getTime());
 					} catch (ParseException e) {
 						try {
-							start = new Timestamp(new Date().getTime());
+							start = new Timestamp(parseDate.parse(
+									request.getParameter("start_date") + " "
+											+ request.getParameter("start_time"))
+									.getTime());
 							end = new Timestamp(parseDate.parse(
 									request.getParameter("end_date") + " "
 											+ request.getParameter("end_time"))
