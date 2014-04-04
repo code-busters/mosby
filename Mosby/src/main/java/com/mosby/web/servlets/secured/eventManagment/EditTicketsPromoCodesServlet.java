@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.util.List;
@@ -23,14 +24,15 @@ public class EditTicketsPromoCodesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getParameter("eventId") != null) {
+		HttpSession session = request.getSession(false);
+		if (request.getParameter("eventId") != null) {
             int eventId = Integer.parseInt(request.getParameter("eventId"));
             Event event = new ReadGenericObjectService<>(Event.class).readById(eventId); 
             List <TicketInfo> ticketsInfoList = new ReadGenericObjectService<>(TicketInfo.class).readListByField("event_ref=", eventId);
             List <PromoCode> promoCodesList = new ReadGenericObjectService<>(PromoCode.class).readListByField("event_ref=", eventId);
-            request.setAttribute("event", event);
-            request.setAttribute("ticketsInfo", ticketsInfoList);
-            request.setAttribute("promoCodes", promoCodesList);
+            //request.setAttribute("event", event);
+            session.setAttribute("ticketsInfo", ticketsInfoList);
+            session.setAttribute("promoCodes", promoCodesList);
             request.getRequestDispatcher("/pages/eventManagement/editTicketsPromoCodes.jsp").forward(request, response);
         } else {
             response.sendRedirect("index");

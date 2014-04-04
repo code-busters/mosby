@@ -71,7 +71,6 @@ public class UpdateEventFilter implements Filter {
             if (event == null || validatorUtils.getErrors().isEmpty() == false) {
 
                 request.setAttribute("errors", validatorUtils.getErrors());
-                request.setAttribute("event", event);
                 request.getRequestDispatcher("/pages/eventManagement/editEvent.jsp").forward(
                         request, response);
             } else {
