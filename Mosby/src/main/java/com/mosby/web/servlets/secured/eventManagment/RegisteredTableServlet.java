@@ -1,5 +1,6 @@
 package main.java.com.mosby.web.servlets.secured.eventManagment;
 
+import main.java.com.mosby.controller.dao.ReflectionDao;
 import main.java.com.mosby.controller.services.ReadGenericObjectService;
 import main.java.com.mosby.controller.services.TicketsService;
 import main.java.com.mosby.model.Event;
@@ -11,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -30,13 +32,12 @@ public class RegisteredTableServlet extends HttpServlet {
         	int eventId = Integer.parseInt(request.getParameter("eventId"));
         	Event event = new ReadGenericObjectService<>(Event.class).readById(eventId);
             request.setAttribute("event", event);
-            List <Ticket> ticketsList = new ReadGenericObjectService<>(Ticket.class).readListByField("event_ref=", eventId);
+            List <Ticket> ticketsList = new ReflectionDao<>(Ticket.class).selectObjects(2, "event_ref=", eventId);
             request.setAttribute("tickets", ticketsList);
             request.getRequestDispatcher("/pages/eventManagement/registeredTable.jsp").forward(request, response);
         } else {
             response.sendRedirect("index");
         }
-		
 		
 		
         

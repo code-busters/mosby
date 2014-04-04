@@ -89,29 +89,49 @@ public class TicketsService {
 		String[] tickets = request.getParameterValues("checked_tickets");
 		for (String string : tickets) {
 			Ticket ticket = new ReadGenericObjectService<>(Ticket.class).readById(Integer.parseInt(string));
-			double priceOfTicket = ticket.getTicketInfo().getPrice()-(ticket.getTicketInfo().getPrice() * ticket.getPromoCode().getDiscount() * 0.01);
-			ticket.getUser().setCredits(ticket.getUser().getCredits() + priceOfTicket);
-			userDao.updateObjects(ticket.getUser());
-			if (ticket.getUser().getId() == ((User) request.getSession(false).getAttribute("user")).getId()){
-				request.getSession(false).setAttribute("user", ticket.getUser());
+			if (ticket.getTicketInfo().getType().equals("Paid")){
+				double priceOfTicket = ticket.getTicketInfo().getPrice()-(ticket.getTicketInfo().getPrice() * ticket.getPromoCode().getDiscount() * 0.01);
+				ticket.getUser().setCredits(ticket.getUser().getCredits() + priceOfTicket);
+				userDao.updateObjects(ticket.getUser());
+				if (ticket.getUser().getId() == ((User) request.getSession(false).getAttribute("user")).getId()){
+					request.getSession(false).setAttribute("user", ticket.getUser());
+				}
 			}
 			ticketDao.deleteObjects(ticket);
+			ticket.getTicketInfo().setQuantityAvailable(ticket.getTicketInfo().getQuantityAvailable()+1);
+			new ReflectionDao<>(TicketInfo.class).updateObjects(ticket.getTicketInfo());
 		}
 	}
 	
 	public void delete (HttpServletRequest request, int id){
 		Ticket ticket = new ReadGenericObjectService<>(Ticket.class).readById(id);
-		double priceOfTicket = ticket.getTicketInfo().getPrice()-(ticket.getTicketInfo().getPrice() * ticket.getPromoCode().getDiscount() * 0.01);
-		ticket.getUser().setCredits(ticket.getUser().getCredits() + priceOfTicket);
-		new ReflectionDao<>(User.class).updateObjects(ticket.getUser());
-		if (ticket.getUser().getId() == ((User) request.getSession(false).getAttribute("user")).getId()){
-			request.getSession(false).setAttribute("user", ticket.getUser());
+		if (ticket.getTicketInfo().getType().equals("Paid")){
+			double priceOfTicket = ticket.getTicketInfo().getPrice()-(ticket.getTicketInfo().getPrice() * ticket.getPromoCode().getDiscount() * 0.01);
+			ticket.getUser().setCredits(ticket.getUser().getCredits() + priceOfTicket);
+			new ReflectionDao<>(User.class).updateObjects(ticket.getUser());
+			if (ticket.getUser().getId() == ((User) request.getSession(false).getAttribute("user")).getId()){
+				request.getSession(false).setAttribute("user", ticket.getUser());
+			}			
 		}
 		new ReflectionDao<>(Ticket.class).deleteObjects(ticket);
+		ticket.getTicketInfo().setQuantityAvailable(ticket.getTicketInfo().getQuantityAvailable()+1);
+		new ReflectionDao<>(TicketInfo.class).updateObjects(ticket.getTicketInfo()); 
 	}
 	
 	public void save(HttpServletRequest request){
 		String[] tickets = request.getParameterValues("id");
+		String[] checkedTickets = request.getParameterValues("checked_in_tickets");
+		for (String string : tickets) {
+			Ticket ticket = (Ticket) new ReflectionDao<>(Ticket.class).selectObjects(1, "id=", Integer.parseInt(string)).get(0);
+			ticket.setChecked(false);
+			new ReflectionDao<>(Ticket.class).updateObjects(ticket);
+		}
+		
+		for (String string : checkedTickets) {
+			Ticket ticket = (Ticket) new ReflectionDao<>(Ticket.class).selectObjects(1, "id=", Integer.parseInt(string)).get(0);
+			ticket.setChecked(true);
+			new ReflectionDao<>(Ticket.class).updateObjects(ticket);
+		}
 	}
 	
 }
