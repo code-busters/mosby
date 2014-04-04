@@ -95,11 +95,11 @@
                 <div class="profile-details">
                     <h2>${organizer.name}</h2>
                     <dl class="dl-horizontal">
-                        <c:if test="${organizer.twitter != ''}">
+                        <c:if test="${organizer.about != ''}">
                             <dt>About</dt>
                             <dd>${organizer.about}</dd>
                         </c:if>
-                        <c:if test="${organizer.twitter != ''}">
+                        <c:if test="${organizer.site != ''}">
                             <dt>Site</dt>
                             <dd>
                                 <a href="${organizer.site}">${organizer.site}</a>
@@ -109,7 +109,7 @@
                 </div>
             </div>
             <div class="row organizer-events">
-                <h4>My events</h4>
+                <h4><fmt:message key="organizerPage.myEvents"/></h4>
                 <c:forEach items="${events}" var="event">
                     <div class="event">
                         <div class="event-image flow-img"

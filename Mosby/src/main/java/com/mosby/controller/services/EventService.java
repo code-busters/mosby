@@ -14,6 +14,7 @@ import javax.servlet.http.Part;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -312,6 +313,37 @@ public class EventService {
 							.getParameter("ticket_end_time_" + currentId));
 				} catch (ParseException e) {
 					e.printStackTrace();
+				}
+				SimpleDateFormat parseDate = new SimpleDateFormat(
+						"yyyy-MM-dd hh:mm");
+				String startTimestamp = request
+						.getParameter("ticket_start_date_" + currentId)
+						+ " "
+						+ request.getParameter("ticket_start_time_"
+								+ currentId);
+				String endTimestamp = request
+						.getParameter("ticket_end_date_" + currentId)
+						+ " "
+						+ request.getParameter("ticket_end_time_"
+								+ currentId);
+				Timestamp start = null;
+				Timestamp end = null;
+
+				try {
+					start = new Timestamp(parseDate.parse(startTimestamp)
+							.getTime());
+					end = new Timestamp(parseDate.parse(endTimestamp)
+							.getTime());
+				} catch (ParseException e) {
+					try {
+						start = new Timestamp(new Date().getTime());
+						end = new Timestamp(parseDate.parse(
+								request.getParameter("end_date") + " "
+										+ request.getParameter("end_time"))
+								.getTime());
+					} catch (ParseException ex) {
+						ex.printStackTrace();
+					}
 				}
 
 				if (currentIdTicketsInfoList.contains(newId)) {

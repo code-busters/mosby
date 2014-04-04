@@ -87,22 +87,17 @@ public class CreateTicketsFilter implements Filter {
 						end = new Timestamp(parseDate.parse(endTimestamp)
 								.getTime());
 					} catch (ParseException e) {
-						e.printStackTrace();
-					}
-					if (start == null || end == null) {
 						try {
-							start = new Timestamp(parseDate.parse(
-									request.getParameter("start_date") + " "
-											+ request.getParameter("start_time"))
-									.getTime());
+							start = new Timestamp(new Date().getTime());
 							end = new Timestamp(parseDate.parse(
 									request.getParameter("end_date") + " "
 											+ request.getParameter("end_time"))
 									.getTime());
-						} catch (ParseException e) {
-							e.printStackTrace();
+						} catch (ParseException ex) {
+							ex.printStackTrace();
 						}
 					}
+						
 					int price = 0;
 					if (stringPrice.equals("Free")) {
 						type = "Free";
