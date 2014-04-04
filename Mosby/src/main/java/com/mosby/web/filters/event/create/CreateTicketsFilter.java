@@ -1,4 +1,4 @@
-package main.java.com.mosby.web.filters.event;
+package main.java.com.mosby.web.filters.event.create;
 
 import main.java.com.mosby.model.TicketInfo;
 import main.java.com.mosby.utils.ValidatorUtils;
@@ -15,10 +15,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@WebFilter("/TicketsFilter")
-public class TicketsFilter implements Filter {
+@WebFilter("/CreateTicketsFilter")
+public class CreateTicketsFilter implements Filter {
 
-	public TicketsFilter() {
+	public CreateTicketsFilter() {
 
 	}
 
@@ -80,16 +80,16 @@ public class TicketsFilter implements Filter {
 									+ currentId);
 					Timestamp start = null;
 					Timestamp end = null;
-					if (startTimestamp != null && endTimestamp != null) {
-						try {
-							start = new Timestamp(parseDate.parse(
-									startTimestamp).getTime());
-							end = new Timestamp(parseDate.parse(endTimestamp)
-									.getTime());
-						} catch (ParseException e) {
-							e.printStackTrace();
-						}
-					} else {
+
+					try {
+						start = new Timestamp(parseDate.parse(startTimestamp)
+								.getTime());
+						end = new Timestamp(parseDate.parse(endTimestamp)
+								.getTime());
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
+					if (start == null || end == null) {
 						start = new Timestamp(new Date().getTime());
 						try {
 							end = new Timestamp(parseDate.parse(
@@ -131,7 +131,7 @@ public class TicketsFilter implements Filter {
 
 				}
 			} else {
-				//validatorUtils.selectTicket();
+				// validatorUtils.selectTicket();
 			}
 
 			if (validatorUtils.getErrors().isEmpty() == false) {

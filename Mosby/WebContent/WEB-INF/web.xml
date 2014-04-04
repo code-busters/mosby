@@ -51,6 +51,7 @@
     <url-pattern>/myOrganizers</url-pattern>
     <url-pattern>/myEvents</url-pattern>
     <url-pattern>/updateOrganizer</url-pattern>
+    <url-pattern>/editEvent</url-pattern>
   </filter-mapping>
   <filter>
     <filter-name>EventAttributesFilter</filter-name>
@@ -62,32 +63,55 @@
     <url-pattern>/editEvent</url-pattern>
   </filter-mapping>
   <filter>
-    <filter-name>EventFilter</filter-name>
-    <filter-class>main.java.com.mosby.web.filters.event.EventFilter</filter-class>
+    <filter-name>CreateEventFilter</filter-name>
+    <filter-class>main.java.com.mosby.web.filters.event.create.CreateEventFilter</filter-class>
   </filter>
   <filter-mapping>
-    <filter-name>EventFilter</filter-name>
+    <filter-name>CreateEventFilter</filter-name>
     <url-pattern>/createEvent</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>CreateTicketsFilter</filter-name>
+    <filter-class>main.java.com.mosby.web.filters.event.create.CreateTicketsFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>CreateTicketsFilter</filter-name>
+    <url-pattern>/createEvent</url-pattern>
+  </filter-mapping>
+    <filter>
+    <filter-name>CreatePromoCodeFilter</filter-name>
+    <filter-class>main.java.com.mosby.web.filters.event.create.CreatePromoCodeFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>CreatePromoCodeFilter</filter-name>
+    <url-pattern>/createEvent</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>UpdateEventFilter</filter-name>
+    <filter-class>main.java.com.mosby.web.filters.event.update.UpdateEventFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>UpdateEventFilter</filter-name>
     <url-pattern>/editEvent</url-pattern>
   </filter-mapping>
     <filter>
-    <filter-name>TicketsFilter</filter-name>
-    <filter-class>main.java.com.mosby.web.filters.event.TicketsFilter</filter-class>
+    <filter-name>UpdateTicketsFilter</filter-name>
+    <filter-class>main.java.com.mosby.web.filters.event.update.UpdateTicketsFilter</filter-class>
   </filter>
   <filter-mapping>
-    <filter-name>TicketsFilter</filter-name>
-    <url-pattern>/createEvent</url-pattern>
+    <filter-name>UpdateTicketsFilter</filter-name>
     <url-pattern>/editTicketsPromoCodes</url-pattern>
-  </filter-mapping>
+   </filter-mapping>
   <filter>
-    <filter-name>PromoCodeFilter</filter-name>
-    <filter-class>main.java.com.mosby.web.filters.event.PromoCodeFilter</filter-class>
+    <filter-name>UpdatePromoCodeFilter</filter-name>
+    <filter-class>main.java.com.mosby.web.filters.event.update.UpdatePromoCodeFilter</filter-class>
   </filter>
   <filter-mapping>
-    <filter-name>PromoCodeFilter</filter-name>
-    <url-pattern>/createEvent</url-pattern>
+    <filter-name>UpdatePromoCodeFilter</filter-name>
     <url-pattern>/editTicketsPromoCodes</url-pattern>
   </filter-mapping>
+
+
   <filter>
     <filter-name>ContactInfoFilter</filter-name>
     <filter-class>main.java.com.mosby.web.filters.user.ContactInfoFilter</filter-class>

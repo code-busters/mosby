@@ -189,7 +189,7 @@ public class ValidatorUtils<T> {
 					if(name.length == 0){
 					errors.add(labels.getString("validateDataTime") + ".");
 					} else if(name.length == 2){
-						errors.add(labels.getString("validateDataTime") + labels.getString("in") + " " + labels.getString(name[0]) + " " + name[1] + ".");	
+						errors.add(labels.getString("validateDataTime") + " " + labels.getString("in") + " " + labels.getString(name[0]) + " " + name[1] + ".");	
 					}
 				}
 
@@ -202,7 +202,7 @@ public class ValidatorUtils<T> {
 					if(name.length == 0){
 					errors.add(labels.getString("validateStartEnd") + ".");
 					} else if(name.length == 2){
-						errors.add(labels.getString("validateStartEnd") + labels.getString("in") + " " + labels.getString(name[0]) + " " + name[1] + ".");	
+						errors.add(labels.getString("validateStartEnd") + " " + labels.getString("in") + " " + labels.getString(name[0]) + " " + name[1] + ".");	
 					}
 				}
 			}

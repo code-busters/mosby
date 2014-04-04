@@ -1,4 +1,4 @@
-package main.java.com.mosby.web.filters.event;
+package main.java.com.mosby.web.filters.event.update;
 
 import main.java.com.mosby.model.PromoCode;
 import main.java.com.mosby.utils.ValidatorUtils;
@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
-@WebFilter("/PromoCodeFilter")
-public class PromoCodeFilter implements Filter {
+@WebFilter("/UpdatePromoCodeFilter")
+public class UpdatePromoCodeFilter implements Filter {
 
-	public PromoCodeFilter() {
+	public UpdatePromoCodeFilter() {
 
 	}
 
@@ -75,18 +75,7 @@ public class PromoCodeFilter implements Filter {
 			if (validatorUtils.getErrors().isEmpty() == false) {
 
 				request.setAttribute("errors", validatorUtils.getErrors());
-				request.setAttribute("event_name", request.getParameter("event_name"));
-				request.setAttribute("start_date", request.getParameter("start_date"));
-				request.setAttribute("start_time", request.getParameter("start_time"));
-				request.setAttribute("end_date", request.getParameter("end_date"));
-				request.setAttribute("end_time", request.getParameter("end_time"));
-				request.setAttribute("event_category", request.getParameter("event_category"));
-				request.setAttribute("event_type", request.getParameter("event_type"));
-				request.setAttribute("event_description", request.getParameter("event_description"));
-				request.setAttribute("event_location", request.getParameter("event_location"));
-				request.setAttribute("privacy_event", request.getParameter("privacy_event"));
-				request.setAttribute("organizer", request.getParameter("organizer"));
-				request.getRequestDispatcher("/pages/createEvent.jsp").forward(
+				request.getRequestDispatcher("/pages/eventManagement/editTicketsPromoCodes.jsp").forward(
 						request, response);
 			} else {
 				chain.doFilter(request, response);

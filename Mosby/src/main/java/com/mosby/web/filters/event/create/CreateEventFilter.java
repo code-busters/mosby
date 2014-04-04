@@ -1,4 +1,4 @@
-package main.java.com.mosby.web.filters.event;
+package main.java.com.mosby.web.filters.event.create;
 
 import main.java.com.mosby.controller.services.ReadGenericObjectService;
 import main.java.com.mosby.model.Event;
@@ -16,10 +16,10 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-@WebFilter("/EventFilter")
-public class EventFilter implements Filter {
+@WebFilter("/CreateEventFilter")
+public class CreateEventFilter implements Filter {
 
-    public EventFilter() {
+    public CreateEventFilter() {
         
     }
 

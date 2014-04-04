@@ -68,8 +68,21 @@ public class Organizer implements Serializable{
         this.twitter = twitter;
         this.logo = logo;
     }
+    
+    public Organizer(String name, String email, String phone, String about,
+			String site, String googlePlus, String facebook, String twitter) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.phone = phone;
+		this.about = about;
+		this.site = site;
+		this.googlePlus = googlePlus;
+		this.facebook = facebook;
+		this.twitter = twitter;
+	}
 
-    public Organizer(User user, String name, String email, String phone,
+	public Organizer(User user, String name, String email, String phone,
 			String about, String site, String googlePlus, String facebook,
 			String twitter, String logo) {
 		super();
