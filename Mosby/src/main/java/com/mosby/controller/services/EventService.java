@@ -3,6 +3,7 @@ package main.java.com.mosby.controller.services;
 import main.java.com.mosby.controller.dao.ReflectionDao;
 import main.java.com.mosby.model.*;
 import main.java.com.mosby.utils.FileUploadUtils;
+
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
@@ -330,21 +332,18 @@ public class EventService {
 			}
 		}
 
-		if (idTicketsArray != null && idTicketsArray.length != 0) {
-			for (String id : currentIdTicketsInfoList) {
-				if (!Arrays.asList(idTicketsArray).contains(id)) {
-					List<Ticket> ticketsList = new ReadGenericObjectService<>(
-							Ticket.class).readListByField("ticket_info_ref=",
-							Integer.parseInt(id));
-					if (ticketsList.isEmpty()) {
-						TicketInfo ticketInfo = new ReadGenericObjectService<>(
-								TicketInfo.class)
-								.readById(Integer.parseInt(id));
-						ticketInfoDao.deleteObjects(ticketInfo);
-					} else {
-						System.out
-								.println("You cant delete this TicketInfo, tickets already bougth");
-					}
+		if (idTicketsArray == null) {
+			idTicketsArray = new String[1];
+		}
+		for (String id : currentIdTicketsInfoList) {
+			if (!Arrays.asList(idTicketsArray).contains(id)) {
+				List<Ticket> ticketsList = new ReadGenericObjectService<>(Ticket.class).readListByField("ticket_info_ref=", Integer.parseInt(id));
+				if (ticketsList.isEmpty()) {
+					TicketInfo ticketInfo = new ReadGenericObjectService<>(TicketInfo.class).readById(Integer.parseInt(id));
+					ticketInfoDao.deleteObjects(ticketInfo);
+				} else {
+					System.out
+							.println("You cant delete this TicketInfo, tickets already bougth");
 				}
 			}
 		}
@@ -357,56 +356,45 @@ public class EventService {
 
 		Event event = new ReadGenericObjectService<>(Event.class)
 				.readById(eventId);
-		List<PromoCode> currentPromoCodesList = new ReadGenericObjectService<>(
-				PromoCode.class).readListByField("event_ref=", eventId);
+		List<PromoCode> currentPromoCodesList = new ReadGenericObjectService<>(PromoCode.class).readListByField("event_ref=", eventId);
 		List<String> currentIdPromoCodesList = new ArrayList<>();
 		for (PromoCode promoCode : currentPromoCodesList) {
 			currentIdPromoCodesList.add(Integer.toString(promoCode.getId()));
 		}
 
-		String[] idPromoCodesArray = request
-				.getParameterValues("promo_code_id");
+		String[] idPromoCodesArray = request.getParameterValues("promo_code_id");
 
 		if (idPromoCodesArray != null && idPromoCodesArray.length != 0) {
 			for (String newId : idPromoCodesArray) {
 				PromoCode promoCode;
 				int currentId = Integer.parseInt(newId);
 
-				String code = request.getParameter("promo_code_code_"
-						+ currentId);
-				int discount = Integer.parseInt(request
-						.getParameter("promo_code_discount_" + currentId));
-				String description = request
-						.getParameter("promo_code_description_" + currentId);
-				int maxNumber = Integer.parseInt(request
-						.getParameter("promo_code_quantity_" + currentId));
+				String code = request.getParameter("promo_code_code_" + currentId);
+				int discount = Integer.parseInt(request.getParameter("promo_code_discount_" + currentId));
+				String description = request.getParameter("promo_code_description_" + currentId);
+				int maxNumber = Integer.parseInt(request.getParameter("promo_code_quantity_" + currentId));
 
 				if (currentIdPromoCodesList.contains(newId)) {
-					promoCode = new PromoCode(currentId, event, code, discount,
-							description, maxNumber);
+					promoCode = new PromoCode(currentId, event, code, discount, description, maxNumber);
 					promoCodeDao.updateObjects(promoCode);
 				} else {
-					promoCode = new PromoCode(event, code, discount,
-							description, maxNumber);
+					promoCode = new PromoCode(event, code, discount, description, maxNumber);
 					promoCodeDao.insertObjects(promoCode);
 				}
 			}
 		}
 
-		if (idPromoCodesArray != null && idPromoCodesArray.length != 0) {
-			for (String id : currentIdPromoCodesList) {
-				if (!Arrays.asList(idPromoCodesArray).contains(id)) {
-					List<Ticket> ticketsList = new ReadGenericObjectService<>(
-							Ticket.class).readListByField("promo_codes_ref=",
-							Integer.parseInt(id));
-					if (ticketsList.isEmpty()) {
-						PromoCode promoCode = new ReadGenericObjectService<>(
-								PromoCode.class).readById(Integer.parseInt(id));
-						promoCodeDao.deleteObjects(promoCode);
-					} else {
-						System.out
-								.println("You cant delete this PromoCode, tickets already bougth");
-					}
+		if (idPromoCodesArray == null) {
+			idPromoCodesArray = new String[1];
+		}
+		for (String id : currentIdPromoCodesList) {
+			if (!Arrays.asList(idPromoCodesArray).contains(id)) {
+				List<Ticket> ticketsList = new ReadGenericObjectService<>(Ticket.class).readListByField("promo_codes_ref=", Integer.parseInt(id));
+				if (ticketsList.isEmpty()) {
+					PromoCode promoCode = new ReadGenericObjectService<>(PromoCode.class).readById(Integer.parseInt(id));
+					promoCodeDao.deleteObjects(promoCode);
+				} else {
+					System.out.println("You cant delete this PromoCode, tickets already bougth");
 				}
 			}
 		}
