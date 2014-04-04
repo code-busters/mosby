@@ -90,6 +90,7 @@
                             <c:forEach items="${errors}" var="error">
                                 <p>${error}</p>
                             </c:forEach>
+                            <input type="hidden" name="language" value="${language}" />
                             <div class="form-group col-md-5 col-sm-5">
                                 <label for="name"><fmt:message key="apiAccess.name"/>*</label>
                                 <input class="form-control" type="text"

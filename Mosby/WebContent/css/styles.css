@@ -454,7 +454,9 @@ footer {
 .search-results {
     display: block;
 }
-
+.search-results .event {
+    clear: both;
+}
 .search-results .sb-search {
     margin: 0 0 2em;
     width: 100%;
@@ -602,10 +604,9 @@ video {
     margin: 2em 0 0.5em;
 }
 .event {
-    display: block;
-    margin-bottom: 3em;
-    /*    clear: both;*/
-}
+     display: block;
+     margin-bottom: 3em;
+ }
 .event h2 {
     margin: 0 0 0.3em;
     font-size: 1.3em;

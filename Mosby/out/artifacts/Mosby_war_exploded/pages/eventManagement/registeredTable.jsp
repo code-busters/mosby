@@ -101,12 +101,12 @@
                                         <td>
                                             <div class="switch switch-square" data-on-label="<i class='fui-check'></i>"
                                                  data-off-label="<i class='fui-cross'></i>">
-                                                <input type="checkbox" name="checked_in_tickets_${ticket.id}"
+                                                <input type="checkbox" name="checked_in_tickets" value="${ticket.id}" 
                                                         <c:if test="${ticket.checked}"> checked </c:if> />
                                             </div>
                                         </td>
                                         <td>
-                                            <a href="<c:url value='/userPage?id=${ticket.user.id}'/>"
+                                            <a href="<c:url value='/userPage'/>?id=${ticket.user.id}>"
                                                target="_blank">${ticket.user.firstName} ${ticket.user.lastName}</a>
                                         </td>
                                         <td>

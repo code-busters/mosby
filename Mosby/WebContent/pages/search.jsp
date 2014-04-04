@@ -49,14 +49,13 @@
 				style="background-image: url(media/images/bg_mask.png), url(media/images/default/search.jpg)"></div>
 		</div>
 
-		<div class="row">
+		<div class="row search-results ">
 			<div class="on-background-block-header col-md-10 col-md-offset-1">
 				<h4>
 					<fmt:message key="search.searchResults" />
 				</h4>
 			</div>
-			<div
-				class="on-background-block search-results col-md-8 col-md-offset-1">
+			<div class="on-background-block col-md-8 col-md-offset-1">
 				<div class="hidden-lg hidden-md">
 					<h4>
 						<fmt:message key="search.searchResults" />
@@ -67,7 +66,7 @@
 						<input class="sb-search-input"
 							placeholder="<fmt:message key="search.enterYourSearchTerm"/>..."
 							type="search"
-							value="<fmt:message key="search.enterYourSearchTerm"/>..."
+							value="${param.search}"
 							name="search_again" id="search"> <input
 							class="sb-search-submit" type="submit" value="search"> <span
 							class="sb-icon-search"></span> <a id="open-falldown-search"

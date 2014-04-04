@@ -21,7 +21,7 @@ public class MyEventsServlet extends HttpServlet {
     	if (!(request.getParameter("delete") == null)){
     		eventService.deleteEvent(request, Integer.parseInt(request.getParameter("delete")));
     	}
-//    	request = eventService.readMyEvents(request);
+    	request = eventService.readMyEvents(request);
     	request.getRequestDispatcher("/pages/userProfile/myEvents.jsp").forward(request, response);
     }
 
