@@ -61,6 +61,11 @@
             <!-- Keep all page content within the page-content inset div! -->
             <div class="page-content inset">
                 <div class="row">
+                    <div class="errors">
+                        <c:forEach items="${errors}" var="error">
+                            <p>${error}</p>
+                        </c:forEach>
+                    </div>
                     <form action="updateOrganizer" enctype="multipart/form-data" method="post" id="organizers-form">
                         <input type="hidden" name="language" value="${language}" />
                         <div id="organizers">

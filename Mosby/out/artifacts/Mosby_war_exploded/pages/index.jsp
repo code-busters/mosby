@@ -112,20 +112,6 @@
 
 <script src="js/application.js"></script>
 <script type="text/javascript">
-//    (function ($) {
-//        $(document).ready(function () {
-////            $("#events").css("margin-top", $("#main-idea").height() + $("h1").height() + 1);
-//            $("#events").css("margin-top", 100 - $("nav").height() + "vh");
-//            console.log("height " + $(window).height());
-////            $("#main-idea").css("margin-top", $(window).height()/6 - $("h1").height());
-//        });
-//        $(window).resize(function () {
-////            $("#events").css("margin-top", $("#main-idea").height() + $("h1").height() + 1);
-//            $("#events").css("margin-top", $(window).height());
-//            console.log("height resize " + $(window).height());
-////            $("#main-idea").css("margin-top", $(window).height()/6 - $("h1").height());
-//        });
-//    })(jQuery);
     $('.ellipsis-3').ellipsis({
         row: 3
     });

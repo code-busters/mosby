@@ -115,6 +115,7 @@
                         <div class="event-image flow-img"
                              style="background-image:url(media/images/events/background/${event.background})"></div>
                         <div class="event-detail">
+                            <h2>${event.name}</h2>
                             <ul>
                                 <li>
                                     <span class="fui-calendar-solid"></span>
