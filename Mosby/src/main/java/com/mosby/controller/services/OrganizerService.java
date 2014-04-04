@@ -52,14 +52,14 @@ public class OrganizerService {
 	public void createDefaultOrganizer(User user){
 		
         String name = user.getFirstName() + " " + user.getLastName();
-		String email = "office@mosby.com";
-		String phone = "+38 032 222 22 22";
-        String about = "At Mosby, we believe that gathering with others is the best way for people to learn, grow, get inspired, feel connected, get healthy, give back, and celebrate. So we're building technology that facilitates those gatherings, by helping people find and attend events that feed their interests, while connecting them with others who share their passions.When we indulge our curiosity, events can transform us and make us better.";
-		String site = "www.mosby.com";
-		String googlePlus = "plus.google.com";
-		String facebook = "facebook.com";
-		String twitter = "twitter.com";
-		String logo =  "default.png";
+		String email = null;
+		String phone = null;
+        String about = null;
+		String site = null;
+		String googlePlus = null;
+		String facebook = null;
+		String twitter = null;
+		String logo = null;
 		Organizer organizer = new Organizer(user, name, email, phone, about, site, googlePlus, facebook, twitter, logo);
 		new ReflectionDao<>(Organizer.class).insertObjects(organizer);
 	} 

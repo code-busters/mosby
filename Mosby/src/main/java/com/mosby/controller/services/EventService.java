@@ -87,7 +87,7 @@ public class EventService {
 
 		String location = request.getParameter("event_location");
 		boolean privacy = false;
-		if (!(request.getParameter("privacy_event") == null) && !(request.getParameter("privacy_event").equals("0"))){
+		if (!(request.getParameter("privacy_event").equals("0"))){
 			privacy = true;
 		}
 
@@ -339,7 +339,7 @@ public class EventService {
 		}
 	}
 
-	public HttpServletRequest readMyEvents(HttpServletRequest request) throws MySQLSyntaxErrorException{
+	public HttpServletRequest readMyEvents(HttpServletRequest request) {
     	HttpSession session = request.getSession(false);
     	User sessionUser = (User) session.getAttribute("user");
     	int userId = sessionUser.getId();
@@ -354,7 +354,7 @@ public class EventService {
     			int allTicketsSold = 0;
     			int allTickets = 0;
     			try {
-					if(!new ReadGenericObjectService<>(TicketInfo.class).readListByField("event_ref", event.getId()).isEmpty()){
+					if(!new ReadGenericObjectService<>(TicketInfo.class).readListByField("event_ref=", event.getId()).isEmpty()){
 						allTicketsSold += new ReflectionDao<>(Ticket.class).selectAggregateObjects("COUNT(event_ref)", "event_ref=", event.getId()).get(0).intValue();    				
 						allTickets += new ReflectionDao<>(TicketInfo.class).selectAggregateObjects("SUM(quantity_available)", "event_ref=", event.getId()).get(0).intValue() + allTicketsSold;
 					}
