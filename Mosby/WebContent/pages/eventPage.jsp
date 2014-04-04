@@ -80,7 +80,7 @@
             </p>
 
             <div id="googleMap" class="" style="height:380px;"></div>
-            <c:if test="${(fn:length(tickets) > 0) && (ticketInfo.quantityAvailable > 0)}">
+			<c:if test="${(fn:length(tickets) > 0) && (tickets[0].quantityAvailable > 0)}">
                 <form action="register" method="post" id="register-for-event-form">
                     <input type="hidden" name="eventId" value="${event.id}"/>
 

@@ -2,6 +2,7 @@ package main.java.com.mosby.controller.services;
 
 import main.java.com.mosby.controller.dao.ReflectionDao;
 import main.java.com.mosby.model.*;
+import main.java.com.mosby.utils.MailUtils;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -62,6 +63,7 @@ public class TicketsService {
         					new ReflectionDao<>(Ticket.class).insertObjects(ticket);
         					new ReflectionDao<>(TicketInfo.class).updateObjects(ticketInfo);        					
         				}
+        				new MailUtils().sendTicket(user.getEmail(), request.getSession().getServletContext().getRealPath(""), ticket);
         			}
         		}
         	}
