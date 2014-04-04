@@ -1,29 +1,17 @@
 package main.java.com.mosby.controller.services;
 
 import main.java.com.mosby.controller.dao.ReflectionDao;
-import main.java.com.mosby.model.Event;
-import main.java.com.mosby.model.EventCategory;
-import main.java.com.mosby.model.EventType;
-import main.java.com.mosby.model.Organizer;
-import main.java.com.mosby.model.PromoCode;
-import main.java.com.mosby.model.Ticket;
-import main.java.com.mosby.model.TicketInfo;
-import main.java.com.mosby.model.User;
+import main.java.com.mosby.model.*;
 import main.java.com.mosby.utils.FileUploadUtils;
-
 import org.apache.log4j.Logger;
-
-import com.mysql.jdbc.exceptions.MySQLSyntaxErrorException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
-
 import java.io.File;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -87,7 +75,9 @@ public class EventService {
 
 		String location = request.getParameter("event_location");
 		boolean privacy = false;
-		if (!(request.getParameter("privacy_event").equals("0"))){
+        if(request.getParameter("privacy_event") == null || request.getParameter("privacy_event").equals("0")) {
+            privacy = false;
+        } else if (request.getParameter("privacy_event").equals("1")){
 			privacy = true;
 		}
 
