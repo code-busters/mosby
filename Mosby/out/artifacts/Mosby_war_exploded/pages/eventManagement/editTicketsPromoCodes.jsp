@@ -70,9 +70,9 @@
 <div class="form-group">
     <div id="tickets">
         <div class="row create-tickets-header hidden-xs">
-            <div class="col-md-6 col-sm-6"><fmt:message key="editTicketsPromoCodes.ticketName"/></div>
-            <div class="col-md-2 col-sm-2"><fmt:message key="editTicketsPromoCodes.quantityAvailable"/></div>
-            <div class="col-md-2 col-sm-2"><fmt:message key="editTicketsPromoCodes.price"/></div>
+            <div class="col-md-6 col-sm-6"><fmt:message key="editTicketsPromoCodes.ticketName"/>*</div>
+            <div class="col-md-2 col-sm-2"><fmt:message key="editTicketsPromoCodes.quantityAvailable"/>*</div>
+            <div class="col-md-2 col-sm-2"><fmt:message key="editTicketsPromoCodes.price"/>*</div>
             <div class="col-md-2 col-sm-2 text-center"><fmt:message key="editTicketsPromoCodes.actions"/></div>
         </div>
         <div id="tickets-body">
@@ -83,41 +83,41 @@
 
                     <div class="col-md-6 col-sm-6">
                         <label class="visible-xs" for="event-ticket-name-${ticket.id}"><fmt:message
-                                key="editTicketsPromoCodes.ticketName"/></label>
+                                key="editTicketsPromoCodes.ticketName"/>*</label>
                         <input type="text" class="form-control"
                                placeholder="<fmt:message key="editTicketsPromoCodes.examplesEarlyBirdVipPress"/>"
                                name="event_ticket_name_${ticket.id}" value="${ticket.name}"
-                               id="event-ticket-name-${ticket.id}"/>
+                               id="event-ticket-name-${ticket.id}" required/>
                     </div>
                     <div class="col-md-2 col-sm-2">
                         <label class="visible-xs" for="event-ticket-quantity-${ticket.id}"><fmt:message
-                                key="editTicketsPromoCodes.quantityAvailable"/></label>
+                                key="editTicketsPromoCodes.quantityAvailable"/>*</label>
                         <input type="number" class="form-control" placeholder="100"
                                name="event_ticket_quantity_${ticket.id}" value="${ticket.quantityAvailable}"
-                               id="event-ticket-quantity-${ticket.id}" min="0"/>
+                               id="event-ticket-quantity-${ticket.id}" min="0" required/>
                     </div>
                     <div class="col-md-2 col-sm-2">
                         <label class="visible-xs"
                                for="event-ticket-price-${ticket.id}"><fmt:message
-                                key="editTicketsPromoCodes.price"/></label>
+                                key="editTicketsPromoCodes.price"/>*</label>
                         <c:choose>
                             <c:when test="${ticket.type == 'Free'}">
                                 <input type="text" class="form-control" placeholder="Free"
                                        name="event_ticket_price_${ticket.id}" value="Free"
                                        id="event-ticket-price-${ticket.id}"
-                                       readonly="" />
+                                       readonly=""/>
                             </c:when>
                             <c:when test="${ticket.type == 'Donation'}">
                                 <input type="text" class="form-control" placeholder="Donation"
                                        name="event_ticket_price_${ticket.id}" value="Donation"
                                        id="event-ticket-price-${ticket.id}"
-                                       readonly="" />
+                                       readonly=""/>
                             </c:when>
                             <c:otherwise>
                                 <input type="number" class="form-control" placeholder="0"
                                        name="event_ticket_price_${ticket.id}" value="${ticket.price}"
                                        id="event-ticket-price-${ticket.id}"
-                                       min="0"/>
+                                       min="0" required/>
                             </c:otherwise>
                         </c:choose>
 
@@ -220,9 +220,9 @@
 <div class="form-group">
     <div id="promo-codes">
         <div class="row promo-codes-header hidden-xs">
-            <div class="col-md-6 col-sm-6"><fmt:message key="editTicketsPromoCodes.promoCode"/></div>
-            <div class="col-md-2 col-sm-2"><fmt:message key="editTicketsPromoCodes.quantityAvailable"/></div>
-            <div class="col-md-2 col-sm-2"><fmt:message key="editTicketsPromoCodes.discount"/></div>
+            <div class="col-md-6 col-sm-6"><fmt:message key="editTicketsPromoCodes.promoCode"/>*</div>
+            <div class="col-md-2 col-sm-2"><fmt:message key="editTicketsPromoCodes.quantityAvailable"/>*</div>
+            <div class="col-md-2 col-sm-2"><fmt:message key="editTicketsPromoCodes.discount"/>*</div>
             <div class="col-md-2 col-sm-2 text-center"><fmt:message key="editTicketsPromoCodes.actions"/></div>
         </div>
         <div id="promo-codes-body">
@@ -237,21 +237,21 @@
                         <input type="text" class="form-control"
                                placeholder="<fmt:message key="editTicketsPromoCodes.examplesR2D2"/>"
                                name="promo_code_code_${promoCode.id}" value="${promoCode.code}"
-                               id="promo-code-code-${promoCode.id}"/>
+                               id="promo-code-code-${promoCode.id}" required/>
                     </div>
                     <div class="col-md-2 col-sm-2">
                         <label class="visible-xs" for="promo-code-quantity-${promoCode.id}"><fmt:message
                                 key="editTicketsPromoCodes.quantityAvailable"/></label>
                         <input type="number" class="form-control" placeholder="5"
                                name="promo_code_quantity_${promoCode.id}" value="${promoCode.quantityAvailable}"
-                               id="promo-code-quantity-${promoCode.id}" min="0"/>
+                               id="promo-code-quantity-${promoCode.id}" min="0" required/>
                     </div>
                     <div class="col-md-2 col-sm-2">
                         <label class="visible-xs" for="promo-code-discount-${promoCode.id}"><fmt:message
                                 key="editTicketsPromoCodes.discount"/></label>
                         <input type="number" class="form-control" placeholder="10"
                                name="promo_code_discount_${promoCode.id}" value="${promoCode.discount}"
-                               id="promo-code-discount-${promoCode.id}" min="0"/>
+                               id="promo-code-discount-${promoCode.id}" min="0" required/>
                     </div>
                     <div class="col-md-2 col-sm-2 actions text-center">
                         <label class="visible-xs text-left"><fmt:message

@@ -49,7 +49,7 @@
             <div class="row">
                 <div class="profile-left">
                     <c:if test="${organizer.logo != 'default.png'}">
-                        <img class="profile-img" src="media/images/users/${organizer.logo}">
+                        <img class="profile-img" src="media/images/organizers/${organizer.logo}">
                     </c:if>
                     <ul>
                         <c:if test="${organizer.phone != ''}">
