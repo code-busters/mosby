@@ -10,7 +10,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Mosby - <fmt:message key="title"/></title>
+    <title><fmt:message key="myTickets.myTickets"/> - Mosby - <fmt:message key="title"/></title>
     <link rel="shortcut icon" href="media/images/favicon.ico">
     <link rel="icon" type="image/png" href="media/images/favicon.png"/>
     <meta name="description" content="Mosby - make it simple. New event management system"/>
