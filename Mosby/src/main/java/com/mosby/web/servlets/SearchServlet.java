@@ -23,6 +23,8 @@ public class SearchServlet extends HttpServlet {
         request.setAttribute("eventTypes", listEventTypes);
 		List<EventCategory> listEventCategories = new ReadGenericObjectService<>(EventCategory.class).readList();
 		request.setAttribute("eventCategories", listEventCategories);
+        List<Event> events = new EventService().search(request);
+        request.setAttribute("events", events);
 		request.getRequestDispatcher("/pages/search.jsp").forward(request, response);
     }
 

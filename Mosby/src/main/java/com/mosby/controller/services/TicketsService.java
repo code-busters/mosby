@@ -64,20 +64,14 @@ public class TicketsService {
 	}
 	
 	public void check(HttpServletRequest request){
+		ReflectionDao<Ticket> ticketDao = new ReflectionDao<>(Ticket.class);
 		String[] tickets = request.getParameterValues("checked_tickets");
 		for (String string : tickets) {
 			Ticket ticket = new ReadGenericObjectService<>(Ticket.class).readById(Integer.parseInt(string));
 			ticket.setChecked(true);
-			new ReflectionDao<>(Ticket.class).updateObjects(ticket);
+			ticketDao.updateObjects(ticket);
 		}
 	}
-	
-	public void check(int id){
-		Ticket ticket = new ReadGenericObjectService<>(Ticket.class).readById(id);
-		ticket.setChecked(true);
-		new ReflectionDao<>(Ticket.class).updateObjects(ticket);
-
-	}	
 	
 	public void delete(HttpServletRequest request){
 		ReflectionDao<Ticket> ticketDao = new ReflectionDao<>(Ticket.class);
