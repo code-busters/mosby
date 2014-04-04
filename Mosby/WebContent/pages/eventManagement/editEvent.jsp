@@ -65,6 +65,7 @@
             </div>
             <form action="editEvent" enctype="multipart/form-data"
                   method="post" id="edit-event-form">
+                <input type="hidden" name="language" value="${language}" />
                 <input type="hidden" name="eventId" value="${event.id}"/>
                 <h5><fmt:message key="editEvent.eventDetail"/></h5>
 

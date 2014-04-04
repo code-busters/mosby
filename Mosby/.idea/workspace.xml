@@ -80,38 +80,7 @@
     <favorites_list name="Mosby" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="organizerPage.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebContent/pages/organizerPage.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.6153846" vertical-offset="663" max-vertical-offset="3196">
-              <caret line="43" column="108" selection-start-line="43" selection-start-column="108" selection-end-line="43" selection-end-column="108" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CreateOrganizerServlet.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/web/servlets/secured/userProfile/CreateOrganizerServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
-              <caret line="26" column="33" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OrganizerService.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/controller/services/OrganizerService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.25671142" vertical-offset="0" max-vertical-offset="1734">
-              <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -121,8 +90,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/mosby/web/servlets/AuthenticationServlet.java" />
-        <option value="$PROJECT_DIR$/WebContent/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/web/filters/event/EventAttributesFilter.java" />
         <option value="$PROJECT_DIR$/WebContent/pages/parts/footer.jsp" />
         <option value="$PROJECT_DIR$/WebContent/js/application.js" />
@@ -139,7 +106,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/web/servlets/LoginServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/controller/services/FacebookUserGetDataService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/web/servlets/GoogleCalendarServlet.java" />
-        <option value="$PROJECT_DIR$/WebContent/pages/eventManagement/editEvent.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/controller/services/GoogleCalendarService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/web/servlets/EventPageServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mosby/web/servlets/secured/userProfile/MyTicketsServlet.java" />
@@ -165,13 +131,16 @@
         <option value="$PROJECT_DIR$/WebContent/pages/signUp.jsp" />
         <option value="$PROJECT_DIR$/WebContent/pages/eventManagement/registeredTable.jsp" />
         <option value="$PROJECT_DIR$/WebContent/pages/userPage.jsp" />
-        <option value="$PROJECT_DIR$/WebContent/pages/userProfile/apiAccess.jsp" />
         <option value="$PROJECT_DIR$/WebContent/pages/userProfile/changePassword.jsp" />
         <option value="$PROJECT_DIR$/WebContent/pages/userProfile/contactInfo.jsp" />
-        <option value="$PROJECT_DIR$/WebContent/pages/userProfile/createOrganizer.jsp" />
         <option value="$PROJECT_DIR$/WebContent/pages/userProfile/myEvents.jsp" />
-        <option value="$PROJECT_DIR$/WebContent/pages/userProfile/myOrganizers.jsp" />
         <option value="$PROJECT_DIR$/WebContent/pages/userProfile/myTickets.jsp" />
+        <option value="$PROJECT_DIR$/WebContent/pages/eventManagement/editEvent.jsp" />
+        <option value="$PROJECT_DIR$/WebContent/pages/userProfile/apiAccess.jsp" />
+        <option value="$PROJECT_DIR$/WebContent/pages/userProfile/myOrganizers.jsp" />
+        <option value="$PROJECT_DIR$/WebContent/pages/error.jsp" />
+        <option value="$PROJECT_DIR$/WebContent/pages/userProfile/createOrganizer.jsp" />
+        <option value="$PROJECT_DIR$/WebContent/pages/eventManagement/editTicketsPromoCodes.jsp" />
       </list>
     </option>
   </component>
@@ -391,7 +360,7 @@
       <recent name="F:\development\GitHub\mosby\Mosby\WebContent\WEB-INF" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Login">
+  <component name="RunManager" selected="Tomcat Server.Index">
     <configuration default="false" name="StringUtilsTest.testConcat" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -2180,16 +2149,16 @@
       <workItem from="1396428261663" duration="2952000" />
       <workItem from="1396433978567" duration="3464000" />
       <workItem from="1396442878031" duration="14034000" />
-      <workItem from="1396525813358" duration="40972000" />
+      <workItem from="1396525813358" duration="42850000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="228427000" />
+    <option name="totallyTimeSpent" value="230305000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2213,7 +2182,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15085287" sideWeight="0.4969697" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15085287" sideWeight="0.4969697" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.267316" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -2382,14 +2351,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/web/servlets/secured/userProfile/MyTicketsServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="20" max-vertical-offset="629">
-          <caret line="11" column="74" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/controller/transformers/ReflectionTransformer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.38916257" vertical-offset="647" max-vertical-offset="2431">
@@ -2454,21 +2415,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/media/images/default/error.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/pages/error.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.8370497" vertical-offset="488" max-vertical-offset="1071">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1396467889836" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/model/api/CheckinResult.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="731">
@@ -2489,14 +2435,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.093596056" vertical-offset="198" max-vertical-offset="1564">
           <caret line="29" column="64" selection-start-line="29" selection-start-column="64" selection-end-line="29" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/web/servlets/secured/userProfile/MyEventsServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44663382" vertical-offset="0" max-vertical-offset="609">
-          <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
           <folding />
         </state>
       </provider>
@@ -2528,14 +2466,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/pages/createEvent.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5025729" vertical-offset="421" max-vertical-offset="5049">
-          <caret line="42" column="102" selection-start-line="42" selection-start-column="90" selection-end-line="42" selection-end-column="102" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/pages/aboutUs.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.11663808" vertical-offset="663" max-vertical-offset="3196">
@@ -2548,30 +2478,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-21.615385" vertical-offset="322" max-vertical-offset="2414">
           <caret line="52" column="95" selection-start-line="52" selection-start-column="36" selection-end-line="52" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/pages/login.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.67066896" vertical-offset="306" max-vertical-offset="2788">
-          <caret line="41" column="165" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/pages/eventPage.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.5660377" vertical-offset="471" max-vertical-offset="4284">
-          <caret line="150" column="40" selection-start-line="150" selection-start-column="26" selection-end-line="150" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/pages/signUp.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5831904" vertical-offset="408" max-vertical-offset="3111">
-          <caret line="44" column="155" selection-start-line="44" selection-start-column="148" selection-end-line="44" selection-end-column="155" />
           <folding />
         </state>
       </provider>
@@ -2592,62 +2498,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/pages/userProfile/apiAccess.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.728988" vertical-offset="374" max-vertical-offset="3485">
-          <caret line="47" column="106" selection-start-line="47" selection-start-column="106" selection-end-line="47" selection-end-column="106" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/pages/userProfile/changePassword.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.728988" vertical-offset="357" max-vertical-offset="2363">
-          <caret line="46" column="106" selection-start-line="46" selection-start-column="106" selection-end-line="46" selection-end-column="106" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/pages/userProfile/contactInfo.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46655232" vertical-offset="510" max-vertical-offset="3774">
-          <caret line="46" column="106" selection-start-line="46" selection-start-column="106" selection-end-line="46" selection-end-column="106" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/pages/userProfile/createOrganizer.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.69982845" vertical-offset="357" max-vertical-offset="2737">
-          <caret line="45" column="141" selection-start-line="45" selection-start-column="141" selection-end-line="45" selection-end-column="141" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/pages/userProfile/myEvents.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20411664" vertical-offset="663" max-vertical-offset="2414">
-          <caret line="46" column="106" selection-start-line="46" selection-start-column="106" selection-end-line="46" selection-end-column="106" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/pages/userProfile/myOrganizers.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46655232" vertical-offset="510" max-vertical-offset="3434">
-          <caret line="46" column="106" selection-start-line="46" selection-start-column="106" selection-end-line="46" selection-end-column="106" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/pages/userProfile/myTickets.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41680962" vertical-offset="539" max-vertical-offset="2363">
-          <caret line="46" column="106" selection-start-line="46" selection-start-column="106" selection-end-line="46" selection-end-column="106" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/pages/userProfile/parts/sideNavbar.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34476843" vertical-offset="71" max-vertical-offset="680">
@@ -2656,50 +2506,167 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/pages/eventManagement/editEvent.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/controller/services/OrganizerService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.3447685" vertical-offset="459" max-vertical-offset="6834">
-          <caret line="176" column="158" selection-start-line="176" selection-start-column="40" selection-end-line="176" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/pages/eventManagement/editTicketsPromoCodes.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.4373928" vertical-offset="255" max-vertical-offset="5066">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/pages/eventManagement/registeredTable.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.9622642" vertical-offset="692" max-vertical-offset="3400">
-          <caret line="108" column="99" selection-start-line="108" selection-start-column="99" selection-end-line="108" selection-end-column="99" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/pages/organizerPage.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.6153846" vertical-offset="663" max-vertical-offset="3196">
-          <caret line="43" column="108" selection-start-line="43" selection-start-column="108" selection-end-line="43" selection-end-column="108" />
+        <state vertical-scroll-proportion="0.25671142" vertical-offset="0" max-vertical-offset="1734">
+          <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/web/servlets/secured/userProfile/CreateOrganizerServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
+        <state vertical-scroll-proportion="0.47454843" vertical-offset="0" max-vertical-offset="609">
           <caret line="26" column="33" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/controller/services/OrganizerService.java">
+    <entry file="file://$PROJECT_DIR$/WebContent/pages/organizerPage.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25671142" vertical-offset="0" max-vertical-offset="1734">
-          <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.11663808" vertical-offset="663" max-vertical-offset="3196">
+          <caret line="43" column="108" selection-start-line="43" selection-start-column="108" selection-end-line="43" selection-end-column="108" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/web/servlets/secured/userProfile/MyTicketsServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27422002" vertical-offset="20" max-vertical-offset="629">
+          <caret line="11" column="74" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/pages/userProfile/myEvents.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.05831904" vertical-offset="1020" max-vertical-offset="2414">
+          <caret line="62" column="89" selection-start-line="62" selection-start-column="33" selection-end-line="62" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/pages/eventManagement/registeredTable.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.271012" vertical-offset="692" max-vertical-offset="3400">
+          <caret line="50" column="96" selection-start-line="50" selection-start-column="40" selection-end-line="50" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mosby/web/servlets/secured/userProfile/MyEventsServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44663382" vertical-offset="0" max-vertical-offset="609">
+          <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/pages/userProfile/myOrganizers.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46655232" vertical-offset="816" max-vertical-offset="3451">
+          <caret line="64" column="83" selection-start-line="64" selection-start-column="83" selection-end-line="64" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/media/images/default/error.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/pages/error.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49056605" vertical-offset="462" max-vertical-offset="1071">
+          <caret line="44" column="51" selection-start-line="44" selection-start-column="51" selection-end-line="44" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/pages/signUp.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.05831904" vertical-offset="714" max-vertical-offset="3111">
+          <caret line="44" column="155" selection-start-line="44" selection-start-column="148" selection-end-line="44" selection-end-column="155" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/pages/login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3207547" vertical-offset="510" max-vertical-offset="2788">
+          <caret line="41" column="165" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/pages/eventPage.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36535162" vertical-offset="2388" max-vertical-offset="4284">
+          <caret line="153" column="111" selection-start-line="153" selection-start-column="111" selection-end-line="153" selection-end-column="111" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/pages/userProfile/myTickets.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.19554031" vertical-offset="896" max-vertical-offset="2363">
+          <caret line="46" column="106" selection-start-line="46" selection-start-column="106" selection-end-line="46" selection-end-column="106" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/pages/userProfile/contactInfo.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.11663808" vertical-offset="714" max-vertical-offset="3774">
+          <caret line="46" column="106" selection-start-line="46" selection-start-column="106" selection-end-line="46" selection-end-column="106" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/pages/userProfile/createOrganizer.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6415094" vertical-offset="765" max-vertical-offset="2839">
+          <caret line="67" column="26" selection-start-line="67" selection-start-column="26" selection-end-line="67" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/pages/userProfile/apiAccess.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6415094" vertical-offset="1190" max-vertical-offset="3502">
+          <caret line="92" column="87" selection-start-line="92" selection-start-column="87" selection-end-line="92" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/pages/eventManagement/editTicketsPromoCodes.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3207547" vertical-offset="918" max-vertical-offset="5406">
+          <caret line="65" column="62" selection-start-line="65" selection-start-column="62" selection-end-line="65" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/pages/eventManagement/editEvent.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5540309" vertical-offset="816" max-vertical-offset="6851">
+          <caret line="67" column="15" selection-start-line="67" selection-start-column="15" selection-end-line="67" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/pages/userProfile/changePassword.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5540309" vertical-offset="867" max-vertical-offset="2363">
+          <caret line="70" column="28" selection-start-line="70" selection-start-column="28" selection-end-line="70" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/pages/createEvent.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.32761577" vertical-offset="778" max-vertical-offset="5049">
+          <caret line="57" column="16" selection-start-line="53" selection-start-column="8" selection-end-line="57" selection-end-column="14" />
           <folding />
         </state>
       </provider>

@@ -62,6 +62,7 @@
             <div class="page-content inset">
                 <div class="row">
                     <form action="updateOrganizer" enctype="multipart/form-data" method="post" id="organizers-form">
+                        <input type="hidden" name="language" value="${language}" />
                         <div id="organizers">
                             <div class="row organizers-header hidden-xs">
                                 <div class="col-md-6 col-sm-6"><fmt:message key="myOrganizers.organizer"/></div>

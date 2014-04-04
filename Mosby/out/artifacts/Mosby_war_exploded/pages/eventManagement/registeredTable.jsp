@@ -106,7 +106,7 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <a href="<c:url value='/userPage'/>?id=${ticket.user.id}>"
+                                            <a href="<c:url value='/userPage?id=${ticket.user.id}'/>"
                                                target="_blank">${ticket.user.firstName} ${ticket.user.lastName}</a>
                                         </td>
                                         <td>

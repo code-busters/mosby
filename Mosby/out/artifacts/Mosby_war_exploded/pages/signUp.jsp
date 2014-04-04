@@ -42,7 +42,7 @@
     </div>
 
     <div class="row" style="background: #000">
-        <div id="background-block" class="flow-img big-background" style="background-image: url(media/images/bg_mask.png), url(media/images/default/google-io-2012.jpg)"></div>
+        <div id="background-block" class="flow-img big-background" style="background-image: url(media/images/bg_mask.png), url(media/images/default/sign-up.jpg)"></div>
     </div>
 
     <div class="row">

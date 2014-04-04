@@ -45,7 +45,7 @@
 
     <div class="row" style="background: #000">
         <div id="background-block" class="flow-img"
-             style="background-image: url(media/images/bg_mask.png), url(media/images/default/holi-feast.jpg)"></div>
+             style="background-image: url(media/images/bg_mask.png), url(media/images/default/user-profile.jpg)"></div>
     </div>
 
     <div id="wrapper" class="row user-profile">

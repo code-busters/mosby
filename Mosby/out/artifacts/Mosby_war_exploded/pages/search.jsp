@@ -46,7 +46,7 @@
 
 		<div class="row" style="background: #000">
 			<div id="background-block" class="flow-img big-background"
-				style="background-image: url(media/images/bg_mask.png), url(media/images/default/people-scream.jpg)"></div>
+				style="background-image: url(media/images/bg_mask.png), url(media/images/default/search.jpg)"></div>
 		</div>
 
 		<div class="row">

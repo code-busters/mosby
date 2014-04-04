@@ -61,7 +61,13 @@
         <div class="page-content inset">
             <div class="row">
                 <div class="col-md-6">
+                    <div class="errors">
+                        <c:forEach items="${errors}" var="error">
+                            <p>${error}</p>
+                        </c:forEach>
+                    </div>
                     <form action="createOrganizer" enctype="multipart/form-data" method="post" id="organizers-form">
+                        <input type="hidden" name="language" value="${language}" />
                         <div class="form-group">
                             <label for="open-logo"><fmt:message key="createOrganizer.logo"/></label>
                             <input type="file" class="hide" name="logo" id="open-logo" accept="image/*" />
