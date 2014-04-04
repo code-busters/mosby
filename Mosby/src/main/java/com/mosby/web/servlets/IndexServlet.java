@@ -42,18 +42,7 @@ public class IndexServlet extends HttpServlet {
 			list.subList(0, 10).clear();
 		}
 	
-		request.setAttribute("eventList", list);
-		System.out.println(request.getAttribute("eventList"));
-		
-//		Ticket ticket = (Ticket) new ReadGenericObjectService<Ticket>((Class<Ticket>) new Ticket().getClass()).readList().get(0);
-//		System.out.println(ticket);
-//		new MailUtils().sendMessage("oleh.zasadnyy@gmail.com", "Rws");
-//		System.out.println("WORKS");
-		
-		
-//		List<Long> countUserTickets =  new ReflectionDao<>(Ticket.class).selectAggregateObjects("COUNT(user_ref)");
-//		System.out.println(countUserTickets);
-        
+		request.setAttribute("eventList", list);     
 		request.getRequestDispatcher("/pages/index.jsp").forward(request, response);
         
 	}

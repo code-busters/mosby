@@ -83,7 +83,6 @@ public class EventService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(request.getParameter("start_time"));
 
 		String location = request.getParameter("event_location");
 		boolean privacy = false;
@@ -97,7 +96,6 @@ public class EventService {
 		Event event = new Event(organizer, name, description, eventCategory,
 				eventType, startDate, startTime, endDate, endTime, location,
 				eventLogo, eventBackground, privacy);
-		System.out.println(event);
 
 		ReflectionDao<Event> eventDao = new ReflectionDao<>(Event.class);
 
@@ -152,7 +150,6 @@ public class EventService {
 						startTime, endDate, endTime);
 
 				ticketInfoDao.insertObjects(ticketInfo);
-				System.out.println(ticketInfo);
 			}
 		}
 
@@ -178,7 +175,6 @@ public class EventService {
 						promoCodeDescription, maxNumber);
 
 				promoCodeDao.insertObjects(promoCode);
-				System.out.println(promoCode);
 			}
 		}
 
@@ -341,9 +337,6 @@ public class EventService {
 				if (ticketsList.isEmpty()) {
 					TicketInfo ticketInfo = new ReadGenericObjectService<>(TicketInfo.class).readById(Integer.parseInt(id));
 					ticketInfoDao.deleteObjects(ticketInfo);
-				} else {
-					System.out
-							.println("You cant delete this TicketInfo, tickets already bougth");
 				}
 			}
 		}
@@ -393,8 +386,6 @@ public class EventService {
 				if (ticketsList.isEmpty()) {
 					PromoCode promoCode = new ReadGenericObjectService<>(PromoCode.class).readById(Integer.parseInt(id));
 					promoCodeDao.deleteObjects(promoCode);
-				} else {
-					System.out.println("You cant delete this PromoCode, tickets already bougth");
 				}
 			}
 		}

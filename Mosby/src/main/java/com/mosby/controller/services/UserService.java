@@ -32,15 +32,11 @@ public class UserService {
 			if(!user.isActive()){
 				return null;
 			}
-
 			String correctHash = user.getPassword();
-
 			if (!EncryptionUtils.validatePassword(password, correctHash)) {
 				user = null;
-				System.out.println("login fail");
 			}
 			return user;
-
 		} else {
 			return null;
 		}
@@ -48,9 +44,6 @@ public class UserService {
 
 	public User readSocialUser(User user){
 		ReflectionDao<User> usersDao = new ReflectionDao<>(User.class);
-		
-		System.out.println(user.toString());
-		
 		if (!usersDao.selectObjects(5,"email=", user.getEmail()).isEmpty()) {
 			User usr = usersDao.selectObjects(5,"email=", user.getEmail()).get(0);
 
@@ -153,7 +146,6 @@ public class UserService {
         ReflectionDao<User> usersDao = new ReflectionDao<>(User.class);
 
 		if (!usersDao.selectObjects(1,"email=", email).isEmpty()) {
-			System.out.println("signUp fail! change email!");
 			return null;
 		} else {
 			String encryptedPassword = EncryptionUtils.createHash(password);

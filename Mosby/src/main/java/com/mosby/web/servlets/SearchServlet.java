@@ -37,8 +37,5 @@ public class SearchServlet extends HttpServlet {
 		List<Event> events = new EventService().search(request);
 		request.setAttribute("events", events);
 		request.getRequestDispatcher("/pages/search.jsp").forward(request, response);
-//		response.sendRedirect("search");
     }
-
-
 }
