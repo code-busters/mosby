@@ -92,7 +92,11 @@ public class TicketsService {
 		for (String string : tickets) {
 			Ticket ticket = new ReadGenericObjectService<>(Ticket.class).readById(Integer.parseInt(string));
 			if (ticket.getTicketInfo().getType().equals("Paid")){
-				double priceOfTicket = ticket.getTicketInfo().getPrice()-(ticket.getTicketInfo().getPrice() * ticket.getPromoCode().getDiscount() * 0.01);
+				int discount = 0;
+				if (ticket.getPromoCode() != null){
+					discount = ticket.getPromoCode().getDiscount();
+				}
+				double priceOfTicket = ticket.getTicketInfo().getPrice()-(ticket.getTicketInfo().getPrice() * discount * 0.01);
 				ticket.getUser().setCredits(ticket.getUser().getCredits() + priceOfTicket);
 				userDao.updateObjects(ticket.getUser());
 				if (ticket.getUser().getId() == ((User) request.getSession(false).getAttribute("user")).getId()){
@@ -108,7 +112,11 @@ public class TicketsService {
 	public void delete (HttpServletRequest request, int id){
 		Ticket ticket = new ReadGenericObjectService<>(Ticket.class).readById(id);
 		if (ticket.getTicketInfo().getType().equals("Paid")){
-			double priceOfTicket = ticket.getTicketInfo().getPrice()-(ticket.getTicketInfo().getPrice() * ticket.getPromoCode().getDiscount() * 0.01);
+			int discount = 0;
+			if (ticket.getPromoCode() != null){
+				discount = ticket.getPromoCode().getDiscount();
+			}
+			double priceOfTicket = ticket.getTicketInfo().getPrice()-(ticket.getTicketInfo().getPrice() * discount * 0.01);
 			ticket.getUser().setCredits(ticket.getUser().getCredits() + priceOfTicket);
 			new ReflectionDao<>(User.class).updateObjects(ticket.getUser());
 			if (ticket.getUser().getId() == ((User) request.getSession(false).getAttribute("user")).getId()){
