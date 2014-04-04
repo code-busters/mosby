@@ -1,26 +1,20 @@
 package main.java.com.mosby.web.filters.event;
 
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import main.java.com.mosby.controller.services.ReadGenericObjectService;
 import main.java.com.mosby.model.Event;
 import main.java.com.mosby.model.EventCategory;
 import main.java.com.mosby.model.EventType;
 import main.java.com.mosby.utils.ValidatorUtils;
+
+import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 @WebFilter("/OrganizerFilter")
 public class OrganizerFilter implements Filter {
@@ -33,7 +27,7 @@ public class OrganizerFilter implements Filter {
 		
 	}
 
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
 		
 		HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;

@@ -1,12 +1,12 @@
 package main.java.com.mosby.web.servlets.secured.userProfile;
 
+import main.java.com.mosby.controller.services.EventService;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import main.java.com.mosby.controller.services.EventService;
 import java.io.IOException;
 
 
@@ -21,7 +21,7 @@ public class MyEventsServlet extends HttpServlet {
     	if (!(request.getParameter("delete") == null)){
     		eventService.deleteEvent(request, Integer.parseInt(request.getParameter("delete")));
     	}
-    	request = eventService.readMyEvents(request);
+//    	request = eventService.readMyEvents(request);
     	request.getRequestDispatcher("/pages/userProfile/myEvents.jsp").forward(request, response);
     }
 

@@ -68,7 +68,7 @@
                             </c:forEach>
                         </div>
                         <form action="contactInfo" enctype="multipart/form-data" method="post" id="contact-info-form">
-                            <p class="credits">Credits: ${user.credits}</p>
+                            <p class="credits"><fmt:message key="contactInfo.credits"/>: ${user.credits}</p>
                             <input type="hidden" name="language" value="${language}" />
                             <div class="form-group">
                                 <% if (request.getSession().getAttribute("userType") == "common") { %>

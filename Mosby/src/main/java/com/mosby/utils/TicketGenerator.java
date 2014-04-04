@@ -1,31 +1,19 @@
 package main.java.com.mosby.utils;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.net.MalformedURLException;
-import java.util.Date;
-
-import main.java.com.mosby.model.Ticket;
-
-import com.itextpdf.text.BadElementException;
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Chunk;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Element;
-import com.itextpdf.text.Font;
+import com.itextpdf.text.*;
 import com.itextpdf.text.Font.FontFamily;
-import com.itextpdf.text.Image;
-import com.itextpdf.text.PageSize;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.Phrase;
-import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.BarcodeQRCode;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.draw.DottedLineSeparator;
+import main.java.com.mosby.model.Ticket;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.MalformedURLException;
+import java.util.Date;
 
 public class TicketGenerator {
 
@@ -277,12 +265,11 @@ public class TicketGenerator {
 	public String qrCodeString(int ticketId) {
 		String qrCode = Integer.toString(ticketId);
 		int numberSum = 0;
-		int residual = 0;
-		
-		for (int i = 0; i < qrCode.length(); i++) {
+
+        for (int i = 0; i < qrCode.length(); i++) {
 			numberSum += Integer.parseInt(Character.toString(qrCode.charAt(i)));
 		}
-		residual = (Math.abs(numberSum - QR_SEED)) % 10;
+		int residual = (Math.abs(numberSum - QR_SEED)) % 10;
 		while (qrCode.length() < QR_SIZE - 1) {
 			qrCode = StringUtils.concat(0, qrCode); 
 		}
