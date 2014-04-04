@@ -77,7 +77,6 @@ public class ReflectionTransformer<T> {
             PreparedStatement preparedStatement, Class<T> type, T object,
             boolean isUpdate) {
         int columnIndex = 0;
-        System.out.println(object);
         for (Field field : type.getDeclaredFields()) {
             if (!(isUpdate && field.getName().equals("id"))) {
                 PropertyDescriptor propertyDescriptor;
@@ -86,40 +85,26 @@ public class ReflectionTransformer<T> {
                         propertyDescriptor = new PropertyDescriptor(
                                 field.getName(), type);
                         Method method = propertyDescriptor.getReadMethod();
-                        System.out.println(method.getName().toString());
                         Object value = method.invoke(object);
-                        if (value != null) {
-                            System.out.println(value);
-                        } else {
-                            System.out.println("Null");
-                        }
                         preparedStatement.setObject(++columnIndex, value);
 
                     } else if (field.isAnnotationPresent(Key.class)) {
                         Class<?> fieldClass = field.getType();
-                        System.out.println(fieldClass.toString());
 
                         propertyDescriptor = new PropertyDescriptor(
                                 field.getName(), type);
                         Method mainMethod = propertyDescriptor.getReadMethod();
-                        System.out.println(mainMethod.getName().toString());
                         Object fieldObject = mainMethod.invoke(object);
 
                         if (fieldObject != null) {
-                            System.out.println(fieldObject.toString());
 
                             Method currentObjectMethod = fieldClass
                                     .getDeclaredMethod("getId");
-                            System.out.println(currentObjectMethod.getName()
-                                    .toString());
                             Object value = currentObjectMethod
                                     .invoke(fieldObject);
 
-                            System.out.println(value);
-
                             preparedStatement.setObject(++columnIndex, value);
                         } else {
-                            System.out.println("Null");
                             preparedStatement.setObject(++columnIndex, null);
                         }
 
@@ -130,7 +115,6 @@ public class ReflectionTransformer<T> {
                         | NoSuchMethodException e) {
                     logger.error("From Object to Statement exception", e);
                 }
-                System.out.println(columnIndex);
             }
         }
         return preparedStatement;

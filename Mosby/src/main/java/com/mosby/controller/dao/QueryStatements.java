@@ -31,8 +31,6 @@ public class QueryStatements<T> {
                     tableName, " WHERE ", getWhereColumns(whereArguments));
         }
 
-        System.out.println(query);
-
         return query;
     }
 
@@ -48,8 +46,6 @@ public class QueryStatements<T> {
                     tableName, " WHERE ", getWhereColumns(whereArguments));
         }
 
-        System.out.println(query);
-
         return query;
     }
 
@@ -61,8 +57,6 @@ public class QueryStatements<T> {
 
         query = StringUtils.concat("INSERT INTO ", tableName, " VALUES (",
                 tableColumns, ")");
-
-        System.out.println(query);
 
         return query;
     }
@@ -76,8 +70,6 @@ public class QueryStatements<T> {
         query = StringUtils.concat("UPDATE ", tableName, " SET ", tableColumns,
                 "WHERE id=?");
 
-        System.out.println(query);
-
         return query;
     }
 
@@ -87,8 +79,6 @@ public class QueryStatements<T> {
         String tableName = type.getAnnotation(Table.class).name();
 
         query = StringUtils.concat("DELETE FROM ", tableName, " WHERE id=?");
-
-        System.out.println(query);
 
         return query;
     }
@@ -110,11 +100,9 @@ public class QueryStatements<T> {
                     Column annotation = (Column) field
                             .getAnnotation(Column.class);
                     stringBuilder.append(annotation.name()).append(", ");
-                    System.out.println("\t" + annotation.name());
                 } else if (field.isAnnotationPresent(Key.class)) {
                     Key annotation = (Key) field.getAnnotation(Key.class);
                     stringBuilder.append(annotation.name()).append(", ");
-                    System.out.println("\t" + annotation.name());
                 }
             }
         }
