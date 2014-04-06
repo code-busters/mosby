@@ -148,11 +148,11 @@ public class UserService {
             String authentication = EncryptionUtils.generateSecureRandom(24) + EncryptionUtils.toHex(email.getBytes());
 
             User user = new User(firstName, lastName, email, encryptedPassword, authentication, false);
-			new OrganizerService().createDefaultOrganizer(user);
 			usersDao.insertObjects(user);
 			
 			new MailUtils().sendMessage(email, authentication);
 			user = usersDao.selectObjects(1,"email=", email).get(0);
+			new OrganizerService().createDefaultOrganizer(user);
 
 			return user;
 		}
