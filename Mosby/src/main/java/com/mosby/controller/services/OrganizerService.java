@@ -4,7 +4,9 @@ import main.java.com.mosby.controller.dao.ReflectionDao;
 import main.java.com.mosby.model.Event;
 import main.java.com.mosby.model.Organizer;
 import main.java.com.mosby.model.User;
+import main.java.com.mosby.utils.FileDeleteUtils;
 import main.java.com.mosby.utils.FileUploadUtils;
+
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -84,6 +87,7 @@ public class OrganizerService {
     		try {
     			String contentType = filePart.getContentType();
     			if (contentType.startsWith("image")) {
+    				FileDeleteUtils.deletePicture(servlet, ORGANIZER_LOGO_PATH, logo);
     				File image = FileUploadUtils.uploadFile(servlet, ORGANIZER_LOGO_PATH, filePart);
     				logo = FileUploadUtils.getFilename(image);
     			}

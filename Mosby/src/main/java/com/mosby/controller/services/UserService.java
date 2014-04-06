@@ -3,8 +3,10 @@ package main.java.com.mosby.controller.services;
 import main.java.com.mosby.controller.dao.ReflectionDao;
 import main.java.com.mosby.model.User;
 import main.java.com.mosby.utils.EncryptionUtils;
+import main.java.com.mosby.utils.FileDeleteUtils;
 import main.java.com.mosby.utils.FileUploadUtils;
 import main.java.com.mosby.utils.MailUtils;
+
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
@@ -84,6 +87,7 @@ public class UserService {
 		try {
 			String contentType = filePart.getContentType();
 			if (contentType.startsWith("image")) {
+				FileDeleteUtils.deletePicture(servlet, USER_IMAGE_PATH, userImage);
 				File image = FileUploadUtils.uploadFile(servlet, USER_IMAGE_PATH, filePart);
 				userImage = FileUploadUtils.getFilename(image);
 			}

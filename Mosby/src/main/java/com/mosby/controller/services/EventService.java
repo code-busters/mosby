@@ -2,6 +2,7 @@ package main.java.com.mosby.controller.services;
 
 import main.java.com.mosby.controller.dao.ReflectionDao;
 import main.java.com.mosby.model.*;
+import main.java.com.mosby.utils.FileDeleteUtils;
 import main.java.com.mosby.utils.FileUploadUtils;
 
 import org.apache.log4j.Logger;
@@ -197,6 +198,7 @@ public class EventService {
 		try {
 			String contentType = filePart.getContentType();
 			if (contentType.startsWith("image")) {
+				FileDeleteUtils.deletePicture(servlet, EVENT_LOGO_PATH, eventLogo);
 				File image = FileUploadUtils.uploadFile(servlet,
 						EVENT_LOGO_PATH, filePart);
 				eventLogo = FileUploadUtils.getFilename(image);
@@ -209,6 +211,7 @@ public class EventService {
 		try {
 			String contentType = filePart.getContentType();
 			if (contentType.startsWith("image")) {
+				FileDeleteUtils.deletePicture(servlet, EVENT_BACKGROUND_PATH, eventBackground);
 				File image = FileUploadUtils.uploadFile(servlet,
 						EVENT_BACKGROUND_PATH, filePart);
 				eventBackground = FileUploadUtils.getFilename(image);
