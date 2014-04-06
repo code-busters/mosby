@@ -38,7 +38,6 @@ public class CreateEventServlet extends HttpServlet {
 			request.setAttribute("event", event);
 			response.sendRedirect("eventPage?eventId=" + event.getId());
 		} catch (Exception e) {
-			e.printStackTrace();
 			log.error(e);
 		}
 	}

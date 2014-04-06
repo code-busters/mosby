@@ -1,5 +1,6 @@
 package main.java.com.mosby.web.filters.event.update;
 
+import main.java.com.mosby.controller.services.ReadGenericObjectService;
 import main.java.com.mosby.model.Event;
 import main.java.com.mosby.model.TicketInfo;
 import main.java.com.mosby.utils.ValidatorUtils;
@@ -9,6 +10,8 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -20,6 +23,8 @@ import java.util.Date;
 @WebFilter("/UpdateTicketsFilter")
 public class UpdateTicketsFilter implements Filter {
 
+	private static Logger log = Logger.getLogger(UpdateTicketsFilter.class);
+	
 	public UpdateTicketsFilter() {
 
 	}
@@ -114,12 +119,10 @@ public class UpdateTicketsFilter implements Filter {
 					} catch (NoSuchMethodException | SecurityException
 							| IllegalAccessException | IllegalArgumentException
 							| InvocationTargetException e) {
-						e.printStackTrace();
+						log.error(e);
 					}
 
 				}
-			} else {
-				//validatorUtils.selectTicket();
 			}
 
 			if (validatorUtils.getErrors().isEmpty() == false) {

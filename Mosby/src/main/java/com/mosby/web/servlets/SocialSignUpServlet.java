@@ -48,8 +48,8 @@ public class SocialSignUpServlet extends HttpServlet {
                         new UserService().readSocialUser(user);
                     }
                 } catch (Exception e) {
-                    e.printStackTrace();
-                    response.sendRedirect("/signUp");
+                	log.error(e);
+                	response.sendRedirect("/signUp");
                 }
                 response.sendRedirect("index");
             }

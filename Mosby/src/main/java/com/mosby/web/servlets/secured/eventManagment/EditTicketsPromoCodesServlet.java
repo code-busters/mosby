@@ -30,7 +30,6 @@ public class EditTicketsPromoCodesServlet extends HttpServlet {
             Event event = new ReadGenericObjectService<>(Event.class).readById(eventId); 
             List <TicketInfo> ticketsInfoList = new ReadGenericObjectService<>(TicketInfo.class).readListByField("event_ref=", eventId);
             List <PromoCode> promoCodesList = new ReadGenericObjectService<>(PromoCode.class).readListByField("event_ref=", eventId);
-            //request.setAttribute("event", event);
             session.setAttribute("ticketsInfo", ticketsInfoList);
             session.setAttribute("promoCodes", promoCodesList);
             request.getRequestDispatcher("/pages/eventManagement/editTicketsPromoCodes.jsp").forward(request, response);

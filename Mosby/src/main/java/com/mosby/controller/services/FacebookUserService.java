@@ -127,8 +127,7 @@ public class FacebookUserService {
 				user.setLastName(json.getString("last_name"));
 				user.setEmail(json.getString("email"));
 				user.setImage(imageLocation);	
-				} else {
-				System.err.println("facebook accessToken = null");
+				}
 			}
 		} catch (ClientProtocolException e) {
 			log.error(e);

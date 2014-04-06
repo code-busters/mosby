@@ -33,7 +33,6 @@ public class ShowTicketServlet extends HttpServlet {
 			TicketGenerator ticketGenerator = new TicketGenerator(out, getServletContext().getRealPath(""));
 			ticketGenerator.createTickets(ticket);
 		} catch (DocumentException e) {
-            e.printStackTrace();
 			log.error(e);
 		}
 	}

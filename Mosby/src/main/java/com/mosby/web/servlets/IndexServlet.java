@@ -22,7 +22,6 @@ public class IndexServlet extends HttpServlet {
 
 	}
 
-	//@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Event> list = new ReadGenericObjectService<>(Event.class).readList();
 		Collections.sort(list, new Comparator<Event>() {

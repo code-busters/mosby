@@ -7,6 +7,8 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.draw.DottedLineSeparator;
+
+import main.java.com.mosby.controller.services.ReadGenericObjectService;
 import main.java.com.mosby.model.Ticket;
 
 import java.io.FileNotFoundException;
@@ -15,7 +17,11 @@ import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.util.Date;
 
+import org.apache.log4j.Logger;
+
 public class TicketGenerator {
+
+	private static Logger log = Logger.getLogger(TicketGenerator.class);
 
 	private static final String LOGO_PATH = "\\media\\images\\events\\logo\\";
 	private static final int QR_SEED = 9;
@@ -94,7 +100,7 @@ public class TicketGenerator {
 			document.add(headerTable());
 			generateTicket(tickets);
 		} catch (DocumentException | IOException e) {
-			e.printStackTrace();
+			log.error(e);
 		}
 
 		document.close();

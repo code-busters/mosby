@@ -102,7 +102,7 @@ public class UserService {
 			try {
 				birthDate = new SimpleDateFormat(DATE_FORMAT).parse(request.getParameter("birthday"));
 			} catch (ParseException e) {
-				e.printStackTrace();
+				log.error(e);
 			}
 		}
 		String site = request.getParameter("website");

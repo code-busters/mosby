@@ -14,12 +14,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
+import main.java.com.mosby.controller.services.ReadGenericObjectService;
 import main.java.com.mosby.model.User;
 import main.java.com.mosby.utils.ValidatorUtils;
 
 @WebFilter("/ContactInfoFilters")
 public class ContactInfoFilter implements Filter {
 
+	private static Logger log = Logger.getLogger(ContactInfoFilter.class);
+	
 	public ContactInfoFilter() {
 
 	}
@@ -70,7 +75,7 @@ public class ContactInfoFilter implements Filter {
 			} catch (NoSuchMethodException | SecurityException
 					| IllegalAccessException | IllegalArgumentException
 					| InvocationTargetException e) {
-				e.printStackTrace();
+				log.error(e);
 			}
 			if (user == null || validatorUtils.getErrors().isEmpty() == false) {
 

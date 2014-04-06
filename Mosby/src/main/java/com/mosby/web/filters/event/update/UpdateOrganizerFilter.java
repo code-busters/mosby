@@ -16,6 +16,8 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import main.java.com.mosby.controller.services.ReadGenericObjectService;
 import main.java.com.mosby.model.Event;
 import main.java.com.mosby.model.EventCategory;
@@ -27,6 +29,8 @@ import main.java.com.mosby.utils.ValidatorUtils;
 @WebFilter("/UpdateOrganizerFilter")
 public class UpdateOrganizerFilter implements Filter {
 
+	private static Logger log = Logger.getLogger(UpdateOrganizerFilter.class);
+	
 	public UpdateOrganizerFilter() {
 
 	}
@@ -69,8 +73,7 @@ public class UpdateOrganizerFilter implements Filter {
 				} catch (NoSuchMethodException | SecurityException
 						| IllegalAccessException | IllegalArgumentException
 						| InvocationTargetException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					log.error(e);
 				}
 			}
 

@@ -1,19 +1,28 @@
 package main.java.com.mosby.web.filters.event;
 
-import main.java.com.mosby.model.PromoCode;
-import main.java.com.mosby.utils.ValidatorUtils;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
-import javax.servlet.*;
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
+import main.java.com.mosby.model.PromoCode;
+import main.java.com.mosby.utils.ValidatorUtils;
+
+import org.apache.log4j.Logger;
 
 @WebFilter("/PromoCodeFilter")
 public class PromoCodeFilter implements Filter {
 
+	private static Logger log = Logger.getLogger(PromoCodeFilter.class);
+	
 	public PromoCodeFilter() {
 
 	}
@@ -66,8 +75,8 @@ public class PromoCodeFilter implements Filter {
 					} catch (NoSuchMethodException | SecurityException
 							| IllegalAccessException | IllegalArgumentException
 							| InvocationTargetException e) {
-						
-						e.printStackTrace();
+
+						log.error(e);
 					}
 				}
 			}

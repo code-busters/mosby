@@ -66,8 +66,7 @@ public class GoogleCalendarService {
     		service.events().insert("primary", event).execute();
     		
     	} catch (IOException e) {
-    		
-    		e.printStackTrace();
+    		log.error(e);
     	}
 
     }

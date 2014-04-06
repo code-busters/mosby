@@ -1,30 +1,41 @@
 package main.java.com.mosby.web.servlets.api;
 
-import com.google.gson.Gson;
-import main.java.com.mosby.controller.dao.ReflectionDao;
-import main.java.com.mosby.controller.services.ReadGenericObjectService;
-import main.java.com.mosby.controller.services.TicketsService;
-import main.java.com.mosby.model.*;
-import main.java.com.mosby.model.api.Attendee;
-import main.java.com.mosby.model.api.CheckinResult;
+import java.io.IOException;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.*;
+
+import main.java.com.mosby.controller.dao.ReflectionDao;
+import main.java.com.mosby.controller.services.ReadGenericObjectService;
+import main.java.com.mosby.controller.services.TicketsService;
+import main.java.com.mosby.model.Api;
+import main.java.com.mosby.model.Event;
+import main.java.com.mosby.model.Organizer;
+import main.java.com.mosby.model.Ticket;
+import main.java.com.mosby.model.User;
+import main.java.com.mosby.model.api.Attendee;
+import main.java.com.mosby.model.api.CheckinResult;
+
+import com.google.gson.Gson;
 
 @WebServlet("/api/*")
 public class ApiServlet extends HttpServlet {
-    private static final Gson GSON = new Gson();
+	private static final long serialVersionUID = 1L;
+	
+	private static final Gson GSON = new Gson();
+	
 
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response) throws ServletException, IOException {
         String sig = request.getParameter("sig");
-//        ReflectionDao<Api> apiDao = new ReflectionDao<>(Api.class);
-//        List<Api> apiList = apiDao.selectObjects(1, "code=", sig);
         Api api = new ReadGenericObjectService<>(Api.class).readListByField("code=", sig).get(0);
         if (api == null) {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);

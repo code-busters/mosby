@@ -10,6 +10,9 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.log4j.Logger;
+
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Timestamp;
@@ -19,6 +22,8 @@ import java.text.SimpleDateFormat;
 @WebFilter("/CreateEventFilter")
 public class CreateEventFilter implements Filter {
 
+	private static Logger log = Logger.getLogger(CreateEventFilter.class);
+	
 	public CreateEventFilter() {
 
 	}
@@ -64,7 +69,7 @@ public class CreateEventFilter implements Filter {
 				start = new Timestamp(parseDate.parse(startTimestamp).getTime());
 				end = new Timestamp(parseDate.parse(endTimestamp).getTime());
 			} catch (ParseException e) {
-				e.printStackTrace();
+				log.error(e);
 			}
 			Event event = new Event(name, start, end, eventCategory, eventType,
 					location);
@@ -74,8 +79,7 @@ public class CreateEventFilter implements Filter {
 			} catch (NoSuchMethodException | SecurityException
 					| IllegalAccessException | IllegalArgumentException
 					| InvocationTargetException e) {
-
-				e.printStackTrace();
+				log.error(e);
 			}
 
 			if (event == null || validatorUtils.getErrors().isEmpty() == false) {

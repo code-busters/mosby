@@ -14,12 +14,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
+import main.java.com.mosby.controller.services.ReadGenericObjectService;
 import main.java.com.mosby.model.User;
 import main.java.com.mosby.utils.ValidatorUtils;
 
 @WebFilter("/SignUpFilter")
 public class SignUpFilter implements Filter {
 
+	private static Logger log = Logger.getLogger(SignUpFilter.class);
+	
 	public SignUpFilter() {
 		
 	}
@@ -62,7 +67,7 @@ public class SignUpFilter implements Filter {
 				} catch (NoSuchMethodException | SecurityException
 						| IllegalAccessException | IllegalArgumentException
 						| InvocationTargetException e) {
-					e.printStackTrace();
+					log.error(e);
 				}
 
 				if (user == null

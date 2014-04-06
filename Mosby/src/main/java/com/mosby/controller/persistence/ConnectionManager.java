@@ -10,21 +10,21 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class ConnectionManager {
-    private static Logger log = Logger.getLogger(ConnectionManager.class);
+	private static Logger logger = Logger.getLogger(ConnectionManager.class);
 
 	private static ConnectionManager instance = null;
 
 	private DataSource datasource = null;
 
 	private ConnectionManager() {
-        try {
-            Context initContext = new InitialContext();
-            Context envContext = (Context) initContext.lookup("java:/comp/env");
-            datasource = (DataSource) envContext.lookup("jdbc/onlinedb");
-        } catch (NamingException e) {
-            log.error(e);
-        }
-    }
+		try {
+			Context initContext = new InitialContext();
+			Context envContext = (Context) initContext.lookup("java:/comp/env");
+			datasource = (DataSource) envContext.lookup("jdbc/onlinedb");
+		} catch (NamingException e) {
+			logger.error(e);
+		}
+	}
 
 	public static ConnectionManager getInstance()
 			throws ClassNotFoundException, SQLException {
@@ -34,13 +34,7 @@ public class ConnectionManager {
 		return instance;
 	}
 
-	public Connection getConnection() {
-		try {
-			return  datasource.getConnection();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		}
+	public Connection getConnection() throws SQLException {
+		return datasource.getConnection();
 	}
 }

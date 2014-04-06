@@ -30,7 +30,6 @@ public class EventService {
 	public int create(HttpServletRequest request, HttpServlet servlet)
 			throws IllegalStateException, IOException, ServletException {
 
-		// Image uploading
 		String eventLogo = "default.png";
 		Part filePart = request.getPart("event_logo");
 		try {
@@ -56,8 +55,6 @@ public class EventService {
 			log.error(e);
 		}
 
-		// Event builder
-
 		Organizer organizer = new ReadGenericObjectService<>(Organizer.class)
 				.readById(Integer.parseInt(request.getParameter("organizer")));
 		String name = request.getParameter("event_name");
@@ -81,8 +78,7 @@ public class EventService {
 			endTime = new SimpleDateFormat(TIME_FORMAT).parse(request
 					.getParameter("end_time"));
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error(e);
 		}
 
 		String location = request.getParameter("event_location");
@@ -102,8 +98,6 @@ public class EventService {
 
 		int id = eventDao.insertObjects(event);
 		event.setId(id);
-
-		// Tickets Info builder
 
 		String[] idTicketsArray = request.getParameterValues("ticket_id");
 
@@ -141,7 +135,7 @@ public class EventService {
 						endTime = new SimpleDateFormat(TIME_FORMAT).parse(request
 								.getParameter("end_time"));
 					} catch (ParseException e1) {
-						e1.printStackTrace();
+						log.error(e1);
 					}
 				}
 				int price;
@@ -164,7 +158,6 @@ public class EventService {
 			}
 		}
 
-		// Promo codes builder
 		String[] idPromoCodesArray = request
 				.getParameterValues("promo_code_id");
 
@@ -198,10 +191,6 @@ public class EventService {
 		Event event = new ReadGenericObjectService<>(Event.class)
 				.readById(eventId);
 
-		// get info from JSP
-
-		// Image uploading
-
 		String eventLogo = event.getLogo();
 
 		Part filePart = request.getPart("event_logo");
@@ -228,7 +217,6 @@ public class EventService {
 			log.error(e);
 		}
 
-		// event builder
 		String name = request.getParameter("event_name");
 
 		Organizer organizer = new ReadGenericObjectService<>(Organizer.class)
@@ -244,7 +232,7 @@ public class EventService {
 			endTime = new SimpleDateFormat(TIME_FORMAT).parse(request
 					.getParameter("end_time"));
 		} catch (ParseException e) {
-			e.printStackTrace();
+			log.error(e);
 		}
 
 		EventCategory eventCategory = new ReadGenericObjectService<>(
@@ -322,7 +310,7 @@ public class EventService {
 					endTime = new SimpleDateFormat(TIME_FORMAT).parse(request
 							.getParameter("ticket_end_time_" + currentId));
 				} catch (ParseException e) {
-					e.printStackTrace();
+					log.error(e);
 				}
 				SimpleDateFormat parseDate = new SimpleDateFormat(
 						"yyyy-MM-dd hh:mm");
@@ -352,7 +340,7 @@ public class EventService {
 										+ request.getParameter("end_time"))
 								.getTime());
 					} catch (ParseException ex) {
-						ex.printStackTrace();
+						log.error(ex);
 					}
 				}
 
@@ -545,7 +533,6 @@ public class EventService {
 	}
 
 	public List<Event> search(HttpServletRequest request) {
-		// Query builder
 		String searchText = request.getParameter("search");
 		String query = "name,%" + searchText + "%, description,%" + searchText
 				+ "%";

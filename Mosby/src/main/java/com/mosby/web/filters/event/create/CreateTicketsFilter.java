@@ -1,5 +1,6 @@
 package main.java.com.mosby.web.filters.event.create;
 
+import main.java.com.mosby.controller.services.ReadGenericObjectService;
 import main.java.com.mosby.model.TicketInfo;
 import main.java.com.mosby.utils.ValidatorUtils;
 
@@ -7,6 +8,8 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -17,12 +20,12 @@ import java.text.SimpleDateFormat;
 @WebFilter("/CreateTicketsFilter")
 public class CreateTicketsFilter implements Filter {
 
-	public CreateTicketsFilter() {
+	private static Logger log = Logger.getLogger(CreateTicketsFilter.class);
 
+	public CreateTicketsFilter() {
 	}
 
 	public void destroy() {
-
 	}
 
 	public void doFilter(ServletRequest req, ServletResponse res,
@@ -85,8 +88,9 @@ public class CreateTicketsFilter implements Filter {
 								.getTime());
 						end = new Timestamp(parseDate.parse(endTimestamp)
 								.getTime());
-					} catch (ParseException e){}
-						
+					} catch (ParseException e) {
+					}
+
 					int price = 0;
 					if (stringPrice.equals("Free")) {
 						type = "Free";
@@ -113,11 +117,11 @@ public class CreateTicketsFilter implements Filter {
 					} catch (NoSuchMethodException | SecurityException
 							| IllegalAccessException | IllegalArgumentException
 							| InvocationTargetException e) {
-						e.printStackTrace();
+						log.error(e);
 					}
 
 				}
-			} 
+			}
 
 			if (validatorUtils.getErrors().isEmpty() == false) {
 
