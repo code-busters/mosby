@@ -174,6 +174,7 @@
 <!-- Load JS here for greater good =============================-->
 <script src="js/classie.js"></script>
 <script src="js/cbpAnimatedHeader.min.js"></script>
+<script src="js/uisearch.js"></script>
 
 <script src="js/jquery-2.0.3.min.js"></script>
 <script src="js/bootstrap.min.js"></script>

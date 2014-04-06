@@ -62,16 +62,16 @@
                 <div class="row">
                     <div id="my-apis">
                         <div class="row my-apis-header hidden-xs">
-                            <div class="col-md-6 col-sm-6"><fmt:message key="myTickets.eventName"/></div>
+                            <div class="col-md-5 col-sm-5"><fmt:message key="myTickets.eventName"/></div>
                             <div class="col-md-2 col-sm-2"><fmt:message key="myTickets.organizer"/></div>
-                            <div class="col-md-1 col-sm-1"><fmt:message key="myTickets.price"/></div>
+                            <div class="col-md-2 col-sm-2"><fmt:message key="myTickets.price"/></div>
                             <div class="col-md-2 col-sm-2"><fmt:message key="myTickets.startDate"/></div>
                             <div class="col-md-1 col-sm-1 text-center"><fmt:message key="myTickets.actions"/></div>
                         </div>
                         <div id="my-apis-body">
                             <c:forEach items="${tickets}" var="ticket">
                                 <div id="${ticket.id}" class="row">
-                                    <div class="col-md-6 col-sm-6">
+                                    <div class="col-md-5 col-sm-5">
                                         <span class="as-label visible-xs"><fmt:message key="myTickets.eventName"/></span>
                                         <a href="<c:url value="/eventPage?eventId=${ticket.event.id}"/>"
                                            target="_blank">${ticket.event.name}</a>
@@ -80,7 +80,7 @@
                                         <span class="as-label visible-xs"><fmt:message key="myTickets.organizer"/></span>
                                         <a href="<c:url value='/organizerPage'/>?id=${ticket.event.organizer.id}" target="_blank">${ticket.event.organizer.name}</a>
                                     </div>
-                                    <div class="col-md-1 col-sm-1">
+                                    <div class="col-md-2 col-sm-2">
                                         <span class="as-label visible-xs"><fmt:message key="myTickets.price"/></span>
                                         <p>
                                             <c:choose>
@@ -123,6 +123,7 @@
 <!-- Load JS here for greater good =============================-->
 <script src="js/classie.js"></script>
 <script src="js/cbpAnimatedHeader.min.js"></script>
+<script src="js/uisearch.js"></script>
 
 <script src="js/jquery-2.0.3.min.js"></script>
 

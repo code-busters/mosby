@@ -63,10 +63,6 @@ public class UserService {
 		}
 	}
 
-	
-	
-	
-
 	public void update(HttpServletRequest request, HttpServlet servlet)
 			throws IllegalStateException, IOException, ServletException {
 		HttpSession session = request.getSession(false);

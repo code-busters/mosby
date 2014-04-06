@@ -50,16 +50,15 @@ public class OrganizerService {
 	}
 
 	public void createDefaultOrganizer(User user){
-		
         String name = user.getFirstName() + " " + user.getLastName();
-		String email = null;
+		String email = user.getEmail();
 		String phone = null;
-        String about = null;
-		String site = null;
+        String about = user.getAbout();
+		String site = user.getSite();
 		String googlePlus = null;
 		String facebook = null;
 		String twitter = null;
-		String logo = null;
+		String logo = user.getImage();
 		Organizer organizer = new Organizer(user, name, email, phone, about, site, googlePlus, facebook, twitter, logo);
 		new ReflectionDao<>(Organizer.class).insertObjects(organizer);
 	} 

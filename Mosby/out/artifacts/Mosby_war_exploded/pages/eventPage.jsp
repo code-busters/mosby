@@ -80,7 +80,7 @@
             </p>
 
             <div id="googleMap" class="" style="height:380px;"></div>
-            <c:if test="${(fn:length(tickets) > 0) && (ticketInfo.quantityAvailable > 0)}">
+			<c:if test="${(fn:length(tickets) > 0) && (tickets[0].quantityAvailable > 0)}">
                 <form action="register" method="post" id="register-for-event-form">
                     <input type="hidden" name="eventId" value="${event.id}"/>
 
@@ -169,7 +169,7 @@
                     <p>${event.organizer.about}</p>
                 </c:if>
                 <a href="<c:url value='/organizerPage'/>?id=${event.organizer.id}" class="btn btn-block btn-lg btn-default button-to-page">
-                    <span class="fui-user"></span>Organizer page
+                    <span class="fui-user"></span><fmt:message key="eventPage.organizerPage"/>
                 </a>
             </div>
             <div class="event-actions col-md-12">
