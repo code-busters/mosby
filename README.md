@@ -1,7 +1,5 @@
-Mosby
+Mosby - Event management system
 =====
-#Event management system
-
 ###Installation instructions
 1. Install Apache Tomcat 7.0.50 (or any other version older than 7, but you should edit application server in configuration if you want to run it on IntelliJ IDEA)
 2. Run SQL (database.sql) file with database on MySQL 5.6 or newer 
@@ -11,7 +9,7 @@ Mosby
 6. Enjoy
 
 
-Team:
+####Team:
 * [ozasadnyy](https://github.com/ozasadnyy)
 * [AndyBoy1](https://github.com/AndyBoy1)
 * [AlexHamer777](https://github.com/AlexHamer777)
