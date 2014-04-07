@@ -1,0 +1,28 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Mosby:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Mosby_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Mosby" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="mysql-connector-java-5.1.27-bin" />
+          <element id="library" level="project" name="log4j-1.2.17" />
+          <element id="file-copy" path="$APPLICATION_HOME_DIR$/lib/junit-4.10.jar" />
+          <element id="library" level="project" name="standard-1.1.2" />
+          <element id="library" level="project" name="javax.persistence" />
+          <element id="library" level="project" name="java-mail-1.4" />
+          <element id="library" level="project" name="commons-beanutils-1.8.2" />
+          <element id="library" level="project" name="ezmorph-1.0.6" />
+          <element id="library" level="project" name="itextpdf-5.5.0" />
+          <element id="library" level="project" name="google-api-client-1.17.0-rc" />
+          <element id="library" level="project" name="google-api-services-calendar-v3-rev77-1.17.0-rc" />
+          <element id="library" level="project" name="junit-4.11" />
+        </element>
+      </element>
+      <element id="library" level="module" name="mysql-connector-java-5.1.28-bin.jar" module-name="Mosby" />
+      <element id="javaee-facet-resources" facet="Mosby/web/Web" />
+    </root>
+  </artifact>
+</component>
